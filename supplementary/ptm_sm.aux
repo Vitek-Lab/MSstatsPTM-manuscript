@@ -1,0 +1,63 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {1}Overview of proposed approach and notation}{2}}
+\newlabel{sec:intro}{{1}{2}}
+\@writefile{toc}{\contentsline {paragraph}{Data structure of PTM quantification experiments.}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S1}{\ignorespaces Representation of the data of modified peptides at one site and unmodified peptides of the same protein, with $I$ conditions and $J$ replicate runs. Abundances of the PTM and protein are quantified by multiple spectral features (peptide ions, $K$ for modified peptides and $L$ for unmodified peptides). Some spectral features can be missing (shown as $-$), either randomly in individual runs or completely in certain conditions. In real practice, the number of runs can vary across conditions. }}{2}}
+\newlabel{fig:dtable}{{S1}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Existing method: two-sample $t$-test}{3}}
+\newlabel{sec:ttest}{{2}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Proposed approach}{3}}
+\newlabel{sec:prop}{{3}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Statistical modeling and inference}{3}}
+\newlabel{sec:model}{{3.1}{3}}
+\citation{choi_etal_14a}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Run-level summarization of feature intensities}{4}}
+\newlabel{sec:sum}{{3.1.1}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Model-based inference of the underlying abundance}{4}}
+\newlabel{sec:infer}{{3.1.2}{4}}
+\citation{kutner_etal_04a}
+\citation{oberg_vitek_09a}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}PTM significance analysis}{5}}
+\newlabel{sec:test}{{3.2}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Design of PTM experiments}{5}}
+\newlabel{sec:design}{{3.3}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Extension to complex designs}{6}}
+\newlabel{sec:complex}{{3.4}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Batch effects}{6}}
+\newlabel{sec:batch}{{3.4.1}{6}}
+\@writefile{toc}{\contentsline {paragraph}{Per-batch model (proposed approach).}{6}}
+\@writefile{toc}{\contentsline {paragraph}{All-batch model.}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Computer simulation}{7}}
+\newlabel{sec:sim}{{4}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Protein-level adjustment}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}One site per protein}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Multiple sites per protein}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S2}{\ignorespaces All the considered methods well calibrated the Type I error rate when there was no change in protein abundance (upper plot). When the changes in PTM abundance were entirely due to changes in protein abundance across conditions (bottom plot), analysis without accounting for the protein-level changes resulted in off-target, high false positive rates. }}{9}}
+\newlabel{fig:prot_fpr}{{S2}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S3}{\ignorespaces In comparison between the proposed approach and $t$-test with protein-level adjustment, the proposed approach improved power with small sample sizes. Two-sample $t$-test only used data within the groups of interest while ignoring the rest the of data. Consequently, it gave similar performance across cases with different number of conditions. In contrast, the proposed approach leveraged all available information, which resulted in improved power with increased number of conditions. }}{10}}
+\newlabel{fig:prot_pwr}{{S3}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S4}{\ignorespaces The advantage by using the proposed approach over two-sample $t$-test became more profound in the presence of missing value. In cases with small sample sizes, performance by the $t$-test decreased dramatically with one missing value. As a specific example, the statistical power by using the $t$-test with two replicates was below $0.25$, and increasing the fold change to $2$ did not effectively reduce the negative impact. }}{11}}
+\newlabel{fig:protm1_pwr}{{S4}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S5}{\ignorespaces Correlation between test statistics across sites due to protein-level adjustment did not affect the expected level of FDR under the considered scenarios. The Benjamini-Hochberg procedure was used to control the FDR. }}{12}}
+\newlabel{fig:prot_fdr}{{S5}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Batch effects}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S6}{\ignorespaces Estiamtion based on the most statistically significant batch with $t$-test was highly variable and frequently biased. The observation is consistent in all the simulated scenarios. }}{14}}
+\newlabel{fig:synnull_est}{{S6}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S7}{\ignorespaces The proposed approach better calibrated Type I error rate. Similar results were observed in the cases with positive and negative batch-condition interactions. }}{14}}
+\newlabel{fig:synnull_fpr}{{S7}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S8}{\ignorespaces The proposed approach improved power with small sample sizes in almost all the scenarios, under various forms of batch effects including difference in intensity level (higher on the right) and difference in variability. Using $t$-test while ignoring batch effect gave similar performance in special cases with no difference in intensity level between batches, but its performance dramatically decreased in general cases. The proposed methods gave consistently improved performance compared with other methods by properly characterizing batch effects and leveraging all available information. Similar patterns were observed in other simulated scenarios with positive and negative interactions.}}{15}}
+\newlabel{fig:synnull_pwr}{{S8}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S9}{\ignorespaces Ignoring batch effects lost power. The negative impact was only partially reduced by increasing the sample size to 5. Similar patterns were observed in other simulated scenarios. }}{16}}
+\newlabel{fig:synnull_pwr_5}{{S9}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Sample size calculation and power analysis}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S10}{\ignorespaces Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. The discrepancy can be profound if the uncertainty associated with the protein abundance estimate is greater than that of PTM abundance estimate. Sample size calculation without accounting for the uncertainty would lead to under-powered studies. }}{17}}
+\newlabel{fig:size_prot}{{S10}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S11}{\ignorespaces In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. }}{18}}
+\newlabel{fig:size_grp}{{S11}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S12}{\ignorespaces Statistical power can be improved by increasing the sample size and analyzing multiple conditions together. }}{18}}
+\newlabel{fig:pwr_grp}{{S12}{18}}
+\bibstyle{plain}
+\bibdata{ptm_ref}
+\bibcite{choi_etal_14a}{1}
+\bibcite{kutner_etal_04a}{2}
+\bibcite{oberg_vitek_09a}{3}

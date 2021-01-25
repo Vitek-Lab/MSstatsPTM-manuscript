@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{choi_etal_14a}
+Meena Choi, Ching-Yun Chang, Timothy Clough, Daniel Broudy, Trevor Killeen,
+  Brendan MacLean, and Olga Vitek.
+\newblock {MSstats}: an {R} package for statistical analysis of quantitative
+  mass spectrometry-based proteomic experiments.
+\newblock {\em Bioinformatics}, 30(17):2524--2526, 2014.
+
+\bibitem{kutner_etal_04a}
+Michael~H. Kutner, John Neter, Christopher~J. Nachtsheim, and William Li.
+\newblock {\em Applied Linear Statistical Models}.
+\newblock McGraw-Hill/Irwin, 5 edition, 2004.
+
+\bibitem{oberg_vitek_09a}
+Ann~L. Oberg and Olga Vitek.
+\newblock Statistical design of quantitative mass spectrometry-based proteomic
+  experiments.
+\newblock {\em Journal of Proteome Research}, 8(5):2144--2156, 2009.
+
+\end{thebibliography}
