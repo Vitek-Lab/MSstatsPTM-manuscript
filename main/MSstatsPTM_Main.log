@@ -1,0 +1,82 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.9.8)  25 JAN 2021 11:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**MSstatsPTM_Main.tex
+(./MSstatsPTM_Main.tex
+LaTeX2e <2018-04-01> patch level 5
+
+(c:/Users/Devon Kohler/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/articl
+e.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+
+(c:/Users/Devon Kohler/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size11
+.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./MSstatsPTM_Main.aux)
+\openout1 = `MSstatsPTM_Main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 15.
+ [1
+
+{c:/Users/Devon Kohler/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updma
+p/pdftex.map}] [2] [3] [4] [5] [6]
+Overfull \hbox (20.42938pt too wide) in paragraph at lines 67--67
+[]\OT1/cmr/bx/n/10.95 Ubiquitin changes in bone mar-row de-rived macrophages fr
+om Atg16L1
+ []
+
+[7] [8] [9] [10] (./MSstatsPTM_Main.aux) ) 
+Here is how much of TeX's memory you used:
+ 232 strings out of 494587
+ 2681 string characters out of 6175934
+ 61111 words of memory out of 5000000
+ 3942 multiletter control sequences out of 15000+600000
+ 8364 words of font info for 30 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 21i,6n,19p,2373b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/Users/Devon Kohler/AppData/Roamin
+g/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/Devon 
+Kohler/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
+.pfb><c:/Users/Devon Kohler/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><c:/Users/Devon Kohler/AppData/Roaming/TinyTeX/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/Devon Kohler/AppData/Roa
+ming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Users/Devo
+n Kohler/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
+12.pfb>
+Output written on MSstatsPTM_Main.pdf (10 pages, 107182 bytes).
+PDF statistics:
+ 61 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
