@@ -1,9 +1,99 @@
-\documentclass[11pt]{article}
+\documentclass[mcp]{article}
 %\documentclass[11pt, twocolumn]{article}
 
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
+
+\usepackage{fullpage}
+\usepackage{amsfonts,amsthm}
+\usepackage{amsmath}
+\numberwithin{figure}{section} % numbering in each subsection
+\numberwithin{table}{section}
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{lscape} %% rotating table
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage[table,dvipsnames]{xcolor}
+%\usepackage{makecell}
+\usepackage{array}
+
+% remove number of section in the title
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\usepackage{caption}
+
+%% to remove zero preceding section number.
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+\usepackage{tabulary,multirow,multicol,rotating}
+
+\definecolor{Red}{rgb}{0.60,0.00,0.00}
+\definecolor{Blue}{rgb}{0.00,0.00,0.75}
+\definecolor{LightYellow}{rgb}{1.00,0.97,0.68}
+\definecolor{Green}{rgb}{0.30, 0.60, 0.30}
+\definecolor{MyLightMagenta}{cmyk}{0.1,0.8,0,0.1} 
+\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.92}
+\definecolor{darkorange}{rgb}{0.8, 0.4, 0}
+\definecolor{LightPurple}{rgb}{1, 0.51, 0.98}
+\definecolor{DarkPurple}{rgb}{0.54, 0.27, 0.53}
+\definecolor{Purple1}{rgb}{0.83, 0.29, 0.95}
+\definecolor{Purple2}{rgb}{0.97, 0.12, 0.59}
+\definecolor{change}{rgb}{0.39, 0.58, 0.92}
+
+\definecolor{function}{RGB}{0, 112, 192}
+\definecolor{group}{rgb}{0.39, 0.58, 0.92}
+\definecolor{ratio}{rgb}{1, 0.6, 0.16}
+\definecolor{feature}{rgb}{0.83, 0.32, 0.48}
+\definecolor{subject}{rgb}{0.6, 0.3, 0.09}
+\definecolor{run}{rgb}{0, 0.68, 0.17}
+
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\setlength{\tabcolsep}{2pt}
+
+%% for comments
+\newcommand{\ignore}[1]{}
+\def\todo#1{{\color{red}[#1]}}
+\def\change#1{{\color{cornflowerblue}#1}}
+\newenvironment{todolong}{\color{red}[TODO:}{]}
+\def\note#1{{\color{OliveGreen}[NOTE: #1]}}
+\def\added#1{{\color{blue}[ADDED: #1]}}
+\def\devon#1{{\color{green}[4Devon: #1]}}
+%\def\maria#1{{\color{purple}[For Maria to update: #1]}}
+%\def\eduard#1{{\color{OliveGreen}[For Eduard to update: #1]}}
+
+\def\eqref#1{Eq.~(\ref{eq:#1})}
+\def\figshortref#1{{\bf Fig.~\ref{fig:#1}}}
+\def\figref#1{{\bf Figure~\ref{fig:#1}}}
+\def\secref#1{{\bf Section~\ref{sec:#1}}}
+\def\tabref#1{{\bf Table~\ref{tab:#1}}}
+
+%\usepackage{xr}
+%\externaldocument{supplementary}
+%\def\sfigref#1{{\bf Supplementary Fig.~\ref{fig:#1}}}
+%\def\snoteref#1{{\bf Supplementary Note~\ref{sec:#1}}}
+%\def\snoteshortref#1{{\bf Suppl. Note~\ref{sec:#1}}}
+%\def\stabref#1{{\bf Supplementary Table~\ref{tab:#1}}}
+
+%%% should be change =2
+\linespread{1}
+
+%\date{\vspace{-5ex}} % to remove date in the title
+
+\renewcommand{\deg}{\ensuremath{^{\circ}}\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Statistical methods for relative quantification of post-translational modifications in global proteomics experiments}
 
@@ -19,12 +109,24 @@
 
 \maketitle
 \todo{Add Author list}
+%\noindent\author{Tsung-Heng Tsai$^{1}$, Olga Vitek$^{1,\ast}$}
+%
+%\vspace{0.2in}
+%\noindent $^1$   Khoury College of Computer Sciences, Northeastern University, Boston, MA, USA\\
+%\noindent $\ast$   Corresponding author \\
 
+\devon{maybe good to have supplementary.txt in the same folder, to link figure, table number between main and supplementary.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abstract}
 
 The scientific community widely utilizes mass spectrometry (MS)-based proteomics to quantify the abundance of proteins and their post-translational modifications (PTMs). Experiments targeting PTMs face several specific challenges. These include the low abundance of modified proteo-forms, few representative peptides that span modification sites, and convolution with abundance changes in the overall protein expression. Due to these challenges, a robust approach to estimate relative systematic changes in PTMs should combine information pertaining to PTM sites over several peptides, replicates in multiple conditions, and consider sources of confounding and variation present in the experiment. We propose a general statistical model and workflow that is both reproducible and comprehensive. The model measures PTM and protein abundance by summarizing intensities through Tukey’s median polish method. Then a model based on the family of linear mixed-effects models is fit. This model is automatically adjusted to the specific experimental design. Finally, the PTM abundances are adjusted to remove variance from changes in the overall protein. We implement this model in the free and open-source R package MSstatsPTM.
 \todo{Used overview from USHUPO poster}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
 The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are primarily facilitated by the modification of proteins at specific residues, acting as molecular on/off switches. Mass spectrometry-based label-free proteomics is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) using liquid chromatography coupled with mass spectrometry (LC-MS). Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site’s occupancy repertoire, or relative changes in occupancy across experimental conditions. Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteo-forms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide). Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently convoluted with changes in the overall protein expression, making the interpretation of the results not straightforward. Therefore, a robust approach to estimate systematic relative changes in post-translational modifications, at scale, should not only combine the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, but take into account various sources of variations and confounding factors present in the experiments. 
@@ -36,24 +138,37 @@ We propose a general statistical approach, which explicitly characterizes the va
 
 The proposed approach was evaluated using datasets from computer simulations, benchmark controlled mixtures and biological investigations, in comparison with the commonly applied t-test. The results demonstrated that by appropriately leveraging the information from the entire dataset the proposed approach improves the reproducibility and accuracy of the estimates of PTM fold changes, resultsin a better calibrated type I error rate, and improves the statistical power of detecting changes in PTMs. For analyses of datasets with multiple batches, the proposed approach also improves the overall performance under various forms of batch effects. The proposed approach is implemented as an open source R package MSstatsPTM, which employs similar input format as in MSstats.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Approach}
-\begin{center}
-\includegraphics[scale=.8]{fig3}
-\end{center}
-Figure 3 schematically illustrates a simplified version of the data structure resulting from a typical bottom-up experiment for quantitative analysis of PTMs, in which there are multiple layers of variation present. A PTM site is quantified with multiple spectral features, which vary in sequence (e.g., fully or partially cleaved peptides), ionization efficiency, charge states, etc. The number quantified features vary across replicate LC-MS/MS runs of the same sample, and across conditions. To perform adjustment with respect to protein abundance, features of unmodified peptides are used for the inference of underlying protein abundance. Typically, because of the enrichment step for PTMs, very few of those features are present in original LC-MS runs. For more accurate estimation of protein abundance, separate global proteomics data of unenriched samples are often acquired. As different levels of variability are present in the data, the log-intensities of the features for modified and unmodified peptides are modeled separately using two linear mixed models. 
 
+\devon{Please change Fig.4a and so on using figref or tabref in the text. Put all figures and legends in figure section.}
+\figref{data-structure} schematically illustrates a simplified version of the data structure resulting from a typical bottom-up experiment for quantitative analysis of PTMs, in which there are multiple layers of variation present. A PTM site is quantified with multiple spectral features, which vary in sequence (e.g., fully or partially cleaved peptides), ionization efficiency, charge states, etc. The number quantified features vary across replicate LC-MS/MS runs of the same sample, and across conditions. To perform adjustment with respect to protein abundance, features of unmodified peptides are used for the inference of underlying protein abundance. Typically, because of the enrichment step for PTMs, very few of those features are present in original LC-MS runs. For more accurate estimation of protein abundance, separate global proteomics data of unenriched samples are often acquired. As different levels of variability are present in the data, the log-intensities of the features for modified and unmodified peptides are modeled separately using two linear mixed models. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Statistical modeling and parameter estimation}
-\todo{Add in TMT approach}
+
 The proposed approach takes as input a list of log-transformed intensities of spectral features, identified and quantified across LC-MS runs. The features, which are precursor ions of modified or unmodified peptides, are used to characterize the identified PTM sites and proteins. For each PTM site, the feature log-intensities of the modified peptides spanning the site are expressed using a linear mixed model in consideration of the effects of condition, run, feature and interaction between run and feature.The model parameters are estimated using the split-plot approach as in MSstats[Source], where the feature log-intensities are first summarized into a single value per site per run in the subplot model, and the site-level summaries are then used for the inference of the PTM site abundance. In the site-level summarization, Tukey's median polish (TMP), a simple and robust procedure is applied to iteratively fit a two-way additive model with the effects of run and feature, which in turn summarizes the log-intensities for each site. [Source]  After the summarization, the inference of the PTM site abundance in each condition is carried out in account for the experimental design (Fig. 3a). Statistical modeling and quantification for global proteomics data are performed by the same procedure as for PTM data.  
+
 \todo{Add Sources}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Detection of changes in PTMs}
 
-Detection of differentially modified PTM sites is performed through testing the null hypothesis of ‘no change’ against the alternative. The null hypothesis states that there is no difference in log-abundance of the PTM site between conditions, adjusted with respect to protein abundance (Fig. 3b). Specifically, the adjusted difference is given by the difference in log-abundance of the PTM site, subtracted by the difference in log-abundance of the underlying protein, which is equivalent to the log of the ratio of PTM abundance difference to protein abundance difference. The estimate of the adjusted difference and the standard error (SE) of the estimate are obtained by combining the difference estimates and the associated SEs from both counterparts (for details, see Supplementary Sec. S3.1). The test statistic for the hypothesis testing is the ratio of the estimate of the adjusted difference to its SE. To determine the statistical significance of the difference in terms of p-value, the test statistic is compared against the t distribution with degrees of freedom approximated by the Satterthwaite method.Adjustment for multiple comparisons is performed using the Benjamini-Hochberg procedure to control the false discovery rate at a desired level, e.g., 0.05. The details are provided in Supplementary Sec. S3.2.
+Detection of differentially modified PTM sites is performed through testing the null hypothesis of ‘no change’ against the alternative. The null hypothesis states that there is no difference in log-abundance of the PTM site between conditions, adjusted with respect to protein abundance (Fig. 3b). Specifically, the adjusted difference is given by the difference in log-abundance of the PTM site, subtracted by the difference in log-abundance of the underlying protein, which is equivalent to the log of the ratio of PTM abundance difference to protein abundance difference. The estimate of the adjusted difference and the standard error (SE) of the estimate are obtained by combining the difference estimates and the associated SEs from both counterparts (for details, see Supplementary Sec. S3.1). The test statistic for the hypothesis testing is the ratio of the estimate of the adjusted difference to its SE. To determine the statistical significance of the difference in terms of p-value, the test statistic is compared against the t distribution with degrees of freedom approximated by the Satterthwaite method.Adjustment for multiple comparisons is performed using the Benjamini-Hochberg procedure to control the false discovery rate at a desired level, e.g., 0.05. The details are provided in Supplementary Sec. S3.2 \devon{link to supplementary using sfigref}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Analysis with multiple batches}
 
 The proposed statistical framework allows to analyze data from experiments of complex designs such as factorial design. We discuss below a specific design commonly considered in PTM experiments, in which data are acquired in multiple batches, often as a result of multiple repeats for the antibody enrichment step. Typically, the number of spectral features and their intensities are different across batches, and the run-to-run variation sometimes varies across batches as well. The proposed approach summarizes log-intensities in each batch separately, and considers two ways to perform the statistical inference and testing. When variability in site-level summaries and in PTM changes is expected across batches, the proposed approach performs inference of the PTM site abundance and the adjusted difference for each batch separately. The evidence about differential PTM sites between conditions is averaged over batches. Alternatively, assuming identical variability in the site-level summaries and identical differences between conditions across batches (i.e., no interaction effect between condition and batch), the statistical inference and testing can be performed based on one single model with an additional fixed effect of batch. Details about these modeling considerations are discussed in Supplementary Sec. S3.4.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Extension to TMT experiment}
+
+\todo{Add in TMT approach}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
 \subsection*{Computer simulations}
@@ -68,18 +183,21 @@ In this simulation, when there was no change in protein abundance, all the consi
 \paragraph*{Computer simulation: batch effects.} PTM experiments often create batches during data acquisition.Whereas the proposed approach can be naturally extended to handle such scenarios by modeling various forms of batch effects; t-test is not directly applicableto a problem with batches of data. Two commonly used ad-hoc approaches are a) t-test (no batch): ignoring batch effects when applying t-test, and b) t-test (most significant batch): applying t-test in each batch and drawing conclusions based on themost significant batch. Although simple, these ad-hoc methods lack statistical justification. We characterized their statistical properties under various forms of batch effects in Supplementary Sec. S4.2. Twobatches of data were generated, where various forms of batch effects were simulated, includingdifference in signal intensities across batches, difference in variability across batches, and interactionbetween batch and condition (i.e., change between conditions affected by batch). 
 The major results are summarized in Fig. 5 with additional details provided in Supplementary Sec. S4.2.In terms of estimation of fold change, the most statistically significant batch with t-test was highly variable and frequently biased (Fig. 5a). In the detection of systematic changes in PTM abundance, it also frequently resulted in higher false positive rates than the expected value (Fig. 5b). As shown Fig. 5c, the proposed approach improved power with small sample sizes in almost all thescenarios, under various forms of batch effects including difference in intensity level and difference in variability. Using t-test while ignoring batch effect gave similar performancein special cases with no difference in intensity level between batches (Supplementary Fig. SXX), but its performance dramatically decreased in general cases (Supplementary Figs. S8-S9). The negative impact was only partially reduced by increasing the sample size to 5. The proposed approach gave consistently improved performancecompared with other methods by properly characterizing batch effects and leveraging all availableinformation.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Spike-in experiment}
 \todo{Need to write results of this experiment}
 \todo{Devon: I don't know what these Label-Free experiments are or how to analyze them. Meeting with Tsung-Heng on 2/5 to review}
 
 We evaluated our approach using a custom designed benchmark experiment, where
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Dilution experiment [What was this experiment?]}
 
 We evaluated our approach using a custom designed benchmark experiment, where...
 Two sets of liver samples from five Atg16L1 deficient mice (one with KGG enrichment followed by trypsin digestion, one with trypsin digestion alone) were prepared. Following a randomized order, each sample was injected at three different concentrations 4ul, 2ul, and 1ul. The experiment resulted in 15 KGG and 15 global profiling runs. To correct for run-to-run variation, the AQUA peptide mixture was spiked into each sample. There are 4696 ubiquitinated proteins identified in this dataset. Among these, 3173 have corresponding measurements from global data. 
 To simulate the effects of changes in protein abundance, we created three groups of data by matching one concentration for the KGG data with one for the global data: K1P1, K2P2, and K4P4. Systematic changes in the abundance of ubiquitinated sites between the groups are present in the KGG data. These changes are considered as artifacts driven by the changes in the abundance of their corresponding proteins. Using the comparison of K2P2 vs. K1P1 as example, there are 19355 possible comparisons with KGG data, and 3860 changes are detected. Out of the 19355 sites, 15036 have corresponding measurements from global data and are eligible for protein-level correction. The correction significantly reduced the number of false positives to 79. Similar observations were made in the other two comparisons K4P4 vs. K2P2 and K4P4 vs. K1P1, as shown in Table XX.  
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Ubiquitin changes in bone marrow derived macrophages from Atg16L1 deficient mice Re-analysis of published dataset: USP30}
 
 Compare results with/without adjustment\\
@@ -89,10 +207,19 @@ Include USP30OE vs. Ctrl in addition to Combo vs. CCCP?\\
 Comment on features, degrees of freedom\\
 Different changes across batches – P54652, Q5VYK3
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Re-analysis of published dataset: RIP1 [Need this dataset and original findings]}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Re-analysis of published dataset: TMT experiments}
+
+\todo{need the result of TMT experiment}
 \todo{Add Shigella for TMT side}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion and discussion}
 
 We proposed a general statistical modeling framework for PTM characterization. The framework is designed for bottom-up MS workflows, which are characterized with variations from multiple convoluted sources, frequent missing data, and associated uncertainty in the conclusions. The framework is general and is applicable to a variety of experimental designs. It outperforms the ad-hoc methods underlying the t-test, and yields accurate results in the broad type of experimental circumstances, including the presence of missing values, changes in protein abundance, and batch effects. The framework allows us to plan for subsequent experiments, and choose the appropriate number of replicates in consideration of adjustment with respect to protein abundance. 
@@ -104,10 +231,20 @@ A potential limitation of the proposed framework is the assumption that all the 
 Overall, the proposed approach balances accuracy and practicality, and enables the analysis of complex experiments in high throughput. Future work is to carry out the inference and testing for not only the relative change of PTM abundance, but also the fraction of the protein that is modified at the particular site (site occupancy, or stoichiometry). We are also interested in characterizing the interplay of PTMs at multiple sites.
 The proposed statistical methods are implemented as an R package MSstatsPTM available on Bioconductor and Github.
 
-\section{Figure legends}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Figure}
 \todo{Unclear where Tsung-Heng meant these plots to go. Need to add them into correct sections}
 
-Figure 3.Data structure of a typical PTM experiment and goals of PTM characterization.(a)Schematic data representation, in a simplified case of two conditions and two replicate runs. Each PTM site is modeled and characterized separately, where a PTM is quantified with multiple spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities are viewed as repeated measurements of the underlying abundance of the PTM, where the abundance in Condition i is denoted by i. Features corresponding to unmodified peptides are considered together to perform adjustment with respect to protein abundance, where the protein abundance in Condition i is denoted by *i. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). Some spectral features can be missing.(b)PTM relative quantification by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.(d) Statistical experimental design in terms of sample size calculations and power analysis.
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=.8]{fig3}
+\caption{Data structure of a typical PTM experiment and goals of PTM characterization.(a)Schematic data representation, in a simplified case of two conditions and two replicate runs. Each PTM site is modeled and characterized separately, where a PTM is quantified with multiple spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities are viewed as repeated measurements of the underlying abundance of the PTM, where the abundance in Condition i is denoted by i. Features corresponding to unmodified peptides are considered together to perform adjustment with respect to protein abundance, where the protein abundance in Condition i is denoted by *i. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). Some spectral features can be missing.(b)PTM relative quantification by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.(d) Statistical experimental design in terms of sample size calculations and power analysis.}
+\label{fig:data-structure}
+\end{figure}
+
 
 Figure 4.False positive rate and statistical power in PTM significance analysis by the proposed approach, t-test with protein-level adjustment, and t-test without protein-level adjustment. (a) When there was no change in protein abundance, all considered methods well calibrated the Type I error rate. (b) When the PTM changes were entirely due to changes in protein abundance across conditions, analysis accounting for the protein-level changes resulted in off-target, high false positive rates. (c) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions and the SD corresponding unmodified feature intensities was 0.2. (d) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions, the SD corresponding unmodified feature intensities was 0.2, and the PTM was missing in Run 1 of Condition 1. (e) Same as in (d), but the data consisted of 4 conditions.
 
@@ -115,6 +252,13 @@ Figure 5.Results corresponding to estimation error and false positive rate and s
 
 Figure 6.Design of future PTM experiments in terms of sample size calculations and power analysis. (a) Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. Sample size calculations without accounting for the uncertainty would lead to over-optimistic, under-powered studies. (b) In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. (c)Increasing the sample size and analyzing multiple conditions together both result in improved statistical power.
 
-\todo{Add sources section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%    REFERENCES   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Reference}
+\bibliographystyle{mcp}
+\bibliography{bibliography}
 
 \end{document}n{document}
