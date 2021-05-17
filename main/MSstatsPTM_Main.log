@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  7 MAY 2021 15:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  8 MAY 2021 10:36
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1204,28 +1204,25 @@ LaTeX Warning: No \author given.
 <images/fig1.png, id=138, 493.0922pt x 394.47375pt>
 File: images/fig1.png Graphic file (type png)
 <use images/fig1.png>
-Package pdftex.def Info: images/fig1.png  used on input line 255.
+Package pdftex.def Info: images/fig1.png  used on input line 242.
 (pdftex.def)             Requested size: 394.47429pt x 315.57942pt.
 <images/fig2.png, id=140, 539.01375pt x 385.44pt>
 File: images/fig2.png Graphic file (type png)
 <use images/fig2.png>
-Package pdftex.def Info: images/fig2.png  used on input line 262.
+Package pdftex.def Info: images/fig2.png  used on input line 249.
 (pdftex.def)             Requested size: 431.21158pt x 308.35242pt.
 <images/fig3.png, id=141, 606.01407pt x 452.4403pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
-Package pdftex.def Info: images/fig3.png  used on input line 269.
+Package pdftex.def Info: images/fig3.png  used on input line 256.
 (pdftex.def)             Requested size: 484.81192pt x 361.95274pt.
 
-Overfull \hbox (15.0569pt too wide) in paragraph at lines 269--271
+Overfull \hbox (15.0569pt too wide) in paragraph at lines 256--258
  [][] 
  []
 
-[7 <./images/fig1.png>] [8 <./images/fig2.png>] [9] [10] [11 <./images/fig3.png
->] (MSstatsPTM_Main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+[7 <./images/fig1.png>] [8 <./images/fig2.png>] [9] [10 <./images/fig3.png>]
+(MSstatsPTM_Main.aux)
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: B51078AE79A5826628D18A94222D0AC0;642.
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
@@ -1234,9 +1231,9 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  28510 strings out of 479334
- 542654 string characters out of 2853721
- 1232885 words of memory out of 3000000
- 45456 multiletter control sequences out of 15000+200000
+ 542721 string characters out of 2853721
+ 1235001 words of memory out of 3000000
+ 45458 multiletter control sequences out of 15000+200000
  412108 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,7n,130p,2509b,1314s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1255,9 +1252,9 @@ Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
 C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmti10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (11 pages, 458490 bytes).
+Output written on MSstatsPTM_Main.pdf (10 pages, 457961 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
+ 228 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
  172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

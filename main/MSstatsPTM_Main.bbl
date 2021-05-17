@@ -389,6 +389,128 @@
       \field{pages}{e1002277}
       \range{pages}{-1}
     \endentry
+    \entry{Maculins}{article}{}
+      \name{author}{18}{}{%
+        {{hash=8049cd7b0608aca32d04626869889dd4}{%
+           family={Maculins},
+           familyi={M\bibinitperiod},
+           given={Timurs},
+           giveni={T\bibinitperiod}}}%
+        {{hash=f1e7d3ee9e2b4778d31e461bcee55bc7}{%
+           family={Verschueren},
+           familyi={V\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+        {{hash=89e160c54562ef99fcdf0768cfaceaa3}{%
+           family={Hinkle},
+           familyi={H\bibinitperiod},
+           given={Trent},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c7668a6bbf1d6bb51759aec310043ad8}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=1c6bc174501a471e6dfee107719cdcf8}{%
+           family={Chalouni},
+           familyi={C\bibinitperiod},
+           given={Cecile},
+           giveni={C\bibinitperiod}}}%
+        {{hash=636fb95ee99dc60795d2769163bc78a8}{%
+           family={Lim},
+           familyi={L\bibinitperiod},
+           given={Junghyun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c1e7be1383d2b5db3dd95d9910ad7c73}{%
+           family={Katakam},
+           familyi={K\bibinitperiod},
+           given={Anand\bibnamedelima Kumar},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=0cc8ef361cc05778f80ab06db3331232}{%
+           family={Kunz},
+           familyi={K\bibinitperiod},
+           given={Ryan\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=54c72c78bca5149db699b2739c71716d}{%
+           family={Erickson},
+           familyi={E\bibinitperiod},
+           given={Brian\bibnamedelima K.},
+           giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=776fa4b4bf5b59c890b865f5765bcb93}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Ting},
+           giveni={T\bibinitperiod}}}%
+        {{hash=f6e5cecf191deeadb4aaa49c9d5d7788}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Meena},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ecebc497c4e028867b2bf078ef5f1461}{%
+           family={Tsai},
+           familyi={T\bibinitperiod},
+           given={Tsung-Heng},
+           giveni={T\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=e347c816c4223c9370d78e88536e3b34}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+        {{hash=31899762f7086c23caf0de2977b8491d}{%
+           family={Reichelt},
+           familyi={R\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod}}}%
+        {{hash=da6170b4605c0f07e5002f2088ff788d}{%
+           family={Rohde},
+           familyi={R\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=155d26768e6292ac371f92840c269b00}{%
+           family={Dikic},
+           familyi={D\bibinitperiod},
+           given={Ivan},
+           giveni={I\bibinitperiod}}}%
+        {{hash=a96966e400834362c700f500fda47525}{%
+           family={Kirkpatrick},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=fb023d4deb6bec706164cdb7792d48f4}{%
+           family={Murthy},
+           familyi={M\bibinitperiod},
+           given={Aditya},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cold Spring Harbor Laboratory}%
+      }
+      \strng{namehash}{88896e768c707888b71fc82eca33a98b}
+      \strng{fullhash}{0b258ecfd4d745eddd8d8598251b4150}
+      \strng{bibnamehash}{88896e768c707888b71fc82eca33a98b}
+      \strng{authorbibnamehash}{88896e768c707888b71fc82eca33a98b}
+      \strng{authornamehash}{88896e768c707888b71fc82eca33a98b}
+      \strng{authorfullhash}{0b258ecfd4d745eddd8d8598251b4150}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{bioRxiv}
+      \field{title}{{Proteomics of autophagy deficient macrophages reveals enhanced antimicrobial immunity via the oxidative stress response}}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1101/2020.09.10.291344
+      \endverb
+      \verb{eprint}
+      \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344.full.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344
+      \endverb
+      \verb{url}
+      \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344
+      \endverb
+    \endentry
     \entry{Mann}{article}{}
       \name{author}{2}{}{%
         {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
