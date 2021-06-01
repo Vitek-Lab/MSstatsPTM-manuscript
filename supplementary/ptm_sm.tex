@@ -184,6 +184,7 @@ Alternatively, run-level summary to be described in \secref{sec:sum} can also be
 \]
 where $d_{i+} = \sum_{j=1}^{J} d_{ij}$ and the test statistic for the $t$-test is given by $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$. The statistical significance of the difference is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs.
 
+\todo{If we use MSstats protein summarization + t-test, how much would they be different, methodologically and performance?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{$t$-test for data in batches}
@@ -412,8 +413,14 @@ The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared agains
 \left( \frac{\hat{\sigma}_{\gamma}^{4}}{  \mathrm{df}(\gamma)} + \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} \right).
 \]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{TMT experiment}
+\label{sec:tmtmethod}
 
-%\clearpage
+\todo{add the method for TMT experiment, batch vs plex?}
+
+
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computer simulation}
 \label{sec:sim}
@@ -479,7 +486,7 @@ Performances of the considered approaches were assessed by their actual FDR, cal
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim/prot_fdr}
-\caption{Correlation between test statistics across sites due to protein-level adjustment did not affect the expected level of FDR under the considered scenarios. The Benjamini-Hochberg procedure was used to control the FDR. \label{fig:prot_fdr}}
+\caption{Correlation between test statistics across sites due to protein-level adjustment did not affect the expected level of FDR under the considered scenarios. The Benjamini-Hochberg procedure was used to control the FDR.\todo{make same color for each method} \label{fig:prot_fdr}}
 \end{figure}
 
 
@@ -533,6 +540,13 @@ The following four approaches were compared: a) proposed approach, i.e., per-bat
 \caption{Ignoring batch effects lost power. The negative impact was only partially reduced by increasing the sample size to 5. Similar patterns were observed in other simulated scenarios. \label{fig:synnull_pwr_5}}
 \end{figure}
 
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{TMT experiment}
+\label{sec:tmtsim}
+
+\todo{add the simulation for TMT experiment, batch vs plex?}
+
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -562,6 +576,12 @@ We then characterized the advantage of general statistical modeling in complex d
 \caption{Statistical power can be improved by increasing the sample size and analyzing multiple conditions together. \label{fig:pwr_grp}}
 \end{figure}
 
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Datasets : Biological investigation}
+
+\todo{description and results}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage

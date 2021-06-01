@@ -115,7 +115,6 @@
 %\noindent $^1$   Khoury College of Computer Sciences, Northeastern University, Boston, MA, USA\\
 %\noindent $\ast$   Corresponding author \\
 
-\devon{maybe good to have supplementary.txt in the same folder, to link figure, table number between main and supplementary.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,23 +230,29 @@ A potential limitation of the proposed framework is the assumption that all the 
 
 Overall, the proposed approach balances accuracy and practicality, and enables the analysis of complex experiments in high throughput. Future work is to carry out the inference and testing for not only the relative change of PTM abundance, but also the fraction of the protein that is modified at the particular site (site occupancy, or stoichiometry). We are also interested in characterizing the interplay of PTMs at multiple sites. The proposed statistical methods are implemented as an R package MSstatsPTM available on Bioconductor and Github.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%    REFERENCES   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\printbibliography
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \section{Figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.8]{images/fig1.png}
-\caption{}
+\caption{\todo{todo}}
 \label{fig:workflow}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.8]{images/fig2.png}
-\caption{}
+\caption{\todo{todo}}
 \label{fig:batch}
 \end{figure}
 
@@ -255,22 +260,16 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \centering
 \includegraphics[scale=.8]{images/fig3.png}
 \caption{
-Data structure of a typical PTM experiment and goals of PTM characterization.(a)Schematic data representation, in a simplified case of two conditions and two replicate runs. Each PTM site is modeled and characterized separately, where a PTM is quantified with multiple spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities are viewed as repeated measurements of the underlying abundance of the PTM, where the abundance in Condition i is denoted by i. Features corresponding to unmodified peptides are considered together to perform adjustment with respect to protein abundance, where the protein abundance in Condition i is denoted by *i. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). Some spectral features can be missing.(b)PTM relative quantification by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.(d) Statistical experimental design in terms of sample size calculations and power analysis.}
+Data structure of a typical PTM experiment and goals of PTM characterization.(a)Schematic data representation, in a simplified case of two conditions and two replicate runs. Each PTM site is modeled and characterized separately, where a PTM is quantified with multiple spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities are viewed as repeated measurements of the underlying abundance of the PTM, where the abundance in Condition i is denoted by i. Features corresponding to unmodified peptides are considered together to perform adjustment with respect to protein abundance, where the protein abundance in Condition i is denoted by *i. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). Some spectral features can be missing.(b)PTM relative quantification by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions. \todo{there is no d..}(d) Statistical experimental design in terms of sample size calculations and power analysis.}
 \label{fig:data-structure}
 \end{figure}
 
 
-Figure 4.False positive rate and statistical power in PTM significance analysis by the proposed approach, t-test with protein-level adjustment, and t-test without protein-level adjustment. (a) When there was no change in protein abundance, all considered methods well calibrated the Type I error rate. (b) When the PTM changes were entirely due to changes in protein abundance across conditions, analysis accounting for the protein-level changes resulted in off-target, high false positive rates. (c) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions and the SD corresponding unmodified feature intensities was 0.2. (d) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions, the SD corresponding unmodified feature intensities was 0.2, and the PTM was missing in Run 1 of Condition 1. (e) Same as in (d), but the data consisted of 4 conditions.
+{\bf Figure 4} False positive rate and statistical power in PTM significance analysis by the proposed approach, t-test with protein-level adjustment, and t-test without protein-level adjustment. (a) When there was no change in protein abundance, all considered methods well calibrated the Type I error rate. (b) When the PTM changes were entirely due to changes in protein abundance across conditions, analysis accounting for the protein-level changes resulted in off-target, high false positive rates. (c) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions and the SD corresponding unmodified feature intensities was 0.2. (d) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions, the SD corresponding unmodified feature intensities was 0.2, and the PTM was missing in Run 1 of Condition 1. (e) Same as in (d), but the data consisted of 4 conditions.
 
-Figure 5.Results corresponding to estimation error and false positive rate and statistical power of the PTM significance analysis, where the data were acquired in two batches. The following parameters were considered to represent the batch effects: no batch-condition interaction, mean intensity level in Batch 2 was higher than Batch 1 by 2 on log scale, and the SDs in Batch 1 and Batch 2 were 0.2 and 0.3, respectively.(a)Estimation based on the most statistically significant batch with t-test was more variable than other methods and frequently biased. (b)The proposed approach better calibrated Type I error rate. (c)The proposed approach improved statistical power in all the considered cases with different number of conditions and replicates. This was achieved by properly characterizing batch effects and leveraging all available information. Ignoring batch effects by t-test (no batch) lost power dramatically. The negative impact was only partially reduced by increasing the sample size to 5.
+{\bf Figure 5} Results corresponding to estimation error and false positive rate and statistical power of the PTM significance analysis, where the data were acquired in two batches. The following parameters were considered to represent the batch effects: no batch-condition interaction, mean intensity level in Batch 2 was higher than Batch 1 by 2 on log scale, and the SDs in Batch 1 and Batch 2 were 0.2 and 0.3, respectively.(a)Estimation based on the most statistically significant batch with t-test was more variable than other methods and frequently biased. (b)The proposed approach better calibrated Type I error rate. (c)The proposed approach improved statistical power in all the considered cases with different number of conditions and replicates. This was achieved by properly characterizing batch effects and leveraging all available information. Ignoring batch effects by t-test (no batch) lost power dramatically. The negative impact was only partially reduced by increasing the sample size to 5.
 
-Figure 6.Design of future PTM experiments in terms of sample size calculations and power analysis. (a) Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. Sample size calculations without accounting for the uncertainty would lead to over-optimistic, under-powered studies. (b) In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. (c)Increasing the sample size and analyzing multiple conditions together both result in improved statistical power.
+{\bf Figure 6} Design of future PTM experiments in terms of sample size calculations and power analysis. (a) Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. Sample size calculations without accounting for the uncertainty would lead to over-optimistic, under-powered studies. (b) In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. (c)Increasing the sample size and analyzing multiple conditions together both result in improved statistical power.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%    REFERENCES   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\printbibliography
 
 \end{document}
