@@ -333,7 +333,7 @@ The log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by
 \]
 and the standard error of the estimate $\mathrm{SE}(\hat{\Delta})$ is 
 \[
-\left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right]^{1/2}.
+SE(\hat{\Delta}) = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right]^{1/2}.
 \]
 %\[
 %\left[ \left( \frac{2}{J} \right) \cdot \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right]^{1/2}.
@@ -462,7 +462,7 @@ changes in PTM abundance were entirely due to changes in protein abundance acros
 \centering
 \includegraphics[width=\textwidth]{sim/prot_pwr}
 %\includegraphics[width=.85\textwidth]{sim/prot_pwr}
-\caption{In comparison between the proposed approach and $t$-test with protein-level adjustment, the proposed approach improved power with small sample sizes. Two-sample $t$-test only used data within the groups of interest while ignoring the rest the of data. Consequently, it gave similar performance across cases with different number of conditions. In contrast, the proposed approach leveraged all available information, which resulted in improved power with increased number of conditions. \label{fig:prot_pwr}}
+\caption{In comparison between the proposed approach and $t$-test with protein-level adjustment, the proposed approach improved power with small sample sizes. Two-sample $t$-test only used data within the groups of interest while ignoring the rest the of data. Consequently, it gave similar performance across cases with different number of conditions. In contrast, the proposed approach leveraged all available information, which resulted in improved power with increased number of conditions.\todo{how about protein abundance change?} \todo{this conclusion seems that overfitting.. more number of conditions increase the power.. Then how about limma?} \todo{how to calculate estimated sigma for 4 conditions and t-test?} \label{fig:prot_pwr}}
 \end{figure}
 
 \begin{figure}[h!]
@@ -482,6 +482,9 @@ We investigated the property by simulating data of two conditions and 1000 prote
 A fraction (50\%) of the 1000 proteins had no changes between conditions while systematic changes were simulated for the rest of the proteins. Multiple testing correction was performed using the Benjamini and Hochberg's method. 
 Performances of the considered approaches were assessed by their actual FDR, calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
 %Performances of the considered approaches were assessed by their power and FDR. The power was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among those proteins with true differences between conditions, while the FDR was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
+
+\todo{should address number of replicates, standard deviations, missing data?, same as one site per protein.}
+\todo{not strong evidence. need to revisit this section.}
 
 \begin{figure}[h!]
 \centering
@@ -552,7 +555,7 @@ The following four approaches were compared: a) proposed approach, i.e., per-bat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sample size calculation and power analysis}
 
-The proposed approach adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased uncertainty. We compared the required sample size with or without the adjustment to highlight the property (\sfigref{fig:size_prot}), based on a design of two conditions, in consideration of three pairs of standard deviations of log-intensities for modified and unmodified peptides: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). 
+The proposed approach adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased uncertainty. \todo{uncertainty? means variation?} We compared the required sample size with or without the adjustment to highlight the property (\sfigref{fig:size_prot}), based on a design of two conditions, in consideration of three pairs of standard deviations of log-intensities for modified and unmodified peptides: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). 
 %We considered a design with two conditions, where standard deviations of log-intensities of both modified and unmodified peptides were both set as $0.2$. 
 We then characterized the advantage of general statistical modeling in complex designs in terms of sample size calculation (\sfigref{fig:size_grp}) and power analysis (\sfigref{fig:pwr_grp}). 
 
