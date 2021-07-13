@@ -417,164 +417,130 @@ The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared agains
 \subsubsection{TMT experiment}
 \label{sec:tmtmethod}
 
-The methods described in this paper can be applied to Tandem Mass Tag (TMT) experiments targeting PTMs, in addition to batch effects. The same hypothesis testing is performed to detect differences in adjusted log-abundance of modifications in Condition $i$ and $i'$, where the null hypothesis is that there is no difference in PTM abundance between $i$ and $i'$. 
-\begin{align*}
-H_{0}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &= 0 \\
-H_{a}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &\neq 0
-\end{align*}
+\todo{add the method for TMT experiment, batch vs plex?}
 
-For TMT experiments there is an additional source of variation coming from the mixtures used. This increases the complexity as there are many options for allocating samples to mixtures, including multiple mixtures, biological replicates, and technical replicates. Going forward we will denote the log-intensity of a modified peptide for Technical Replicate j of Mixture m for Condition i by $y_{ijm}$, where $m = 1,....,M$. This is done in the same way for the unmodified peptide $y^*_{ijm}$.
-
-The model assumes the variability of the mixture is a random effect and is not convoluted with the other variables in the model. The model assumes that the difference between conditions is the same between mixtures. For a given modified peptide and corresponding global protein a mixed effects model is fit as follows.
-
-\begin{align*}
-Y_{mtcb} = \mu + Mixture_m + Techrep(Mixture)_{jm} + Condition_c + Subject_{mcb} + \epsilon_{mtcb}\\
-Y^*_{mtcb} = \mu^* + Mixture^*_m + Techrep(Mixture)^*_{jm} + Condition^*_c + Subject^*_{mcb} + \epsilon^*_{mtcb}
-\end{align*}
-\begin{gather*}
-\text{Where }  Mixture_m \sim N(0, \sigma^2_m), Techrep(Mixture)_{jm} \sim N(0, \sigma^2_{jm}), Subject \sim N(0, \sigma^2_{s}), \\
-\epsilon_{mtcb} \sim N(0, sigma^2)
-\end{gather*}
-
-The log-fold change for adjusted PTM abundance is estimated as the average over mixtures and technical replicates
-
-$$\hat{\Delta} = \frac{1}{MJ} \left( \hat{y}_{+,+,i+} - \hat{y}_{+,+,i'+} \right) - \frac{1}{BJ} \left( \hat{y}_{+,+,i+}^{\ast} - \hat{y}_{+,+,i'+}^{\ast} \right)$$
-
-and the standard error of the estimate is 
-
-\[
-\left[ \frac{2}{MJ} \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right] ^{1/2}.
-\]
-The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
-\[
-\left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right)^2 \bigg/
-\left( \frac{\hat{\sigma}_{\gamma}^{4}}{  \mathrm{df}(\gamma)} + \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} \right).
-\]
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Computer simulation}
 \label{sec:sim}
 
-The proposed statistical approach was evaluated and compared to the $t$-test and Limma using computer simulation. In particular, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
+The proposed statistical approach was evaluated and compared to the $t$-test using computer simulation. In particular, their statistical properties with respect to protein-level adjustment and batch effects were evaluated. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Protein-level adjustment}
 
-Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. The proposed approach adjusts the PTM abundance with respect to protein abundance as introduced in \secref{sec:prop}. Alternatively, two-sample $t$-test or Limma taking as input the ratio between feature intensities of modified and unmodified peptides is commonly applied for the same purpose (\secref{sec:ttest}). 
-Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared the following approaches: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limme (no adjustment).
-
-In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. The simulation was based on the following parameters: 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Simulation 1}
+\subsubsection{One site per protein}
 
-In the first simulation an experiment with many observations per protein/PTM and no missing data was created. This is not representative of a real experiment, but provides a baseline for model performance.
-
+Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. The proposed approach adjusts the PTM abundance with respect to protein abundance as introduced in \secref{sec:prop}. Alternatively, two-sample $t$-test taking as input the ratio between feature intensities of modified and unmodified peptides (difference on log scale) is commonly applied for the same purpose (\secref{sec:ttest}). 
+Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared the following approaches: a) proposed approach, b) linear model (no adjustment), i.e., same as the proposed approach but ignoring the measurements with respect to unmodified peptides, c) $t$-test (with adjustment), and d) $t$-test (no adjustment).
+In experiments of complex designs, multiple inter-related conditions are often compared together. Whereas $t$-test uses measurements from the two conditions being compared, the proposed approach leverages measurements in all conditions for the inference of the underlying abundance. To highlight this distinction, multiple conditions of data were generated, where only one condition was simulated with a systematic change. The simulation was based on the following parameters: 
 \begin{itemize}
 \item Mean of log-intensity: $25$
 \item Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
-\item Difference in PTM abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
-\item Difference in protein abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
-\item Number of replicates: $2$, $3$, $5$, $10$
+\item Difference in PTM abundance between conditions: $0$, $0.5$, $0.75$, $1$
+\item Difference in protein abundance between conditions: $0$, $0.5$
+\item Number of replicates: $2$, $3$, $5$
 \item Number of conditions: $2$, $3$, $4$
-\item Number of realizations: $1000$
-\item Number of features per PTM: $10$
-\item Number of features per protein: $10$
-\item Missing data: no missing value
+\item Number of realizations: $500$
+\item Missing data: no missing value, or PTM missing in Run 1, Condition 1
 \end{itemize}
-
-The results are summarized from \sfigref{fig:prot_fpr} to \sfigref{fig:fc_boxplot}, including false positive rate with or without changes in protein abundance by the considered methods (\sfigref{fig:prot_fpr}), false positive rate, and overall accuracy. Additionally the results are compared to simulation 2 described in the next section.
-
-When simulating the data, 500 of the 1000 peptides were simulated with a differencial fold change between conditons, while the other 500 were not. In terms of the 500 peptides that were not differencial, 250 were simulated with a change in both PTM and overall protein abundance, such that the change in PTM abundance is entirely due to the change in the overall protein. The other 250 were simulated with no significant change in either PTM or overall protein abundance. In this way there were 500 true positives and 500 true negative PTMs. These were used to calculate the summary statistics seen in the following plots.
-
-\subsubsection{Simulation 2}
-
-In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values. This is more in line with what we would expect with a real life experiment and provides a more realistic expectation of model performance.
-
-\begin{itemize}
-\item Mean of log-intensity: $25$
-\item Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
-\item Difference in PTM abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
-\item Difference in protein abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
-\item Number of replicates: $2$, $3$, $5$, $10$
-\item Number of conditions: $2$, $3$, $4$
-\item Number of realizations: $1000$
-\item Number of features per PTM: $2$
-\item Number of features per protein: $10$
-\item Missing data: 20\% of the observations for PTMs and Proteins were masked with NA at random
-\end{itemize}
-
-The results are summarized from \sfigref{fig:sim1_fpr} to \sfigref{fig:fc_boxplot}, including false positive rate with or without changes in protein abundance by the considered methods (\sfigref{fig:sim1_fpr}), false positive rate, and overall accuracy. Again the results are compared to simulation 1.
-
-The portion of significant peptides were done in the same was as described in simulation 1.
+The results are summarized from \sfigref{fig:prot_fpr} to \sfigref{fig:protm1_pwr}, including false positive rate with or without changes in protein abundance by the considered methods (\sfigref{fig:prot_fpr}), power by the approaches with protein-level adjustment when there is no missing data (\sfigref{fig:prot_pwr}), and power by the approaches with protein-level adjustment when the PTM is missing in one run (\sfigref{fig:protm1_pwr}).
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim1_FDR_all_models}\\
-\includegraphics[width=.85\textwidth]{sim_new/sim1_FDR}
-\caption{(upper plot)All the considered methods in simulation 1 correctly calibrated the Type I error rate when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates. (lower plot) The considered methods with protein adjustment are compared in detail. The proposed method generally performed better than Limma, but had a higher FDR than T-test. All methods performed strongly, with all FDR rates near or below .03. \label{fig:sim1_fpr}}
+\includegraphics[width=.85\textwidth]{sim/protnull_fpr}\\
+\includegraphics[width=.85\textwidth]{sim/protalt_fpr}
+\caption{All the considered methods well calibrated the Type I error rate when there was no change in protein abundance (upper plot). When the
+changes in PTM abundance were entirely due to changes in protein abundance across conditions (bottom plot), analysis without accounting for the protein-level changes resulted in off-target, high false positive rates. \label{fig:prot_fpr}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim1_Recall}\\
-\includegraphics[width=.85\textwidth]{sim_new/sim1_accuracy}
-\caption{(upper plot) The recall for simulation 1 methods with adjustment were compared. It is clear that Limma performs the strongest here when the number of replicates were low.  At higher replicates the performance of the proposed methods and Limma are comparable. T-test clearly performs worse across all methods. (lower plot) The overall accuracy plot mimics the observations in the recall plot. Limma performs stronger than the proposed method at lower replicates, while at higher they are comparable. \label{fig:sim1_recall}}
+\includegraphics[width=\textwidth]{sim/prot_pwr}
+%\includegraphics[width=.85\textwidth]{sim/prot_pwr}
+\caption{In comparison between the proposed approach and $t$-test with protein-level adjustment, the proposed approach improved power with small sample sizes. Two-sample $t$-test only used data within the groups of interest while ignoring the rest the of data. Consequently, it gave similar performance across cases with different number of conditions. In contrast, the proposed approach leveraged all available information, which resulted in improved power with increased number of conditions.\todo{how about protein abundance change?} \todo{this conclusion seems that overfitting.. more number of conditions increase the power.. Then how about limma?} \todo{how to calculate estimated sigma for 4 conditions and t-test?} \label{fig:prot_pwr}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim3_Recall}
-\includegraphics[width=.85\textwidth]{sim_new/sim3_Accuracy}
-\caption{The advantage of using the proposed approach over Limma and $t$-test is apparent when looking at simulation 2, which includes limited observations and the presence of missing values. (upper plot) In the case of recall the proposed method performs stronger than limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed limma, especially when there were more conditions in the simulation. Again the lowest performance was observed using the $t$-test method. (lower plot) Again in the overall accuracy plots, the results are similar to recall. The propsed method performed the strongest across all methods, even when replicates were low. While Limma shows strong performance in a clean experiment, when real world data problems are introduced it is clear the proposed method is more robust. \label{fig:sim2_recall}}
+\includegraphics[width=\textwidth]{sim/protm1_pwr}
+%\includegraphics[width=.85\textwidth]{sim/protm1_pwr}
+\caption{The advantage by using the proposed approach over two-sample $t$-test became more profound in the presence of missing value. In cases with small sample sizes, performance by the $t$-test decreased dramatically with one missing value. As a specific example, the statistical power by using the $t$-test with two replicates was below $0.25$, and increasing the fold change to $2$ did not effectively reduce the negative impact. \label{fig:protm1_pwr}}
 \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Multiple sites per protein}
+
+Expression levels of PTM sites are adjusted based on the abundance of their originating protein. Since the same reference is used for all sites, it introduces correlation among estimates and test statistics for those sites. This may cause issues in controlling false discovery rate (FDR).
+We investigated the property by simulating data of two conditions and 1000 proteins with different numbers of PTM sites and comparing the results of the proposed approach and the linear model with no adjustment. 
+%We investigated the property by simulating data of two conditions and 1000 proteins with different numbers of PTM sites. 
+A fraction (50\%) of the 1000 proteins had no changes between conditions while systematic changes were simulated for the rest of the proteins. Multiple testing correction was performed using the Benjamini and Hochberg's method. 
+Performances of the considered approaches were assessed by their actual FDR, calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
+%Performances of the considered approaches were assessed by their power and FDR. The power was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among those proteins with true differences between conditions, while the FDR was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
+
+\todo{should address number of replicates, standard deviations, missing data?, same as one site per protein.}
+\todo{not strong evidence. need to revisit this section.}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim1_FC_boxplot}
-\includegraphics[width=.85\textwidth]{sim_new/sim3_FC_boxplot}
-\caption{(upper plot) In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75 in all methods. The distributions around the median were also consistent acorss all methods. Predictably the distribution quantiles decrease as the number of replicates increases. (lower plot) In simulation 2 again all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. In this case the proposed method showed a stronger performed in correctly estimating the fold change for all peptides. \label{fig:fc_boxplot}}
+\includegraphics[width=.85\textwidth]{sim/prot_fdr}
+\caption{Correlation between test statistics across sites due to protein-level adjustment did not affect the expected level of FDR under the considered scenarios. The Benjamini-Hochberg procedure was used to control the FDR.\todo{make same color for each method} \label{fig:prot_fdr}}
 \end{figure}
+
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Benchmark experiment}
-\label{sec:benchmark}
+\subsection{Batch effects}
 
-A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeld KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides where a significant fold change between conditions are expected to be differencial, whereas none of the human lysate peptides in any comparison are expected to be differencial. 
-
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The propsed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from \sfigref{fig:spike_volcano} to \sfigref{fig:spike_volcano}, including volcano plots, model summary statsitics, and fold change analysis.
+We evaluated the statistical properties of the proposed approach under batch effects, in comparison to the two-sample $t$-test (\secref{sec:ttest}). While the $t$-test is not directly applicable to a problem with batches of data, several \textit{ad-hoc} approaches may be used. Two commonly used approaches are a) $t$-test (no batch): ignoring batch effects when applying $t$-test, and b) $t$-test (most significant batch): applying $t$-test in each batch and drawing conclusions based on the most significant batch. Although simple, these \textit{ad-hoc} methods lack statistical justification. We characterized their statistical properties under various forms of batch effects. In this part of the simulation, two batches of data were generated, with the following forms of batch effects: difference in signal intensities across batches, difference in variability across batches, and interaction effect between batch and condition (i.e., change between condition affected by batch). The following interaction scenarios were considered in the simulation: a) no interaction between condition and batch, i.e., same change across conditions in both batches, b) positive interaction as $25$\% greater change in the batch of higher level, and c) negative interaction as $25$\% lower change in the batch of higher level. Below are the parameters used in the simulation: 
+\begin{itemize}
+\item Mean of log-intensity: $25$
+\item Increased intensity level of Batch 2 versus Batch 1: $0$, $1$, $2$
+\item Standard deviations of log-intensity: $0.2$ in Batch 1 and $0.3$ in Batch 2
+\item Difference between conditions in Batch 1: $0.5$, $0.75$, $1$
+\item Number of replicates: $2$, $3$, $5$
+\item Number of conditions: $2$, $3$, $4$
+\item Number of realizations: $500$
+\end{itemize}
+The following four approaches were compared: a) proposed approach, i.e., per-batch model, b) all-batch model, c) $t$-test (no batch), and d) $t$-test (most significant batch). The results are summarized from \sfigref{fig:synnull_est} to \sfigref{fig:synnull_pwr_5}, on the aspects of estimation error (\sfigref{fig:synnull_est}), false positive rate (\sfigref{fig:synnull_fpr}), and power (\sfigref{fig:synnull_pwr}, \sfigref{fig:synnull_pwr_5}). 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_msstatsptm_volcano}
-\caption{Using the proposed method to model the benchmark experiment the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment the false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
+\includegraphics[width=.825\textwidth]{sim/synnull_est_2}
+\caption{Estiamtion based on the most statistically significant batch with $t$-test was highly variable and frequently biased. The observation is consistent in all the simulated scenarios. \label{fig:synnull_est}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_limma_volcano}
-\caption{Using the limma method the spike in peptides follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significante adjusted pvalue. In terms of false positives, the results are very similar to the propsed method, with many false positives before adjustment and much fewer afterward. \label{fig:spike_volcano_limma}}
+\includegraphics[width=.825\textwidth]{sim/synnull_fpr}
+\caption{The proposed approach better calibrated Type I error rate. Similar results were observed in the cases with positive and negative batch-condition interactions. \label{fig:synnull_fpr}}
 \end{figure}
+
+\clearpage
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.825\textwidth]{sim/synnull_pwr_2}\\
+\includegraphics[width=.825\textwidth]{sim/synnull_pwr_3}
+\caption{The proposed approach improved power with small sample sizes in almost all the scenarios, under various forms of batch effects including difference in intensity level (higher on the right) and difference in variability. Using $t$-test while ignoring batch effect gave similar performance in special cases with no difference in intensity level between batches, but its performance dramatically decreased in general cases. The proposed methods gave consistently improved performance compared with other methods by properly characterizing batch effects and leveraging all available information. Similar patterns were observed in other simulated scenarios with positive and negative interactions.\label{fig:synnull_pwr}}
+\end{figure}
+
+%\clearpage
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=.85\textwidth]{sim/synpos_pwr_3}\\
+%\includegraphics[width=.85\textwidth]{sim/synneg_pwr_3}
+%\caption{With 3 replicates and under the scenarios with either positive or negative interaction, the proposed approach consistently improved power over other methods. Similar results were observed with 2 replicates. As in those cases with no interaction, the approaches using two-sample $t$-test did not benefit from data in additional conditions. Also, ignoring batch effects as applying $t$-test (no batch) lost power dramatically. \label{fig:syn_pwr_3}}
+%\end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_ttest_volcano}
-\caption{Using the two sample $t$-test, none of the comparisons either before or after adjustment do not show any significant peptides. With that being said, the fold change of the spike in peptides is much closer to expectation after adjusting for global protein abundance. \label{fig:spike_volcano_ttest}}
-\end{figure}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_statistic_comparison}
-\caption{Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with Limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike in peptides. \label{fig:spike_stat}}
-\end{figure}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_fc}
-\caption{The fold change misalignment before adjustment is illustrated in the boxplots. The true log fold change is indicated by the red 'X' marks. Before adjustment the boxplots are not close to the true fold change. After adjustment all three models generally have median near the true fold change. In terms of model comparison, the proposed method shows a much tighter distribution around the true fold change, whole both Limma and $t$-test are much wider. \label{fig:spike_fc}}
+\includegraphics[width=.825\textwidth]{sim/synnull_pwr_5}
+\caption{Ignoring batch effects lost power. The negative impact was only partially reduced by increasing the sample size to 5. Similar patterns were observed in other simulated scenarios. \label{fig:synnull_pwr_5}}
 \end{figure}
 
 \clearpage
@@ -589,7 +555,7 @@ Again we consider three different methods and assess their performance: the meth
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sample size calculation and power analysis}
 
-The proposed approach adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. We compared the required sample size with or without the adjustment to highlight the property (\sfigref{fig:size_prot}), based on a design of two conditions, in consideration of three pairs of standard deviations of log-intensities for modified and unmodified peptides: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). 
+The proposed approach adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased uncertainty. \todo{uncertainty? means variation?} We compared the required sample size with or without the adjustment to highlight the property (\sfigref{fig:size_prot}), based on a design of two conditions, in consideration of three pairs of standard deviations of log-intensities for modified and unmodified peptides: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). 
 %We considered a design with two conditions, where standard deviations of log-intensities of both modified and unmodified peptides were both set as $0.2$. 
 We then characterized the advantage of general statistical modeling in complex designs in terms of sample size calculation (\sfigref{fig:size_grp}) and power analysis (\sfigref{fig:pwr_grp}). 
 
@@ -622,24 +588,9 @@ We then characterized the advantage of general statistical modeling in complex d
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-
-\section{Further Considerations}
-
-\subsubsection{Multiple sites per protein}
-
-Expression levels of PTM sites are adjusted based on the abundance of their originating protein. Since the same reference is used for all sites, it introduces correlation among estimates and test statistics for those sites. This may cause issues in controlling false discovery rate (FDR).
-We investigated the property by simulating data of two conditions and 1000 proteins with different numbers of PTM sites and comparing the results of the proposed approach and the linear model with no adjustment. 
-%We investigated the property by simulating data of two conditions and 1000 proteins with different numbers of PTM sites. 
-A fraction (50\%) of the 1000 proteins had no changes between conditions while systematic changes were simulated for the rest of the proteins. Multiple testing correction was performed using the Benjamini and Hochberg's method. 
-Performances of the considered approaches were assessed by their actual FDR, calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
-%Performances of the considered approaches were assessed by their power and FDR. The power was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among those proteins with true differences between conditions, while the FDR was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
 \section*{References}
 
 \bibliographystyle{plain}
 \bibliography{ptm_ref}
 
 \end{document} 
-
