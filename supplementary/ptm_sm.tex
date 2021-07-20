@@ -11,13 +11,13 @@
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{rotating}
-\usepackage[caption=false,font=footnotesize]{subfig}
 \usepackage{color}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,backgrounds,calc,positioning,fit,petri,plotmarks}
 \usepackage{multirow}
 \usepackage{graphicx}
-\usepackage{subfig}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{enumitem}
@@ -25,6 +25,11 @@
 
 
 \def\todo#1{{\color{red}[TODO: #1]}}
+
+
+\DeclareCaptionFormat{subfig}{\figurename~#1#2#3}
+\DeclareCaptionSubType*{figure}
+\captionsetup[subfigure]{format=subfig,labelsep=colon,labelformat=simple}
 
 
 %\usepackage{caption} 
@@ -545,7 +550,7 @@ The portion of significant peptides were done in the same was as described in si
 
 A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeld KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides where a significant fold change between conditions are expected to be differencial, whereas none of the human lysate peptides in any comparison are expected to be differencial. 
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The propsed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from \sfigref{fig:spike_volcano} to \sfigref{fig:spike_volcano}, including volcano plots, model summary statsitics, and fold change analysis.
+Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The propsed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from \sfigref{fig:spike_volcano_msstats} to \sfigref{fig:spike_fc}, including volcano plots, model summary statsitics, and fold change analysis.
 
 \begin{figure}[h!]
 \centering
@@ -618,7 +623,37 @@ We then characterized the advantage of general statistical modeling in complex d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Datasets : Biological investigation}
 
-\todo{description and results}
+\subsection{USP30}
+
+This experiment was analyzed using the proposed method, limma, and two sample $t$-test. Becuase this is a real biological experiment we do not know the true postives and negatives as with the spike-in and simulation evaluations. The results of each method can be seen in \sfigref{fig:results_table}
+
+\begin{figure}[!ht]
+\begin{subfigure}[b]{1\linewidth}
+\centering
+\resizebox{10cm}{!}{
+ \begin{tabular}{|c|c|c|} 
+
+ Model & Before Adjustment & After Adjustment \\
+\hline
+ Proposed & 4502 & 1625 \\ 
+ Limma & 1211 & 361\\
+ $t$-test & 28 & 7
+
+\end{tabular}}
+\caption{Significant modified peptides per model}
+\label{fig:results_table1a}
+\end{subfigure}
+ \vspace{1cm}
+\begin{subfigure}[b]{1\linewidth}
+\centering
+\includegraphics[width=.6\textwidth]{sim_new/usp30_ven}
+\caption{Shared significant modified peptides between models}
+\label{fig:results_table1b}
+\end{subfigure}
+\caption{A. The proposed method identifies far more signficant modified peptides compared to Limma and $t$-test. All methods identify substantially fewer peptides after adjusting for changes in global protein level. B. The proposed method and Limma share 16\% of all peptides identified as significant. The proposed method is the only model that identified 79\% of the peptides, while Limma identified 5\% that no other model did. $t$-test only identified 7 peptides as signififcant, with all but 1 being shared with the other two models.}
+\label{fig:1asdfa}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
