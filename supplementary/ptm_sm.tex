@@ -169,8 +169,9 @@ A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Existing method: two-sample $t$-test}
-\label{sec:ttest}
+\section{Existing methods} \label{sec:ttest}
+\subsection{two-sample $t$-test}
+
 
 Two-sample $t$-test is based on the null hypothesis that there is no difference in mean PTM abundance between Conditions $i$ and $i'$. The abundance in each run is taken as input and is often estimated by sum of peak intensities. The $t$-test is typically performed based on the log of summarized value. For example, the log-abundance estimate for the PTM in Run $j$ of Condition $i$ is given by
 \[
@@ -190,6 +191,9 @@ Alternatively, run-level summary to be described in \secref{sec:sum} can also be
 where $d_{i+} = \sum_{j=1}^{J} d_{ij}$ and the test statistic for the $t$-test is given by $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$. The statistical significance of the difference is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs.
 
 \todo{If we use MSstats protein summarization + t-test, how much would they be different, methodologically and performance?}
+
+
+\subsection{Limma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{$t$-test for data in batches}
@@ -368,55 +372,56 @@ where
 \]
 and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}}$ and the $100(1-\alpha /2)^{\text{th}}$ percentiles of the $t$ distribution, with $df = I(J-1)$ degrees of freedom in balanced designs. More details can be found in~\cite{oberg_vitek_09a}. 
 
+\todo{not ready in MSstatsPTM v2 version.}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Extension to complex designs}
-\label{sec:complex}
-
-The proposed statistical framework can be extended to analyze data from experiments of complex designs, such as factorial design and time series. We discuss below a specific design commonly applied in PTM experiments, in which data are acquired in multiple batches. 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Batch effects}
-\label{sec:batch}
-
-As in \secref{sec:test}, hypothesis testing on the adjusted log-abundances of the PTM in Conditions $i$ and $i'$ is performed to detect differentially modified PTM sites. The hypothesis is that there is no difference in adjusted log-abundance of the PTM between Conditions $i$ and $i'$
-\begin{align*}
-H_{0}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &= 0 \\
-H_{a}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &\neq 0
-\end{align*}
-For batch-wise data, we consider two ways to estimate the difference in adjusted PTM abundance, $\Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast})$ based on different assumptions about the properties of batch effects, namely per-batch model (proposed approach) and all-batch model. For the following discussion, we denote the log-intensity of a modified peptide feature in Run $j$ of Condition $i$ and Batch $b$ by $y_{b, ijk}$, where $b = 1, \ldots, B$. Similarly, $y_{b, ijl}^{\ast}$ is denoted for the unmodified peptide feature in the same run. 
-
-\paragraph{Per-batch model (proposed approach).} 
-The model assumes different levels of variability are present in different batches and the differences between conditions vary across batches (i.e., there is an interaction effect between condition and batch). Difference between conditions is estimated in each batch, and the overall log-fold change in adjusted PTM abundance is estimated as the average over batches
-\[
-\hat{\Delta} = \frac{1}{B} \sum_{b=1}^{B} \left[ \frac{1}{J} \left( \hat{y}_{b,i+} - \hat{y}_{b,i'+} \right) \right]
-- \frac{1}{B} \sum_{b=1}^{B} \left[ \frac{1}{J} \left( \hat{y}_{b,i+}^{\ast} - \hat{y}_{b,i'+}^{\ast} \right) \right].
-\]
-The standard error associated to the estimate is 
-\[
-\left[ \left(\frac{1}{B}\right)^2 \cdot \left( \frac{2}{J} \right) \cdot \sum_{b=1}^{B} \left( \hat{\sigma}_{\gamma_b}^{2} + \hat{\sigma}_{\gamma_b^{\ast}}^{2} \right) \right]^{1/2}.
-\]
-The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, where the degrees of freedom are approximated as
-\[
-\left[ \sum_{b=1}^{B} \left( \hat{\sigma}_{\gamma_{b}}^{2} + \hat{\sigma}_{\gamma_{b}^{\ast}}^{2} \right) \right]^2 \bigg/
-\sum_{b=1}^{B} \left[ \frac{\hat{\sigma}_{\gamma_{b}}^{4}}{  \mathrm{df}(\gamma_b)} + \frac{\hat{\sigma}_{\gamma_{b}^{\ast}}^{4}}{\mathrm{df}(\gamma_b^{\ast})} \right].
-\]
-
-\paragraph{All-batch model.}
-In contrast to the per-batch model, the all-batch model assumes identical variance and difference between conditions in all batches. The log-fold change in adjusted PTM abundance is estimated as the average over runs and batches
-\[
-\hat{\Delta} = \frac{1}{BJ} \left( \hat{y}_{+,i+} - \hat{y}_{+,i'+} \right) - \frac{1}{BJ} \left( \hat{y}_{+,i+}^{\ast} - \hat{y}_{+,i'+}^{\ast} \right),
-\]
-and the standard error of the estimate is 
-\[
-\left[ \frac{2}{BJ} \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right] ^{1/2}.
-\]
-The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
-\[
-\left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right)^2 \bigg/
-\left( \frac{\hat{\sigma}_{\gamma}^{4}}{  \mathrm{df}(\gamma)} + \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} \right).
-\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Extension to complex designs}
+%\label{sec:complex}
+%
+%The proposed statistical framework can be extended to analyze data from experiments of complex designs, such as factorial design and time series. We discuss below a specific design commonly applied in PTM experiments, in which data are acquired in multiple batches. 
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsubsection{Batch effects}
+%\label{sec:batch}
+%
+%As in \secref{sec:test}, hypothesis testing on the adjusted log-abundances of the PTM in Conditions $i$ and $i'$ is performed to detect differentially modified PTM sites. The hypothesis is that there is no difference in adjusted log-abundance of the PTM between Conditions $i$ and $i'$
+%\begin{align*}
+%H_{0}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &= 0 \\
+%H_{a}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &\neq 0
+%\end{align*}
+%For batch-wise data, we consider two ways to estimate the difference in adjusted PTM abundance, $\Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast})$ based on different assumptions about the properties of batch effects, namely per-batch model (proposed approach) and all-batch model. For the following discussion, we denote the log-intensity of a modified peptide feature in Run $j$ of Condition $i$ and Batch $b$ by $y_{b, ijk}$, where $b = 1, \ldots, B$. Similarly, $y_{b, ijl}^{\ast}$ is denoted for the unmodified peptide feature in the same run. 
+%
+%\paragraph{Per-batch model (proposed approach).} 
+%The model assumes different levels of variability are present in different batches and the differences between conditions vary across batches (i.e., there is an interaction effect between condition and batch). Difference between conditions is estimated in each batch, and the overall log-fold change in adjusted PTM abundance is estimated as the average over batches
+%\[
+%\hat{\Delta} = \frac{1}{B} \sum_{b=1}^{B} \left[ \frac{1}{J} \left( \hat{y}_{b,i+} - \hat{y}_{b,i'+} \right) \right]
+%- \frac{1}{B} \sum_{b=1}^{B} \left[ \frac{1}{J} \left( \hat{y}_{b,i+}^{\ast} - \hat{y}_{b,i'+}^{\ast} \right) \right].
+%\]
+%The standard error associated to the estimate is 
+%\[
+%\left[ \left(\frac{1}{B}\right)^2 \cdot \left( \frac{2}{J} \right) \cdot \sum_{b=1}^{B} \left( \hat{\sigma}_{\gamma_b}^{2} + \hat{\sigma}_{\gamma_b^{\ast}}^{2} \right) \right]^{1/2}.
+%\]
+%The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, where the degrees of freedom are approximated as
+%\[
+%\left[ \sum_{b=1}^{B} \left( \hat{\sigma}_{\gamma_{b}}^{2} + \hat{\sigma}_{\gamma_{b}^{\ast}}^{2} \right) \right]^2 \bigg/
+%\sum_{b=1}^{B} \left[ \frac{\hat{\sigma}_{\gamma_{b}}^{4}}{  \mathrm{df}(\gamma_b)} + \frac{\hat{\sigma}_{\gamma_{b}^{\ast}}^{4}}{\mathrm{df}(\gamma_b^{\ast})} \right].
+%\]
+%
+%\paragraph{All-batch model.}
+%In contrast to the per-batch model, the all-batch model assumes identical variance and difference between conditions in all batches. The log-fold change in adjusted PTM abundance is estimated as the average over runs and batches
+%\[
+%\hat{\Delta} = \frac{1}{BJ} \left( \hat{y}_{+,i+} - \hat{y}_{+,i'+} \right) - \frac{1}{BJ} \left( \hat{y}_{+,i+}^{\ast} - \hat{y}_{+,i'+}^{\ast} \right),
+%\]
+%and the standard error of the estimate is 
+%\[
+%\left[ \frac{2}{BJ} \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right] ^{1/2}.
+%\]
+%The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
+%\[
+%\left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right)^2 \bigg/
+%\left( \frac{\hat{\sigma}_{\gamma}^{4}}{  \mathrm{df}(\gamma)} + \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} \right).
+%\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{TMT experiment}
@@ -455,6 +460,9 @@ The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared agains
 \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right)^2 \bigg/
 \left( \frac{\hat{\sigma}_{\gamma}^{4}}{  \mathrm{df}(\gamma)} + \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} \right).
 \]
+
+\todo{anything related to time-course?}
+
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
