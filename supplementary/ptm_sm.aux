@@ -1,0 +1,73 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {1}Overview of proposed approach and notation}{2}{}\protected@file@percent }
+\newlabel{sec:intro}{{1}{2}}
+\@writefile{toc}{\contentsline {paragraph}{Data structure of PTM quantification experiments.}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {S1}{\ignorespaces Representation of the data of modified peptides at one site and unmodified peptides of the same protein, with $I$ conditions and $J$ replicate runs. Abundances of the PTM and protein are quantified by multiple spectral features (peptide ions, $K$ for modified peptides and $L$ for unmodified peptides). Some spectral features can be missing (shown as $-$), either randomly in individual runs or completely in certain conditions. In real practice, the number of runs can vary across conditions. \relax }}{2}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:dtable}{{S1}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Existing methods}{3}{}\protected@file@percent }
+\newlabel{sec:ttest}{{2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}two-sample $t$-test}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Limma}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Proposed approach}{3}{}\protected@file@percent }
+\newlabel{sec:prop}{{3}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Statistical modeling and inference}{3}{}\protected@file@percent }
+\newlabel{sec:model}{{3.1}{3}}
+\citation{choi_etal_14a}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Run-level summarization of feature intensities}{4}{}\protected@file@percent }
+\newlabel{sec:sum}{{3.1.1}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Model-based inference of the underlying abundance}{4}{}\protected@file@percent }
+\newlabel{sec:infer}{{3.1.2}{4}}
+\citation{kutner_etal_04a}
+\citation{oberg_vitek_09a}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}PTM significance analysis}{5}{}\protected@file@percent }
+\newlabel{sec:test}{{3.2}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Design of PTM experiments}{5}{}\protected@file@percent }
+\newlabel{sec:design}{{3.3}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}TMT experiment}{6}{}\protected@file@percent }
+\newlabel{sec:tmtmethod}{{3.4}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Computer simulation}{7}{}\protected@file@percent }
+\newlabel{sec:sim}{{4}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Protein-level adjustment}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Simulation 1}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Simulation 2}{8}{}\protected@file@percent }
+\newlabel{fig:sim1_fpr}{{\caption@xref {fig:sim1_fpr}{ on input line 536}}{9}}
+\newlabel{fig:sim1_recall}{{\caption@xref {fig:sim1_recall}{ on input line 549}}{10}}
+\newlabel{fig:sim2_recall}{{\caption@xref {fig:sim2_recall}{ on input line 562}}{11}}
+\newlabel{fig:fc_boxplot}{{\caption@xref {fig:fc_boxplot}{ on input line 575}}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Benchmark experiment}{13}{}\protected@file@percent }
+\newlabel{sec:benchmark}{{4.2}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S6}{\ignorespaces Using the proposed method to model the benchmark experiment the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment the false positives were decreased considerably. \relax }}{13}{}\protected@file@percent }
+\newlabel{fig:spike_volcano_msstats}{{S6}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S7}{\ignorespaces Using the limma method the spike in peptides follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significante adjusted pvalue. In terms of false positives, the results are very similar to the propsed method, with many false positives before adjustment and much fewer afterward. \relax }}{14}{}\protected@file@percent }
+\newlabel{fig:spike_volcano_limma}{{S7}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S8}{\ignorespaces Using the two sample $t$-test, none of the comparisons either before or after adjustment do not show any significant peptides. With that being said, the fold change of the spike in peptides is much closer to expectation after adjusting for global protein abundance. \relax }}{15}{}\protected@file@percent }
+\newlabel{fig:spike_volcano_ttest}{{S8}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S9}{\ignorespaces Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with Limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike in peptides. \relax }}{16}{}\protected@file@percent }
+\newlabel{fig:spike_stat}{{S9}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S10}{\ignorespaces The fold change misalignment before adjustment is illustrated in the boxplots. The true log fold change is indicated by the red 'X' marks. Before adjustment the boxplots are not close to the true fold change. After adjustment all three models generally have median near the true fold change. In terms of model comparison, the proposed method shows a much tighter distribution around the true fold change, whole both Limma and $t$-test are much wider. \relax }}{17}{}\protected@file@percent }
+\newlabel{fig:spike_fc}{{S10}{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Sample size calculation and power analysis}{18}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {S11}{\ignorespaces Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. The discrepancy can be profound if the uncertainty associated with the protein abundance estimate is greater than that of PTM abundance estimate. Sample size calculation without accounting for the uncertainty would lead to under-powered studies. \relax }}{18}{}\protected@file@percent }
+\newlabel{fig:size_prot}{{S11}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S12}{\ignorespaces In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. \relax }}{19}{}\protected@file@percent }
+\newlabel{fig:size_grp}{{S12}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S13}{\ignorespaces Statistical power can be improved by increasing the sample size and analyzing multiple conditions together. \relax }}{19}{}\protected@file@percent }
+\newlabel{fig:pwr_grp}{{S13}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Datasets : Biological investigation}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}USP30}{20}{}\protected@file@percent }
+\newlabel{fig:results_table1a}{{S14.a}{21}}
+\newlabel{sub@fig:results_table1a}{{S14.a}{21}}
+\newlabel{fig:results_table1b}{{S14.b}{21}}
+\newlabel{sub@fig:results_table1b}{{S14.b}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S14}{\ignorespaces A. The proposed method identifies far more signficant modified peptides compared to Limma and $t$-test. All methods identify substantially fewer peptides after adjusting for changes in global protein level. B. The proposed method and Limma share 16\% of all peptides identified as significant. The proposed method is the only model that identified 79\% of the peptides, while Limma identified 5\% that no other model did. $t$-test only identified 7 peptides as signififcant, with all but 1 being shared with the other two models.\relax }}{21}{}\protected@file@percent }
+\newlabel{fig:1asdfa}{{S14}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Shigella flexneri}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Further Considerations}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.0.1}Multiple sites per protein}{23}{}\protected@file@percent }
+\bibstyle{plain}
+\bibdata{ptm_ref}
+\bibcite{choi_etal_14a}{1}
+\bibcite{kutner_etal_04a}{2}
+\bibcite{oberg_vitek_09a}{3}
+\gdef \@abspage@last{24}

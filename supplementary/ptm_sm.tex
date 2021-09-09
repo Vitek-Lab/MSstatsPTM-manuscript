@@ -424,7 +424,7 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 %\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{TMT experiment}
+\subsection{TMT experiment}
 \label{sec:tmtmethod}
 
 The methods described in this paper can be applied to Tandem Mass Tag (TMT) experiments targeting PTMs, in addition to batch effects. The same hypothesis testing is performed to detect differences in adjusted log-abundance of modifications in Condition $i$ and $i'$, where the null hypothesis is that there is no difference in PTM abundance between $i$ and $i'$. 
@@ -525,30 +525,54 @@ The portion of significant peptides were done in the same was as described in si
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim1_FDR_all_models}\\
-\includegraphics[width=.85\textwidth]{sim_new/sim1_FDR}
-\caption{(upper plot)All the considered methods in simulation 1 correctly calibrated the Type I error rate when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates. (lower plot) The considered methods with protein adjustment are compared in detail. The proposed method generally performed better than Limma, but had a higher FDR than T-test. All methods performed strongly, with all FDR rates near or below .03. \label{fig:sim1_fpr}}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim1_FDR_all_models}\\
+	\caption{All the considered methods in simulation 1 correctly calibrated the Type I error rate when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates.}
+ \end{subfigure}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim1_FDR}
+	\caption{The considered methods with protein adjustment are compared in detail. The proposed method generally performed better than Limma, but had a higher FDR than T-test. All methods performed strongly, with all FDR rates near or below .03.}
+ \end{subfigure}
+\label{fig:sim1_fpr}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim1_Recall}\\
-\includegraphics[width=.85\textwidth]{sim_new/sim1_accuracy}
-\caption{(upper plot) The recall for simulation 1 methods with adjustment were compared. It is clear that Limma performs the strongest here when the number of replicates were low.  At higher replicates the performance of the proposed methods and Limma are comparable. T-test clearly performs worse across all methods. (lower plot) The overall accuracy plot mimics the observations in the recall plot. Limma performs stronger than the proposed method at lower replicates, while at higher they are comparable. \label{fig:sim1_recall}}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim1_Recall}\\
+	\caption{The recall for simulation 1 methods with adjustment were compared. It is clear that Limma performs the strongest here when the number of replicates were low.  At higher replicates the performance of the proposed methods and Limma are comparable. T-test clearly performs worse across all methods.}
+ \end{subfigure}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim1_accuracy}
+	\caption{The overall accuracy plot mimics the observations in the recall plot. Limma performs stronger than the proposed method at lower replicates, while at higher they are comparable.}
+ \end{subfigure}
+\label{fig:sim1_recall}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim3_Recall}
-\includegraphics[width=.85\textwidth]{sim_new/sim3_Accuracy}
-\caption{The advantage of using the proposed approach over Limma and $t$-test is apparent when looking at simulation 2, which includes limited observations and the presence of missing values. (upper plot) In the case of recall the proposed method performs stronger than limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed limma, especially when there were more conditions in the simulation. Again the lowest performance was observed using the $t$-test method. (lower plot) Again in the overall accuracy plots, the results are similar to recall. The propsed method performed the strongest across all methods, even when replicates were low. While Limma shows strong performance in a clean experiment, when real world data problems are introduced it is clear the proposed method is more robust. \label{fig:sim2_recall}}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim3_Recall}
+	\caption{The advantage of using the proposed approach is apparent when looking at simulation 2, which includes limited observations and the presence of missing values. In the case of recall the proposed method performs stronger than limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed limma, especially when there were more conditions in the simulation. Again the lowest performance was observed using the $t$-test method.}
+ \end{subfigure}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim3_Accuracy}
+	\caption{The overall accuracy plots show similar results to recall. The proposed method performed the strongest across all methods, even when replicates were low. Limma shows strong performance in a clean experiment, when real world data problems are introduced it is clear the proposed method is more robust.}
+ \end{subfigure}
+\label{fig:sim2_recall}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/sim1_FC_boxplot}
-\includegraphics[width=.85\textwidth]{sim_new/sim3_FC_boxplot}
-\caption{(upper plot) In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75 in all methods. The distributions around the median were also consistent acorss all methods. Predictably the distribution quantiles decrease as the number of replicates increases. (lower plot) In simulation 2 again all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. In this case the proposed method showed a stronger performed in correctly estimating the fold change for all peptides. \label{fig:fc_boxplot}}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.9\textwidth]{sim_new/sim1_FC_boxplot}
+	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75 in all methods. The distributions around the median were also consistent acorss all methods. Predictably the distribution quantiles decrease as the number of replicates increases.}
+ \end{subfigure}
+ \begin{subfigure}{.9\textwidth}
+	\includegraphics[width=.85\textwidth]{sim_new/sim3_FC_boxplot}
+	\caption{In simulation 2 again all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. In this case the proposed method showed a stronger performed in correctly estimating the fold change for all peptides.}
+ \end{subfigure}
+\label{fig:fc_boxplot}
 \end{figure}
 
 \clearpage
@@ -589,13 +613,6 @@ Again we consider three different methods and assess their performance: the meth
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_fc}
 \caption{The fold change misalignment before adjustment is illustrated in the boxplots. The true log fold change is indicated by the red 'X' marks. Before adjustment the boxplots are not close to the true fold change. After adjustment all three models generally have median near the true fold change. In terms of model comparison, the proposed method shows a much tighter distribution around the true fold change, whole both Limma and $t$-test are much wider. \label{fig:spike_fc}}
 \end{figure}
-
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{TMT experiment}
-\label{sec:tmtsim}
-
-\todo{add the simulation for TMT experiment, batch vs plex?}
 
 
 \clearpage
@@ -662,6 +679,11 @@ This experiment was analyzed using the proposed method, limma, and two sample $t
 \label{fig:1asdfa}
 \end{figure}
 
+\clearpage
+
+\subsection{Shigella flexneri}
+
+In this study, the correlation between the autophagy gene Atg16L1 and killing of virulent Shigella flexneri (S.flexneri) was assessed. It was discovered that the loss of Atg16L1 in macrophages enhanced the killing of S.flexneri. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) bone marrow macrophages, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infections, and late infection. Quantifying the total protein along with the post-translational modifications allows us to adjust for changes in total protein and see the true impact of the site specific modifications. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage

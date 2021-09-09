@@ -1,0 +1,861 @@
+---
+title: "MSstatsPTM_SImulation_Analysis"
+author: "Devon Kohler"
+date: "6/16/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_packages}
+library(MSstatsPTMold)
+library(MSstatsPTM)
+library(data.table)
+library(tidyverse)
+library(limma)
+```
+
+
+```{r function, include=FALSE}
+## Define Modeling Functions ---------------------------------------------------
+convert_to_msstats_format <- function(df){
+  ## Format into MSstatsPTM input
+  df$PTM$protein <- paste(df$PTM$protein, df$PTM$site, sep = "_")
+  df$PTM$PrecursorCharge <- NA
+  df$PTM$FragmentIon <- NA
+  df$PTM$ProductCharge <- NA
+  df$PTM$IsotopeLabelType <- "L"
+  df$PTM$BioReplicate <- paste0(df$PTM$run, "rep")
+  df$PTM$log2inty <- 2**df$PTM$log2inty
+  df$PTM$PeptideSequence <- paste(df$PTM$protein, df$PTM$feature, sep = "_")
+  
+  setnames(df$PTM, c("protein", "group", "run", "log2inty"),
+           c("ProteinName", "Condition", "Run", "Intensity"))
+  
+  df$PROTEIN$PrecursorCharge <- NA
+  df$PROTEIN$FragmentIon <- NA
+  df$PROTEIN$ProductCharge <- NA
+  df$PROTEIN$IsotopeLabelType <- "L"
+  df$PROTEIN$log2inty <- 2**df$PROTEIN$log2inty
+  df$PROTEIN$BioReplicate <- paste0(df$PROTEIN$run, "rep")
+  df$PROTEIN$PeptideSequence <- paste(df$PROTEIN$protein, df$PROTEIN$feature, sep = "_")
+  setnames(df$PROTEIN, c("protein", "group", "run", "log2inty"),
+           c("ProteinName", "Condition", "Run", "Intensity"))
+  
+  return(df)
+}
+
+## Run ttest using run level summared data
+run_ttest <- function(summarized_data){
+  
+  ptms <- unique(summarized_data$PTM)
+  
+  ttest_temp <- data.table()
+  ttest_adj_temp <- data.table()
+  ## Run ttest for each ptm
+  for (p in seq_along(ptms)){
+    temp_joined <- summarized_data %>% filter(PTM == ptms[[p]])
+    groups <- (temp_joined %>% distinct(Condition))[[1]]
+    t <- 2
+    
+    ## Loop over groups
+    for (g in 1:(length(groups)-1)){
+      for (g2 in 2:length(groups)){
+        tryCatch({ttest_ptm <- t.test((temp_joined %>% filter(Condition == groups[g]) %>% select(Abundance.x))[[1]], 
+                                      (temp_joined %>% filter(Condition == groups[g2]) %>% select(Abundance.x))[[1]])},
+                 error=function(e){cat("ERROR :", as.character(p), "\n")})
+        tryCatch({ttest_adj_ptm <- t.test((temp_joined %>% filter(Condition == groups[g]) %>% select(Adj_Abundance))[[1]], 
+                                          (temp_joined %>% filter(Condition == groups[g2]) %>% select(Adj_Abundance))[[1]])},
+                 error=function(e){cat("ERROR :", as.character(p), "\n")})
+        ttest_temp <- rbindlist(list(ttest_temp, data.table(ptm = ptms[[p]], 
+                                                            label = paste(groups[g], "vs", groups[g2], sep = " "), 
+                                                            pval = ttest_ptm$p.value, 
+                                                            tstat = ttest_ptm$statistic[[1]],
+                                                            SE = ttest_ptm$stderr,
+                                                            df = ttest_ptm$parameter[[1]],
+                                                            estimate = ttest_ptm$estimate[[2]] - ttest_ptm$estimate[[1]])))
+        ttest_adj_temp <- rbindlist(list(ttest_adj_temp, data.table(ptm = ptms[[p]], 
+                                                                    label = paste(groups[g], "vs", groups[g2], sep = " "), 
+                                                                    pval = ttest_adj_ptm$p.value, 
+                                                                    tstat = ttest_adj_ptm$statistic[[1]],
+                                                                    SE = ttest_adj_ptm$stderr,
+                                                                    df = ttest_adj_ptm$parameter[[1]],
+                                                                    estimate = ttest_adj_ptm$estimate[[2]] - ttest_adj_ptm$estimate[[1]])))
+      }
+    }
+  }
+  return(list(ttest_temp = ttest_temp, ttest_adj_temp = ttest_adj_temp))
+}
+
+## Limma pairwise function
+design.pairs <- function(levels) {
+    n <- length(levels)
+    design <- matrix(0,n,choose(n,2))
+    rownames(design) <- levels
+    colnames(design) <- 1:choose(n,2)
+    k <- 0
+    for (i in 1:(n-1))
+      for (j in (i+1):n) {
+        k <- k+1
+        design[i,k] <- 1
+        design[j,k] <- -1
+        colnames(design)[k] <- paste(levels[i],"-",levels[j],sep="")
+      }
+    design
+}
+
+## Fit limma model (both not and with adjust) for given dataset
+fit_limma <- function(summarized_data, conditions, runs){
+  
+  ## Convert into format required for limma
+  input <- data.frame(summarized_data %>% select(PTM, Run, Condition, Abundance.x) %>% 
+                        pivot_wider(names_from = c(Condition, Run), values_from = Abundance.x,
+                                    names_sort = TRUE))
+  rownames(input) <- input$PTM
+  input <- input %>% select(-PTM)
+  input_adj <- data.frame(summarized_data %>% select(PTM, Run, Condition, Adj_Abundance) %>% 
+                            pivot_wider(names_from = c(Condition, Run), values_from = Adj_Abundance,
+                                        names_sort = TRUE))
+  rownames(input_adj) <- input_adj$PTM
+  input_adj <- input_adj %>% select(-PTM)
+  
+  ## Create contrast matrix
+  class <- c()
+  for (x in seq_len(conditions)){
+    cond <- rep(paste0("Condition_", as.character(x)), runs)
+    class <- c(class, cond)
+  }
+  class <- as.factor(class)
+  design <- model.matrix(~0+class)
+  
+  input.matrix <- as.matrix(input)
+  input_adj.matrix <- as.matrix(input_adj)
+  
+  ## Run models
+  fit <- lmFit(input.matrix, design=design)
+  fit_no_adj <- lmFit(input_adj.matrix, design=design)
+  
+  contrast.matrix <- design.pairs(colnames(design))
+  fit2 <- contrasts.fit(fit, contrast.matrix)
+  fit2 <- eBayes(fit2)
+  
+  fit2_no_adj <- contrasts.fit(fit_no_adj, contrast.matrix)
+  fit2_no_adj <- eBayes(fit2_no_adj)
+  
+  ## Output to data.table
+  comparisons <- data.table()
+  comparisons_no_adj <- data.table()
+  
+  for (g in seq_along(colnames(fit2$coefficients))){
+    comparisons <- rbindlist(list(comparisons, 
+                                   data.table(PTM = rownames(fit2$coefficients),
+                              Label = colnames(fit2$coefficients)[g],
+                              Log2FC = as.vector(fit2$coefficients[,g]),
+                              pvalue = as.vector(fit2$p.value[,g]),
+                              df = as.vector(fit2$df.residual),
+                              se = as.vector(fit2$sigma))))
+    comparisons_no_adj <- rbindlist(list(comparisons_no_adj, 
+                                          data.table(PTM = rownames(fit2_no_adj$coefficients),
+                                     Label = colnames(fit2_no_adj$coefficients)[g],
+                                     Log2FC = as.vector(fit2_no_adj$coefficients[,g]),
+                                     pvalue = as.vector(fit2_no_adj$p.value[,g]),
+                                     df = as.vector(fit2_no_adj$df.residual),
+                                     se = as.vector(fit2_no_adj$sigma))))
+  }
+  
+  return(list(limma_test <- comparisons, limma_no_adj_test = comparisons_no_adj))
+}
+
+## Define metrics
+calculate_summary_stats <- function(df, protein_col_name, pval_col_name, sd, rep, conditions){
+  fpr <- df %>% filter(get(pval_col_name) < .05 & grepl("NoChange", get(protein_col_name))) %>% 
+    nrow() / nrow(df %>% filter(grepl("NoChange", get(protein_col_name))))
+  sensitivity <- df %>% filter(get(pval_col_name) < .05 & !grepl("NoChange", get(protein_col_name))) %>% 
+    nrow() / nrow(df %>% filter(!grepl("NoChange", get(protein_col_name))))
+  specificity <- df %>% filter(get(pval_col_name) >= .05 & grepl("NoChange", get(protein_col_name))) %>% 
+    nrow() / nrow(df %>% filter(grepl("NoChange", get(protein_col_name))))
+  precision <- df %>% filter(get(pval_col_name) < .05 & !grepl("NoChange", get(protein_col_name))) %>% 
+    nrow() / nrow(df %>% filter(get(pval_col_name) < .05))
+  accuracy <- df %>% filter((get(pval_col_name) < .05 & !grepl("NoChange", get(protein_col_name))) | 
+                              (get(pval_col_name) >= .05 & grepl("NoChange", get(protein_col_name)))) %>% 
+    nrow() / nrow(df)
+  recall <- df %>% filter(get(pval_col_name) < .05 & !grepl("NoChange", get(protein_col_name))) %>% 
+    nrow() / df %>% filter(!grepl("NoChange", get(protein_col_name))) %>% nrow()
+  results_temp <- data.table(fpr = fpr, sensitivity = sensitivity, 
+                             specificity = specificity, precision = precision, 
+                             sd = sd, rep = rep, conditions = conditions,
+                             accuracy = accuracy, recall = recall)
+  return(results_temp)
+}
+```
+
+## Computer Simulation
+
+### Simulation Methods
+
+To simulate data the `PTMsimulateExperiment()` function from Tsung-Heng's original MSstatsPTM was used. This function allows us to vary the number of conditions, replicates, number of proteins, number of sites per protein, number of spectral features per site/protein, mean log2-abundance of PTM and PROTEIN, deviation from the mean log2-abundance in each group, standard deviation among replicates, and standard deviation among log2-intensities.
+
+Three different statistical modeling methods were applied to the simulated data: MSstatsPTM, limma, and two-sample t-test. These methods were tested both with and without applying protein level adjustment. MSstatsPTM uses TMP for summarization and post modeling calculations for the adjustment. To adjust limma and t-test, the run-level data was averaged for both ptm and protein datasets and then combined. The resulting dataset was then used for limma and t-test.
+
+Graphs can help us vizualize the components of the simulation.
+
+```{r, echo=FALSE}
+data.frame(ConditionA = rnorm(1000000, 22,2), ConditionB = rnorm(1000000, 17,2)) %>% ggplot() + 
+  geom_density(aes(ConditionA), fill = "coral1") + geom_density(aes(ConditionB), fill = "steelblue1") +
+  geom_vline(aes(xintercept=24), size = 1.25, color = "red") + 
+  labs(title = "PTM1 between Condition A and B", x = "Abundance")
+```
+
+
+Here we can see a sample PTM with two conditions A and B. The red line represents a same biological replicate. We can simulate different variance's for the conditions.
+
+```{r, echo=FALSE}
+data.frame(ConditionA = rnorm(1000000, 0,2)) %>% ggplot() + 
+  geom_density(aes(ConditionA), fill = "coral1") +
+  geom_vline(aes(xintercept=.5), size = 1.25, color = "red") + 
+  labs(title = "BioRep1 for PTM1 and Condition A", x = "Abundance")
+```
+
+Here we see the biorep from before, where the red line represents a single feature. 
+
+**All charts are made using adjusted pvalue <.05 to designate a significant hit.**
+
+### First simulation
+
+All simulations were ran with half the PTMs being differencial, while the other half the difference was due to changes in global protein level. The first simulation is run with the following paramters:
+
+* Mean of log-intensity: $25$
+* Number of Features: $10$ (PTM), $10$ (Protein)
+* Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
+* Difference in PTM abundance between conditions: $0$, $0.5$, $0.75$, $1$
+* Difference in protein abundance between conditions: $0$, $0.5$
+* Number of replicates: $3$, $4$, $5$
+* Number of conditions: $2$, $3$, $4$
+* Number of realizations: $500$
+
+``` {r first_sim_data, include = FALSE}
+
+load(file = "model_data/ptm_models_sim1.rda")#ptm_models_sim1
+load(file = "model_data/adjusted_models_sim1.rda")#adjusted_models_sim1 
+load(file = "model_data/ttest_models_sim1.rda")#ttest_sim1
+load(file = "model_data/adj_ttest_models_sim1.rda")#adj_ttest_sim1
+load(file = "model_data/limma_models_sim1.rda")#limma_results_sim1
+load(file = "model_data/adj_limma_models_sim1.rda")#adj_limma_sim1
+
+s <- c(.2,.3)
+reps <- c(2,3,5,10)
+cond <- c(2,3,4)
+param_combos <- expand.grid(s, reps, cond)
+
+no_adj_results <- data.table()
+adj_results <- data.table()
+ttest_results <- data.table()
+ttest_adj_results <- data.table()
+limma_model_results <- data.table()
+limma_adj_model_results <- data.table()
+
+## Calculate results
+## Calculate metrics for each model and dataset
+for (i in seq_along(ptm_models_sim1)){
+  
+  no_adj_results_temp <- calculate_summary_stats(ptm_models_sim1[[i]], c("Protein"),  c("pvalue"), param_combos[i, 1], 
+                                                 param_combos[i, 2], param_combos[i, 3])
+  no_adj_results <- rbindlist(list(no_adj_results, no_adj_results_temp))
+  
+  adj_results_temp <- calculate_summary_stats(adjusted_models_sim1[[i]], c("Protein"),  c("adj.pvalue"), 
+                                              param_combos[i, 1], param_combos[i, 2], param_combos[i, 3])
+  adj_results <- rbindlist(list(adj_results, adj_results_temp))
+  
+  ttest_results_temp <- calculate_summary_stats(ttest_sim1[[i]], c("ptm"), c("pval"), param_combos[i, 1], 
+                                              param_combos[i, 2], param_combos[i, 3])
+  ttest_results <- rbindlist(list(ttest_results, ttest_results_temp))
+  
+  temp <- adj_ttest_sim1[[i]]
+  temp_ttest <- data.table()
+  for (c in seq_along(unique(temp$label))){
+    temp_ttest <- rbindlist(list(temp_ttest, 
+                                 temp %>% filter(label == unique(temp$label)[c]) %>% 
+                                   mutate(adj.pvalue = p.adjust(pval, method = "BH"))))
+  }
+  ttest_adj_results_temp <- calculate_summary_stats(temp_ttest, c("ptm"), c("adj.pvalue"), param_combos[i, 1], 
+                                                param_combos[i, 2], param_combos[i, 3])
+  ttest_adj_results <- rbindlist(list(ttest_adj_results, ttest_adj_results_temp))
+  
+  limma_results_temp <- calculate_summary_stats(limma_results_sim1[[i]], c("PTM"), c("pvalue"), param_combos[i, 1], 
+                                                    param_combos[i, 2], param_combos[i, 3])
+  limma_model_results <- rbindlist(list(limma_model_results, limma_results_temp))
+  
+  temp <- adj_limma_sim1[[i]]
+  temp_limma <- data.table()
+  for (c in seq_along(unique(temp$Label))){
+    temp_limma <- rbindlist(list(temp_limma, 
+                                 temp %>% filter(Label == unique(temp$Label)[c]) %>% 
+                                   mutate(adj.pvalue = p.adjust(pvalue, method = "BH"))))
+  }
+  
+  limma_results_temp <- calculate_summary_stats(temp_limma, c("PTM"), c("adj.pvalue"), param_combos[i, 1], 
+                                                param_combos[i, 2], param_combos[i, 3])
+  limma_adj_model_results <- rbindlist(list(limma_adj_model_results, limma_results_temp))
+}
+
+## Label Models
+adj_results$Model <- "Proposed"
+no_adj_results$Model <- "Proposed no Adjustment"
+ttest_results$Model <- "T-Test no Adjustment"
+ttest_adj_results$Model <- "T-Test"
+limma_model_results$Model <- "Limma no Adjustment"
+limma_adj_model_results$Model <- "Limma"
+
+## Combine to plot
+models <- rbindlist(list(adj_results, no_adj_results, ttest_results, 
+                         ttest_adj_results, limma_model_results, limma_adj_model_results), fill=TRUE)
+
+```
+
+#### False Discovery Rate (FDR)
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 6}
+png("supplementary/sim_new/sim1_FDR_all_models.png", width = 750, height = 500)
+
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
+                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+                  Replicates = as.factor(rep)) %>%
+  ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 1: FDR all models", x = "Model", y = "FDR")
+
+dev.off()
+
+```
+
+We can clearly see that the non-adjusted models cannot adequately capture the change in global protein abundance. The FDR for all non-adjusted models is very high, while the adjusted models are all near zero. Thus the adjustment is obviously necessary to capture differential PTMs when they are convoluted with changes in protein level.
+
+Because we can clearly see the adjustment has a large effect, we will only look at the adjusted models going forward.
+
+``` {r, echo = FALSE, message=FALSE, warning=FALSE}
+png("supplementary/sim_new/sim1_FDR.png", width = 750, height = 500)
+
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
+                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 1: FDR adjusted models", x = "Model", y = "FDR")
+dev.off()
+```
+
+When looking closer at the adjusted models only we can see that all the models we can see that they are indeed all very close to zero. The proposed solution has a slightly lower FDR than limma, while the ttest has the lowest value. This may be because limma uses empirical bayes to lower the variance in the models, allowing more values to show as significant.
+
+#### Recall (TPR)
+
+Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+png("supplementary/sim_new/sim1_Recall.png", width = 750, height = 500)
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
+                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 1: Recall adjusted models", x = "Model", y = "Recall")
+dev.off()
+```
+
+Recall is clearly best in Limma, followed by the proposed method, and then ttest. All the models performed poorly with high variance and only one condition. Additionally the lower number of replicates performed much worse. Limma has the advantage here of adjusting the variance, allowing more PTMs to show significant with lower replicates/sample size/ This can be seen in the bigger differences between the lower replicates and less conditions. With more conditions the proposed method (and limma to an extent) can leverage the information across conditions to lower the variance. T-test does not have this advantage and thus shows the worst results. 
+
+#### Accuracy
+
+Next we will look at the overall accuracy, to see how the models perform in general.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+png("supplementary/sim_new/sim1_accuracy.png", width = 750, height = 500)
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
+                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 1: Accuracy adjusted models", x = "Model", y = "Accuracy")
+
+dev.off()
+```
+
+In the accuracy chart we see much the same results as in recall. This is mainly due to the recall affecting the accuracy much more than FDR (all our models performed well in identifying the non-differencial PTMs after adjustment). 
+
+``` {r, echo = FALSE, fig.width = 10, fig.height = 7}
+
+conds <- c("G_1 vs G_2", "G_2 vs G_3", "G_3 vs G_4")
+cond2 <- c("classCondition_1-classCondition_2",
+"classCondition_2-classCondition_3",
+"classCondition_3-classCondition_4")
+
+boxplot_data <- data.table()
+for (i in seq_len(nrow(param_combos))){
+  temp1 <- adjusted_models_sim1[[i]] %>% filter(!grepl("NoChange", Protein) & Label %in% conds)
+  temp1$Model <- "Proposed"
+  temp1$log2FC <- temp1$log2FC*-1
+  temp2 <- adj_ttest_sim1[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds) %>% rename(log2FC = estimate, Label = label)
+  temp2$Model <- "T-test"
+  temp3 <- adj_limma_sim1[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) %>% rename(log2FC = Log2FC)
+  temp3$Model <- "Limma"
+  temp3$log2FC <- temp3$log2FC*-1
+  
+  temp <- rbindlist(list(temp1, temp2, temp3), fill = TRUE)
+  temp$sd <- param_combos[i, 1]
+  temp$reps <- param_combos[i, 2]
+  temp$cond <- param_combos[i, 3]
+  
+  boxplot_data <- rbindlist(list(boxplot_data, temp))
+}
+
+png("supplementary/sim_new/sim1_FC_boxplot.png", width = 750, height = 500)
+boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")),
+                        reps = factor(reps, levels = c(2,3,5,10))) %>% 
+  ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) + 
+  geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 1: Fold Change Distribution", x = "Replicates", y = "Log2FC")
+dev.off()
+```
+
+Here we can see that all the models generally correctly estimate the expected Fold Change. Additionally the distributions of estimated FC are very similar across models. Because the FC between models is so similar, Limma's increased performance must be due to empirical bayes reducing the variance and allowing for better identification of the truly differential peptides.
+
+In this simulation, we created a very clean experiment with a large amount of features and no missing values. In this environment Limma clearly performs well. With that being said, in the real world our experiments will not be this clean. In the following experiments we will adjust the simulation to better mimic real world experiments.
+
+### Simulation 2
+
+In this simulation we reduce the number of features for each PTM to 2, while keeping the global protein features at 10. In real world experiments the PTMs have much fewer experiments, as the peptide we use must span the modification site. This leads to an average of only a couple features per PTM.
+
+* Mean of log-intensity: $25$
+* Number of Features: $2$ (PTM), $10$ (Protein)
+* Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
+* Difference in PTM abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
+* Difference in protein abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
+* Number of replicates: $2$, $4$, $6$
+* Number of conditions: $2$, $3$, $4$
+* Number of realizations: $1000$
+
+```{r, include=FALSE}
+
+load(file = "model_data/ptm_models_sim2.rda")#ptm_models_sim1
+load(file = "model_data/adjusted_models_sim2.rda")#adjusted_models_sim1 
+load(file = "model_data/ttest_models_sim2.rda")#ttest_sim1
+load(file = "model_data/adj_ttest_models_sim2.rda")#adj_ttest_sim1
+load(file = "model_data/limma_models_sim2.rda")#limma_results_sim1
+load(file = "model_data/adj_limma_models_sim2.rda")#adj_limma_sim1
+
+s <- c(.2,.3)
+reps <- c(2,4,6)
+cond <- c(2,3,4)
+param_combos <- expand.grid(s, reps, cond)
+
+no_adj_results <- data.table()
+adj_results <- data.table()
+ttest_results <- data.table()
+ttest_adj_results <- data.table()
+limma_model_results <- data.table()
+limma_adj_model_results <- data.table()
+
+## Calculate results
+## Calculate metrics for each model and dataset
+for (i in seq_along(ptm_models_sim2)){
+  
+  no_adj_results_temp <- calculate_summary_stats(ptm_models_sim2[[i]], c("Protein"),  c("pvalue"), param_combos[i, 1], 
+                                                 param_combos[i, 2], param_combos[i, 3])
+  no_adj_results <- rbindlist(list(no_adj_results, no_adj_results_temp))
+  
+  adj_results_temp <- calculate_summary_stats(adjusted_models_sim2[[i]], c("Protein"),  c("adj.pvalue"), 
+                                              param_combos[i, 1], param_combos[i, 2], param_combos[i, 3])
+  adj_results <- rbindlist(list(adj_results, adj_results_temp))
+  
+  ttest_results_temp <- calculate_summary_stats(ttest_sim2[[i]], c("ptm"), c("pval"), param_combos[i, 1], 
+                                              param_combos[i, 2], param_combos[i, 3])
+  ttest_results <- rbindlist(list(ttest_results, ttest_results_temp))
+  
+  temp <- adj_ttest_sim2[[i]]
+  temp_ttest <- data.table()
+  for (c in seq_along(unique(temp$label))){
+    temp_ttest <- rbindlist(list(temp_ttest, 
+                                 temp %>% filter(label == unique(temp$label)[c]) %>% 
+                                   mutate(adj.pvalue = p.adjust(pval, method = "BH"))))
+  }
+  ttest_adj_results_temp <- calculate_summary_stats(temp_ttest, c("ptm"), c("adj.pvalue"), param_combos[i, 1], 
+                                                param_combos[i, 2], param_combos[i, 3])
+  ttest_adj_results <- rbindlist(list(ttest_adj_results, ttest_adj_results_temp))
+  
+  limma_results_temp <- calculate_summary_stats(limma_results_sim2[[i]], c("PTM"), c("pvalue"), param_combos[i, 1], 
+                                                    param_combos[i, 2], param_combos[i, 3])
+  limma_model_results <- rbindlist(list(limma_model_results, limma_results_temp))
+  
+  temp <- adj_limma_sim2[[i]]
+  temp_limma <- data.table()
+  for (c in seq_along(unique(temp$Label))){
+    temp_limma <- rbindlist(list(temp_limma, 
+                                 temp %>% filter(Label == unique(temp$Label)[c]) %>% 
+                                   mutate(adj.pvalue = p.adjust(pvalue, method = "BH"))))
+  }
+  
+  limma_results_temp <- calculate_summary_stats(temp_limma, c("PTM"), c("adj.pvalue"), param_combos[i, 1], 
+                                                param_combos[i, 2], param_combos[i, 3])
+  limma_adj_model_results <- rbindlist(list(limma_adj_model_results, limma_results_temp))
+}
+
+## Label Models
+adj_results$Model <- "Proposed"
+no_adj_results$Model <- "Proposed_no_adj"
+ttest_results$Model <- "ttest_no_adj"
+ttest_adj_results$Model <- "T-Test"
+limma_model_results$Model <- "limma_no_adj"
+limma_adj_model_results$Model <- "Limma"
+
+## Combine to plot
+models <- rbindlist(list(adj_results, no_adj_results, ttest_results, 
+                         ttest_adj_results, limma_model_results, limma_adj_model_results), fill=TRUE)
+
+```
+
+In the following plots we will show the adjusted models only.
+
+#### FDR
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
+                                               "Limma", "ttest_no_adj", "T-Test")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  labs(title = "FDR adjusted models", x = "Model", y = "FDR")
+```
+
+As in the last simulation, the t-test method performs the strongest in terms of FDR, with the proposed method and then limma following.
+
+#### Recall (TPR)
+
+Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
+                                               "Limma", "ttest_no_adj", "T-Test")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  labs(title = "Recall adjusted models", x = "Model", y = "Recall")
+
+```
+
+In terms of Recall, Limma still performs the best, with the proposed method and t-test following. However we do see the proposed method is much closer to Limma in this simulation.
+
+#### Accuracy
+
+Next we will look at the overall accuracy, to see how the models perform in general.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
+                                               "Limma", "ttest_no_adj", "T-Test")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  labs(title = "Accuracy adjusted models", x = "Model", y = "Accuracy")
+```
+
+In terms of overall accuracy, again Limma performs the best, with the proposed method and t-test following. However, as with recall, we do see the proposed method being much closer to Limma in this simulation. It performs worse in lower number of conditions and replicates.
+
+
+``` {r, echo = FALSE, fig.width = 10, fig.height = 7, message=FALSE, warning=FALSE}
+
+conds <- c("G_1 vs G_2", "G_2 vs G_3", "G_3 vs G_4")
+cond2 <- c("classCondition_1-classCondition_2",
+"classCondition_2-classCondition_3",
+"classCondition_3-classCondition_4")
+
+boxplot_data <- data.table()
+for (i in seq_len(nrow(param_combos))){
+  temp1 <- adjusted_models_sim2[[i]] %>% filter(!grepl("NoChange", Protein) & Label %in% conds)
+  temp1$Model <- "Proposed"
+  temp1$log2FC <- temp1$log2FC*-1
+  temp2 <- adj_ttest_sim2[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds) %>% rename(log2FC = estimate, Label = label)
+  temp2$Model <- "T-test"
+  temp3 <- adj_limma_sim2[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) %>% rename(log2FC = Log2FC)
+  temp3$Model <- "Limma"
+  temp3$log2FC <- temp3$log2FC*-1
+  
+  temp <- rbindlist(list(temp1, temp2, temp3), fill = TRUE)
+  temp$sd <- param_combos[i, 1]
+  temp$reps <- param_combos[i, 2]
+  temp$cond <- param_combos[i, 3]
+  
+  boxplot_data <- rbindlist(list(boxplot_data, temp))
+}
+
+boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>% 
+  ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) + 
+  geom_boxplot(aes(y = log2FC, x = as.character(reps), fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
+  labs(title = "Fold Change Distribution", x = "Model", y = "Log2FC")
+
+```
+
+Again we see all the models following the expected FC, and their distributions are similar.
+
+### Simulation 3
+
+In this simulation we introduce missing values into the experiment. 10% of the features simulated were selected at random and masked with an NA value. No missing value imputation was used.
+
+* Mean of log-intensity: $25$
+* Number of Features: $2$ (PTM), $10$ (Protein)
+* Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
+* Difference in PTM abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
+* Difference in protein abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
+* Number of replicates: $2$, $4$, $6$
+* Number of conditions: $2$, $3$, $4$
+* Number of realizations: $1000$
+* 10% of features missing at random in PTM and Protein datasets
+
+```{r, include=FALSE}
+
+load(file = "model_data/ptm_models_sim3.rda")#ptm_models_sim1
+load(file = "model_data/adjusted_models_sim3.rda")#adjusted_models_sim1 
+load(file = "model_data/ttest_models_sim3.rda")#ttest_sim1
+load(file = "model_data/adj_ttest_models_sim3.rda")#adj_ttest_sim1
+load(file = "model_data/limma_models_sim3.rda")#limma_results_sim1
+load(file = "model_data/adj_limma_models_sim3.rda")#adj_limma_sim1
+
+s <- c(.2,.3)
+reps <- c(2,3,5,10)
+cond <- c(2,3,4)
+param_combos <- expand.grid(s, reps, cond)
+
+no_adj_results <- data.table()
+adj_results <- data.table()
+ttest_results <- data.table()
+ttest_adj_results <- data.table()
+limma_model_results <- data.table()
+limma_adj_model_results <- data.table()
+
+## Calculate results
+## Calculate metrics for each model and dataset
+for (i in seq_along(ptm_models_sim3)){
+  
+  no_adj_results_temp <- calculate_summary_stats(ptm_models_sim3[[i]], c("Protein"),  c("pvalue"), param_combos[i, 1], 
+                                                 param_combos[i, 2], param_combos[i, 3])
+  no_adj_results <- rbindlist(list(no_adj_results, no_adj_results_temp))
+  
+  adj_results_temp <- calculate_summary_stats(adjusted_models_sim3[[i]], c("Protein"),  c("adj.pvalue"), 
+                                              param_combos[i, 1], param_combos[i, 2], param_combos[i, 3])
+  adj_results <- rbindlist(list(adj_results, adj_results_temp))
+  
+  ttest_results_temp <- calculate_summary_stats(ttest_sim3[[i]], c("ptm"), c("pval"), param_combos[i, 1], 
+                                              param_combos[i, 2], param_combos[i, 3])
+  ttest_results <- rbindlist(list(ttest_results, ttest_results_temp))
+  
+  temp <- adj_ttest_sim3[[i]]
+  temp_ttest <- data.table()
+  for (c in seq_along(unique(temp$label))){
+    temp_ttest <- rbindlist(list(temp_ttest, 
+                                 temp %>% filter(label == unique(temp$label)[c]) %>% 
+                                   mutate(adj.pvalue = p.adjust(pval, method = "BH"))))
+  }
+  ttest_adj_results_temp <- calculate_summary_stats(temp_ttest, c("ptm"), c("adj.pvalue"), param_combos[i, 1], 
+                                                param_combos[i, 2], param_combos[i, 3])
+  ttest_adj_results <- rbindlist(list(ttest_adj_results, ttest_adj_results_temp))
+  
+  limma_results_temp <- calculate_summary_stats(limma_results_sim3[[i]], c("PTM"), c("pvalue"), param_combos[i, 1], 
+                                                    param_combos[i, 2], param_combos[i, 3])
+  limma_model_results <- rbindlist(list(limma_model_results, limma_results_temp))
+  
+  temp <- adj_limma_sim3[[i]]
+  temp_limma <- data.table()
+  for (c in seq_along(unique(temp$Label))){
+    temp_limma <- rbindlist(list(temp_limma, 
+                                 temp %>% filter(Label == unique(temp$Label)[c]) %>% 
+                                   mutate(adj.pvalue = p.adjust(pvalue, method = "BH"))))
+  }
+  
+  limma_results_temp <- calculate_summary_stats(temp_limma, c("PTM"), c("adj.pvalue"), param_combos[i, 1], 
+                                                param_combos[i, 2], param_combos[i, 3])
+  limma_adj_model_results <- rbindlist(list(limma_adj_model_results, limma_results_temp))
+}
+
+## Label Models
+adj_results$Model <- "Proposed"
+no_adj_results$Model <- "Proposed_no_adj"
+ttest_results$Model <- "ttest_no_adj"
+ttest_adj_results$Model <- "T-Test"
+limma_model_results$Model <- "limma_no_adj"
+limma_adj_model_results$Model <- "Limma"
+
+## Combine to plot
+models <- rbindlist(list(adj_results, no_adj_results, ttest_results, 
+                         ttest_adj_results, limma_model_results, limma_adj_model_results), fill=TRUE)
+
+```
+
+In the following plots we will show the adjusted models only.
+
+#### FDR
+
+``` {r, echo = FALSE, message=FALSE, warning=FALSE}
+png("supplementary/sim_new/sim3_FDR.png", width = 350, height = 350)
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
+                                               "Limma", "ttest_no_adj", "T-Test")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "FDR adjusted models", x = "Model", y = "FDR")
+dev.off()
+```
+
+The FDR still generally shows the proposed method better than limma, although they are closer than what we saw previously.
+
+#### Recall (TPR)
+
+Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+png("supplementary/sim_new/sim3_Recall.png", width = 750, height = 500)
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
+                                               "Limma", "ttest_no_adj", "T-Test")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 2: Recall adjusted models", x = "Model", y = "Recall")
+dev.off()
+```
+
+In terms of recall we can see that the proposed method performs much better in the presence of missing values compared to Limma. There are some exceptions to this, notably at lower replicates with higher variance, however in general the proposed performs better.
+
+#### Accuracy
+
+Next we will look at the overall accuracy, to see how the models perform in general.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+png("supplementary/sim_new/sim3_Accuracy.png", width = 750, height = 500)
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
+                                               "Limma", "ttest_no_adj", "T-Test")),
+                  Replicates = as.factor(rep)) %>%
+  filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
+  ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
+  facet_grid(vars(sd), vars(conditions)) + 
+  theme_bw() +
+  theme(axis.text.x = element_blank(), 
+                                                 axis.text.y = element_text(size = 12), 
+                                                 legend.text=element_text(size=12),
+                                                 axis.title.y = element_text(size = 14),
+                                                 axis.title.x = element_text(size = 14),
+                                                 title = element_text(size = 16),
+                                                 strip.text = element_text(size = 12)) + 
+  labs(title = "Simulation 2: Accuracy adjusted models", x = "Model", y = "Accuracy")
+dev.off()
+```
+
+Overall accuracy is better in the proposed method than Limma for every model except two.
+
+``` {r, echo = FALSE, fig.width = 10, fig.height = 7, message=FALSE, warning=FALSE}
+
+conds <- c("G_1 vs G_2", "G_2 vs G_3", "G_3 vs G_4")
+cond2 <- c("classCondition_1-classCondition_2",
+"classCondition_2-classCondition_3",
+"classCondition_3-classCondition_4")
+
+boxplot_data <- data.table()
+for (i in seq_len(nrow(param_combos))){
+  temp1 <- adjusted_models_sim3[[i]] %>% filter(!grepl("NoChange", Protein) & Label %in% conds)
+  temp1$Model <- "Proposed"
+  temp1$log2FC <- temp1$log2FC*-1
+  temp2 <- adj_ttest_sim3[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds) %>% rename(log2FC = estimate, Label = label)
+  temp2$Model <- "T-test"
+  temp3 <- adj_limma_sim3[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) %>% rename(log2FC = Log2FC)
+  temp3$Model <- "Limma"
+  temp3$log2FC <- temp3$log2FC*-1
+  
+  temp <- rbindlist(list(temp1, temp2, temp3), fill = TRUE)
+  temp$sd <- param_combos[i, 1]
+  temp$reps <- param_combos[i, 2]
+  temp$cond <- param_combos[i, 3]
+  
+  boxplot_data <- rbindlist(list(boxplot_data, temp))
+}
+
+png("supplementary/sim_new/sim3_FC_boxplot.png", width = 750, height = 500)
+boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")),
+                        reps = factor(reps, levels = c(2,3,5,10))) %>% 
+ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) + 
+geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12), 
+                                               axis.text.y = element_text(size = 12), 
+                                               legend.text=element_text(size=12),
+                                               axis.title.y = element_text(size = 14),
+                                               axis.title.x = element_text(size = 14),
+                                               title = element_text(size = 16),
+                                               strip.text = element_text(size = 12)) + 
+labs(title = "Simulation 2: Fold Change Distribution", x = "Replicates", y = "Log2FC")
+dev.off()
+```
+
+Interesting, when introducing missing values we see a difference in this plot compared to the other simulations. The median FC still is in line with the expected FC across all models. However the proposed method has a tighter distribution compared to the other models, especially Limma.
