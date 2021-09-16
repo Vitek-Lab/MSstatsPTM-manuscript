@@ -569,7 +569,7 @@ The portion of significant peptides were done in the same was as described in si
 	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75 in all methods. The distributions around the median were also consistent acorss all methods. Predictably the distribution quantiles decrease as the number of replicates increases.}
  \end{subfigure}
  \begin{subfigure}{.9\textwidth}
-	\includegraphics[width=.85\textwidth]{sim_new/sim3_FC_boxplot}
+	\includegraphics[width=.9\textwidth]{sim_new/sim3_FC_boxplot}
 	\caption{In simulation 2 again all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. In this case the proposed method showed a stronger performed in correctly estimating the fold change for all peptides.}
  \end{subfigure}
 \label{fig:fc_boxplot}
@@ -650,43 +650,88 @@ We then characterized the advantage of general statistical modeling in complex d
 
 \subsection{USP30}
 
-This experiment was analyzed using the proposed method, limma, and two sample $t$-test. Becuase this is a real biological experiment we do not know the true postives and negatives as with the spike-in and simulation evaluations. The results of each method can be seen in \sfigref{fig:results_table}
+This experiment looked into the relationship between USP30 and protein kinase PINK1, and their association with Parkinson's Disease. Ubiquitination site profiling was performed and the modified site abundance was analyzed. Four conditions were tested with two biological replicates per condition. The conditions were as follows: CCCP, USP30 overexpression (USP30\_OE), Combo, and Control. Label-free mass spectrometry quantification was used to quantify the abundance of modified peptides. A corresponding mixed effects model was fit per modification and global protein as described previously in this supplementary.
 
-\begin{figure}[!ht]
-\begin{subfigure}[b]{1\linewidth}
+In contrast to other experiments analyzed in this paper, there was no unmodified global protein profiling run performed in this experiment. Once identification and quantification of the Ubiquitinated profiling was performed, peptides which were unmodified were extracted and used in place of a global profiling run. This resulted in a significant lack of overlap between modified and unmodified peptides. Any modified peptide without a corresponding unmodified protein could not be adjusted. Of the 10,799 modified peptides identified, only 4526 had a corresponding unmodified run and could be adjusted. Finally, using this method also resulted in a low feature count for the unmodified protein model.
+
+An example profile plot for this experiment can be seen in \sfigref{fig:USP30_profile_plot}.
+
+\begin{figure}[h!]
 \centering
-\resizebox{10cm}{!}{
- \begin{tabular}{|c|c|c|} 
-
- Model & Before Adjustment & After Adjustment \\
-\hline
- Proposed & 4502 & 1625 \\ 
- Limma & 1211 & 361\\
- $t$-test & 28 & 7
-
-\end{tabular}}
-\caption{Significant modified peptides per model}
-\label{fig:results_table1a}
-\end{subfigure}
- \vspace{1cm}
-\begin{subfigure}[b]{1\linewidth}
-\centering
-\includegraphics[width=.6\textwidth]{sim_new/usp30_ven}
-\caption{Shared significant modified peptides between models}
-\label{fig:results_table1b}
-\end{subfigure}
-\caption{A. The proposed method identifies far more signficant modified peptides compared to Limma and $t$-test. All methods identify substantially fewer peptides after adjusting for changes in global protein level. B. The proposed method and Limma share 16\% of all peptides identified as significant. The proposed method is the only model that identified 79\% of the peptides, while Limma identified 5\% that no other model did. $t$-test only identified 7 peptides as signififcant, with all but 1 being shared with the other two models.}
-\label{fig:1asdfa}
+\includegraphics[width=\textwidth]{sim_new/USP30_profile_plot}
+\caption{Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between conditions, whereas the global profiling run shows the CCCP and Combo conditions at a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had a major effect when comparing CCCP and Combo to Control and USP30\_OE, which would have been missed without adjusting for global protein changes.}
+\label{fig:USP30_profile_plot}
 \end{figure}
-
 \clearpage
 
 \subsection{Shigella flexneri}
 
-In this study, the correlation between the autophagy gene Atg16L1 and killing of virulent Shigella flexneri (S.flexneri) was assessed. It was discovered that the loss of Atg16L1 in macrophages enhanced the killing of S.flexneri. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) bone marrow macrophages, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allows us to adjust for changes in total protein and see the true impact of the site specific modifications. 
+In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table ~\ref{table:shigella_design}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c | c c | c c | c|}
+\hline
+ & Mixture 1 & & Mixture 2 & & Condition \\ [0.5ex]
+ \hline\hline
+ Uninfected & 128C & & 128C & 131C & \\
+ \hline
+Early (1 Hour) & 126C & 129C & 126C & 129C & WT \\
+\hline
+Late (3 Hour) & 127C & 130C & 127C & 130C & \\
+\hline
+Uninfected & 129N & 131C & 129N & & \\
+\hline
+Early (1 Hour) & 127N & 130N & 127N & 130N & KO \\
+\hline
+Late (3 Hour) & 128N & 131N & 128N & 131N & \\
+\hline
+
+\end{tabular}
+\caption{The experimental design of the Shigella flexneri experiment}
+\label{table:shigella_design}
+\end{table}
+
+A model was fit for the total protein, phosphorylation, and ubiquitination seperately, as described previously for TMT experiments. The model formula can be seen below.
+
+$$Y_{mcb} = \mu + Mixture_m + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
+
+$$Mixture_m ~ \sim N(0, \sigma^2_M) ,\: \sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \epsilon_{mcb} ~ \sim N(0, \sigma^2)$$
+
+The results of the proposed method to this experiment can be seen in \sfigref{fig:No_Diff_Shigella_PTM} and \sfigref{fig:Diff_Shigella_PTM}.
+
+
+\begin{figure}[h!]
+\centering
+ \begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{sim_new/No_Difference_Shigella_Profile_Plot}
+	\caption{Comparing the global profiling of protein $TTP\_MOUSE|P22893$ with the modification of the protein at site $S178$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the difference between conditions follow the same trend. Specifically, there is a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicates the movement is driven by changes in global protein.}
+ \end{subfigure}
+ \begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{sim_new/No_Difference_Shigella_Volcano}
+	\caption{Volcano plots of WT\_Late vs WT\_Uninfect both before and after protein adjustment. The $TTP\_MOUSE|P22893\_S178$ modification is highlighted. Before adjustment the modification has a large fold change and significant adjusted pvalue. After adjustment the fold change is much smaller and the adjusted pvalue is insignificant.}
+ \end{subfigure}
+\label{fig:No_Diff_Shigella_PTM}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+ \begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{sim_new/Difference_Shigella_Profile_Plot}
+	\caption{Comparing the global profiling of protein $KI67\_MOUSE|E9PVX6$ with the modification of the protein at site $T215$. In this case the modification and global protein trend in different directions. Specifically, comparing WT\_Uninfect and WT\_Early there is a slightly positive change in abundance, however in the global profiling there was a negative change. In this case the profile plot indicates the effect of the modification is masked by the change in global protein abundance. Additionally this profile plot shows the large difference in available features between modifications and global protein.}
+ \end{subfigure}
+ \begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{sim_new/Difference_Shigella_Volcano}
+	\caption{Volcano plots of WT\_Early vs WT\_Uninfect both before and after protein adjustment. The $KI67\_MOUSE|E9PVX6$ modification is highlighted. Before adjustment the modification has a small positive fold change and insignificant adjusted pvalue. After adjustment the fold change increases and the adjusted pvalue is now significant.}
+ \end{subfigure}
+\label{fig:Diff_Shigella_PTM}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
+
+\todo{move to main manuscript}
 
 \section{Further Considerations}
 

@@ -30,7 +30,7 @@ calculate_summary_stats <- function(df, pval_col_name, comparison_col_name){
   ## FP/N (FPR)
   fpr <- df %>% filter((get(pval_col_name) < .05 & labeling == "light") | 
                 (get(comparison_col_name) == "mix1-mix4" & get(pval_col_name) < .05)) %>% 
-    nrow() / nrow(df %>% filter(labeling == "light" | get(comparison_col_name) == "mix1-mix4"))
+    nrow() / nrow(df %>% filter(labeling == "light"))
   
   ## TP/P (TPR)
   recall <- df %>% filter(get(pval_col_name) < .05 & labeling == "heavy" & 
@@ -81,7 +81,7 @@ Protein: 10.2
 First a comparison between the adjusted and unadjusted models are shown. The spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
 
 ```{r pressure, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "model_data/Spike_in_MSstatsPTM_Model.rda")#model_df
+load(file = "../data/Spike_in_MSstatsPTM_Model.rda")#model_df
 
 model_df$ADJUSTED.Model <- model_df$ADJUSTED.Model %>% filter(is.finite(pvalue))
 model_df$PTM.Model <- model_df$PTM.Model %>% filter(is.finite(pvalue))
@@ -167,7 +167,7 @@ We will repeat the above analysis for Limma.
 First a comparison between the adjusted and unadjusted models are shown. Again the spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "model_data/Spike_in_Limma_Model.rda")#limma_model
+load(file = "../data/Spike_in_Limma_Model.rda")#limma_model
 
 limma_model <- list(PTM.Model = limma_model %>% filter(protadj == "no adjustment"),
                     ADJUSTED.Model = limma_model %>% filter(protadj == "protein adjustment"))
@@ -256,7 +256,7 @@ Finally we will look at the t-test results.
 Again we look at the volcano plots. The spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "model_data/Spike_in_ttest_model.rda")#ttest_final_model
+load(file = "../data/Spike_in_ttest_model.rda")#ttest_final_model
 
 # Volcano plot
 png("supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
@@ -355,9 +355,10 @@ ttest_sum$Model <- "T-test"
 summary <- rbindlist(list(msstatsptm_sum, limma_sum, ttest_sum))
 summary[Model == "MSstatsPTM"]$Model <- "Proposed"
 
-png("supplementary/sim_new/spike_in_statistic_comparison.png", width = 750, height = 500)
+png("../supplementary/sim_new/spike_in_statistic_comparison.png", width = 750, height = 500)
 summary %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>% 
   ggplot() + geom_col(aes(x = metric, y = result, fill = Model), position = "dodge") + 
+    scale_fill_manual(values=cbPalette) +
   #scale_fill_manual(values = c("salmon1", "steelblue1", "green")) + 
   labs(title = "Summary Statistic Comparison", x = "Metric", y = "Result") + theme_bw()
 dev.off()
@@ -376,17 +377,31 @@ adj_spike_msstats <- model_df$ADJUSTED.Model %>% filter(labeling == "heavy")
 adj_spike_msstats$Adjustment <- "protein adjustment"
 adj_spike_msstats$Model <- "MSstatsPTM"
 
-unadj_spike_ttest <- ttest_final_model %>% filter(labeling == "heavy" & protadj == "no adjustment") %>% rename(log2FC = estimate)
+unadj_spike_ttest <- ttest_final_model %>% filter(labeling == "heavy" & protadj == "no adjustment")
+unadj_spike_ttest <- setNames(unadj_spike_ttest, c("ptm", "label", "pval", "tstat", "SE", 
+                                                   "df", "log2FC", "labeling", "adj.pvalue", 
+                                                   "trueLog2FC", "contrast_truth", "protadj"))
+
 unadj_spike_ttest$Adjustment <- "no adjustment"
 unadj_spike_ttest$Model <- "T-test"
-adj_spike_ttest <- ttest_final_model %>% filter(labeling == "heavy" & protadj != "no adjustment") %>% rename(log2FC = estimate)
+
+adj_spike_ttest <- ttest_final_model %>% filter(labeling == "heavy" & protadj != "no adjustment")
+adj_spike_ttest <- setNames(adj_spike_ttest, c("ptm", "label", "pval", "tstat", "SE", 
+                                                   "df", "log2FC", "labeling", "adj.pvalue", 
+                                                   "trueLog2FC", "contrast_truth", "protadj"))
 adj_spike_ttest$Adjustment <- "protein adjustment"
 adj_spike_ttest$Model <- "T-test"
 
-unadj_spike_limma <- limma_model$PTM.Model %>% filter(labeling == "heavy") %>% rename(log2FC = Log2FC)
+unadj_spike_limma <- limma_model$PTM.Model %>% filter(labeling == "heavy")
+unadj_spike_limma <- setNames(unadj_spike_limma, c("PTM", "Label", "log2FC", "pvalue", "df", 
+                                                   "se", "labeling", "adj.pvalue", 
+                                                   "trueLog2FC", "contrast_truth", "protadj"))
 unadj_spike_limma$Adjustment <- "no adjustment"
 unadj_spike_limma$Model <- "Limma"
-adj_spike_limma <- limma_model$ADJUSTED.Model %>% filter(labeling == "heavy") %>% rename(log2FC = Log2FC)
+adj_spike_limma <- limma_model$ADJUSTED.Model %>% filter(labeling == "heavy")
+adj_spike_limma <- setNames(adj_spike_limma, c("PTM", "Label", "log2FC", "pvalue", "df", 
+                                                   "se", "labeling", "adj.pvalue", 
+                                                   "trueLog2FC", "contrast_truth", "protadj"))
 adj_spike_limma$Adjustment <- "protein adjustment"
 adj_spike_limma$Model <- "Limma"
 
@@ -394,12 +409,13 @@ spike <- rbindlist(list(unadj_spike_msstats, adj_spike_msstats, unadj_spike_ttes
                         adj_spike_ttest, unadj_spike_limma, adj_spike_limma), fill = TRUE)
 spike[Model == "MSstatsPTM"]$Model <- "Proposed"
 
-png("supplementary/sim_new/spike_in_fc.png", width = 750, height = 500)
+png("../supplementary/sim_new/spike_in_fc.png", width = 750, height = 500)
 spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1],
                  Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>%  ggplot() + 
   geom_boxplot(aes(x = Comparison, y = log2FC, fill = Model)) + 
   geom_point(aes(y = trueLog2FC, x = Comparison), color = "red", shape = 4, size = 4, stroke = 2) + 
-  scale_fill_manual(values = c("salmon1", "steelblue1", "green")) + facet_wrap(.~Adjustment) + 
+      scale_fill_manual(values=cbPalette) +
+ facet_wrap(.~Adjustment) + 
     theme_bw() + 
   theme(axis.text.x = element_text(size = 11, angle = 0, vjust = 0), 
        axis.text.y = element_text(size = 11), 

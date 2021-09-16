@@ -173,7 +173,7 @@ fit_limma <- function(summarized_data, conditions, runs){
 ## Define metrics
 calculate_summary_stats <- function(df, protein_col_name, pval_col_name, sd, rep, conditions){
   fpr <- df %>% filter(get(pval_col_name) < .05 & grepl("NoChange", get(protein_col_name))) %>% 
-    nrow() / nrow(df %>% filter(grepl("NoChange", get(protein_col_name))))
+    nrow() / nrow(df %>% filter(get(pval_col_name) < .05))
   sensitivity <- df %>% filter(get(pval_col_name) < .05 & !grepl("NoChange", get(protein_col_name))) %>% 
     nrow() / nrow(df %>% filter(!grepl("NoChange", get(protein_col_name))))
   specificity <- df %>% filter(get(pval_col_name) >= .05 & grepl("NoChange", get(protein_col_name))) %>% 
@@ -239,12 +239,12 @@ All simulations were ran with half the PTMs being differencial, while the other 
 
 ``` {r first_sim_data, include = FALSE}
 
-load(file = "model_data/ptm_models_sim1.rda")#ptm_models_sim1
-load(file = "model_data/adjusted_models_sim1.rda")#adjusted_models_sim1 
-load(file = "model_data/ttest_models_sim1.rda")#ttest_sim1
-load(file = "model_data/adj_ttest_models_sim1.rda")#adj_ttest_sim1
-load(file = "model_data/limma_models_sim1.rda")#limma_results_sim1
-load(file = "model_data/adj_limma_models_sim1.rda")#adj_limma_sim1
+load(file = "../data/ptm_models_sim1.rda")#ptm_models_sim1
+load(file = "../data/adjusted_models_sim1.rda")#adjusted_models_sim1 
+load(file = "../data/ttest_models_sim1.rda")#ttest_sim1
+load(file = "../data/adj_ttest_models_sim1.rda")#adj_ttest_sim1
+load(file = "../data/limma_models_sim1.rda")#limma_results_sim1
+load(file = "../data/adj_limma_models_sim1.rda")#adj_limma_sim1
 
 s <- c(.2,.3)
 reps <- c(2,3,5,10)
@@ -314,17 +314,20 @@ limma_adj_model_results$Model <- "Limma"
 models <- rbindlist(list(adj_results, no_adj_results, ttest_results, 
                          ttest_adj_results, limma_model_results, limma_adj_model_results), fill=TRUE)
 
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999")
+cbPalette_first <- c("#E69F00", "#F0E442", "#56B4E9", "#0072B2", "#009E73", "#D55E00", "#CC79A7", "#999999")
 ```
 
 #### False Discovery Rate (FDR)
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 6}
-png("supplementary/sim_new/sim1_FDR_all_models.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim1_FDR_all_models.png", width = 750, height = 500)
 
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
                                                "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
                   Replicates = as.factor(rep)) %>%
   ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette_first) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -345,13 +348,14 @@ We can clearly see that the non-adjusted models cannot adequately capture the ch
 Because we can clearly see the adjustment has a large effect, we will only look at the adjusted models going forward.
 
 ``` {r, echo = FALSE, message=FALSE, warning=FALSE}
-png("supplementary/sim_new/sim1_FDR.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim1_FDR.png", width = 750, height = 500)
 
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
                                                "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -372,12 +376,13 @@ When looking closer at the adjusted models only we can see that all the models w
 Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-png("supplementary/sim_new/sim1_Recall.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim1_Recall.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
                                                "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -398,12 +403,13 @@ Recall is clearly best in Limma, followed by the proposed method, and then ttest
 Next we will look at the overall accuracy, to see how the models perform in general.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-png("supplementary/sim_new/sim1_accuracy.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim1_accuracy.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
                                                "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -432,9 +438,11 @@ for (i in seq_len(nrow(param_combos))){
   temp1 <- adjusted_models_sim1[[i]] %>% filter(!grepl("NoChange", Protein) & Label %in% conds)
   temp1$Model <- "Proposed"
   temp1$log2FC <- temp1$log2FC*-1
-  temp2 <- adj_ttest_sim1[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds) %>% rename(log2FC = estimate, Label = label)
+  temp2 <- adj_ttest_sim1[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds)
+  temp2 <- setNames(temp2, c("ptm", "Label", "pval", "tstat", "SE", "df", "log2FC"))
   temp2$Model <- "T-test"
-  temp3 <- adj_limma_sim1[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) %>% rename(log2FC = Log2FC)
+  temp3 <- adj_limma_sim1[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) 
+  temp3 <- setNames(temp3, c('PTM', 'Label', 'log2FC', 'pvalue', 'df', 'se'))
   temp3$Model <- "Limma"
   temp3$log2FC <- temp3$log2FC*-1
   
@@ -446,11 +454,12 @@ for (i in seq_len(nrow(param_combos))){
   boxplot_data <- rbindlist(list(boxplot_data, temp))
 }
 
-png("supplementary/sim_new/sim1_FC_boxplot.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim1_FC_boxplot.png", width = 750, height = 500)
 boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")),
                         reps = factor(reps, levels = c(2,3,5,10))) %>% 
   ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) + 
   geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
+  scale_fill_manual(values=cbPalette) +
   theme_bw() +
   theme(axis.text.x = element_text(size = 12), 
                                                  axis.text.y = element_text(size = 12), 
@@ -660,12 +669,12 @@ In this simulation we introduce missing values into the experiment. 10% of the f
 
 ```{r, include=FALSE}
 
-load(file = "model_data/ptm_models_sim3.rda")#ptm_models_sim1
-load(file = "model_data/adjusted_models_sim3.rda")#adjusted_models_sim1 
-load(file = "model_data/ttest_models_sim3.rda")#ttest_sim1
-load(file = "model_data/adj_ttest_models_sim3.rda")#adj_ttest_sim1
-load(file = "model_data/limma_models_sim3.rda")#limma_results_sim1
-load(file = "model_data/adj_limma_models_sim3.rda")#adj_limma_sim1
+load(file = "../data/ptm_models_sim3.rda")#ptm_models_sim1
+load(file = "../data/adjusted_models_sim3.rda")#adjusted_models_sim1 
+load(file = "../data/ttest_models_sim3.rda")#ttest_sim1
+load(file = "../data/adj_ttest_models_sim3.rda")#adj_ttest_sim1
+load(file = "../data/limma_models_sim3.rda")#limma_results_sim1
+load(file = "../data/adj_limma_models_sim3.rda")#adj_limma_sim1
 
 s <- c(.2,.3)
 reps <- c(2,3,5,10)
@@ -742,12 +751,13 @@ In the following plots we will show the adjusted models only.
 #### FDR
 
 ``` {r, echo = FALSE, message=FALSE, warning=FALSE}
-png("supplementary/sim_new/sim3_FDR.png", width = 350, height = 350)
+png("../supplementary/sim_new/sim3_FDR.png", width = 350, height = 350)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
                                                "Limma", "ttest_no_adj", "T-Test")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -768,12 +778,13 @@ The FDR still generally shows the proposed method better than limma, although th
 Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-png("supplementary/sim_new/sim3_Recall.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim3_Recall.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
                                                "Limma", "ttest_no_adj", "T-Test")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -794,12 +805,13 @@ In terms of recall we can see that the proposed method performs much better in t
 Next we will look at the overall accuracy, to see how the models perform in general.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-png("supplementary/sim_new/sim3_Accuracy.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim3_Accuracy.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
                                                "Limma", "ttest_no_adj", "T-Test")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
+  scale_colour_manual(values=cbPalette) +
   facet_grid(vars(sd), vars(conditions)) + 
   theme_bw() +
   theme(axis.text.x = element_blank(), 
@@ -827,9 +839,11 @@ for (i in seq_len(nrow(param_combos))){
   temp1 <- adjusted_models_sim3[[i]] %>% filter(!grepl("NoChange", Protein) & Label %in% conds)
   temp1$Model <- "Proposed"
   temp1$log2FC <- temp1$log2FC*-1
-  temp2 <- adj_ttest_sim3[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds) %>% rename(log2FC = estimate, Label = label)
+  temp2 <- adj_ttest_sim3[[i]] %>% filter(!grepl("NoChange", ptm) & label %in% conds)
+  temp2 <- setNames(temp2, c("ptm", "Label", "pval", "tstat", "SE", "df", "log2FC"))
   temp2$Model <- "T-test"
-  temp3 <- adj_limma_sim3[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) %>% rename(log2FC = Log2FC)
+  temp3 <- adj_limma_sim3[[i]] %>% filter(!grepl("NoChange", PTM) & Label %in% cond2) 
+  temp3 <- setNames(temp3, c('PTM', 'Label', 'log2FC', 'pvalue', 'df', 'se'))
   temp3$Model <- "Limma"
   temp3$log2FC <- temp3$log2FC*-1
   
@@ -841,11 +855,12 @@ for (i in seq_len(nrow(param_combos))){
   boxplot_data <- rbindlist(list(boxplot_data, temp))
 }
 
-png("supplementary/sim_new/sim3_FC_boxplot.png", width = 750, height = 500)
+png("../supplementary/sim_new/sim3_FC_boxplot.png", width = 750, height = 500)
 boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")),
                         reps = factor(reps, levels = c(2,3,5,10))) %>% 
 ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) + 
 geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
+    scale_fill_manual(values=cbPalette) +
   theme_bw() +
   theme(axis.text.x = element_text(size = 12), 
                                                axis.text.y = element_text(size = 12), 

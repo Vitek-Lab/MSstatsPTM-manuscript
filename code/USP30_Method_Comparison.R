@@ -4,10 +4,10 @@ library(MSstatsPTM)
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-load("dta_usp30.RData")
+load("../../PTM_Refractor/Label_Free_PTM_Data/USP30/dta_usp30.RData")
 head(dta_usp30)
 
-processed_df <- readRDS("usp30-site.RDS")
+processed_df <- readRDS("../../PTM_Refractor/Label_Free_PTM_Data/USP30/usp30-site.RDS")
 head(processed_df)
 
 processed_df$FragmentIon <- NA
@@ -38,7 +38,7 @@ protein_df <- protein_df[ , !(names(protein_df) %in% drops)]
 processed_df <- list('PTM' = PTM_df, 'PROTEIN' = protein_df)
 
 ## Fit MSstatsPTM Model --------------------------------------------------------
-summarized_ptm <- dataSummarizationPTM(processed_df, min_feature_count.PTM = 1)
+summarized_ptm <- dataSummarizationPTM(processed_df, min_feature_count.PTM = 3)
 
 model_ptm <- groupComparisonPTM(summarized_ptm, data.type = "LabelFree")
 

@@ -19,5 +19,5 @@
 \contentsline {section}{\numberline {6}Datasets : Biological investigation}{20}{}%
 \contentsline {subsection}{\numberline {6.1}USP30}{20}{}%
 \contentsline {subsection}{\numberline {6.2}Shigella flexneri}{22}{}%
-\contentsline {section}{\numberline {7}Further Considerations}{23}{}%
-\contentsline {subsubsection}{\numberline {7.0.1}Multiple sites per protein}{23}{}%
+\contentsline {section}{\numberline {7}Further Considerations}{25}{}%
+\contentsline {subsubsection}{\numberline {7.0.1}Multiple sites per protein}{25}{}%

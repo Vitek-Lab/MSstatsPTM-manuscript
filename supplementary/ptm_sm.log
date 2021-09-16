@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  9 SEP 2021 12:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  16 SEP 2021 10:04
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1051,7 +1051,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 529--530
 
  []
 
-<sim_new/sim1_FDR.png, id=47, 752.8125pt x 501.875pt>
+<sim_new/sim1_FDR.png, id=46, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FDR.png Graphic file (type png)
 <use sim_new/sim1_FDR.png>
 Package pdftex.def Info: sim_new/sim1_FDR.png  used on input line 533.
@@ -1062,7 +1062,7 @@ LaTeX Warning: Float too large for page by 9.51155pt on input line 537.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<sim_new/sim1_Recall.png, id=48, 752.8125pt x 501.875pt>
+<sim_new/sim1_Recall.png, id=47, 752.8125pt x 501.875pt>
 File: sim_new/sim1_Recall.png Graphic file (type png)
 <use sim_new/sim1_Recall.png>
 Package pdftex.def Info: sim_new/sim1_Recall.png  used on input line 542.
@@ -1072,7 +1072,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 542--543
 
  []
 
-<sim_new/sim1_accuracy.png, id=49, 752.8125pt x 501.875pt>
+<sim_new/sim1_accuracy.png, id=48, 752.8125pt x 501.875pt>
 File: sim_new/sim1_accuracy.png Graphic file (type png)
 <use sim_new/sim1_accuracy.png>
 Package pdftex.def Info: sim_new/sim1_accuracy.png  used on input line 546.
@@ -1083,12 +1083,12 @@ LaTeX Warning: Float too large for page by 9.51155pt on input line 550.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<sim_new/sim3_Recall.png, id=50, 752.8125pt x 501.875pt>
+<sim_new/sim3_Recall.png, id=49, 752.8125pt x 501.875pt>
 File: sim_new/sim3_Recall.png Graphic file (type png)
 <use sim_new/sim3_Recall.png>
 Package pdftex.def Info: sim_new/sim3_Recall.png  used on input line 555.
 (pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
-<sim_new/sim3_Accuracy.png, id=51, 752.8125pt x 501.875pt>
+<sim_new/sim3_Accuracy.png, id=50, 752.8125pt x 501.875pt>
 File: sim_new/sim3_Accuracy.png Graphic file (type png)
 <use sim_new/sim3_Accuracy.png>
 Package pdftex.def Info: sim_new/sim3_Accuracy.png  used on input line 559.
@@ -1099,18 +1099,18 @@ LaTeX Warning: Float too large for page by 31.91154pt on input line 563.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<sim_new/sim1_FC_boxplot.png, id=52, 752.8125pt x 501.875pt>
+<sim_new/sim1_FC_boxplot.png, id=51, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim1_FC_boxplot.png>
 Package pdftex.def Info: sim_new/sim1_FC_boxplot.png  used on input line 568.
 (pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
-<sim_new/sim3_FC_boxplot.png, id=53, 752.8125pt x 501.875pt>
+<sim_new/sim3_FC_boxplot.png, id=52, 752.8125pt x 501.875pt>
 File: sim_new/sim3_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim3_FC_boxplot.png>
 Package pdftex.def Info: sim_new/sim3_FC_boxplot.png  used on input line 572.
-(pdftex.def)             Requested size: 359.36272pt x 239.58008pt.
+(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
 
-LaTeX Warning: Float too large for page by 17.82085pt on input line 576.
+LaTeX Warning: Float too large for page by 31.91154pt on input line 576.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1160,7 +1160,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
 [12 <./sim_new/sim1_FC_boxplot.png> <./sim_new/sim3_FC_boxplot.png>]
-<sim_new/spike_in_msstatsptm_volcano.png, id=77, 752.8125pt x 501.875pt>
+<sim_new/spike_in_msstatsptm_volcano.png, id=76, 752.8125pt x 501.875pt>
 File: sim_new/spike_in_msstatsptm_volcano.png Graphic file (type png)
 <use sim_new/spike_in_msstatsptm_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_msstatsptm_volcano.png  used on input
@@ -1291,15 +1291,16 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
 [19 <./sim/size_grp.png> <./sim/pwr_grp.png>]
+<sim_new/USP30_profile_plot.png, id=116, 1126.96031pt x 599.23875pt>
+File: sim_new/USP30_profile_plot.png Graphic file (type png)
+<use sim_new/USP30_profile_plot.png>
+Package pdftex.def Info: sim_new/USP30_profile_plot.png  used on input line 661
+.
+(pdftex.def)             Requested size: 469.75502pt x 249.78583pt.
 
-LaTeX Warning: Reference `fig:results_table' on page 20 undefined on input line
- 653.
 
-<sim_new/usp30_ven.png, id=116, 692.5875pt x 731.73375pt>
-File: sim_new/usp30_ven.png Graphic file (type png)
-<use sim_new/usp30_ven.png>
-Package pdftex.def Info: sim_new/usp30_ven.png  used on input line 674.
-(pdftex.def)             Requested size: 281.85587pt x 297.79088pt.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1319,7 +1320,62 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
-[21 <./sim_new/usp30_ven.png>]
+[21 <./sim_new/USP30_profile_plot.png>]
+
+Package caption Warning: \label without proper reference on input line 714.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:No_Diff_Shigella_PTM' on page 22 undefined on inp
+ut line 701.
+
+
+Package caption Warning: \label without proper reference on input line 727.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:Diff_Shigella_PTM' on page 22 undefined on input 
+line 701.
+
+<sim_new/No_Difference_Shigella_Profile_Plot.png, id=124, 1179.65718pt x 599.23
+875pt>
+File: sim_new/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
+<use sim_new/No_Difference_Shigella_Profile_Plot.png>
+Package pdftex.def Info: sim_new/No_Difference_Shigella_Profile_Plot.png  used 
+on input line 707.
+(pdftex.def)             Requested size: 469.75502pt x 238.63058pt.
+<sim_new/No_Difference_Shigella_Volcano.png, id=125, 1062.97125pt x 599.23875pt
+>
+File: sim_new/No_Difference_Shigella_Volcano.png Graphic file (type png)
+<use sim_new/No_Difference_Shigella_Volcano.png>
+Package pdftex.def Info: sim_new/No_Difference_Shigella_Volcano.png  used on in
+put line 711.
+(pdftex.def)             Requested size: 469.75502pt x 264.8271pt.
+
+LaTeX Warning: Float too large for page by 41.02768pt on input line 715.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<sim_new/Difference_Shigella_Profile_Plot.png, id=126, 1135.24126pt x 599.23875
+pt>
+File: sim_new/Difference_Shigella_Profile_Plot.png Graphic file (type png)
+<use sim_new/Difference_Shigella_Profile_Plot.png>
+Package pdftex.def Info: sim_new/Difference_Shigella_Profile_Plot.png  used on 
+input line 720.
+(pdftex.def)             Requested size: 469.75502pt x 247.95709pt.
+<sim_new/Difference_Shigella_Volcano.png, id=127, 1118.67938pt x 599.23875pt>
+File: sim_new/Difference_Shigella_Volcano.png Graphic file (type png)
+<use sim_new/Difference_Shigella_Volcano.png>
+Package pdftex.def Info: sim_new/Difference_Shigella_Volcano.png  used on input
+ line 724.
+(pdftex.def)             Requested size: 469.75502pt x 251.63284pt.
+
+LaTeX Warning: Float too large for page by 37.15993pt on input line 728.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1332,7 +1388,27 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 ]
 
-LaTeX Warning: Reference `fig:prot_fdr' on page 23 undefined on input line 699.
+Package fancyhdr Warning: \headheight is too small (0.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
+
+[23 <./sim_new/No_Difference_Shigella_Profile_Plot.png> <./sim_new/No_Differenc
+e_Shigella_Volcano.png>]
+
+Package fancyhdr Warning: \headheight is too small (0.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
+
+[24 <./sim_new/Difference_Shigella_Profile_Plot.png> <./sim_new/Difference_Shig
+ella_Volcano.png>]
+
+LaTeX Warning: Reference `fig:prot_fdr' on page 25 undefined on input line 744.
 
 
 
@@ -1343,7 +1419,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
-[23
+[25
 
 ] (ptm_sm.bbl)
 
@@ -1354,7 +1430,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-11.78pt}.
 
-[24
+[26
 
 ] (ptm_sm.aux)
 
@@ -1362,10 +1438,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19463 strings out of 479334
- 402482 string characters out of 2853721
- 712522 words of memory out of 3000000
- 36482 multiletter control sequences out of 15000+200000
+ 19496 strings out of 479334
+ 403984 string characters out of 2853721
+ 712587 words of memory out of 3000000
+ 36511 multiletter control sequences out of 15000+200000
  421986 words of font info for 95 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,15n,89p,1469b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1392,9 +1468,9 @@ y6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ptm_sm.pdf (24 pages, 1732989 bytes).
+Output written on ptm_sm.pdf (26 pages, 1501806 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
+ 209 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 98 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
