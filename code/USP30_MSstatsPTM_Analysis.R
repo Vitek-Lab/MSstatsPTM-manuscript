@@ -1,6 +1,8 @@
 
 library(tidyverse)
 library(MSstatsPTM)
+library(data.table)
+library(gridExtra)
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
@@ -40,21 +42,30 @@ venn.diagram(
 combo <- merge(model_ptm$ADJUSTED.Model, model_ptm$PTM.Model, all.x = TRUE, by = c("Protein", "Label"))
 
 combo$abs_diff <- abs(combo$log2FC.x - combo$log2FC.y)
-pot <- (combo %>% arrange(desc(abs_diff)) %>% head(100) %>% top_n(100) %>% select(Protein))[[1]]
+pot <- combo %>% arrange(desc(abs_diff)) %>% head(1000) %>% top_n(1000)
 
 
-for (i in seq_along(pot)){
-  
-  temp <- summarized_ptm$PTM$FeatureLevelData %>% filter(PROTEIN == pot[[i]])
+for (i in seq_len(nrow(pot))){
+
+  temp <- summarized_ptm$PTM$FeatureLevelData %>% filter(PROTEIN == pot[i, Protein])
   num <- length(unique(temp$FEATURE))
+  
   if (num >= 2){
-    print(num)
-    print(pot[[i]])
+    temp_p <- summarized_ptm$PROTEIN$FeatureLevelData %>% 
+      filter(PROTEIN == pot[i, GlobalProtein])
+    
+    num2 <- length(unique(temp_p$FEATURE))
+    
+    if (num2 >= 2){
+      print(num)
+      print(num2)
+      print(pot[i, Protein])
+    }
   }
 }
 
 
-ptm_list1 <- c("Q16186_K034")
+ptm_list1 <- c("P52209_K059")
 
 # pSTY_features$BioReplicate <- factor(pSTY_features$BioReplicate, 
 #                                      levels = c("WT_Uninfect_1", "WT_Uninfect_2", "WT_Uninfect_3" , "WT_Uninfect_4", 
@@ -76,7 +87,7 @@ summarized$Feature <- "Summary"
 test <- rbindlist(list(features, summarized), fill = TRUE)
 
 p1 <- test %>% ggplot() + 
-  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature)) + #,  size = Feature)
+  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature,  size = Feature)) +
   geom_point(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature), size = 3) +
   geom_vline(data=data.frame(x = c(4.5, 8.5, 12.5)), 
              aes(xintercept=as.numeric(x)), linetype = "dashed") + 
@@ -92,42 +103,46 @@ p1 <- test %>% ggplot() +
         title = element_text(size = 16),
         strip.text = element_text(size = 12),
         legend.position = "None")  + 
-  annotate("text", x = 2.5, y = 29.5, label = "CCCP", size = 4.5) +
-  annotate("text", x = 6.5, y = 29.5, label = "Combo", size = 4.5) +
-  annotate("text", x = 10.5, y = 29.5, label = "Ctrl", size = 4.5) + 
-  annotate("text", x = 14.5, y = 29.5, label = "USP30", size = 4.5) + 
-  ylim(23, 29.5)
+  annotate("text", x = 2.5, y = 28, label = "CCCP", size = 4.5) +
+  annotate("text", x = 6.5, y = 28, label = "Combo", size = 4.5) +
+  annotate("text", x = 10.5, y = 28, label = "Ctrl", size = 4.5) + 
+  annotate("text", x = 14.5, y = 28, label = "USP30", size = 4.5) + 
+  ylim(19.5, 28)
 
 p1
 
-prot <- 'TTP_MOUSE|P22893'
+prot <- 'P52209'
 
-global_sum_msstats_norm$ProteinName <- global_sum_msstats_norm$Protein
-global_sum_msstats_norm$log2Intensity <- global_sum_msstats_norm$Abundance
-global_sum_msstats_norm$Feature <- "Summary"
+features <- summarized_ptm$PROTEIN$FeatureLevelData %>% filter(PROTEIN == prot)
+features$Feature <- "PSM"
+features$Protein <- features$PROTEIN
+features$Abundance <- features$ABUNDANCE 
 
-prot_plot <- py_sum$PROTEIN$FeatureLevelData %>% filter(ProteinName == prot)
-prot_plot$Feature <- "PSM"
-test <- rbindlist(list(prot_plot, global_sum_msstats_norm %>% filter(ProteinName == prot)), 
-                  fill = TRUE)
+temp <- data.frame(originalRUN = c("CCCP-B1T1", "CCCP-B1T2", "CCCP-B2T1" , "CCCP-B2T2",
+                                   "Combo-B1T1", "Combo-B1T2", "Combo-B2T1" , "Combo-B2T2",
+                                   "Ctrl-B1T1", "Ctrl-B1T2", "Ctrl-B2T1" , "Ctrl-B2T2",
+                                   "USP30_OE-B1T1", "USP30_OE-B1T2", "USP30_OE-B2T1" , "USP30_OE-B2T2"),
+                   Abundance = c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
+temp$Feature <- "temp"
+temp$FEATURE <- "temp2"
+features <- features %>% filter(censored == FALSE)
 
-test$BioReplicate <- factor(test$BioReplicate, 
-                            levels = c("WT_Uninfect_1", "WT_Uninfect_2", "WT_Uninfect_3" , "WT_Uninfect_4", 
-                                       "WT_Early_1", "WT_Early_2", "WT_Early_3", "WT_Early_4",
-                                       "WT_Late_1", "WT_Late_2", "WT_Late_3", "WT_Late_4", 
-                                       "KO_Uninfect_1", "KO_Uninfect_2" , "KO_Uninfect_3", 
-                                       "KO_Early_1", "KO_Early_2", "KO_Early_3", "KO_Early_4",
-                                       "KO_Late_1", "KO_Late_2", "KO_Late_3", "KO_Late_4"))
+summarized <- summarized_ptm$PROTEIN$ProteinLevelData %>% filter(Protein == prot)
+summarized$Abundance <- summarized$LogIntensities 
+summarized$Feature <- "Summary"
 
-p2 <- test %>% ggplot() +
-  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM, color = Feature, size =Feature)) + 
-  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM, color = Feature), size = 3) + 
-  geom_vline(data=data.frame(x = c(2.5, 4.5, 6.5, 8.5, 10.5)), 
+test <- rbindlist(list(features, summarized,temp), fill = TRUE)
+
+
+
+p2 <- test %>% ggplot() + 
+  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature,  size = Feature)) + 
+  geom_point(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature), size = 3) +
+  geom_vline(data=data.frame(x = c(4.5, 8.5, 12.5)), 
              aes(xintercept=as.numeric(x)), linetype = "dashed") + 
-  scale_colour_manual(values = c("#C3C3C3", "#D55E00")) + 
-  scale_size_manual(values = c(1, 2)) + 
+  scale_colour_manual(values = c("#C3C3C3", "#D55E00", "#D55E00")) + 
+  scale_size_manual(values = c(1, 2,3)) + 
   labs(title = prot, x = "BioReplicate", y = "Abundance") + 
-  facet_grid(Mixture~.) + 
   theme_bw() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12), 
         axis.text.y = element_text(size = 12), 
@@ -137,12 +152,10 @@ p2 <- test %>% ggplot() +
         title = element_text(size = 16),
         strip.text = element_text(size = 12),
         legend.position = "None")  + 
-  annotate("text", x = 1.5, y = 22.75, label = "WT_Uninfect", size = 4.5) +
-  annotate("text", x = 3.5, y = 22.75, label = "WT_Early", size = 4.5) +
-  annotate("text", x = 5.5, y = 22.75, label = "WT_Late", size = 4.5) + 
-  annotate("text", x = 7.5, y = 22.75, label = "KO_Uninfect", size = 4.5) + 
-  annotate("text", x = 9.5, y = 22.75, label = "KO_Early", size = 4.5) + 
-  annotate("text", x = 11.5, y = 22.75, label = "KO_Late", size = 4.5) + 
-  ylim(9, 23)
+  annotate("text", x = 2.5, y = 28, label = "CCCP", size = 4.5) +
+  annotate("text", x = 6.5, y = 28, label = "Combo", size = 4.5) +
+  annotate("text", x = 10.5, y = 28, label = "Ctrl", size = 4.5) + 
+  annotate("text", x = 14.5, y = 28, label = "USP30", size = 4.5) + 
+  ylim(19.5, 28)
 
 grid.arrange(p1, p2, nrow = 1)
