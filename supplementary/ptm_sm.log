@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  17 SEP 2021 11:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  20 SEP 2021 15:43
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1006,7 +1006,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 LaTeX Warning: Reference `fig:prot_fpr' on page 8 undefined on input line 514.
 
 
-Package caption Warning: \label without proper reference on input line 591.
+Package caption Warning: \label without proper reference on input line 588.
 See the caption package documentation for explanation.
 
 
@@ -1028,14 +1028,14 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 ]
 
-Package caption Warning: \label without proper reference on input line 552.
+Package caption Warning: \label without proper reference on input line 549.
 See the caption package documentation for explanation.
 
 
 LaTeX Warning: Reference `fig:sim1_fpr' on page 9 undefined on input line 535.
 
 
-Package caption Warning: \label without proper reference on input line 591.
+Package caption Warning: \label without proper reference on input line 588.
 See the caption package documentation for explanation.
 
 
@@ -1043,7 +1043,7 @@ LaTeX Warning: Reference `fig:fc_boxplot' on page 9 undefined on input line 535
 .
 
 
-Package caption Warning: \label without proper reference on input line 552.
+Package caption Warning: \label without proper reference on input line 549.
 See the caption package documentation for explanation.
 
 
@@ -1256,7 +1256,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 [18 <./sim_new/spike_in_fc.png>]
 
-Package caption Warning: \label without proper reference on input line 685.
+Package caption Warning: \label without proper reference on input line 682.
 See the caption package documentation for explanation.
 
 
@@ -1264,7 +1264,7 @@ LaTeX Warning: Reference `fig:No_Diff_Shigella_PTM' on page 19 undefined on inp
 ut line 669.
 
 
-Package caption Warning: \label without proper reference on input line 698.
+Package caption Warning: \label without proper reference on input line 695.
 See the caption package documentation for explanation.
 
 
@@ -1430,9 +1430,6 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  19496 strings out of 479334
@@ -1465,7 +1462,7 @@ y6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ptm_sm.pdf (26 pages, 1502805 bytes).
+Output written on ptm_sm.pdf (26 pages, 1502804 bytes).
 PDF statistics:
  209 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
