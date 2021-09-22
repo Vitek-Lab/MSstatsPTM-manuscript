@@ -26,7 +26,7 @@ aa <- (delta / (z_alpha + z_beta)) ^2
 ## Original code containing sigma for subject.. can include or assume 0 for now
 ## numSample = round(2 * (median_sigma_error + median_sigma_subject) / aa, 0)
 
-cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999")
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#999999", "#0072B2", "#D55E00", "#CC79A7", "#999999")
 
 numSample_nomod_1 <- round(2 * (.1) / aa, 0)
 numSample_nomod_2 <- round(2 * (.2) / aa, 0)
@@ -38,7 +38,7 @@ p1 <- data.frame("SD" = c(rep(".1", length(numSample_nomod_1)),
            "Log2FC" = c(desiredFC, desiredFC, desiredFC),
            "num_samples" = c(numSample_nomod_1, numSample_nomod_2, numSample_nomod_3)) %>%
   ggplot() + geom_line(aes(x = Log2FC, y = num_samples, group = SD, color = SD), size = 1.2) +
-  scale_color_discrete(cbPalette) +
+  scale_colour_manual(values=cbPalette) +
   labs(title = "Replicates Needed to Reach Power of .9", y = "# of replicates per condition") +
   theme_bw() +
   theme(axis.text.x = element_text(size = 12),
@@ -60,12 +60,13 @@ numSample_nomod_4 <- round((2 * .2) / aa, 0)
 p2 <- data.frame("SD" = c(rep(".2, .1", length(numSample_nomod_1)),
                           rep(".2, .2", length(numSample_nomod_1)),
                           rep(".2, .4", length(numSample_nomod_1)),
-                          rep("Baseline - .2", length(numSample_nomod_1))),
+                          rep("Baseline: .2", length(numSample_nomod_1))),
                  "Log2FC" = c(desiredFC, desiredFC, desiredFC, desiredFC),
                  "num_samples" = c(numSample_nomod_1, numSample_nomod_2, numSample_nomod_3,
                                    numSample_nomod_4)) %>%
-  ggplot() + geom_line(aes(x = Log2FC, y = num_samples, group = SD, color = SD)) +
-  labs(title = "Replicates Needed to Reach Power of .9", y = "# of replicates per condition") +
+  ggplot() + geom_line(aes(x = Log2FC, y = num_samples, group = SD, color = SD), size = 1.2) +
+  scale_colour_manual(values=cbPalette) +
+  labs(title = "Replicates Needed to Reach Power of .9 with Adjusted SD", y = "# of replicates per condition") +
   theme_bw() +
   theme(axis.text.x = element_text(size = 12),
         axis.text.y = element_text(size = 12),
@@ -75,4 +76,6 @@ p2 <- data.frame("SD" = c(rep(".2, .1", length(numSample_nomod_1)),
         title = element_text(size = 16),
         strip.text = element_text(size = 12))
 
+png("supplementary/sim_new/power_analysis_sd_combined.png", width = 750, height = 500)
 p2
+dev.off()
