@@ -715,29 +715,46 @@ An example profile plot for this experiment can be seen in \sfigref{fig:USP30_pr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sample size calculation and power analysis}
 
-The proposed approach adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. We compared the required sample size with or without the adjustment to highlight the property (\sfigref{fig:size_prot}), based on a design of two conditions, in consideration of three pairs of standard deviations of log-intensities for modified and unmodified peptides: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). 
-%We considered a design with two conditions, where standard deviations of log-intensities of both modified and unmodified peptides were both set as $0.2$. 
-We then characterized the advantage of general statistical modeling in complex designs in terms of sample size calculation (\sfigref{fig:size_grp}) and power analysis (\sfigref{fig:pwr_grp}). 
+The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. Given a desired power of .9, varying standard deviations, and an expected fold change, the number of replicates per condition can be seen in \sfigref{fig:sample_size}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{sim/size_prot}
-\caption{Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. The discrepancy can be profound if the uncertainty associated with the protein abundance estimate is greater than that of PTM abundance estimate. Sample size calculation without accounting for the uncertainty would lead to under-powered studies. \label{fig:size_prot}}
+\includegraphics[width=\textwidth]{sim_new/simple_power_analysis}
+\caption{The number of replicates per condition required to reach a power of .9 can be seen in the plot. At a high standard deviation and low expected fold change the number of replicates is unrealistically high. As the expected fold change increases the number of replicates needed decreases dramatically. The standard deviation of .1 expectantly shows the least number of replicates needed regardless of fold change.}
+\label{fig:sample_size}
 \end{figure}
 
+
+As described in Section \ref{sec:test} the proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. 
+
+We compared the required sample size with varying standard deviations for the modified and unmodified peptide models. Three pairs of standard deviations of log-intensities for modified and unmodified peptides were used: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). In the first pair the standard deviation for the unmodified peptide was less than the modified, in the second the standard deviations are the same, and in the third the standard deviation for the unmodified peptide was more than for the modified peptide. Again the desired power was .9 and the expected fold change was varied. The results can be seen in \sfigref{fig:power_sd_combo}
+
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{sim/size_grp}
+\includegraphics[width=\textwidth]{sim_new/power_analysis_sd_combined}
+\caption{When the unmodified peptide has a low standard deviation the number of replicates is very similar to the baseline. As the standard deviation increases the number of replicates increases greatly. When the unmodified stand deviation is much higher than the modified, we can see that many more replicates are needed to reach the same power.}
+\label{fig:power_sd_combo}
+\end{figure}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=\textwidth]{sim/size_prot}
+%\caption{Protein-level adjustment relies on the inference of protein abundance, %which introduces additional uncertainty in the estimate of PTM difference. %Therefore, the required sample size to detect a systematic change is higher than as %expected for standard differential analysis without adjustment. The discrepancy can %be profound if the uncertainty associated with the protein abundance estimate is %greater than that of PTM abundance estimate. Sample size calculation without %accounting for the uncertainty would lead to under-powered studies. %\label{fig:size_prot}}
+%\end{figure}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=\textwidth]{sim/size_grp}
 %\includegraphics[width=.725\textwidth]{sim/size_grp}
-\caption{In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. \label{fig:size_grp}}
-\end{figure}
+%\caption{In complex designs, simultaneously analyzing all the conditions% effectively increases the degrees of freedom and requires fewer replicates. %\label{fig:size_grp}}
+%\end{figure}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\textwidth]{sim/pwr_grp}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=\textwidth]{sim/pwr_grp}
 %\includegraphics[width=.725\textwidth]{sim/pwr_grp}
-\caption{Statistical power can be improved by increasing the sample size and analyzing multiple conditions together. \label{fig:pwr_grp}}
-\end{figure}
+%\caption{Statistical power can be improved by increasing the sample size and %analyzing multiple conditions together. \label{fig:pwr_grp}}
+%\end{figure}
 
 
 
