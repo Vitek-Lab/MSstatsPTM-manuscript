@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  20 SEP 2021 15:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  23 SEP 2021 10:11
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1057,8 +1057,13 @@ File: biblatex.cfg
 ty
 Package: xr 2020-05-10 v5.06 eXternal References (DPC)
 )
-Package xr Info: IMPORTING LABELS FROM ../supplementary/ptm_sm.aux on input lin
-e 80.
+
+Package xr Warning: 
+No file D:NortheasternResearchMSstatsMSstatsPTM-manuscriptsupplementaryptm_sm.a
+ux
+LABELS NOT IMPORTED.
+ on input line 80.
+
 \@quotelevel=\count442
 \@quotereset=\count443
 
@@ -1232,10 +1237,10 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28541 strings out of 479334
- 543410 string characters out of 2853721
- 1233744 words of memory out of 3000000
- 45489 multiletter control sequences out of 15000+200000
+ 28514 strings out of 479334
+ 542879 string characters out of 2853721
+ 1233124 words of memory out of 3000000
+ 45464 multiletter control sequences out of 15000+200000
  412108 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,7n,130p,2509b,1361s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1249,7 +1254,7 @@ b><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmr17.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/amsfonts/cm/cmti10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (10 pages, 428890 bytes).
+Output written on MSstatsPTM_Main.pdf (10 pages, 428769 bytes).
 PDF statistics:
  211 PDF objects out of 1000 (max. 8388607)
  47 named destinations out of 1000 (max. 500000)

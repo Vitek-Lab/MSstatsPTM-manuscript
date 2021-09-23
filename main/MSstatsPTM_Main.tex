@@ -77,7 +77,7 @@
 \def\tabref#1{{\bf Table~\ref{tab:#1}}}
 
 \usepackage{xr}
-\externaldocument[supp-]{ptm_sm}
+\externaldocument[supp-]{D:\Northeastern\Research\MSstats\MSstatsPTM-manuscript\supplementary\ptm_sm}
 %\def\sfigref#1{{\bf Supplementary Fig.~\ref{fig:#1}}}
 %\def\snoteref#1{{\bf Supplementary Note~\ref{sec:#1}}}
 %\def\snoteshortref#1{{\bf Suppl. Note~\ref{sec:#1}}}
@@ -183,14 +183,19 @@ The statistical modeling approaches discussed above can also be extended to Tand
 \section{Results}
 
 \subsection*{Computer simulations}
+\label{sec:comp_sim}
 
-The proposed statistical approach methods were evaluated using computer simulation. Specifically, their properties under adjustment with respect to protein abundance and batch effects were evaluated. Two simulations were ran, one including a high number of features and no missing values, and one with few modified features and including missing values.
+The proposed statistical approach methods were evaluated using computer simulation. Specifically, their properties under adjustment with respect to protein abundance were evaluated. Two simulations were ran, one including a high number of features and no missing values, and one with few modified features and including missing values.
 
-\paragraph*{Computer simulation: protein-level adjustment.} 
+Differential intensity levels of modified peptides may be due to changes in modification, change in protein abundance, or both. The proposed approach adjusts the abundance with respect to unmodified peptides by combining the inference of modified and unmodified peptide abundances. Alternatively, two-sample t-test or limma that takes as input the ratio between modified and unmodified peptide intensities (difference on log scale) is commonly applied for the same purpose. In real experiments, multiple inter-related conditions are often compared together. Whereas t-test uses measurements from the two conditions being compared, the proposed approach and limma leverage measurements in all conditions for the inference of underlying abundance. We evaluated the impact with such adjustment by computer simulation, considering the following factors: with/without protein-level changes, effect size, number of replicates and number of conditions. Details of the simulations can be found in Supplementary %\cref{supp-sec:sim}. 
 
-Differential intensity levels of modified peptides may be due to changes in modification, change in protein abundance, or both. The proposed approach adjusts the abundance with respect to unmodified peptides by combining the inference of modified and unmodified peptide abundances. Alternatively, two-sample t-test or limma that takes as input the ratio between modified and unmodified peptide intensities (difference on log scale) is commonly applied for the same purpose. In real experiments, multiple inter-related conditions are often compared together. Whereas t-test uses measurements from the two conditions being compared, the proposed approach and limma leverages measurements in all conditions for the inference of underlying abundance. We evaluated the impact with such adjustment by computer simulation, considering the following factors: with/without protein-level changes, effect size, number of replicates and number of conditions. Details of the simulation can be found in Supplementary %\cref{supp-sec:sim}. 
+\paragraph*{Computer simulation 1} 
 
-In this simulation, when the modification changes were entirely due to the changes in protein abundance across conditions, analysis without accounting for the protein-level changes resulted in off-target, high false positive rates \todo{figref (Fig. 4b)}. As shown in \todo{figref Fig. 4c-e}, in detection of systematic changes in PTM abundance, the proposed approach improved statistical power with small sample sizes in almost all the considered scenarios. The advantage by using the proposed approach over t-test became more profound in the presence of missing data \todo{figref (Fig. 4d-e)}. In cases with small sample sizes (e.g., 2 replicates) as shown in \todo{figref Fig. 4d}, performance by t-test decreased dramatically with one missing value, and increasing the log-fold change to 2 did not effectively reduce the negative impact. Two-sample t-test only used data within the groups of interest while ignoring the rest of the data. Consequently, it gave similar performance across cases with different number of conditions. In contrast, the proposed approach leveraged all available information, which resulted in improved power with increased number of conditions (see for example, the improved performance in \todo{figref Fig. 4e} [with 4 conditions] over \todo{figref Fig. 4d} [with 2 conditions]). Further results are provided in Supplementary \todo{link to Sec. S4.1}. 
+In this simulation, a clean dataset was generated with a high number of modified and unmodified peptide features and no missing values. Not accounting for changes in unmodified peptide level resulted in a high false discovery rate for all methods\todo{Reference supplementary figure}. When adjusting for changes in the unmodified peptide, all methods performed similarly in terms of FDR. When looking at recall and accuracy the proposed approach and limma performed similarly, while t-test lagged behind. Two-sample t-test only used data within the groups of interest while ignoring the rest of the data. Consequently, it gave similar performance across cases with different number of conditions. In contrast, the proposed approach and limma leveraged all available information, which resulted in improved power with increased number of conditions. Further results are provided in Supplementary \todo{link to Sec. S4.1.1}. 
+
+\paragraph*{Computer simulation 2} 
+
+In this simulation real world experimental conditions were introduced, including missing values and low number of modified features. In this case, changes in unmodified peptide level still needed to be accounted for to control the FDR in all methods. Once controlling for changes in unmodified peptide, it is clear that the proposed method performed stronger across all methods when compared to limma and t-test. The proposed method well calibrated the Recall rate and outperformed the other methods. Additionally, in overall accuracy the proposed method showed the strongest performance, even when the number of biological replicates were lower. Finally, the distribution of estimated fold changes is shown in \todo{reference sim2 boxplot}. The proposed method shows a tighter distribution of estimated fold changes around the true fold change, while the other methods showed much wider distributions. Further results are provided in Supplementary \todo{link to Sec. S4.1.2}. 
 
 %\paragraph*{Computer simulation: batch effects.} 
 
@@ -200,26 +205,38 @@ In this simulation, when the modification changes were entirely due to the chang
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Spike-in experiment}
-\todo{Need to write results of this experiment}
 
 We evaluated our approach using a custom designed spike-in benchmark experiment where 50 heavy-labeled KGG motif peptides from 20 human proteins were used as spike-in peptides. Quantitative changes in protein and site abundance changes of these 20 proteins were the target of the benchmark. Unmodified peptides from Human Lysate were used as the estimate of global protein abundance changes. All comparisons with respect to human lysate serve as a null model, there was no change in global protein nor PTM abundance between conditions. Additionally, E coli Lysate was used to normalize total protein levels prior to enrichment or global protein profiling. Four mixes of spike in peptides and Human Lysate were created to create conditions with known fold change. \todo{Add figure of mixtures} Two sets of data were acquired for each mixture: modifed peptide data, including the spike in KGG enriched peptides, and unmodified peptides from Human Lysate. These datasets were used as the PTM and global protein data.
 
 \todo{figref volcano plot of spike in peptides}
 
-In *FigXX* we can clearly see the red labeled spike-in peptides do not follow the expected fold change before adjusting for changes in global protein level. After adjustment the estimated fold change is much close to expectation. Additionally, background peptides that should not show a significant change, colored grey, show many false positives before adjustment is made. Again after adjustment the results improve, and the number of false positives decrease significantly. In this experiment adjusting to remove confounding with changes in global protein abundance leads to a more accurate conclusion about the effect of modified peptides between conditions.
+In *FigXX* we can clearly see the red labeled spike-in peptides do not follow the expected fold change before adjusting for changes in global protein level. After adjustment the estimated fold change is more in line with expectation. Additionally, background peptides serving as the null model, colored grey, show many false positives before adjustment is made. Again after adjustment the results improve and the number of false positives decrease significantly. 
+
+\todo{Add limma plot}
+
+In *FigXX* we can see the results of the same experiment modeled using limma with protein adjustment discussed in Section~\ref{sec:comp_sim}. Again the red labeled spike-in peptides are more inline with expected fold change after adjustment is applied. However, using limma we can see that the majority of the differential spike in peptides are not showing a significant adjusted pvalue. In this case, usin limma would have resulted in missing the majority of differential modified peptides.  In terms of false positives, the results are very similar to the propsed method, with many false positives before adjustment and much fewer afterward.
+
+Further results for this experiment are provided in Supplementary \todo{link to Sec. S4.2}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Dilution experiment [What was this experiment?]}
+%\subsection*{Dilution experiment [What was this experiment?]}
 
-We evaluated our approach using a custom designed dilution benchmark experiment where two sets of liver samples from five Atg16L1 deficient mice (one with KGG enrichment followed by trypsin digestion, one with trypsin digestion alone) were prepared. Following a randomized order, each sample was injected at three different concentrations 4ul, 2ul, and 1ul. The experiment resulted in 15 KGG and 15 global profiling runs. To correct for run-to-run variation, the AQUA peptide mixture was spiked into each sample. There are 4696 ubiquitinated proteins identified in this dataset. Among these, 3173 have corresponding measurements from global data.
-To simulate the effects of changes in protein abundance, we created three groups of data by matching one concentration for the KGG data with one for the global data: K1P1, K2P2, and K4P4. Systematic changes in the abundance of ubiquitinated sites between the groups are present in the KGG data. These changes are considered as artifacts driven by the changes in the abundance of their corresponding proteins. Using the comparison of K2P2 vs. K1P1 as example, there are 19355 possible comparisons with KGG data, and 3860 changes are detected. Out of the 19355 sites, 15036 have corresponding measurements from global data and are eligible for protein-level correction. The correction significantly reduced the number of false positives to 79. Similar observations were made in the other two comparisons K4P4 vs. K2P2 and K4P4 vs. K1P1, as shown in Table XX. \todo{Create or find this table}
+%We evaluated our approach using a custom designed dilution benchmark experiment where two sets of liver samples from five Atg16L1 deficient mice (one with KGG enrichment followed by trypsin digestion, one with trypsin digestion alone) were prepared. Following a randomized order, each sample was injected at three different concentrations 4ul, 2ul, and 1ul. The experiment resulted in 15 KGG and 15 global profiling runs. To correct for run-to-run variation, the AQUA peptide mixture was spiked into each sample. There are 4696 ubiquitinated proteins identified in this dataset. Among these, 3173 have corresponding measurements from global data.
+%To simulate the effects of changes in protein abundance, we created three groups of data by matching one concentration for the KGG data with one for the global data: K1P1, K2P2, and K4P4. Systematic changes in the abundance of ubiquitinated sites between the groups are present in the KGG data. These changes are considered as artifacts driven by the changes in the abundance of their corresponding proteins. Using the comparison of K2P2 vs. K1P1 as example, there are 19355 possible comparisons with KGG data, and 3860 changes are detected. Out of the 19355 sites, 15036 have corresponding measurements from global data and are eligible for protein-level correction. The correction significantly reduced the number of false positives to 79. Similar observations were made in the other two comparisons K4P4 vs. K2P2 and K4P4 vs. K1P1, as shown in Table XX. \todo{Create or find this table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Re-analysis of published dataset: TMT experiment}
+\subsection*{Re-analysis of published datasets}
+\subsubsection*{IpaH7.8}
 
-To evaluate our approach on TMT experiments we reanalyzed an experiment targeting primary murine macrophages infected with Shigella flexneri (S.flexneri). \cite{Maculins} Tandem mass tagging was used to quantify changes in total proteins, phosphorylation, and ubiquitination in Wild type (WT) controls and ATG16L1-deficient (cKO) bone marrow macrophages (BMDMs) either infected or uninfected with Shigella flexneri. 11-plex isobaric multiplex was used with two separate mixtures. Cell lysates were prepared over three different time periods, either uninfected, infected at early (45-60 min) or infected at late (3-3.5 hour) time points. There were 103,700 peptides mapping to 9,430 proteins in the global profiling run. Additionally, there were 25,600 unique phosphorylation sites and 12,400 KGG ubiquitination sites. About ~90\% of the identified modified peptides derived from proteins that were also quantified in the global profiling run.
+\cite{LUCHETTI2021}
+
+
+\subsubsection{Shigella flexneri}
+To evaluate our approach we reanalyzed an experiment targeting primary murine macrophages infected with Shigella flexneri (S.flexneri). \cite{Maculins} Tandem mass tagging was used to quantify changes in total proteins, phosphorylation, and ubiquitination in Wild type (WT) controls and ATG16L1-deficient (cKO) bone marrow macrophages (BMDMs) either infected or uninfected with Shigella flexneri. 11-plex isobaric multiplex was used with two separate mixtures. Cell lysates were prepared over three different time periods, either uninfected, infected at early (45-60 min) or infected at late (3-3.5 hour) time points. There were 103,700 peptides mapping to 9,430 proteins in the global profiling run. Additionally, there were 25,600 unique phosphorylation sites and 12,400 KGG ubiquitination sites. About ~90\% of the identified modified peptides derived from proteins that were also quantified in the global profiling run.
 
 The major results are summarized below.
+
+\subsubsection{USP30}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
