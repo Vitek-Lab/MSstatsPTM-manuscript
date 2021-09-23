@@ -632,9 +632,71 @@ Again we consider three different methods and assess their performance: the meth
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Datasets : Biological investigation}
 
+\subsection{IpaH7.8}
+
+In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the protein gasdermin D (GSDMD). Multiplex proteomics was used to quantify the abundance of total protein, and ubiquitination in human epithelial cells. Cells were either infected or uninfected with IpaH7.8-deficient Shigella flexneri and measurements were taken at different time periods. Uninfected cells were measured at 0 and 6 hours, while infected cells were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. The experiment was inbalanced with two bioreplicates per condition for all conditions except for infected 1 hour. The experimental design can be seen in Table~\ref{table:ipah_design}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+ Condition & BioReplicate & Channel \\ [0.5ex]
+ \hline\hline
+ Dox1hr & Dox1hr\_1 & 127C\\
+ \hline
+ Dox2hr & Dox2hr\_1 & 128N\\
+\hline
+ Dox2hr & Dox2hr\_2 & 130C\\
+\hline
+ Dox4hr & Dox4hr\_1 & 128C\\
+\hline
+ Dox4hr & Dox4hr\_2 & 131C\\
+\hline
+ Dox6hr & Dox6hr\_1 & 129N\\
+\hline
+ Dox6hr & Dox6hr\_2 & 131N\\
+\hline
+ NoDox0hr & NoDox0hr\_1 & 126C\\
+\hline
+ NoDox0hr & NoDox0hr\_2 & 129C\\
+\hline
+ NoDox6hr & NoDox6hr\_1 & 127N\\
+\hline
+ NoDox6hr & NoDox6hr\_2 & 130N\\
+\hline
+
+\end{tabular}
+\caption{The experimental design of the IpaH7.8 experiment}
+\label{table:ipah_design}
+\end{table}
+
+A model was fit for the total protein, and ubiquitination separately, as described previously for TMT experiments in Section~\ref{sec:tmtmethod}. The model formula can be seen below.
+
+\todo{only one mixture so we probably wouldn't include the mixture as a term in the model?}
+
+$$Y_{mcb} = \mu + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
+
+$$\sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \epsilon_{mcb} ~ \sim N(0, \sigma^2)$$
+
+The results of the proposed method to this experiment can be seen in \sfigref{fig:ipah_figures}.
+
+\begin{figure}[h!]
+\centering
+ \begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{sim_new/IpaH_prof_plot}
+	\caption{Comparing the global profiling of protein $GSDMD\_HUMAN|P57764$ with the ubiquitination of the protein at site $K62$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the conditions follow different trends. Specifically, there appears to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there is a large negative change when looking at the unmodified plot. This indicates the modification is confounded with changes in the unmodified protein.}
+ \end{subfigure}
+ \begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{sim_new/IpaH_volcano_plot}
+	\caption{Volcano plots of Dox4hr vs Dox1hr both before and after protein adjustment. The $GSDMD\_HUMAN|P57764\_K62$ modification is highlighted. Before adjustment the modification has a small fold change and insignificant adjusted pvalue. After adjustment the fold change is much larger and the adjusted pvalue is very significant. In this case the proposed method allows us to identify differential modified peptides that could have otherwise been missed.}
+ \end{subfigure}
+\label{fig:ipah_figures}
+\end{figure}
+
+\clearpage
 \subsection{Shigella flexneri}
 
-In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table ~\ref{table:shigella_design}.
+In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
 
 \begin{table}[h!]
 \centering
@@ -660,7 +722,7 @@ Late (3 Hour) & 128N & 131N & 128N & 131N & \\
 \label{table:shigella_design}
 \end{table}
 
-A model was fit for the total protein, phosphorylation, and ubiquitination seperately, as described previously for TMT experiments. The model formula can be seen below.
+A model was fit for the total protein, phosphorylation, and ubiquitination separately, as described previously for TMT experiments. The model formula can be seen below.
 
 $$Y_{mcb} = \mu + Mixture_m + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
 

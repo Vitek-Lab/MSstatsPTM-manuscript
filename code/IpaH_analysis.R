@@ -1,0 +1,181 @@
+
+library(MSstatsPTM)
+library(data.table)
+library(tidyverse)
+library(gridExtra)
+library(ggrepel)
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+ptm_input <- read.csv("../data/IpaH_PTM_Input.txt")
+protein_input <- read.csv("../data/Ipah_Global_Input.txt", sep = "\t")
+protein_input$FeatureType <- "Peptide"
+protein_input$Abundance <- log2(protein_input$Intensity)
+
+ptm_summarization <- read.csv("../data/Ipah_KGG_TMT11_corrected_msstats_quant_combined_results.txt",
+                              sep = "\t")
+summarized_model <- ptm_summarization %>% filter(PeptideSequence == "Model")
+protein_summarization <- read.csv("../data/Ipah_Global_TMT11_msstats_quant_results.txt",
+                                  sep = "\t")
+
+protein_summarization$PeptideSequence <- "Model"
+protein_summarization$FeatureType <- "Model"
+protein_summarization_combined <- rbindlist(list(protein_input, protein_summarization), fill = TRUE)
+
+
+unadj_ptm_model <- read.csv("../data/Ipah_PTM_test_results.txt", sep = "\t")
+adj_ptm_model <- read.csv("../data/Ipah_PTM_Adjusted_test_results.txt", sep = "\t")
+
+combined_models <- merge(adj_ptm_model, unadj_ptm_model, all.x=TRUE, all.y=TRUE, by = c("Protein", "Label"))
+
+combined_models$FC_Diff <- abs(combined_models$log2FC.x - combined_models$log2FC.y)
+combined_models %>% arrange(desc(FC_Diff))
+
+
+## Profile Plots
+"GSDMD_HUMAN|P57764_K204"
+"GSDMD_HUMAN|P57764_K62"
+
+gsmd_sum <- protein_summarization_combined %>% filter(ProteinName == "GSDMD_HUMAN|P57764")
+gsmd_204_sum <- ptm_summarization %>% filter(ProteinName == "GSDMD_HUMAN|P57764_K204")
+gsmd_62_sum <- ptm_summarization %>% filter(ProteinName == "GSDMD_HUMAN|P57764_K62")
+
+gsmd_62_sum$BioReplicate <- factor(gsmd_62_sum$BioReplicate,
+                                     levels = c("NoDox0hr_1", "NoDox0hr_2", "NoDox6hr_1",
+                                                "NoDox6hr_2", "Dox1hr_1", "Dox2hr_1",
+                                                "Dox2hr_2", "Dox4hr_1",
+                                                "Dox4hr_2", "Dox6hr_1", "Dox6hr_2"))
+
+gsmd_sum$BioReplicate <- factor(gsmd_sum$BioReplicate,
+                                levels = c("NoDox0hr_1", "NoDox0hr_2", "NoDox6hr_1",
+                                           "NoDox6hr_2", "Dox1hr_1", "Dox2hr_1",
+                                           "Dox2hr_2", "Dox4hr_1",
+                                           "Dox4hr_2", "Dox6hr_1", "Dox6hr_2"))
+
+p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, color = FeatureType,
+                                               group = PSM, size = FeatureType)) +
+  geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 3) +
+  geom_vline(data=data.frame(x = c(2.5, 4.5, 5.5, 7.5, 9.5)),
+             aes(xintercept=as.numeric(x)), linetype = "dashed") +
+  scale_colour_manual(values = c("#D55E00", "#C3C3C3")) +
+  scale_size_manual(values = c(1.5,1)) +
+  labs(title = "GSDMD_HUMAN|P57764_K62", x = "BioReplicate", y = "Abundance") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.text=element_text(size=12),
+        axis.title.y = element_text(size = 14),
+        axis.title.x = element_text(size = 14),
+        title = element_text(size = 16),
+        strip.text = element_text(size = 12),
+        legend.position = "None") +
+  annotate("text", x = 1.5, y = 22.75, label = "No_Dox0hr", size = 4.5) +
+  annotate("text", x = 3.5, y = 22.75, label = "No_Dox6hr", size = 4.5) +
+  annotate("text", x = 5, y = 22.75, label = "Dox1hr", size = 4.5) +
+  annotate("text", x = 6.5, y = 22.75, label = "Dox2hr", size = 4.5) +
+  annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 4.5) +
+  annotate("text", x = 10.5, y = 22.75, label = "Dox6hr", size = 4.5) +
+  ylim(11, 23)
+
+p2 <- gsmd_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, color = FeatureType,
+                                         group = PSM, size = FeatureType)) +
+  geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 3) +
+  geom_vline(data=data.frame(x = c(2.5, 4.5, 5.5, 7.5, 9.5)),
+             aes(xintercept=as.numeric(x)), linetype = "dashed") +
+  scale_colour_manual(values = c("#D55E00", "#C3C3C3")) +
+  scale_size_manual(values = c(1.5,1)) +
+  labs(title = "GSDMD_HUMAN|P57764", x = "BioReplicate", y = "Abundance") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.text=element_text(size=12),
+        axis.title.y = element_text(size = 14),
+        axis.title.x = element_text(size = 14),
+        title = element_text(size = 16),
+        strip.text = element_text(size = 12),
+        legend.position = "None") +
+  ylim(11, 23) +
+  annotate("text", x = 1.5, y = 22.75, label = "No_Dox0hr", size = 4.5) +
+  annotate("text", x = 3.5, y = 22.75, label = "No_Dox6hr", size = 4.5) +
+  annotate("text", x = 5, y = 22.75, label = "Dox1hr", size = 4.5) +
+  annotate("text", x = 6.5, y = 22.75, label = "Dox2hr", size = 4.5) +
+  annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 4.5) +
+  annotate("text", x = 10.5, y = 22.75, label = "Dox6hr", size = 4.5)
+
+grid.arrange(p1, p2, nrow = 1)
+
+## Volcano Plot
+
+
+unadj_plot_df <- unadj_ptm_model %>% filter(Label == "Dox1hr_v_Dox4hr")
+unadj_special_plot_df <- unadj_plot_df %>% filter(Protein == "GSDMD_HUMAN|P57764_K62")
+
+v1 <- unadj_plot_df %>% ggplot() +
+  geom_point(mapping = aes(x = log2FC, y = -log10(adj.pvalue)), color = "grey") +
+  geom_point(data = unadj_special_plot_df,
+             mapping = aes(x = log2FC, y = -log10(adj.pvalue)),
+             color = "black", size = 5) +
+  geom_vline(data=data.frame(x = c(-.5, .5)),
+             aes(xintercept=as.numeric(x)), linetype = "dashed", size = 1.25) +
+  geom_hline(data=data.frame(x = c(-log10(.05))),
+             aes(yintercept=as.numeric(x)), linetype = "dashed", size = 1.25) +
+  theme_bw() +
+  theme(axis.text.x = element_text( size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.text=element_text(size=12),
+        axis.title.y = element_text(size = 14),
+        axis.title.x = element_text(size = 14),
+        title = element_text(size = 16),
+        strip.text = element_text(size = 12),
+        legend.position = "None") +
+  xlim(-5, 5) +
+  ylim(0, 8) +
+  labs(title = "Unadjusted Dox4hr_v_Dox1hr", y = "-Log Adj. Pvalue") +
+  geom_label_repel(
+    data = data.frame(x = -.500, y = -log10(.064), label = "Log2FC: -.501 \n Adj.pvalue: .0644"),
+    aes(x = x, y = y, label = label),
+    label.padding = unit(0.55, "lines"),
+    size = 8,
+    nudge_y = 3,
+    nudge_x = 3,
+    size = 5,
+    color = "black",
+    fill="#69b3a2")
+
+adj_plot_df <- adj_ptm_model %>% filter(Label == "Dox1hr_v_Dox4hr")
+adj_special_plot_df <- adj_plot_df %>% filter(Protein == "GSDMD_HUMAN|P57764_K62")
+
+v2 <- adj_plot_df %>% ggplot() +
+  geom_point(mapping = aes(x = log2FC, y = -log10(adj.pvalue)), color = "grey") +
+  geom_point(data = adj_special_plot_df,
+             mapping = aes(x = log2FC, y = -log10(adj.pvalue)),
+             color = "red", size = 5) +
+  geom_vline(data=data.frame(x = c(-.5, .5)),
+             aes(xintercept=as.numeric(x)), linetype = "dashed", size = 1.25) +
+  geom_hline(data=data.frame(x = c(-log10(.05))),
+             aes(yintercept=as.numeric(x)), linetype = "dashed", size = 1.25) +
+  theme_bw() +
+  theme(axis.text.x = element_text( size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.text=element_text(size=12),
+        axis.title.y = element_text(size = 14),
+        axis.title.x = element_text(size = 14),
+        title = element_text(size = 16),
+        strip.text = element_text(size = 12),
+        legend.position = "None") +
+  xlim(-5, 5) +
+  ylim(0, 8) +
+  labs(title = "Adjusted Dox4hr_v_Dox1hr", y = "-Log Adj. Pvalue") +
+  geom_label_repel(
+    data = data.frame(x = 2.789747, y = -log10(5.249283e-08),
+                      label = "Log2FC: 2.79 \n Adj.pvalue: 5.25e-08"),
+    aes(x = x, y = y, label = label),
+    label.padding = unit(0.55, "lines"),
+    size = 8,
+    nudge_y = 0,
+    nudge_x = -3,
+    size = 5,
+    color = "black",
+    fill="#69b3a2")
+
+grid.arrange(v1, v2, nrow = 1)
