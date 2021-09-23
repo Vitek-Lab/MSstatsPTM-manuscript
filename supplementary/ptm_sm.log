@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  23 SEP 2021 09:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  23 SEP 2021 16:39
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1437,22 +1437,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
-[26 <./sim_new/power_analysis_sd_combined.png>]
-
-LaTeX Warning: Reference `fig:prot_fdr' on page 27 undefined on input line 836.
-
-
-
-Package fancyhdr Warning: \headheight is too small (0.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
-
-[27
-
-] (ptm_sm.bbl)
+[26 <./sim_new/power_analysis_sd_combined.png>] (ptm_sm.bbl)
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
 (fancyhdr)                Make it at least 11.78pt, for example:
@@ -1461,7 +1446,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-11.78pt}.
 
-[28
+[27
 
 ] (ptm_sm.aux)
 
@@ -1469,10 +1454,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19504 strings out of 479334
- 404631 string characters out of 2853721
+ 19503 strings out of 479334
+ 404617 string characters out of 2853721
  712634 words of memory out of 3000000
- 36519 multiletter control sequences out of 15000+200000
+ 36518 multiletter control sequences out of 15000+200000
  421986 words of font info for 95 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,15n,89p,1485b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1499,9 +1484,9 @@ y6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmsy8.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ptm_sm.pdf (28 pages, 871580 bytes).
+Output written on ptm_sm.pdf (27 pages, 869307 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
+ 214 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 

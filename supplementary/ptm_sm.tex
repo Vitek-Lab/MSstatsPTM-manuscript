@@ -822,22 +822,6 @@ We compared the required sample size with varying standard deviations for the mo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-
-\todo{move to main manuscript}
-
-\section{Further Considerations}
-
-\subsubsection{Multiple sites per protein}
-
-Expression levels of PTM sites are adjusted based on the abundance of their originating protein. Since the same reference is used for all sites, it introduces correlation among estimates and test statistics for those sites. This may cause issues in controlling false discovery rate (FDR).
-We investigated the property by simulating data of two conditions and 1000 proteins with different numbers of PTM sites and comparing the results of the proposed approach and the linear model with no adjustment. 
-%We investigated the property by simulating data of two conditions and 1000 proteins with different numbers of PTM sites. 
-A fraction (50\%) of the 1000 proteins had no changes between conditions while systematic changes were simulated for the rest of the proteins. Multiple testing correction was performed using the Benjamini and Hochberg's method. 
-Performances of the considered approaches were assessed by their actual FDR, calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
-%Performances of the considered approaches were assessed by their power and FDR. The power was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among those proteins with true differences between conditions, while the FDR was calculated as the fraction of proteins with adjusted $p$-values $<0.05$ among the proteins with true differences. The results are summarized in \sfigref{fig:prot_fdr}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
 \section*{References}
 
 \bibliographystyle{plain}

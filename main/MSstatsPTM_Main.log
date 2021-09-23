@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  23 SEP 2021 10:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  23 SEP 2021 16:38
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1180,7 +1180,15 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'MSstatsPTM_Main.bbl' found.
- (MSstatsPTM_Main.bbl)
+ (MSstatsPTM_Main.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                LUCHETTI2021
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 116.
 Package biblatex Info: Reference segment=0 on input line 116.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 119
@@ -1197,38 +1205,28 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/Devon Kohler/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-[2] [3]
-! Undefined control sequence.
-l.191 ...ation can be found in Supplementary \cref
-                                                  {supp-sec:sim}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[4] [5] [6] [7]
-<images/fig1.png, id=151, 493.0922pt x 394.47375pt>
+[2] [3] [4] [5] [6] [7] [8]
+<images/fig1.png, id=164, 493.0922pt x 394.47375pt>
 File: images/fig1.png Graphic file (type png)
 <use images/fig1.png>
-Package pdftex.def Info: images/fig1.png  used on input line 250.
+Package pdftex.def Info: images/fig1.png  used on input line 283.
 (pdftex.def)             Requested size: 394.47429pt x 315.57942pt.
-<images/fig2.png, id=153, 539.01375pt x 385.44pt>
+<images/fig2.png, id=166, 539.01375pt x 385.44pt>
 File: images/fig2.png Graphic file (type png)
 <use images/fig2.png>
-Package pdftex.def Info: images/fig2.png  used on input line 257.
+Package pdftex.def Info: images/fig2.png  used on input line 290.
 (pdftex.def)             Requested size: 431.21158pt x 308.35242pt.
-<images/fig3.png, id=154, 606.01407pt x 452.4403pt>
+<images/fig3.png, id=167, 606.01407pt x 452.4403pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
-Package pdftex.def Info: images/fig3.png  used on input line 264.
+Package pdftex.def Info: images/fig3.png  used on input line 297.
 (pdftex.def)             Requested size: 484.81192pt x 361.95274pt.
 
-Overfull \hbox (15.0569pt too wide) in paragraph at lines 264--266
+Overfull \hbox (15.0569pt too wide) in paragraph at lines 297--299
  [][] 
  []
 
-[8 <./images/fig1.png>] [9 <./images/fig2.png>] [10 <./images/fig3.png>]
+[9 <./images/fig1.png>] [10 <./images/fig2.png>] [11 <./images/fig3.png>]
 (MSstatsPTM_Main.aux)
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: B51078AE79A5826628D18A94222D0AC0;642.
@@ -1237,26 +1235,32 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28514 strings out of 479334
- 542879 string characters out of 2853721
- 1233124 words of memory out of 3000000
- 45464 multiletter control sequences out of 15000+200000
+ 28521 strings out of 479334
+ 542961 string characters out of 2853721
+ 1233195 words of memory out of 3000000
+ 45467 multiletter control sequences out of 15000+200000
  412108 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,7n,130p,2509b,1361s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 128i,7n,130p,2509b,1314s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmbx10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Devon Kohler/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Devon Kohler/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dev
-on Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmti10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (10 pages, 428769 bytes).
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/De
+von Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.p
+fb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Devon Kohler/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Devon K
+ohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmsy7.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmti10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on MSstatsPTM_Main.pdf (11 pages, 480266 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 51 named destinations out of 1000 (max. 500000)
  172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -20,5 +20,3 @@
 \contentsline {subsection}{\numberline {5.2}Shigella flexneri}{21}{}%
 \contentsline {subsection}{\numberline {5.3}USP30}{24}{}%
 \contentsline {section}{\numberline {6}Sample size calculation and power analysis}{25}{}%
-\contentsline {section}{\numberline {7}Further Considerations}{27}{}%
-\contentsline {subsubsection}{\numberline {7.0.1}Multiple sites per protein}{27}{}%
