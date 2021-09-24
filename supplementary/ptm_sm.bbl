@@ -1,21 +1,285 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{choi_etal_14a}
-Meena Choi, Ching-Yun Chang, Timothy Clough, Daniel Broudy, Trevor Killeen,
-  Brendan MacLean, and Olga Vitek.
-\newblock {MSstats}: an {R} package for statistical analysis of quantitative
-  mass spectrometry-based proteomic experiments.
-\newblock {\em Bioinformatics}, 30(17):2524--2526, 2014.
 
-\bibitem{kutner_etal_04a}
-Michael~H. Kutner, John Neter, Christopher~J. Nachtsheim, and William Li.
-\newblock {\em Applied Linear Statistical Models}.
-\newblock McGraw-Hill/Irwin, 5 edition, 2004.
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{choi_etal_14a}{article}{}
+      \name{author}{7}{}{%
+        {{hash=f6e5cecf191deeadb4aaa49c9d5d7788}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Meena},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f5658a5f29db1bbaccef9286934c56fc}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Ching-Yun},
+           giveni={C\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=54fce00a873bd6ebe9ed8fbbfc375bfb}{%
+           family={Clough},
+           familyi={C\bibinitperiod},
+           given={Timothy},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1f0f914489e59d0831e41566110eba0a}{%
+           family={Broudy},
+           familyi={B\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=046269e070246feb6f394141db80ed87}{%
+           family={Killeen},
+           familyi={K\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=06c514b7a5146bbc43b146ee35891d8c}{%
+           family={MacLean},
+           familyi={M\bibinitperiod},
+           given={Brendan},
+           giveni={B\bibinitperiod}}}%
+        {{hash=e347c816c4223c9370d78e88536e3b34}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{63f38b8aa841df1fcaa37d404bf7bba4}
+      \strng{fullhash}{4ecc3d1e3b8d3cea0e188f9b4087c861}
+      \strng{bibnamehash}{63f38b8aa841df1fcaa37d404bf7bba4}
+      \strng{authorbibnamehash}{63f38b8aa841df1fcaa37d404bf7bba4}
+      \strng{authornamehash}{63f38b8aa841df1fcaa37d404bf7bba4}
+      \strng{authorfullhash}{4ecc3d1e3b8d3cea0e188f9b4087c861}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{17}
+      \field{title}{{MSstats}: an {R} package for statistical analysis of quantitative mass spectrometry-based proteomic experiments}
+      \field{volume}{30}
+      \field{year}{2014}
+      \field{pages}{2524\bibrangedash 2526}
+      \range{pages}{3}
+    \endentry
+    \entry{Huang:2020}{article}{}
+      \name{author}{8}{}{%
+        {{hash=c8e3c06d29519f4220d0a0bde8acdbf6}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=8493b545622248c4bde94c33ecd9c4aa}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5a650046c6c4ae3fafb6638a6ff7c70f}{%
+           family={Tzouros},
+           familyi={T\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a710340396fea317e07bdb95290af67f}{%
+           family={Golling},
+           familyi={G\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod}}}%
+        {{hash=4ee1ea39f9ea11965401b8e8e1583feb}{%
+           family={Pandya},
+           familyi={P\bibinitperiod},
+           given={NJ},
+           giveni={N\bibinitperiod}}}%
+        {{hash=c0a29861d209c64c796768fb3fdfbf68}{%
+           family={Banfa},
+           familyi={B\bibinitperiod},
+           given={B},
+           giveni={B\bibinitperiod}}}%
+        {{hash=d971fd2e44c6d794e47d4328c6644bc4}{%
+           family={Dunkley},
+           familyi={D\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a3905e7f3f93177318cb5c8042f79fd3}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={O},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{b4fc0f495f06fe20fb68563a06fdba51}
+      \strng{fullhash}{c218d46b4911110751160a3a68b809df}
+      \strng{bibnamehash}{b4fc0f495f06fe20fb68563a06fdba51}
+      \strng{authorbibnamehash}{b4fc0f495f06fe20fb68563a06fdba51}
+      \strng{authornamehash}{b4fc0f495f06fe20fb68563a06fdba51}
+      \strng{authorfullhash}{c218d46b4911110751160a3a68b809df}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{10}
+      \field{journaltitle}{Molecular \& Cellular Proteomics}
+      \field{month}{10}
+      \field{title}{{MSstatsTMT: Statistical Detection of Differentially Abundant Proteins in Experiments with Isobaric Labeling and Multiple Mixtures}}
+      \field{volume}{19}
+      \field{year}{2020}
+      \field{pages}{1706\bibrangedash 1723}
+      \range{pages}{18}
+    \endentry
+    \entry{kutner_etal_04a}{book}{}
+      \name{author}{4}{}{%
+        {{hash=f20de387d6341cbd5058ddb4eb7223d7}{%
+           family={Kutner},
+           familyi={K\bibinitperiod},
+           given={Michael\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=1ad29adfd24079278098723ad43f7654}{%
+           family={Neter},
+           familyi={N\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=816bcd6921f6bc62230351ab3eff3e1a}{%
+           family={Nachtsheim},
+           familyi={N\bibinitperiod},
+           given={Christopher\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=fa8aa34b1374a5f35c1008767cb1eb56}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill/Irwin}%
+      }
+      \strng{namehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{fullhash}{048879853f8485043baf57da8a169b8c}
+      \strng{bibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authorbibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authornamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authorfullhash}{048879853f8485043baf57da8a169b8c}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{title}{Applied Linear Statistical Models}
+      \field{year}{2004}
+    \endentry
+    \entry{oberg_vitek_09a}{article}{}
+      \name{author}{2}{}{%
+        {{hash=91c9266752b425256e0ae931854a665b}{%
+           family={Oberg},
+           familyi={O\bibinitperiod},
+           given={Ann\bibnamedelima L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=e347c816c4223c9370d78e88536e3b34}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{fullhash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{bibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authorbibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authornamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authorfullhash}{96a724ce9eb2b728c9a7587035aa625a}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Proteome Research}
+      \field{number}{5}
+      \field{title}{Statistical design of quantitative mass spectrometry-based proteomic experiments}
+      \field{volume}{8}
+      \field{year}{2009}
+      \field{pages}{2144\bibrangedash 2156}
+      \range{pages}{13}
+    \endentry
+    \entry{Ritchie_15a}{article}{}
+      \name{author}{7}{}{%
+        {{hash=951d585e86cb8b9c75ad8215db61706f}{%
+           family={Ritchie},
+           familyi={R\bibinitperiod},
+           given={Matthew\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=bffcd669072a93fe5f18e9037b1bcb13}{%
+           family={Phipson},
+           familyi={P\bibinitperiod},
+           given={Belinda},
+           giveni={B\bibinitperiod}}}%
+        {{hash=65027af5f4f54f2e6c7bb140253872e2}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c8471a849eb709ebe0fbe0e01176cd50}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yifang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f16015700a0004333624de6431e9a41b}{%
+           family={Law},
+           familyi={L\bibinitperiod},
+           given={Charity\bibnamedelima W.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=b4e22f2196e5fdf40a8499f2d3f8bf02}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e8acfd40aa371634dafbda59822de12b}{%
+           family={Smyth},
+           familyi={S\bibinitperiod},
+           given={Gordon\bibnamedelima K.},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{fullhash}{dd10be2ac81c50adf371c58312df557a}
+      \strng{bibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authorbibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authornamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authorfullhash}{dd10be2ac81c50adf371c58312df557a}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{limma is an R/Bioconductor software package that provides an integrated solution for analysing data from gene expression experiments. It contains rich features for handling complex experimental designs and for information borrowing to overcome the problem of small sample sizes. Over the past decade, limma has been a popular choice for gene discovery through differential expression analyses of microarray and high-throughput PCR data. The package contains particularly strong facilities for reading, normalizing and exploring such data. Recently, the capabilities of limma have been significantly expanded in two important directions. First, the package can now perform both differential expression and differential splicing analyses of RNA sequencing (RNA-seq) data. All the downstream analysis tools previously restricted to microarray data are now available for RNA-seq as well. These capabilities allow users to analyse both RNA-seq and microarray data with very similar pipelines. Second, the package is now able to go past the traditional gene-wise expression analyses in a variety of ways, analysing expression profiles in terms of co-regulated sets of genes or in terms of higher-order expression signatures. This provides enhanced possibilities for biological interpretation of gene expression differences. This article reviews the philosophy and design of the limma package, summarizing both new and historical features, with an emphasis on recent enhancements and features that have not been previously described.}}
+      \field{issn}{0305-1048}
+      \field{journaltitle}{Nucleic Acids Research}
+      \field{month}{01}
+      \field{number}{7}
+      \field{title}{{limma powers differential expression analyses for RNA-sequencing and microarray studies}}
+      \field{volume}{43}
+      \field{year}{2015}
+      \field{pages}{e47\bibrangedash e47}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1093/nar/gkv007
+      \endverb
+      \verb{eprint}
+      \verb https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/nar/gkv007
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/nar/gkv007
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
 
-\bibitem{oberg_vitek_09a}
-Ann~L. Oberg and Olga Vitek.
-\newblock Statistical design of quantitative mass spectrometry-based proteomic
-  experiments.
-\newblock {\em Journal of Proteome Research}, 8(5):2144--2156, 2009.
-
-\end{thebibliography}

@@ -15,6 +15,7 @@
 \usepackage{lscape} %% rotating table
 \usepackage{rotating}
 \usepackage{hyperref}
+\usepackage{authblk}
 \usepackage{xcolor} %\[table,dvipsnames]
 %\usepackage{makecell}
 %\usepackage{array}
@@ -97,26 +98,23 @@
 
 \title{Statistical methods for relative quantification of post-translational modifications in global proteomics experiments}
 
-\author{
- Devon Kohler\\
- \and
- Tsung-Heng Tsai\\
- \and
- Ting Huang\\
- \and
- Erik Verschueren
- \and
- Trent Hinkle
- \and
-  Meena Choi\\
- \and
- Olga Vitek
-}
+\author[1]{Devon~Kohler}
+\author[2]{Tsung-Heng~Tsai}
+\author[1]{Ting~Huang}
+\author[4]{Erik~Verschueren}
+\author[3]{Trent~Hinkle}
+\author[3]{Meena~Choi}
+\author[1]{Olga~Vitek}
+\affil[1]{Khoury College of Computer Science, Northeastern University, Boston, MA, USA}
+\affil[2]{Kent State University, Kent, OH, USA}
+\affil[3]{MPL, Genentech, South San Francisco, CA, USA}
+\affil[4]{Galapagos, Mechelen, Antwerp, Belgium}
+
 \date{}
+
 \begin{document}
 
 \maketitle
-\todo{Add Author list}
 %\noindent\author{Tsung-Heng Tsai$^{1}$, Olga Vitek$^{1,\ast}$}
 %
 %\vspace{0.2in}
@@ -128,20 +126,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abstract}
 
-The scientific community widely utilizes mass spectrometry (MS)-based proteomics to quantify the abundance of proteins and their post-translational modifications (PTMs). Experiments targeting PTMs face several specific challenges. These include the low abundance of modified proteo-forms, few representative peptides that span modification sites, and convolution with abundance changes in the overall protein expression. Due to these challenges, a robust approach to estimate relative systematic changes in PTMs should combine information pertaining to PTM sites over several peptides, replicates in multiple conditions, and consider sources of confounding and variation present in the experiment. We propose a general statistical model and workflow that is both reproducible and comprehensive. The model measures PTM and protein abundance by summarizing intensities through Tukey’s median polish method. Then a model based on the family of linear mixed-effects models is fit. This model is automatically adjusted to the specific experimental design. Finally, the PTM abundances are adjusted to remove variance from changes in the overall protein. We implement this model in the free and open-source R package MSstatsPTM.
+The scientific community widely utilizes mass spectrometry (MS)-based proteomics to quantify the abundance of proteins and their post-translational modifications (PTMs). Experiments targeting PTMs face several specific challenges. These include the low abundance of modified proteo-forms, few representative peptides that span modification sites, and convolution with abundance changes in the overall protein expression. Due to these challenges, a robust approach to estimate relative systematic changes in PTMs should combine information pertaining to PTM sites over several peptides, replicates in multiple conditions, and consider sources of confounding and variation present in the experiment. We propose a general statistical model and workflow that is both reproducible and comprehensive. The model measures modified and unmodified peptide abundance by summarizing intensities through Tukey’s median polish method. Then a model based on the family of linear mixed-effects models is fit. This model is automatically adjusted to the specific experimental design. Finally, the PTM abundances are adjusted to remove variance from changes in the overall protein. We implement this model in the free and open-source R package MSstatsPTM.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are primarily facilitated by the modification of proteins at specific residues, acting as molecular on/off switches.\cite{Deribe} \cite{Cohen}  Mass spectrometry-based label-free proteomics is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) using liquid chromatography coupled with mass spectrometry (LC-MS)\cite{Kall:2011ub} \cite{Roepstorff}. Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site’s occupancy repertoire, or relative changes in occupancy across experimental conditions.\cite{Mann} Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteo-forms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide). Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently convoluted with changes in the overall protein expression, making the interpretation of the results not straightforward. \cite{Olsen:2013} Therefore, a robust approach to estimate systematic relative changes in post-translational modifications, at scale, should not only combine the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, but take into account various sources of variations and confounding factors present in the experiments.
+The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are primarily facilitated by the modification of proteins at specific residues, acting as molecular on/off switches.\cite{Deribe} \cite{Cohen}  Mass spectrometry-based label-free proteomics is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) using liquid chromatography coupled with mass spectrometry (LC-MS).\cite{Kall:2011ub} \cite{Roepstorff} Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site’s occupancy repertoire, or relative changes in occupancy across experimental conditions.\cite{Mann} Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteo-forms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide). Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently convoluted with changes in the overall protein expression, making the interpretation of the results not straightforward. \cite{Olsen:2013} Therefore, a robust approach to estimate systematic relative changes in post-translational modifications, at scale, should not only combine the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, but take into account various sources of variations and confounding factors present in the experiments.
 
-Despite the important implications of PTMs in biological functions, there is a lack of general framework to summarize the available quantitative information from LC-MS data, to perform statistical inference, and to draw conclusions to characterize the quantitative properties of PTM in a statistically rigorous manner. Many investigations performed differential expression analysis of PTMs using two-sample t-test or its extensions. \todo{Add Ref about current PTM approaches} The approach takes as input intensities of individual features from modified peptides, or intensity ratios of modified and unmodified peptide features, and compares the mean abundance of a PTM site from one condition to another. Modifications of the t-test such as moderated t-test with limma were also proposed.\cite{Zhu} While simple, the approach does not fully account for the sources of variations, and it is not directly applicable to experiments with complex designs, e.g., comparisons of multiple conditions, acquisition in multiple batches, etc. Isobar-PTM was developed for experiments with MS/MS quantitative strategies that employ isobaric labels such as tandem mass tags (TMT) and isobaric tag for relative and absolute quantification (iTRAQ).\cite{Breitwieser:2013} Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. The modeling framework, however, is not applicable for either label-free workflows or experiments with complex designs.
-
+Despite the important implications of PTMs in biological functions, there is a lack of general framework to summarize the available quantitative information from LC-MS data, to perform statistical inference, and to draw conclusions to characterize the quantitative properties of PTM in a statistically rigorous manner. Many investigations performed differential expression analysis of PTMs using two-sample t-test or its extensions. The approach takes as input intensities of individual features from modified peptides, or intensity ratios of modified and unmodified peptide features, and compares the mean abundance of a PTM site from one condition to another. Modifications of the t-test such as moderated t-test with limma were also proposed.\cite{Zhu} While simple, the approach does not fully account for the sources of variations, and it is not directly applicable to experiments with complex designs, e.g., comparisons of multiple conditions, acquisition in multiple batches, etc. Isobar-PTM was developed for experiments with MS/MS quantitative strategies that employ isobaric labels such as tandem mass tags (TMT) and isobaric tag for relative and absolute quantification (iTRAQ).\cite{Breitwieser:2013} Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. The modeling framework, however, is not applicable for either label-free workflows or experiments with complex designs.
+ 
 We propose a general statistical approach, which explicitly characterizes the variations and confounding factors present in bottom-up PTM experiments. The proposed approach is aimed at the detection of quantitative changes in PTMs between conditions utilizing procedures developed for summarization of LC-MS data, quantitative characterization of site-specific PTMs, and adjustment with respect to protein abundance. Quantitative analyses of PTMs often involve comparisons between multiple inter-related conditions of the same biological system. The general statistical framework underlying the proposed approach allows for analyzing experiments with complex designs, including those with multiple conditions, multiple batches, and measured at different points in time. 
 
-The proposed approach was evaluated using datasets from computer simulations, benchmark controlled mixtures, and biological investigations. The approach was then compared against the commonly applied t-test and limma package. The results demonstrate that by appropriately leveraging the information from the entire dataset the proposed approach improves the reproducibility and accuracy of the estimates of PTM fold changes, results in a better calibrated type I error rate, and improves the statistical power of detecting changes in PTMs. The proposed approach is implemented as an open source R package MSstatsPTM, which employs similar input format as in MSstats and MSstatsTMT \cite{Choi:2014} \cite{Huang:2020}.
+The proposed approach was evaluated using datasets from computer simulations, benchmark controlled mixtures, and biological investigations. The approach was compared against the commonly applied t-test and limma methods. The results demonstrate that by appropriately leveraging the information from the entire dataset, the proposed approach improves the reproducibility and accuracy of the estimates of PTM fold changes, results in a better calibrated type I error rate, and improves the statistical power of detecting changes in PTMs. The proposed approach is implemented as an open source R package MSstatsPTM, which employs similar input format as in MSstats and MSstatsTMT. \cite{Choi:2014} \cite{Huang:2020}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Approach}
@@ -276,7 +274,7 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section{Figure}
+\section{Figures}
 
 \begin{figure}[ht]
 \centering

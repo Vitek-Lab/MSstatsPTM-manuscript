@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  23 SEP 2021 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  24 SEP 2021 09:39
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -671,13 +671,270 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@authors=\count296
 \c@affil=\count297
 )
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblate
+x.sty
+Package: biblatex 2020/12/31 v3.16 programmable bibliographies (PK/MW)
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdf
+texcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infw
+arerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmd
+s.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
+x.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count298
+)
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvopti
+ons.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvse
+tkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.st
+y
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count299
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.de
+f
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+\c@tabx@nest=\count300
+\c@listtotal=\count301
+\c@listcount=\count302
+\c@liststart=\count303
+\c@liststop=\count304
+\c@citecount=\count305
+\c@citetotal=\count306
+\c@multicitecount=\count307
+\c@multicitetotal=\count308
+\c@instcount=\count309
+\c@maxnames=\count310
+\c@minnames=\count311
+\c@maxitems=\count312
+\c@minitems=\count313
+\c@citecounter=\count314
+\c@maxcitecounter=\count315
+\c@savedcitecounter=\count316
+\c@uniquelist=\count317
+\c@uniquename=\count318
+\c@refsection=\count319
+\c@refsegment=\count320
+\c@maxextratitle=\count321
+\c@maxextratitleyear=\count322
+\c@maxextraname=\count323
+\c@maxextradate=\count324
+\c@maxextraalpha=\count325
+\c@abbrvpenalty=\count326
+\c@highnamepenalty=\count327
+\c@lownamepenalty=\count328
+\c@maxparens=\count329
+\c@parenlevel=\count330
+\blx@tempcnta=\count331
+\blx@tempcntb=\count332
+\blx@tempcntc=\count333
+\blx@maxsection=\count334
+\blx@maxsegment@0=\count335
+\blx@notetype=\count336
+\blx@parenlevel@text=\count337
+\blx@parenlevel@foot=\count338
+\blx@sectionciteorder@0=\count339
+\blx@entrysetcounter=\count340
+\blx@biblioinstance=\count341
+\labelnumberwidth=\skip58
+\labelalphawidth=\skip59
+\biblabelsep=\skip60
+\bibitemsep=\skip61
+\bibnamesep=\skip62
+\bibinitsep=\skip63
+\bibparsep=\skip64
+\bibhang=\skip65
+\blx@bcfin=\read3
+\blx@bcfout=\write4
+\blx@langwohyphens=\language79
+\c@mincomprange=\count342
+\c@maxcomprange=\count343
+\c@mincompwidth=\count344
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.
+def
+File: blx-dm.def 2020/12/31 v3.16 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count345
+\c@savedafterword=\count346
+\c@annotator=\count347
+\c@savedannotator=\count348
+\c@author=\count349
+\c@savedauthor=\count350
+\c@bookauthor=\count351
+\c@savedbookauthor=\count352
+\c@commentator=\count353
+\c@savedcommentator=\count354
+\c@editor=\count355
+\c@savededitor=\count356
+\c@editora=\count357
+\c@savededitora=\count358
+\c@editorb=\count359
+\c@savededitorb=\count360
+\c@editorc=\count361
+\c@savededitorc=\count362
+\c@foreword=\count363
+\c@savedforeword=\count364
+\c@holder=\count365
+\c@savedholder=\count366
+\c@introduction=\count367
+\c@savedintroduction=\count368
+\c@namea=\count369
+\c@savednamea=\count370
+\c@nameb=\count371
+\c@savednameb=\count372
+\c@namec=\count373
+\c@savednamec=\count374
+\c@translator=\count375
+\c@savedtranslator=\count376
+\c@shortauthor=\count377
+\c@savedshortauthor=\count378
+\c@shorteditor=\count379
+\c@savedshorteditor=\count380
+\c@labelname=\count381
+\c@savedlabelname=\count382
+\c@institution=\count383
+\c@savedinstitution=\count384
+\c@lista=\count385
+\c@savedlista=\count386
+\c@listb=\count387
+\c@savedlistb=\count388
+\c@listc=\count389
+\c@savedlistc=\count390
+\c@listd=\count391
+\c@savedlistd=\count392
+\c@liste=\count393
+\c@savedliste=\count394
+\c@listf=\count395
+\c@savedlistf=\count396
+\c@location=\count397
+\c@savedlocation=\count398
+\c@organization=\count399
+\c@savedorganization=\count400
+\c@origlocation=\count401
+\c@savedoriglocation=\count402
+\c@origpublisher=\count403
+\c@savedorigpublisher=\count404
+\c@publisher=\count405
+\c@savedpublisher=\count406
+\c@language=\count407
+\c@savedlanguage=\count408
+\c@origlanguage=\count409
+\c@savedoriglanguage=\count410
+\c@pageref=\count411
+\c@savedpageref=\count412
+\shorthandwidth=\skip66
+\shortjournalwidth=\skip67
+\shortserieswidth=\skip68
+\shorttitlewidth=\skip69
+\shortauthorwidth=\skip70
+\shorteditorwidth=\skip71
+\locallabelnumberwidth=\skip72
+\locallabelalphawidth=\skip73
+\localshorthandwidth=\skip74
+\localshortjournalwidth=\skip75
+\localshortserieswidth=\skip76
+\localshorttitlewidth=\skip77
+\localshortauthorwidth=\skip78
+\localshorteditorwidth=\skip79
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-com
+pat.def
+File: blx-compat.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblate
+x.def
+File: biblatex.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
+\c@textcitecount=\count413
+\c@textcitetotal=\count414
+\c@textcitemaxnames=\count415
+\c@biburlbigbreakpenalty=\count416
+\c@biburlbreakpenalty=\count417
+\c@biburlnumpenalty=\count418
+\c@biburlucpenalty=\count419
+\c@biburllcpenalty=\count420
+\biburlbigskip=\muskip17
+\biburlnumskip=\muskip18
+\biburlucskip=\muskip19
+\biburllcskip=\muskip20
+\c@smartand=\count421
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\num
+eric.bbx
+File: numeric.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\sta
+ndard.bbx
+File: standard.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count422
+\c@bbx:relatedtotal=\count423
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\num
+eric.cbx
+File: numeric.cbx 2020/12/31 v3.16 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblate
+x.cfg
+File: biblatex.cfg 
+))
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/ulem\ulem.sty
 \UL@box=\box84
 \UL@hyphenbox=\box85
-\UL@skip=\skip58
+\UL@skip=\skip80
 \UL@hook=\toks35
 \UL@height=\dimen278
-\UL@pe=\count298
+\UL@pe=\count424
 \UL@pixel=\dimen279
 \ULC@box=\box86
 Package: ulem 2019/11/18
@@ -686,7 +943,7 @@ Package: ulem 2019/11/18
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/preprint\fullpag
 e.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip59
+\FP@margin=\skip81
 )
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.st
 y
@@ -696,15 +953,15 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headfont=\toks38
 \thm@notefont=\toks39
 \thm@headpunct=\toks40
-\thm@preskip=\skip60
-\thm@postskip=\skip61
-\thm@headsep=\skip62
+\thm@preskip=\skip82
+\thm@postskip=\skip83
+\thm@headsep=\skip84
 \dth@everypar=\toks41
 )
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.
 sty
 Package: amsmath 2020/09/23 v2.17i AMS math features
-\@mathmargin=\skip63
+\@mathmargin=\skip85
 
 For additional information on amsmath, use the `?' option.
 
@@ -728,13 +985,13 @@ LaTeX Info: Redefining \boldsymbol on input line 28.
 ty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count299
+\inf@bad=\count425
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count300
-\leftroot@=\count301
+\uproot@=\count426
+\leftroot@=\count427
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count302
-\DOTSCASE@=\count303
+\classnum@=\count428
+\DOTSCASE@=\count429
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -743,15 +1000,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen283
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count304
-\c@MaxMatrixCols=\count305
-\dotsspace@=\muskip17
-\c@parentequation=\count306
-\dspbrk@lvl=\count307
+\macc@depth=\count430
+\c@MaxMatrixCols=\count431
+\dotsspace@=\muskip21
+\c@parentequation=\count432
+\dspbrk@lvl=\count433
 \tag@help=\toks43
-\row@=\count308
-\column@=\count309
-\maxfields@=\count310
+\row@=\count434
+\column@=\count435
+\maxfields@=\count436
 \andhelp@=\toks44
 \eqnshift@=\dimen284
 \alignsep@=\dimen285
@@ -760,8 +1017,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \totwidth@=\dimen288
 \lineht@=\dimen289
 \@envbody=\toks45
-\multlinegap=\skip64
-\multlinetaggap=\skip65
+\multlinegap=\skip86
+\multlinetaggap=\skip87
 \mathdisplay@stack=\toks46
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
@@ -770,15 +1027,15 @@ LaTeX Info: Redefining \] on input line 2924.
 r.sty
 Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
 rs
-\f@nch@headwidth=\skip66
-\f@nch@O@elh=\skip67
-\f@nch@O@erh=\skip68
-\f@nch@O@olh=\skip69
-\f@nch@O@orh=\skip70
-\f@nch@O@elf=\skip71
-\f@nch@O@erf=\skip72
-\f@nch@O@olf=\skip73
-\f@nch@O@orf=\skip74
+\f@nch@headwidth=\skip88
+\f@nch@O@elh=\skip89
+\f@nch@O@erh=\skip90
+\f@nch@O@olh=\skip91
+\f@nch@O@orh=\skip92
+\f@nch@O@elf=\skip93
+\f@nch@O@erf=\skip94
+\f@nch@O@olf=\skip95
+\f@nch@O@orf=\skip96
 )
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/scalerel\scalere
 l.sty
@@ -788,29 +1045,24 @@ ng of objects, relative to a reference object or in absolute terms
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\calc
 .sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count311
-\calc@Bcount=\count312
+\calc@Acount=\count437
+\calc@Bcount=\count438
 \calc@Adimen=\dimen290
 \calc@Bdimen=\dimen291
-\calc@Askip=\skip75
-\calc@Bskip=\skip76
+\calc@Askip=\skip97
+\calc@Bskip=\skip98
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count313
-\calc@Cskip=\skip77
+\calc@Ccount=\count439
+\calc@Cskip=\skip99
 )
-(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
-x.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count314
-)
-\thesrwidth=\skip78
-\thesrheight=\skip79
-\srblobheight=\skip80
-\srblobdepth=\skip81
-\mnxsrwidth=\skip82
-\LMex=\skip83
-\LMpt=\skip84
+\thesrwidth=\skip100
+\thesrheight=\skip101
+\srblobheight=\skip102
+\srblobdepth=\skip103
+\mnxsrwidth=\skip104
+\LMex=\skip105
+\LMpt=\skip106
 )
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/stackengine\stac
 kengine.sty
@@ -821,61 +1073,64 @@ ways
 ofitems.sty
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/generic/listofitems\li
 stofitems.tex
-\loi_cnt_foreach_nest=\count315
-\loi_nestcnt=\count316
+\loi_cnt_foreach_nest=\count440
+\loi_nestcnt=\count441
 )
 Package: listofitems 2019/08/21 v1.63 Grab items in lists using user-specified 
 sep char (CT)
 )
-\c@@stackindex=\count317
-\@boxshift=\skip85
-\stack@tmplength=\skip86
-\temp@stkl=\skip87
-\@stackedboxwidth=\skip88
+\c@@stackindex=\count442
+\@boxshift=\skip107
+\stack@tmplength=\skip108
+\temp@stkl=\skip109
+\@stackedboxwidth=\skip110
 \@addedbox=\box89
 \@anchorbox=\box90
 \@insetbox=\box91
 \se@backgroundbox=\box92
 \stackedbox=\box93
 \@centerbox=\box94
-\c@ROWcellindex@=\count318
+\c@ROWcellindex@=\count443
 )
+\@quotelevel=\count444
+\@quotereset=\count445
+
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3back
 end-pdftex.def
 File: l3backend-pdftex.def 2021-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count319
+\l__color_backend_stack_int=\count446
 \l__pdf_internal_box=\box95
 ) (ptm_sm.aux)
 \openout1 = `ptm_sm.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
 
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp
 -pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count320
+\scratchcounter=\count447
 \scratchdimen=\dimen292
 \scratchbox=\box96
-\nofMPsegments=\count321
-\nofMParguments=\count322
+\nofMPsegments=\count448
+\nofMParguments=\count449
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count323
+\MPscratchCnt=\count450
 \MPscratchDim=\dimen293
-\MPnumerator=\count324
-\makeMPintoPDFobject=\count325
+\MPnumerator=\count451
+\makeMPintoPDFobject=\count452
 \everyMPtoPDFconversion=\toks48
 )
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\eps
@@ -920,19 +1175,57 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-(ptm_sm.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\eng
+lish.lbx
+File: english.lbx 2020/12/31 v3.16 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+Package biblatex Info: Document encoding is UTF8 ....
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.s
+ty
+Package: expl3 2021-02-18 L3 programming layer (loader) 
+)
+Package biblatex Info: ... and expl3
+(biblatex)             2021-02-18 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-cas
+e-expl3.sty
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xpars
+e\xparse.sty
+Package: xparse 2020-10-27 L3 Experimental document command parser
+
+(C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xpars
+e\xparse-generic.tex))
+Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
+)
+\openout4 = `ptm_sm.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'ptm_sm.bbl' found.
+ (ptm_sm.bbl)
+Package biblatex Info: Reference section=0 on input line 99.
+Package biblatex Info: Reference segment=0 on input line 99.
+ (ptm_sm.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
 
 (C:\Users\Devon Kohler\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
-\tf@toc=\write4
-\openout4 = `ptm_sm.toc'.
+\tf@toc=\write5
+\openout5 = `ptm_sm.toc'.
 
 
 
@@ -1003,20 +1296,6 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 [7]
 
-LaTeX Warning: Reference `fig:prot_fpr' on page 8 undefined on input line 514.
-
-
-Package caption Warning: \label without proper reference on input line 588.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:fc_boxplot' on page 8 undefined on input line 514
-.
-
-
-LaTeX Warning: Reference `fig:prot_fpr' on page 8 undefined on input line 514.
-
-
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -1027,64 +1306,36 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 [8
 
 ]
-
-Package caption Warning: \label without proper reference on input line 549.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:sim1_fpr' on page 9 undefined on input line 535.
-
-
-Package caption Warning: \label without proper reference on input line 588.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:fc_boxplot' on page 9 undefined on input line 535
-.
-
-
-Package caption Warning: \label without proper reference on input line 549.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:sim1_fpr' on page 9 undefined on input line 535.
-
 <sim_new/sim1_FDR_all_models.png, id=48, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FDR_all_models.png Graphic file (type png)
 <use sim_new/sim1_FDR_all_models.png>
 Package pdftex.def Info: sim_new/sim1_FDR_all_models.png  used on input line 54
-2.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 542--543
-
- []
-
+5.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 <sim_new/sim1_FDR.png, id=49, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FDR.png Graphic file (type png)
 <use sim_new/sim1_FDR.png>
-Package pdftex.def Info: sim_new/sim1_FDR.png  used on input line 546.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
+Package pdftex.def Info: sim_new/sim1_FDR.png  used on input line 550.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
+
+
+LaTeX Warning: Float too large for page by 7.2626pt on input line 555.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <sim_new/sim1_Recall.png, id=50, 752.8125pt x 501.875pt>
 File: sim_new/sim1_Recall.png Graphic file (type png)
 <use sim_new/sim1_Recall.png>
-Package pdftex.def Info: sim_new/sim1_Recall.png  used on input line 555.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 555--556
-
- []
-
+Package pdftex.def Info: sim_new/sim1_Recall.png  used on input line 561.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 <sim_new/sim1_accuracy.png, id=51, 752.8125pt x 501.875pt>
 File: sim_new/sim1_accuracy.png Graphic file (type png)
 <use sim_new/sim1_accuracy.png>
-Package pdftex.def Info: sim_new/sim1_accuracy.png  used on input line 559.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
+Package pdftex.def Info: sim_new/sim1_accuracy.png  used on input line 566.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 
-LaTeX Warning: Float too large for page by 9.51155pt on input line 563.
+LaTeX Warning: Float too large for page by 19.2626pt on input line 571.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1092,15 +1343,15 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <sim_new/sim3_Recall.png, id=52, 752.8125pt x 501.875pt>
 File: sim_new/sim3_Recall.png Graphic file (type png)
 <use sim_new/sim3_Recall.png>
-Package pdftex.def Info: sim_new/sim3_Recall.png  used on input line 568.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
+Package pdftex.def Info: sim_new/sim3_Recall.png  used on input line 577.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 <sim_new/sim3_Accuracy.png, id=53, 752.8125pt x 501.875pt>
 File: sim_new/sim3_Accuracy.png Graphic file (type png)
 <use sim_new/sim3_Accuracy.png>
-Package pdftex.def Info: sim_new/sim3_Accuracy.png  used on input line 572.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
+Package pdftex.def Info: sim_new/sim3_Accuracy.png  used on input line 582.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 
-LaTeX Warning: Float too large for page by 31.91154pt on input line 576.
+LaTeX Warning: Float too large for page by 31.2626pt on input line 587.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1108,15 +1359,15 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <sim_new/sim1_FC_boxplot.png, id=54, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim1_FC_boxplot.png>
-Package pdftex.def Info: sim_new/sim1_FC_boxplot.png  used on input line 581.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
+Package pdftex.def Info: sim_new/sim1_FC_boxplot.png  used on input line 593.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 <sim_new/sim3_FC_boxplot.png, id=55, 752.8125pt x 501.875pt>
 File: sim_new/sim3_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim3_FC_boxplot.png>
-Package pdftex.def Info: sim_new/sim3_FC_boxplot.png  used on input line 585.
-(pdftex.def)             Requested size: 380.49638pt x 253.67078pt.
+Package pdftex.def Info: sim_new/sim3_FC_boxplot.png  used on input line 598.
+(pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 
-LaTeX Warning: Float too large for page by 31.91154pt on input line 589.
+LaTeX Warning: Float too large for page by 31.2626pt on input line 603.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1170,13 +1421,13 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 File: sim_new/spike_in_msstatsptm_volcano.png Graphic file (type png)
 <use sim_new/spike_in_msstatsptm_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_msstatsptm_volcano.png  used on input
- line 602.
+ line 616.
 (pdftex.def)             Requested size: 399.29463pt x 266.19923pt.
 <sim_new/spike_in_limma_volcano.png, id=82, 752.8125pt x 501.875pt>
 File: sim_new/spike_in_limma_volcano.png Graphic file (type png)
 <use sim_new/spike_in_limma_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_limma_volcano.png  used on input line
- 608.
+ 622.
 (pdftex.def)             Requested size: 399.29463pt x 266.19923pt.
 
 
@@ -1186,7 +1437,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: sim_new/spike_in_ttest_volcano.png Graphic file (type png)
 <use sim_new/spike_in_ttest_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_ttest_volcano.png  used on input line
- 614.
+ 628.
 (pdftex.def)             Requested size: 399.29463pt x 266.19923pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1195,7 +1446,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: sim_new/spike_in_statistic_comparison.png Graphic file (type png)
 <use sim_new/spike_in_statistic_comparison.png>
 Package pdftex.def Info: sim_new/spike_in_statistic_comparison.png  used on inp
-ut line 620.
+ut line 634.
 (pdftex.def)             Requested size: 399.29463pt x 266.19923pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1203,7 +1454,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <sim_new/spike_in_fc.png, id=85, 752.8125pt x 501.875pt>
 File: sim_new/spike_in_fc.png Graphic file (type png)
 <use sim_new/spike_in_fc.png>
-Package pdftex.def Info: sim_new/spike_in_fc.png  used on input line 626.
+Package pdftex.def Info: sim_new/spike_in_fc.png  used on input line 640.
 (pdftex.def)             Requested size: 399.29463pt x 266.19923pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1255,27 +1506,20 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
 [18 <./sim_new/spike_in_fc.png>]
-
-Package caption Warning: \label without proper reference on input line 693.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:ipah_figures' on page 19 undefined on input line 
-681.
-
 <sim_new/IpaH_prof_plot.png, id=106, 1206.00563pt x 599.23875pt>
 File: sim_new/IpaH_prof_plot.png Graphic file (type png)
 <use sim_new/IpaH_prof_plot.png>
-Package pdftex.def Info: sim_new/IpaH_prof_plot.png  used on input line 686.
-(pdftex.def)             Requested size: 469.75502pt x 233.40958pt.
+Package pdftex.def Info: sim_new/IpaH_prof_plot.png  used on input line 701.
+(pdftex.def)             Requested size: 422.77664pt x 210.06587pt.
 <sim_new/IpaH_volcano_plot.png, id=107, 1137.4997pt x 599.23875pt>
 File: sim_new/IpaH_volcano_plot.png Graphic file (type png)
 <use sim_new/IpaH_volcano_plot.png>
-Package pdftex.def Info: sim_new/IpaH_volcano_plot.png  used on input line 690.
+Package pdftex.def Info: sim_new/IpaH_volcano_plot.png  used on input line 706.
 
-(pdftex.def)             Requested size: 469.75502pt x 247.47249pt.
+(pdftex.def)             Requested size: 422.77664pt x 222.72066pt.
 
-LaTeX Warning: Float too large for page by 30.45206pt on input line 694.
+
+LaTeX Warning: Float too large for page by 10.95651pt on input line 711.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1300,38 +1544,23 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
 [20 <./sim_new/IpaH_prof_plot.png> <./sim_new/IpaH_volcano_plot.png>]
-
-Package caption Warning: \label without proper reference on input line 744.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:No_Diff_Shigella_PTM' on page 21 undefined on inp
-ut line 731.
-
-
-Package caption Warning: \label without proper reference on input line 757.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:Diff_Shigella_PTM' on page 21 undefined on input 
-line 731.
-
 <sim_new/No_Difference_Shigella_Profile_Plot.png, id=117, 1179.65718pt x 599.23
 875pt>
 File: sim_new/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use sim_new/No_Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: sim_new/No_Difference_Shigella_Profile_Plot.png  used 
-on input line 737.
-(pdftex.def)             Requested size: 469.75502pt x 238.63058pt.
+on input line 755.
+(pdftex.def)             Requested size: 422.77664pt x 214.7657pt.
 <sim_new/No_Difference_Shigella_Volcano.png, id=118, 1062.97125pt x 599.23875pt
 >
 File: sim_new/No_Difference_Shigella_Volcano.png Graphic file (type png)
 <use sim_new/No_Difference_Shigella_Volcano.png>
 Package pdftex.def Info: sim_new/No_Difference_Shigella_Volcano.png  used on in
-put line 741.
-(pdftex.def)             Requested size: 469.75502pt x 264.8271pt.
+put line 760.
+(pdftex.def)             Requested size: 422.77664pt x 238.338pt.
 
-LaTeX Warning: Float too large for page by 41.02768pt on input line 745.
+
+LaTeX Warning: Float too large for page by 19.27368pt on input line 765.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1341,16 +1570,16 @@ pt>
 File: sim_new/Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use sim_new/Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: sim_new/Difference_Shigella_Profile_Plot.png  used on 
-input line 750.
-(pdftex.def)             Requested size: 469.75502pt x 247.95709pt.
+input line 771.
+(pdftex.def)             Requested size: 422.77664pt x 223.15956pt.
 <sim_new/Difference_Shigella_Volcano.png, id=120, 1118.67938pt x 599.23875pt>
 File: sim_new/Difference_Shigella_Volcano.png Graphic file (type png)
 <use sim_new/Difference_Shigella_Volcano.png>
 Package pdftex.def Info: sim_new/Difference_Shigella_Volcano.png  used on input
- line 754.
-(pdftex.def)             Requested size: 469.75502pt x 251.63284pt.
+ line 776.
+(pdftex.def)             Requested size: 422.77664pt x 226.46956pt.
 
-LaTeX Warning: Float too large for page by 37.15993pt on input line 758.
+LaTeX Warning: Float too large for page by 15.7991pt on input line 781.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1389,7 +1618,7 @@ ella_Volcano.png>]
 <sim_new/USP30_profile_plot.png, id=134, 1174.3875pt x 599.23875pt>
 File: sim_new/USP30_profile_plot.png Graphic file (type png)
 <use sim_new/USP30_profile_plot.png>
-Package pdftex.def Info: sim_new/USP30_profile_plot.png  used on input line 772
+Package pdftex.def Info: sim_new/USP30_profile_plot.png  used on input line 795
 .
 (pdftex.def)             Requested size: 469.75502pt x 239.69125pt.
 
@@ -1408,8 +1637,17 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 File: sim_new/simple_power_analysis.png Graphic file (type png)
 <use sim_new/simple_power_analysis.png>
 Package pdftex.def Info: sim_new/simple_power_analysis.png  used on input line 
-784.
-(pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
+807.
+(pdftex.def)             Requested size: 422.77664pt x 281.85982pt.
+<sim_new/power_analysis_sd_combined.png, id=140, 752.8125pt x 501.875pt>
+File: sim_new/power_analysis_sd_combined.png Graphic file (type png)
+<use sim_new/power_analysis_sd_combined.png>
+Package pdftex.def Info: sim_new/power_analysis_sd_combined.png  used on input 
+line 819.
+(pdftex.def)             Requested size: 422.77664pt x 281.85982pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
@@ -1422,12 +1660,19 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 [25
 
  <./sim_new/simple_power_analysis.png>]
-<sim_new/power_analysis_sd_combined.png, id=145, 752.8125pt x 501.875pt>
-File: sim_new/power_analysis_sd_combined.png Graphic file (type png)
-<use sim_new/power_analysis_sd_combined.png>
-Package pdftex.def Info: sim_new/power_analysis_sd_combined.png  used on input 
-line 796.
-(pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
+
+Package fancyhdr Warning: \headheight is too small (0.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
+
+[26 <./sim_new/power_analysis_sd_combined.png>]
+Overfull \hbox (18.62894pt too wide) in paragraph at lines 851--851
+[]\OT1/cmr/m/n/10.95 Meena Choi et al. ``MSstats: an R pack-age for sta-tis-ti-
+cal anal-y-sis of quan-ti-ta-tive mass spectrometry-
+ []
 
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
@@ -1437,56 +1682,50 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
-[26 <./sim_new/power_analysis_sd_combined.png>] (ptm_sm.bbl)
-
-Package fancyhdr Warning: \headheight is too small (0.0pt): 
-(fancyhdr)                Make it at least 11.78pt, for example:
-(fancyhdr)                \setlength{\headheight}{11.78pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-11.78pt}.
-
 [27
 
 ] (ptm_sm.aux)
-
-LaTeX Warning: There were undefined references.
+Package logreq Info: Writing requests to 'ptm_sm.run.xml'.
+\openout1 = `ptm_sm.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19503 strings out of 479334
- 404617 string characters out of 2853721
- 712634 words of memory out of 3000000
- 36518 multiletter control sequences out of 15000+200000
- 421986 words of font info for 95 fonts, out of 3000000 for 9000
+ 26736 strings out of 479334
+ 550262 string characters out of 2853721
+ 1266203 words of memory out of 3000000
+ 43679 multiletter control sequences out of 15000+200000
+ 422455 words of font info for 97 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,15n,89p,1485b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 87i,15n,89p,1633b,1263s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Devon Kohler\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
 00\tcrm1095.pk><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmbx10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Devon Kohler/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Devon 
-Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-<C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Devon Kohler/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Devon Ko
-hler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Devon Kohler/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/Devon Kohler/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/User
-s/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ptm_sm.pdf (27 pages, 869307 bytes).
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Devon
+ Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb
+><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Devon Kohler/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Devon 
+Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><
+C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmr6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Devon Kohler/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Devon Kohler/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Use
+rs/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy6.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Devon Kohler/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users
+/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
+10.pfb>
+Output written on ptm_sm.pdf (27 pages, 894022 bytes).
 PDF statistics:
- 214 PDF objects out of 1000 (max. 8388607)
+ 222 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
