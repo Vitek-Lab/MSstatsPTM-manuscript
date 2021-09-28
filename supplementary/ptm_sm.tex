@@ -22,6 +22,9 @@
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{authblk}
+\usepackage{xr}
+\externaldocument[main-]{../main/MSstatsPTM_Main}
+
 \usepackage[backend=biber]{biblatex}
 \bibliography{ptm_ref}
 
@@ -543,7 +546,7 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FDR_all_models}\\
-	\caption{All the considered methods in simulation 1 correctly calibrated FDR rate when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates.}
+	\caption{All the considered methods in simulation 1 correctly calibrated FDR  when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
@@ -620,7 +623,7 @@ Again we consider three different methods and assess their performance: the meth
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_limma_volcano}
-\caption{Using the limma method the spike in peptides follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significante adjusted pvalue. In terms of false positives, the results are very similar to the propsed method, with many false positives before adjustment and much fewer afterward. \label{fig:spike_volcano_limma}}
+\caption{Limma method used to model the spike in experiment. Using limma the spike in peptides follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after. \label{fig:spike_volcano_limma}}
 \end{figure}
 
 \begin{figure}[h!]
@@ -647,6 +650,7 @@ Again we consider three different methods and assess their performance: the meth
 \section{Datasets : Biological investigation}
 
 \subsection{IpaH7.8}
+\label{sec:ipah}
 
 In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the protein gasdermin D (GSDMD). Multiplex proteomics was used to quantify the abundance of total protein, and ubiquitination in human epithelial cells. Cells were either infected or uninfected with IpaH7.8-deficient Shigella flexneri and measurements were taken at different time periods. Uninfected cells were measured at 0 and 6 hours, while infected cells were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. The experiment was inbalanced with two bioreplicates per condition for all conditions except for infected 1 hour. The experimental design can be seen in Table~\ref{table:ipah_design}.
 
@@ -712,8 +716,8 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 
 \clearpage
 \subsection{Shigella flexneri}
-
-In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
+\label{sec:shigella}
+In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. \cite{Maculins} Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
 
 \begin{table}[h!]
 \centering
@@ -783,6 +787,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 \clearpage
 
 \subsection{USP30}
+\label{sec:usp30}
 
 This experiment looked into the relationship between USP30 and protein kinase PINK1, and their association with Parkinson's Disease. Ubiquitination site profiling was performed and the modified site abundance was analyzed. Four conditions were tested with two biological replicates per condition. The conditions were as follows: CCCP, USP30 overexpression (USP30\_OE), Combo, and Control. Label-free mass spectrometry quantification was used to quantify the abundance of modified peptides. A corresponding mixed effects model was fit per modification and global protein as described previously in this supplementary.
 

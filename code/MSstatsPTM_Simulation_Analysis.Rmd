@@ -191,6 +191,16 @@ calculate_summary_stats <- function(df, protein_col_name, pval_col_name, sd, rep
                              accuracy = accuracy, recall = recall)
   return(results_temp)
 }
+
+
+calc_roc <- function(df, protein_col_name, pval_col_name){
+  
+  temp_df <- df %>% select(get(protein_col_name), get(pval_col_name))
+  
+  temp_df$True <- ifelse(grepl("NoChange", get(protein_col_name)), 0, 1)
+  temp_df$Pred <- ifelse(get(pval_col_name) < .05, 1, 0)
+  
+}
 ```
 
 ## Computer Simulation
