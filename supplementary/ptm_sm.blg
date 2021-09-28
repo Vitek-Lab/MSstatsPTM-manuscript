@@ -1,17 +1,17 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'ptm_sm.blg'
-[121] biber-MSWIN64:340> INFO - === 
-[170] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
-[296] Biber.pm:952> INFO - Found 6 citekeys in bib section 0
-[311] Biber.pm:4340> INFO - Processing section 0
-[322] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
-[399] bibtex.pm:1689> INFO - LaTeX decoding ...
-[415] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
-[470] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[506] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[506] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[506] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[506] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[114] biber-MSWIN64:340> INFO - === 
+[155] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
+[277] Biber.pm:952> INFO - Found 7 citekeys in bib section 0
+[295] Biber.pm:4340> INFO - Processing section 0
+[307] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
+[376] bibtex.pm:1689> INFO - LaTeX decoding ...
+[392] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
+[451] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
+[505] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[505] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[505] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[505] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
 [518] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
-[526] bbl.pm:757> INFO - Output to ptm_sm.bbl
-[526] Biber.pm:128> INFO - WARNINGS: 1
+[529] bbl.pm:757> INFO - Output to ptm_sm.bbl
+[529] Biber.pm:128> INFO - WARNINGS: 1

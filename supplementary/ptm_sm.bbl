@@ -177,6 +177,129 @@
       \field{title}{Applied Linear Statistical Models}
       \field{year}{2004}
     \endentry
+    \entry{LUCHETTI2021}{article}{}
+      \name{author}{19}{}{%
+        {{hash=26c42185bce44f24b7de28aa00be5c22}{%
+           family={Luchetti},
+           familyi={L\bibinitperiod},
+           given={Giovanni},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ed3ce9671ec9c66c665791023cb0c1d1}{%
+           family={Roncaioli},
+           familyi={R\bibinitperiod},
+           given={Justin\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=1366f5a41df2b202676dce279d1b34fb}{%
+           family={Chavez},
+           familyi={C\bibinitperiod},
+           given={Roberto\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=65a2c363ebf25095f940b84dbf8dda7b}{%
+           family={Schubert},
+           familyi={S\bibinitperiod},
+           given={Alexander\bibnamedelima F.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=9b55a0d7c527cab18577e798731cc3d2}{%
+           family={Kofoed},
+           familyi={K\bibinitperiod},
+           given={Eric\bibnamedelima M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=1a26ea99efe77511d649b8247f2d299a}{%
+           family={Reja},
+           familyi={R\bibinitperiod},
+           given={Rohit},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1d1323f961e4b5049b2a04f151b98bd8}{%
+           family={Cheung},
+           familyi={C\bibinitperiod},
+           given={Tommy\bibnamedelima K.},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=035696b31b27dca2694a9b9c507e415f}{%
+           family={Liang},
+           familyi={L\bibinitperiod},
+           given={Yuxin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=2d2932061322a9a9f6a4ad3be1af6cf7}{%
+           family={Webster},
+           familyi={W\bibinitperiod},
+           given={Joshua\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=433779449dbb1d39de102cc226fef5ce}{%
+           family={Lehoux},
+           familyi={L\bibinitperiod},
+           given={Isabelle},
+           giveni={I\bibinitperiod}}}%
+        {{hash=e891c37a75c7fe4d5be2f0ba0cf0f7da}{%
+           family={Skippington},
+           familyi={S\bibinitperiod},
+           given={Elizabeth},
+           giveni={E\bibinitperiod}}}%
+        {{hash=4acfc34dbd47cfd1c343598f69a00252}{%
+           family={Reeder},
+           familyi={R\bibinitperiod},
+           given={Janina},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a64119533ca00a1e8b08b8ce2130a55f}{%
+           family={Haley},
+           familyi={H\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=835d2b30776a16dda6da49e47c9824d7}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Man\bibnamedelima Wah},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=eaea7327708ea038ba711844fd0b0ff1}{%
+           family={Rose},
+           familyi={R\bibinitperiod},
+           given={Christopher\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a81bdddd74ebb2f4d0a68614a9083b77}{%
+           family={Newton},
+           familyi={N\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod}}}%
+        {{hash=2a14a23cb965414f1ca251265f71727f}{%
+           family={Kayagaki},
+           familyi={K\bibinitperiod},
+           given={Nobuhiko},
+           giveni={N\bibinitperiod}}}%
+        {{hash=350b98a745561b49359655ed415f966e}{%
+           family={Vance},
+           familyi={V\bibinitperiod},
+           given={Russell\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=1b991eb386ee5387d891304bb36589f8}{%
+           family={Dixit},
+           familyi={D\bibinitperiod},
+           given={Vishva\bibnamedelima M.},
+           giveni={V\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed6bf90db96a27be7b1806b89e368597}
+      \strng{fullhash}{1700db834e82418b38ae91c6d4909191}
+      \strng{bibnamehash}{ed6bf90db96a27be7b1806b89e368597}
+      \strng{authorbibnamehash}{ed6bf90db96a27be7b1806b89e368597}
+      \strng{authornamehash}{ed6bf90db96a27be7b1806b89e368597}
+      \strng{authorfullhash}{1700db834e82418b38ae91c6d4909191}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1931-3128}
+      \field{journaltitle}{Cell Host \& Microbe}
+      \field{title}{Shigella ubiquitin ligase IpaH7.8 targets gasdermin D for degradation to prevent pyroptosis and enable infection}
+      \field{year}{2021}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.chom.2021.08.010
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S1931312821003863
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S1931312821003863
+      \endverb
+      \keyw{GSDMD,inflammasome,proteasome,pyroptosis,,ubiquitin ligase,virulence}
+    \endentry
     \entry{Maculins}{article}{}
       \name{author}{18}{}{%
         {{hash=8049cd7b0608aca32d04626869889dd4}{%
