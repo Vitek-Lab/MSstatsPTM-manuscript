@@ -4,6 +4,7 @@ library(data.table)
 library(tidyverse)
 library(gridExtra)
 library(ggrepel)
+library(VennDiagram)
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
@@ -179,3 +180,46 @@ v2 <- adj_plot_df %>% ggplot() +
     fill="#69b3a2")
 
 grid.arrange(v1, v2, nrow = 1)
+
+
+## Venn Diagram
+colors <- c("#E69F00", "#56B4E9")
+
+unadj_ptm_model <- read.csv("../data/Ipah_PTM_test_results.txt", sep = "\t")
+adj_ptm_model <- read.csv("../data/Ipah_PTM_Adjusted_test_results.txt", sep = "\t")
+
+unadj_ptm_model$Protein_Label <- paste(unadj_ptm_model$Protein, unadj_ptm_model$Label)
+adj_ptm_model$Protein_Label <- paste(adj_ptm_model$Protein, adj_ptm_model$Label)
+
+sig_unadj_ptm_model <- unadj_ptm_model %>% filter(Protein_Label %in% adj_ptm_model$Protein_Label)
+
+sig_unadj_ptm_model <- sig_unadj_ptm_model %>% filter(adj.pvalue < .05)
+sig_adj_ptm_model <- adj_ptm_model %>% filter(adj.pvalue < .05)
+
+
+venn.diagram(
+  x = list(sig_unadj_ptm_model$Protein_Label, sig_adj_ptm_model$Protein_Label),
+  category.names = c("Unadjusted" , "Adjusted"),
+  filename = "ipah_venn_diagramm.png",
+  output=TRUE,
+  imagetype="png" ,
+  height = 1200,
+  width = 1200,
+  resolution = 100,
+  lwd = 2,
+  fill = colors,
+  main.fontface = "bold",
+  main.pos = c(.5,.965),
+  fontface = "bold",
+  cat.fontface = "bold",
+  cex = 3,
+  cat.cex = 3,
+  cat.pos = c(-40, 30),
+  cat.dist = c(.037, .03),
+  main.cex = 2.8,
+  main = "Overlap between signficant adjusted and unadjusted PTMs"
+)
+
+combined_models <- merge(adj_ptm_model, unadj_ptm_model, all.x=TRUE, all.y=TRUE, by = c("Protein_Label"))
+combined_models %>% filter(log2FC.x < log2FC.y*1.1 & log2FC.x > log2FC.y*.9 &
+                   adj.pvalue.x >= .05 & adj.pvalue.y < .05)

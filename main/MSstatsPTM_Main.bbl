@@ -19,6 +19,56 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{Bates2015}{article}{}
+      \name{author}{4}{}{%
+        {{hash=291c4bc67cf41a2019405a2328a9b75e}{%
+           family={Bates},
+           familyi={B\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9cd1e56848b277b4f48a6e0b817ba5ab}{%
+           family={Mächler},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d6b13be971f13ee03cc83cded41b6d7e}{%
+           family={Bolker},
+           familyi={B\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+        {{hash=3face7d9e1128ebfefc56b5f54f28451}{%
+           family={Walker},
+           familyi={W\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{fullhash}{e1419b3c7f22b8a469bd183c172e98b4}
+      \strng{bibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{authorbibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{authornamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{authorfullhash}{e1419b3c7f22b8a469bd183c172e98b4}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Statistical Software}
+      \field{number}{1}
+      \field{title}{Fitting Linear Mixed-Effects Models Using lme4}
+      \field{volume}{67}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 48}
+      \range{pages}{48}
+      \verb{doi}
+      \verb 10.18637/jss.v067.i01
+      \endverb
+      \verb{urlraw}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v067i01
+      \endverb
+      \verb{url}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v067i01
+      \endverb
+    \endentry
     \entry{Benjamini:1995}{article}{}
       \name{author}{2}{}{%
         {{hash=a734078ee29cd8a9ba47ac3a1b193855}{%
@@ -388,6 +438,51 @@
       \field{year}{2011}
       \field{pages}{e1002277}
       \range{pages}{-1}
+    \endentry
+    \entry{Kuznetsova2017}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7cd3845a800c3291e727a82c1f2df45e}{%
+           family={Kuznetsova},
+           familyi={K\bibinitperiod},
+           given={Alexandra},
+           giveni={A\bibinitperiod}}}%
+        {{hash=17e06e730e273b9c94400089772b8b02}{%
+           family={Brockhoff},
+           familyi={B\bibinitperiod},
+           given={Per\bibnamedelima B.},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=54ec03df91a5b51c9a62ed4f70da8712}{%
+           family={Christensen},
+           familyi={C\bibinitperiod},
+           given={Rune\bibnamedelimb H.\bibnamedelimi B.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{fullhash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{bibnamehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{authorbibnamehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{authornamehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{authorfullhash}{0734b43304bc167fad6d2532bc75460a}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Statistical Software}
+      \field{number}{13}
+      \field{title}{lmerTest Package: Tests in Linear Mixed Effects Models}
+      \field{volume}{82}
+      \field{year}{2017}
+      \field{pages}{1\bibrangedash 26}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.18637/jss.v082.i13
+      \endverb
+      \verb{urlraw}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v082i13
+      \endverb
+      \verb{url}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v082i13
+      \endverb
     \endentry
     \entry{LUCHETTI2021}{article}{}
       \name{author}{19}{}{%

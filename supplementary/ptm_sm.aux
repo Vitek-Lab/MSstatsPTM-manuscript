@@ -40,8 +40,8 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4}Computer simulation}{8}{}\protected@file@percent }
 \newlabel{sec:sim}{{4}{8}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Protein-level adjustment}{8}{}\protected@file@percent }
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Simulation 1}{8}{}\protected@file@percent }
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Simulation 2}{9}{}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Computer simulation 1 - label free}{8}{}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Computer simulation 2 - missing values and low replicates}{9}{}\protected@file@percent }
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S2}{\ignorespaces FDR of Simulation 1.\relax }}{10}{}\protected@file@percent }
 \newlabel{fig:sim1_fpr}{{S2}{10}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S3}{\ignorespaces Recall and Accuracy results of Simulation 1.\relax }}{11}{}\protected@file@percent }
@@ -50,7 +50,7 @@
 \newlabel{fig:sim2_recall}{{S4}{12}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S5}{\ignorespaces Fold change distribution comparison between Simulations 1 and 2.\relax }}{13}{}\protected@file@percent }
 \newlabel{fig:fc_boxplot}{{S5}{13}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Benchmark experiment}{14}{}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SpikeIn benchmark - KGG enriched}{14}{}\protected@file@percent }
 \newlabel{sec:benchmark}{{4.2}{14}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S6}{\ignorespaces Using the proposed method to model the benchmark experiment, the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides show many false positives before adjustment. After adjustment the false positives were decreased considerably. \relax }}{14}{}\protected@file@percent }
 \newlabel{fig:spike_volcano_msstats}{{S6}{14}}
@@ -65,31 +65,38 @@
 \abx@aux@cite{LUCHETTI2021}
 \abx@aux@segm{0}{0}{LUCHETTI2021}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5}Datasets : Biological investigation}{19}{}\protected@file@percent }
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}IpaH7.8}{19}{}\protected@file@percent }
+\newlabel{sec:bio_investigations}{{5}{19}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Human-1mix-TMT - ubiquitination}{19}{}\protected@file@percent }
 \newlabel{sec:ipah}{{5.1}{19}}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S1}{\ignorespaces The experimental design of the IpaH7.8 experiment\relax }}{19}{}\protected@file@percent }
 \newlabel{table:ipah_design}{{S1}{19}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S11}{\ignorespaces Summary plots for modification of protein GSDMD at site K62.\relax }}{20}{}\protected@file@percent }
-\newlabel{fig:ipah_figures}{{S11}{20}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S11}{\ignorespaces The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.\relax }}{20}{}\protected@file@percent }
+\newlabel{fig:ipha_venn_d}{{S11}{20}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S12}{\ignorespaces Summary plots for modification of protein GSDMD at site K62.\relax }}{21}{}\protected@file@percent }
+\newlabel{fig:ipah_figures}{{S12}{21}}
 \abx@aux@cite{Maculins}
 \abx@aux@segm{0}{0}{Maculins}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Shigella flexneri}{21}{}\protected@file@percent }
-\newlabel{sec:shigella}{{5.2}{21}}
-\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S2}{\ignorespaces The experimental design of the Shigella flexneri experiment\relax }}{21}{}\protected@file@percent }
-\newlabel{table:shigella_design}{{S2}{21}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S12}{\ignorespaces Summary plots for modification of protein TTP at site S178.\relax }}{22}{}\protected@file@percent }
-\newlabel{fig:No_Diff_Shigella_PTM}{{S12}{22}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S13}{\ignorespaces Summary plots for modification of protein KI67 at site T215.\relax }}{23}{}\protected@file@percent }
-\newlabel{fig:Diff_Shigella_PTM}{{S13}{23}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}USP30}{24}{}\protected@file@percent }
-\newlabel{sec:usp30}{{5.3}{24}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S14}{\ignorespaces Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between all conditions, whereas the global profiling run shows the CCCP and Combo conditions have a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had a major effect when comparing CCCP and Combo to Control and USP30\_OE. This would have been missed without adjusting for global protein changes.\relax }}{24}{}\protected@file@percent }
-\newlabel{fig:USP30_profile_plot}{{S14}{24}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{25}{}\protected@file@percent }
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S15}{\ignorespaces The number of replicates per condition required to reach a power of .9 can be seen in the plot. At a high standard deviation and low expected fold change the number of replicates is unrealistically high. As the expected fold change increases the number of replicates needed decreases dramatically. The standard deviation of .1 expectantly shows the least number of replicates needed regardless of fold change.\relax }}{25}{}\protected@file@percent }
-\newlabel{fig:sample_size}{{S15}{25}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S16}{\ignorespaces When the unmodified peptide has a low standard deviation the number of replicates is very similar to the baseline. As the standard deviation increases the number of replicates increases greatly. When the unmodified standard deviation is much higher than the modified, we can see that many more replicates are needed to reach the same power.\relax }}{26}{}\protected@file@percent }
-\newlabel{fig:power_sd_combo}{{S16}{26}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Mouse-2mix-TMT - phosphorylation}{22}{}\protected@file@percent }
+\newlabel{sec:shigella}{{5.2}{22}}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S2}{\ignorespaces The experimental design of the Shigella flexneri experiment\relax }}{22}{}\protected@file@percent }
+\newlabel{table:shigella_design}{{S2}{22}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S13}{\ignorespaces The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. Much like in {Figure\nobreakspace  {}S14\hbox {}}, more PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. Again we tested if the decrease in significant peptides was due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, 776 peptides became insignificant due to an increase in variance. This is higher than in {Figure\nobreakspace  {}S14\hbox {}}, however it is still a very small portion ($\nobreakspace  {}4\%$) of the peptides that became insignificant after adjustment. Thus we can conclude that the drop off in significant peptides was mainly due to changes in global protein abundance.\relax }}{23}{}\protected@file@percent }
+\newlabel{fig:shig_venn_d}{{S13}{23}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S14}{\ignorespaces The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.\relax }}{24}{}\protected@file@percent }
+\newlabel{fig:ipha_venn_d}{{S14}{24}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S15}{\ignorespaces Summary plots for modification of protein TTP at site S178.\relax }}{25}{}\protected@file@percent }
+\newlabel{fig:No_Diff_Shigella_PTM}{{S15}{25}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S16}{\ignorespaces Summary plots for modification of protein KI67 at site T215.\relax }}{26}{}\protected@file@percent }
+\newlabel{fig:Diff_Shigella_PTM}{{S16}{26}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Human label free quantification - no global profiling run}{27}{}\protected@file@percent }
+\newlabel{sec:usp30}{{5.3}{27}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S17}{\ignorespaces Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between all conditions, whereas the global profiling run shows the CCCP and Combo conditions have a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had a major effect when comparing CCCP and Combo to Control and USP30\_OE. This would have been missed without adjusting for global protein changes.\relax }}{27}{}\protected@file@percent }
+\newlabel{fig:USP30_profile_plot}{{S17}{27}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{28}{}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S18}{\ignorespaces The number of replicates per condition required to reach a power of .9 can be seen in the plot. At a high standard deviation and low expected fold change the number of replicates is unrealistically high. As the expected fold change increases the number of replicates needed decreases dramatically. The standard deviation of .1 expectantly shows the least number of replicates needed regardless of fold change.\relax }}{28}{}\protected@file@percent }
+\newlabel{fig:sample_size}{{S18}{28}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S19}{\ignorespaces When the unmodified peptide has a low standard deviation the number of replicates is very similar to the baseline. As the standard deviation increases the number of replicates increases greatly. When the unmodified standard deviation is much higher than the modified, we can see that many more replicates are needed to reach the same power.\relax }}{29}{}\protected@file@percent }
+\newlabel{fig:power_sd_combo}{{S19}{29}}
 \abx@aux@read@bbl@mdfivesum{BBFB405E64F71185ECA993FC5E5B3E9A}
 \abx@aux@refcontextdefaultsdone
 \abx@aux@defaultrefcontext{0}{choi_etal_14a}{nty/global//global/global}
@@ -99,4 +106,4 @@
 \abx@aux@defaultrefcontext{0}{Maculins}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{oberg_vitek_09a}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{Ritchie_15a}{nty/global//global/global}
-\gdef \@abspage@last{27}
+\gdef \@abspage@last{30}
