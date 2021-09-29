@@ -40,6 +40,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.2}Mouse-2mix-TMT - phosphorylation}{22}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Human label free quantification - no global profiling run}{27}{}%
+\contentsline {subsection}{\numberline {5.3}Human label free quantification - no global profiling run}{26}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{28}{}%
+\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{27}{}%
