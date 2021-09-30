@@ -701,7 +701,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 
 \begin{figure}[h!]
 \centering
-\includegraphics[height=.7\textwidth]{sim_new/ipah_venn_diagramm.png}
+\includegraphics[height=.65\textwidth]{sim_new/ipah_venn_diagramm.png}
 \caption{The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.}
 \label{fig:ipha_venn_d}
 \end{figure}
@@ -762,7 +762,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 
 \begin{figure}[h!]
 \centering
-\includegraphics[height=.7\textwidth]{sim_new/shig_venn_diagramm.png}
+\includegraphics[height=.65\textwidth]{sim_new/shig_venn_diagramm.png}
 \caption{The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. Much like in \sfigref{fig:ipha_venn_d}, more PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. Again we tested if the decrease in significant peptides was due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, 776 peptides became insignificant due to an increase in variance. This is higher than in \sfigref{fig:ipha_venn_d}, however it is still a very small portion (4\%) of the peptides that became insignificant after adjustment. Thus we can conclude that the drop off in significant peptides was mainly due to changes in global protein abundance.}
 \label{fig:shig_venn_d}
 \end{figure}
@@ -809,7 +809,24 @@ This experiment looked into the relationship between USP30 and protein kinase PI
 
 In contrast to other experiments analyzed in this paper, there was no unmodified global protein profiling run performed in this experiment. Once identification and quantification of the Ubiquitinated profiling was performed, peptides which were unmodified were extracted and used in place of a global profiling run. This resulted in a significant lack of overlap between modified and unmodified peptides. Any modified peptide without a corresponding unmodified protein could not be adjusted. Of the 10,799 modified peptides identified, only 4526 had a corresponding unmodified run and could be adjusted. Not having a separate global profiling run resulted in very low feature counts for the unmodified protein model.
 
-An example profile plot for this experiment can be seen in \sfigref{fig:USP30_profile_plot}.
+An example profile plot for this experiment can be seen in \sfigref{fig:usp30_ven_d} and \sfigref{fig:USP30_profile_plot}.
+
+\begin{figure}[h!]
+\centering
+ \begin{subfigure}{\textwidth}
+ \centering
+	\includegraphics[height=.5\textwidth]{sim_new/usp30_venn_diagramm}
+	\caption{The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment.In this experiment, many more PTMs became insignificant after adjustment then became significant. In this case this is mainly due to the large lack of overlap between the modified peptides and unmodified proteins, stemming from not having a global profiling run.}
+ \end{subfigure}\vspace{-5mm}
+ \begin{subfigure}{\textwidth}
+ \centering
+	\includegraphics[height=.5\textwidth]{sim_new/usp30_venn_diagramm_matching_only}
+	\caption{The same overlap as above, but looking only at modified peptides with a matching unmodified protein so adjustment can be performed. In this case we see significantly less peptides become insignificant after adjustment. Again we can check if peptides are becoming insignificant due to an increase in variance. To check this we look at modified peptides whose adjusted fold change is within 10\% of their unadjusted fold change and they become insignificant after adjustment. In this experiment there are only 25 peptides that meet this criteria, a very small percentage of all modified peptides.}
+ \end{subfigure}
+ \caption{Overlap of significant PTMs before and after protein adjustment.}
+\label{fig:usp30_ven_d}
+\end{figure}
+
 
 \begin{figure}[h!]
 \centering
@@ -822,24 +839,14 @@ An example profile plot for this experiment can be seen in \sfigref{fig:USP30_pr
 \section{Sample size calculation and power analysis}
 \todo{Devon: Update this section per Olga's commentsv}
 
-The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. Given a desired power of .9, varying standard deviations, and an expected fold change, the number of replicates per condition can be seen in \sfigref{fig:sample_size}
+The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. As described in Section \ref{sec:test} the proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. Thus the statistical power is dependent on the variance from both the modified peptide and unmodifed protein as well as the number of replicates in both the modified and unmodified runs.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=.9\textwidth]{sim_new/simple_power_analysis}
-\caption{The number of replicates per condition required to reach a power of .9 can be seen in the plot. At a high standard deviation and low expected fold change the number of replicates is unrealistically high. As the expected fold change increases the number of replicates needed decreases dramatically. The standard deviation of .1 expectantly shows the least number of replicates needed regardless of fold change.}
-\label{fig:sample_size}
-\end{figure}
-
-
-As described in Section \ref{sec:test} the proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. 
-
-We compared the required sample size with varying standard deviations for the modified and unmodified peptide models. Three pairs of standard deviations of log-intensities for modified and unmodified peptides were used: (0.2, 0.1), (0.2, 0.2), and (0.2, 0.4). In the first pair the standard deviation for the unmodified peptide was less than the modified, in the second the standard deviations are the same, and in the third the standard deviation for the unmodified peptide was more than for the modified peptide. Again the desired power was .9 and the expected fold change was varied. The results can be seen in \sfigref{fig:power_sd_combo}
+We compared the statistical power in experiments with different numbers of replicates, variance, and fold change for both the modified and unmodified runs. The results can be seen in \sfigref{fig:power_sd_combo}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.9\textwidth]{sim_new/power_analysis_sd_combined}
-\caption{When the unmodified peptide has a low standard deviation the number of replicates is very similar to the baseline. As the standard deviation increases the number of replicates increases greatly. When the unmodified standard deviation is much higher than the modified, we can see that many more replicates are needed to reach the same power.}
+\caption{}
 \label{fig:power_sd_combo}
 \end{figure}
 

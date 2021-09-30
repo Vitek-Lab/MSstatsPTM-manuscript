@@ -9,18 +9,52 @@ desiredFC <- 2 ^ delta
 # desiredFC <- delta
 
 ## Define base metrics
-FDR <- .05
-power <- .8
 
-## function calculations
-m0_m1 <- 99 ## it means m0/m1=99, m0/(m0+m1)=0.99
-alpha <- power * FDR / (1 + (1 - FDR) * m0_m1)
+low <- 1
+high <- 3
 
-z_alpha <- qnorm(1 - alpha / 2)
-z_beta <- qnorm(power)
-aa <- (delta / (z_alpha + z_beta)) ^2
+mod_pep_sigma <- low
+unmod_pep_sigma <- low
+
+n_sample_list <- c(3,5,7,10)
+
+mod_num_sample <- n_sample_list[[1]]
+unmod_num_sample <- n_sample_list[[1]]
 
 #Specify sigma for ptm and unmod pep
+
+samples_mod <- rnorm(n_sample_list[[1]], mean = 0, low)
+std_dev_mod <- sum((samples_mod - mean(samples_mod)^2)) / (mod_num_sample)
+samples_unmod <- rnorm(n_sample_list[[1]], mean = 0, low)
+std_dev_unmod <- sum((samples_unmod - mean(samples_unmod)^2)) / (unmod_num_sample)
+
+t <- delta / sqrt(std_dev_mod^2 + std_dev_unmod^2)
+
+FDR <- 0.05
+m0_m1 <- 99
+powerTemp <- seq(0, 1, 0.01)
+power <- numeric(length(t))
+
+for (i in seq_along(t)) {
+  diff <- qnorm(powerTemp) + qnorm(1 - powerTemp * FDR / (1 + (1 - FDR) * m0_m1) / 2) - t[i]
+  min(abs(diff), na.rm = TRUE)
+  power[i] = powerTemp[order(abs(diff))][1]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Original code containing sigma for subject.. can include or assume 0 for now
@@ -32,7 +66,7 @@ numSample_nomod_1 <- round(2 * (.1) / aa, 0)
 numSample_nomod_2 <- round(2 * (.2) / aa, 0)
 numSample_nomod_3 <- round(2 * (.4) / aa, 0)
 
-p1 <- data.frame("SD" = c(rep(".1", length(numSample_nomod_1)),
+p1 <- data.frame("SD" = c(rep("`.1", length(numSample_nomod_1)),
                       rep(".2", length(numSample_nomod_1)),
                       rep(".4", length(numSample_nomod_1))),
            "Log2FC" = c(desiredFC, desiredFC, desiredFC),
