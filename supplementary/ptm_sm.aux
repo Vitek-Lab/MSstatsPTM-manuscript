@@ -17,6 +17,8 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Limma}{3}{}\protected@file@percent }
 \abx@aux@cite{choi_etal_14a}
 \abx@aux@segm{0}{0}{choi_etal_14a}
+\abx@aux@cite{tukey_77a}
+\abx@aux@segm{0}{0}{tukey_77a}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3}Proposed approach}{4}{}\protected@file@percent }
 \newlabel{sec:prop}{{3}{4}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Statistical modeling and inference}{4}{}\protected@file@percent }
@@ -40,7 +42,7 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4}Computer simulation}{8}{}\protected@file@percent }
 \newlabel{sec:sim}{{4}{8}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Protein-level adjustment}{8}{}\protected@file@percent }
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Computer simulation 1 - label free}{8}{}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Computer simulation 1 - label free experiment}{8}{}\protected@file@percent }
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Computer simulation 2 - missing values and low replicates}{9}{}\protected@file@percent }
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S2}{\ignorespaces FDR of Simulation 1.\relax }}{10}{}\protected@file@percent }
 \newlabel{fig:sim1_fpr}{{S2}{10}}
@@ -52,50 +54,50 @@
 \newlabel{fig:fc_boxplot}{{S5}{13}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SpikeIn benchmark - KGG enriched}{14}{}\protected@file@percent }
 \newlabel{sec:benchmark}{{4.2}{14}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S6}{\ignorespaces Using the proposed method to model the benchmark experiment, the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides show many false positives before adjustment. After adjustment the false positives were decreased considerably. \relax }}{14}{}\protected@file@percent }
-\newlabel{fig:spike_volcano_msstats}{{S6}{14}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S7}{\ignorespaces When modeling the experiment with the limma method, the spike in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. In this case, the known differencial peptides are missed by the model. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after. \relax }}{15}{}\protected@file@percent }
-\newlabel{fig:spike_volcano_limma}{{S7}{15}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S8}{\ignorespaces Using the two sample $t$-test, none of the comparisons either before or after adjustment show any significant peptides. With that being said, the fold change of the spike in peptides is much closer to expectation after adjusting for global protein abundance. \relax }}{16}{}\protected@file@percent }
-\newlabel{fig:spike_volcano_ttest}{{S8}{16}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S9}{\ignorespaces Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike in peptides. \relax }}{17}{}\protected@file@percent }
-\newlabel{fig:spike_stat}{{S9}{17}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S10}{\ignorespaces The fold change misalignment before adjustment is illustrated in the boxplots. The true log fold change is indicated by the red 'X' marks. Before adjustment the boxplots are not close to the true fold change. After adjustment all three models generally have a median near the true fold change. In terms of model comparison, the proposed method shows a much tighter distribution around the true fold change, whole both Limma and $t$-test are much wider. \relax }}{18}{}\protected@file@percent }
-\newlabel{fig:spike_fc}{{S10}{18}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S6}{\ignorespaces The modeling results of the proposed method both before and after adjustment. The spike in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides show many false positives before adjustment. After adjustment these false positives were decreased considerably. \relax }}{15}{}\protected@file@percent }
+\newlabel{fig:spike_volcano_msstats}{{S6}{15}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S7}{\ignorespaces When modeling the experiment with the limma method, the spike in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. In this case, the known differencial peptides are missed by the model. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after. \relax }}{16}{}\protected@file@percent }
+\newlabel{fig:spike_volcano_limma}{{S7}{16}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S8}{\ignorespaces Using the two sample $t$-test, none of the comparisons either before or after adjustment show any significant peptides. With that being said, the fold change of the spike in peptides is much closer to expectation after adjusting for global protein abundance. \relax }}{17}{}\protected@file@percent }
+\newlabel{fig:spike_volcano_ttest}{{S8}{17}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S9}{\ignorespaces Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike in peptides. \relax }}{18}{}\protected@file@percent }
+\newlabel{fig:spike_stat}{{S9}{18}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S10}{\ignorespaces The fold change misalignment before adjustment is illustrated in the boxplots. The true log fold change is indicated by the red 'X' marks. Before adjustment the boxplots are not close to the true fold change. After adjustment all three models generally have a median near the true fold change. In terms of model comparison, the proposed method shows a much tighter distribution around the true fold change, whole both Limma and $t$-test are much wider. \relax }}{19}{}\protected@file@percent }
+\newlabel{fig:spike_fc}{{S10}{19}}
 \abx@aux@cite{LUCHETTI2021}
 \abx@aux@segm{0}{0}{LUCHETTI2021}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5}Datasets : Biological investigation}{19}{}\protected@file@percent }
-\newlabel{sec:bio_investigations}{{5}{19}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Human-1mix-TMT - ubiquitination}{19}{}\protected@file@percent }
-\newlabel{sec:ipah}{{5.1}{19}}
-\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S1}{\ignorespaces The experimental design of the IpaH7.8 experiment\relax }}{19}{}\protected@file@percent }
-\newlabel{table:ipah_design}{{S1}{19}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S11}{\ignorespaces The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.\relax }}{20}{}\protected@file@percent }
-\newlabel{fig:ipha_venn_d}{{S11}{20}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S12}{\ignorespaces Summary plots for modification of protein GSDMD at site K62.\relax }}{21}{}\protected@file@percent }
-\newlabel{fig:ipah_figures}{{S12}{21}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5}Datasets : Biological investigation}{20}{}\protected@file@percent }
+\newlabel{sec:bio_investigations}{{5}{20}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Human-1mix-TMT - ubiquitination}{20}{}\protected@file@percent }
+\newlabel{sec:ipah}{{5.1}{20}}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S1}{\ignorespaces The experimental design of the IpaH7.8 experiment\relax }}{20}{}\protected@file@percent }
+\newlabel{table:ipah_design}{{S1}{20}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S11}{\ignorespaces The overlap of differencial modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. In contrast, for peptides that became significant after adjustment, their true abundance change was masked by underlying changes in the unmodified protein. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. In other words, the fold change was the same between models but variance increased. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.\relax }}{21}{}\protected@file@percent }
+\newlabel{fig:ipha_venn_d}{{S11}{21}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S12}{\ignorespaces Summary plots for modification of protein GSDMD at site K62.\relax }}{22}{}\protected@file@percent }
+\newlabel{fig:ipah_figures}{{S12}{22}}
 \abx@aux@cite{Maculins}
 \abx@aux@segm{0}{0}{Maculins}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Mouse-2mix-TMT - phosphorylation}{22}{}\protected@file@percent }
-\newlabel{sec:shigella}{{5.2}{22}}
-\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S2}{\ignorespaces The experimental design of the Shigella flexneri experiment\relax }}{22}{}\protected@file@percent }
-\newlabel{table:shigella_design}{{S2}{22}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S13}{\ignorespaces The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. Much like in {Figure\nobreakspace  {}S11\hbox {}}, more PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. Again we tested if the decrease in significant peptides was due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, 776 peptides became insignificant due to an increase in variance. This is higher than in {Figure\nobreakspace  {}S11\hbox {}}, however it is still a very small portion (4\%) of the peptides that became insignificant after adjustment. Thus we can conclude that the drop off in significant peptides was mainly due to changes in global protein abundance.\relax }}{23}{}\protected@file@percent }
-\newlabel{fig:shig_venn_d}{{S13}{23}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S14}{\ignorespaces Summary plots for modification of protein TTP at site S178.\relax }}{24}{}\protected@file@percent }
-\newlabel{fig:No_Diff_Shigella_PTM}{{S14}{24}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S15}{\ignorespaces Summary plots for modification of protein KI67 at site T215.\relax }}{25}{}\protected@file@percent }
-\newlabel{fig:Diff_Shigella_PTM}{{S15}{25}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Human label free quantification - no global profiling run}{26}{}\protected@file@percent }
-\newlabel{sec:usp30}{{5.3}{26}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S16}{\ignorespaces Overlap of significant PTMs before and after protein adjustment.\relax }}{27}{}\protected@file@percent }
-\newlabel{fig:usp30_ven_d}{{S16}{27}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S17}{\ignorespaces Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between all conditions, whereas the global profiling run shows the CCCP and Combo conditions have a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had a major effect when comparing CCCP and Combo to Control and USP30\_OE. This would have been missed without adjusting for global protein changes.\relax }}{28}{}\protected@file@percent }
-\newlabel{fig:USP30_profile_plot}{{S17}{28}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{29}{}\protected@file@percent }
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S18}{\ignorespaces \relax }}{29}{}\protected@file@percent }
-\newlabel{fig:power_sd_combo}{{S18}{29}}
-\abx@aux@read@bbl@mdfivesum{BBFB405E64F71185ECA993FC5E5B3E9A}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Mouse-2mix-TMT - phosphorylation}{23}{}\protected@file@percent }
+\newlabel{sec:shigella}{{5.2}{23}}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\contentsline {table}{\numberline {S2}{\ignorespaces The experimental design of the Shigella flexneri experiment\relax }}{23}{}\protected@file@percent }
+\newlabel{table:shigella_design}{{S2}{23}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S13}{\ignorespaces The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. Much like in {Figure\nobreakspace  {}S11\hbox {}}, more PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. Again we tested if the decrease in significant peptides was due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, 776 peptides became insignificant due to an increase in variance. This is higher than in {Figure\nobreakspace  {}S11\hbox {}}, however it is still a very small portion (4\%) of the peptides that became insignificant after adjustment. Thus we can conclude that the drop off in significant peptides was mainly due to changes in global protein abundance.\relax }}{24}{}\protected@file@percent }
+\newlabel{fig:shig_venn_d}{{S13}{24}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S14}{\ignorespaces Summary plots for modification of protein TTP at site S178.\relax }}{25}{}\protected@file@percent }
+\newlabel{fig:No_Diff_Shigella_PTM}{{S14}{25}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S15}{\ignorespaces Summary plots for modification of protein KI67 at site T215.\relax }}{26}{}\protected@file@percent }
+\newlabel{fig:Diff_Shigella_PTM}{{S15}{26}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Human label free quantification - no global profiling run}{27}{}\protected@file@percent }
+\newlabel{sec:usp30}{{5.3}{27}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S16}{\ignorespaces Overlap of significant PTMs before and after protein adjustment.\relax }}{28}{}\protected@file@percent }
+\newlabel{fig:usp30_ven_d}{{S16}{28}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S17}{\ignorespaces Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between all conditions, whereas the global profiling run shows the CCCP and Combo conditions have a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had a major effect when comparing CCCP and Combo to Control and USP30\_OE. This would have been missed without adjusting for global protein changes.\relax }}{29}{}\protected@file@percent }
+\newlabel{fig:USP30_profile_plot}{{S17}{29}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{30}{}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {S18}{\ignorespaces \relax }}{30}{}\protected@file@percent }
+\newlabel{fig:power_sd_combo}{{S18}{30}}
+\abx@aux@read@bbl@mdfivesum{6A8208A44082D9596B3036DF0D7BFAAF}
 \abx@aux@refcontextdefaultsdone
 \abx@aux@defaultrefcontext{0}{choi_etal_14a}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{Huang:2020}{nty/global//global/global}
@@ -104,4 +106,5 @@
 \abx@aux@defaultrefcontext{0}{Maculins}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{oberg_vitek_09a}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{Ritchie_15a}{nty/global//global/global}
-\gdef \@abspage@last{30}
+\abx@aux@defaultrefcontext{0}{tukey_77a}{nty/global//global/global}
+\gdef \@abspage@last{31}

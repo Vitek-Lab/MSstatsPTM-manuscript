@@ -204,7 +204,7 @@ With respect to PTM analysis, feature level summarization is done in the same wa
 \log \left( \sum_{k=1}^{K} 2^{y_{ijk}} \right).
 \]
 
-To adjust for unmodified peptides, the unmodified peptide is summarized in the same way and the result is combined with the PTM given by
+Adjustment for changes in the unmodified peptides is performed by taking the difference of log estimates, as follows
 
 \[
 d_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}^{\ast}} \right).
@@ -315,7 +315,7 @@ R_{j(i)}^{\ast} = \gamma_{j(i)}^{\ast} \stackrel{\text{iid}}{\sim} \mathcal{N}(0
 \subsubsection{Run-level summarization of feature intensities}
 \label{sec:sum}
 
-Run-level summarization of feature intensities for each PTM site is carried out as in the sub-plot model of MSstats~\cite{choi_etal_14a}, which involves a) imputation of censored missing values, and b) summarization of feature intensities using Tukey's median polish. The run-level summary for the PTM in Run $j$ of Condition $i$ is denoted by $\hat{y}_{ij}$.
+Run-level summarization of feature intensities for each PTM site is carried out as in the sub-plot model of MSstats~\cite{choi_etal_14a}, which involves a) imputation of censored missing values, and b) summarization of feature intensities using Tukey's median polish. \cite{tukey_77a} The run-level summary for the PTM in Run $j$ of Condition $i$ is denoted by $\hat{y}_{ij}$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,7 +449,7 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 \subsection{TMT experiment}
 \label{sec:tmtmethod}
 
-The methods described previously can be extrapolated to Tandem Mass Tag (TMT) experiments targeting PTMs, similarly to how MSstatsTMT targets the global protein.\cite{Huang:2020} The null hypothesis is still that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
+The methods described previously can be extrapolated to Tandem Mass Tag (TMT) experiments targeting PTMs. This is done in the same way to how MSstatsTMT targets the global protein.\cite{Huang:2020} The null hypothesis is that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
 \begin{align*}
 H_{0}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &= 0 \\
 H_{a}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &\neq 0
@@ -458,18 +458,17 @@ H_{a}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &\neq 
 For TMT experiments there is an additional source of variation coming from the mixtures used. This increases the model complexity as variation can now come from multiple mixtures, biological replicates, and technical replicates. Going forward we will denote the log-intensity of a modified peptide for Technical Replicate j of Mixture m for Condition i by $y_{ijm}$, where $m = 1,....,M$. This is done in the same way for the unmodified peptide $y^*_{ijm}$.
 
 The model assumes the variability of the mixture is a random effect and is not convoluted with the other variables in the model. The model also assumes that the difference between conditions is the same between mixtures. For a given modified peptide and corresponding unmodified protein a mixed effects model is fit as follows.
-
 \begin{align*}
-Y_{mtcb} = \mu + Mixture_m + Techrep(Mixture)_{tm} + Condition_c + Subject_{mcb} + \epsilon_{mtcb}\\
-Y^*_{mtcb} = \mu^* + Mixture^*_m + Techrep(Mixture)^*_{tm} + Condition^*_c + Subject^*_{mcb} + \epsilon^*_{mtcb}
+Y_{mtcb} = \mu + M_m + T(M)_{tm} + C_c + S_{mcb} + \epsilon_{mtcb}\\
+Y^*_{mtcb} = \mu^* + M^*_m + T(M)^*_{tm} + C^*_c + S^*_{mcb} + \epsilon^*_{mtcb}
 \end{align*}
 
-Where $Mixture_m \sim N(0, \sigma^2_m)$, $Techrep(Mixture)_{tm} \sim N(0, \sigma^2_{tm})$, $Subject \sim N(0, \sigma^2_{s})$ are random effects, and $\sum_{c=1}^{I} Condition_{c}^{\ast} = 0$ is a fixed effect. Finally the error is expressed as $\epsilon_{mtcb} \sim N(0, \sigma^2)$.
+Where $M_m \sim N(0, \sigma^2_m)$, $T(M)_{tm} \sim N(0, \sigma^2_{tm})$, $S\sim N(0, \sigma^2_{s})$ are random effects, and $\sum_{c=1}^{I} C_{c}^{\ast} = 0$ is a fixed effect. Finally the error is expressed as $\epsilon_{mtcb} \sim N(0, \sigma^2)$.
 
 
 The log-fold change for adjusted PTM abundance is estimated as the average over mixtures and technical replicates
 
-$$\hat{\Delta} = \frac{1}{MJ} \left( \hat{y}_{+,+,i+} - \hat{y}_{+,+,i'+} \right) - \frac{1}{BJ} \left( \hat{y}_{+,+,i+}^{\ast} - \hat{y}_{+,+,i'+}^{\ast} \right)$$
+$$\hat{\Delta} = \frac{1}{MJ} \left( \hat{y}_{+,+,i+} - \hat{y}_{+,+,i'+} \right) - \frac{1}{MJ} \left( \hat{y}_{+,+,i+}^{\ast} - \hat{y}_{+,+,i'+}^{\ast} \right)$$
 
 and the standard error of the estimate is 
 
@@ -487,19 +486,19 @@ The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared agains
 \section{Computer simulation}
 \label{sec:sim}
 
-The proposed statistical approach was evaluated and compared to the $t$-test and Limma using computer simulation. In particular, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
+The proposed statistical approach was evaluated and compared to the $t$-test and Limma methods using computer simulation. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Protein-level adjustment}
 
 Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. The proposed approach adjusts the PTM abundance with respect to protein abundance as introduced in \secref{sec:prop}. Alternatively, two-sample $t$-test or Limma taking as input the ratio between feature intensities of modified and unmodified peptides is commonly applied for the same purpose (\secref{sec:ttest}). 
-Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared the following approaches: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
+Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
 
 In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. Two simulations were generated based on the following parameters: 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Computer simulation 1 - label free}
+\subsubsection{Computer simulation 1 - label free experiment}
 
 In the first simulation an experiment with many features per PTM and unmodified protein was created. Additionally this simulation contained no missing data. These attributes are not representative of a real experiment, but provide a baseline for model performance.
 
@@ -512,17 +511,17 @@ In the first simulation an experiment with many features per PTM and unmodified 
 \item Number of conditions: $2$, $3$, $4$
 \item Number of realizations: $1000$
 \item Number of features per PTM: $10$
-\item Number of features per protein: $10$
+\item Number of features per unmodified protein: $10$
 \item Missing data: no missing value
 \end{itemize}
 
-The results are summarized from \sfigref{fig:sim1_fpr} to \sfigref{fig:sim1_recall}, including false discovery rate with or without changes in protein abundance by the considered methods, false positive rate, and overall accuracy. Additionally the results are compared to simulation 2 described in the next section.
+The results are summarized from \sfigref{fig:sim1_fpr} to \sfigref{fig:sim1_recall}. These results include the false discovery rate with and without adjusting for changes in unmodified protein abundance, false positive rate, and overall accuracy. Additionally, the results are compared to simulation 2 described in the next section.
 
-When simulating the data, 500 of the 1000 peptides were simulated with a differential fold change between conditions, while the other 500 were not. In terms of the peptides that were not differential, 250 were simulated with a change in both PTM and overall protein abundance, such that the change in PTM abundance is entirely due to the change in the overall protein. The other 250 were simulated with no significant change in either PTM or overall protein abundance. In this way there were 500 true positives and 500 true negative PTMs.
+When simulating the data, 500 of the 1000 peptides were simulated as true positives with a differential fold change between conditions, while the other 500 were not differential and treated as true negatives. In terms of the true negatives, 250 were simulated such that any abundance changes were entirely driven by changes in the unmodified peptide. We would expect any model without performing protein adjustment to treat these as false positives. The other 250 were simulated with no significant change in either PTM or overall protein abundance.
 
 \subsubsection{Computer simulation 2 - missing values and low replicates}
 
-In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values. This is more in line with what we would expect with a real life experiment and provides a more realistic expectation of model performance.
+In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values. This is more in line with what we would expect in a biological experiment and provides a more realistic expectation of model performance. The number of PTM features and missing data percentage where determined by looking at the features and missing data in the biological experiments in this paper.
 
 \begin{itemize}
 \item Mean of log-intensity: $25$
@@ -533,11 +532,11 @@ In the second simulation we introduced limited feature observations per PTM as w
 \item Number of conditions: $2$, $3$, $4$
 \item Number of realizations: $1000$
 \item Number of features per PTM: $2$
-\item Number of features per protein: $10$
+\item Number of features per unmodified protein: $10$
 \item Missing data: 20\% of the observations for PTMs and Proteins were masked with NA at random
 \end{itemize}
 
-The results are summarized from \sfigref{fig:sim2_recall} to \sfigref{fig:fc_boxplot}, including false positive rate with or without changes in protein abundance by the considered methods, false positive rate, and overall accuracy.
+The results are summarized from \sfigref{fig:sim2_recall} to \sfigref{fig:fc_boxplot}.
 
 The portion of significant peptides were done in the same was as described in simulation 1.
 
@@ -546,12 +545,12 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FDR_all_models}\\
-	\caption{All the considered methods in simulation 1 correctly calibrated FDR  when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false discovery rates.}
+	\caption{All the considered methods in simulation 1 correctly calibrated FDR  when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false discovery rates. The performance of the models without adjustment was much lower than those with adjustment, thus only models with adjustment are compared going forward.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FDR}
-	\caption{The considered methods with protein adjustment are compared in detail. All three methods generally performed similarly in terms of FDR.}
+	\caption{The considered methods with protein adjustment are compared in detail. All three methods with adjustment generally performed similarly in terms of FDR.}
  \end{subfigure}
  \caption{FDR of Simulation 1.}
 \label{fig:sim1_fpr}
@@ -562,7 +561,7 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_Recall}\\
-	\caption{The recall for simulation 1 methods with adjustment were compared. It is clear that limma performs the strongest here when the number of replicates were low.  At higher replicates the performance of the proposed methods and limma are comparable. $t$-test clearly performs worse across all methods.}
+	\caption{The recall for simulation 1 methods with adjustment were compared. It is clear that Limma performs the strongest here when the number of replicates were low.  At higher replicates the performance of the proposed methods and Limma are comparable. $t$-test clearly performs worse across all methods.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
@@ -578,7 +577,7 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_Recall}
-	\caption{The advantage of using the proposed approach is apparent when looking at simulation 2, which includes limited observations and the presence of missing values. In the case of recall the proposed method performs stronger than limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed limma. Again the lowest performing method was $t$-test.}
+	\caption{The advantage of using the proposed approach is apparent when looking at simulation 2, which includes limited observations and the presence of missing values. In the case of recall the proposed method performs stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was $t$-test.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
@@ -599,7 +598,7 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_FC_boxplot}
-	\caption{In simulation 2 again all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both limma and $t$-test showed a wider range around the fold change. In this case the proposed method showed a stronger performance in correctly estimating the fold change for all peptides.}
+	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. In this case the proposed method showed a stronger performance in correctly estimating the fold change for all peptides.}
  \end{subfigure}
 \caption{Fold change distribution comparison between Simulations 1 and 2.}
 \label{fig:fc_boxplot}
@@ -610,20 +609,20 @@ The portion of significant peptides were done in the same was as described in si
 \subsection{SpikeIn benchmark - KGG enriched}
 \label{sec:benchmark}
 
-A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeld KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides where a significant fold change between conditions are expected to be differencial, whereas none of the human lysate peptides in any comparison are expected to be differencial. 
+A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeled KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides have a known fold change between conditions and are expected to be differential in most cases, whereas the human lysate modified peptides were treated as controls and are not expected to be differential in any comparison.
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from \sfigref{fig:spike_volcano_msstats} to \sfigref{fig:spike_fc}, including volcano plots, model summary statistics, and fold change analysis.
+Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from \sfigref{fig:spike_volcano_msstats} to \sfigref{fig:spike_fc}, including volcano plots, model summary statistics, and fold change analysis.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_msstatsptm_volcano}
-\caption{Using the proposed method to model the benchmark experiment, the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides show many false positives before adjustment. After adjustment the false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
+\caption{The modeling results of the proposed method both before and after adjustment. The spike in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides show many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_limma_volcano}
-\caption{When modeling the experiment with the limma method, the spike in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. In this case, the known differencial peptides are missed by the model. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after. \label{fig:spike_volcano_limma}}
+\caption{When modeling the experiment with the Limma method, the spike in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. In this case, the known differential peptides are missed by the model. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after. \label{fig:spike_volcano_limma}}
 \end{figure}
 
 \begin{figure}[h!]
@@ -635,7 +634,7 @@ Again we consider three different methods and assess their performance: the meth
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_statistic_comparison}
-\caption{Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike in peptides. \label{fig:spike_stat}}
+\caption{Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with Limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike in peptides. \label{fig:spike_stat}}
 \end{figure}
 
 \begin{figure}[h!]
@@ -689,7 +688,7 @@ In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the pr
 \label{table:ipah_design}
 \end{table}
 
-A model was fit for the total protein, and ubiquitination separately, as described previously for TMT experiments in Section~\ref{sec:tmtmethod}. The model formula can be seen below.
+A model was fit for the total protein and ubiquitination separately, as described previously for TMT experiments in Section~\ref{sec:tmtmethod}. The model formula can be seen below.
 
 \todo{only one mixture so we probably wouldn't include the mixture as a term in the model?}
 
@@ -702,7 +701,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 \begin{figure}[h!]
 \centering
 \includegraphics[height=.65\textwidth]{sim_new/ipah_venn_diagramm.png}
-\caption{The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.}
+\caption{The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. In contrast, for peptides that became significant after adjustment, their true abundance change was masked by underlying changes in the unmodified protein. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. In other words, the fold change was the same between models but variance increased. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.}
 \label{fig:ipha_venn_d}
 \end{figure}
 
@@ -732,7 +731,7 @@ In this study, the correlation between the gene Atg16L1 and killing of Shigella 
 \centering
 \begin{tabular}{|c | c c | c c | c|}
 \hline
- & Mixture 1 & & Mixture 2 & & Condition \\ [0.5ex]
+ & \multicolumn{2}{c}{Mixture 1} & \multicolumn{2}{c}{Mixture 2} & Condition \\ [0.5ex]
  \hline\hline
  Uninfected & 128C & & 128C & 131C & \\
  \hline
@@ -763,7 +762,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 \begin{figure}[h!]
 \centering
 \includegraphics[height=.65\textwidth]{sim_new/shig_venn_diagramm.png}
-\caption{The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. Much like in \sfigref{fig:ipha_venn_d}, more PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. Again we tested if the decrease in significant peptides was due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, 776 peptides became insignificant due to an increase in variance. This is higher than in \sfigref{fig:ipha_venn_d}, however it is still a very small portion (4\%) of the peptides that became insignificant after adjustment. Thus we can conclude that the drop off in significant peptides was mainly due to changes in global protein abundance.}
+\caption{The overlap of differential modified peptides between the PTM model with and without global protein level adjustment. Much like in \sfigref{fig:ipha_venn_d}, more PTMs became insignificant after adjustment then became significant. This indicates that for the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. Again we tested if the decrease in significant peptides was due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. When this test was applied on this experiment, 776 peptides became insignificant due to an increase in variance. This is higher than in \sfigref{fig:ipha_venn_d}, however it is still a very small portion (4\%) of the peptides that became insignificant after adjustment. Thus we can conclude that the drop off in significant peptides was mainly due to changes in global protein abundance.}
 \label{fig:shig_venn_d}
 \end{figure}
 
@@ -816,12 +815,12 @@ An example profile plot for this experiment can be seen in \sfigref{fig:usp30_ve
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[height=.5\textwidth]{sim_new/usp30_venn_diagramm}
-	\caption{The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment.In this experiment, many more PTMs became insignificant after adjustment then became significant. In this case this is mainly due to the large lack of overlap between the modified peptides and unmodified proteins, stemming from not having a global profiling run.}
+	\caption{The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. Here many more PTMs became insignificant then became significant after adjustment. This is due to not having a global profiling run, resulting in a large lack of overlap between the modified peptides and unmodified proteins.}
  \end{subfigure}\vspace{-5mm}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[height=.5\textwidth]{sim_new/usp30_venn_diagramm_matching_only}
-	\caption{The same overlap as above, but looking only at modified peptides with a matching unmodified protein so adjustment can be performed. In this case we see significantly less peptides become insignificant after adjustment. Again we can check if peptides are becoming insignificant due to an increase in variance. To check this we look at modified peptides whose adjusted fold change is within 10\% of their unadjusted fold change and they become insignificant after adjustment. In this experiment there are only 25 peptides that meet this criteria, a very small percentage of all modified peptides.}
+	\caption{Here we make the same comparison but only for modified peptides with a matching unmodified protein, so adjustment can be performed. In this case we see significantly less peptides become insignificant after adjustment. This highlights the need for a global profiling run if protein adjustment is going to performed. As in the previous experiments, we can check if peptides are becoming insignificant due to an increase in variance. To check this we look at modified peptides whose adjusted fold change is within 10\% of their unadjusted fold change and they become insignificant after adjustment. In this experiment there are only 25 peptides that meet this criteria, a very small percentage of all modified peptides.}
  \end{subfigure}
  \caption{Overlap of significant PTMs before and after protein adjustment.}
 \label{fig:usp30_ven_d}

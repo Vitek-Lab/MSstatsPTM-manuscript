@@ -1,37 +1,71 @@
 
+library(tidyverse)
+
+## Define standard deviation sampling
+sample_variance <- function(mod_samples, unmod_samples, mod_features,
+                            unmod_features, mod_variance, unmod_variance){
+
+  final_sd <- numeric(100000)
+
+  for (i in seq_len(100000)){
+
+    replicate_means_ptms <- rnorm(mod_samples, mean = 0, mod_variance)
+    replicate_observations_ptms <- numeric(length(mod_samples))
+
+    # for (y in seq_along(replicate_means_ptms)){
+    #   feature_samples <- rnorm(mod_features, mean = replicate_means_ptms[[y]], 2)
+    #   replicate_observations_ptms[[y]] <- mean(feature_samples)
+    # }
+
+    replicate_means_prot <- rnorm(unmod_samples, mean = 0, unmod_variance)
+    replicate_observations_prot <- numeric(length(unmod_samples))
+
+    # for (y in seq_along(replicate_means_prot)){
+    #   feature_samples_prot <- rnorm(unmod_features, mean = replicate_means_prot[[y]], 2)
+    #   replicate_observations_prot[[y]] <- mean(feature_samples_prot)
+    # }
+
+    std_ptm <- mod_variance^2 / sum((replicate_means_ptms - mean(replicate_means_ptms))^2)
+    std_prot <- unmod_variance^2 / sum((replicate_means_prot - mean(replicate_means_prot))^2)
+
+    final_sd[[i]] <- sqrt(std_ptm^2 + std_prot^2)
+
+  }
+
+  return(mean(final_sd))
+}
+
+
 
 ## Code directly from MSstats designSampleSize function
-## Range of desired FC
-delta <- log2(seq(1.5, 2.5, 0.025))
-desiredFC <- 2 ^ delta
-
-# delta <- seq(.5, 1.5, 0.025)
-# desiredFC <- delta
-
-## Define base metrics
-
-low <- 1
-high <- 3
-
-mod_pep_sigma <- low
-unmod_pep_sigma <- low
-
-n_sample_list <- c(3,5,7,10)
-
-mod_num_sample <- n_sample_list[[1]]
-unmod_num_sample <- n_sample_list[[1]]
-
-#Specify sigma for ptm and unmod pep
-
-samples_mod <- rnorm(n_sample_list[[1]], mean = 0, low)
-std_dev_mod <- sum((samples_mod - mean(samples_mod)^2)) / (mod_num_sample)
-samples_unmod <- rnorm(n_sample_list[[1]], mean = 0, low)
-std_dev_unmod <- sum((samples_unmod - mean(samples_unmod)^2)) / (unmod_num_sample)
-
-t <- delta / sqrt(std_dev_mod^2 + std_dev_unmod^2)
-
+## Power analysis
 FDR <- 0.05
 m0_m1 <- 99
+delta <- seq(.5, 1.5, 0.025)
+
+low <- .1
+high <- 3
+
+n_sample_list <- c(3,5,10)
+n_feature_list <- c(3,10)
+
+
+var_list <- numeric(9)
+i <- 1
+for (x in seq_along(n_sample_list)){
+  for (y in seq_along(n_sample_list)){
+    var_list[i] <- sample_variance(n_sample_list[[x]], n_sample_list[[y]],
+                                   10, 10, low, low)
+    i <- i+1
+  }
+}
+
+var_list <- c(sqrt((.1/3)^2 + (.1/3)^2), sqrt((.1/3)^2 + (.1/5)^2), sqrt((.1/3)^2 + (.1/10)^2),
+              sqrt((.1/5)^2 + (.1/3)^2), sqrt((.1/5)^2 + (.1/5)^2), sqrt((.1/5)^2 + (.1/10)^2),
+              sqrt((.1/10)^2 + (.1/3)^2), sqrt((.1/10)^2 + (.1/5)^2), sqrt((.1/10)^2 + (.1/10)^2))
+
+t <- delta / var_list[[1]]
+
 powerTemp <- seq(0, 1, 0.01)
 power <- numeric(length(t))
 
@@ -40,20 +74,22 @@ for (i in seq_along(t)) {
   min(abs(diff), na.rm = TRUE)
   power[i] = powerTemp[order(abs(diff))][1]
 }
+power
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+p1 <- data.frame("Log2FC" = delta,
+                 "Power" = power) %>%
+  ggplot() + geom_line(aes(x = Log2FC, y = Power), size = 1.2) +
+  #scale_colour_manual(values=cbPalette) +
+  labs(title = "Power analysis with low replicate variance") +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.text=element_text(size=12),
+        axis.title.y = element_text(size = 14),
+        axis.title.x = element_text(size = 14),
+        title = element_text(size = 16),
+        strip.text = element_text(size = 12))
 
 
 

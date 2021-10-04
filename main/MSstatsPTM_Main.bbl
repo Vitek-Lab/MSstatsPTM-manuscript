@@ -816,6 +816,77 @@
       \field{pages}{6\bibrangedash 13}
       \range{pages}{8}
     \endentry
+    \entry{Ritchie_15a}{article}{}
+      \name{author}{7}{}{%
+        {{hash=951d585e86cb8b9c75ad8215db61706f}{%
+           family={Ritchie},
+           familyi={R\bibinitperiod},
+           given={Matthew\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=bffcd669072a93fe5f18e9037b1bcb13}{%
+           family={Phipson},
+           familyi={P\bibinitperiod},
+           given={Belinda},
+           giveni={B\bibinitperiod}}}%
+        {{hash=65027af5f4f54f2e6c7bb140253872e2}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c8471a849eb709ebe0fbe0e01176cd50}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yifang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f16015700a0004333624de6431e9a41b}{%
+           family={Law},
+           familyi={L\bibinitperiod},
+           given={Charity\bibnamedelima W.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=b4e22f2196e5fdf40a8499f2d3f8bf02}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e8acfd40aa371634dafbda59822de12b}{%
+           family={Smyth},
+           familyi={S\bibinitperiod},
+           given={Gordon\bibnamedelima K.},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{fullhash}{dd10be2ac81c50adf371c58312df557a}
+      \strng{bibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authorbibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authornamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authorfullhash}{dd10be2ac81c50adf371c58312df557a}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{limma is an R/Bioconductor software package that provides an integrated solution for analysing data from gene expression experiments. It contains rich features for handling complex experimental designs and for information borrowing to overcome the problem of small sample sizes. Over the past decade, limma has been a popular choice for gene discovery through differential expression analyses of microarray and high-throughput PCR data. The package contains particularly strong facilities for reading, normalizing and exploring such data. Recently, the capabilities of limma have been significantly expanded in two important directions. First, the package can now perform both differential expression and differential splicing analyses of RNA sequencing (RNA-seq) data. All the downstream analysis tools previously restricted to microarray data are now available for RNA-seq as well. These capabilities allow users to analyse both RNA-seq and microarray data with very similar pipelines. Second, the package is now able to go past the traditional gene-wise expression analyses in a variety of ways, analysing expression profiles in terms of co-regulated sets of genes or in terms of higher-order expression signatures. This provides enhanced possibilities for biological interpretation of gene expression differences. This article reviews the philosophy and design of the limma package, summarizing both new and historical features, with an emphasis on recent enhancements and features that have not been previously described.}}
+      \field{issn}{0305-1048}
+      \field{journaltitle}{Nucleic Acids Research}
+      \field{month}{01}
+      \field{number}{7}
+      \field{title}{{limma powers differential expression analyses for RNA-sequencing and microarray studies}}
+      \field{volume}{43}
+      \field{year}{2015}
+      \field{pages}{e47\bibrangedash e47}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1093/nar/gkv007
+      \endverb
+      \verb{eprint}
+      \verb https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/nar/gkv007
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/nar/gkv007
+      \endverb
+    \endentry
     \entry{satterthwaite:1946}{article}{}
       \name{author}{1}{}{%
         {{hash=3c729b996a020d1ef2273f5646fda616}{%
