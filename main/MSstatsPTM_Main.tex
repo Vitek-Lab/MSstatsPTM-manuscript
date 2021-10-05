@@ -139,7 +139,7 @@ We propose a general statistical approach, which explicitly characterizes the va
 
 The proposed approach was implemented using the R coding language and evaluated using datasets from computer simulations, benchmark controlled mixtures, and biological investigations. The approach was compared against the commonly applied t-test and Limma methods.\cite{Ritchie_15a} The results demonstrate that by appropriately leveraging the information from the entire dataset, the proposed approach improves the reproducibility and accuracy of the estimates of PTM fold changes and results in a better calibrated type I error rate. Finally, the proposed approach is implemented as a freely available open source R package $MSstatsPTM$, available on Bioconductor, which employs similar input format as in $MSstats$ and $MSstatsTMT$, and is compatible with many acquisition methods, such as label free, DIA, DDA, and TMT.\cite{Choi:2014} \cite{Huang:2020}
 
-\section{Experimental Procedure}
+\section{Experimental Procedures}
 
 This section describes the datasets and experiments used to evaluate the proposed method. Further details can be seen in Supplemental Sections \ref{supp-sec:sim} and \ref{supp-sec:bio_investigations}
 
@@ -158,9 +158,9 @@ Here simulations were generated with a high number of modified and unmodified pe
 
 In this simulation real world experimental conditions were introduced, including missing values and low number of modified features. The percentage of missing values and feature counts were determined by looking at the averages from the biological experiments in this paper. Modified peptides were simulated with 2 features, while unmodified proteins were still simulated with 10 features. Additionally, 20\% of observations for both modified and unmodified peptides were masked completely at random. Adding missing values and few representative modified features provides a more realistic expectation of model performance. Otherwise this simulation used the same parameters as in simulation 1, with 1000 modified peptides half of which were positives and the other half negative.
 
-\subsection*{SpikeIn benchmark - KGG enriched}
+\subsection*{SpikeIn benchmark - KGG enriched \todo{label-free?}}
 
-We evaluated our approach using a custom designed spike-in benchmark experiment where 50 heavy-labeled KGG motif peptides from 20 human proteins were used as spike-in peptides. Quantitative changes in protein and site abundance changes of these 20 proteins were the target of the benchmark.  Unmodified peptides from Human Lysate were used as the estimate of global protein abundance changes. All comparisons with respect to human lysate serve as a null model, there was no change in global protein nor PTM abundance between conditions. Additionally, E coli Lysate was used to normalize total protein levels prior to enrichment or global protein profiling. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The four mixtures were compared with known fold changes for the spike-in peptides.
+We evaluated our approach using a custom designed spike-in benchmark experiment with known ground truth, where 50 heavy-labeled KGG motif peptides from 20 human proteins were used as spike-in peptides. Quantitative changes in protein and site abundance changes of these 20 proteins were the target of the benchmark.  Unmodified peptides from Human Lysate were used as the estimate of global protein abundance changes. All comparisons with respect to human lysate serve as a null model, there was no change in global protein nor PTM abundance between conditions. Additionally, E coli Lysate was used to normalize total protein levels prior to enrichment or global protein profiling. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The four mixtures were compared with known fold changes for the spike-in peptides.
 
 \subsection*{Human-1mix-TMT - ubiquitination}
 
@@ -183,7 +183,7 @@ Despite the important implications of PTMs in biological functions, there is a l
 
 Isobar-PTM was developed for experiments with MS/MS quantitative strategies that employ isobaric labels such as tandem mass tags (TMT) and isobaric tag for relative and absolute quantification (iTRAQ).\cite{Breitwieser:2013} Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. The modeling framework, however, is not applicable for either label-free workflows or experiments with complex designs. 
 
-Further details on existing methods can be seen in Supplementary \ref{supp-sec:ttest}.
+Further details \todo{clarify which details}  on existing methods can be seen in Supplementary \ref{supp-sec:ttest}.
 
 \subsection*{Proposed approach}
 
@@ -192,7 +192,7 @@ Figure \ref{fig:data-structure} schematically illustrates a simplified version o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Statistical modeling and parameter estimation}
 
-The proposed approach takes as input a list of log-transformed intensities of spectral features, identified and quantified across LC-MS runs. The features, which are precursor ions of modified or unmodified peptides, are used to characterize the identified PTM sites and proteins. For each PTM site, the feature log-intensities of the modified peptides spanning the site are expressed using a linear mixed model in consideration of the effects of condition, run, feature and interaction between run and feature. In addition mixture may be included for features acquired via tandem mass tag (TMT) methods. The model parameters are estimated using the split-plot approach as in $MSstats$, where the feature log-intensities are first summarized into a single value per site per run in the subplot model, and the site-level summaries are then used for the inference of the PTM site abundance.\cite{Choi:2014} In the site-level summarization, Tukey's median polish (TMP), a simple and robust procedure is applied to iteratively fit a two-way additive model with the effects of run and feature, which in turn summarizes the log-intensities for each site.\cite{Tukey:1977} After summarization, the inference of the PTM site abundance in each condition is carried through fitting a model based on the family of linear mixed-effects models, taking into account the specific experimental design \ref{fig:data-structure}.\cite{Bolker2009} \cite{Faraway:2006} Statistical modeling and quantification for global proteomics data are performed by the same procedure as for PTM data.
+The proposed approach takes as input a list of log-transformed intensities of spectral features, identified and quantified across LC-MS runs. The features, which are precursor ions of modified or unmodified peptides, are used to characterize the identified PTM sites and proteins. For each PTM site, the feature log-intensities of the modified peptides spanning the site are expressed using a linear mixed model in consideration of the effects of condition, run, feature and interaction between run and feature. In addition mixture may be included for features acquired via tandem mass tag (TMT) methods. The model parameters are estimated using the split-plot approach as in $MSstats$, where the feature log-intensities are first summarized into a single value per site per run in the subplot model, and the site-level summaries are then used for the inference of the PTM site abundance.\cite{Choi:2014} In the site-level summarization, Tukey's median polish (TMP), a simple and robust procedure is applied to iteratively fit a two-way additive model with the effects of run and feature, which in turn summarizes the log-intensities for each site.\cite{Tukey:1977} After summarization, the inference of the PTM site abundance in each condition is carried through fitting a model based on the family of linear mixed-effects models, taking into account the specific experimental design \todo{weird reference?} \ref{fig:data-structure}.\cite{Bolker2009} \cite{Faraway:2006} Statistical modeling and quantification for global proteomics data are performed by the same procedure as for PTM data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Detection of changes in PTMs}
@@ -235,6 +235,8 @@ The package relies on functionalities from the R packages $MSstats$ \cite{Choi:2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Evaluation}
+
+\todo{In the caption of each figure, could you clarify which dataset the figure refers to?}
 
 The performance of the proposed method was evaluated on simulated and spike in datasets with known ground truth, as well as biological experimental data where the ground truth was not known. For the experiments where ground truth is known, we calculated summary statistics using the number of true positives (TP), false positives (FP), true negatives (TN), and false negatives (FN). To evaluate the performance of different methods, we considered the false discovery rate (FDR = FP/(TP+FP)), the recall rate (TP/(TP + FN), and total accuracy ((TP + TN) / (TP + TN + FP + FN)). For biological experiments where ground truth was not known, we evaluated significantly differential peptides with an $\alpha$ of .05. Comparisons were made before and after adjusting for changes in unmodified protein abundance and the results are presented in the form of venn diagrams and profile plots. All datasets in this paper were evaluated using the $MSstatsPTM$ package.
 
@@ -282,7 +284,7 @@ The results of this experiment are summarized in Figures \ref{fig:shig_venn_d} a
 
 In Figure \ref{fig:shigella_profile} the profile plot of two specific modified peptides, $TTP\_MOUSE|P22893\_S178$ and $KI67\_MOUSE|E9PVX6\_T215$, show the power of the proposed method.  The profile plot of modified peptide $TTP\_MOUSE|P22893\_S178$ shows a large positive log fold change of $2.9$ between the WT\_Late and WT\_Uninfected conditions. However, the global profiling run shows a similar log fold change of $2.015$ between the same conditions. This indicates that the abundance change in the modified peptide is nearly entirely due to changes in the global protein. When adjusting for the global protein the modified peptide's adjusted pvalue becomes insignificant, going from $.0009$ to $.275$. In contrast $KI67\_MOUSE|E9PVX6\_T215$ originally shows a small positive log fold change of $.212$ between conditions WT\_Early and WT\_Uninfected. This is contrast with a negative fold change in the global profiling run of $-.616$. In adjusting the modified peptide for changes in the global protein, the log fold change becomes .828 and the adjusted pvalue goes from $.452$ to $.037$.
 
-Further details and results of this experiment are provided in Supplementary Sec. \ref{supp-sec:shigella}. 
+Further details and results of this experiment are provided in Supplementary Sec. \ref{supp-sec:shigella}.  \todo{Maybe clarify what kind of results}
 
 \subsubsection*{Human label free quantification - no global profiling run}
 
@@ -315,7 +317,10 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Code availability}
 
-\bf{Bioconductor:} http://www.bioconductor.org/packages/release/bioc/html/MSstatsPTM.html
+\todo{This belongs to the 'implementation' section}
+
+{ \bf Bioconductor:} http://www.bioconductor.org/packages/release/bioc/html/MSstatsPTM.html
+
 
 \noindent{\bf{Github:} https://github.com/Vitek-Lab/MSstatsPTM}
 
