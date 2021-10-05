@@ -1,70 +1,33 @@
 
 library(tidyverse)
 
-## Define standard deviation sampling
-sample_variance <- function(mod_samples, unmod_samples, mod_features,
-                            unmod_features, mod_variance, unmod_variance){
+## Calculations w/o feature variations -----------------------------------------
 
-  final_sd <- numeric(100000)
-
-  for (i in seq_len(100000)){
-
-    replicate_means_ptms <- rnorm(mod_samples, mean = 0, mod_variance)
-    replicate_observations_ptms <- numeric(length(mod_samples))
-
-    # for (y in seq_along(replicate_means_ptms)){
-    #   feature_samples <- rnorm(mod_features, mean = replicate_means_ptms[[y]], 2)
-    #   replicate_observations_ptms[[y]] <- mean(feature_samples)
-    # }
-
-    replicate_means_prot <- rnorm(unmod_samples, mean = 0, unmod_variance)
-    replicate_observations_prot <- numeric(length(unmod_samples))
-
-    # for (y in seq_along(replicate_means_prot)){
-    #   feature_samples_prot <- rnorm(unmod_features, mean = replicate_means_prot[[y]], 2)
-    #   replicate_observations_prot[[y]] <- mean(feature_samples_prot)
-    # }
-
-    std_ptm <- mod_variance^2 / sum((replicate_means_ptms - mean(replicate_means_ptms))^2)
-    std_prot <- unmod_variance^2 / sum((replicate_means_prot - mean(replicate_means_prot))^2)
-
-    final_sd[[i]] <- sqrt(std_ptm^2 + std_prot^2)
-
-  }
-
-  return(mean(final_sd))
+sigma_model <- function(ptm_var, ptm_n, prot_var, prot_n){
+  simga <- sqrt((ptm_var/(.25*ptm_n)) + (prot_var/(.25*prot_n)))
+  return(simga)
 }
 
+## Define adjustable metrics
+low <- .1
+high <- .3
+n_sample_list <- c(3,5,10)
 
-
-## Code directly from MSstats designSampleSize function
-## Power analysis
+## Hard metrics
 FDR <- 0.05
 m0_m1 <- 99
-delta <- seq(.5, 1.5, 0.025)
-
-low <- .1
-high <- 3
-
-n_sample_list <- c(3,5,10)
-n_feature_list <- c(3,10)
-
+delta <- seq(1, 2, 0.025)
 
 var_list <- numeric(9)
 i <- 1
 for (x in seq_along(n_sample_list)){
   for (y in seq_along(n_sample_list)){
-    var_list[i] <- sample_variance(n_sample_list[[x]], n_sample_list[[y]],
-                                   10, 10, low, low)
+    var_list[i] <- sigma_model(low, n_sample_list[[x]], low, n_sample_list[[y]])
     i <- i+1
   }
 }
 
-var_list <- c(sqrt((.1/3)^2 + (.1/3)^2), sqrt((.1/3)^2 + (.1/5)^2), sqrt((.1/3)^2 + (.1/10)^2),
-              sqrt((.1/5)^2 + (.1/3)^2), sqrt((.1/5)^2 + (.1/5)^2), sqrt((.1/5)^2 + (.1/10)^2),
-              sqrt((.1/10)^2 + (.1/3)^2), sqrt((.1/10)^2 + (.1/5)^2), sqrt((.1/10)^2 + (.1/10)^2))
-
-t <- delta / var_list[[1]]
+t <- delta / var_list[[9]]
 
 powerTemp <- seq(0, 1, 0.01)
 power <- numeric(length(t))
@@ -75,6 +38,58 @@ for (i in seq_along(t)) {
   power[i] = powerTemp[order(abs(diff))][1]
 }
 power
+
+
+## Simulate feature effect -----------------------------------------------------
+
+n_feature_list <- 1:10
+
+final_var <- c()
+
+for (n in seq_along(n_feature_list)){
+  test <- c()
+  for (i in 1:1000) {
+    r1 <- c()
+    r2 <- c()
+
+    for (x in seq_len(3)){
+
+      t1 <- rnorm(1, mean = 0, .5)
+      t2 <- rnorm(1, mean = 2, .5)
+
+      for (y in seq_len(n_feature_list[[n]])){
+        f1 <- rnorm(y, mean = t1, .001)
+        f2 <- rnorm(y, mean = t2, .001)
+      }
+
+      r1 <- c(r1, log(sum(f1^2)))
+      r2 <- c(r2, log(sum(f2^2)))
+
+    }
+
+    combined <- c(r1, r2)
+    test_mean <- mean(combined)
+    std_test <- sum((combined - test_mean)^2) / (length(combined) - 2)
+    test <- c(test, std_test)
+  }
+  final_var <- c(final_var, mean(test))
+}
+
+a1 <- rnorm(1000, mean = 0, .5)
+a2 <- rnorm(1000, mean = 2, .5)
+acombined <- c(a1, a2)
+atest_mean <- mean(acombined)
+astd_test <- sum((acombined - atest_mean)^2) / (length(acombined) - 2)
+
+percent_change <- c()
+for (i in 2:length(final_var)){
+
+  percent_change <- c(percent_change, (final_var[[i]] - final_var[[i-1]])/ final_var[[i-1]])
+}
+
+keep_1 <- percent_change
+
+## Old charts ------------------------------------------------------------------
 
 
 p1 <- data.frame("Log2FC" = delta,
@@ -149,3 +164,33 @@ p2 <- data.frame("SD" = c(rep(".2, .1", length(numSample_nomod_1)),
 png("supplementary/sim_new/power_analysis_sd_combined.png", width = 750, height = 500)
 p2
 dev.off()
+
+
+set.seed(1)
+x<-c(0,0,2)
+y<-3*x+5+rnorm(3,0,1)
+lr<-linear.regression(x,y)
+y.hat.x1 = lr[1]+lr[2]*1
+halfWidth.c<-t95*sqrt(lr[3]*(1/10+(y.hat.x1-mean(x))ˆ2)/sum((x-mean(x))ˆ2))
+halfWidth.p<-t95*sqrt(lr[3]*(1+1/10+(y.hat.x1-mean(x))ˆ2)/sum((x-mean(x))ˆ2))
+l95c<-y.hat.x1-halfWidth.c
+l95p<-y.hat.x1-halfWidth.p
+u95c<-y.hat.x1+halfWidth.c
+u95p<-y.hat.x1+halfWidth.p
+dt.x1.95<-rbind(data.frame(lower = l95c,upper = u95c,type = "CI"),
+                data.frame(lower = l95p,upper = u95p,type = "PI"))
+ggplot()+geom_point(data = data.frame(x,y),aes(x = x,y = y))+
+  geom_errorbar(data = dt.x1.95,mapping = aes(x = c(1,1.05),ymin = lower.y))
+
+linear.regression <- function(x,y){
+  mx<-mean(x)
+  my<-mean(y)
+  b1<-sum((x-mx)*(y-my))/sum((x-mx)ˆ2)
+  b0<-my-mx*b1
+  e<-y - (b0+b1*x)
+  mse<-sum(eˆ2)/(length(x)-2)
+  var.b1<-mse/sum((x-mx)ˆ2)
+  t.b1<-b1/sqrt(var.b1)
+  p.b1<-(1-pt(abs(t.b1),df = (length(y)-2)))*2 #two tails
+  return(c(b0,b1,mse,var.b1,t.b1,p.b1))
+  }
