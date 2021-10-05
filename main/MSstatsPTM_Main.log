@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  4 OCT 2021 22:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 OCT 2021 09:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -943,59 +943,59 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/fig1.png, id=80, 493.0922pt x 394.47375pt>
 File: images/fig1.png Graphic file (type png)
 <use images/fig1.png>
-Package pdftex.def Info: images/fig1.png  used on input line 341.
+Package pdftex.def Info: images/fig1.png  used on input line 342.
 (pdftex.def)             Requested size: 394.47429pt x 315.57942pt.
 <images/fig3.png, id=82, 606.01407pt x 452.4403pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
-Package pdftex.def Info: images/fig3.png  used on input line 348.
+Package pdftex.def Info: images/fig3.png  used on input line 349.
 (pdftex.def)             Requested size: 484.81192pt x 361.95274pt.
 
-Overfull \hbox (15.0569pt too wide) in paragraph at lines 348--350
+Overfull \hbox (15.0569pt too wide) in paragraph at lines 349--351
  [][] 
  []
 
 <images/sim1_FDR_all_models.png, id=83, 752.8125pt x 501.875pt>
 File: images/sim1_FDR_all_models.png Graphic file (type png)
 <use images/sim1_FDR_all_models.png>
-Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 356
+Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 357
 .
 (pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
 <images/sim3_Accuracy.png, id=84, 752.8125pt x 501.875pt>
 File: images/sim3_Accuracy.png Graphic file (type png)
 <use images/sim3_Accuracy.png>
-Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 363.
+Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 364.
 (pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
 <images/sim3_FC_boxplot.png, id=85, 752.8125pt x 501.875pt>
 File: images/sim3_FC_boxplot.png Graphic file (type png)
 <use images/sim3_FC_boxplot.png>
-Package pdftex.def Info: images/sim3_FC_boxplot.png  used on input line 370.
+Package pdftex.def Info: images/sim3_FC_boxplot.png  used on input line 371.
 (pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
 <images/spike_in_msstatsptm_volcano.png, id=86, 752.8125pt x 501.875pt>
 File: images/spike_in_msstatsptm_volcano.png Graphic file (type png)
 <use images/spike_in_msstatsptm_volcano.png>
 Package pdftex.def Info: images/spike_in_msstatsptm_volcano.png  used on input 
-line 378.
+line 379.
 (pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
 <images/spike_in_limma_volcano.png, id=87, 752.8125pt x 501.875pt>
 File: images/spike_in_limma_volcano.png Graphic file (type png)
 <use images/spike_in_limma_volcano.png>
 Package pdftex.def Info: images/spike_in_limma_volcano.png  used on input line 
-385.
+386.
 (pdftex.def)             Requested size: 469.75502pt x 313.18098pt.
 <images/IpaH_prof_plot.png, id=88, 1206.00563pt x 599.23875pt>
 File: images/IpaH_prof_plot.png Graphic file (type png)
 <use images/IpaH_prof_plot.png>
-Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 392.
+Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 393.
 (pdftex.def)             Requested size: 469.75502pt x 233.40958pt.
 File: images/IpaH_prof_plot.png Graphic file (type png)
 <use images/IpaH_prof_plot.png>
-Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 399.
+Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 400.
 (pdftex.def)             Requested size: 469.75502pt x 233.40958pt.
 <images/shig_venn_diagramm.png, id=89, 867.24pt x 867.24pt>
 File: images/shig_venn_diagramm.png Graphic file (type png)
 <use images/shig_venn_diagramm.png>
-Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 406.
+Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 407.
 
 (pdftex.def)             Requested size: 305.33824pt x 305.33789pt.
 
@@ -1006,17 +1006,17 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: images/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use images/No_Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: images/No_Difference_Shigella_Profile_Plot.png  used o
-n input line 415.
+n input line 416.
 (pdftex.def)             Requested size: 446.26582pt x 226.69815pt.
 <images/Difference_Shigella_Profile_Plot.png, id=91, 1135.24126pt x 599.23875pt
 >
 File: images/Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use images/Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: images/Difference_Shigella_Profile_Plot.png  used on i
-nput line 420.
+nput line 421.
 (pdftex.def)             Requested size: 446.26582pt x 235.55833pt.
 
-LaTeX Warning: Float too large for page by 12.05284pt on input line 425.
+LaTeX Warning: Float too large for page by 12.05284pt on input line 426.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1024,14 +1024,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <images/usp30_venn_diagramm.png, id=92, 867.24pt x 867.24pt>
 File: images/usp30_venn_diagramm.png Graphic file (type png)
 <use images/usp30_venn_diagramm.png>
-Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 431
+Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 432
 .
 (pdftex.def)             Requested size: 234.87251pt x 234.8775pt.
 <images/usp30_venn_diagramm_matching_only.png, id=93, 867.24pt x 867.24pt>
 File: images/usp30_venn_diagramm_matching_only.png Graphic file (type png)
 <use images/usp30_venn_diagramm_matching_only.png>
 Package pdftex.def Info: images/usp30_venn_diagramm_matching_only.png  used on 
-input line 436.
+input line 437.
 (pdftex.def)             Requested size: 234.87251pt x 234.8775pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1039,7 +1039,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <images/USP30_profile_plot.png, id=94, 1174.3875pt x 599.23875pt>
 File: images/USP30_profile_plot.png Graphic file (type png)
 <use images/USP30_profile_plot.png>
-Package pdftex.def Info: images/USP30_profile_plot.png  used on input line 445.
+Package pdftex.def Info: images/USP30_profile_plot.png  used on input line 446.
 
 (pdftex.def)             Requested size: 469.75502pt x 239.69125pt.
 [13 <./images/fig1.png>] [14 <./images/fig3.png>] [15 <./images/sim1_FDR_all_mo
@@ -1078,7 +1078,7 @@ e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/201
 9/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (25 pages, 795534 bytes).
+Output written on MSstatsPTM_Main.pdf (25 pages, 795587 bytes).
 PDF statistics:
  206 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams
