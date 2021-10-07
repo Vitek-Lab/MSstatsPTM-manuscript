@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  4 OCT 2021 10:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  7 OCT 2021 11:42
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1728,12 +1728,23 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
 [29 <./sim_new/USP30_profile_plot.png>]
-<sim_new/power_analysis_sd_combined.png, id=163, 752.8125pt x 501.875pt>
-File: sim_new/power_analysis_sd_combined.png Graphic file (type png)
-<use sim_new/power_analysis_sd_combined.png>
-Package pdftex.def Info: sim_new/power_analysis_sd_combined.png  used on input 
-line 847.
+<sim_new/same_var_power.png, id=163, 752.8125pt x 501.875pt>
+File: sim_new/same_var_power.png Graphic file (type png)
+<use sim_new/same_var_power.png>
+Package pdftex.def Info: sim_new/same_var_power.png  used on input line 850.
 (pdftex.def)             Requested size: 422.77664pt x 281.85982pt.
+<sim_new/high_ptm_var_power.png, id=164, 752.8125pt x 501.875pt>
+File: sim_new/high_ptm_var_power.png Graphic file (type png)
+<use sim_new/high_ptm_var_power.png>
+Package pdftex.def Info: sim_new/high_ptm_var_power.png  used on input line 855
+.
+(pdftex.def)             Requested size: 422.77664pt x 281.85982pt.
+
+
+LaTeX Warning: Float too large for page by 19.66325pt on input line 860.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
@@ -1745,8 +1756,17 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 [30
 
- <./sim_new/power_analysis_sd_combined.png>]
-Overfull \hbox (18.62894pt too wide) in paragraph at lines 879--879
+]
+
+Package fancyhdr Warning: \headheight is too small (0.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
+
+[31 <./sim_new/same_var_power.png> <./sim_new/high_ptm_var_power.png>]
+Overfull \hbox (18.62894pt too wide) in paragraph at lines 890--890
 []\OT1/cmr/m/n/10.95 Meena Choi et al. ``MSstats: an R pack-age for sta-tis-ti-
 cal anal-y-sis of quan-ti-ta-tive mass spectrometry-
  []
@@ -1759,7 +1779,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-13.59999pt}.
 
-[31
+[32
 
 ] (ptm_sm.aux)
 Package logreq Info: Writing requests to 'ptm_sm.run.xml'.
@@ -1767,10 +1787,10 @@ Package logreq Info: Writing requests to 'ptm_sm.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26813 strings out of 479334
- 552219 string characters out of 2853721
- 1266816 words of memory out of 3000000
- 43747 multiletter control sequences out of 15000+200000
+ 26825 strings out of 479334
+ 552465 string characters out of 2853721
+ 1266864 words of memory out of 3000000
+ 43758 multiletter control sequences out of 15000+200000
  422455 words of font info for 97 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,15n,89p,1633b,1255s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1800,9 +1820,9 @@ grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users
 /Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb>
-Output written on ptm_sm.pdf (31 pages, 963173 bytes).
+Output written on ptm_sm.pdf (32 pages, 974268 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
+ 246 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

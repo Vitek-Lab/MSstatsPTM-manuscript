@@ -25,6 +25,7 @@ protein_summarization_combined <- rbindlist(list(protein_input, protein_summariz
 
 
 unadj_ptm_model <- read.csv("../data/Ipah_PTM_test_results.txt", sep = "\t")
+protein_model <- read.csv("../data/Ipah_Global_TMT11_msstats_test_results.txt", sep = "\t")
 adj_ptm_model <- read.csv("../data/Ipah_PTM_Adjusted_test_results.txt", sep = "\t")
 
 combined_models <- merge(adj_ptm_model, unadj_ptm_model, all.x=TRUE, all.y=TRUE, by = c("Protein", "Label"))
@@ -32,6 +33,9 @@ combined_models <- merge(adj_ptm_model, unadj_ptm_model, all.x=TRUE, all.y=TRUE,
 combined_models$FC_Diff <- abs(combined_models$log2FC.x - combined_models$log2FC.y)
 combined_models %>% arrange(desc(FC_Diff))
 
+## SE analysis
+unadj_ptm_model %>% ggplot + geom_boxplot(aes(y = SE))
+protein_model %>% ggplot + geom_boxplot(aes(y = SE))
 
 ## Profile Plots
 "GSDMD_HUMAN|P57764_K204"

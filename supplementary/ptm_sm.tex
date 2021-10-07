@@ -498,7 +498,7 @@ Approaches without considering protein-level adjustment lose track of an importa
 In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. Two simulations were generated based on the following parameters: 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Computer simulation 1 - label free experiment}
+\subsubsection{Dataset 1 : Computer simulation 1 - label free experiment}
 
 In the first simulation an experiment with many features per PTM and unmodified protein was created. Additionally this simulation contained no missing data. These attributes are not representative of a real experiment, but provide a baseline for model performance.
 
@@ -519,7 +519,7 @@ The results are summarized from \sfigref{fig:sim1_fpr} to \sfigref{fig:sim1_reca
 
 When simulating the data, 500 of the 1000 peptides were simulated as true positives with a differential fold change between conditions, while the other 500 were not differential and treated as true negatives. In terms of the true negatives, 250 were simulated such that any abundance changes were entirely driven by changes in the unmodified peptide. We would expect any model without performing protein adjustment to treat these as false positives. The other 250 were simulated with no significant change in either PTM or overall protein abundance.
 
-\subsubsection{Computer simulation 2 - missing values and low replicates}
+\subsubsection{Dataset 2 : Computer simulation 2 - missing values and low replicates}
 
 In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values. This is more in line with what we would expect in a biological experiment and provides a more realistic expectation of model performance. The number of PTM features and missing data percentage where determined by looking at the features and missing data in the biological experiments in this paper.
 
@@ -606,7 +606,7 @@ The portion of significant peptides were done in the same was as described in si
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{SpikeIn benchmark - KGG enriched}
+\subsection{Dataset 3 : SpikeIn benchmark - label-free - KGG enriched}
 \label{sec:benchmark}
 
 A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeled KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides have a known fold change between conditions and are expected to be differential in most cases, whereas the human lysate modified peptides were treated as controls and are not expected to be differential in any comparison.
@@ -649,7 +649,7 @@ Again we consider three different methods and assess their performance: the meth
 \section{Datasets : Biological investigation}
 \label{sec:bio_investigations}
 
-\subsection{Human-1mix-TMT - ubiquitination}
+\subsection{Dataset 4 : Human-1mix-TMT - ubiquitination}
 \label{sec:ipah}
 
 In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the protein gasdermin D (GSDMD). \cite{LUCHETTI2021} Multiplex proteomics was used to quantify the abundance of total protein, and ubiquitination in human epithelial cells. Cells were either infected or uninfected with IpaH7.8-deficient Shigella flexneri and measurements were taken at different time periods. Uninfected cells were measured at 0 and 6 hours, while infected cells were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. The experiment was inbalanced with two bioreplicates per condition for all conditions except for infected 1 hour. The experimental design can be seen in Table~\ref{table:ipah_design}.
@@ -722,7 +722,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 \end{figure}
 
 \clearpage
-\subsection{Mouse-2mix-TMT - phosphorylation}
+\subsection{Dataset 5 : Mouse-2mix-TMT - phosphorylation}
 \label{sec:shigella}
 
 In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. \cite{Maculins} Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
@@ -801,7 +801,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 
 \clearpage
 
-\subsection{Human label free quantification - no global profiling run}
+\subsection{Dataset 6 : Human label free quantification - no global profiling run}
 \label{sec:usp30}
 
 This experiment looked into the relationship between USP30 and protein kinase PINK1, and their association with Parkinson's Disease. Ubiquitination site profiling was performed and the modified site abundance was analyzed. Four conditions were tested with two biological replicates per condition. The conditions were as follows: CCCP, USP30 overexpression (USP30\_OE), Combo, and Control. Label-free mass spectrometry quantification was used to quantify the abundance of modified peptides. A corresponding mixed effects model was fit per modification and global protein as described previously in this supplementary.
@@ -836,18 +836,29 @@ An example profile plot for this experiment can be seen in \sfigref{fig:usp30_ve
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sample size calculation and power analysis}
-\todo{Devon: Update this section per Olga's commentsv}
 
-The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. As described in Section \ref{sec:test} the proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. Thus the statistical power is dependent on the variance from both the modified peptide and unmodifed protein as well as the number of replicates in both the modified and unmodified runs.
+The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. The proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. Thus the statistical power is dependent on the variance from both the modified peptide and unmodifed protein as well as the number of replicates in both runs.
 
-We compared the statistical power in experiments with different numbers of replicates, variance, and fold change for both the modified and unmodified runs. The results can be seen in \sfigref{fig:power_sd_combo}
+We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. For variance we used the variance from the biological experiments to determine what values to set. In Dataset 4 and 5 the variance of the PTM was generally higher than the global protein. In contrast, in dataset 6 the variance of the PTM and Protein was generally the same. Because of this we will analyze the power of our experiments when the PTM variance is higher than the protein, and also when they are the same. For the variance numbers, in the case when the PTM and protein are the same we chose a variance of .15. When the PTM is higher than the protein we chose a PTM variance of .2 and a protein variance of .1. These numbers were derived from the biological experiments in this paper.
+
+The results can be seen in \sfigref{fig:power_sd_combo}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.9\textwidth]{sim_new/power_analysis_sd_combined}
-\caption{}
+ \begin{subfigure}{\textwidth}
+ \centering
+	\includegraphics[width=.9\textwidth]{sim_new/same_var_power}
+	\caption{blah}
+ \end{subfigure}\vspace{-5mm}
+ \begin{subfigure}{\textwidth}
+ \centering
+	\includegraphics[width=.9\textwidth]{sim_new/high_ptm_var_power}
+	\caption{blah}
+ \end{subfigure}
+ \caption{Power analysis of experiments with differing variances.}
 \label{fig:power_sd_combo}
 \end{figure}
+
 
 %\begin{figure}[h!]
 %\centering
