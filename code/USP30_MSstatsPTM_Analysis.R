@@ -9,6 +9,16 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 load(file = "../data/ups30_msstatsptm_model.rda")#model_ptm
 load(file = "../data/ups30_msstatsptm_summary.rda")#summarized_ptm
 
+## SE analyis
+pyst_model
+
+model_ptm$PTM.Model %>% ggplot + geom_boxplot(aes(y = SE))
+model_ptm$PROTEIN.Model %>% ggplot + geom_boxplot(aes(y = SE))
+
+model_ptm$PTM.Model %>% summarize(mean(SE, na.rm= TRUE))
+model_ptm$PROTEIN.Model %>% summarize(mean(SE, na.rm= TRUE))
+
+##
 
 original_ptms <- unique(model_ptm$PTM.Model$Protein)
 adj_ptms <- unique(model_ptm$ADJUSTED.Model$Protein)
