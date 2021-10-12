@@ -453,15 +453,15 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 
 The methods described previously in Section \ref{sec:test} can be extrapolated to experiments with complex designs targeting PTMs. This includes experiments with additional sources of variation and unbalanced designs. This is done in the same way to how MSstats~\cite{choi_etal_14a} and MSstatsTMT~\cite{Huang:2020} target the global protein. The null hypothesis is still that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
 \begin{align*}
-H_{0}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &= 0 \\
-H_{a}: \Delta = (\mu_{i} - \mu_{i'}) - (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) &\neq 0
+H_{0}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &= 0 \\
+H_{a}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &\neq 0
 \end{align*}
 
 In cases where the design in unbalanced, restricted maximum likelihood is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of the formulas in Section \ref{sec:test}.
 
 The log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by 
 \[
-\hat{\Delta} = \left[ \left( \hat{y}_{i+}^{\ast} - \hat{y}_{i'+}^{\ast} \right) \right] - \left[ \left( \hat{y}_{i+} - \hat{y}_{i'+} \right) \right],
+\hat{\Delta} = (\hat{\mu}_{RML_i}^{\ast} - \hat{\mu}_{RML_{i'}}^{\ast}) - (\hat{\mu}_{RML_i} - \hat{\mu}_{RML_{i'}})
 \]
 and the standard error of the estimate $\mathrm{SE}(\hat{\Delta})$ is 
 \[

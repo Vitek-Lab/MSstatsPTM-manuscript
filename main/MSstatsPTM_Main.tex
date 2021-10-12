@@ -202,7 +202,7 @@ The proposed approach takes as input a list of log-transformed intensities of sp
 \subsubsection*{Detection of changes in PTMs}
 \label{sec:adjustment_summary}
 
-Detection of differentially modified PTM sites is performed through testing the null hypothesis of ‘no change’ against the alternative. The null hypothesis states that there is no difference in log-abundance of the PTM site between conditions, adjusted with respect to protein abundance. Notationally, the hypothesis test is formulated as follows
+Detection of differentially modified PTM sites is performed through testing the null hypothesis of ‘no change’ against the alternative. The null hypothesis states that there is no difference in log-abundance of the PTM site between conditions, adjusted with respect to protein abundance. Notationally, given two conditions $i$ and $i'$, the hypothesis test is formulated as follows
 
 \begin{align*}
 H_{0}: \Delta = \left( \mu_{i}^{\ast} - \mu_{i'}^{\ast} \right) - \left( \mu_{i} - \mu_{i'} \right) &= 0 \\
@@ -372,7 +372,7 @@ Data structure of a typical PTM experiment and goals of PTM characterization. (a
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.8]{images/MSstatsPTM_design.png}
-\caption{blah.}
+\caption{The workflow of MSstatsPTM and how it fits into the experimental pipeline. MSstatsPTM's workflow starts after modified and unmodified peptide quantification. First tool specific pre-processing is done, this includes modification site identification, general data cleaning, and formatting the data into the format needed for the package. The next step is feature level summarization, which summarizes features up to the modification level for the PTM data, and the protein level for the protein data. In the final step a model is fit to identify differential PTMs across condtions.}
 \label{fig:msstatsptm_design}
 \end{figure}
 
