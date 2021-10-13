@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  12 OCT 2021 09:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  13 OCT 2021 11:18
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1601,15 +1601,15 @@ File: sim_new/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 Package pdftex.def Info: sim_new/No_Difference_Shigella_Profile_Plot.png  used 
 on input line 780.
 (pdftex.def)             Requested size: 422.77664pt x 214.7657pt.
-<sim_new/No_Difference_Shigella_Volcano.png, id=127, 1062.97125pt x 599.23875pt
+<sim_new/No_Difference_Shigella_Volcano.png, id=127, 1153.30875pt x 599.23875pt
 >
 File: sim_new/No_Difference_Shigella_Volcano.png Graphic file (type png)
 <use sim_new/No_Difference_Shigella_Volcano.png>
 Package pdftex.def Info: sim_new/No_Difference_Shigella_Volcano.png  used on in
 put line 785.
-(pdftex.def)             Requested size: 422.77664pt x 238.338pt.
+(pdftex.def)             Requested size: 422.77664pt x 219.66669pt.
 
-LaTeX Warning: Float too large for page by 19.27368pt on input line 790.
+LaTeX Warning: Float too large for page by 0.60237pt on input line 790.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1621,14 +1621,14 @@ File: sim_new/Difference_Shigella_Profile_Plot.png Graphic file (type png)
 Package pdftex.def Info: sim_new/Difference_Shigella_Profile_Plot.png  used on 
 input line 796.
 (pdftex.def)             Requested size: 422.77664pt x 223.15956pt.
-<sim_new/Difference_Shigella_Volcano.png, id=129, 1118.67938pt x 599.23875pt>
+<sim_new/Difference_Shigella_Volcano.png, id=129, 1123.94907pt x 599.23875pt>
 File: sim_new/Difference_Shigella_Volcano.png Graphic file (type png)
 <use sim_new/Difference_Shigella_Volcano.png>
 Package pdftex.def Info: sim_new/Difference_Shigella_Volcano.png  used on input
  line 801.
-(pdftex.def)             Requested size: 422.77664pt x 226.46956pt.
+(pdftex.def)             Requested size: 422.77664pt x 225.39975pt.
 
-LaTeX Warning: Float too large for page by 15.7991pt on input line 806.
+LaTeX Warning: Float too large for page by 14.7293pt on input line 806.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1795,7 +1795,7 @@ Package logreq Info: Writing requests to 'ptm_sm.run.xml'.
 Here is how much of TeX's memory you used:
  26827 strings out of 479334
  552528 string characters out of 2853721
- 1267878 words of memory out of 3000000
+ 1266878 words of memory out of 3000000
  43760 multiletter control sequences out of 15000+200000
  422455 words of font info for 97 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1826,7 +1826,7 @@ grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users
 /Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb>
-Output written on ptm_sm.pdf (32 pages, 974652 bytes).
+Output written on ptm_sm.pdf (32 pages, 974744 bytes).
 PDF statistics:
  246 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

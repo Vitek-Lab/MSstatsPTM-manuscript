@@ -26,17 +26,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Protein-level adjustment}{8}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Dataset 1 : Computer simulation 1 - label free experiment}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Dataset 1 : Computer simulation 1 - Label free experiment}{8}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - missing values and low replicates}{9}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - Label free missing values and low replicates}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - label-free - KGG enriched}{14}{}%
+\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{14}{}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}Datasets : Biological investigation}{20}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human-1mix-TMT - ubiquitination}{20}{}%
+\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human- Ubiquitination - 1mix-TMT}{20}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse-2mix-TMT - phosphorylation}{23}{}%
+\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}{23}{}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.3}Dataset 6 : Human label free quantification - no global profiling run}{27}{}%
 \defcounter {refsection}{0}\relax 
