@@ -1,17 +1,17 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'ptm_sm.blg'
-[108] biber-MSWIN64:340> INFO - === 
-[144] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
-[262] Biber.pm:952> INFO - Found 8 citekeys in bib section 0
-[276] Biber.pm:4340> INFO - Processing section 0
-[288] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
-[342] bibtex.pm:1689> INFO - LaTeX decoding ...
-[358] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
-[415] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[470] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[470] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[470] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[470] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[483] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
-[495] bbl.pm:757> INFO - Output to ptm_sm.bbl
-[495] Biber.pm:128> INFO - WARNINGS: 1
+[109] biber-MSWIN64:340> INFO - === 
+[146] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
+[265] Biber.pm:952> INFO - Found 8 citekeys in bib section 0
+[281] Biber.pm:4340> INFO - Processing section 0
+[293] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
+[343] bibtex.pm:1689> INFO - LaTeX decoding ...
+[357] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
+[408] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
+[477] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[477] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[477] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[477] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[491] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
+[502] bbl.pm:757> INFO - Output to ptm_sm.bbl
+[502] Biber.pm:128> INFO - WARNINGS: 1

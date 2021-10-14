@@ -310,19 +310,21 @@ To characterize the observed feature intensities, different levels of variations
 %(R \times F)_{ijl}^{\ast} = \epsilon_{ijl}^{\ast} \stackrel{\text{iid}}{\sim} \mathcal{N}(0, \sigma_{\epsilon^{\ast}}^{2}).
 %\]
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Run-level summarization of feature intensities}
+\subsection{Run-level summarization of feature intensities}
 \label{sec:sum}
 
-Run-level summarization of feature intensities for each PTM site is carried out as in the sub-plot model of MSstats~\cite{choi_etal_14a}, which involves a) imputation of censored missing values, and b) summarization of feature intensities using Tukey's median polish. \cite{tukey_77a} The run-level summary for the PTM in Run $j$ of Condition $i$ is denoted by $\hat{y}_{ij}^{\ast}$.
+Run-level summarization of feature intensities for each PTM site is carried out as in the sub-plot model of MSstats~\cite{choi_etal_14a} or MSstatsTMT~\cite{Huang:2020} depending on acquisition strategy, which involves a) imputation of censored missing values, and b) summarization of feature intensities using Tukey's median polish. \cite{tukey_77a} The run-level summary for the PTM in Run $j$ of Condition $i$ is denoted by $\hat{y}_{ij}^{\ast}$. From here forward the input to the method assumes that all features are summarized.
 
+\subsection{Balanced design with one source of variation}
+\label{sec:model}
+The methods when applied to a balanced design with multiple conditions and one technical replicate are shown in this section. In practice the experimental design can be unbalanced and variation can come from multiple sources.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Model-based inference of the underlying abundance in a simple balanced experiment}
+\subsubsection{Model-based inference of the underlying abundance}
 \label{sec:infer}
 
-In the case of a balanced design with multiple conditions and without technical replicates, the PTM abundance in each run is represented as 
+The PTM abundance in each run is represented as 
 \[
 \hat{y}_{ij}^{\ast} = \psi^{\ast} + C_{i}^{\ast} + R_{j(i)}^{\ast},
 \]
@@ -350,7 +352,7 @@ Based on the estimates $\hat{\mu}_{i}^{\ast}$ and $\hat{\mu}_{i}$, the adjusted 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{PTM significance analysis}
+\subsubsection{PTM significance analysis}
 \label{sec:test}
 
 With protein-level adjustment, the model-based testing is based on the hypothesis that there is no difference in adjusted PTM abundance between Conditions $i$ and $i'$
@@ -381,7 +383,7 @@ The formulations for $\hat{\Delta}$, $SE(\hat{\Delta})$, and degrees of freedom 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Design of PTM experiments}
+\subsubsection{Design of PTM experiments}
 \label{sec:design}
 
 The proposed statistical framework allows for design of PTM experiments in terms of sample size calculation and power analysis. 
@@ -451,13 +453,17 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 \subsection{Extension to complex designs}
 \label{sec:complex_methods}
 
-The methods described previously in Section \ref{sec:test} can be extrapolated to experiments with complex designs targeting PTMs. This includes experiments with additional sources of variation and unbalanced designs. This is done in the same way to how MSstats~\cite{choi_etal_14a} and MSstatsTMT~\cite{Huang:2020} target the global protein. The null hypothesis is still that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
+The methods described previously in Section \ref{sec:model} can be extrapolated to experiments with complex designs targeting PTMs. This includes experiments with additional sources of variation and unbalanced designs.
+
+\subsubsection{Model-based inference and significance analysis}
+
+Model inference is done in the same way to how MSstats~\cite{choi_etal_14a} and MSstatsTMT~\cite{Huang:2020} target the global protein. The null hypothesis is still that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
 \begin{align*}
 H_{0}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &= 0 \\
 H_{a}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &\neq 0
 \end{align*}
 
-In cases where the design in unbalanced, restricted maximum likelihood is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of the formulas in Section \ref{sec:test}.
+In cases where the design in unbalanced, a linear mixed effects model is fit, which takes into account all potential sources of variation, and restricted maximum likelihood is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of the formulas in Section \ref{sec:test}.
 
 The log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by 
 \[
@@ -477,26 +483,30 @@ The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared agains
 \]
 
 
-The model can be expanded to account for multiple sources of variation. An example of this is in TMT experiments wheere additional variation comes from the mixtures used. Going forward we will denote the log-intensity of a modified peptide for Technical Replicate j of Mixture m for Condition i by $y_{ijm}$, where $m = 1,....,M$. This is done in the same way for the unmodified peptide $y^*_{ijm}$.
+%An example of this is in TMT experiments where additional variation comes from the mixtures used. Going forward we will denote the log-intensity of a modified peptide for Technical Replicate j of Mixture m for Condition i by $y_{ijm}$, where $m = 1,....,M$. This is done in the same way for the unmodified peptide $y^*_{ijm}$.
 
-The model assumes the variability of the mixture is a random effect and is not convoluted with the other variables in the model. The model also assumes that the difference between conditions is the same between mixtures. For a given modified peptide and corresponding unmodified protein a mixed effects model is fit as follows.
-\begin{align*}
-y^*_{mtcb} = \mu^* + M^*_m + T(M)^*_{tm} + C^*_c + S^*_{mcb} + \epsilon^*_{mtcb}\\
-y_{mtcb} = \mu + M_m + T(M)_{tm} + C_c + S_{mcb} + \epsilon_{mtcb}
-\end{align*}
+%The model assumes the variability of the mixture is a random effect and is not convoluted with the other variables in the model. The model also assumes that the difference between conditions is the same between mixtures. For a given modified peptide and corresponding unmodified protein a mixed effects model is fit as follows.
+%\begin{align*}
+%y^*_{mtcb} = \mu^* + M^*_m + T(M)^*_{tm} + C^*_c + S^*_{mcb} + \epsilon^*_{mtcb}\\
+%y_{mtcb} = \mu + M_m + T(M)_{tm} + C_c + S_{mcb} + \epsilon_{mtcb}
+%\end{align*}
 
-Where $M_m \sim N(0, \sigma^2_m)$, $T(M)_{tm} \sim N(0, \sigma^2_{tm})$, $S\sim N(0, \sigma^2_{s})$ are random effects, and $\sum_{c=1}^{I} C_{c}^{\ast} = 0$ is a fixed effect. Finally the error is expressed as $\epsilon_{mtcb} \sim N(0, \sigma^2)$.
+%Where $M_m \sim N(0, \sigma^2_m)$, $T(M)_{tm} \sim N(0, \sigma^2_{tm})$, $S\sim N(0, \sigma^2_{s})$ are random effects, and $\sum_{c=1}^{I} C_{c}^{\ast} = 0$ is a fixed effect. Finally the error is expressed as $\epsilon_{mtcb} \sim N(0, \sigma^2)$.
+
+\subsubsection{Design of PTM experiments}
+
+\todo{Devon: Add Ting's contrast calculations.}
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Computer simulation}
+\section{Experiments with known ground truth}
 \label{sec:sim}
 
 The proposed statistical approach was evaluated and compared to the $t$-test and Limma methods using computer simulation. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Protein-level adjustment}
+\subsection{Computer simulation}
 
 Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. The proposed approach adjusts the PTM abundance with respect to protein abundance as introduced in \secref{sec:prop}. Alternatively, two-sample $t$-test or Limma taking as input the ratio between feature intensities of modified and unmodified peptides is commonly applied for the same purpose (\secref{sec:ttest}). 
 Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
@@ -695,8 +705,6 @@ In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the pr
 \end{table}
 
 A model was fit for the total protein and ubiquitination separately, as described previously for TMT experiments in Section~\ref{sec:tmtmethod}. The model formula can be seen below.
-
-\todo{only one mixture so we probably wouldn't include the mixture as a term in the model?}
 
 $$Y_{mcb} = \mu + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
 
