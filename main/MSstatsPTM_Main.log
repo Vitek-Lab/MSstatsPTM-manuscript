@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  14 OCT 2021 15:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  15 OCT 2021 16:29
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1208,7 +1208,7 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 Here is how much of TeX's memory you used:
  22782 strings out of 479334
  459437 string characters out of 2853721
- 1145619 words of memory out of 3000000
+ 1145617 words of memory out of 3000000
  39832 multiletter control sequences out of 15000+200000
  413653 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191

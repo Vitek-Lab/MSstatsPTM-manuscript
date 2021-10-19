@@ -28,22 +28,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.2}Design of PTM experiments}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Experiments with known ground truth}{8}{}%
+\contentsline {section}{\numberline {4}Experiments with known ground truth}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Computer simulation}{8}{}%
+\contentsline {subsection}{\numberline {4.1}Computer simulation}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Dataset 1 : Computer simulation 1 - Label-free}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Dataset 1 : Computer simulation 1 - Label-free}{9}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}{9}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}{10}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{14}{}%
+\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{15}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Datasets : Biological investigation}{20}{}%
+\contentsline {section}{\numberline {5}Datasets : Biological investigation}{21}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{20}{}%
+\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{21}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{23}{}%
+\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{24}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{27}{}%
+\contentsline {subsection}{\numberline {5.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{28}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{30}{}%
+\contentsline {section}{\numberline {6}Sample size calculation and power analysis}{31}{}%
