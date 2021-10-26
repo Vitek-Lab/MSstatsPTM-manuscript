@@ -1,33 +1,33 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Overview of proposed approach and notation}{2}{}%
+\contentsline {section}{\numberline {1}Overview of proposed approach and notation}{2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Data structure of PTM quantification experiments.}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Data structure of PTM quantification experiments.}{2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Existing methods}{3}{}%
+\contentsline {section}{\numberline {2}Existing methods}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}two-sample $t$-test}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Two-sample $t$-test}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Limma}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Limma}{3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Proposed approach}{4}{}%
+\contentsline {section}{\numberline {3}Proposed approach}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.0.1}Design of PTM experiments}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Design of PTM experiments}{4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Experiments with known ground truth}{6}{}%
+\contentsline {section}{\numberline {4}Experiments with known ground truth}{6}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Computer simulation}{6}{}%
+\contentsline {subsection}{\numberline {4.1}Computer simulation}{6}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Dataset 1 : Computer simulation 1 - Label-free}{6}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Dataset 1 : Computer simulation 1 - Label-free}{6}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}{7}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}{7}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{12}{}%
+\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{12}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Biological investigations}{18}{}%
+\contentsline {section}{\numberline {5}Biological investigations}{18}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{18}{}%
+\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{18}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{21}{}%
+\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{21}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{25}{}%
+\contentsline {subsection}{\numberline {5.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{25}% 

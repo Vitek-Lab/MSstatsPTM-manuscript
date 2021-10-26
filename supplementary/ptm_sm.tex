@@ -174,7 +174,7 @@ A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Existing methods} \label{sec:ttest}
-\subsection{two-sample $t$-test}
+\subsection{Two-sample $t$-test}
 
 
 Two-sample $t$-test is based on the null hypothesis that there is no difference in mean PTM abundance between Conditions $i$ and $i'$. The abundance in each run is taken as input and is often estimated by sum of peak intensities. The $t$-test is typically performed based on the log of summarized value. For example, the log-abundance estimate for the PTM in Run $j$ of Condition $i$ is given by
@@ -493,7 +493,7 @@ To characterize the observed feature intensities, different levels of variations
 
 %Where $M_m \sim N(0, \sigma^2_m)$, $T(M)_{tm} \sim N(0, \sigma^2_{tm})$, $S\sim N(0, \sigma^2_{s})$ are random effects, and $\sum_{c=1}^{I} C_{c}^{\ast} = 0$ is a fixed effect. Finally the error is expressed as $\epsilon_{mtcb} \sim N(0, \sigma^2)$.
 
-\subsubsection{Design of PTM experiments}
+\subsection{Design of PTM experiments}
 \label{sec:complex_design}
 
 The proposed approach applied to experiments with complex designs still allows for sample size calculation and power analysis. To make the calculation the standard deviation and degrees of freedom are needed. The estimation of these quantities is dependent on the experimental design. In \sfigref{fig:statistical_inference} different experimental designs that the proposed approach can be applied to, along with their estimation of standard error and degrees of freedom is shown.
