@@ -188,7 +188,7 @@ The quantity is denoted by $d_{ij}$ and is given by
 \[
 d_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right).
 \]
-Alternatively, run-level summary to be described in \secref{sec:sum} can also be used. The difference between the means of PTM abundance in Conditions $i$ and $i'$ are estimated as
+Alternatively, run-level summary to be described can also be used. The difference between the means of PTM abundance in Conditions $i$ and $i'$ are estimated as
 \[
 \hat{\Delta} = \frac{1}{J} d_{i+}^{\ast} - \frac{1}{J} d_{i'+},
 \]
@@ -311,93 +311,93 @@ To characterize the observed feature intensities, different levels of variations
 %\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Run-level summarization of feature intensities}
-\label{sec:sum}
+%\subsection{Run-level summarization of feature intensities}
+%\label{sec:sum}
 
-Run-level summarization of feature intensities for each PTM site is carried out as in the sub-plot model of MSstats~\cite{choi_etal_14a} or MSstatsTMT~\cite{Huang:2020} depending on acquisition strategy, which involves a) imputation of censored missing values, and b) summarization of feature intensities using Tukey's median polish. \cite{tukey_77a} The run-level summary for the PTM in Run $j$ of Condition $i$ is denoted by $\hat{y}_{ij}^{\ast}$. From here forward the input to the method assumes that all features are summarized.
+%Run-level summarization of feature intensities for each PTM site is carried out as in the sub-plot model of MSstats~\cite{choi_etal_14a} or MSstatsTMT~\cite{Huang:2020} depending on acquisition strategy, which involves a) imputation of censored missing values, and b) summarization of feature intensities using Tukey's median polish. \cite{tukey_77a} The run-level summary for the PTM in Run $j$ of Condition $i$ is denoted by $\hat{y}_{ij}^{\ast}$. From here forward the input to the method assumes that all features are summarized.
 
-\subsection{Balanced design with one source of variation}
-\label{sec:model}
-The methods when applied to a balanced design with multiple conditions and one technical replicate are shown in this section. In practice the experimental design can be unbalanced and variation can come from multiple sources.
+%\subsection{Balanced design with one source of variation}
+%\label{sec:model}
+%The methods when applied to a balanced design with multiple conditions and one technical replicate are shown in this section. In practice the experimental design can be unbalanced and variation can come from multiple sources.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Model-based inference of the underlying abundance}
-\label{sec:infer}
+%\subsubsection{Model-based inference of the underlying abundance}
+%\label{sec:infer}
 
-The PTM abundance in each run is represented as 
-\[
-\hat{y}_{ij}^{\ast} = \psi^{\ast} + C_{i}^{\ast} + R_{j(i)}^{\ast},
-\]
-where $\sum_{i=1}^{I} C_{i}^{\ast} = 0$, $R_{j(i)}^{\ast} = \gamma_{j(i)}^{\ast} \stackrel{\text{iid}}{\sim} \mathcal{N}(0, \sigma_{\gamma^{\ast}}^{2})$. 
-Similarly, the protein abundance in each run is expressed as
-\[
-\hat{y}_{ij} = \psi + C_{i} + R_{j(i)},
-\]
-where $\sum_{i=1}^{I} C_{i} = 0$, $R_{j(i)} = \gamma_{j(i)} \stackrel{\text{iid}}{\sim} \mathcal{N}(0, \sigma_{\gamma}^{2})$. The expected values of log-abundances of the PTM and protein in Condition $i$ are denoted by $\mu_{i}^{\ast}$ and $\mu_{i}$, respectively, and the values are estimated as: 
-\begin{align*}
-\hat{\mu}_{i}^{\ast} &= \hat{\psi}^{\ast} + \hat{C}_{i}^{\ast} = \frac{1}{J} \hat{y}_{i+}^{\ast} \\
-\hat{\mu}_{i} &= \hat{\psi} + \hat{C}_{i} = \frac{1}{J} \hat{y}_{i+},
-\end{align*}
-where the standard errors of the estimates are $\mathrm{SE^{\ast}}(\hat{\mu}_{i}) = (\hat{\sigma}_{\gamma^{\ast}}^{2} / J)^{1/2}$ and $\mathrm{SE}(\hat{\mu}_{i}) = (\hat{\sigma}_{\gamma^{\ast}}^{2} / J)^{1/2}$.
+%The PTM abundance in each run is represented as 
+%\[
+%\hat{y}_{ij}^{\ast} = \psi^{\ast} + C_{i}^{\ast} + R_{j(i)}^{\ast},
+%\]
+%where $\sum_{i=1}^{I} C_{i}^{\ast} = 0$, $R_{j(i)}^{\ast} = \gamma_{j(i)}^{\ast} \stackrel{\text{iid}}{\sim} \mathcal{N}(0, \sigma_{\gamma^{\ast}}^{2})$. 
+%Similarly, the protein abundance in each run is expressed as
+%\[
+%\hat{y}_{ij} = \psi + C_{i} + R_{j(i)},
+%\]
+%where $\sum_{i=1}^{I} C_{i} = 0$, $R_{j(i)} = \gamma_{j(i)} \stackrel{\text{iid}}{\sim} \mathcal{N}(0, \sigma_{\gamma}^{2})$. The expected values of log-abundances of the PTM and protein in Condition $i$ are denoted by $\mu_{i}^{\ast}$ and $\mu_{i}$, respectively, and the values are estimated as: 
+%\begin{align*}
+%\hat{\mu}_{i}^{\ast} &= \hat{\psi}^{\ast} + \hat{C}_{i}^{\ast} = \frac{1}{J} \hat{y}_{i+}^{\ast} \\
+%\hat{\mu}_{i} &= \hat{\psi} + \hat{C}_{i} = \frac{1}{J} \hat{y}_{i+},
+%\end{align*}
+%where the standard errors of the estimates are $\mathrm{SE^{\ast}}(\hat{\mu}_{i}) = (\hat{\sigma}_{\gamma^{\ast}}^{2} / J)^{1/2}$ and $\mathrm{SE}(\hat{\mu}_{i}) = (\hat{\sigma}_{\gamma^{\ast}}^{2} / J)^{1/2}$.
 %\[
 %\left( \frac{\hat{\sigma}_{\gamma}^{2}}{J} \right)^{1/2}, \quad \left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{2}}{J} \right) ^ {1/2}.
 %\]
 %\[
 %\left( \frac{1}{J} \hat{\sigma}_{\gamma}^{2} \right)^{1/2}, \quad \left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{2}}{J} \right) ^ {1/2}.
 %\]
-Based on the estimates $\hat{\mu}_{i}^{\ast}$ and $\hat{\mu}_{i}$, the adjusted log-abundance of the PTM is given by $(\hat{\mu}_{i}^{\ast} - \hat{\mu}_{i})$ and the standard error of the estimate is 
-\[
-\left[ \frac{1}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}.
-\]
+%Based on the estimates $\hat{\mu}_{i}^{\ast}$ and $\hat{\mu}_{i}$, the adjusted log-abundance of the PTM is given by $(\hat{\mu}_{i}^{\ast} - \hat{\mu}_{i})$ and the standard error of the estimate is 
+%\[
+%\left[ \frac{1}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}.
+%\]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{PTM significance analysis}
-\label{sec:test}
+%\subsubsection{PTM significance analysis}
+%\label{sec:test}
 
-With protein-level adjustment, the model-based testing is based on the hypothesis that there is no difference in adjusted PTM abundance between Conditions $i$ and $i'$
+%With protein-level adjustment, the model-based testing is based on the hypothesis that there is no difference in adjusted PTM abundance between Conditions $i$ and $i'$
 %Adjusted by protein abundance, the hypothesis states that there is no difference in log-abundance of the modification between groups $i$ and $i'$
-\begin{align*}
-H_{0}: \Delta = \left( \mu_{i}^{\ast} - \mu_{i'}^{\ast} \right) - \left( \mu_{i} - \mu_{i'} \right) &= 0 \\
-H_{a}: \Delta = \left( \mu_{i}^{\ast} - \mu_{i'}^{\ast} \right) - \left( \mu_{i} - \mu_{i'} \right) &\neq 0
-\end{align*}
-In a balanced design, the log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by 
-\[
-\hat{\Delta} = \left[ \frac{1}{J} \left( \hat{y}_{i+}^{\ast} - \hat{y}_{i'+}^{\ast} \right) \right] - \left[ \frac{1}{J} \left( \hat{y}_{i+} - \hat{y}_{i'+} \right) \right],
-\]
-and the standard error of the estimate $\mathrm{SE}(\hat{\Delta})$ is 
-\[
-SE(\hat{\Delta}) = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}.
-\]
+%\begin{align*}
+%H_{0}: \Delta = \left( \mu_{i}^{\ast} - \mu_{i'}^{\ast} \right) - \left( \mu_{i} - \mu_{i'} \right) &= 0 \\
+%H_{a}: \Delta = \left( \mu_{i}^{\ast} - \mu_{i'}^{\ast} \right) - \left( \mu_{i} - \mu_{i'} \right) &\neq 0
+%\end{align*}
+%In a balanced design, the log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by 
+%\[
+%\hat{\Delta} = \left[ \frac{1}{J} \left( \hat{y}_{i+}^{\ast} - \hat{y}_{i'+}^{\ast} \right) \right] - \left[ \frac{1}{J} \left( \hat{y}_{i+} - \hat{y}_{i'+} \right) \right],
+%\]
+%and the standard error of the estimate $\mathrm{SE}(\hat{\Delta})$ is 
+%\[
+%SE(\hat{\Delta}) = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}.
+%\]
 %\[
 %\left[ \left( \frac{2}{J} \right) \cdot \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right]^{1/2}.
 %\]
-The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
-\[
-\left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right)^2 \bigg/
-\left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} + \frac{\hat{\sigma}_{\gamma}^{4}}{ \mathrm{df}(\gamma)} \right).
-\]
-A distinctive property of the proposed model-based testing to the two-sample $t$-test is that even only the PTM abundances in Conditions $i$ and $i'$ are compared, measurements from all conditions are used for the modeling and inference.
+%The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
+%\[
+%\left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right)^2 \bigg/
+%\left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} + \frac{\hat{\sigma}_{\gamma}^{4}}{ \mathrm{df}(\gamma)} \right).
+%\]
+%A distinctive property of the proposed model-based testing to the two-sample $t$-test is that even only the PTM abundances in Conditions $i$ and $i'$ are compared, measurements from all conditions are used for the modeling and inference.
 
-The formulations for $\hat{\Delta}$, $SE(\hat{\Delta})$, and degrees of freedom shown above are for a simple balanced experiment. They can also be extended to more realistic experiments with complex designs. This is discussed further in Section \ref{sec:complex_methods}
+%The formulations for $\hat{\Delta}$, $SE(\hat{\Delta})$, and degrees of freedom shown above are for a simple balanced experiment. They can also be extended to more realistic experiments with complex designs. This is discussed further in Section \ref{sec:complex_methods}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Design of PTM experiments}
-\label{sec:design}
+%\subsubsection{Design of PTM experiments}
+%\label{sec:design}
 
-The proposed statistical framework allows for design of PTM experiments in terms of sample size calculation and power analysis. 
+%The proposed statistical framework allows for design of PTM experiments in terms of sample size calculation and power analysis. 
 %Sample size calculation based on linear models has been described for general applications~\cite{kutner_etal_04a} and specifically for protein significance analysis~\cite{oberg_vitek_09a}. 
-Sample size calculation takes as input a) $q$, the desired false discovery rate, b) $\beta$, the average Type II error rate, c) $\Delta$, the minimal log-fold change in adjusted PTM abundance that we would like to detect, d) $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison, and e) $\sigma_{\gamma^{\ast}}^{2}$ and $\sigma_{\gamma}^{2}$, the anticipated variances associated to modified and unmodified peptide features, respectively. The variances can be derived based on the dataset being analyzed, assuming similar quantitative properties and variations. With these values and a user-specified number of conditions, the corresponding number of technical replicates per condition can then be derived, as described in~\cite{kutner_etal_04a}. Given the above quantities, the minimal number of replicates $J$ is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
-\[
-\mathrm{SE}^{2}(\hat{\Delta}) = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
-\leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2},
-\]
-where 
-\[
-\alpha = (1 - \beta) \cdot \frac{q}{1 + (1-q) \cdot m_0 / m_1},
-\]
-and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}}$ and the $100(1-\alpha /2)^{\text{th}}$ percentiles of the $t$ distribution, with $df = I(J-1)$ degrees of freedom in balanced designs. More details can be found in~\cite{oberg_vitek_09a}. 
+%Sample size calculation takes as input a) $q$, the desired false discovery rate, b) $\beta$, the average Type II error rate, c) $\Delta$, the minimal log-fold change in adjusted PTM abundance that we would like to detect, d) $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison, and e) $\sigma_{\gamma^{\ast}}^{2}$ and $\sigma_{\gamma}^{2}$, the anticipated variances associated to modified and unmodified peptide features, respectively. The variances can be derived based on the dataset being analyzed, assuming similar quantitative properties and variations. With these values and a user-specified number of conditions, the corresponding number of technical replicates per condition can then be derived, as described in~\cite{kutner_etal_04a}. Given the above quantities, the minimal number of replicates $J$ is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
+%\[
+%\mathrm{SE}^{2}(\hat{\Delta}) = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
+%\leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2},
+%\]
+%where 
+%\[
+%\alpha = (1 - \beta) \cdot \frac{q}{1 + (1-q) \cdot m_0 / m_1},
+%\]
+%and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}}$ and the $100(1-\alpha /2)^{\text{th}}$ percentiles of the $t$ distribution, with $df = I(J-1)$ degrees of freedom in balanced designs. More details can be found in~\cite{oberg_vitek_09a}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -450,38 +450,38 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 %\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Extension to complex designs}
-\label{sec:complex_methods}
+%\subsection{Extension to complex designs}
+%\label{sec:complex_methods}
 
-The methods described previously in Section \ref{sec:model} can be extrapolated to experiments with complex designs targeting PTMs. This includes experiments with additional sources of variation and unbalanced designs.
+%The methods described previously in Section \ref{sec:model} can be extrapolated to experiments with complex designs targeting PTMs. This includes experiments with additional sources of variation and unbalanced designs.
 
-\subsubsection{Model-based inference and significance analysis}
+%\subsubsection{Model-based inference and significance analysis}
 
-Model inference is done in the same way to how MSstats~\cite{choi_etal_14a} and MSstatsTMT~\cite{Huang:2020} target the global protein. The null hypothesis is still that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
-\begin{align*}
-H_{0}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &= 0 \\
-H_{a}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &\neq 0
-\end{align*}
+%Model inference is done in the same way to how MSstats~\cite{choi_etal_14a} and MSstatsTMT~\cite{Huang:2020} target the global protein. The null hypothesis is still that there is no difference in mean PTM abundance between Conditions $i$ and $i'$ after adjusting for changes in mean unmodified peptide abundance between Conditions $i$ and $i'$. 
+%\begin{align*}
+%H_{0}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &= 0 \\
+%H_{a}: \Delta = (\mu_{i}^{\ast} - \mu_{i'}^{\ast}) - (\mu_{i} - \mu_{i'}) &\neq 0
+%\end{align*}
 
-In cases where the design in unbalanced, a linear mixed effects model is fit, which takes into account all potential sources of variation, and restricted maximum likelihood is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of the formulas in Section \ref{sec:test}.
+%In cases where the design in unbalanced, a linear mixed effects model is fit, which takes into account all potential sources of variation, and restricted maximum likelihood is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of the formulas in Section \ref{sec:test}.
 
-The log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by 
-\[
-\hat{\Delta} = (\hat{\mu}_{RML_i}^{\ast} - \hat{\mu}_{RML_{i'}}^{\ast}) - (\hat{\mu}_{RML_i} - \hat{\mu}_{RML_{i'}})
-\]
-and the standard error of the estimate $\mathrm{SE}(\hat{\Delta})$ is 
-\[
-SE(\hat{\Delta}) = \left[ \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}.
-\]
+%The log-fold change in the adjusted PTM abundance, $\Delta$, is estimated by 
+%\[
+%\hat{\Delta} = (\hat{\mu}_{RML_i}^{\ast} - \hat{\mu}_{RML_{i'}}^{\ast}) - (\hat{\mu}_{RML_i} - \hat{\mu}_{RML_{i'}})
+%\]
+%and the standard error of the estimate $\mathrm{SE}(\hat{\Delta})$ is 
+%\[
+%SE(\hat{\Delta}) = \left[ \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}.
+%\]
 %\[
 %\left[ \left( \frac{2}{J} \right) \cdot \left( \hat{\sigma}_{\gamma}^{2} + \hat{\sigma}_{\gamma^{\ast}}^{2} \right) \right]^{1/2}.
 %\]
-The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
-\[
-\left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right)^2 \bigg/
-\left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} + \frac{\hat{\sigma}_{\gamma}^{4}}{ \mathrm{df}(\gamma)} \right).
-\]
-
+%The test statistic $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$ is compared against the $t$ distribution, with degrees of freedom approximated by
+%\[
+%\left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right)^2 \bigg/
+%\left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} + \frac{\hat{\sigma}_{\gamma}^{4}}{ \mathrm{df}(\gamma)} \right).
+%\]
+%
 
 %An example of this is in TMT experiments where additional variation comes from the mixtures used. Going forward we will denote the log-intensity of a modified peptide for Technical Replicate j of Mixture m for Condition i by $y_{ijm}$, where $m = 1,....,M$. This is done in the same way for the unmodified peptide $y^*_{ijm}$.
 
@@ -503,7 +503,7 @@ The proposed approach applied to experiments with complex designs still allows f
 \caption{Different models that are fit depending on the experimental design. Models are fit for Label-free and TMT acquisition methods, as well as group comparison and time course experimental designs. The estimation of standard error and degrees of freedom for each model is shown. \label{fig:statistical_inference}}
 \end{figure}
 
-The standard error and degrees of freedom are estimated separately for both the PTM and unmodified protein models. Once this is done we can use these these values to calculate the sample size and perform power analysis. This is done in a similar way to Section \ref{sec:design}. Given $q$, the desired false discovery rate, $\beta$, the average Type II error rate, $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison. The minimal number of replicates is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
+The standard error and degrees of freedom are estimated separately for both the PTM and unmodified protein models. Once this is done we can use these these values to calculate the sample size and perform power analysis. Given $q$, the desired false discovery rate, $\beta$, the average Type II error rate, $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison. The minimal number of replicates is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
 \[
 \mathrm{SE}^{2}(\hat{\Delta}) = \left[ \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
 \leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2},
@@ -679,7 +679,7 @@ Again we consider three different methods and assess their performance: the meth
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Datasets : Biological investigation}
+\section{Biological investigations}
 \label{sec:bio_investigations}
 
 \subsection{Dataset 4 : Human - Ubiquitination - 1mix-TMT}
@@ -721,7 +721,7 @@ In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the pr
 \label{table:ipah_design}
 \end{table}
 
-A model was fit for the total protein and ubiquitination separately, as described previously for TMT experiments in Section~\ref{sec:tmtmethod}. The model formula can be seen below.
+A model was fit for the total protein and ubiquitination separately. The model formula can be seen below.
 
 $$Y_{mcb} = \mu + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
 
@@ -866,29 +866,29 @@ An example profile plot for this experiment can be seen in \sfigref{fig:usp30_ve
 \end{figure}
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sample size calculation and power analysis}
+%\section{Sample size calculation and power analysis}
 
-The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. The proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. Thus the statistical power is dependent on the variance from both the modified peptide and unmodifed protein as well as the number of replicates in both runs.
+%The proposed approach allows us to calculate the sample size needed to achieve a desired statistical power as described in Section \ref{sec:design}. The proposed method adjusts for the underlying protein abundance in the PTM significance analysis, which corrects the confounding factor with a cost of increased variation. When the variation is increased, the experiment requires a larger number of replicates to reach the same power. Thus the statistical power is dependent on the variance from both the modified peptide and unmodifed protein as well as the number of replicates in both runs.
 
-We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. For variance we used the variance from the biological experiments to determine what values to set. In dataset 4 and 5 the variance of the PTM was generally higher than the global protein. In contrast, in dataset 6 the variance of the PTM and Protein was generally the same. Because of this we will analyze the power of our experiments when the PTM variance is higher than the protein, and also when they are the same. For the variance numbers, in the case when the PTM and protein are the same we chose a variance of .15. When the PTM is higher than the protein we chose a PTM variance of .2 and a protein variance of .1. These numbers were derived from the biological experiments in this paper.
+%We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. For variance we used the variance from the biological experiments to determine what values to set. In dataset 4 and 5 the variance of the PTM was generally higher than the global protein. In contrast, in dataset 6 the variance of the PTM and Protein was generally the same. Because of this we will analyze the power of our experiments when the PTM variance is higher than the protein, and also when they are the same. For the variance numbers, in the case when the PTM and protein are the same we chose a variance of .15. When the PTM is higher than the protein we chose a PTM variance of .2 and a protein variance of .1. These numbers were derived from the biological experiments in this paper.
 
-The results of the power and sample size analysis can be seen in \sfigref{fig:power_sd_combo}.
+%The results of the power and sample size analysis can be seen in \sfigref{fig:power_sd_combo}.
 
-\begin{figure}[h!]
-\centering
- \begin{subfigure}{\textwidth}
- \centering
-	\includegraphics[width=.725\textwidth]{sim_new/same_var_power}
-	\caption{Here we can see the power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates are high for both modified and unmodified peptides the power is much higher. Conversely at low replicates for each the power is much lower. The interesting part of this chart is when the replicates are different between runs. With equal variance, it does not matter if the PTM replicates or protein replicates are higher. Both cases result in the same power with equal variance.}
- \end{subfigure}\vspace{-5mm}
- \begin{subfigure}{\textwidth}
- \centering
-	\includegraphics[width=.725\textwidth]{sim_new/high_ptm_var_power}
-	\caption{In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to more power. It is clearly more important to have high replicates for the PTM run than the unmodified protein, when the PTM variance is higher.}
- \end{subfigure}
- \caption{Power analysis of experiments with differing variances.}
-\label{fig:power_sd_combo}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+% \begin{subfigure}{\textwidth}
+% \centering
+%	\includegraphics[width=.725\textwidth]{sim_new/same_var_power}
+%	\caption{Here we can see the power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates are high for both modified and unmodified peptides the power is much higher. Conversely at low replicates for each the power is much lower. The interesting part of this chart is when the replicates are different between runs. With equal variance, it does not matter if the PTM replicates or protein replicates are higher. Both cases result in the same power with equal variance.}
+% \end{subfigure}\vspace{-5mm}
+% \begin{subfigure}{\textwidth}
+% \centering
+%	\includegraphics[width=.725\textwidth]{sim_new/high_ptm_var_power}
+%	\caption{In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to more power. It is clearly more important to have high replicates for the PTM run than the unmodified protein, when the PTM variance is higher.}
+% \end{subfigure}
+% \caption{Power analysis of experiments with differing variances.}
+%\label{fig:power_sd_combo}
+%\end{figure}
 
 
 %\begin{figure}[h!]
@@ -914,8 +914,7 @@ The results of the power and sample size analysis can be seen in \sfigref{fig:po
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-\section*{References}
+%\clearpage
 
 \printbibliography 
 

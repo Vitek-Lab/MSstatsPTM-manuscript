@@ -1,19 +1,21 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
-[122] biber-MSWIN64:340> INFO - === 
-[163] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[287] Biber.pm:952> INFO - Found 21 citekeys in bib section 0
-[302] Biber.pm:4340> INFO - Processing section 0
-[314] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[382] bibtex.pm:1689> INFO - LaTeX decoding ...
-[419] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[454] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
-[489] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[577] Utils.pm:395> WARN - I didn't find a database entry for 'choi_etal_14a' (section 0)
-[611] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[611] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[611] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[611] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[636] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[654] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
-[654] Biber.pm:128> INFO - WARNINGS: 3
+[117] biber-MSWIN64:340> INFO - === 
+[156] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[280] Biber.pm:952> INFO - Found 23 citekeys in bib section 0
+[295] Biber.pm:4340> INFO - Processing section 0
+[307] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[367] bibtex.pm:1689> INFO - LaTeX decoding ...
+[399] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[437] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
+[471] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
+[555] Utils.pm:395> WARN - I didn't find a database entry for 'kutner_etal_04a' (section 0)
+[555] Utils.pm:395> WARN - I didn't find a database entry for 'oberg_vitek_09a' (section 0)
+[555] Utils.pm:395> WARN - I didn't find a database entry for 'choi_etal_14a' (section 0)
+[584] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[584] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[584] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[584] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[611] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[628] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[629] Biber.pm:128> INFO - WARNINGS: 5

@@ -2345,15 +2345,8 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">Ritchie_15a</bcf:citekey>
-    <bcf:citekey order="2">choi_etal_14a</bcf:citekey>
-    <bcf:citekey order="3">Huang:2020</bcf:citekey>
-    <bcf:citekey order="4">tukey_77a</bcf:citekey>
-    <bcf:citekey order="5">kutner_etal_04a</bcf:citekey>
-    <bcf:citekey order="6">oberg_vitek_09a</bcf:citekey>
-    <bcf:citekey order="7">choi_etal_14a</bcf:citekey>
-    <bcf:citekey order="8">Huang:2020</bcf:citekey>
-    <bcf:citekey order="9">LUCHETTI2021</bcf:citekey>
-    <bcf:citekey order="10">Maculins</bcf:citekey>
+    <bcf:citekey order="2">LUCHETTI2021</bcf:citekey>
+    <bcf:citekey order="3">Maculins</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
