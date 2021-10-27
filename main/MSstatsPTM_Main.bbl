@@ -439,6 +439,46 @@
       \field{pages}{e1002277}
       \range{pages}{-1}
     \endentry
+    \entry{kutner_etal_04a}{book}{}
+      \name{author}{4}{}{%
+        {{hash=f20de387d6341cbd5058ddb4eb7223d7}{%
+           family={Kutner},
+           familyi={K\bibinitperiod},
+           given={Michael\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=1ad29adfd24079278098723ad43f7654}{%
+           family={Neter},
+           familyi={N\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=816bcd6921f6bc62230351ab3eff3e1a}{%
+           family={Nachtsheim},
+           familyi={N\bibinitperiod},
+           given={Christopher\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=fa8aa34b1374a5f35c1008767cb1eb56}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill/Irwin}%
+      }
+      \strng{namehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{fullhash}{048879853f8485043baf57da8a169b8c}
+      \strng{bibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authorbibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authornamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authorfullhash}{048879853f8485043baf57da8a169b8c}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{title}{Applied Linear Statistical Models}
+      \field{year}{2004}
+    \endentry
     \entry{Kuznetsova2017}{article}{}
       \name{author}{3}{}{%
         {{hash=7cd3845a800c3291e727a82c1f2df45e}{%
@@ -759,6 +799,37 @@
       \field{pages}{255\bibrangedash 261}
       \range{pages}{7}
     \endentry
+    \entry{oberg_vitek_09a}{article}{}
+      \name{author}{2}{}{%
+        {{hash=91c9266752b425256e0ae931854a665b}{%
+           family={Oberg},
+           familyi={O\bibinitperiod},
+           given={Ann\bibnamedelima L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=e347c816c4223c9370d78e88536e3b34}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{fullhash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{bibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authorbibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authornamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authorfullhash}{96a724ce9eb2b728c9a7587035aa625a}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Proteome Research}
+      \field{number}{5}
+      \field{title}{Statistical design of quantitative mass spectrometry-based proteomic experiments}
+      \field{volume}{8}
+      \field{year}{2009}
+      \field{pages}{2144\bibrangedash 2156}
+      \range{pages}{13}
+    \endentry
     \entry{Olsen:2013}{article}{}
       \name{author}{2}{}{%
         {{hash=140b79c78e37c350704669b6c808d9bf}{%
@@ -1001,9 +1072,6 @@
       \range{pages}{11}
     \endentry
   \enddatalist
-  \missing{choi_etal_14a}
-  \missing{kutner_etal_04a}
-  \missing{oberg_vitek_09a}
 \endrefsection
 \endinput
 
