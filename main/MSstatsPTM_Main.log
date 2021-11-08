@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  27 OCT 2021 11:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  8 NOV 2021 10:51
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1060,7 +1060,17 @@ Overfull \hbox (56.13495pt too wide) in paragraph at lines 295--296
 uctor.org/packages/release/bioc/html/MSstatsPTM.html,
  []
 
-[7] [8] [9] [10] [11] [12] [13]
+[7] [8]
+Overfull \hbox (99.59834pt too wide) in paragraph at lines 346--347
+[]\OT1/cmr/m/n/10 In Fig-ure 11[] the pro-file plot of two spe-cific mod-i-fied
+ pep-tides, $\OML/cmm/m/it/10 TTP[]MOUSE\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 P\OT
+1/cmr/m/n/10 22893[]\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 178$ and $\OML/cmm/m/it/1
+0 KI\OT1/cmr/m/n/10 67[]\OML/cmm/m/it/10 MOUSE\OMS/cmsy/m/n/10 j\OML/cmm/m/it/1
+0 E\OT1/cmr/m/n/10 9\OML/cmm/m/it/10 PVX\OT1/cmr/m/n/10 6[]\OML/cmm/m/it/10 T\O
+T1/cmr/m/n/10 215$,
+ []
+
+[9] [10] [11] [12] [13]
 <images/fig3.png, id=87, 722.7pt x 542.025pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
@@ -1191,7 +1201,7 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 Here is how much of TeX's memory you used:
  22774 strings out of 479334
  459426 string characters out of 2853721
- 1145662 words of memory out of 3000000
+ 1145616 words of memory out of 3000000
  39825 multiletter control sequences out of 15000+200000
  413653 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1220,7 +1230,7 @@ c/amsfonts/cm/cmsy7.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Devon Kohler/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Devon Kohler/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (28 pages, 869451 bytes).
+Output written on MSstatsPTM_Main.pdf (28 pages, 867710 bytes).
 PDF statistics:
  233 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

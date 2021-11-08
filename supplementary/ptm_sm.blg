@@ -1,17 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'ptm_sm.blg'
-[119] biber-MSWIN64:340> INFO - === 
-[156] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
-[271] Biber.pm:952> INFO - Found 8 citekeys in bib section 0
-[287] Biber.pm:4340> INFO - Processing section 0
-[299] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
-[346] bibtex.pm:1689> INFO - LaTeX decoding ...
-[363] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
-[414] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[481] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[481] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[481] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[481] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[495] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
-[506] bbl.pm:757> INFO - Output to ptm_sm.bbl
-[506] Biber.pm:128> INFO - WARNINGS: 1
+[138] biber-MSWIN64:340> INFO - === 
+[188] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
+[317] Biber.pm:952> INFO - Found 3 citekeys in bib section 0
+[332] Biber.pm:4340> INFO - Processing section 0
+[345] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
+[431] bibtex.pm:1689> INFO - LaTeX decoding ...
+[449] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
+[547] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[547] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[547] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[547] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[557] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
+[565] bbl.pm:757> INFO - Output to ptm_sm.bbl

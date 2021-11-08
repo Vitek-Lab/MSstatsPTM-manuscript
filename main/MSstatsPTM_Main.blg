@@ -1,18 +1,18 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
-[111] biber-MSWIN64:340> INFO - === 
-[154] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[277] Biber.pm:952> INFO - Found 22 citekeys in bib section 0
-[293] Biber.pm:4340> INFO - Processing section 0
-[304] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[375] bibtex.pm:1689> INFO - LaTeX decoding ...
-[423] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[459] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
-[491] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[610] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[610] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[610] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[610] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[638] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[658] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
-[658] Biber.pm:128> INFO - WARNINGS: 2
+[127] biber-MSWIN64:340> INFO - === 
+[170] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[296] Biber.pm:952> INFO - Found 22 citekeys in bib section 0
+[315] Biber.pm:4340> INFO - Processing section 0
+[329] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[392] bibtex.pm:1689> INFO - LaTeX decoding ...
+[428] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[465] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
+[503] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
+[634] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[634] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[634] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[634] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[673] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[693] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[693] Biber.pm:128> INFO - WARNINGS: 2
