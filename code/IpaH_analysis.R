@@ -56,56 +56,69 @@ gsmd_sum$BioReplicate <- factor(gsmd_sum$BioReplicate,
                                            "NoDox6hr_2", "Dox1hr_1", "Dox2hr_1",
                                            "Dox2hr_2", "Dox4hr_1",
                                            "Dox4hr_2", "Dox6hr_1", "Dox6hr_2"))
+gsmd_62_sum <- as.data.table(gsmd_62_sum)
+gsmd_62_sum[gsmd_62_sum$FeatureType == 'Model'][['FeatureType']] <- "PTM Summarized"
+gsmd_62_sum[gsmd_62_sum$FeatureType == 'Peptide'][['FeatureType']] <- "PTM Feature"
 
-p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, color = FeatureType,
+gsmd_sum[gsmd_sum$FeatureType == 'Model'][['FeatureType']] <- "Protein Summarized"
+gsmd_sum[gsmd_sum$FeatureType == 'Peptide'][['FeatureType']] <- "Protein Feature"
+
+p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, 
+                                               color = FeatureType,
                                                group = PSM, size = FeatureType)) +
-  geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 3) +
+  geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(2.5, 4.5, 5.5, 7.5, 9.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
-  scale_colour_manual(values = c("#D55E00", "#C3C3C3")) +
+  scale_colour_manual(values = c("#C3C3C3", "#D55E00")) +
   scale_size_manual(values = c(1.5,1)) +
-  labs(title = "GSDMD_HUMAN|P57764_K62", x = "BioReplicate", y = "Abundance") +
+  labs(title = "GSDMD with ubiquitination at site K62", x = "BioReplicate", 
+       y = "Abundance") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12),
-        legend.position = "None") +
-  annotate("text", x = 1.5, y = 22.75, label = "No_Dox0hr", size = 4.5) +
-  annotate("text", x = 3.5, y = 22.75, label = "No_Dox6hr", size = 4.5) +
-  annotate("text", x = 5, y = 22.75, label = "Dox1hr", size = 4.5) +
-  annotate("text", x = 6.5, y = 22.75, label = "Dox2hr", size = 4.5) +
-  annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 4.5) +
-  annotate("text", x = 10.5, y = 22.75, label = "Dox6hr", size = 4.5) +
-  ylim(11, 23)
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=18),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16),
+        legend.title =  element_blank(),
+        legend.direction = "horizontal",
+        legend.position = c(.5, .05)) +
+  ylim(11.5, 23) +
+  annotate("text", x = 1.68, y = 22.75, label = "No_Dox0hr", size = 8) +
+  annotate("text", x = 3.5, y = 22., label = "No_Dox6hr", size = 8) +
+  annotate("text", x = 5, y = 22.75, label = "Dox1hr", size = 8) +
+  annotate("text", x = 6.5, y = 22., label = "Dox2hr", size = 8) +
+  annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 8) +
+  annotate("text", x = 10.5, y = 22., label = "Dox6hr", size = 8)
 
-p2 <- gsmd_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, color = FeatureType,
+p2 <- gsmd_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, 
+                                            color = FeatureType,
                                          group = PSM, size = FeatureType)) +
-  geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 3) +
+  geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(2.5, 4.5, 5.5, 7.5, 9.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
-  scale_colour_manual(values = c("#D55E00", "#C3C3C3")) +
+  scale_colour_manual(values = c("#C3C3C3", "#D55E00")) +
   scale_size_manual(values = c(1.5,1)) +
-  labs(title = "GSDMD_HUMAN|P57764", x = "BioReplicate", y = "Abundance") +
+  labs(title = "GSDMD Protein", x = "BioReplicate", y = "Abundance") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12),
-        legend.position = "None") +
-  ylim(11, 23) +
-  annotate("text", x = 1.5, y = 22.75, label = "No_Dox0hr", size = 4.5) +
-  annotate("text", x = 3.5, y = 22.75, label = "No_Dox6hr", size = 4.5) +
-  annotate("text", x = 5, y = 22.75, label = "Dox1hr", size = 4.5) +
-  annotate("text", x = 6.5, y = 22.75, label = "Dox2hr", size = 4.5) +
-  annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 4.5) +
-  annotate("text", x = 10.5, y = 22.75, label = "Dox6hr", size = 4.5)
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=18),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16),
+        legend.title =  element_blank(),
+        legend.direction = "horizontal",
+        legend.position = c(.5, .05)) +
+  ylim(11.5, 23) +
+  annotate("text", x = 1.68, y = 22.75, label = "No_Dox0hr", size = 8) +
+  annotate("text", x = 3.5, y = 22., label = "No_Dox6hr", size = 8) +
+  annotate("text", x = 5, y = 22.75, label = "Dox1hr", size = 8) +
+  annotate("text", x = 6.5, y = 22., label = "Dox2hr", size = 8) +
+  annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 8) +
+  annotate("text", x = 10.5, y = 22., label = "Dox6hr", size = 8)
 
 grid.arrange(p1, p2, nrow = 1)
 
@@ -125,19 +138,22 @@ v1 <- unadj_plot_df %>% ggplot() +
   geom_hline(data=data.frame(x = c(-log10(.05))),
              aes(yintercept=as.numeric(x)), linetype = "dashed", size = 1.25) +
   theme_bw() +
-  theme(axis.text.x = element_text( size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12),
-        legend.position = "None") +
+  theme(axis.text.x = element_text(size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=18),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16),
+        legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 8) +
-  labs(title = "Unadjusted Dox4hr_v_Dox1hr", y = "-Log Adj. Pvalue") +
+  labs(title = "Dox 4 hr vs Dox 1 hr, by PTM quant only", 
+       y = "-Log Adj. Pvalue",
+       x = "Estimated log2 Fold Change") +
   geom_label_repel(
-    data = data.frame(x = -.500, y = -log10(.064), label = "Log2FC: -.501 \n Adj.pvalue: .0644"),
+    data = data.frame(x = -.500, y = -log10(.064), 
+                      label = "GSDMD K62 \n Log2FC: -.501 \n Adj.pvalue: .0644"),
     aes(x = x, y = y, label = label),
     label.padding = unit(0.55, "lines"),
     size = 8,
@@ -160,20 +176,22 @@ v2 <- adj_plot_df %>% ggplot() +
   geom_hline(data=data.frame(x = c(-log10(.05))),
              aes(yintercept=as.numeric(x)), linetype = "dashed", size = 1.25) +
   theme_bw() +
-  theme(axis.text.x = element_text( size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12),
-        legend.position = "None") +
+  theme(axis.text.x = element_text(size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=18),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16),
+        legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 8) +
-  labs(title = "Adjusted Dox4hr_v_Dox1hr", y = "-Log Adj. Pvalue") +
+  labs(title = "Dox 4 hr vs Dox 1 hr, PTM adjusted by Protein", 
+       y = "-Log Adj. Pvalue",
+       x = "Estimated log2 Fold Change") +
   geom_label_repel(
     data = data.frame(x = 2.789747, y = -log10(5.249283e-08),
-                      label = "Log2FC: 2.79 \n Adj.pvalue: 5.25e-08"),
+                      label = "GSDMD K62 \n Log2FC: 2.79 \n Adj.pvalue: 5.25e-08"),
     aes(x = x, y = y, label = label),
     label.padding = unit(0.55, "lines"),
     size = 8,
@@ -207,12 +225,13 @@ venn.diagram(
   filename = "ipah_venn_diagramm.png",
   output=TRUE,
   imagetype="png" ,
-  height = 1200,
-  width = 1200,
+  height = 1400,
+  width = 1400,
   resolution = 100,
   lwd = 2,
   fill = colors,
   main.fontface = "bold",
+  main.fontfamily="sans",
   main.pos = c(.5,.965),
   fontface = "bold",
   cat.fontface = "bold",

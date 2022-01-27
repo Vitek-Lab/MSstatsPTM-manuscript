@@ -35,7 +35,7 @@
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 
 \usepackage{tabulary,multirow,multicol,rotating}
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber,sorting=none]{biblatex}
 \addbibresource{bibliography.bib}
 
 \definecolor{Red}{rgb}{0.60,0.00,0.00}
@@ -133,7 +133,7 @@ The scientific community widely utilizes mass spectrometry (MS)-based proteomics
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are primarily facilitated by the modification of proteins at specific residues, acting as molecular on/off switches\cite{Deribe} \cite{Cohen}. Mass spectrometry-based label-free proteomics is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) using liquid chromatography coupled with mass spectrometry (LC-MS)\cite{Kall:2011ub} \cite{Roepstorff}. Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site's occupancy repertoire, or relative changes in occupancy across experimental conditions\cite{Mann}. Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteo-forms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide). Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently convoluted with changes in the overall protein expression, making the interpretation of the results not straightforward\cite{Olsen:2013}. Therefore, a robust approach to estimate systematic relative changes in post-translational modifications, at scale, should not only combine the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, but take into account various sources of variations and confounding factors present in the experiments.
+The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are primarily facilitated by the modification of proteins at specific residues, acting as molecular on/off switches\cite{Deribe} \cite{Cohen}. Mass spectrometry-based proteomics is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) using liquid chromatography coupled with mass spectrometry (LC-MS)\cite{Kall:2011ub} \cite{Roepstorff}. Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site's occupancy repertoire, or relative changes in occupancy across experimental conditions\cite{Mann}. Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteo-forms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide). Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently convoluted with changes in the overall protein expression, making the interpretation of the results not straightforward\cite{Olsen:2013}. Therefore, a robust approach to estimate systematic relative changes in post-translational modifications, at scale, should not only combine the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, but take into account various sources of variations and confounding factors present in the experiments.
  
 We propose a general statistical approach, which explicitly characterizes the variations and confounding factors present in bottom-up PTM experiments. The proposed approach is aimed at the detection of quantitative changes in PTMs between conditions utilizing procedures developed for summarization of LC-MS data, quantitative characterization of site-specific PTMs, and adjustment with respect to protein abundance. Quantitative analyses of PTMs often involve comparisons between multiple inter-related conditions of the same biological system. The general statistical framework underlying the proposed approach allows for analyzing experiments with complex designs and different acquisition methods. 
 
@@ -425,31 +425,36 @@ Data structure of a typical PTM experiment and goals of PTM characterization. (a
 
 \begin{figure}[ht]
 \centering
+\begin{subfigure}[c]{0.825\linewidth}
 \includegraphics[width=1\textwidth]{images/spike_in_msstatsptm_volcano.png}
-\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. Using the proposed method to model the benchmark experiment the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike in peptides are more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment the false positives were decreased considerably.
-}\label{fig:spikein_prop_volcano}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
+\caption{}
+\label{fig:spikein_prop_volcano}
+\end{subfigure}
+\begin{subfigure}[c]{0.825\linewidth}
 \includegraphics[width=1\textwidth]{images/spike_in_limma_volcano.png}
-\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. Here the Limma method was used to model the spike in experiment. Using Limma the spike in peptides follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after.
-}\label{fig:spikein_limma_volcano}
+\caption{}
+\label{fig:spikein_limma_volcano}
+\end{subfigure}
+\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. A) Using the proposed method the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjustment the spike in peptides are more in line with expectation. Additionally, the background peptides showed many false positives before adjustment, but decrease considerably after adjustment. B) Using Limma the spike in peptides again follow the expected log fold change after adjusting for changes in protein level. However, while the fold change is more accurate, the majority of spike in peptides do not have a significant adjusted pvalue.}
+\label{fig:spikein_volcano}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[height=.65\textwidth]{images/ipah_venn_diagramm.png}
-\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. The overlap of differencial modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. In contrast, for peptides that became significant after adjustment, their true abundance change was masked by underlying changes in the unmodified protein.}
-\label{fig:ipah_venn_diagramm}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
+\begin{subfigure}[c]{0.5\linewidth}
+\includegraphics[width=1\textwidth]{images/ipah_venn_diagramm.png}
+\caption{}
+\label{fig:data4_venn_diagram}
+\end{subfigure}
+\begin{subfigure}[c]{0.95\linewidth}
 \includegraphics[width=1\textwidth]{images/IpaH_prof_plot.png}
-\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. Comparing the global profiling of protein $GSDMD\_HUMAN|P57764$ with the ubiquitination of the protein at site $K62$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the conditions follow different trends. Specifically, there appears to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there is a large negative change when looking at the unmodified plot. This indicates the modification is confounded with changes in the unmodified protein.}
-\label{fig:ipah_profile}
+\caption{}
+\label{fig:data4_profile_plot}
+\end{subfigure}
+\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. A) The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was driven by changes in the global protein. In contrast, peptides that became significant after adjustment saw their true abundance change masked by underlying changes in the unmodified protein. B) Comparing the global profiling of protein $GSDMD$ with the ubiquitination of the protein at site $K62$. When looking at the summary of the modification and global protein it is clear the conditions follow different trends. Specifically, there appears to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there is a large negative change when looking at the unmodified plot. This indicates the modification is confounded with changes in the unmodified protein.}
+\label{fig:data4_plots}
 \end{figure}
+
 
 \begin{figure}[h!]
 \centering
@@ -506,18 +511,12 @@ Data structure of a typical PTM experiment and goals of PTM characterization. (a
  \end{subfigure}\vspace{5mm}
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[width=.725\textwidth]{images/high_ptm_var_power}
+	\includegraphics[width=.9\textwidth]{images/high_ptm_var_power}
 	\caption{In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to higher power.}
  \end{subfigure}
  \caption{Power analysis of experiments with differing variances.}
 \label{fig:power_sd_combo}
 \end{figure}
-
-%{\bf Figure 4} False positive rate and statistical power in PTM significance analysis by the proposed approach, t-test with protein-level adjustment, and t-test without protein-level adjustment. (a) When there was no change in protein abundance, all considered methods well calibrated the Type I error rate. (b) When the PTM changes were entirely due to changes in protein abundance across conditions, analysis accounting for the protein-level changes resulted in off-target, high false positive rates. (c) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions and the SD corresponding unmodified feature intensities was 0.2. (d) Statistical powers by the proposed approach and t-test with protein-level adjustment, where the data consisted of 2 conditions, the SD corresponding unmodified feature intensities was 0.2, and the PTM was missing in Run 1 of Condition 1. (e) Same as in (d), but the data consisted of 4 conditions.
-
-%{\bf Figure 5} Results corresponding to estimation error and false positive rate and statistical power of the PTM significance analysis, where the data were acquired in two batches. The following parameters were considered to represent the batch effects: no batch-condition interaction, mean intensity level in Batch 2 was higher than Batch 1 by 2 on log scale, and the SDs in Batch 1 and Batch 2 were 0.2 and 0.3, respectively.(a)Estimation based on the most statistically significant batch with t-test was more variable than other methods and frequently biased. (b)The proposed approach better calibrated Type I error rate. (c)The proposed approach improved statistical power in all the considered cases with different number of conditions and replicates. This was achieved by properly characterizing batch effects and leveraging all available information. Ignoring batch effects by t-test (no batch) lost power dramatically. The negative impact was only partially reduced by increasing the sample size to 5.
-
-%{\bf Figure 6} Design of future PTM experiments in terms of sample size calculations and power analysis. (a) Protein-level adjustment relies on the inference of protein abundance, which introduces additional uncertainty in the estimate of PTM difference. Therefore, the required sample size to detect a systematic change is higher than as expected for standard differential analysis without adjustment. Sample size calculations without accounting for the uncertainty would lead to over-optimistic, under-powered studies. (b) In complex designs, simultaneously analyzing all the conditions effectively increases the degrees of freedom and requires fewer replicates. (c)Increasing the sample size and analyzing multiple conditions together both result in improved statistical power.
 
 
 \end{document}

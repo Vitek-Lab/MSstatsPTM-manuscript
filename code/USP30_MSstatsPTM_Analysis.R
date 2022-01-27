@@ -86,45 +86,50 @@ ptm_list1 <- c("P52209_K059")
 #                                                 "KO_Late_1", "KO_Late_2", "KO_Late_3", "KO_Late_4"))
 
 features <- summarized_ptm$PTM$FeatureLevelData %>% filter(PROTEIN == ptm_list1[[1]])
-features$Feature <- "PSM"
+features$FeatureType <- "Peptide"
 features$Protein <- features$PROTEIN
 features$Abundance <- features$ABUNDANCE
 
 summarized <- summarized_ptm$PTM$ProteinLevelData %>% filter(Protein == ptm_list1[[1]])
 summarized$Abundance <- summarized$LogIntensities
-summarized$Feature <- "Summary"
+summarized$FeatureType <- "Model"
 
 test <- rbindlist(list(features, summarized), fill = TRUE)
 
+test[test$FeatureType == 'Model'][['FeatureType']] <- "PTM Summarized"
+test[test$FeatureType == 'Peptide'][['FeatureType']] <- "PTM Feature"
+
 p1 <- test %>% ggplot() +
-  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature,  size = Feature)) +
-  geom_point(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature), size = 3) +
+  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, color = FeatureType), size =2) +
+  geom_point(aes(x = originalRUN, y = Abundance , group = FEATURE, color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(4.5, 8.5, 12.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
   scale_colour_manual(values = c("#C3C3C3", "#D55E00")) +
-  scale_size_manual(values = c(1, 2)) +
-  labs(title = ptm_list1[[1]], x = "BioReplicate", y = "Abundance") +
+  #scale_size_manual(values = c(1, 2)) +
+  labs(title = "P52209 with ubiquitination at site K059", x = "BioReplicate", y = "Abundance") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12),
-        legend.position = "None")  +
-  annotate("text", x = 2.5, y = 28, label = "CCCP", size = 4.5) +
-  annotate("text", x = 6.5, y = 28, label = "Combo", size = 4.5) +
-  annotate("text", x = 10.5, y = 28, label = "Ctrl", size = 4.5) +
-  annotate("text", x = 14.5, y = 28, label = "USP30", size = 4.5) +
-  ylim(19.5, 28)
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=18),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16),
+        legend.title =  element_blank(),
+        legend.direction = "horizontal",
+        legend.position = c(.5, .05)) +
+  annotate("text", x = 2.5, y = 28, label = "CCCP", size = 8) +
+  annotate("text", x = 6.5, y = 28, label = "Combo", size = 8) +
+  annotate("text", x = 10.5, y = 28, label = "Ctrl", size = 8) +
+  annotate("text", x = 14.5, y = 28, label = "USP30", size = 8) +
+  ylim(19, 28)
 
 p1
 
 prot <- 'P52209'
 
 features <- summarized_ptm$PROTEIN$FeatureLevelData %>% filter(PROTEIN == prot)
-features$Feature <- "PSM"
+features$FeatureType <- "Peptide"
 features$Protein <- features$PROTEIN
 features$Abundance <- features$ABUNDANCE
 
@@ -133,41 +138,47 @@ temp <- data.frame(originalRUN = c("CCCP-B1T1", "CCCP-B1T2", "CCCP-B2T1" , "CCCP
                                    "Ctrl-B1T1", "Ctrl-B1T2", "Ctrl-B2T1" , "Ctrl-B2T2",
                                    "USP30_OE-B1T1", "USP30_OE-B1T2", "USP30_OE-B2T1" , "USP30_OE-B2T2"),
                    Abundance = c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
-temp$Feature <- "temp"
+temp$FeatureType <- "Model"
 temp$FEATURE <- "temp2"
 features <- features %>% filter(censored == FALSE)
 
 summarized <- summarized_ptm$PROTEIN$ProteinLevelData %>% filter(Protein == prot)
 summarized$Abundance <- summarized$LogIntensities
-summarized$Feature <- "Summary"
+summarized$FeatureType <- "Model"
 
 test <- rbindlist(list(features, summarized,temp), fill = TRUE)
 
-
+test[test$FeatureType == 'Model'][['FeatureType']] <- "Protein Summarized"
+test[test$FeatureType == 'Peptide'][['FeatureType']] <- "Protein Feature"
+#test <- test %>% filter(!is.na(FeatureType))
 
 p2 <- test %>% ggplot() +
-  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature,  size = Feature)) +
-  geom_point(aes(x = originalRUN, y = Abundance , group = FEATURE, color = Feature), size = 3) +
+  geom_line(aes(x = originalRUN, y = Abundance , group = FEATURE, 
+                color = FeatureType),  size = 2) +
+  geom_point(aes(x = originalRUN, y = Abundance , group = FEATURE, 
+                 color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(4.5, 8.5, 12.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
   scale_colour_manual(values = c("#C3C3C3", "#D55E00", "#D55E00")) +
   scale_size_manual(values = c(1, 2,3)) +
-  labs(title = prot, x = "BioReplicate", y = "Abundance") +
+  labs(title = "P52209 Protein", x = "BioReplicate", y = "Abundance") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12),
-        legend.position = "None")  +
-  annotate("text", x = 2.5, y = 28, label = "CCCP", size = 4.5) +
-  annotate("text", x = 6.5, y = 28, label = "Combo", size = 4.5) +
-  annotate("text", x = 10.5, y = 28, label = "Ctrl", size = 4.5) +
-  annotate("text", x = 14.5, y = 28, label = "USP30", size = 4.5) +
-  ylim(19.5, 28)
-
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=18),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16),
+        legend.title =  element_blank(),
+        legend.direction = "horizontal",
+        legend.position = c(.5, .05)) +
+  annotate("text", x = 2.5, y = 28, label = "CCCP", size = 8) +
+  annotate("text", x = 6.5, y = 28, label = "Combo", size = 8) +
+  annotate("text", x = 10.5, y = 28, label = "Ctrl", size = 8) +
+  annotate("text", x = 14.5, y = 28, label = "USP30", size = 8) +
+  ylim(19, 28)
+p2
 grid.arrange(p1, p2, nrow = 1)
 
 ## Venn Diagramm
@@ -179,9 +190,37 @@ adj_ptm_model$Protein_Label <- paste(adj_ptm_model$Protein, adj_ptm_model$Label)
 
 sig_unadj_ptm_model <- unadj_ptm_model %>% filter(Protein_Label %in% adj_ptm_model$Protein_Label)
 
+sig_unadj_ptm_model <- sig_unadj_ptm_model %>% filter(adj.pvalue < .05)
+sig_adj_ptm_model <- adj_ptm_model %>% filter(adj.pvalue < .05)
+
+colors <- c("#E69F00", "#56B4E9")
+
+venn.diagram(
+  x = list(sig_unadj_ptm_model$Protein_Label, sig_adj_ptm_model$Protein_Label),
+  category.names = c("Unadjusted" , "Adjusted"),
+  filename = "usp30_venn_diagramm.png",
+  output=TRUE,
+  imagetype="png" ,
+  height = 1400,
+  width = 1400,
+  resolution = 100,
+  lwd = 2,
+  fill = colors,
+  main.fontface = "bold",
+  main.fontfamily="sans",
+  main.pos = c(.5,1),
+  fontface = "bold",
+  cat.fontface = "bold",
+  cex = 3,
+  cat.cex = 3,
+  cat.pos = c(-40, 30),
+  cat.dist = c(.037, .03),
+  main.cex = 2.8,
+  main = "Overlap between significant adjusted and unadjusted PTMs"
+)
+
 sig_unadj_ptm_model <- sig_unadj_ptm_model %>% filter(adj.pvalue < .05 & is.finite(log2FC))
 sig_adj_ptm_model <- adj_ptm_model %>% filter(adj.pvalue < .05 & is.finite(log2FC))
-
 
 venn.diagram(
   x = list(sig_unadj_ptm_model$Protein_Label, sig_adj_ptm_model$Protein_Label),
@@ -189,12 +228,13 @@ venn.diagram(
   filename = "usp30_venn_diagramm_matching_only.png",
   output=TRUE,
   imagetype="png" ,
-  height = 1200,
-  width = 1200,
+  height = 1400,
+  width = 1400,
   resolution = 100,
   lwd = 2,
   fill = colors,
   main.fontface = "bold",
+  main.fontfamily="sans",
   main.pos = c(.5,1),
   fontface = "bold",
   cat.fontface = "bold",

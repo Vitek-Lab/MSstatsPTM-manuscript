@@ -25,7 +25,7 @@
 \usepackage{xr}
 \externaldocument[main-]{../main/MSstatsPTM_Main}
 
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber,sorting=none]{biblatex}
 \bibliography{ptm_ref}
 
 \def\todo#1{{\color{red}[TODO: #1]}}
@@ -731,13 +731,6 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 
 \begin{figure}[h!]
 \centering
-\includegraphics[height=.65\textwidth]{sim_new/ipah_venn_diagramm.png}
-\caption{The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. In contrast, for peptides that became significant after adjustment, their true abundance change was masked by underlying changes in the unmodified protein. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides who's adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. In other words, the fold change was the same between models but variance increased. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was truly due to changes in global protein abundance.}
-\label{fig:ipha_venn_d}
-\end{figure}
-
-\begin{figure}[h!]
-\centering
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/IpaH_prof_plot}
@@ -802,7 +795,7 @@ The results of the proposed method to this experiment can be seen in \sfigref{fi
 \centering
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[width=.9\textwidth]{sim_new/No_Difference_Shigella_Profile_Plot}
+	\includegraphics[width=.95\textwidth]{sim_new/No_Difference_Shigella_Profile_Plot}
 	\caption{Comparing the global profiling of protein $TTP\_MOUSE|P22893$ with the modification of the protein at site $S178$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the difference between conditions follow the same trend. Specifically, there is a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicates the movement is driven by changes in global protein.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}

@@ -18,188 +18,255 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
-    \entry{Bates2015}{article}{}
-      \name{author}{4}{}{%
-        {{hash=291c4bc67cf41a2019405a2328a9b75e}{%
-           family={Bates},
-           familyi={B\bibinitperiod},
-           given={Douglas},
-           giveni={D\bibinitperiod}}}%
-        {{hash=9cd1e56848b277b4f48a6e0b817ba5ab}{%
-           family={Mächler},
-           familyi={M\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod}}}%
-        {{hash=d6b13be971f13ee03cc83cded41b6d7e}{%
-           family={Bolker},
-           familyi={B\bibinitperiod},
-           given={Ben},
-           giveni={B\bibinitperiod}}}%
-        {{hash=3face7d9e1128ebfefc56b5f54f28451}{%
-           family={Walker},
-           familyi={W\bibinitperiod},
-           given={Steve},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{d09b320744f09c093eb8b0d7f6bbdda0}
-      \strng{fullhash}{e1419b3c7f22b8a469bd183c172e98b4}
-      \strng{bibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
-      \strng{authorbibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
-      \strng{authornamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
-      \strng{authorfullhash}{e1419b3c7f22b8a469bd183c172e98b4}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Statistical Software}
-      \field{number}{1}
-      \field{title}{Fitting Linear Mixed-Effects Models Using lme4}
-      \field{volume}{67}
-      \field{year}{2015}
-      \field{pages}{1\bibrangedash 48}
-      \range{pages}{48}
-      \verb{doi}
-      \verb 10.18637/jss.v067.i01
-      \endverb
-      \verb{urlraw}
-      \verb https://www.jstatsoft.org/index.php/jss/article/view/v067i01
-      \endverb
-      \verb{url}
-      \verb https://www.jstatsoft.org/index.php/jss/article/view/v067i01
-      \endverb
-    \endentry
-    \entry{Benjamini:1995}{article}{}
-      \name{author}{2}{}{%
-        {{hash=a734078ee29cd8a9ba47ac3a1b193855}{%
-           family={Benjamini},
-           familyi={B\bibinitperiod},
-           given={Y.},
+  \datalist[entry]{none/global//global/global}
+    \entry{Deribe}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d5fcedf9ad84e6e38957ebc06a6e66a3}{%
+           family={Deribe},
+           familyi={D\bibinitperiod},
+           given={Y.L.},
            giveni={Y\bibinitperiod}}}%
-        {{hash=870135c98f82d83d9deb54c0b818725b}{%
-           family={Hochberg},
-           familyi={H\bibinitperiod},
-           given={Y.},
-           giveni={Y\bibinitperiod}}}%
-      }
-      \strng{namehash}{e8222263aff22d31491ec001aa67f92d}
-      \strng{fullhash}{e8222263aff22d31491ec001aa67f92d}
-      \strng{bibnamehash}{e8222263aff22d31491ec001aa67f92d}
-      \strng{authorbibnamehash}{e8222263aff22d31491ec001aa67f92d}
-      \strng{authornamehash}{e8222263aff22d31491ec001aa67f92d}
-      \strng{authorfullhash}{e8222263aff22d31491ec001aa67f92d}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{J.R. Statist. Soc. B}
-      \field{number}{1}
-      \field{title}{{Controlling the false discovery rate: a practical and powerful approach to multiple testing}}
-      \field{volume}{57}
-      \field{year}{1955}
-      \field{pages}{289\bibrangedash 300}
-      \range{pages}{12}
-    \endentry
-    \entry{Bolker2009}{article}{}
-      \name{author}{7}{}{%
-        {{hash=40205f70df6ea0642144adebc2fe5ccb}{%
-           family={Bolker},
-           familyi={B\bibinitperiod},
-           given={Benjamin\bibnamedelima M.},
-           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-        {{hash=24483afcccaa9ad80d7d20a6b8259c76}{%
-           family={Brooks},
-           familyi={B\bibinitperiod},
-           given={Mollie\bibnamedelima E.},
-           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=5bff82668052b7dc17a653eb5e841541}{%
-           family={Clark},
-           familyi={C\bibinitperiod},
-           given={Connie\bibnamedelima J.},
-           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=93127cd9baeed9141ab93976b3bbcdba}{%
-           family={Geange},
-           familyi={G\bibinitperiod},
-           given={Shane\bibnamedelima W.},
-           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=feadc0b5ff6287cde635f164022dac87}{%
-           family={Poulsen},
+        {{hash=c414baca6f9256dfe4a15c3f0c8ceab4}{%
+           family={Pawson},
            familyi={P\bibinitperiod},
-           given={John\bibnamedelima R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=09313ca4fc063d84672a22a636573cf3}{%
-           family={Stevens},
-           familyi={S\bibinitperiod},
-           given={M.\bibnamedelimi Henry\bibnamedelima H.},
-           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=c419c0c007ea7c133d43cfc1b05ea87c}{%
-           family={White},
-           familyi={W\bibinitperiod},
-           given={Jada\bibnamedelimb Simone\bibnamedelima S.},
-           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c6d0a01565f394ab9114b4039f6ffd13}{%
+           family={Dikic},
+           familyi={D\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
       }
-      \strng{namehash}{db060b6246aa08d9b2409054bf6210e6}
-      \strng{fullhash}{1eb95b98e251eec5e438937d73d3ab89}
-      \strng{bibnamehash}{db060b6246aa08d9b2409054bf6210e6}
-      \strng{authorbibnamehash}{db060b6246aa08d9b2409054bf6210e6}
-      \strng{authornamehash}{db060b6246aa08d9b2409054bf6210e6}
-      \strng{authorfullhash}{1eb95b98e251eec5e438937d73d3ab89}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \strng{namehash}{3379010029dae02a4b72cde75b871193}
+      \strng{fullhash}{3379010029dae02a4b72cde75b871193}
+      \strng{bibnamehash}{3379010029dae02a4b72cde75b871193}
+      \strng{authorbibnamehash}{3379010029dae02a4b72cde75b871193}
+      \strng{authornamehash}{3379010029dae02a4b72cde75b871193}
+      \strng{authorfullhash}{3379010029dae02a4b72cde75b871193}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{01695347}
-      \field{journaltitle}{Trends in Ecology and Evolution}
-      \field{number}{3}
-      \field{title}{{Generalized linear mixed models: a practical guide for ecology and evolution}}
-      \field{volume}{24}
-      \field{year}{2009}
-      \field{pages}{127\bibrangedash 135}
-      \range{pages}{9}
-      \verb{doi}
-      \verb 10.1016/j.tree.2008.10.008
-      \endverb
-      \verb{file}
-      \verb :Users/meenachoi/Dropbox/Paper/Bolker2009{\_}review.pdf:pdf
-      \endverb
+      \field{journaltitle}{Nature Structural \& Molecular Biology}
+      \field{title}{{Post-translational modifications in signal integration}}
+      \field{volume}{17}
+      \field{year}{2010}
+      \field{pages}{666\bibrangedash 672}
+      \range{pages}{7}
     \endentry
-    \entry{Breitwieser:2013}{article}{}
-      \name{author}{2}{}{%
-        {{hash=07ad38c14fd2b9cd9a3ccbe057bcce0a}{%
-           family={Breitwieser},
-           familyi={B\bibinitperiod},
-           given={Florian\bibnamedelima P.},
-           giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-        {{hash=73890a14190f05de562d7e8bd3f2f404}{%
-           family={Colinge},
+    \entry{Cohen}{article}{}
+      \name{author}{1}{}{%
+        {{hash=916d3a027b84e50541df203c243cc949}{%
+           family={Cohen},
            familyi={C\bibinitperiod},
-           given={Jacques},
-           giveni={J\bibinitperiod}}}%
+           given={P.},
+           giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{de457371141999ab18b95923f9e2fc8e}
-      \strng{fullhash}{de457371141999ab18b95923f9e2fc8e}
-      \strng{bibnamehash}{de457371141999ab18b95923f9e2fc8e}
-      \strng{authorbibnamehash}{de457371141999ab18b95923f9e2fc8e}
-      \strng{authornamehash}{de457371141999ab18b95923f9e2fc8e}
-      \strng{authorfullhash}{de457371141999ab18b95923f9e2fc8e}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \strng{namehash}{916d3a027b84e50541df203c243cc949}
+      \strng{fullhash}{916d3a027b84e50541df203c243cc949}
+      \strng{bibnamehash}{916d3a027b84e50541df203c243cc949}
+      \strng{authorbibnamehash}{916d3a027b84e50541df203c243cc949}
+      \strng{authornamehash}{916d3a027b84e50541df203c243cc949}
+      \strng{authorfullhash}{916d3a027b84e50541df203c243cc949}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Proteomics}
-      \field{title}{IsobarPTM: A software tool for the quantitative analysis of post-translationally modified proteins}
-      \field{volume}{90}
-      \field{year}{2013}
-      \field{pages}{77\bibrangedash 84}
+      \field{journaltitle}{Trends Biochem Sci.}
+      \field{title}{{The regulation of protein function by multisite phosphorylation--a 25 year update.}}
+      \field{volume}{25}
+      \field{year}{2000}
+      \field{pages}{596\bibrangedash 601}
+      \range{pages}{6}
+    \endentry
+    \entry{Kall:2011ub}{article}{}
+      \name{author}{2}{}{%
+        {{hash=aa562992fa47646efdb8484a2695acc2}{%
+           family={Käll},
+           familyi={K\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a3905e7f3f93177318cb5c8042f79fd3}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{fullhash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{bibnamehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{12}
+      \field{journaltitle}{PLoS Comput. Biol.}
+      \field{month}{12}
+      \field{title}{{Computational mass spectrometry--based proteomics}}
+      \field{volume}{7}
+      \field{year}{2011}
+      \field{pages}{e1002277}
+      \range{pages}{-1}
+    \endentry
+    \entry{Roepstorff}{article}{}
+      \name{author}{1}{}{%
+        {{hash=de5deb7049da13f1ccec4af2b5d194ec}{%
+           family={P.},
+           familyi={P\bibinitperiod},
+           given={Roepstorff},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{fullhash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{bibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{authorbibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{authornamehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{authorfullhash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Curr Opin Biotechnol.}
+      \field{number}{1}
+      \field{title}{{Mass spectrometry in protein studies from genome to function.}}
+      \field{volume}{8}
+      \field{year}{1997}
+      \field{pages}{6\bibrangedash 13}
       \range{pages}{8}
+    \endentry
+    \entry{Mann}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
+           family={Mann},
+           familyi={M\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=97cc814b9371831653d13916b1bb6a9f}{%
+           family={Jensen},
+           familyi={J\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
+      \strng{fullhash}{0bfe35bf1a633ffabbd5a70213fa71eb}
+      \strng{bibnamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
+      \strng{authorbibnamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
+      \strng{authornamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
+      \strng{authorfullhash}{0bfe35bf1a633ffabbd5a70213fa71eb}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nat Biotechnol}
+      \field{title}{{Proteomic analysis of post-translational modifications}}
+      \field{volume}{21}
+      \field{year}{2003}
+      \field{pages}{255\bibrangedash 261}
+      \range{pages}{7}
+    \endentry
+    \entry{Olsen:2013}{article}{}
+      \name{author}{2}{}{%
+        {{hash=140b79c78e37c350704669b6c808d9bf}{%
+           family={Olsen},
+           familyi={O\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
+           family={Mann},
+           familyi={M\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{64afdd560649c176243a09b8f44b17f1}
+      \strng{fullhash}{64afdd560649c176243a09b8f44b17f1}
+      \strng{bibnamehash}{64afdd560649c176243a09b8f44b17f1}
+      \strng{authorbibnamehash}{64afdd560649c176243a09b8f44b17f1}
+      \strng{authornamehash}{64afdd560649c176243a09b8f44b17f1}
+      \strng{authorfullhash}{64afdd560649c176243a09b8f44b17f1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Molecular \& Cellular Proteomics}
+      \field{number}{12}
+      \field{title}{{Status of Large-scale Analysis of Post-translational Modifications by Mass Spectrometry}}
+      \field{volume}{12}
+      \field{year}{2013}
+      \field{pages}{3444\bibrangedash 3452}
+      \range{pages}{9}
+    \endentry
+    \entry{Ritchie_15a}{article}{}
+      \name{author}{7}{}{%
+        {{hash=951d585e86cb8b9c75ad8215db61706f}{%
+           family={Ritchie},
+           familyi={R\bibinitperiod},
+           given={Matthew\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=bffcd669072a93fe5f18e9037b1bcb13}{%
+           family={Phipson},
+           familyi={P\bibinitperiod},
+           given={Belinda},
+           giveni={B\bibinitperiod}}}%
+        {{hash=65027af5f4f54f2e6c7bb140253872e2}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c8471a849eb709ebe0fbe0e01176cd50}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yifang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f16015700a0004333624de6431e9a41b}{%
+           family={Law},
+           familyi={L\bibinitperiod},
+           given={Charity\bibnamedelima W.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=b4e22f2196e5fdf40a8499f2d3f8bf02}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e8acfd40aa371634dafbda59822de12b}{%
+           family={Smyth},
+           familyi={S\bibinitperiod},
+           given={Gordon\bibnamedelima K.},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{fullhash}{dd10be2ac81c50adf371c58312df557a}
+      \strng{bibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authorbibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authornamehash}{86c08ec45f36a1fa3a69960789a32e39}
+      \strng{authorfullhash}{dd10be2ac81c50adf371c58312df557a}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{limma is an R/Bioconductor software package that provides an integrated solution for analysing data from gene expression experiments. It contains rich features for handling complex experimental designs and for information borrowing to overcome the problem of small sample sizes. Over the past decade, limma has been a popular choice for gene discovery through differential expression analyses of microarray and high-throughput PCR data. The package contains particularly strong facilities for reading, normalizing and exploring such data. Recently, the capabilities of limma have been significantly expanded in two important directions. First, the package can now perform both differential expression and differential splicing analyses of RNA sequencing (RNA-seq) data. All the downstream analysis tools previously restricted to microarray data are now available for RNA-seq as well. These capabilities allow users to analyse both RNA-seq and microarray data with very similar pipelines. Second, the package is now able to go past the traditional gene-wise expression analyses in a variety of ways, analysing expression profiles in terms of co-regulated sets of genes or in terms of higher-order expression signatures. This provides enhanced possibilities for biological interpretation of gene expression differences. This article reviews the philosophy and design of the limma package, summarizing both new and historical features, with an emphasis on recent enhancements and features that have not been previously described.}}
+      \field{issn}{0305-1048}
+      \field{journaltitle}{Nucleic Acids Research}
+      \field{month}{01}
+      \field{number}{7}
+      \field{title}{{limma powers differential expression analyses for RNA-sequencing and microarray studies}}
+      \field{volume}{43}
+      \field{year}{2015}
+      \field{pages}{e47\bibrangedash e47}
+      \range{pages}{-1}
       \verb{doi}
-      \verb https://doi.org/10.1016/j.jprot.2013.02.022
+      \verb 10.1093/nar/gkv007
+      \endverb
+      \verb{eprint}
+      \verb https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf
       \endverb
       \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S1874391913000973
+      \verb https://doi.org/10.1093/nar/gkv007
       \endverb
       \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S1874391913000973
+      \verb https://doi.org/10.1093/nar/gkv007
       \endverb
     \endentry
     \entry{Choi:2014}{article}{}
@@ -246,8 +313,8 @@
       \strng{authorbibnamehash}{22c1dee522cb7ce9994a5987270ae18a}
       \strng{authornamehash}{22c1dee522cb7ce9994a5987270ae18a}
       \strng{authorfullhash}{cfd61531270e99a87c16264fbacc6c30}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -256,94 +323,6 @@
       \field{year}{2014}
       \field{pages}{2524\bibrangedash 2536}
       \range{pages}{13}
-    \endentry
-    \entry{Cohen}{article}{}
-      \name{author}{1}{}{%
-        {{hash=916d3a027b84e50541df203c243cc949}{%
-           family={Cohen},
-           familyi={C\bibinitperiod},
-           given={P.},
-           giveni={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{916d3a027b84e50541df203c243cc949}
-      \strng{fullhash}{916d3a027b84e50541df203c243cc949}
-      \strng{bibnamehash}{916d3a027b84e50541df203c243cc949}
-      \strng{authorbibnamehash}{916d3a027b84e50541df203c243cc949}
-      \strng{authornamehash}{916d3a027b84e50541df203c243cc949}
-      \strng{authorfullhash}{916d3a027b84e50541df203c243cc949}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Trends Biochem Sci.}
-      \field{title}{{The regulation of protein function by multisite phosphorylation--a 25 year update.}}
-      \field{volume}{25}
-      \field{year}{2000}
-      \field{pages}{596\bibrangedash 601}
-      \range{pages}{6}
-    \endentry
-    \entry{Deribe}{article}{}
-      \name{author}{3}{}{%
-        {{hash=d5fcedf9ad84e6e38957ebc06a6e66a3}{%
-           family={Deribe},
-           familyi={D\bibinitperiod},
-           given={Y.L.},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=c414baca6f9256dfe4a15c3f0c8ceab4}{%
-           family={Pawson},
-           familyi={P\bibinitperiod},
-           given={T.},
-           giveni={T\bibinitperiod}}}%
-        {{hash=c6d0a01565f394ab9114b4039f6ffd13}{%
-           family={Dikic},
-           familyi={D\bibinitperiod},
-           given={I.},
-           giveni={I\bibinitperiod}}}%
-      }
-      \strng{namehash}{3379010029dae02a4b72cde75b871193}
-      \strng{fullhash}{3379010029dae02a4b72cde75b871193}
-      \strng{bibnamehash}{3379010029dae02a4b72cde75b871193}
-      \strng{authorbibnamehash}{3379010029dae02a4b72cde75b871193}
-      \strng{authornamehash}{3379010029dae02a4b72cde75b871193}
-      \strng{authorfullhash}{3379010029dae02a4b72cde75b871193}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Nature Structural \& Molecular Biology}
-      \field{title}{{Post-translational modifications in signal integration}}
-      \field{volume}{17}
-      \field{year}{2010}
-      \field{pages}{666\bibrangedash 672}
-      \range{pages}{7}
-    \endentry
-    \entry{Faraway:2006}{book}{}
-      \name{author}{1}{}{%
-        {{hash=7b12022c0d0c88c6072dbfa3e51ddfeb}{%
-           family={Faraway},
-           familyi={F\bibinitperiod},
-           given={J.\bibnamedelimi J.},
-           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Boca Raton, FL}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis Group, LLC}%
-      }
-      \strng{namehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{fullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{bibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{authorbibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{authornamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{authorfullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{1st}
-      \field{title}{{Extending the linear model with R}}
-      \field{year}{2006}
     \endentry
     \entry{Huang:2020}{article}{}
       \name{author}{8}{}{%
@@ -394,8 +373,8 @@
       \strng{authorbibnamehash}{b4fc0f495f06fe20fb68563a06fdba51}
       \strng{authornamehash}{b4fc0f495f06fe20fb68563a06fdba51}
       \strng{authorfullhash}{c218d46b4911110751160a3a68b809df}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issue}{10}
@@ -406,123 +385,6 @@
       \field{year}{2020}
       \field{pages}{1706\bibrangedash 1723}
       \range{pages}{18}
-    \endentry
-    \entry{Kall:2011ub}{article}{}
-      \name{author}{2}{}{%
-        {{hash=aa562992fa47646efdb8484a2695acc2}{%
-           family={Käll},
-           familyi={K\bibinitperiod},
-           given={L.},
-           giveni={L\bibinitperiod}}}%
-        {{hash=a3905e7f3f93177318cb5c8042f79fd3}{%
-           family={Vitek},
-           familyi={V\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{fullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{bibnamehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issue}{12}
-      \field{journaltitle}{PLoS Comput. Biol.}
-      \field{month}{12}
-      \field{title}{{Computational mass spectrometry--based proteomics}}
-      \field{volume}{7}
-      \field{year}{2011}
-      \field{pages}{e1002277}
-      \range{pages}{-1}
-    \endentry
-    \entry{kutner_etal_04a}{book}{}
-      \name{author}{4}{}{%
-        {{hash=f20de387d6341cbd5058ddb4eb7223d7}{%
-           family={Kutner},
-           familyi={K\bibinitperiod},
-           given={Michael\bibnamedelima H.},
-           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=1ad29adfd24079278098723ad43f7654}{%
-           family={Neter},
-           familyi={N\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod}}}%
-        {{hash=816bcd6921f6bc62230351ab3eff3e1a}{%
-           family={Nachtsheim},
-           familyi={N\bibinitperiod},
-           given={Christopher\bibnamedelima J.},
-           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=fa8aa34b1374a5f35c1008767cb1eb56}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={William},
-           giveni={W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {McGraw-Hill/Irwin}%
-      }
-      \strng{namehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
-      \strng{fullhash}{048879853f8485043baf57da8a169b8c}
-      \strng{bibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
-      \strng{authorbibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
-      \strng{authornamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
-      \strng{authorfullhash}{048879853f8485043baf57da8a169b8c}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{5}
-      \field{title}{Applied Linear Statistical Models}
-      \field{year}{2004}
-    \endentry
-    \entry{Kuznetsova2017}{article}{}
-      \name{author}{3}{}{%
-        {{hash=7cd3845a800c3291e727a82c1f2df45e}{%
-           family={Kuznetsova},
-           familyi={K\bibinitperiod},
-           given={Alexandra},
-           giveni={A\bibinitperiod}}}%
-        {{hash=17e06e730e273b9c94400089772b8b02}{%
-           family={Brockhoff},
-           familyi={B\bibinitperiod},
-           given={Per\bibnamedelima B.},
-           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=54ec03df91a5b51c9a62ed4f70da8712}{%
-           family={Christensen},
-           familyi={C\bibinitperiod},
-           given={Rune\bibnamedelimb H.\bibnamedelimi B.},
-           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-      }
-      \strng{namehash}{0734b43304bc167fad6d2532bc75460a}
-      \strng{fullhash}{0734b43304bc167fad6d2532bc75460a}
-      \strng{bibnamehash}{0734b43304bc167fad6d2532bc75460a}
-      \strng{authorbibnamehash}{0734b43304bc167fad6d2532bc75460a}
-      \strng{authornamehash}{0734b43304bc167fad6d2532bc75460a}
-      \strng{authorfullhash}{0734b43304bc167fad6d2532bc75460a}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Statistical Software}
-      \field{number}{13}
-      \field{title}{lmerTest Package: Tests in Linear Mixed Effects Models}
-      \field{volume}{82}
-      \field{year}{2017}
-      \field{pages}{1\bibrangedash 26}
-      \range{pages}{26}
-      \verb{doi}
-      \verb 10.18637/jss.v082.i13
-      \endverb
-      \verb{urlraw}
-      \verb https://www.jstatsoft.org/index.php/jss/article/view/v082i13
-      \endverb
-      \verb{url}
-      \verb https://www.jstatsoft.org/index.php/jss/article/view/v082i13
-      \endverb
     \endentry
     \entry{LUCHETTI2021}{article}{}
       \name{author}{19}{}{%
@@ -628,8 +490,8 @@
       \strng{authorbibnamehash}{ed6bf90db96a27be7b1806b89e368597}
       \strng{authornamehash}{ed6bf90db96a27be7b1806b89e368597}
       \strng{authorfullhash}{1700db834e82418b38ae91c6d4909191}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1931-3128}
@@ -749,8 +611,8 @@
       \strng{authorbibnamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authornamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authorfullhash}{0b258ecfd4d745eddd8d8598251b4150}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{bioRxiv}
@@ -768,248 +630,6 @@
       \verb{url}
       \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344
       \endverb
-    \endentry
-    \entry{Mann}{article}{}
-      \name{author}{2}{}{%
-        {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
-           family={Mann},
-           familyi={M\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-        {{hash=97cc814b9371831653d13916b1bb6a9f}{%
-           family={Jensen},
-           familyi={J\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \strng{fullhash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \strng{bibnamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \strng{authorbibnamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \strng{authornamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \strng{authorfullhash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Nat Biotechnol}
-      \field{title}{{Proteomic analysis of post-translational modifications}}
-      \field{volume}{21}
-      \field{year}{2003}
-      \field{pages}{255\bibrangedash 261}
-      \range{pages}{7}
-    \endentry
-    \entry{oberg_vitek_09a}{article}{}
-      \name{author}{2}{}{%
-        {{hash=91c9266752b425256e0ae931854a665b}{%
-           family={Oberg},
-           familyi={O\bibinitperiod},
-           given={Ann\bibnamedelima L.},
-           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=e347c816c4223c9370d78e88536e3b34}{%
-           family={Vitek},
-           familyi={V\bibinitperiod},
-           given={Olga},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{96a724ce9eb2b728c9a7587035aa625a}
-      \strng{fullhash}{96a724ce9eb2b728c9a7587035aa625a}
-      \strng{bibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
-      \strng{authorbibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
-      \strng{authornamehash}{96a724ce9eb2b728c9a7587035aa625a}
-      \strng{authorfullhash}{96a724ce9eb2b728c9a7587035aa625a}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Proteome Research}
-      \field{number}{5}
-      \field{title}{Statistical design of quantitative mass spectrometry-based proteomic experiments}
-      \field{volume}{8}
-      \field{year}{2009}
-      \field{pages}{2144\bibrangedash 2156}
-      \range{pages}{13}
-    \endentry
-    \entry{Olsen:2013}{article}{}
-      \name{author}{2}{}{%
-        {{hash=140b79c78e37c350704669b6c808d9bf}{%
-           family={Olsen},
-           familyi={O\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
-           family={Mann},
-           familyi={M\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-      }
-      \strng{namehash}{64afdd560649c176243a09b8f44b17f1}
-      \strng{fullhash}{64afdd560649c176243a09b8f44b17f1}
-      \strng{bibnamehash}{64afdd560649c176243a09b8f44b17f1}
-      \strng{authorbibnamehash}{64afdd560649c176243a09b8f44b17f1}
-      \strng{authornamehash}{64afdd560649c176243a09b8f44b17f1}
-      \strng{authorfullhash}{64afdd560649c176243a09b8f44b17f1}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Molecular \& Cellular Proteomics}
-      \field{number}{12}
-      \field{title}{{Status of Large-scale Analysis of Post-translational Modifications by Mass Spectrometry}}
-      \field{volume}{12}
-      \field{year}{2013}
-      \field{pages}{3444\bibrangedash 3452}
-      \range{pages}{9}
-    \endentry
-    \entry{Roepstorff}{article}{}
-      \name{author}{1}{}{%
-        {{hash=de5deb7049da13f1ccec4af2b5d194ec}{%
-           family={P.},
-           familyi={P\bibinitperiod},
-           given={Roepstorff},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{fullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{bibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authorbibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authornamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authorfullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Curr Opin Biotechnol.}
-      \field{number}{1}
-      \field{title}{{Mass spectrometry in protein studies from genome to function.}}
-      \field{volume}{8}
-      \field{year}{1997}
-      \field{pages}{6\bibrangedash 13}
-      \range{pages}{8}
-    \endentry
-    \entry{Ritchie_15a}{article}{}
-      \name{author}{7}{}{%
-        {{hash=951d585e86cb8b9c75ad8215db61706f}{%
-           family={Ritchie},
-           familyi={R\bibinitperiod},
-           given={Matthew\bibnamedelima E.},
-           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=bffcd669072a93fe5f18e9037b1bcb13}{%
-           family={Phipson},
-           familyi={P\bibinitperiod},
-           given={Belinda},
-           giveni={B\bibinitperiod}}}%
-        {{hash=65027af5f4f54f2e6c7bb140253872e2}{%
-           family={Wu},
-           familyi={W\bibinitperiod},
-           given={Di},
-           giveni={D\bibinitperiod}}}%
-        {{hash=c8471a849eb709ebe0fbe0e01176cd50}{%
-           family={Hu},
-           familyi={H\bibinitperiod},
-           given={Yifang},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=f16015700a0004333624de6431e9a41b}{%
-           family={Law},
-           familyi={L\bibinitperiod},
-           given={Charity\bibnamedelima W.},
-           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=b4e22f2196e5fdf40a8499f2d3f8bf02}{%
-           family={Shi},
-           familyi={S\bibinitperiod},
-           given={Wei},
-           giveni={W\bibinitperiod}}}%
-        {{hash=e8acfd40aa371634dafbda59822de12b}{%
-           family={Smyth},
-           familyi={S\bibinitperiod},
-           given={Gordon\bibnamedelima K.},
-           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
-      }
-      \strng{namehash}{86c08ec45f36a1fa3a69960789a32e39}
-      \strng{fullhash}{dd10be2ac81c50adf371c58312df557a}
-      \strng{bibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
-      \strng{authorbibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
-      \strng{authornamehash}{86c08ec45f36a1fa3a69960789a32e39}
-      \strng{authorfullhash}{dd10be2ac81c50adf371c58312df557a}
-      \field{sortinit}{R}
-      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{{limma is an R/Bioconductor software package that provides an integrated solution for analysing data from gene expression experiments. It contains rich features for handling complex experimental designs and for information borrowing to overcome the problem of small sample sizes. Over the past decade, limma has been a popular choice for gene discovery through differential expression analyses of microarray and high-throughput PCR data. The package contains particularly strong facilities for reading, normalizing and exploring such data. Recently, the capabilities of limma have been significantly expanded in two important directions. First, the package can now perform both differential expression and differential splicing analyses of RNA sequencing (RNA-seq) data. All the downstream analysis tools previously restricted to microarray data are now available for RNA-seq as well. These capabilities allow users to analyse both RNA-seq and microarray data with very similar pipelines. Second, the package is now able to go past the traditional gene-wise expression analyses in a variety of ways, analysing expression profiles in terms of co-regulated sets of genes or in terms of higher-order expression signatures. This provides enhanced possibilities for biological interpretation of gene expression differences. This article reviews the philosophy and design of the limma package, summarizing both new and historical features, with an emphasis on recent enhancements and features that have not been previously described.}}
-      \field{issn}{0305-1048}
-      \field{journaltitle}{Nucleic Acids Research}
-      \field{month}{01}
-      \field{number}{7}
-      \field{title}{{limma powers differential expression analyses for RNA-sequencing and microarray studies}}
-      \field{volume}{43}
-      \field{year}{2015}
-      \field{pages}{e47\bibrangedash e47}
-      \range{pages}{-1}
-      \verb{doi}
-      \verb 10.1093/nar/gkv007
-      \endverb
-      \verb{eprint}
-      \verb https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1093/nar/gkv007
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1093/nar/gkv007
-      \endverb
-    \endentry
-    \entry{satterthwaite:1946}{article}{}
-      \name{author}{1}{}{%
-        {{hash=3c729b996a020d1ef2273f5646fda616}{%
-           family={Satterthwaite},
-           familyi={S\bibinitperiod},
-           given={Franklin\bibnamedelima E},
-           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {JSTOR}%
-      }
-      \strng{namehash}{3c729b996a020d1ef2273f5646fda616}
-      \strng{fullhash}{3c729b996a020d1ef2273f5646fda616}
-      \strng{bibnamehash}{3c729b996a020d1ef2273f5646fda616}
-      \strng{authorbibnamehash}{3c729b996a020d1ef2273f5646fda616}
-      \strng{authornamehash}{3c729b996a020d1ef2273f5646fda616}
-      \strng{authorfullhash}{3c729b996a020d1ef2273f5646fda616}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Biometrics bulletin}
-      \field{number}{6}
-      \field{title}{An approximate distribution of estimates of variance components}
-      \field{volume}{2}
-      \field{year}{1946}
-      \field{pages}{110\bibrangedash 114}
-      \range{pages}{5}
-    \endentry
-    \entry{Tukey:1977}{book}{}
-      \name{author}{1}{}{%
-        {{hash=444903ebfc1a03fbab9cd193ee0cd3e0}{%
-           family={Tukey},
-           familyi={T\bibinitperiod},
-           given={J.\bibnamedelimi W.},
-           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Addison-Wesley}%
-      }
-      \strng{namehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \strng{fullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \strng{bibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \strng{authorbibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \strng{authornamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \strng{authorfullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{{Exploratory data analysis}}
-      \field{year}{1977}
     \endentry
     \entry{Zhu}{article}{}
       \name{author}{8}{}{%
@@ -1060,8 +680,8 @@
       \strng{authorbibnamehash}{490fd5b4d6cd60f752d5a619716f7eee}
       \strng{authornamehash}{490fd5b4d6cd60f752d5a619716f7eee}
       \strng{authorfullhash}{c00f217070e6a838de89dfd0fe424bf5}
-      \field{sortinit}{Z}
-      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& cellular proteomics : MCP}
@@ -1070,6 +690,386 @@
       \field{year}{2020}
       \field{pages}{1047\bibrangedash 1057}
       \range{pages}{11}
+    \endentry
+    \entry{Breitwieser:2013}{article}{}
+      \name{author}{2}{}{%
+        {{hash=07ad38c14fd2b9cd9a3ccbe057bcce0a}{%
+           family={Breitwieser},
+           familyi={B\bibinitperiod},
+           given={Florian\bibnamedelima P.},
+           giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=73890a14190f05de562d7e8bd3f2f404}{%
+           family={Colinge},
+           familyi={C\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{de457371141999ab18b95923f9e2fc8e}
+      \strng{fullhash}{de457371141999ab18b95923f9e2fc8e}
+      \strng{bibnamehash}{de457371141999ab18b95923f9e2fc8e}
+      \strng{authorbibnamehash}{de457371141999ab18b95923f9e2fc8e}
+      \strng{authornamehash}{de457371141999ab18b95923f9e2fc8e}
+      \strng{authorfullhash}{de457371141999ab18b95923f9e2fc8e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Proteomics}
+      \field{title}{IsobarPTM: A software tool for the quantitative analysis of post-translationally modified proteins}
+      \field{volume}{90}
+      \field{year}{2013}
+      \field{pages}{77\bibrangedash 84}
+      \range{pages}{8}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jprot.2013.02.022
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S1874391913000973
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S1874391913000973
+      \endverb
+    \endentry
+    \entry{Tukey:1977}{book}{}
+      \name{author}{1}{}{%
+        {{hash=444903ebfc1a03fbab9cd193ee0cd3e0}{%
+           family={Tukey},
+           familyi={T\bibinitperiod},
+           given={J.\bibnamedelimi W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{fullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{bibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{authorbibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{authornamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{authorfullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Exploratory data analysis}}
+      \field{year}{1977}
+    \endentry
+    \entry{Bolker2009}{article}{}
+      \name{author}{7}{}{%
+        {{hash=40205f70df6ea0642144adebc2fe5ccb}{%
+           family={Bolker},
+           familyi={B\bibinitperiod},
+           given={Benjamin\bibnamedelima M.},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=24483afcccaa9ad80d7d20a6b8259c76}{%
+           family={Brooks},
+           familyi={B\bibinitperiod},
+           given={Mollie\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=5bff82668052b7dc17a653eb5e841541}{%
+           family={Clark},
+           familyi={C\bibinitperiod},
+           given={Connie\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=93127cd9baeed9141ab93976b3bbcdba}{%
+           family={Geange},
+           familyi={G\bibinitperiod},
+           given={Shane\bibnamedelima W.},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=feadc0b5ff6287cde635f164022dac87}{%
+           family={Poulsen},
+           familyi={P\bibinitperiod},
+           given={John\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=09313ca4fc063d84672a22a636573cf3}{%
+           family={Stevens},
+           familyi={S\bibinitperiod},
+           given={M.\bibnamedelimi Henry\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c419c0c007ea7c133d43cfc1b05ea87c}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={Jada\bibnamedelimb Simone\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{db060b6246aa08d9b2409054bf6210e6}
+      \strng{fullhash}{1eb95b98e251eec5e438937d73d3ab89}
+      \strng{bibnamehash}{db060b6246aa08d9b2409054bf6210e6}
+      \strng{authorbibnamehash}{db060b6246aa08d9b2409054bf6210e6}
+      \strng{authornamehash}{db060b6246aa08d9b2409054bf6210e6}
+      \strng{authorfullhash}{1eb95b98e251eec5e438937d73d3ab89}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{01695347}
+      \field{journaltitle}{Trends in Ecology and Evolution}
+      \field{number}{3}
+      \field{title}{{Generalized linear mixed models: a practical guide for ecology and evolution}}
+      \field{volume}{24}
+      \field{year}{2009}
+      \field{pages}{127\bibrangedash 135}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1016/j.tree.2008.10.008
+      \endverb
+      \verb{file}
+      \verb :Users/meenachoi/Dropbox/Paper/Bolker2009{\_}review.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Faraway:2006}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7b12022c0d0c88c6072dbfa3e51ddfeb}{%
+           family={Faraway},
+           familyi={F\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boca Raton, FL}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis Group, LLC}%
+      }
+      \strng{namehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{fullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{bibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{authorbibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{authornamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{authorfullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{title}{{Extending the linear model with R}}
+      \field{year}{2006}
+    \endentry
+    \entry{satterthwaite:1946}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3c729b996a020d1ef2273f5646fda616}{%
+           family={Satterthwaite},
+           familyi={S\bibinitperiod},
+           given={Franklin\bibnamedelima E},
+           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{3c729b996a020d1ef2273f5646fda616}
+      \strng{fullhash}{3c729b996a020d1ef2273f5646fda616}
+      \strng{bibnamehash}{3c729b996a020d1ef2273f5646fda616}
+      \strng{authorbibnamehash}{3c729b996a020d1ef2273f5646fda616}
+      \strng{authornamehash}{3c729b996a020d1ef2273f5646fda616}
+      \strng{authorfullhash}{3c729b996a020d1ef2273f5646fda616}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrics bulletin}
+      \field{number}{6}
+      \field{title}{An approximate distribution of estimates of variance components}
+      \field{volume}{2}
+      \field{year}{1946}
+      \field{pages}{110\bibrangedash 114}
+      \range{pages}{5}
+    \endentry
+    \entry{Benjamini:1995}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a734078ee29cd8a9ba47ac3a1b193855}{%
+           family={Benjamini},
+           familyi={B\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=870135c98f82d83d9deb54c0b818725b}{%
+           family={Hochberg},
+           familyi={H\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{e8222263aff22d31491ec001aa67f92d}
+      \strng{fullhash}{e8222263aff22d31491ec001aa67f92d}
+      \strng{bibnamehash}{e8222263aff22d31491ec001aa67f92d}
+      \strng{authorbibnamehash}{e8222263aff22d31491ec001aa67f92d}
+      \strng{authornamehash}{e8222263aff22d31491ec001aa67f92d}
+      \strng{authorfullhash}{e8222263aff22d31491ec001aa67f92d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{J.R. Statist. Soc. B}
+      \field{number}{1}
+      \field{title}{{Controlling the false discovery rate: a practical and powerful approach to multiple testing}}
+      \field{volume}{57}
+      \field{year}{1955}
+      \field{pages}{289\bibrangedash 300}
+      \range{pages}{12}
+    \endentry
+    \entry{kutner_etal_04a}{book}{}
+      \name{author}{4}{}{%
+        {{hash=f20de387d6341cbd5058ddb4eb7223d7}{%
+           family={Kutner},
+           familyi={K\bibinitperiod},
+           given={Michael\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=1ad29adfd24079278098723ad43f7654}{%
+           family={Neter},
+           familyi={N\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=816bcd6921f6bc62230351ab3eff3e1a}{%
+           family={Nachtsheim},
+           familyi={N\bibinitperiod},
+           given={Christopher\bibnamedelima J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=fa8aa34b1374a5f35c1008767cb1eb56}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill/Irwin}%
+      }
+      \strng{namehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{fullhash}{048879853f8485043baf57da8a169b8c}
+      \strng{bibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authorbibnamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authornamehash}{8a64a5d1d5ef7bd2ba4b5c70d2cf4157}
+      \strng{authorfullhash}{048879853f8485043baf57da8a169b8c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{title}{Applied Linear Statistical Models}
+      \field{year}{2004}
+    \endentry
+    \entry{oberg_vitek_09a}{article}{}
+      \name{author}{2}{}{%
+        {{hash=91c9266752b425256e0ae931854a665b}{%
+           family={Oberg},
+           familyi={O\bibinitperiod},
+           given={Ann\bibnamedelima L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=e347c816c4223c9370d78e88536e3b34}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={Olga},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{fullhash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{bibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authorbibnamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authornamehash}{96a724ce9eb2b728c9a7587035aa625a}
+      \strng{authorfullhash}{96a724ce9eb2b728c9a7587035aa625a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Proteome Research}
+      \field{number}{5}
+      \field{title}{Statistical design of quantitative mass spectrometry-based proteomic experiments}
+      \field{volume}{8}
+      \field{year}{2009}
+      \field{pages}{2144\bibrangedash 2156}
+      \range{pages}{13}
+    \endentry
+    \entry{Bates2015}{article}{}
+      \name{author}{4}{}{%
+        {{hash=291c4bc67cf41a2019405a2328a9b75e}{%
+           family={Bates},
+           familyi={B\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9cd1e56848b277b4f48a6e0b817ba5ab}{%
+           family={Mächler},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d6b13be971f13ee03cc83cded41b6d7e}{%
+           family={Bolker},
+           familyi={B\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+        {{hash=3face7d9e1128ebfefc56b5f54f28451}{%
+           family={Walker},
+           familyi={W\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{fullhash}{e1419b3c7f22b8a469bd183c172e98b4}
+      \strng{bibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{authorbibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{authornamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
+      \strng{authorfullhash}{e1419b3c7f22b8a469bd183c172e98b4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Statistical Software}
+      \field{number}{1}
+      \field{title}{Fitting Linear Mixed-Effects Models Using lme4}
+      \field{volume}{67}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 48}
+      \range{pages}{48}
+      \verb{doi}
+      \verb 10.18637/jss.v067.i01
+      \endverb
+      \verb{urlraw}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v067i01
+      \endverb
+      \verb{url}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v067i01
+      \endverb
+    \endentry
+    \entry{Kuznetsova2017}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7cd3845a800c3291e727a82c1f2df45e}{%
+           family={Kuznetsova},
+           familyi={K\bibinitperiod},
+           given={Alexandra},
+           giveni={A\bibinitperiod}}}%
+        {{hash=17e06e730e273b9c94400089772b8b02}{%
+           family={Brockhoff},
+           familyi={B\bibinitperiod},
+           given={Per\bibnamedelima B.},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=54ec03df91a5b51c9a62ed4f70da8712}{%
+           family={Christensen},
+           familyi={C\bibinitperiod},
+           given={Rune\bibnamedelimb H.\bibnamedelimi B.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{fullhash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{bibnamehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{authorbibnamehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{authornamehash}{0734b43304bc167fad6d2532bc75460a}
+      \strng{authorfullhash}{0734b43304bc167fad6d2532bc75460a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Statistical Software}
+      \field{number}{13}
+      \field{title}{lmerTest Package: Tests in Linear Mixed Effects Models}
+      \field{volume}{82}
+      \field{year}{2017}
+      \field{pages}{1\bibrangedash 26}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.18637/jss.v082.i13
+      \endverb
+      \verb{urlraw}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v082i13
+      \endverb
+      \verb{url}
+      \verb https://www.jstatsoft.org/index.php/jss/article/view/v082i13
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

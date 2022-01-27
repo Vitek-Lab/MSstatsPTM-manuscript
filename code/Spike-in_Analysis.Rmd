@@ -90,29 +90,41 @@ plot_df <- rbind(model_df$ADJUSTED.Model %>% select(-GlobalProtein),
               model_df$PTM.Model %>% select(-c(MissingPercentage,ImputationPercentage, issue)))
 plot_df$protadj <- factor(plot_df$protadj, levels = c('no adjustment','protein adjustment'))
 
+## Update some naming conventions
+plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix1-mix3)"
+plot_df[plot_df$Label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix1-mix4)"
+plot_df[plot_df$Label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: -2 (mix2-mix3)"
+plot_df[plot_df$Label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: -1 (mix2-mix4)"
+
+plot_df[plot_df$labeling == 'light'][['labeling']] <- "Background Peptides"
+plot_df[plot_df$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
+
 # Volcano plot
-png("supplementary/sim_new/spike_in_msstatsptm_volcano.png", width = 750, height = 500)
-plot_df %>% arrange(desc(labeling)) %>% 
+png("../supplementary/sim_new/spike_in_msstatsptm_volcano.png", width = 750, height = 500)
+plot_df %>% arrange(labeling) %>% 
   filter(abs(log2FC) < Inf & Label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
-  geom_point(aes(color = labeling, alpha = labeling)) + 
-  scale_color_manual(values = c("#D55E00", "#999999")) + 
-  scale_alpha_manual(values = c(1, 0.2)) + 
-  scale_size_manual(values = c(2, 1)) + 
+  geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
+  scale_color_manual(values = c("#999999", "#D55E00")) + 
+  scale_alpha_manual(values = c(0.2, 1)) + 
+  #scale_size_manual(values = c(2, 1)) + 
   geom_hline(yintercept = 0) + 
-  geom_vline(xintercept = 0) + 
+  geom_vline(xintercept = 0, linetype = "dashed") + 
   geom_hline(yintercept = -log10(0.05), color = "darkred") + 
-  geom_vline(xintercept = c(1, -1), color = "darkred", linetype = "dashed") + 
   facet_grid(protadj ~ contrast_truth) + 
   theme_bw() + 
-  theme(axis.text.x = element_text(size = 12), 
-       axis.text.y = element_text(size = 12), 
-       legend.text=element_text(size=12),
-       axis.title.y = element_text(size = 14),
-       axis.title.x = element_text(size = 14),
-       title = element_text(size = 16),
-       strip.text = element_text(size = 12),
-       legend.position = "bottom") + 
+  theme(axis.text.x = element_text(size = 16), 
+       axis.text.y = element_text(size = 16), 
+       legend.text=element_text(size=16),
+       axis.title.y = element_text(size = 18, vjust=2),
+       axis.title.x = element_text(size = 18),
+       title = element_text(size = 20),
+       strip.text = element_text(size = 15),
+       legend.title =  element_blank(),
+       legend.position = "bottom",
+       legend.box.margin=margin(-10,-10,-10,-10)) + 
+  scale_y_continuous(limits = c(0,5)) + 
+  guides(colour = guide_legend(override.aes = list(size=5))) +
   labs(title = "Proposed Method VolcanoPlot")
 dev.off()
 ```
@@ -178,31 +190,43 @@ limma_model$PTM.Model <- limma_model$PTM.Model %>% filter(is.finite(pvalue))
 plot_df <- rbind(limma_model$ADJUSTED.Model, limma_model$PTM.Model, fill = TRUE)
 plot_df$protadj <- factor(plot_df$protadj, levels = c('no adjustment','protein adjustment'))
 
+## Update some naming conventions
+plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix1-mix3)"
+plot_df[plot_df$Label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix1-mix4)"
+plot_df[plot_df$Label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: -2 (mix2-mix3)"
+plot_df[plot_df$Label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: -1 (mix2-mix4)"
+
+plot_df[plot_df$labeling == 'light'][['labeling']] <- "Background Peptides"
+plot_df[plot_df$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
+
 # Volcano plot
-# png("supplementary/sim_new/spike_in_limma_volcano.png", width = 750, height = 500)
-plot_df %>% arrange(desc(labeling)) %>% 
+png("../supplementary/sim_new/spike_in_limma_volcano.png", width = 750, height = 500)
+plot_df %>% arrange(labeling) %>% 
   filter(abs(Log2FC) < Inf & Label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
   ggplot(aes(Log2FC, -log10(adj.pvalue))) + 
-  geom_point(aes(color = labeling, alpha = labeling)) + 
-  scale_color_manual(values = c("#D55E00", "#999999")) + 
-  scale_alpha_manual(values = c(1, 0.2)) + 
-  scale_size_manual(values = c(2, 1)) + 
+  geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
+  scale_color_manual(values = c("#999999", "#D55E00")) + 
+  scale_alpha_manual(values = c(0.2, 1)) + 
+  #scale_size_manual(values = c(2, 1)) + 
   geom_hline(yintercept = 0) + 
-  geom_vline(xintercept = 0) + 
+  geom_vline(xintercept = 0, linetype = "dashed") + 
   geom_hline(yintercept = -log10(0.05), color = "darkred") + 
-  geom_vline(xintercept = c(1, -1), color = "darkred", linetype = "dashed") + 
   facet_grid(protadj ~ contrast_truth) + 
   theme_bw() + 
-  theme(axis.text.x = element_text(size = 12), 
-       axis.text.y = element_text(size = 12), 
-       legend.text=element_text(size=12),
-       axis.title.y = element_text(size = 14),
-       axis.title.x = element_text(size = 14),
-       title = element_text(size = 16),
-       strip.text = element_text(size = 12),
-       legend.position = "bottom") + 
+  theme(axis.text.x = element_text(size = 16), 
+       axis.text.y = element_text(size = 16), 
+       legend.text=element_text(size=16),
+       axis.title.y = element_text(size = 18, vjust=2),
+       axis.title.x = element_text(size = 18),
+       title = element_text(size = 20),
+       strip.text = element_text(size = 15),
+       legend.title =  element_blank(),
+       legend.position = "bottom",
+       legend.box.margin=margin(-10,-10,-10,-10)) + 
+  scale_y_continuous(limits = c(0,3)) + 
+  guides(colour = guide_legend(override.aes = list(size=5))) +
   labs(title = "Limma VolcanoPlot")
-# dev.off()
+dev.off()
 ```
 
 The limma model shows an improvement in terms of the false positives, but loses insight into the majority of spike-in peptides. After adjustment, the spike-in peptides are much more inline with the expected log2FC, however they are mostly below the significant pvalue threshold. This is most likely due to an increase in standard error or lower degrees of freedom compared to MSstatsPTM.
@@ -258,29 +282,43 @@ Again we look at the volcano plots. The spike-in peptides are colored red and th
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
 load(file = "../data/Spike_in_ttest_model.rda")#ttest_final_model
 
+## Update some naming conventions
+ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix1-mix3)"
+ttest_final_model[ttest_final_model$label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix1-mix4)"
+ttest_final_model[ttest_final_model$label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: -2 (mix2-mix3)"
+ttest_final_model[ttest_final_model$label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: -1 (mix2-mix4)"
+
+ttest_final_model[ttest_final_model$labeling == 'light'][['labeling']] <- "Background Peptides"
+ttest_final_model[ttest_final_model$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
+
+ttest_final_model$log2FC <- ttest_final_model$estimate
+
 # Volcano plot
-png("supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
-ttest_final_model %>% arrange(desc(labeling)) %>% 
-  filter(abs(estimate) < Inf & label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
-  ggplot(aes(estimate, -log10(adj.pvalue))) + 
-  geom_point(aes(color = labeling, alpha = labeling)) + 
-  scale_color_manual(values = c("#D55E00", "#999999")) + 
-  scale_alpha_manual(values = c(1, 0.1)) + 
-  scale_size_manual(values = c(2, 1)) + 
-  geom_hline(yintercept = 0) + 
+png("../supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
+ttest_final_model %>% arrange(labeling) %>% 
+  filter(abs(log2FC) < Inf & label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
+  ggplot(aes(log2FC, -log10(adj.pvalue))) + 
+  geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
+  scale_color_manual(values = c("#999999", "#D55E00")) + 
+  scale_alpha_manual(values = c(0.1, 1)) + 
+  #scale_size_manual(values = c(2, 1)) + 
+  geom_hline(yintercept = 0, linetype = "dashed") + 
   geom_vline(xintercept = 0) + 
   geom_hline(yintercept = -log10(0.05), color = "darkred") + 
-  geom_vline(xintercept = c(1, -1), color = "darkred", linetype = "dashed") + 
   facet_grid(protadj ~ contrast_truth) + 
   theme_bw() + 
-  theme(axis.text.x = element_text(size = 12), 
-       axis.text.y = element_text(size = 12), 
-       legend.text=element_text(size=12),
-       axis.title.y = element_text(size = 14),
-       axis.title.x = element_text(size = 14),
-       title = element_text(size = 16),
-       strip.text = element_text(size = 12),
-       legend.position = "bottom") + 
+  theme(axis.text.x = element_text(size = 14), 
+       axis.text.y = element_text(size = 14), 
+       legend.text=element_text(size=16),
+       axis.title.y = element_text(size = 18, vjust=2),
+       axis.title.x = element_text(size = 18),
+       title = element_text(size = 20),
+       strip.text = element_text(size = 15),
+       legend.title =  element_blank(),
+       legend.position = "bottom",
+       legend.box.margin=margin(-10,-10,-10,-10)) + 
+  scale_y_continuous(limits = c(0,1.5)) + 
+  guides(colour = guide_legend(override.aes = list(size=5))) + 
   labs(title = "T-test VolcanoPlot")
 dev.off()
 ```
@@ -339,6 +377,8 @@ From the analysis above it is clear MSstatsPTM is the most robust modeling metho
 
 In the following plot we compare the summary statsitics of the adjusted models. Note T-test is shown but all values are zero.
 ```{r, echo = FALSE, fig.width = 8}
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999")
+
 
 limma_sum <- limma_stats %>% filter(Adjustment == "protein adjustment") 
 limma_sum$Model <- "Limma"
@@ -360,7 +400,16 @@ summary %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")
   ggplot() + geom_col(aes(x = metric, y = result, fill = Model), position = "dodge") + 
     scale_fill_manual(values=cbPalette) +
   #scale_fill_manual(values = c("salmon1", "steelblue1", "green")) + 
-  labs(title = "Summary Statistic Comparison", x = "Metric", y = "Result") + theme_bw()
+  labs(title = "Summary Statistic Comparison", x = "Metric", y = "Result") + 
+  theme_bw() + 
+    theme(axis.text.x = element_text(size = 18), 
+       axis.text.y = element_text(size = 18), 
+       legend.text=element_text(size=18),
+       axis.title.y = element_text(size = 20, vjust=2),
+       axis.title.x = element_text(size = 20),
+       title = element_text(size = 20),
+       #strip.text = element_text(size = 15),
+       legend.position = "right")
 dev.off()
 ```
 
@@ -377,16 +426,17 @@ adj_spike_msstats <- model_df$ADJUSTED.Model %>% filter(labeling == "heavy")
 adj_spike_msstats$Adjustment <- "protein adjustment"
 adj_spike_msstats$Model <- "MSstatsPTM"
 
-unadj_spike_ttest <- ttest_final_model %>% filter(labeling == "heavy" & protadj == "no adjustment")
-unadj_spike_ttest <- setNames(unadj_spike_ttest, c("ptm", "label", "pval", "tstat", "SE", 
+ttest_final_model[, log2FC:=NULL]
+unadj_spike_ttest <- ttest_final_model %>% filter(labeling == "SpikeIn Peptides" & protadj == "no adjustment")
+unadj_spike_ttest <- setNames(unadj_spike_ttest, c("ptm", "Label", "pval", "tstat", "SE", 
                                                    "df", "log2FC", "labeling", "adj.pvalue", 
                                                    "trueLog2FC", "contrast_truth", "protadj"))
 
 unadj_spike_ttest$Adjustment <- "no adjustment"
 unadj_spike_ttest$Model <- "T-test"
 
-adj_spike_ttest <- ttest_final_model %>% filter(labeling == "heavy" & protadj != "no adjustment")
-adj_spike_ttest <- setNames(adj_spike_ttest, c("ptm", "label", "pval", "tstat", "SE", 
+adj_spike_ttest <- ttest_final_model %>% filter(labeling == "SpikeIn Peptides" & protadj != "no adjustment")
+adj_spike_ttest <- setNames(adj_spike_ttest, c("ptm", "Label", "pval", "tstat", "SE", 
                                                    "df", "log2FC", "labeling", "adj.pvalue", 
                                                    "trueLog2FC", "contrast_truth", "protadj"))
 adj_spike_ttest$Adjustment <- "protein adjustment"
@@ -407,23 +457,25 @@ adj_spike_limma$Model <- "Limma"
 
 spike <- rbindlist(list(unadj_spike_msstats, adj_spike_msstats, unadj_spike_ttest,
                         adj_spike_ttest, unadj_spike_limma, adj_spike_limma), fill = TRUE)
-spike[Model == "MSstatsPTM"]$Model <- "Proposed"
+spike <- as.data.table(spike)
+spike[spike$Model == "MSstatsPTM", Model := "Proposed"]
+#plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']]
 
 png("../supplementary/sim_new/spike_in_fc.png", width = 750, height = 500)
 spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1],
                  Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>%  ggplot() + 
-  geom_boxplot(aes(x = Comparison, y = log2FC, fill = Model)) + 
-  geom_point(aes(y = trueLog2FC, x = Comparison), color = "red", shape = 4, size = 4, stroke = 2) + 
+  geom_boxplot(aes(x = Label, y = log2FC, fill = Model)) + 
+  geom_point(aes(y = trueLog2FC, x = Label), color = "red", shape = 4, size = 4, stroke = 2) + 
       scale_fill_manual(values=cbPalette) +
  facet_wrap(.~Adjustment) + 
     theme_bw() + 
-  theme(axis.text.x = element_text(size = 11, angle = 0, vjust = 0), 
-       axis.text.y = element_text(size = 11), 
-       legend.text=element_text(size=12),
-       axis.title.y = element_text(size = 14),
-       axis.title.x = element_text(size = 14),
-       title = element_text(size = 16),
-       strip.text = element_text(size = 12),
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+       axis.text.y = element_text(size = 16), 
+       legend.text=element_text(size=18),
+       axis.title.y = element_text(size = 18),
+       axis.title.x = element_text(size = 18),
+       title = element_text(size = 20),
+       strip.text = element_text(size = 18),
        legend.position = "bottom") + 
   labs(title = "Fold Change of Spike-in Peptides", x = "Comparison with Expected FC")
 dev.off()
