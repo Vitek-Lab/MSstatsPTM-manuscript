@@ -347,12 +347,20 @@ adj_limma_sim1 <- adj_limma
 # save(limma_results, file = "model_data/limma_models_5_rep_75change.rda")
 # save(adj_limma, file = "model_data/adj_limma_models_5_rep_75change.rda")
 
-load(file = "model_data/ptm_models_sim1.rda")
-load(file = "model_data/adjusted_models_sim1.rda")
-load(file = "model_data/ttest_models_sim1.rda")
-load(file = "model_data/adj_ttest_models_sim1.rda")
-load(file = "model_data/limma_models_sim1.rda")
-load(file = "model_data/adj_limma_models_sim1.rda")
+
+load(file = "../data/ptm_models_sim1.rda")
+load(file = "../data/adjusted_models_sim1.rda")
+load(file = "../data/ttest_models_sim1.rda")
+load(file = "../data/adj_ttest_models_sim1.rda")
+load(file = "../data/limma_models_sim1.rda")
+load(file = "../data/adj_limma_models_sim1.rda")
+
+ptm_models <- ptm_models_sim1
+adjusted_models <- adjusted_models_sim1
+ttest <- ttest_sim1
+adj_ttest <- adj_ttest_sim1
+limma_results <- limma_results_sim1
+adj_limma <- adj_limma_sim1
 
 ## Calculate Summary Stats -----------------------------------------------------
 no_adj_results <- data.table()

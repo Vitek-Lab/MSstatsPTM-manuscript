@@ -314,10 +314,10 @@ for (i in seq_along(ptm_models_sim1)){
 
 ## Label Models
 adj_results$Model <- "Proposed"
-no_adj_results$Model <- "Proposed no Adjustment"
-ttest_results$Model <- "T-Test no Adjustment"
+no_adj_results$Model <- "Proposed no adjustment"
+ttest_results$Model <- "T-Test no adjustment"
 ttest_adj_results$Model <- "T-Test"
-limma_model_results$Model <- "Limma no Adjustment"
+limma_model_results$Model <- "Limma no adjustment"
 limma_adj_model_results$Model <- "Limma"
 
 ## Combine to plot
@@ -331,23 +331,30 @@ cbPalette_first <- c("#E69F00", "#F0E442", "#56B4E9", "#0072B2", "#009E73", "#D5
 #### False Discovery Rate (FDR)
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 6}
+
+models$plot_conditions = paste0(models$conditions, " Conditions")
+models$plot_sd = paste0("SD ", models$sd)
+
 png("../supplementary/sim_new/sim1_FDR_all_models.png", width = 750, height = 500)
 
-models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
-                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjustment", "Limma", 
+                                               "Limma no adjustment", "T-Test", "T-Test no adjustment")),
                   Replicates = as.factor(rep)) %>%
   ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
   scale_colour_manual(values=cbPalette_first) +
-  facet_grid(vars(sd), vars(conditions)) + 
+  scale_size_manual(values = c(3,5,7,9)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_blank(), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
-  labs(title = "Simulation 1: FDR all models", x = "Model", y = "FDR")
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 12), 
+         axis.text.y = element_text(size = 14), 
+         legend.text=element_text(size=14),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
+  labs(title = "Simulation 1: FDR all models", x = "Model", y = "FDR") + 
+     guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
+              size = guide_legend(order = 2, reverse = TRUE))
 
 dev.off()
 
@@ -358,25 +365,40 @@ We can clearly see that the non-adjusted models cannot adequately capture the ch
 Because we can clearly see the adjustment has a large effect, we will only look at the adjusted models going forward.
 
 ``` {r, echo = FALSE, message=FALSE, warning=FALSE}
-png("../supplementary/sim_new/sim1_FDR.png", width = 750, height = 500)
 
-models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
-                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+models$plot_conditions = paste0(models$conditions, " Conditions")
+models$plot_sd = paste0("SD ", models$sd)
+
+png("../supplementary/sim_new/sim1_FDR.png", width = 750, height = 500)
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjustment", "Limma", 
+                                               "Limma no adjustment", "T-Test", "T-Test no adjustment")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
   scale_colour_manual(values=cbPalette) +
-  facet_grid(vars(sd), vars(conditions)) + 
+  scale_size_manual(values = c(3,5,7,9)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_blank(), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
-  labs(title = "Simulation 1: FDR adjusted models", x = "Model", y = "FDR")
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
+  labs(title = "Simulation 1: FDR adjusted models", x = "Model", y = "FDR") + 
+   guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
+              size = guide_legend(order = 2, reverse = TRUE))
 dev.off()
+
+# axis.text.x = element_text(angle = 60, hjust=1, size = 16),
+#         axis.text.y = element_text(size = 16),
+#         legend.text=element_text(size=18),
+#         axis.title.y = element_text(size = 22),
+#         axis.title.x = element_text(size = 22),
+#         title = element_text(size = 22),
+#         strip.text = element_text(size = 16),
+
 ```
 
 When looking closer at the adjusted models only we can see that all the models we can see that they are indeed all very close to zero. The proposed solution has a slightly lower FDR than limma, while the ttest has the lowest value. This may be because limma uses empirical bayes to lower the variance in the models, allowing more values to show as significant.
@@ -386,23 +408,30 @@ When looking closer at the adjusted models only we can see that all the models w
 Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+models$plot_conditions = paste0(models$conditions, " Conditions")
+models$plot_sd = paste0("SD ", models$sd)
+
 png("../supplementary/sim_new/sim1_Recall.png", width = 750, height = 500)
-models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjustment", "Limma", 
-                                               "Limma no Adjustment", "T-Test", "T-Test no Adjustment")),
+models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjustment", "Limma", 
+                                               "Limma no adjustment", "T-Test", "T-Test no adjustment")),
                   Replicates = as.factor(rep)) %>%
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
   scale_colour_manual(values=cbPalette) +
-  facet_grid(vars(sd), vars(conditions)) + 
+  scale_size_manual(values = c(3,5,7,9)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_blank(), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
-  labs(title = "Simulation 1: Recall adjusted models", x = "Model", y = "Recall")
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
+  labs(title = "Simulation 1: Recall adjusted models", x = "Model", y = "Recall") + 
+   guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
+              size = guide_legend(order = 2, reverse = TRUE))
 dev.off()
 ```
 
@@ -420,16 +449,19 @@ models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no Adjust
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
   scale_colour_manual(values=cbPalette) +
-  facet_grid(vars(sd), vars(conditions)) + 
+  scale_size_manual(values = c(3,5,7,9)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_blank(), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
-  labs(title = "Simulation 1: Accuracy adjusted models", x = "Model", y = "Accuracy")
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
+  labs(title = "Simulation 1: Accuracy adjusted models", x = "Model", y = "Accuracy") + 
+   guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
+              size = guide_legend(order = 2, reverse = TRUE))
 
 dev.off()
 ```
@@ -464,20 +496,24 @@ for (i in seq_len(nrow(param_combos))){
   boxplot_data <- rbindlist(list(boxplot_data, temp))
 }
 
+boxplot_data$plot_conditions = paste0(boxplot_data$cond, " Conditions")
+boxplot_data$plot_sd = paste0("SD ", boxplot_data$sd)
+
 png("../supplementary/sim_new/sim1_FC_boxplot.png", width = 750, height = 500)
 boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")),
                         reps = factor(reps, levels = c(2,3,5,10))) %>% 
   ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) + 
-  geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
+  geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   scale_fill_manual(values=cbPalette) +
   theme_bw() +
-  theme(axis.text.x = element_text(size = 12), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
+  theme(axis.text.x = element_text(size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
   labs(title = "Simulation 1: Fold Change Distribution", x = "Replicates", y = "Log2FC")
 dev.off()
 ```
@@ -501,12 +537,12 @@ In this simulation we reduce the number of features for each PTM to 2, while kee
 
 ```{r, include=FALSE}
 
-load(file = "model_data/ptm_models_sim2.rda")#ptm_models_sim1
-load(file = "model_data/adjusted_models_sim2.rda")#adjusted_models_sim1 
-load(file = "model_data/ttest_models_sim2.rda")#ttest_sim1
-load(file = "model_data/adj_ttest_models_sim2.rda")#adj_ttest_sim1
-load(file = "model_data/limma_models_sim2.rda")#limma_results_sim1
-load(file = "model_data/adj_limma_models_sim2.rda")#adj_limma_sim1
+load(file = "../data/ptm_models_sim2.rda")#ptm_models_sim1
+load(file = "../data/adjusted_models_sim2.rda")#adjusted_models_sim1 
+load(file = "../data/ttest_models_sim2.rda")#ttest_sim1
+load(file = "../data/adj_ttest_models_sim2.rda")#adj_ttest_sim1
+load(file = "../data/limma_models_sim2.rda")#limma_results_sim1
+load(file = "../data/adj_limma_models_sim2.rda")#adj_limma_sim1
 
 s <- c(.2,.3)
 reps <- c(2,4,6)
@@ -761,6 +797,9 @@ In the following plots we will show the adjusted models only.
 #### FDR
 
 ``` {r, echo = FALSE, message=FALSE, warning=FALSE}
+models$plot_conditions = paste0(models$conditions, " Conditions")
+models$plot_sd = paste0("SD ", models$sd)
+
 png("../supplementary/sim_new/sim3_FDR.png", width = 350, height = 350)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
                                                "Limma", "ttest_no_adj", "T-Test")),
@@ -788,6 +827,9 @@ The FDR still generally shows the proposed method better than limma, although th
 Next we will look at the true positive rate, to see how the models perform when identifying differential ptms.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+models$plot_conditions = paste0(models$conditions, " Conditions")
+models$plot_sd = paste0("SD ", models$sd)
+
 png("../supplementary/sim_new/sim3_Recall.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
                                                "Limma", "ttest_no_adj", "T-Test")),
@@ -795,17 +837,21 @@ models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", 
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = recall, size = Replicates, color = Model)) + 
   scale_colour_manual(values=cbPalette) +
-  facet_grid(vars(sd), vars(conditions)) + 
+  scale_size_manual(values = c(3,5,7,9)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_blank(), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
-  labs(title = "Simulation 2: Recall adjusted models", x = "Model", y = "Recall")
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
+  labs(title = "Simulation 2: Recall adjusted models", x = "Model", y = "Recall") + 
+   guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
+              size = guide_legend(order = 2, reverse = TRUE))
 dev.off()
+
 ```
 
 In terms of recall we can see that the proposed method performs much better in the presence of missing values compared to Limma. There are some exceptions to this, notably at lower replicates with higher variance, however in general the proposed performs better.
@@ -822,16 +868,19 @@ models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", 
   filter(Model %in% c("Proposed", "T-Test", "Limma")) %>% 
   ggplot() + geom_point(aes(x = Model, y = accuracy, size = Replicates, color = Model)) + 
   scale_colour_manual(values=cbPalette) +
-  facet_grid(vars(sd), vars(conditions)) + 
+  scale_size_manual(values = c(3,5,7,9)) + 
+  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_blank(), 
-                                                 axis.text.y = element_text(size = 12), 
-                                                 legend.text=element_text(size=12),
-                                                 axis.title.y = element_text(size = 14),
-                                                 axis.title.x = element_text(size = 14),
-                                                 title = element_text(size = 16),
-                                                 strip.text = element_text(size = 12)) + 
-  labs(title = "Simulation 2: Accuracy adjusted models", x = "Model", y = "Accuracy")
+  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
+  labs(title = "Simulation 2: Accuracy adjusted models", x = "Model", y = "Accuracy") + 
+   guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
+              size = guide_legend(order = 2, reverse = TRUE))
 dev.off()
 ```
 
@@ -865,6 +914,9 @@ for (i in seq_len(nrow(param_combos))){
   boxplot_data <- rbindlist(list(boxplot_data, temp))
 }
 
+boxplot_data$plot_conditions = paste0(boxplot_data$cond, " Conditions")
+boxplot_data$plot_sd = paste0("SD ", boxplot_data$sd)
+
 png("../supplementary/sim_new/sim3_FC_boxplot.png", width = 750, height = 500)
 boxplot_data %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "T-test")),
                         reps = factor(reps, levels = c(2,3,5,10))) %>% 
@@ -872,13 +924,13 @@ ggplot()  + geom_hline(yintercept = .75, color = "red", size = 1.1) +
 geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), vars(cond)) + 
     scale_fill_manual(values=cbPalette) +
   theme_bw() +
-  theme(axis.text.x = element_text(size = 12), 
-                                               axis.text.y = element_text(size = 12), 
-                                               legend.text=element_text(size=12),
-                                               axis.title.y = element_text(size = 14),
-                                               axis.title.x = element_text(size = 14),
-                                               title = element_text(size = 16),
-                                               strip.text = element_text(size = 12)) + 
+  theme(axis.text.x = element_text(size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=18),
+         axis.title.y = element_text(size = 22),
+         axis.title.x = element_text(size = 22),
+         title = element_text(size = 22),
+         strip.text = element_text(size = 16)) + 
 labs(title = "Simulation 2: Fold Change Distribution", x = "Replicates", y = "Log2FC")
 dev.off()
 ```

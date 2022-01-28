@@ -198,6 +198,59 @@
       \field{pages}{3444\bibrangedash 3452}
       \range{pages}{9}
     \endentry
+    \entry{Petushkova_2017}{article}{}
+      \name{author}{7}{}{%
+        {{hash=b9675b72273c68dc3b6b4d25979b34ae}{%
+           family={Petushkova},
+           familyi={P\bibinitperiod},
+           given={Natalia\bibnamedelima A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=281147c61fed8a8fce97e85019a5c2fe}{%
+           family={Zgoda},
+           familyi={Z\bibinitperiod},
+           given={Victor\bibnamedelima G.},
+           giveni={V\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=0034d6569e951508494124a03bcc5c8a}{%
+           family={Pyatnitskiy},
+           familyi={P\bibinitperiod},
+           given={Mikhail\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=088c13281e00cfe93992da7d4a8b6c77}{%
+           family={Larina},
+           familyi={L\bibinitperiod},
+           given={Olesya\bibnamedelima V.},
+           giveni={O\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=9b719ad96d6cacb56a77a7d038319c5c}{%
+           family={Teryaeva},
+           familyi={T\bibinitperiod},
+           given={N.\bibnamedelimi B.},
+           giveni={N\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=58d0618e9f39c57bedf65c1cdf687f15}{%
+           family={Potapov},
+           familyi={P\bibinitperiod},
+           given={Alexander\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=2748322eae25ecd290c056fe761c64bd}{%
+           family={Lisitsa},
+           familyi={L\bibinitperiod},
+           given={Andrey\bibnamedelima V.},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{5dc9257aa807ec8a926333bd549ceed2}
+      \strng{fullhash}{b794f0a2f1585527390e6960d6cacd84}
+      \strng{bibnamehash}{5dc9257aa807ec8a926333bd549ceed2}
+      \strng{authorbibnamehash}{5dc9257aa807ec8a926333bd549ceed2}
+      \strng{authornamehash}{5dc9257aa807ec8a926333bd549ceed2}
+      \strng{authorfullhash}{b794f0a2f1585527390e6960d6cacd84}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLoS ONE}
+      \field{title}{Post-translational modifications of FDA-approved plasma biomarkers in glioblastoma samples}
+      \field{volume}{12}
+      \field{year}{2017}
+    \endentry
     \entry{Ritchie_15a}{article}{}
       \name{author}{7}{}{%
         {{hash=951d585e86cb8b9c75ad8215db61706f}{%
@@ -242,8 +295,8 @@
       \strng{authorbibnamehash}{86c08ec45f36a1fa3a69960789a32e39}
       \strng{authornamehash}{86c08ec45f36a1fa3a69960789a32e39}
       \strng{authorfullhash}{dd10be2ac81c50adf371c58312df557a}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{{limma is an R/Bioconductor software package that provides an integrated solution for analysing data from gene expression experiments. It contains rich features for handling complex experimental designs and for information borrowing to overcome the problem of small sample sizes. Over the past decade, limma has been a popular choice for gene discovery through differential expression analyses of microarray and high-throughput PCR data. The package contains particularly strong facilities for reading, normalizing and exploring such data. Recently, the capabilities of limma have been significantly expanded in two important directions. First, the package can now perform both differential expression and differential splicing analyses of RNA sequencing (RNA-seq) data. All the downstream analysis tools previously restricted to microarray data are now available for RNA-seq as well. These capabilities allow users to analyse both RNA-seq and microarray data with very similar pipelines. Second, the package is now able to go past the traditional gene-wise expression analyses in a variety of ways, analysing expression profiles in terms of co-regulated sets of genes or in terms of higher-order expression signatures. This provides enhanced possibilities for biological interpretation of gene expression differences. This article reviews the philosophy and design of the limma package, summarizing both new and historical features, with an emphasis on recent enhancements and features that have not been previously described.}}
@@ -313,8 +366,8 @@
       \strng{authorbibnamehash}{22c1dee522cb7ce9994a5987270ae18a}
       \strng{authornamehash}{22c1dee522cb7ce9994a5987270ae18a}
       \strng{authorfullhash}{cfd61531270e99a87c16264fbacc6c30}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -373,8 +426,8 @@
       \strng{authorbibnamehash}{b4fc0f495f06fe20fb68563a06fdba51}
       \strng{authornamehash}{b4fc0f495f06fe20fb68563a06fdba51}
       \strng{authorfullhash}{c218d46b4911110751160a3a68b809df}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issue}{10}
@@ -1005,8 +1058,8 @@
       \strng{authorbibnamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
       \strng{authornamehash}{d09b320744f09c093eb8b0d7f6bbdda0}
       \strng{authorfullhash}{e1419b3c7f22b8a469bd183c172e98b4}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
@@ -1050,8 +1103,8 @@
       \strng{authorbibnamehash}{0734b43304bc167fad6d2532bc75460a}
       \strng{authornamehash}{0734b43304bc167fad6d2532bc75460a}
       \strng{authorfullhash}{0734b43304bc167fad6d2532bc75460a}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
