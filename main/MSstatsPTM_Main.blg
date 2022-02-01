@@ -1,19 +1,19 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
-[127] biber-MSWIN64:340> INFO - === 
-[170] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[299] Biber.pm:952> INFO - Found 23 citekeys in bib section 0
-[315] Biber.pm:4340> INFO - Processing section 0
-[328] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[414] bibtex.pm:1689> INFO - LaTeX decoding ...
-[454] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[496] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
-[549] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[651] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_dqLs\f4d088b3f9f145b5c3058da33afd57d4_13724.utf8, line 196, warning: 1 characters of junk seen at toplevel
-[676] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[677] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[677] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[677] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[698] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[719] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
-[720] Biber.pm:128> INFO - WARNINGS: 3
+[116] biber-MSWIN64:340> INFO - === 
+[156] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[275] Biber.pm:952> INFO - Found 23 citekeys in bib section 0
+[290] Biber.pm:4340> INFO - Processing section 0
+[302] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[366] bibtex.pm:1689> INFO - LaTeX decoding ...
+[401] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[436] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
+[477] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
+[566] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_5av4\f4d088b3f9f145b5c3058da33afd57d4_9636.utf8, line 196, warning: 1 characters of junk seen at toplevel
+[592] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[592] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[592] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[592] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[613] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[633] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[633] Biber.pm:128> INFO - WARNINGS: 3

@@ -99,6 +99,8 @@ plot_df[plot_df$Label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: -1 (mix2-mi
 plot_df[plot_df$labeling == 'light'][['labeling']] <- "Background Peptides"
 plot_df[plot_df$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
 
+proposed_plot_df <- plot_df
+
 # Volcano plot
 png("../supplementary/sim_new/spike_in_msstatsptm_volcano.png", width = 750, height = 500)
 plot_df %>% arrange(labeling) %>% 
@@ -170,6 +172,21 @@ spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = log2FC), fill = "l
 
 We can see in the plot above that the fold change of the spike-in peptides falls in line with expectation much better after adjustment. The expected change falls very close to the median value, and is at least within the 1st and 3rd quartile boxes in every comparison. In the unadjusted plot, the expected falls outside the quartile boxes in the majority of comparisons.
 
+#### Calculating background peptide percentages
+
+```{r, echo=FALSE}
+
+light_pep <- model_df$PTM.Model %>% filter(labeling == "light")
+
+unadj_sig_light <- model_df$PTM.Model %>% filter(labeling == "light" & adj.pvalue < .05)
+adj_sig_light <- model_df$ADJUSTED.Model %>% filter(labeling == "light" & adj.pvalue < .05)
+
+nrow(unadj_sig_light) / nrow(light_pep)
+nrow(adj_sig_light) / nrow(light_pep)
+
+```
+
+
 ### Limma
 
 We will repeat the above analysis for Limma.
@@ -198,6 +215,8 @@ plot_df[plot_df$Label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: -1 (mix2-mi
 
 plot_df[plot_df$labeling == 'light'][['labeling']] <- "Background Peptides"
 plot_df[plot_df$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
+
+limma_plot_df <- plot_df
 
 # Volcano plot
 png("../supplementary/sim_new/spike_in_limma_volcano.png", width = 750, height = 500)
@@ -230,6 +249,55 @@ dev.off()
 ```
 
 The limma model shows an improvement in terms of the false positives, but loses insight into the majority of spike-in peptides. After adjustment, the spike-in peptides are much more inline with the expected log2FC, however they are mostly below the significant pvalue threshold. This is most likely due to an increase in standard error or lower degrees of freedom compared to MSstatsPTM.
+
+#### Create combo plot of proposed and limma
+
+``` {r, echo = FALSE}
+
+proposed_plot_df$Model <- "Proposed Method"
+limma_plot_df$Model <- "Limma"
+limma_plot_df$Protein <- limma_plot_df$PTM
+limma_plot_df$log2FC <- limma_plot_df$Log2FC
+
+combo_plot_df <- rbind(proposed_plot_df[, c("Protein", "Label", "log2FC", 
+                                            "adj.pvalue", "labeling", 
+                                            "trueLog2FC", "contrast_truth", 
+                                            "protadj", "Model")], 
+                       limma_plot_df[, c("Protein", "Label", "log2FC", 
+                                            "adj.pvalue", "labeling", 
+                                            "trueLog2FC", "contrast_truth", 
+                                            "protadj", "Model")])
+combo_plot_df$Model <- factor(combo_plot_df$Model, levels=c('Proposed Method','Limma'))
+
+png("../main/images/spike_in_volcano.png", width = 750, height = 500)
+combo_plot_df %>% arrange(Model, labeling) %>% 
+  filter(abs(log2FC) < Inf & Label %in% c("mix2-mix3", "mix2-mix4")) %>%
+  ggplot(aes(log2FC, -log10(adj.pvalue))) + 
+  geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
+  scale_color_manual(values = c("#999999", "#D55E00")) + 
+  scale_alpha_manual(values = c(0.2, 1)) + 
+  #scale_size_manual(values = c(2, 1)) + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0, linetype = "dashed") + 
+  geom_hline(yintercept = -log10(0.05), color = "darkred") + 
+  facet_grid(protadj ~ Model + contrast_truth) + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(size = 16), 
+       axis.text.y = element_text(size = 16), 
+       legend.text=element_text(size=16),
+       axis.title.y = element_text(size = 18, vjust=2),
+       axis.title.x = element_text(size = 18),
+       title = element_text(size = 20),
+       strip.text = element_text(size = 15),
+       legend.title =  element_blank(),
+       legend.position = "bottom",
+       legend.box.margin=margin(-10,-10,-10,-10)) + 
+  scale_y_continuous(limits = c(0,3)) + 
+  guides(colour = guide_legend(override.aes = list(size=5))) +
+  labs(title = "SpikeIn VolcanoPlot", x= "Log2FC")
+dev.off()
+
+```
 
 #### Summary Statistics
 
@@ -460,16 +528,21 @@ spike <- rbindlist(list(unadj_spike_msstats, adj_spike_msstats, unadj_spike_ttes
 spike <- as.data.table(spike)
 spike[spike$Model == "MSstatsPTM", Model := "Proposed"]
 #plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']]
+spike$`color_label` <- "True LogFC"
 
 png("../supplementary/sim_new/spike_in_fc.png", width = 750, height = 500)
 spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1],
-                 Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>%  ggplot() + 
+      Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>%
+  filter(!Label %in% c("mix1-mix2", "mix3-mix4")) %>% 
+  ggplot() + 
   geom_boxplot(aes(x = Label, y = log2FC, fill = Model)) + 
-  geom_point(aes(y = trueLog2FC, x = Label), color = "red", shape = 4, size = 4, stroke = 2) + 
-      scale_fill_manual(values=cbPalette) +
+  geom_point(aes(y = trueLog2FC, x = Label, color = color_label), 
+             shape = 4, size = 4, stroke = 2) + 
+  scale_fill_manual(values=cbPalette) +
+  scale_color_manual(name = "", values="red", label="True LogFC") + 
  facet_wrap(.~Adjustment) + 
     theme_bw() + 
-  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16), 
+  theme(axis.text.x = element_text(angle = 45, hjust=1, vjust = 1, size = 16), 
        axis.text.y = element_text(size = 16), 
        legend.text=element_text(size=18),
        axis.title.y = element_text(size = 18),

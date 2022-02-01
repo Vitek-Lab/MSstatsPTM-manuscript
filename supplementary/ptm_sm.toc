@@ -22,12 +22,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {4.1.2}Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}{7}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{12}{}%
+\contentsline {subsection}{\numberline {4.2}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{13}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Biological investigations}{18}{}%
+\contentsline {section}{\numberline {5}Biological investigations}{19}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{18}{}%
+\contentsline {subsection}{\numberline {5.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{19}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{20}{}%
+\contentsline {subsection}{\numberline {5.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{21}{}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{24}{}%
+\contentsline {subsection}{\numberline {5.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{25}{}%

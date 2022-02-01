@@ -50,7 +50,6 @@ for (x in seq_along(n_sample_list)){
   }
 }
 
-
 low_var_df <- rbindlist(bind_list)
 same_var_df <- rbindlist(bind_list)
 high_ptm_var_df <- rbindlist(bind_list)
@@ -66,13 +65,13 @@ p1 <- same_var_df %>%
   scale_colour_manual(values=cbPalette) +
   labs(title = "Power analysis with same variance") +
   theme_bw() +
-  theme(axis.text.x = element_text(size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12))
+  theme(axis.text.x = element_text(size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=16),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16))
 p1
 
 p2 <- high_ptm_var_df %>%
@@ -80,13 +79,13 @@ p2 <- high_ptm_var_df %>%
   scale_colour_manual(values=cbPalette) +
   labs(title = "Power analysis with high PTM variance") +
   theme_bw() +
-  theme(axis.text.x = element_text(size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.text=element_text(size=12),
-        axis.title.y = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        title = element_text(size = 16),
-        strip.text = element_text(size = 12))
+  theme(axis.text.x = element_text(size = 16),
+        axis.text.y = element_text(size = 16),
+        legend.text=element_text(size=16),
+        axis.title.y = element_text(size = 22),
+        axis.title.x = element_text(size = 22),
+        title = element_text(size = 22),
+        strip.text = element_text(size = 16))
 p2
 
 png("../supplementary/sim_new/same_var_power.png", width = 750, height = 500)

@@ -336,16 +336,17 @@ models$plot_conditions = paste0(models$conditions, " Conditions")
 models$plot_sd = paste0("SD ", models$sd)
 
 png("../supplementary/sim_new/sim1_FDR_all_models.png", width = 750, height = 500)
-
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjustment", "Limma", 
                                                "Limma no adjustment", "T-Test", "T-Test no adjustment")),
-                  Replicates = as.factor(rep)) %>%
-  ggplot() + geom_point(aes(x = Model, y = fpr, size = Replicates, color = Model)) + 
+                  ) %>%
+  filter(rep == 5) %>% 
+  ggplot() + geom_point(aes(x = Model, y = fpr, color = Model), size = 9) + #, size = Replicates
   scale_colour_manual(values=cbPalette_first) +
-  scale_size_manual(values = c(3,5,7,9)) + 
+  # scale_size_manual(values = c(3,5,7,9)) + 
   facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 60, hjust=1, size = 12), 
+  ylim(0.0, 0.45) + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1, vjust = 1, size = 12), 
          axis.text.y = element_text(size = 14), 
          legend.text=element_text(size=14),
          axis.title.y = element_text(size = 22),

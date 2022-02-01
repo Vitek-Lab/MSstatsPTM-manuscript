@@ -135,7 +135,7 @@ The scientific community widely utilizes mass spectrometry (MS)-based proteomics
 
 The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are primarily facilitated by the modification of proteins at specific residues, acting as molecular on/off switches\cite{Deribe} \cite{Cohen}. Mass spectrometry-based proteomics is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) using liquid chromatography coupled with mass spectrometry (LC-MS)\cite{Kall:2011ub} \cite{Roepstorff}. Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site's occupancy repertoire, or relative changes in occupancy across experimental conditions\cite{Mann}. Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteo-forms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide). Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently convoluted with changes in the overall protein expression, making the interpretation of the results not straightforward\cite{Olsen:2013}. Therefore, a robust approach to estimate systematic relative changes in post-translational modifications, at scale, should not only combine the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, but take into account various sources of variations and confounding factors present in the experiments.
 
-There are two main biological questions that are generally relevant in PTM analysis. First, some researchers run mass-spectrometry based proteomic experiments targeting PTMs when looking for biomarkers\cite{Petushkova_2017}. In this case the researcher may not necessarily want to correct for confounding with the total protein. The interest is in detecting modified peptides which change in abundance in a meaningful way, such as between disease and control, fast or slow-progressing, or responder and non-responder groups. Conversely, researchers may be interested in whether the fraction of peptides modified at a given site is changing between conditions. This is an important question for thinking about biological and physiological models and very short timescale experiments. In this case, correcting for confounding with the total protein is relevant. These two questions are both important areas of study, and require different statistical methods to correctly address. In this paper we will mainly address a statistical solution to the second question, which requires more rigorous methods as we must address the convolution with the total protein.
+Generally, there are two main biological questions that are relevant in PTM analysis. First, some researchers run mass-spectrometry based experiments targeting PTMs when looking for biomarkers\cite{Petushkova_2017}. In this case the researcher may not necessarily want to correct for confounding with the total protein. The interest is in detecting modified peptides which change in abundance in a meaningful way, such as between disease and control, fast or slow-progressing, or responder and non-responder groups. Conversely, researchers may be interested in whether the fraction of peptides modified at a given site is changing between conditions. This is an important question for thinking about biological and physiological models and very short timescale experiments. In this case, we are interested in the relative abundance change solely from the modification and correcting for confounding with the total protein is relevant. These two questions are both important areas of study and require different statistical methods to correctly address. In this paper we will mainly address a statistical solution to the second question, which requires more rigorous methods as we must address confounding with the total protein.
 
 We propose a general statistical approach, which explicitly characterizes the variations and confounding factors present in bottom-up PTM experiments. The proposed approach is aimed at the detection of quantitative changes in PTMs between conditions utilizing procedures developed for summarization of LC-MS data, quantitative characterization of site-specific PTMs, and adjustment with respect to protein abundance. Quantitative analyses of PTMs often involve comparisons between multiple inter-related conditions of the same biological system. The general statistical framework underlying the proposed approach allows for analyzing experiments with complex designs and different acquisition methods. 
 
@@ -145,12 +145,12 @@ The proposed approach was implemented using the R coding language and evaluated 
 
 This section describes the datasets and experiments used to evaluate the proposed method. The datasets were chosen to provide a performance benchmark of the proposed approach against existing methods when ground truth is known, as well as represent a variety of experimental designs and acquisition methods where the approach can be applied. To benchmark the approach, computer simulations and a spike-in experiment were used. The computer simulations vary in experimental realism; the first simulation was perfectly clean, with many replicates and no missing values, while the second simulation introduced real world qualities, such as limited modified features and missing values. The spike-in experiment took the real world qualities a step further and allowed us to compare the methods in a real experiment where ground truth is known. Finally the proposed approach was used to model three biological experiments which differed in experimental design, acquisition strategy, and organism. These experiments were chosen to show the proposed method's applicability to many different types of experiments. 
 
-\subsection*{Dataset 1 : Computer simulation 1 - Label-free} 
+\subsection*{Dataset 1 : Computer simulation 1 - Label-free}
 \label{sec:comp_sim_procedure1}
 
-Here simulations were generated mimicking a Label-free experiment, with a high number of modified and unmodified peptide features and no missing values. Multiple simulations were generated with different numbers of replicates and conditions. In all simulations 1000 modified peptides were generated, half of which were true positives and the other half true negatives. Half of the true positives and true negatives were generated convoluted with global protein abundance. Before adjustment, the convoluted true positives should appear to be negatives, while the convoluted true negatives would appear differential. Modified peptides and unmodified proteins were both simulated with 10 features.
+Here simulations were generated mimicking a Label-free experiment with a high number of modified and unmodified peptide features and no missing values. Multiple simulations were generated with different numbers of replicates and conditions. In all simulations 1000 modified peptides were generated, half of which were true positives and half true negatives. Half of the true positives and true negatives were generated convoluted with global protein abundance. Before adjustment, the convoluted true positives should appear to be negatives, while the convoluted true negatives would appear differential. Modified peptides and unmodified proteins were both simulated with 10 features.
 
-\subsection*{Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates} 
+\subsection*{Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}
 \label{sec:comp_sim_procedure2}
 
 In this simulation real world experimental conditions were introduced, including missing values and low number of modified features. The percentage of missing values and feature counts were determined by looking at the averages from the biological experiments in this paper. Modified peptides were simulated with 2 features, while unmodified proteins were still simulated with 10 features. Additionally, 20\% of observations for both modified and unmodified peptides were missing completely at random. Adding missing values and few representative modified features provides a more realistic expectation of model performance. Otherwise this simulation used the same parameters as in simulation 1, with 1000 modified peptides half of which were positives and the other half negative.
@@ -311,7 +311,9 @@ The code is available on Bioconductor, http://www.bioconductor.org/packages/rele
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Evaluation}
 
-The performance of the proposed method was evaluated on simulated and spike in datasets with known ground truth, as well as biological experimental data where the ground truth was not known. For the experiments where ground truth is known, we calculated summary statistics using the number of true positives (TP), false positives (FP), true negatives (TN), and false negatives (FN). To evaluate the performance of different methods, we considered the false discovery rate (FDR = FP/(TP+FP)), the recall rate (TP/(TP + FN), and accuracy ((TP + TN) / (TP + TN + FP + FN)). For biological experiments where ground truth was not known, we evaluated significantly differential peptides with $\alpha=.05$. Comparisons were made before and after adjusting for changes in unmodified protein abundance and the results are presented in the form of venn diagrams and profile plots. All datasets in this paper were evaluated using the $MSstatsPTM$ package.
+The performance of the proposed method was evaluated on simulated and spike in datasets with known ground truth, as well as biological experimental data where the ground truth was not known. For the experiments where ground truth is known, we calculated the number of true positives (TP), false positives (FP), true negatives (TN), and false negatives (FN). To determine positives and negatives we adjusted the p-values for multiple testing and used an $\alpha=.05$ cutoff to determine differential sites. These results were then compared to the ground truth to determine TP and TN. We then used these results to calculate the false discovery rate (FDR = FP/(TP+FP)), the recall rate (TP/(TP + FN), and accuracy ((TP + TN) / (TP + TN + FP + FN)). Finally, the summary statistics were compared across methods to analyze method performance. 
+
+For biological experiments where ground truth was not known, we again adjusted the p-values for multiple testing and used an $\alpha=.05$ cutoff to determine differential sites. Comparisons were made before and after adjusting for changes in unmodified protein abundance and the results are presented in the form of venn diagrams and profile plots. Each biological dataset presents a different experimental scenario, showing the applicability of the proposed method. All datasets in this paper were evaluated using the $MSstatsPTM$ package.
 
 \subsubsection*{The proposed approach corrects for high FDR in computer simulations}
 
@@ -416,39 +418,34 @@ Data structure of a typical PTM experiment and goals of PTM characterization. (a
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\textwidth]{images/sim1_FDR_all_models.png}
-\caption{Dataset 1 : Computer simulation 1 - Label-free. All the considered methods in the first computer simulation correctly calibrated FDR when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates.
-}\label{fig:fdr_all_models}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\textwidth]{images/sim3_Accuracy.png}
-\caption{Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates. The advantage of using the proposed approach is apparent when looking at the second computer simulation, which includes limited observations and the presence of missing values. In overall accuracy, the proposed method performs stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. The lowest performing method was $t$-test. Limma shows comparable performance to the proposed method in a clean experiment, however when real world data problems are introduced it is clear the proposed method is more robust.}
-\label{fig:sim_accuracy}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\textwidth]{images/sim3_FC_boxplot.png}
-\caption{Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates. In the second computer simulation with missing values and low PTM features all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median when compared to Limma and $t$-test. While the mean estimated fold changes were similar, the proposed method exhibited a stronger performance in correctly estimating the fold change for all peptides.}
-\label{fig:sim_boxplot}
-\end{figure}
-
-
-\begin{figure}[ht]
-\centering
 \begin{subfigure}[c]{0.825\linewidth}
-\includegraphics[width=1\textwidth]{images/spike_in_msstatsptm_volcano.png}
+\includegraphics[width=1\textwidth]{images/sim1_FDR_all_models.png}
 \caption{}
 \label{fig:spikein_prop_volcano}
 \end{subfigure}
 \begin{subfigure}[c]{0.825\linewidth}
-\includegraphics[width=1\textwidth]{images/spike_in_limma_volcano.png}
+\includegraphics[width=1\textwidth]{images/sim3_Accuracy.png}
+\caption{}
+\end{subfigure}
+\caption{Dataset 1 \& 2: Computer simulation. a) All the considered methods in the first computer simulation correctly calibrated FDR when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false positive rates. b) The advantage of using the proposed approach is apparent when including limited observations and missing values. Looking at accuracy, the proposed method outperforms Limma and t-test in nearly every model.
+}
+\label{fig:computer_sim}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[c]{0.825\linewidth}
+\includegraphics[width=1\textwidth]{images/spike_in_volcano.png}
+\caption{}
+\label{fig:spikein_prop_volcano}
+\end{subfigure}
+\begin{subfigure}[c]{0.825\linewidth}
+\includegraphics[width=1\textwidth]{images/spike_in_fc.png}
 \caption{}
 \label{fig:spikein_limma_volcano}
 \end{subfigure}
-\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. A) Using the proposed method the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjustment the spike in peptides are more in line with expectation. Additionally, the background peptides showed many false positives before adjustment, but decrease considerably after adjustment. B) Using Limma the spike in peptides again follow the expected log fold change after adjusting for changes in protein level. However, while the fold change is more accurate, the majority of spike in peptides do not have a significant adjusted pvalue.}
+\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. a) Using the proposed method the spike in peptides (colored red) do not follow the expected log fold change before adjustment. After adjustment the spike in peptides are more in line with expectation. Using Limma the spike in peptides again follow the expected log fold change after adjusting for changes in protein level. However, while the fold change is more accurate, the majority of spike in peptides do not have a significant adjusted pvalue. b) say something about this one.}
 \label{fig:spikein_volcano}
 \end{figure}
 
@@ -464,70 +461,55 @@ Data structure of a typical PTM experiment and goals of PTM characterization. (a
 \caption{}
 \label{fig:data4_profile_plot}
 \end{subfigure}
-\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. A) The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was driven by changes in the global protein. In contrast, peptides that became significant after adjustment saw their true abundance change masked by underlying changes in the unmodified protein. B) Comparing the global profiling of protein $GSDMD$ with the ubiquitination of the protein at site $K62$. When looking at the summary of the modification and global protein it is clear the conditions follow different trends. Specifically, there appears to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there is a large negative change when looking at the unmodified plot. This indicates the modification is confounded with changes in the unmodified protein.}
+\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. a) The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was driven by changes in the global protein. In contrast, peptides that became significant after adjustment saw their true abundance change masked by underlying changes in the unmodified protein. b) Comparing the global profiling of protein $GSDMD$ with the ubiquitination of the protein at site $K62$. When looking at the summary of the modification and global protein it is clear the conditions follow different trends. Specifically, there appears to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there is a large negative change when looking at the unmodified plot. This indicates the modification is confounded with changes in the unmodified protein.}
 \label{fig:data4_plots}
-\end{figure}
-
-
-\begin{figure}[h!]
-\centering
-\includegraphics[height=.65\textwidth]{images/shig_venn_diagramm.png}
-\caption{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series. The overlap of differencial modified peptides between the PTM model with and without global protein level adjustment. Again more PTMs became insignificant after adjustment then became significant.}
-\label{fig:shig_venn_d}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[width=.95\textwidth]{images/No_Difference_Shigella_Profile_Plot}
-	\caption{Comparing the global profiling of protein $TTP\_MOUSE|P22893$ with the modification of the protein at site $S178$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the difference between conditions follow the same trend. Specifically, there is a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicates the movement is driven by changes in global protein.}
- \end{subfigure}\vspace{5mm}
+\includegraphics[height=.5\textwidth]{images/shig_venn_diagramm.png}
+\caption{}
+ \end{subfigure}
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[width=.95\textwidth]{images/Difference_Shigella_Profile_Plot}
-	\caption{Comparing the global profiling of protein $KI67\_MOUSE|E9PVX6$ with the modification of the protein at site $T215$. In this case the modification and global protein trend in different directions. Specifically, comparing WT\_Uninfect and WT\_Early there is a slightly positive change in abundance, however in the global profiling there was a negative change. In this case the profile plot indicates the effect of the modification is masked by the change in global protein abundance. Additionally this profile plot shows the large difference in available features between modifications and global protein.}
- \end{subfigure}
-\caption{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series. Profile plots for PTMs P22893\_S178 and E9PVX6\_T215 in the Shigella flexneri experiment.}
-\label{fig:shigella_profile}
+	\includegraphics[width=1.0\textwidth]{images/No_Difference_Shigella_Profile_Plot}
+	\caption{}
+	 \end{subfigure}
+\caption{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series. a) The overlap of differentially modified peptides between the PTM model with and without global protein level adjustment. Again more PTMs became insignificant after adjustment then became significant. Comparing the global profiling of protein $TTP$ with the modification of the protein at site $S178$. When looking at the summary of the modification and global protein it is clear the difference between conditions follow the same trend. Specifically, there is a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicates the movement is driven by changes in global protein that is only accounted for in the model when adjusting for global protein abundance change.}
+\label{fig:shigella_plots}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[height=.5\textwidth]{images/usp30_venn_diagramm}
-	\caption{The overlap of differencial modified peptides for the PTM model with and without global protein level adjustment. Here many more PTMs became insignificant then became significant after adjustment. This is due to not having a global profiling run, resulting in a large lack of overlap between the modified peptides and unmodified proteins.}
- \end{subfigure}\vspace{5mm}
+	\includegraphics[height=.525\textwidth]{images/usp30_venn_diagramm}
+	\caption{}
+ \end{subfigure}
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[height=.5\textwidth]{images/usp30_venn_diagramm_matching_only}
-	\caption{Here we make the same comparison but only for modified peptides with a matching unmodified protein, so adjustment can be performed. In this case we see significantly less peptides become insignificant after adjustment. This highlights the need for a global profiling run if protein adjustment is going to performed.}
+	\includegraphics[height=.525\textwidth]{images/usp30_venn_diagramm_matching_only}
+	\caption{}
  \end{subfigure}
- \caption{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run. Overlap of significant PTMs before and after protein adjustment.}
+ \caption{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run. a) The overlap of differencial modified peptides for the PTM model with and without global protein level adjustment. Here many more PTMs became insignificant then became significant after adjustment. This is due to not having a global profiling run, resulting in a large lack of overlap between the modified peptides and unmodified proteins. b) Here we make the same comparison but only for modified peptides with a matching unmodified protein, so adjustment can be performed. In this case we see significantly less peptides become insignificant after adjustment. This highlights the need for a global profiling run if protein adjustment is going to performed.}
 \label{fig:usp30_ven_d}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\textwidth]{images/USP30_profile_plot.png}
-\caption{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run. Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between conditions, whereas the global profiling run shows the CCCP and Combo conditions at a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had a major effect when comparing CCCP and Combo to Control and USP30\_OE, which would have been missed without adjusting for global protein changes.}
-\label{fig:usp30_profile}
-\end{figure}
-
 \begin{figure}[h!]
 \centering
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[width=.725\textwidth]{images/same_var_power}
-	\caption{Here we can see the power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates are high for both modified and unmodified peptides the power is much higher. Conversely at low replicates for each the power is much lower. The interesting part of this chart is when the replicates are different between runs. With equal variance, it does not matter if the PTM replicates or protein replicates are higher.}
+	\includegraphics[width=.75\textwidth]{images/same_var_power}
+	\caption{}
  \end{subfigure}\vspace{5mm}
  \begin{subfigure}{\textwidth}
  \centering
-	\includegraphics[width=.9\textwidth]{images/high_ptm_var_power}
-	\caption{In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to higher power.}
+	\includegraphics[width=.75\textwidth]{images/high_ptm_var_power}
+	\caption{}
  \end{subfigure}
- \caption{Power analysis of experiments with differing variances.}
+ \caption{Power analysis of experiments with differing variances. a) The power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates are high for both modified and unmodified peptides the power is much higher. Conversely at low replicates for each the power is much lower. The interesting part of this chart is when the replicates are different between runs. With equal variance, it does not matter if the PTM replicates or protein replicates are higher. b) In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to higher power.}
 \label{fig:power_sd_combo}
 \end{figure}
 

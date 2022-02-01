@@ -468,6 +468,55 @@ v2 <- adj_model_df %>% ggplot() +
 
 grid.arrange(v1, v2, nrow = 1)
 
+## Venndiagram -----------------------------------------------------------------
+
+colors <- c("#E69F00", "#56B4E9")
+
+unadj_ptm_model <- pSTY_model$PTM.Model
+adj_ptm_model <- pSTY_model$ADJUSTED.Model
+
+unadj_ptm_model$Protein_Label <- paste(unadj_ptm_model$Protein, unadj_ptm_model$Label)
+adj_ptm_model$Protein_Label <- paste(adj_ptm_model$Protein, adj_ptm_model$Label)
+
+sig_unadj_ptm_model <- unadj_ptm_model %>% filter(Protein_Label %in% adj_ptm_model$Protein_Label)
+
+sig_unadj_ptm_model <- sig_unadj_ptm_model %>% filter(adj.pvalue < .05 & is.finite(log2FC))
+sig_adj_ptm_model <- adj_ptm_model %>% filter(adj.pvalue < .05 & is.finite(log2FC))
+
+
+venn.diagram(
+  x = list(sig_unadj_ptm_model$Protein_Label, sig_adj_ptm_model$Protein_Label),
+  category.names = c("Unadjusted" , "Adjusted"),
+  filename = "shig_venn_diagramm_time_series.png",
+  output=TRUE,
+  imagetype="png" ,
+  height = 1400,
+  width = 1400,
+  resolution = 100,
+  lwd = 2,
+  fill = colors,
+  main.fontface = "bold",
+  main.fontfamily="sans",
+  main.pos = c(.5,1),
+  fontface = "bold",
+  cat.fontface = "bold",
+  cex = 3,
+  cat.cex = 3,
+  cat.pos = c(-40, 30),
+  cat.dist = c(.037, .03),
+  main.cex = 2.8,
+  main = "Overlap between signficant adjusted and unadjusted PTMs"
+)
+
+combo <- adj_ptm_model %>% merge(unadj_ptm_model, by = "Protein_Label")
+
+combo %>% filter(log2FC.x < log2FC.y*1.09 & log2FC.x > log2FC.y*.91 &
+                   adj.pvalue.x >= .05 & adj.pvalue.y < .05)
+
+
+
+
+
 
 
 
