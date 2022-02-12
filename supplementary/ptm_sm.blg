@@ -1,15 +1,22 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'ptm_sm.blg'
-[116] biber-MSWIN64:340> INFO - === 
-[159] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
-[288] Biber.pm:952> INFO - Found 3 citekeys in bib section 0
-[304] Biber.pm:4340> INFO - Processing section 0
-[317] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
-[374] bibtex.pm:1689> INFO - LaTeX decoding ...
-[390] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
-[479] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[479] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[479] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[479] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[487] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
-[495] bbl.pm:757> INFO - Output to ptm_sm.bbl
+[153] biber-MSWIN64:340> INFO - === 
+[195] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
+[366] Biber.pm:952> INFO - Found 9 citekeys in bib section 0
+[386] Biber.pm:4340> INFO - Processing section 0
+[400] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
+[468] bibtex.pm:1689> INFO - LaTeX decoding ...
+[492] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
+[589] Utils.pm:395> WARN - I didn't find a database entry for 'Chiva2014' (section 0)
+[589] Utils.pm:395> WARN - I didn't find a database entry for 'Choi:2017jan' (section 0)
+[589] Utils.pm:395> WARN - I didn't find a database entry for 'Cox:2014fi' (section 0)
+[589] Utils.pm:395> WARN - I didn't find a database entry for 'Meierhofer2016' (section 0)
+[589] Utils.pm:395> WARN - I didn't find a database entry for 'Picotti09' (section 0)
+[589] Utils.pm:395> WARN - I didn't find a database entry for 'Surinova:2015jn' (section 0)
+[603] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[603] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[603] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[603] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[614] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
+[623] bbl.pm:757> INFO - Output to ptm_sm.bbl
+[623] Biber.pm:128> INFO - WARNINGS: 6

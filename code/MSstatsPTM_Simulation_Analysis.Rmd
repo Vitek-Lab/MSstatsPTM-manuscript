@@ -334,21 +334,22 @@ cbPalette_first <- c("#E69F00", "#F0E442", "#56B4E9", "#0072B2", "#009E73", "#D5
 
 models$plot_conditions = paste0(models$conditions, " Conditions")
 models$plot_sd = paste0("SD ", models$sd)
+models$Replicates = factor(models$rep)
 
-png("../supplementary/sim_new/sim1_FDR_all_models.png", width = 750, height = 500)
+png("../main/images/sim1_FDR_all_models.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjustment", "Limma", 
                                                "Limma no adjustment", "T-Test", "T-Test no adjustment")),
                   ) %>%
-  filter(rep == 5) %>% 
-  ggplot() + geom_point(aes(x = Model, y = fpr, color = Model), size = 9) + #, size = Replicates
+  filter(conditions == 4 & sd == .3 & rep == 5) %>% 
+  ggplot() + geom_col(aes(x = Model, y = fpr, fill = Model)) + #, size = Replicates
   scale_colour_manual(values=cbPalette_first) +
-  # scale_size_manual(values = c(3,5,7,9)) + 
-  facet_grid(vars(plot_sd), vars(plot_conditions)) + 
+  # scale_size_manual(values = c(3,5,7,9)) +
+  # facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
-  ylim(0.0, 0.45) + 
-  theme(axis.text.x = element_text(angle = 45, hjust=1, vjust = 1, size = 12), 
-         axis.text.y = element_text(size = 14), 
-         legend.text=element_text(size=14),
+  ylim(0.0, 0.4) + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1, vjust = 1, size = 16), 
+         axis.text.y = element_text(size = 16), 
+         legend.text=element_text(size=16),
          axis.title.y = element_text(size = 22),
          axis.title.x = element_text(size = 22),
          title = element_text(size = 22),
@@ -934,6 +935,13 @@ geom_boxplot(aes(y = log2FC, x = reps, fill = Model)) + facet_grid(vars(sd), var
          strip.text = element_text(size = 16)) + 
 labs(title = "Simulation 2: Fold Change Distribution", x = "Replicates", y = "Log2FC")
 dev.off()
+
+## Caluclate #s of IQR
+setDT(boxplot_data)[,list(IQR=IQR(log2FC, na.rm = TRUE)),by=list(Model)]
+
+(0.3787906 - 0.4228233) / 0.4228233
+(0.3787906 - 0.4843184) / 0.4843184
+
 ```
 
 Interesting, when introducing missing values we see a difference in this plot compared to the other simulations. The median FC still is in line with the expected FC across all models. However the proposed method has a tighter distribution compared to the other models, especially Limma.

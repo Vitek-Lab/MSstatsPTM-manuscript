@@ -552,7 +552,17 @@ spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1
        legend.position = "bottom") + 
   labs(title = "Fold Change of Spike-in Peptides", x = "Comparison with Expected FC")
 dev.off()
+
+
+spike
+setDT(spike)[,list(IQR=IQR(log2FC, na.rm = TRUE)),by=list(Model, Label, protadj)] %>% 
+  filter(Label %in% c('mix2-mix3', 'mix1-mix3', 'mix1-mix4', 'mix2-mix4') & 
+           protadj == 'protein adjustment') %>% 
+  group_by(Model) %>% summarize(mean(IQR))
+
+(0.7557581 - 1.1954719) / 1.1954719
+(0.7557581 - 1.1277441) / 1.1277441
+
 ```
 
 In this plot we can see that the unadjusted models are very similar and do not follow the expected FC. In comparison the adjusted models all generally follow the expectation, however MSstatsPTM has a tighter distribution around the expected FC. In contrast the other two models have a wider range around the true FC.
-
