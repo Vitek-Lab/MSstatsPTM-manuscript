@@ -23,6 +23,7 @@
 \usepackage{enumitem}
 \usepackage{authblk}
 \usepackage{xr}
+\usepackage{hyperref}
 \externaldocument[main-]{../main/MSstatsPTM_Main}
 
 \usepackage[backend=biber,sorting=none]{biblatex}
@@ -117,7 +118,7 @@ This study addresses three major goals in the characterization of post-translati
 %Simply calculating averages or medians of all peptides containing a given site might not reval the full complexity of cellular phosphorylation patterns. Singly and doubly phosphorylated forms of a peptide might be present at different levels. One must also not forget that changes in total protein level are not refelcted in the phosphopeptide ratios. Whenever possible, separate protein-level measurements made from unmodified peptides should be performed and used to normalize phosphopeptide ratios.
 
 \subsection{Data structure of PTM quantification experiments.}
-A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (e.g., ubiquitination/phosphorylation) at one site are considered together. There are $I$ conditions and $J$ mass spectrometry runs (technical replicates) per condition in the experiment. The PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. To account for the underlying protein abundance, features corresponding to the unmodified peptides from the same protein are considered together, except those unmodified peptides containing a modified site to avoid the confounding effect due to the PTM. The log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. \sfigref{fig:dtable} shows an example data representation of modified peptide ions at one site and unmodified peptide ions of the same protein. Unmodified peptides from the same protein provide additional evidence on the underlying protein abundance, which needs to be integrated for PTM characterization. To address the goals of PTM characterization, statistical analysis needs to summarize values in this table using appropriate statistical models, translate the goal into a model-based quantity of interest, and draw inference (i.e., characterize the uncertainty) about the quantity. 
+A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (e.g., ubiquitination/phosphorylation) at one site are considered together. There are $I$ conditions and $J$ mass spectrometry runs (technical replicates) per condition in the experiment. The PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. To account for the underlying protein abundance, features corresponding to the unmodified peptides from the same protein are considered together, except those unmodified peptides containing a modified site to avoid the confounding effect due to the PTM. The log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. Figure \ref{fig:dtable} shows an example data representation of modified peptide ions at one site and unmodified peptide ions of the same protein. Unmodified peptides from the same protein provide additional evidence on the underlying protein abundance, which needs to be integrated for PTM characterization. To address the goals of PTM characterization, statistical analysis needs to summarize values in this table using appropriate statistical models, translate the goal into a model-based quantity of interest, and draw inference (i.e., characterize the uncertainty) about the quantity. 
 
 \begin{figure}[h!]
 \centering
@@ -496,7 +497,7 @@ To characterize the observed feature intensities, different levels of variations
 \subsection{Design of PTM experiments}
 \label{sec:complex_design}
 
-The proposed approach applied to experiments with complex designs still allows for sample size calculation and power analysis. To make the calculation the standard deviation and degrees of freedom are needed. The estimation of these quantities is dependent on the experimental design. In \sfigref{fig:statistical_inference} different experimental designs that the proposed approach can be applied to, along with their estimation of standard error and degrees of freedom is shown.
+The proposed approach applied to experiments with complex designs still allows for sample size calculation and power analysis. To make the calculation the standard deviation and degrees of freedom are needed. The estimation of these quantities is dependent on the experimental design. In Figure \ref{fig:statistical_inference} different experimental designs that the proposed approach can be applied to, along with their estimation of standard error and degrees of freedom is shown.
 
 \begin{figure}[h!]
 \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{sim_new/Statistical_inference}}%
@@ -518,60 +519,70 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental datasets in this manuscript}
 
+Table \ref{tab:dataDescription} summarizes the datasets used in this manuscript and their experimental designs. There were 6 total experiments, 3 for which ground truth was known and 3 biological investigations. For the ground truth experiments, 2 were generated via computer simulation with differing parameters and the other was an experiment with heavy labeled spike-in peptides. The biological investigations represent a variety of experimental designs and acquisition methods. Two were acquired via Tandem Mass Tag (TMT) labeling, while the other was a label free experiment. Of the two TMT experiments, one was analyzed as a time series and the other a group comparison. 
+
+Details of raw data, R scripts with MSstatsPTM analyses, and result of statistical analyses for the datasets are available in either MassIVE.quant or Github (with direct links available in the table).
 
 %%%% Summary of controlled mixtures
-\begin{table}
+\begin{table}[h!]
 \begin{tiny}
-\begin{tabular}{|c|c|ccccc|c|}
+\begin{tabular}{|c|c|cccc|c|}
 \hline
 %%%% colnames of table
-&  & \multicolumn{5}{c|}{Experimental design} & Data availability \\
-& Dataset & \multirow{2}{*}{Comparison} & No. of & No. of Bio.& No. of Tech.& \multirow{2}{*}{Details in}   & (MassIVE.quant  \\
-&  & & Conditions & Replicates & Replicates &  & or R package) \\
+&  & \multicolumn{4}{c|}{Experimental design} & Data availability \\
+& Dataset & \multirow{2}{*}{Comparison} & No. of & No. of Bio.& \multirow{2}{*}{Details in}   & (MassIVE.quant  \\
+&  & & Conditions & Replicates &  & or R package) \\
 \hline
 \hline
-% &&&&& \\[-0.05in]
+ &&&&&& \\[-0.05in]
 %%%% DDA:ControlledMix
-\multirow{3}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{3}{*}{\rotatebox[origin=c]{90}{ Ground}} \multirow{3}{*}{\rotatebox[origin=c]{90}{ Truth}} & DDA:ControlledMix \cite{Chiva2014} & Group & 5 & 1 & 3 & Suppl. Sec. & \\
- &&&&&&& \\[-0.05in]
+\multirow{5}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{5}{*}{\rotatebox[origin=c]{90}{Ground}} \multirow{5}{*}{\rotatebox[origin=c]{90}{Truth}} & Computer simulation 1 - Label-free & Group & 2/3/4 & 2/3/5/10 & Suppl. Sec. \ref{sec:dataset1} & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github}\\
+ &&&&&& \\%[-0.05in]
 %\hline 
 %&&&&&&&& \\[-0.05in]
 % \cline{2-9}
 % &&&&&&&& \\[-0.05in]
 %%% DDA iPRG2015
-& DDA:Choi2017 \cite{Choi:2017jan}  & Group & 4 & 1 & 3 &  & \\
- &&&&&&& \\[-0.05in]
+& Computer simulation 2 - missing and low features & Group & 2/3/4 & 2/3/5/10 & Suppl. Sec. \ref{sec:dataset2} & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github} \\
+ &&&&&& \\%[0.05in]
 %\hline 
-% &&&&&&& \\[-0.05in]
+% &&&&&& \\[-0.05in]
 %%% DDA Cox2014
-& DDA:Cox2014 \cite{Cox:2014fi} & Group & 2 & 1 & 4 &  & \\
- &&&&&&& \\[-0.05in]
+& SpikeIn benchmark & Group & 4 & 2 & Suppl. Sec. \ref{sec:benchmark} & \\
+ &&&&&& \\%[-0.05in]
 \hline
-\multicolumn{8}{c}{ } \\ [0.02in]
+\multicolumn{7}{c}{ } \\ [0.02in]
 \hline 
- &&&&&&& \\[-0.05in]
+ &&&&&& \\%[-0.05in]
 %%%%%%%%%%%%%%%%%%
 %%%% biological study
 %%%%%%%%%%%%%%%%%%
 %% DDA Meierhofer
-\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{investigation}} & DDA:Meierhofer2016 \cite{Meierhofer2016} & Paired & 2 & 6 & 2 &  &  \\
-&&&&&&& \\[-0.05in]
+\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{Investigation}} & Human - Ubiquitination - TMT & Group & 6 & 2 & Suppl. Sec. \ref{sec:ipah} &  \\
+&&&&&& \\%[-0.05in]
 % \cline{2-9}
 % &&&&&&& \\[-0.05in]
 %%%% SRM Picotti 2009
-& SRM:Picotti2009  \cite{Picotti09} & Time course & 10 & 3 & 1 &  & \\
-&&&&&&& \\[-0.05in]
+& Mouse - Phosphorylation - TMT & Time course & 6 & 2 & Suppl. Sec. \ref{sec:shigella} & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=4878d777c6b34cf8aaf8477e93140c4d}{MSV000085565} \\
+&&&&&& \\%[-0.05in]
 % \cline{2-9}
 % &&&&&&& \\[-0.05in]
 %%%% SRM Surinova 2015, training
-& SRM:Surinova2015:Training \cite{Surinova:2015jn} & Group & 2 & 100 & 1 & &\ [0.02in]
+& Human - Ubiquitination - Label-free & Group & 4 & 2 & Suppl. Sec. \ref{sec:usp30} &\\ [0.02in]
+ &&&&&& \\
+ \hline
 \end{tabular}\\
 \end{tiny}
-\caption{
+\caption{ \small {\bf Experimental datasets in this manuscript} 
+```Dataset'' is the code name of the dataset used in this manuscript.
+`Comparison'' is the type of experimental design (group comparison, or time course).
+``No. of Conditions'' states the number of conditions in the dataset.
+``No. of Bio. Replicates'' states the number of biological replicates per condition.
+Details regarding the experimental design for each dataset are available in the section listed in the ``Details in'' column.
+``Data availability'' column shows the MassIVE.quant ID or location on github. 
 }
-\label{tab:dataDescriptionSpikein}
+\label{tab:dataDescription}
 \end{table}
-
 
 
 \subsection{Experiments with known ground truth}
@@ -590,7 +601,7 @@ In experiments of complex designs, multiple inter-related conditions are often c
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
-\label{dataset1}
+\label{sec:dataset1}
 In the first simulation an experiment with many features per PTM and unmodified protein was created. Additionally this simulation contained no missing data. These attributes are not representative of a real experiment, but provide a baseline for model performance.
 
 \begin{itemize}
@@ -606,11 +617,12 @@ In the first simulation an experiment with many features per PTM and unmodified 
 \item Missing data: no missing value
 \end{itemize}
 
-The results are summarized from \sfigref{fig:sim1_fpr} to \sfigref{fig:sim1_recall}. These results include the false discovery rate with and without adjusting for changes in unmodified protein abundance, false positive rate, and overall accuracy. Additionally, the results are compared to simulation 2 described in the next section.
+The results are summarized from Figure \ref{fig:sim1_fpr} to Figure \ref{fig:sim1_recall}. These results include the false discovery rate with and without adjusting for changes in unmodified protein abundance, false positive rate, and overall accuracy. Additionally, the results are compared to simulation 2 described in the next section.
 
 When simulating the data, 500 of the 1000 peptides were simulated as true positives with a differential fold change between conditions, while the other 500 were not differential and treated as true negatives. In terms of the true negatives, 250 were simulated such that any abundance changes were entirely driven by changes in the unmodified peptide. We would expect any model without performing protein adjustment to treat these as false positives. The other 250 were simulated with no significant change in either PTM or overall protein abundance.
 
-\subsubsection{Dataset 2 : Computer simulation 2 - Label-free missing values and low replicates}
+\subsubsection{Dataset 2 : Computer simulation 2 - Label-free missing values and low features}
+\label{sec:dataset2}
 
 In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values. This is more in line with what we would expect in a biological experiment and provides a more realistic expectation of model performance. The number of PTM features and missing data percentage where determined by looking at the features and missing data in the biological experiments in this paper.
 
@@ -627,7 +639,7 @@ In the second simulation we introduced limited feature observations per PTM as w
 \item Missing data: 20\% of the observations for PTMs and Proteins were masked with NA at random
 \end{itemize}
 
-The results are summarized from \sfigref{fig:sim2_recall} to \sfigref{fig:fc_boxplot}.
+The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:fc_boxplot}.
 
 The portion of significant peptides were done in the same was as described in simulation 1.
 
@@ -700,7 +712,7 @@ A custom designed experiment with labeling was used to assess the performance of
 \caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
 \end{figure}
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from \sfigref{fig:spike_volcano_msstats} to \sfigref{fig:spike_fc}, including volcano plots, model summary statistics, and fold change analysis.
+Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_fc}, including volcano plots, model summary statistics, and fold change analysis.
 
 \begin{figure}[h!]
 \centering
@@ -777,7 +789,7 @@ $$Y_{mcb} = \mu + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
 
 $$\sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \epsilon_{mcb} ~ \sim N(0, \sigma^2)$$
 
-The results of the proposed method to this experiment can be seen in \sfigref{fig:ipah_figures}.
+The results of the proposed method to this experiment can be seen in Figure \ref{fig:ipah_figures}.
 
 \begin{figure}[h!]
 \centering
@@ -831,7 +843,7 @@ $$Y_{mcb} = \mu + Mixture_m + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
 
 $$Mixture_m ~ \sim N(0, \sigma^2_M) ,\: \sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \epsilon_{mcb} ~ \sim N(0, \sigma^2)$$
 
-The results of the proposed method to this experiment can be seen in  \sfigref{fig:No_Diff_Shigella_PTM} and \sfigref{fig:Diff_Shigella_PTM}.
+The results of the proposed method to this experiment can be seen in Figure \ref{fig:No_Diff_Shigella_PTM} and Figure \ref{fig:Diff_Shigella_PTM}.
 
 
 \begin{figure}[h!]
@@ -875,7 +887,7 @@ This experiment looked into the relationship between USP30 and protein kinase PI
 
 In contrast to other experiments analyzed in this paper, there was no unmodified global protein profiling run performed in this experiment. Once identification and quantification of the Ubiquitinated profiling was performed, peptides which were unmodified were extracted and used in place of a global profiling run. This resulted in a significant lack of overlap between modified and unmodified peptides and low feature counts for the unmodified protein model.
 
-An example profile plot for this experiment can be seen in  \sfigref{fig:USP30_profile_plot}.
+An example profile plot for this experiment can be seen in  Figure \ref{fig:USP30_profile_plot}.
 
 \begin{figure}[h!]
 \centering
@@ -893,12 +905,12 @@ An example profile plot for this experiment can be seen in  \sfigref{fig:USP30_p
  \centering
 	\includegraphics[width=.75\textwidth]{sim_new/same_var_power}
 	\caption{The power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates are high for both modified and unmodified peptides the power is much higher. Conversely at low replicates for each the power is much lower. The interesting part of this chart is when the replicates are different between runs. With equal variance, it does not matter if the PTM replicates or protein replicates are higher.}
- \end{subfigure}
+ \end{subfigure}\vspace{-1mm}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.75\textwidth]{sim_new/high_ptm_var_power}
 	\caption{In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to higher power.}
- \end{subfigure}
+ \end{subfigure}\vspace{-1mm}
  \caption{Power analysis of experiments with differing variances.}
 \label{fig:power_sd_combo}
 \end{figure}

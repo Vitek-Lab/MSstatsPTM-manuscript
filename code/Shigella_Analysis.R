@@ -25,8 +25,9 @@ pST_input <- list(PTM = data.frame(shigella_peptide_pST),
 py_summarization <- dataSummarizationPTM_TMT(pY_input)
 pST_summarization <- dataSummarizationPTM_TMT(pST_input)
 
-save(py_summarization, file = "Shigella_pY_Summarization.rda")
-save(pST_summarization, file = "Shigella_pST_Summarization.rda")
+save(py_summarization, file = "../data/Shigella_pY_Summarization.rda")
+load(file = "../data/Shigella_pY_Summarization.rda")
+save(pST_summarization, file = "../data/Shigella_pST_Summarization.rda")
 
 py_summarized_data <- py_summarization$PTM$ProteinLevelData
 py_feature_data <- py_summarization$PTM$FeatureLevelData

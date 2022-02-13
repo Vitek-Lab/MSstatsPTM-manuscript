@@ -194,8 +194,8 @@
       \strng{authorbibnamehash}{ed6bf90db96a27be7b1806b89e368597}
       \strng{authornamehash}{ed6bf90db96a27be7b1806b89e368597}
       \strng{authorfullhash}{1700db834e82418b38ae91c6d4909191}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1931-3128}
@@ -315,8 +315,8 @@
       \strng{authorbibnamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authornamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authorfullhash}{0b258ecfd4d745eddd8d8598251b4150}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{bioRxiv}
@@ -336,12 +336,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{Chiva2014}
-  \missing{Choi:2017jan}
-  \missing{Cox:2014fi}
-  \missing{Meierhofer2016}
-  \missing{Picotti09}
-  \missing{Surinova:2015jn}
 \endrefsection
 \endinput
 

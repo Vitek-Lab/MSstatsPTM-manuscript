@@ -367,6 +367,9 @@ summary_df$PTM$ProteinLevelData <- summary_df$PTM$ProteinLevelData %>%
                                  LogIntensities -1, LogIntensities))
 
 save(summary_df, file = "v2_summarized.rda")
+load(file = "D:\\Northeastern\\Research\\MSstats\\PTM_Refractor\\Label_Free_PTM_Data\\benchmark-spike\\saved_data\\v2_summarized.rda")
+
+
 
 ## Model
 model_df <- groupComparisonPTM(summary_df, data.type = "LabelFree", use_log_file=FALSE)
