@@ -16,6 +16,7 @@
 \usepackage{rotating}
 \usepackage{authblk}
 \usepackage{subcaption}
+\usepackage{hyperref}
 \usepackage{xcolor} %\[table,dvipsnames]
 %\usepackage{makecell}
 %\usepackage{array}
@@ -147,12 +148,80 @@ The proposed approach is implemented as a freely available open source R package
 
 \section{Experimental Procedures}
 
-The datasets were chosen to provide a performance benchmark of the proposed approach in situations with known ground truth, and to represent a variety of experimental designs and acquisition methods. The computer simulations varied in experimental realism. The first simulation was perfectly clean, with many replicates and no missing values, while the second simulation introduced real world qualities, such as limited modified features and missing values. The spike-in experiment took the real world qualities a step further and allowed us to compare the methods in a real experiment with known changes in modified spike-in peptides. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, experimental designs, and data acquisition strategies. A summary of the experiments used in this manuscript can be seen in \todo{add and reference table}.
+This section summarizes the datasets in this manuscript. The datasets were chosen to provide a performance benchmark of the proposed approach in situations with known ground truth, and to represent a variety of experimental designs and acquisition methods. The computer simulations varied in experimental realism. The first simulation was perfectly clean, with many replicates and no missing values, while the second simulation introduced real world qualities, such as limited modified features and missing values. The spike-in experiment took the real world qualities a step further and allowed us to compare the methods in a real experiment with known changes in modified spike-in peptides. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, experimental designs, and data acquisition strategies. A summary of the experiments used in this manuscript can be seen in Table \ref{tab:dataDescription}. Details of raw data, R scripts with MSstatsPTM analyses, and result of statistical analyses for the datasets are available in either MassIVE.quant or Github (with direct links available in the table).
+
+%%%% Summary of controlled mixtures
+\begin{table}[h!]
+\centering
+\begin{tiny}
+\begin{tabular}{|c|c|cccc|c|}
+\hline
+%%%% colnames of table
+&  & \multicolumn{4}{c|}{Experimental design} & Data availability \\
+& Dataset & \multirow{2}{*}{Comparison} & No. of & No. of Bio.& \multirow{2}{*}{Details in} & (MassIVE.quant  \\
+&  & & Conditions & Replicates &  & or R package) \\
+\hline
+\hline
+ &&&&&& \\[-0.05in]
+%%%% DDA:ControlledMix
+\multirow{5}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{5}{*}{\rotatebox[origin=c]{90}{Ground}} \multirow{5}{*}{\rotatebox[origin=c]{90}{Truth}} & Computer simulation 1 - Label-free & Group & 2/3/4 & 2/3/5/10 & Suppl. Sec. \ref{sec:dataset1} & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github}\\
+ &&&&&& \\%[-0.05in]
+%\hline 
+%&&&&&&&& \\[-0.05in]
+% \cline{2-9}
+% &&&&&&&& \\[-0.05in]
+%%% DDA iPRG2015
+& Computer simulation 2 - missing and low features & Group & 2/3/4 & 2/3/5/10 & Suppl. Sec. \ref{sec:dataset2} & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github} \\
+ &&&&&& \\%[0.05in]
+%\hline 
+% &&&&&& \\[-0.05in]
+%%% DDA Cox2014
+& SpikeIn benchmark & Group & 4 & 2 & Suppl. Sec. \ref{sec:benchmark} & \\
+ &&&&&& \\%[-0.05in]
+\hline
+\multicolumn{7}{c}{ } \\ [0.02in]
+\hline 
+ &&&&&& \\%[-0.05in]
+%%%%%%%%%%%%%%%%%%
+%%%% biological study
+%%%%%%%%%%%%%%%%%%
+%% DDA Meierhofer
+\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{Investigation}} & Human - Ubiquitination - TMT & Group & 6 & 2 & Suppl. Sec. \ref{sec:ipah} &  \\
+&&&&&& \\%[-0.05in]
+% \cline{2-9}
+% &&&&&&& \\[-0.05in]
+%%%% SRM Picotti 2009
+& Mouse - Phosphorylation - TMT & Time course & 6 & 2 & Suppl. Sec. \ref{sec:shigella} & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=4878d777c6b34cf8aaf8477e93140c4d}{MSV000085565} \\
+&&&&&& \\%[-0.05in]
+% \cline{2-9}
+% &&&&&&& \\[-0.05in]
+%%%% SRM Surinova 2015, training
+& Human - Ubiquitination - Label-free & Group & 4 & 2 & Suppl. Sec. \ref{sec:usp30} &\\ [0.02in]
+ &&&&&& \\
+ \hline
+\end{tabular}\\
+\end{tiny}
+\caption{ \small {\bf Experimental datasets in this manuscript} 
+```Dataset'' is the code name of the dataset used in this manuscript.
+`Comparison'' is the type of experimental design (group comparison, or time course).
+``No. of Conditions'' states the number of conditions in the dataset.
+``No. of Bio. Replicates'' states the number of biological replicates per condition.
+Details regarding the experimental design for each dataset are available in the section listed in the ``Details in'' column.
+``Data availability'' column shows the MassIVE.quant ID or location on github. 
+}
+\label{tab:dataDescription}
+\end{table}
 
 \subsection*{Dataset 1 : Computer simulation 1 - Label-free}
 \label{sec:comp_sim_procedure1}
 
-The simulation mimicked a label-free experiment with a high number of modified and unmodified peptide features and no missing values. Multiple datasets were generated with different numbers of replicates and conditions. In all simulations 1000 modified peptides were generated, half of which were true positives and half true negatives. Half of the true positives and true negatives were generated convoluted with global protein abundance. Before adjustment, the convoluted true positives should appear to be negatives, while the convoluted true negatives would appear differential. Modified peptides and unmodified proteins were both simulated with 10 features.
+To evaluate the proposed method in situations with biological variation and known ground truth we created synthetic datasets which mimicked a label-free experiment with a high number of modified and unmodified peptide features and no missing values. Multiple simulations were ran with differing numbers of replicates and conditions per simulation. This was done to see how the method performed in different experimental design scenarios. The exact numbers of replicates and conditions can be seen in Table \ref{tab:dataDescription}.
+
+In each simulation, 1000 PTMs and 1000 unmodified proteins were generated. Each PTM and protein was created with 10 corresponding peptide features. 500 of the PTMs were generated with a differential fold change between conditions, while the other half were generated with no difference between conditions. Of the 500 differential PTMs, the fold change of 250 were fully masked by changes in the unmodified protein. Of the 500 non-differential PTMs, 250 were generated with a differential fold change that was entirely due to the unmodified protein. All differential PTMs were generated with an expected log fold change of .75.
+
+Finally, each simulation was generated with random biological variation. Specifically, let $Y_{ibc}$ denote the abundance of peptide $i$ in biological replicate $b$ of condition $c$. The simulated peptide abundance  $Z_{ibc}$ was generated as $Z_{ibc} = Y_{ibc} + \epsilon_{ibc}$ where $\epsilon_{ibc}\sim^{iid}N(0,\sigma^2)$. The simulations were generated with two value $\sigma^2 = {.2, .3}$ motivated by the biological experiments in this manuscript.
+
+Further details of how the first simulation was generated, can be found in Supplementary Sec. \ref{supp-sec:sim}.
 
 \subsection*{Dataset 2 : Computer simulation 2 - Label-free missing values and low features}
 \label{sec:comp_sim_procedure2}
