@@ -92,18 +92,29 @@
 %\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 
-\title{Statistical methods for relative quantification of post-translational modifications in global proteomics experiments}
-\author[1]{Tsung-Heng~Tsai}
-\author[2]{Erik~Verschueren}
-\author[1]{Olga~Vitek}
-\affil[1]{Northeastern University, Boston, MA, USA}
-\affil[2]{Protein Chemistry, Genentech, South San Francisco, CA, USA}
+\title{MSstatsPTM statistical relative quantification of post-translational modifications in global proteomics experiments
+
+\textbf{Supplementary Information}
+}
+
+\author[1]{Devon~Kohler}
+\author[2]{Tsung-Heng~Tsai}
+\author[1]{Ting~Huang}
+\author[4]{Erik~Verschueren}
+\author[3]{Trent~Hinkle}
+\author[3]{Meena~Choi*}
+\author[1]{Olga~Vitek*}
+\affil[1]{Khoury College of Computer Science, Northeastern University, Boston, MA, USA}
+\affil[2]{Kent State University, Kent, OH, USA}
+\affil[3]{MPL, Genentech, South San Francisco, CA, USA}
+\affil[4]{ULUA BV, Arendstraat 29, 2018 Antwerp, Belgium}
+\affil[*]{Corresponding Authors}
 
 
 \begin{document}
-%\maketitle
+\maketitle
 
-%\newpage
+\newpage
 \tableofcontents
 
 
@@ -112,7 +123,7 @@
 \section{Overview of proposed approach and notation}
 \label{sec:intro}
 
-This study addresses three major goals in the characterization of post-translational modifications (PTMs): a) relative PTM quantification, b) PTM significance analysis, i.e., to detect PTM sites that are differentially modified across experimental conditions, and c) statistical design of PTM experiments.  
+This study addresses three major goals in the characterization of post-translational modifications (PTMs): a) relative PTM quantification, b) PTM significance analysis, i.e., to detect PTM sites that are differentially modified across experimental conditions, and c) statistical design and analysis of PTM experiments.  
 
 %Unlike protein-level analysis, in which multiple quantified peptides are often observed, phospho-peptides are more frequently detected and quantified only once. There is a strong correlation between signal strength and reproducibility. When selecting sites for further study, investigators should pay close attention to the number of PSMs and the signal strength for peptides harboring each site.
 %Simply calculating averages or medians of all peptides containing a given site might not reval the full complexity of cellular phosphorylation patterns. Singly and doubly phosphorylated forms of a peptide might be present at different levels. One must also not forget that changes in total protein level are not refelcted in the phosphopeptide ratios. Whenever possible, separate protein-level measurements made from unmodified peptides should be performed and used to normalize phosphopeptide ratios.
@@ -522,7 +533,7 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
-The proposed statistical approach was evaluated and compared to the $t$-test and Limma methods using computer simulation. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
+The proposed statistical approach was evaluated and compared to the $t$-test and Limma methods using computer simulations. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -646,7 +657,7 @@ A custom designed experiment with labeling was used to assess the performance of
 \caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
 \end{figure}
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_fc}, including volcano plots, model summary statistics, and fold change analysis.
+Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
 
 \begin{figure}[h!]
 \centering

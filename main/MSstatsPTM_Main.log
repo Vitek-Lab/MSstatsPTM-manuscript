@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  21 FEB 2022 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  5 MAR 2022 12:13
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1209,17 +1209,6 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/Devon Kohler/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 [2]
-
-LaTeX Warning: Reference `sec:dataset1' on page 3 undefined on input line 167.
-
-
-LaTeX Warning: Reference `sec:dataset2' on page 3 undefined on input line 174.
-
-
-LaTeX Warning: Reference `sec:benchmark' on page 3 undefined on input line 179.
-
-
-
 Overfull \vbox (11.39627pt too high) detected at line 189
  []
 
@@ -1227,114 +1216,105 @@ Overfull \vbox (11.39627pt too high) detected at line 189
 Overfull \vbox (20.65326pt too high) detected at line 189
  []
 
-
-LaTeX Warning: Reference `sec:ipah' on page 3 undefined on input line 189.
-
-
-LaTeX Warning: Reference `sec:shigella' on page 3 undefined on input line 194.
-
-
-LaTeX Warning: Reference `sec:usp30' on page 3 undefined on input line 199.
-
-[3] [4] [5] [6] [7]
-Overfull \hbox (0.82611pt too wide) in paragraph at lines 383--384
+[3] [4] [5] [6] [7] [8]
+Overfull \hbox (0.82611pt too wide) in paragraph at lines 428--429
 []\OT1/cmr/m/n/10 The code is avail-able on Bio-con-duc-tor, []$\OT1/cmtt/m/n/1
 0 http : / / www . bioconductor . org / packages / release / bioc / html /
  []
 
-[8] [9] [10]
-Overfull \hbox (6.60321pt too wide) in paragraph at lines 429--430
+[9] [10]
+Overfull \hbox (6.60321pt too wide) in paragraph at lines 472--473
 \OT1/cmr/m/n/10 method. The pro-file plot shows a large pos-i-tive log fold cha
 nge of $2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 9$ be-tween the WT[]Late and WT[]Uni
 nfected
  []
 
 [11] [12] [13] [14] [15]
-<images/fig3.png, id=312, 722.7pt x 542.025pt>
+<images/fig3.png, id=317, 722.7pt x 542.025pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
-Package pdftex.def Info: images/fig3.png  used on input line 482.
+Package pdftex.def Info: images/fig3.png  used on input line 527.
 (pdftex.def)             Requested size: 433.62334pt x 325.2175pt.
-<images/MSstatsPTM_design.png, id=313, 510.40688pt x 345.54094pt>
+<images/MSstatsPTM_design.png, id=318, 510.40688pt x 345.54094pt>
 File: images/MSstatsPTM_design.png Graphic file (type png)
 <use images/MSstatsPTM_design.png>
-Package pdftex.def Info: images/MSstatsPTM_design.png  used on input line 490.
+Package pdftex.def Info: images/MSstatsPTM_design.png  used on input line 535.
 (pdftex.def)             Requested size: 408.32605pt x 276.43312pt.
-<images/sim1_FDR_all_models.png, id=315, 752.8125pt x 501.875pt>
+<images/sim1_FDR_all_models.png, id=320, 752.8125pt x 501.875pt>
 File: images/sim1_FDR_all_models.png Graphic file (type png)
 <use images/sim1_FDR_all_models.png>
-Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 498
+Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 543
 .
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
-<images/sim3_Accuracy.png, id=316, 752.8125pt x 501.875pt>
+<images/sim3_Accuracy.png, id=321, 752.8125pt x 501.875pt>
 File: images/sim3_Accuracy.png Graphic file (type png)
 <use images/sim3_Accuracy.png>
-Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 502.
+Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 548.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
 
 
-LaTeX Warning: Float too large for page by 1.31554pt on input line 508.
+LaTeX Warning: Float too large for page by 1.31554pt on input line 555.
 
-<images/spike_in_fc.png, id=317, 752.8125pt x 501.875pt>
+<images/spike_in_fc.png, id=322, 752.8125pt x 501.875pt>
 File: images/spike_in_fc.png Graphic file (type png)
 <use images/spike_in_fc.png>
-Package pdftex.def Info: images/spike_in_fc.png  used on input line 514.
+Package pdftex.def Info: images/spike_in_fc.png  used on input line 561.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
-<images/spike_in_volcano.png, id=318, 752.8125pt x 501.875pt>
+<images/spike_in_volcano.png, id=323, 752.8125pt x 501.875pt>
 File: images/spike_in_volcano.png Graphic file (type png)
 <use images/spike_in_volcano.png>
-Package pdftex.def Info: images/spike_in_volcano.png  used on input line 519.
+Package pdftex.def Info: images/spike_in_volcano.png  used on input line 566.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
 
-LaTeX Warning: Float too large for page by 25.31554pt on input line 525.
+LaTeX Warning: Float too large for page by 25.31554pt on input line 572.
 
-<images/ipah_venn_diagramm.png, id=319, 1011.78pt x 1011.78pt>
+<images/ipah_venn_diagramm.png, id=324, 1011.78pt x 1011.78pt>
 File: images/ipah_venn_diagramm.png Graphic file (type png)
 <use images/ipah_venn_diagramm.png>
-Package pdftex.def Info: images/ipah_venn_diagramm.png  used on input line 530.
+Package pdftex.def Info: images/ipah_venn_diagramm.png  used on input line 577.
 
 (pdftex.def)             Requested size: 234.8775pt x 234.86589pt.
-<images/IpaH_prof_plot.png, id=320, 1129.21875pt x 602.25pt>
+<images/IpaH_prof_plot.png, id=325, 1129.21875pt x 602.25pt>
 File: images/IpaH_prof_plot.png Graphic file (type png)
 <use images/IpaH_prof_plot.png>
-Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 535.
+Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 582.
 (pdftex.def)             Requested size: 446.26582pt x 238.0102pt.
 
-LaTeX Warning: Float too large for page by 17.44608pt on input line 541.
+LaTeX Warning: Float too large for page by 17.44608pt on input line 588.
 
-<images/shig_venn_diagramm.png, id=321, 1011.78pt x 1011.78pt>
+<images/shig_venn_diagramm.png, id=326, 1011.78pt x 1011.78pt>
 File: images/shig_venn_diagramm.png Graphic file (type png)
 <use images/shig_venn_diagramm.png>
-Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 547.
+Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 594.
 
 (pdftex.def)             Requested size: 234.86589pt x 234.8775pt.
-<images/No_Difference_Shigella_Profile_Plot.png, id=322, 1129.21875pt x 602.25p
+<images/No_Difference_Shigella_Profile_Plot.png, id=327, 1129.21875pt x 602.25p
 t>
 File: images/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use images/No_Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: images/No_Difference_Shigella_Profile_Plot.png  used o
-n input line 553.
+n input line 600.
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
 
-LaTeX Warning: Float too large for page by 5.9831pt on input line 559.
+LaTeX Warning: Float too large for page by 5.9831pt on input line 606.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/usp30_venn_diagramm.png, id=323, 1011.78pt x 1011.78pt>
+<images/usp30_venn_diagramm.png, id=328, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm.png Graphic file (type png)
 <use images/usp30_venn_diagramm.png>
-Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 565
+Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 612
 .
 (pdftex.def)             Requested size: 246.6146pt x 246.61852pt.
-<images/usp30_venn_diagramm_matching_only.png, id=324, 1011.78pt x 1011.78pt>
+<images/usp30_venn_diagramm_matching_only.png, id=329, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm_matching_only.png Graphic file (type png)
 <use images/usp30_venn_diagramm_matching_only.png>
 Package pdftex.def Info: images/usp30_venn_diagramm_matching_only.png  used on 
-input line 571.
+input line 618.
 (pdftex.def)             Requested size: 246.6146pt x 246.61852pt.
 
-LaTeX Warning: Float too large for page by 13.80702pt on input line 577.
+LaTeX Warning: Float too large for page by 13.80702pt on input line 624.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1345,9 +1325,6 @@ png> <./images/spike_in_volcano.png>] [20 <./images/ipah_venn_diagramm.png> <./
 images/IpaH_prof_plot.png>] [21 <./images/shig_venn_diagramm.png> <./images/No_
 Difference_Shigella_Profile_Plot.png>] [22 <./images/usp30_venn_diagramm.png> <
 ./images/usp30_venn_diagramm_matching_only.png>] (MSstatsPTM_Main.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: 1D1E49002FF9FE544D76A3AEA49FAF0A;649.
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
@@ -1355,14 +1332,14 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28866 strings out of 479334
- 550086 string characters out of 2853721
- 1259319 words of memory out of 3000000
- 45740 multiletter control sequences out of 15000+200000
- 413024 words of font info for 64 fonts, out of 3000000 for 9000
+ 28880 strings out of 479334
+ 550513 string characters out of 2853721
+ 1257228 words of memory out of 3000000
+ 45753 multiletter control sequences out of 15000+200000
+ 412715 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,12n,131p,1926b,1351s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{figure.caption.20} has been referenced but does n
+ 128i,12n,131p,1926b,1347s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{figure.caption.19} has been referenced but does n
 ot exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{subsubsection.4.2.3} has been referenced but does n
@@ -1371,7 +1348,7 @@ ot exist, replaced by a fixed one
 pdfTeX warning (dest): name{subsection.4.1} has been referenced but does not ex
 ist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.8} has been referenced but does not 
+pdfTeX warning (dest): name{figure.caption.7} has been referenced but does not 
 exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{subsection.3.1} has been referenced but does not ex
@@ -1395,32 +1372,30 @@ ot exist, replaced by a fixed one
 <C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmbx10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Users/Devon Kohler/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Devon K
-ohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
-<C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmex10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Devon Kohler/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Devon K
-ohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C
+iKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Devon Kohler/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Devon
+ Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb
+><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Devon Kohler/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Devon K
+ohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
 :/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Devon Kohler/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Devon Kohler/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users
-/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9
-.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Devon Kohler/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Devon Kohler/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/De
-von Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.
-pfb>
-Output written on MSstatsPTM_Main.pdf (22 pages, 691474 bytes).
+cm/cmr17.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr5.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Devon Kohler/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Devon Kohler/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/
+Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsy5.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Devon Kohler/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Devon Kohler/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on MSstatsPTM_Main.pdf (22 pages, 688091 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
- 103 named destinations out of 1000 (max. 500000)
+ 456 PDF objects out of 1000 (max. 8388607)
+ 105 named destinations out of 1000 (max. 500000)
  217 words of extra memory for PDF output out of 10000 (max. 10000000)
 

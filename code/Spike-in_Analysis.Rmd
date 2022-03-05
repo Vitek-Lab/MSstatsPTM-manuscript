@@ -81,6 +81,10 @@ Protein: 10.2
 First a comparison between the adjusted and unadjusted models are shown. The spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
 
 ```{r pressure, echo=FALSE, fig.width = 10, fig.height = 7}
+load(file = "D:\\Northeastern\\Research\\MSstats\\PTM_Refractor\\Label_Free_PTM_Data\\benchmark-spike\\MSstatsPTM_Summarized.rda")
+
+summary_df$PTM$RunlevelData
+
 load(file = "../data/Spike_in_MSstatsPTM_Model.rda")#model_df
 
 model_df$ADJUSTED.Model <- model_df$ADJUSTED.Model %>% filter(is.finite(pvalue))

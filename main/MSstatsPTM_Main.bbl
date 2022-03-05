@@ -607,15 +607,15 @@
       \verb https://doi.org/10.1016/j.chom.2021.08.010
       \endverb
       \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S1931312821003863
+      \verb https://www.cell.com/cell-host-microbe/fulltext/S1931-3128(21)00386-3
       \endverb
       \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S1931312821003863
+      \verb https://www.cell.com/cell-host-microbe/fulltext/S1931-3128(21)00386-3
       \endverb
       \keyw{GSDMD,inflammasome,proteasome,pyroptosis,,ubiquitin ligase,virulence}
     \endentry
     \entry{Maculins}{article}{}
-      \name{author}{18}{}{%
+      \name{author}{22}{}{%
         {{hash=8049cd7b0608aca32d04626869889dd4}{%
            family={Maculins},
            familyi={M\bibinitperiod},
@@ -631,6 +631,11 @@
            familyi={H\bibinitperiod},
            given={Trent},
            giveni={T\bibinitperiod}}}%
+        {{hash=f6e5cecf191deeadb4aaa49c9d5d7788}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Meena},
+           giveni={M\bibinitperiod}}}%
         {{hash=c7668a6bbf1d6bb51759aec310043ad8}{%
            family={Chang},
            familyi={C\bibinitperiod},
@@ -641,6 +646,16 @@
            familyi={C\bibinitperiod},
            given={Cecile},
            giveni={C\bibinitperiod}}}%
+        {{hash=12a17c55ea1c86985fbe79c4f1824e87}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Shilpa},
+           giveni={S\bibinitperiod}}}%
+        {{hash=27e82f38d7eb7b91ea5ac1676c56a9c6}{%
+           family={Kwon},
+           familyi={K\bibinitperiod},
+           given={Youngsu},
+           giveni={Y\bibinitperiod}}}%
         {{hash=636fb95ee99dc60795d2769163bc78a8}{%
            family={Lim},
            familyi={L\bibinitperiod},
@@ -654,23 +669,18 @@
         {{hash=0cc8ef361cc05778f80ab06db3331232}{%
            family={Kunz},
            familyi={K\bibinitperiod},
-           given={Ryan\bibnamedelima C.},
+           given={Ryan\bibnamedelima C},
            giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
         {{hash=54c72c78bca5149db699b2739c71716d}{%
            family={Erickson},
            familyi={E\bibinitperiod},
-           given={Brian\bibnamedelima K.},
+           given={Brian\bibnamedelima K},
            giveni={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
         {{hash=776fa4b4bf5b59c890b865f5765bcb93}{%
            family={Huang},
            familyi={H\bibinitperiod},
            given={Ting},
            giveni={T\bibinitperiod}}}%
-        {{hash=f6e5cecf191deeadb4aaa49c9d5d7788}{%
-           family={Choi},
-           familyi={C\bibinitperiod},
-           given={Meena},
-           giveni={M\bibinitperiod}}}%
         {{hash=ecebc497c4e028867b2bf078ef5f1461}{%
            family={Tsai},
            familyi={T\bibinitperiod},
@@ -686,11 +696,21 @@
            familyi={R\bibinitperiod},
            given={Mike},
            giveni={M\bibinitperiod}}}%
-        {{hash=da6170b4605c0f07e5002f2088ff788d}{%
+        {{hash=7697271d1ec780e06b76d0ebd35e5bf7}{%
+           family={Senbabaoglu},
+           familyi={S\bibinitperiod},
+           given={Yasin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=5f834ccd6139b758bb6732c2badd1bf9}{%
+           family={Mckenzie},
+           familyi={M\bibinitperiod},
+           given={Brent},
+           giveni={B\bibinitperiod}}}%
+        {{hash=9d995d338c7338d992d8b58b60f87c5f}{%
            family={Rohde},
            familyi={R\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod}}}%
+           given={John\bibnamedelima R},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
         {{hash=155d26768e6292ac371f92840c269b00}{%
            family={Dikic},
            familyi={D\bibinitperiod},
@@ -699,7 +719,7 @@
         {{hash=a96966e400834362c700f500fda47525}{%
            family={Kirkpatrick},
            familyi={K\bibinitperiod},
-           given={Donald\bibnamedelima S.},
+           given={Donald\bibnamedelima S},
            giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
         {{hash=fb023d4deb6bec706164cdb7792d48f4}{%
            family={Murthy},
@@ -707,33 +727,121 @@
            given={Aditya},
            giveni={A\bibinitperiod}}}%
       }
+      \name{editor}{2}{}{%
+        {{hash=d988a2c648a4887396c6e29b29583652}{%
+           family={Stallings},
+           familyi={S\bibinitperiod},
+           given={Christina\bibnamedelima L},
+           giveni={C\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=1844212e2be5e99f69479876d98b53c4}{%
+           family={Garrett},
+           familyi={G\bibinitperiod},
+           given={Wendy\bibnamedelima S},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
       \list{publisher}{1}{%
-        {Cold Spring Harbor Laboratory}%
+        {eLife Sciences Publications, Ltd}%
       }
       \strng{namehash}{88896e768c707888b71fc82eca33a98b}
-      \strng{fullhash}{0b258ecfd4d745eddd8d8598251b4150}
+      \strng{fullhash}{4c83aed60f8efef181c8cac2506bd41b}
       \strng{bibnamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authorbibnamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authornamehash}{88896e768c707888b71fc82eca33a98b}
-      \strng{authorfullhash}{0b258ecfd4d745eddd8d8598251b4150}
+      \strng{authorfullhash}{4c83aed60f8efef181c8cac2506bd41b}
+      \strng{editorbibnamehash}{be6472372306206bfa7093887f5fceb4}
+      \strng{editornamehash}{be6472372306206bfa7093887f5fceb4}
+      \strng{editorfullhash}{be6472372306206bfa7093887f5fceb4}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{bioRxiv}
-      \field{title}{{Proteomics of autophagy deficient macrophages reveals enhanced antimicrobial immunity via the oxidative stress response}}
-      \field{year}{2020}
+      \field{abstract}{Defective autophagy is strongly associated with chronic inflammation. Loss-of-function of the core autophagy gene \textit{Atg16l1} increases risk for Crohn’s disease in part by enhancing innate immunity through myeloid cells such as macrophages. However, autophagy is also recognized as a mechanism for clearance of certain intracellular pathogens. These divergent observations prompted a re-evaluation of ATG16L1 in innate antimicrobial immunity. In this study, we found that loss of \textit{Atg16l1} in myeloid cells enhanced the killing of virulent \textit{Shigella flexneri (S.flexneri)}, a clinically relevant enteric bacterium that resides within the cytosol by escaping from membrane-bound compartments. Quantitative multiplexed proteomics of murine bone marrow-derived macrophages revealed that ATG16L1 deficiency significantly upregulated proteins involved in the glutathione-mediated antioxidant response to compensate for elevated oxidative stress, which simultaneously promoted \textit{S.flexneri} killing. Consistent with this, myeloid-specific deletion of \textit{Atg16l1} in mice accelerated bacterial clearance in \textit{vitro} and \textit{in vivo}. Pharmacological induction of oxidative stress through suppression of cysteine import enhanced microbial clearance by macrophages. Conversely, antioxidant treatment of macrophages permitted \textit{S.flexneri} proliferation. These findings demonstrate that control of oxidative stress by ATG16L1 and autophagy regulates antimicrobial immunity against intracellular pathogens.}
+      \field{issn}{2050-084X}
+      \field{journaltitle}{eLife}
+      \field{month}{6}
+      \field{title}{Multiplexed proteomics of autophagy-deficient murine macrophages reveals enhanced antimicrobial immunity via the oxidative stress response}
+      \field{volume}{10}
+      \field{year}{2021}
+      \field{pages}{e62320}
+      \range{pages}{-1}
       \verb{doi}
-      \verb 10.1101/2020.09.10.291344
-      \endverb
-      \verb{eprint}
-      \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344.full.pdf
+      \verb 10.7554/eLife.62320
       \endverb
       \verb{urlraw}
-      \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344
+      \verb https://doi.org/10.7554/eLife.62320
       \endverb
       \verb{url}
-      \verb https://www.biorxiv.org/content/early/2020/09/12/2020.09.10.291344
+      \verb https://doi.org/10.7554/eLife.62320
+      \endverb
+      \keyw{autophagy,oxidative damage,macrophages,shigella flexneri,mass spectrometry,proteomics}
+    \endentry
+    \entry{Cunningham2015}{article}{}
+      \name{author}{9}{}{%
+        {{hash=6f9b815a0e19f12142cf155eb55ba4f2}{%
+           family={Cunningham},
+           familyi={C\bibinitperiod},
+           given={Christian\bibnamedelima N.},
+           giveni={C\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=0e0eade87bfc25e2e20d8b0f0eee3a87}{%
+           family={Baughman},
+           familyi={B\bibinitperiod},
+           given={Joshua\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=f595887a216e69571c240e62f784abaf}{%
+           family={Phu},
+           familyi={P\bibinitperiod},
+           given={Lilian},
+           giveni={L\bibinitperiod}}}%
+        {{hash=822a7b1ad37bf889dcf101876d9dac92}{%
+           family={Tea},
+           familyi={T\bibinitperiod},
+           given={Joy\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=3e4f496cec41e8820b4fb1bba9509fe6}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Christine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=24850db706ed9793a8c263e5454348ca}{%
+           family={Coons},
+           familyi={C\bibinitperiod},
+           given={Mary},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a96966e400834362c700f500fda47525}{%
+           family={Kirkpatrick},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=f274535e89095e788b2d33a1ee36ec80}{%
+           family={Bingol},
+           familyi={B\bibinitperiod},
+           given={Baris},
+           giveni={B\bibinitperiod}}}%
+        {{hash=d9f19a6fc19568ff64fd8e480f8d0943}{%
+           family={Corn},
+           familyi={C\bibinitperiod},
+           given={Jacob\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{0bac085ea2c679960d0125386d1dadc3}
+      \strng{fullhash}{2d95eb1378e52ef54c3f982302c8da3c}
+      \strng{bibnamehash}{0bac085ea2c679960d0125386d1dadc3}
+      \strng{authorbibnamehash}{0bac085ea2c679960d0125386d1dadc3}
+      \strng{authornamehash}{0bac085ea2c679960d0125386d1dadc3}
+      \strng{authorfullhash}{2d95eb1378e52ef54c3f982302c8da3c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Cell Biology}
+      \field{number}{2}
+      \field{title}{USP30 and Parkin homeostatically regulate atypical ubiquitin chains on mitochondria}
+      \field{volume}{17}
+      \field{year}{2015}
+      \field{pages}{160\bibrangedash 169}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1038/ncb3097
       \endverb
     \endentry
     \entry{Zhu}{article}{}
