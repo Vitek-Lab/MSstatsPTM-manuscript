@@ -1,0 +1,8 @@
+INFO  [2022-03-07 13:41:32] MSstats - groupComparison function
+INFO  [2022-03-07 13:41:32] labeled = FALSE
+INFO  [2022-03-07 13:41:32] scopeOfBioReplication = expanded
+INFO  [2022-03-07 13:41:32] Time course design of experiment - okay
+INFO  [2022-03-07 13:41:32] == Start to test and get inference in whole plot
+INFO  [2022-03-07 13:42:03] == Comparisons for all proteins are done.
+INFO  [2022-03-07 13:42:03] The output for groupComparison is ready.
+INFO  [2022-03-07 13:42:03] Starting Protein Adjustment

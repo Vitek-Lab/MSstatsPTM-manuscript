@@ -1,9 +1,12 @@
 
-library(MSstatsPTMold)
+## Load packages
 library(MSstatsPTM)
 library(data.table)
 library(tidyverse)
 library(limma)
+
+## Source simulation code
+source("PTMsimulateExperiment.R")
 
 ## Define Modeling Functions ---------------------------------------------------
 convert_to_msstats_format <- function(df){
