@@ -97,7 +97,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{MSstatsPTM statistical relative quantification of post-translational modifications in global proteomics experiments}
+\title{MSstatsPTM statistical relative quantification of post-translational modifications in bottom-up proteomic experiments}
 
 \author[1]{Devon~Kohler}
 \author[2]{Tsung-Heng~Tsai}
@@ -117,38 +117,37 @@
 \begin{document}
 
 \maketitle
-%\noindent\author{Tsung-Heng Tsai$^{1}$, Olga Vitek$^{1,\ast}$}
-%
-%\vspace{0.2in}
-%\noindent $^1$   Khoury College of Computer Sciences, Northeastern University, Boston, MA, USA\\
-%\noindent $\ast$   Corresponding author \\
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Abstract}
+\begin{abstract}
 
-The scientific community increasingly utilizes mass spectrometry (MS)-based proteomics to detect changes in post-translational modifications (PTMs) between samples from various conditions. Experiments targeting PTMs face numerous challenges. These include the low abundance of modified proteoforms, few representative peptides that span modification sites, and confounding between changes in the abundance of PTM and the overall changes in the protein abundance. Therefore, statistical approaches to estimating relative changes in PTMs, and to detecting differential PTM abundance, should combine information pertaining to PTM sites over several peptides, replicates in multiple conditions, and consider relevant sources of confounding and variation. In this manuscript we propose such a general statistical framework, which is comprehensive, accurate, and leads to reproducible results. The framework requires an experimental design that, for each sample, quantifies the peptides with post-translational modifications, as well as  peptides from the same proteins with no modification sites, and is applicable to both label-free and tandem mass tag (TMT)-based acquisitions. The proposed framework summarizes the abundances of peptides with and without the modification sites, and fits a linear mixed effects model that automatically adjusts to the biological and technological aspects of the experimental design. Finally, changes in the PTM and the protein-level abundances are combined to remove bias due to the confounding of these two sources. Evaluations on computer simulations, a spike-in experiment with known ground truth, and three biological experiments which demonstrate the improved fold change estimation as compared to the currently used approaches for relative PTM quantification. The proposed framework is implemented in the free and open-source R package $MSstatsPTM$. 
+Mass spectrometry (MS)-based proteomics is increasingly used to detect changes in post-translational modifications (PTMs) between samples from various conditions. Analysis of data from such experiments faces numerous statistical challenges. These include the low abundance of modified proteoforms, the small number of representative peptides that span modification sites, and confounding between changes in the abundance of PTM and the overall changes in the protein abundance. Therefore, statistical approaches for detecting differential PTM abundance must integrate all the available information pertaining to a PTM site, and consider all the relevant sources of confounding and variation. In this manuscript we propose such a statistical framework, which is comprehensive, accurate, and leads to reproducible results. The framework requires an experimental design, which for each sample quantifies both the peptides with post-translational modifications, and peptides from the same proteins with no modification sites. The framework supports both label-free and tandem mass tag (TMT)-based acquisitions. The statistical methodology separately summarizes the abundances of peptides with and without the modification sites, and fits separate linear mixed effects models that reflect the biological and technological aspects of the experimental design. Next, model-based inferences regarding the PTM and the protein-level abundances are combined to account for the confounding between these two sources. Evaluations on computer simulations, a spike-in experiment with known ground truth, and three biological experiments demonstrate the improved fold change estimation and detection of differential PTM abundance, as compared to currently used approaches. The proposed framework is implemented in the free and open-source R/Bioconductor package $MSstatsPTM$. 
+
+\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
 \section{Introduction}
 
-The signaling mechanisms that allow cells to mount a dynamic and fast response to a multitude of events are facilitated by the modification of proteins at specific residues, acting as molecular on/off switches \cite{Deribe,Cohen}. Bottom-up liquid chromatography coupled with mass spectrometry (LC-MS) is broadly established as the tool-of-choice for unbiased and large-scale identification and quantification of proteins and their post-translational modifications (PTMs) \cite{Kall:2011ub,Roepstorff}. Studies targeting the post-translationally modified proteome focus either on the accurate localization of modification sites on proteins, relative or absolute quantification of a modification site's occupancy repertoire, or relative changes in occupancy across experimental conditions \cite{Mann}. Some scientific questions,  such as discovery of protein biomarkers of a disease, consider meaningful patterns of changes in PTM abundance alone \cite{Petushkova_2017}. Other questions, e.g. in biological and physiological studies based on very short timescales, require us to distinguish the confounding of quantitative changes in PTM and of overall changes of the protein abundance. 
+\todo{This section would benefit from more biology/technology background, and more extensive references}
+Signaling mechanisms allow cells to mount a fast and dynamic response to a multitude of bimolecular events. Signaling is facilitated by the modification of proteins at specific residues, acting as molecular on/off switches~\cite{Deribe,Cohen}. Localizing the modification sites, or characterizing relative abundance of a modification site's occupancy repertoire across experimental conditions, provides important insights~\cite{Mann}. For example, meaningful patterns of changes in post-translational modifications (PTMs) abundance can serve as biomarkers of a disease~\cite{Petushkova_2017}. Alternatively, distinguishing the quantitative changes in a PTM from the overall changes of the protein abundance helps gain insight into biological and physiological processes operating on a very short timescale \todo{would be good to have a reference}.
 
-Regardless of the question at hand, interrogating the modified proteome is challenging due to a number of reasons. First, the relatively lower abundance of modified proteoforms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads \cite{Huang:2014}. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities, which imposes challenges in both quantification and statistical modeling. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide) \cite{Mann}. Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently confounded with changes in the overall protein abundance, complication the interpretation of the results \cite{Olsen:2013}. Finally, technological aspects of bottom-up MS experiments, and presence of labeling, e.g. by tandem mass tag (TMT), introduce additional sources of uncertainty and variation.
+Bottom-up liquid chromatography coupled with tandem mass spectrometry (LC-MS/MS) is a tool-of-choice for unbiased and large-scale identification and quantification of proteins and their PTMs~\cite{Kall:2011ub,Roepstorff}. However, LC-MS-based interrogation of the modified proteome is challenging, for a number of reasons. First, the relatively lower abundance of modified proteoforms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads \cite{Huang:2014}. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities. Second, contrary to the often large number of identified peptides that can be used as features to model protein abundance changes, there are relatively few representative peptides that span a modification sites, which often results in sparse, and sometimes, inherently convoluted models (i.e., single versus multiple modified sites on a single peptide) \cite{Mann}. Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently confounded with changes in the overall protein abundance, complication the interpretation of the results \cite{Olsen:2013}. Finally, technological aspects of bottom-up MS experiments, and presence of labeling, e.g. by tandem mass tag (TMT), introduce additional sources of uncertainty and variation.
 
-Currently statistical analyses of these experiments are performed with methods such as t-test and Limma \cite{Ritchie_15a}. These approaches generally use the intensity ratios of modified and unmodified peptide features and compare the mean abundance of different PTM sites. These approaches do not fully account for different sources of variations and as such, are not directly applicable to experiments with complex designs, such as multiple conditions and mixtures. Additionally, there is no self contained implementation of these methods, requiring manual application of the methods by the user and increasing complexity.
+The technological challenges in PTM identification and quantification translate themselves into challenges of statistical data analyses. Yet frequently data from these experiments are analyzed using statistical methods that were not originally designed for this task. In particular, methods such as t-test, Analysis of Variance, or Limma take as input the intensity ratios of modified and unmodified peptide features, and compare the mean abundance of different PTM sites~ \cite{Ritchie_15a}. Such methods do not fully account for all the sources of uncertainty and variation in the experiment. As the result, they are either not directly applicable to experiments with non-trivial designs (such as experiments with multiple conditions, paired and time course designs, and experiments with labeling), or require the analysts to exercise non-trivial statistical expertise.
 
-This manuscript proposes a general statistical analysis framework that detects relative changes in post-translational modifications. The proposed framework combines the quantitative information pertaining to a PTM site over peptides and replicates in multiple conditions, and takes into account various sources of variation and confounding. The framework requires an experimental design that, for each sample, quantifies the peptides with post-translational modifications, as well as  peptides from the same proteins with no modification sites. It is applicable to both label-free and tandem mass tag (TMT)-based acquisitions. The proposed framework summarizes the abundances of peptides with and without the modification sites, and fits a linear mixed effects model that automatically adjusts to the biological and technological aspects of the experimental design. Finally, changes in the PTM and protein-level abundances are combined to remove bias due to the confounding of these two sources. 
+This manuscript proposes a general statistical analysis framework that detects relative changes in post-translational modifications. The framework requires an experimental design, which for each sample quantifies both the peptides with post-translational modifications, and peptides from the same proteins with no modification sites. The framework supports both label-free (DIA, DDA) and tandem mass tag (DDA-TMT)-based acquisitions. The statistical methodology separately summarizes the abundances of peptides with and without the modification sites, and fits separate linear mixed effects models that reflect the biological and technological aspects of the experimental design. Next, model-based inferences regarding the PTM and the protein-level abundances are combined to account for the confounding between these two sources.
 
-We evaluated the proposed framework on datasets from computer simulations, benchmark controlled mixtures, and biological investigations, which illustrate a diverse set of organisms, acquisition methods, and experimental designs, showing the applicability of the methods to a variety of situations. The evaluations demonstrated that by appropriately leveraging the information from the unmodified peptide, the proposed approach improves the accuracy of the estimates of PTM fold changes and results in a better calibrated false positive rate. In particular, accounting for the confounding from protein abundance allows us to see the true effect of the modification, avoiding the need for more manual and time intensive methods.
+We evaluated the proposed framework on \todo{how many} datasets from computer simulations, \todo{how many} benchmark controlled mixtures, and \todo{how many} biological investigations. The datasets illustrate a diverse set of organisms, acquisition methods, and experimental designs, showing the applicability of the framework to a variety of situations. The evaluations demonstrated that by appropriately leveraging the information from the unmodified peptide, the proposed approach improves the accuracy of the estimates of PTM fold changes and results in a better calibrated false positive rate of detecting differentially abundant PTMs. In particular, accounting for the confounding from protein abundance allows us to characterize the true effect of the modification, avoiding the need for more manual and time intensive methods.
 
-The proposed approach is implemented as a freely available open source R package $MSstatsPTM$, available on Bioconductor, which employs similar input format as in $MSstats$ and $MSstatsTMT$, and is compatible with many acquisition methods, such as label free, DIA, DDA, and TMT \cite{Choi:2014,Huang:2020}.
+The proposed approach is implemented as a freely available open source R package $MSstatsPTM$, available on Bioconductor, which employs similar input format as in $MSstats$ and $MSstatsTMT$ \cite{Choi:2014,Huang:2020}.
 
 \section{Experimental Procedures}
 
-This section summarizes the datasets in this manuscript. The datasets were chosen to provide a performance benchmark of the proposed approach in situations with known ground truth, and to represent a variety of experimental designs and acquisition methods. Two computer simulations were run which varied in experimental realism. The first simulation was perfectly clean, with many replicates and no missing values, while the second simulation introduced real world qualities, such as limited modified features and missing values. The spike-in experiment took the real world qualities a step further and allowed us to compare the methods in a real experiment with known changes in modified spike-in peptides. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, experimental designs, and data acquisition strategies. A summary of the experiments used in this manuscript can be seen in Table \ref{tab:dataDescription}. Details of the raw data, R scripts with $MSstatsPTM$ analysis, and the results of the statistical analysis are available in either MassIVE.quant or Github (with direct links available in the table).
+The benchmark datasets in this manuscript provide a performance benchmark of the proposed approach in situations with known ground truth, and to represent a variety of experimental designs and acquisition methods. Two computer simulations varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. The spike-in experiment took the real world characteristics a step further and allowed us to compare the methods in a real experiment with known changes in modified spike-in peptides. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, experimental designs, and data acquisition strategies. Table \ref{tab:dataDescription} summarizes the experiments. Details of the experimental data, R scripts with $MSstatsPTM$ analysis, and the results of the statistical analysis are available in either MassIVE.quant \todo{cite the paper, provide url}. Details of computer simulations are available on GitHub.
 
 %%%% Summary of controlled mixtures
 \begin{table}[h!]
@@ -157,36 +156,35 @@ This section summarizes the datasets in this manuscript. The datasets were chose
 \begin{tabular}{|c|c|ccc|c|}
 \hline
 %%%% colnames of table
-&  & \multicolumn{3}{c|}{Experimental design} & Data availability \\
-& Dataset & \multirow{2}{*}{Comparison} & No. of & No. of Bio. & (MassIVE.quant  \\
-&  & & Conditions & Replicates & or R package) \\
+& \multirow{2}{*}{Dataset} & Experimental & No. of & No. of Bio. &  Data \\
+&  & Design & Conditions & Replicates & availability \\
 \hline
 \hline
  &&&&& \\[-0.05in]
 %%%% DDA:ControlledMix
-\multirow{5}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{5}{*}{\rotatebox[origin=c]{90}{Ground}} \multirow{5}{*}{\rotatebox[origin=c]{90}{Truth}} & Computer simulation 1 - Label-free & Group & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github}\\
+\multirow{5}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{5}{*}{\rotatebox[origin=c]{90}{Ground}} \multirow{5}{*}{\rotatebox[origin=c]{90}{Truth}} & Computer simulation 1 - Label-free & Group comparison & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github \todo{url?}}\\
  &&&&& \\%[-0.05in]
 %\hline 
 %&&&&&&&& \\[-0.05in]
 % \cline{2-9}
 % &&&&&&&& \\[-0.05in]
 %%% DDA iPRG2015
-& Computer simulation 2 - missing and low features & Group & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github} \\
+& Computer simulation 2 - missing and low features & Group comparison & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github \todo{url?}} \\
  &&&&& \\%[0.05in]
 %\hline 
 % &&&&&& \\[-0.05in]
 %%% DDA Cox2014
-& SpikeIn benchmark - Ubiquitination - Label-free & Group & 4 & 2 & \href{https://massive.ucsd.edu/ProteoSAFe/private-dataset.jsp?task=c4c583ecf7f941cdac87f7a4f872517b}{MSV000088971}\\
+& SpikeIn benchmark - Ubiquitination - Label-free & Group comparison & 4 & 2 & \href{https://massive.ucsd.edu/ProteoSAFe/private-dataset.jsp?task=c4c583ecf7f941cdac87f7a4f872517b}{MSV000088971}\\
  &&&&& \\%[-0.05in]
 \hline
-\multicolumn{6lm}{c}{ } \\ [0.02in]
+\multicolumn{6}{c}{ } \\ [0.02in]
 \hline 
  &&&&& \\%[-0.05in]
 %%%%%%%%%%%%%%%%%%
 %%%% biological study
 %%%%%%%%%%%%%%%%%%
 %% DDA Meierhofer
-\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{Investigation}} & Human - Ubiquitination - 1mix-TMT & Group & 6 & 2 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=b6f0c74c234247678fb0888c6df1f225}{MSV000088966} \\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{Investigation}} & Human - Ubiquitination - 1mix-TMT & Group comparison & 6 & 2 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=b6f0c74c234247678fb0888c6df1f225}{MSV000088966} \\
 &&&&& \\%[-0.05in]
 % \cline{2-9}
 % &&&&&&& \\[-0.05in]
@@ -196,17 +194,14 @@ This section summarizes the datasets in this manuscript. The datasets were chose
 % \cline{2-9}
 % &&&&&&& \\[-0.05in]
 %%%% SRM Surinova 2015, training
-& Human - Ubiquitination - Label-free & Group & 4 & 2 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=1b516164de5345108b40b75147dd58b5}{MSV000078977}\\ [0.02in]
+& Human - Ubiquitination - Label-free & Group comparison & 4 & 2 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=1b516164de5345108b40b75147dd58b5}{MSV000078977}\\ [0.02in]
  &&&&& \\
  \hline
 \end{tabular}\\
 \end{tiny}
-\caption{ \small {\bf Experimental datasets in this manuscript} 
-```Dataset'' is the code name of the dataset used in this manuscript.
-`Comparison'' is the type of experimental design (group comparison, or time course).
-``No. of Conditions'' states the number of conditions in the dataset.
-``No. of Bio. Replicates'' states the number of biological replicates per condition.
-``Data availability'' column shows the MassIVE.quant ID or github repository. 
+\caption{ \small {\bf Simulated and experimental datasets in this manuscript} 
+```Dataset'' is the code name of the dataset in this manuscript.
+``Data availability'' shows the ID of the MassIVE.quant repository \todo{url} or the GitHub repository. 
 }
 \label{tab:dataDescription}
 \end{table}
@@ -214,9 +209,7 @@ This section summarizes the datasets in this manuscript. The datasets were chose
 \subsection*{Dataset 1 : Computer simulation 1 - Label-free}
 \label{sec:comp_sim_procedure1}
 
-To evaluate the proposed method in situations with biological variation and known ground truth we created synthetic datasets which mimicked a label-free experiment. Multiple simulations were generated with differing numbers of replicates and conditions per simulation. All simulations were created with a high number of modified peptide features and no missing values. This was done to see how the method performed in different experimental design scenarios. The exact numbers of replicates and conditions can be seen in Table \ref{tab:dataDescription}.
-
-In each simulation, 1000 PTMs and 1000 unmodified proteins were generated. Each PTM and protein was created with 10 corresponding features. 500 of the PTMs were generated with a differential fold change between conditions, while the other half were generated with no difference between conditions. Of the 500 differential PTMs, the fold change of 250 were fully masked by changes in the unmodified protein. Of the 500 non-differential PTMs, 250 were generated with a differential fold change that was entirely due to the unmodified protein. All differential PTMs were generated with an expected log fold change of .75 between conditions. Each simulation was generated with random biological variation. Specifically, let $Y_{ibc}$ denote the abundance of peptide $i$ in biological replicate $b$ of condition $c$. The simulated peptide abundance  $Z_{ibc}$ was generated as $Z_{ibc} = Y_{ibc} + \epsilon_{ibc}$ where $\epsilon_{ibc}\sim^{iid}N(0,\sigma^2)$. The simulations were generated with one of two values $\sigma^2 = \{.2, .3\}$ motivated by the biological experiments in this manuscript.
+The simulation mimicked a label-free experiment. Synthetic datasets had a high number of modified peptide features and no missing values, while varying numbers of replicates and conditions. Specifically, each dataset had 1000 PTMs and 1000 unmodified proteins, each represented by 10 LC-MS features observed across all the mass spectrometry runs. 500 of the PTMs were generated with a differential fold change between conditions, while the other half were generated with no difference between conditions. Of the 500 differential PTMs, the fold change of 250 were fully masked by changes in the unmodified protein. Of the 500 non-differential PTMs, 250 were generated with a differential fold change that was entirely due to the unmodified protein. All differential PTMs were generated with an expected log fold change of .75 between conditions. Each simulation was generated with random biological variation. Specifically, let $Y_{ibc}$ denote the abundance of peptide $i$ in biological replicate $b$ of condition $c$. The simulated peptide abundance  $Z_{ibc}$ was generated as $Z_{ibc} = Y_{ibc} + \epsilon_{ibc}$ where $\epsilon_{ibc}\sim^{iid}N(0,\sigma^2)$. The simulations were generated with one of two values $\sigma^2 = \{.2, .3\}$ motivated by the biological experiments in this manuscript.
 
 Further details of how the first simulation was generated, can be found in Supplementary Sec. \ref{supp-sec:dataset1}.
 

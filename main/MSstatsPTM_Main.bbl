@@ -79,64 +79,6 @@
       \field{pages}{596\bibrangedash 601}
       \range{pages}{6}
     \endentry
-    \entry{Kall:2011ub}{article}{}
-      \name{author}{2}{}{%
-        {{hash=aa562992fa47646efdb8484a2695acc2}{%
-           family={Käll},
-           familyi={K\bibinitperiod},
-           given={L.},
-           giveni={L\bibinitperiod}}}%
-        {{hash=a3905e7f3f93177318cb5c8042f79fd3}{%
-           family={Vitek},
-           familyi={V\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{fullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{bibnamehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
-      \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issue}{12}
-      \field{journaltitle}{PLoS Comput. Biol.}
-      \field{month}{12}
-      \field{title}{{Computational mass spectrometry--based proteomics}}
-      \field{volume}{7}
-      \field{year}{2011}
-      \field{pages}{e1002277}
-      \range{pages}{-1}
-    \endentry
-    \entry{Roepstorff}{article}{}
-      \name{author}{1}{}{%
-        {{hash=de5deb7049da13f1ccec4af2b5d194ec}{%
-           family={P.},
-           familyi={P\bibinitperiod},
-           given={Roepstorff},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{fullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{bibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authorbibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authornamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authorfullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Curr Opin Biotechnol.}
-      \field{number}{1}
-      \field{title}{{Mass spectrometry in protein studies from genome to function.}}
-      \field{volume}{8}
-      \field{year}{1997}
-      \field{pages}{6\bibrangedash 13}
-      \range{pages}{8}
-    \endentry
     \entry{Mann}{article}{}
       \name{author}{2}{}{%
         {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
@@ -156,8 +98,8 @@
       \strng{authorbibnamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
       \strng{authornamehash}{0bfe35bf1a633ffabbd5a70213fa71eb}
       \strng{authorfullhash}{0bfe35bf1a633ffabbd5a70213fa71eb}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nat Biotechnol}
@@ -211,14 +153,72 @@
       \strng{authorbibnamehash}{5dc9257aa807ec8a926333bd549ceed2}
       \strng{authornamehash}{5dc9257aa807ec8a926333bd549ceed2}
       \strng{authorfullhash}{b794f0a2f1585527390e6960d6cacd84}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLoS ONE}
       \field{title}{Post-translational modifications of FDA-approved plasma biomarkers in glioblastoma samples}
       \field{volume}{12}
       \field{year}{2017}
+    \endentry
+    \entry{Kall:2011ub}{article}{}
+      \name{author}{2}{}{%
+        {{hash=aa562992fa47646efdb8484a2695acc2}{%
+           family={Käll},
+           familyi={K\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a3905e7f3f93177318cb5c8042f79fd3}{%
+           family={Vitek},
+           familyi={V\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{fullhash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{bibnamehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
+      \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{12}
+      \field{journaltitle}{PLoS Comput. Biol.}
+      \field{month}{12}
+      \field{title}{{Computational mass spectrometry--based proteomics}}
+      \field{volume}{7}
+      \field{year}{2011}
+      \field{pages}{e1002277}
+      \range{pages}{-1}
+    \endentry
+    \entry{Roepstorff}{article}{}
+      \name{author}{1}{}{%
+        {{hash=de5deb7049da13f1ccec4af2b5d194ec}{%
+           family={P.},
+           familyi={P\bibinitperiod},
+           given={Roepstorff},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{fullhash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{bibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{authorbibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{authornamehash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \strng{authorfullhash}{de5deb7049da13f1ccec4af2b5d194ec}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Curr Opin Biotechnol.}
+      \field{number}{1}
+      \field{title}{{Mass spectrometry in protein studies from genome to function.}}
+      \field{volume}{8}
+      \field{year}{1997}
+      \field{pages}{6\bibrangedash 13}
+      \range{pages}{8}
     \endentry
     \entry{Huang:2014}{article}{}
       \name{author}{4}{}{%

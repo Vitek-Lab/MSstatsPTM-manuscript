@@ -77,14 +77,6 @@ for (i in seq_len(nrow(pot))){
 
 ptm_list1 <- c("P52209_K059")
 
-# pSTY_features$BioReplicate <- factor(pSTY_features$BioReplicate,
-#                                      levels = c("WT_Uninfect_1", "WT_Uninfect_2", "WT_Uninfect_3" , "WT_Uninfect_4",
-#                                                 "WT_Early_1", "WT_Early_2", "WT_Early_3", "WT_Early_4",
-#                                                 "WT_Late_1", "WT_Late_2", "WT_Late_3", "WT_Late_4",
-#                                                 "KO_Uninfect_1", "KO_Uninfect_2" , "KO_Uninfect_3",
-#                                                 "KO_Early_1", "KO_Early_2", "KO_Early_3", "KO_Early_4",
-#                                                 "KO_Late_1", "KO_Late_2", "KO_Late_3", "KO_Late_4"))
-
 features <- summarized_ptm$PTM$FeatureLevelData %>% filter(PROTEIN == ptm_list1[[1]])
 features$FeatureType <- "Peptide"
 features$Protein <- features$PROTEIN
