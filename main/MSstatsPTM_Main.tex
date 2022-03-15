@@ -141,13 +141,13 @@ The technological challenges in PTM identification and quantification translate 
 
 This manuscript proposes a general statistical analysis framework that detects relative changes in post-translational modifications. The framework requires an experimental design, which for each sample quantifies both the peptides with post-translational modifications, and peptides from the same proteins with no modification sites. The framework supports both label-free (DIA, DDA) and tandem mass tag (DDA-TMT)-based acquisitions. The statistical methodology separately summarizes the abundances of peptides with and without the modification sites, and fits separate linear mixed effects models that reflect the biological and technological aspects of the experimental design. Next, model-based inferences regarding the PTM and the protein-level abundances are combined to account for the confounding between these two sources.
 
-We evaluated the proposed framework on \todo{how many} datasets from computer simulations, \todo{how many} benchmark controlled mixtures, and \todo{how many} biological investigations. The datasets illustrate a diverse set of organisms, acquisition methods, and experimental designs, showing the applicability of the framework to a variety of situations. The evaluations demonstrated that by appropriately leveraging the information from the unmodified peptide, the proposed approach improves the accuracy of the estimates of PTM fold changes and results in a better calibrated false positive rate of detecting differentially abundant PTMs. In particular, accounting for the confounding from protein abundance allows us to characterize the true effect of the modification, avoiding the need for more manual and time intensive methods.
+We evaluated the proposed framework on two datasets from computer simulations, one benchmark controlled mixture, and three biological investigations. The datasets illustrate a diverse set of organisms, acquisition methods, and experimental designs, showing the applicability of the framework to a variety of situations. The evaluations demonstrated that by appropriately leveraging the information from the unmodified peptide, the proposed approach improves the accuracy of the estimates of PTM fold changes and results in a better calibrated false positive rate of detecting differentially abundant PTMs. In particular, accounting for the confounding from protein abundance allows us to characterize the true effect of the modification, avoiding the need for more manual and time intensive methods.
 
 The proposed approach is implemented as a freely available open source R package $MSstatsPTM$, available on Bioconductor, which employs similar input format as in $MSstats$ and $MSstatsTMT$ \cite{Choi:2014,Huang:2020}.
 
 \section{Experimental Procedures}
 
-The benchmark datasets in this manuscript provide a performance benchmark of the proposed approach in situations with known ground truth, and to represent a variety of experimental designs and acquisition methods. Two computer simulations varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. The spike-in experiment took the real world characteristics a step further and allowed us to compare the methods in a real experiment with known changes in modified spike-in peptides. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, experimental designs, and data acquisition strategies. Table \ref{tab:dataDescription} summarizes the experiments. Details of the experimental data, R scripts with $MSstatsPTM$ analysis, and the results of the statistical analysis are available in either MassIVE.quant \todo{cite the paper, provide url}. Details of computer simulations are available on GitHub.
+The benchmark datasets in this manuscript provide a performance benchmark of the proposed approach in situations with known ground truth, and to represent a variety of experimental designs and acquisition methods. Two computer simulations varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. The spike-in experiment took the real world characteristics a step further and allowed us to compare the methods in a real experiment with known changes in modified spike-in peptides. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, experimental designs, and data acquisition strategies. Table \ref{tab:dataDescription} summarizes the experiments. Details of the experimental data, R scripts with $MSstatsPTM$ analysis, and the results of the statistical analysis are available in MassIVE.quant (\url{https://massive.ucsd.edu/ProteoSAFe/static/massive-quant.jsp}) \cite{Choi:2020}. Details of computer simulations are available on GitHub (\url{https://github.com/devonjkohler/MSstatsPTM_simulations}).
 
 %%%% Summary of controlled mixtures
 \begin{table}[h!]
@@ -162,14 +162,14 @@ The benchmark datasets in this manuscript provide a performance benchmark of the
 \hline
  &&&&& \\[-0.05in]
 %%%% DDA:ControlledMix
-\multirow{5}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{5}{*}{\rotatebox[origin=c]{90}{Ground}} \multirow{5}{*}{\rotatebox[origin=c]{90}{Truth}} & Computer simulation 1 - Label-free & Group comparison & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github \todo{url?}}\\
+\multirow{5}{*}{\rotatebox[origin=c]{90}{Known}}  \multirow{5}{*}{\rotatebox[origin=c]{90}{Ground}} \multirow{5}{*}{\rotatebox[origin=c]{90}{Truth}} & Computer simulation 1 - Label-free & Group comparison & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github}\\
  &&&&& \\%[-0.05in]
 %\hline 
 %&&&&&&&& \\[-0.05in]
 % \cline{2-9}
 % &&&&&&&& \\[-0.05in]
 %%% DDA iPRG2015
-& Computer simulation 2 - missing and low features & Group comparison & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github \todo{url?}} \\
+& Computer simulation 2 - missing and low features & Group comparison & 2/3/4 & 2/3/5/10 & \href{https://github.com/devonjkohler/MSstatsPTM_simulations}{Github} \\
  &&&&& \\%[0.05in]
 %\hline 
 % &&&&&& \\[-0.05in]
@@ -201,7 +201,7 @@ The benchmark datasets in this manuscript provide a performance benchmark of the
 \end{tiny}
 \caption{ \small {\bf Simulated and experimental datasets in this manuscript} 
 ```Dataset'' is the code name of the dataset in this manuscript.
-``Data availability'' shows the ID of the MassIVE.quant repository \todo{url} or the GitHub repository. 
+``Data availability'' shows the ID of the MassIVE.quant repository or the GitHub repository. 
 }
 \label{tab:dataDescription}
 \end{table}

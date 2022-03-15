@@ -1,20 +1,17 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
-[170] biber-MSWIN64:340> INFO - === 
-[229] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[341] Biber.pm:952> INFO - Found 25 citekeys in bib section 0
-[356] Biber.pm:4340> INFO - Processing section 0
-[376] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[423] bibtex.pm:1689> INFO - LaTeX decoding ...
-[462] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[527] Utils.pm:395> WARN - legacy month field 'dec' in entry 'Kall:2011ub' is not an integer - this will probably not sort properly.
-[561] Utils.pm:395> WARN - legacy month field 'oct' in entry 'Huang:2020' is not an integer - this will probably not sort properly.
-[602] Utils.pm:395> WARN - legacy month field 'jun' in entry 'Maculins' is not an integer - this will probably not sort properly.
-[662] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_oiTZ\f4d088b3f9f145b5c3058da33afd57d4_14252.utf8, line 227, warning: 1 characters of junk seen at toplevel
-[689] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[689] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[689] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[689] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[727] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[751] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
-[752] Biber.pm:128> INFO - WARNINGS: 4
+[109] biber-MSWIN64:340> INFO - === 
+[143] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[257] Biber.pm:952> INFO - Found 26 citekeys in bib section 0
+[271] Biber.pm:4340> INFO - Processing section 0
+[283] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[332] bibtex.pm:1689> INFO - LaTeX decoding ...
+[368] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[569] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_K_Qa\f4d088b3f9f145b5c3058da33afd57d4_4488.utf8, line 229, warning: 1 characters of junk seen at toplevel
+[600] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[600] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[601] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[601] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[623] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[650] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[650] Biber.pm:128> INFO - WARNINGS: 1
