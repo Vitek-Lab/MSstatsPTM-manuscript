@@ -1,37 +1,27 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Overview of proposed approach and notation}{4}{section.1}% 
+\contentsline {section}{\numberline {1}Proposed approach}{3}{section.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Data structure of PTM quantification experiments.}{4}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.1}Design of PTM experiments - Extension to complex designs}{3}{subsection.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Existing methods}{5}{section.2}% 
+\contentsline {section}{\numberline {2}Experimental datasets in this manuscript}{5}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Two-sample $t$-test}{5}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.1}Experiments with known ground truth}{5}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Limma}{5}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.1.1}Computer simulation}{5}{subsubsection.2.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Proposed approach}{6}{section.3}% 
+\contentsline {subsubsection}{\numberline {2.1.2}Dataset 1 : Computer simulation 1 - Label-free}{5}{subsubsection.2.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Design of PTM experiments}{6}{subsection.3.1}% 
+\contentsline {subsubsection}{\numberline {2.1.3}Dataset 2 : Computer simulation 2 - Label-free missing values and low features}{6}{subsubsection.2.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Experimental datasets in this manuscript}{8}{section.4}% 
+\contentsline {subsubsection}{\numberline {2.1.4}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{11}{subsubsection.2.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Experiments with known ground truth}{8}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {2.2}Biological investigations}{16}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Computer simulation}{8}{subsubsection.4.1.1}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{16}{subsubsection.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Dataset 1 : Computer simulation 1 - Label-free}{8}{subsubsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{18}{subsubsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3}Dataset 2 : Computer simulation 2 - Label-free missing values and low features}{9}{subsubsection.4.1.3}% 
+\contentsline {subsubsection}{\numberline {2.2.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{21}{subsubsection.2.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.4}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{14}{subsubsection.4.1.4}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Biological investigations}{19}{subsection.4.2}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{19}{subsubsection.4.2.1}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}{21}{subsubsection.4.2.2}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{24}{subsubsection.4.2.3}% 
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Sample size calculation and power analysis}{25}{section.5}% 
+\contentsline {section}{\numberline {3}Sample size calculation and power analysis}{22}{section.3}%

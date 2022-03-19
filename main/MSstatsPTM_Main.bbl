@@ -961,6 +961,90 @@
       \verb https://doi.org/10.1038/ncb3097
       \endverb
     \endentry
+    \entry{Schwammle2015}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c35def8574c149e8ea2c0a97d0ed693a}{%
+           family={Schwämmle},
+           familyi={S\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod}}}%
+        {{hash=f311a06bb7d6ec669acc87774489a11a}{%
+           family={Verano-Braga},
+           familyi={V\bibinithyphendelim B\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=2c846cd70668b41997f965d3e1ea37f4}{%
+           family={Roepstorff},
+           familyi={R\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{54060a4c8ae5a82f9566af6eba731e73}
+      \strng{fullhash}{54060a4c8ae5a82f9566af6eba731e73}
+      \strng{bibnamehash}{54060a4c8ae5a82f9566af6eba731e73}
+      \strng{authorbibnamehash}{54060a4c8ae5a82f9566af6eba731e73}
+      \strng{authornamehash}{54060a4c8ae5a82f9566af6eba731e73}
+      \strng{authorfullhash}{54060a4c8ae5a82f9566af6eba731e73}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1874-3919}
+      \field{journaltitle}{Journal of Proteomics}
+      \field{note}{Special Issue : Computational Proteomics}
+      \field{title}{Computational and statistical methods for high-throughput analysis of post-translational modifications of proteins}
+      \field{volume}{129}
+      \field{year}{2015}
+      \field{pages}{3\bibrangedash 15}
+      \range{pages}{13}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jprot.2015.07.016
+      \endverb
+    \endentry
+    \entry{THOMAS2020}{article}{}
+      \name{author}{4}{}{%
+        {{hash=77cd79ec4a9f1aa4772c97dd2feb20da}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={S.\bibnamedelimi P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=ba9ccd789e2e4caf8eb430278127c9b1}{%
+           family={Haws},
+           familyi={H\bibinitperiod},
+           given={S.\bibnamedelimi A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=ec411e7a06b91a44bf4af394821e4c20}{%
+           family={Borth},
+           familyi={B\bibinitperiod},
+           given={L.\bibnamedelimi E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=2a7273829c3952f4178b5cec74506107}{%
+           family={Denu},
+           familyi={D\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{8074e439a3fa7e315723dc58b89c27f6}
+      \strng{fullhash}{e35772c116aca3a1f37123a3ab3cb236}
+      \strng{bibnamehash}{8074e439a3fa7e315723dc58b89c27f6}
+      \strng{authorbibnamehash}{8074e439a3fa7e315723dc58b89c27f6}
+      \strng{authornamehash}{8074e439a3fa7e315723dc58b89c27f6}
+      \strng{authorfullhash}{e35772c116aca3a1f37123a3ab3cb236}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1046-2023}
+      \field{journaltitle}{Methods}
+      \field{title}{A practical guide for analysis of histone post-translational modifications by mass spectrometry: Best practices and pitfalls}
+      \field{volume}{184}
+      \field{year}{2020}
+      \field{pages}{53\bibrangedash 60}
+      \range{pages}{8}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.ymeth.2019.12.001
+      \endverb
+    \endentry
     \entry{Zhu}{article}{}
       \name{author}{8}{}{%
         {{hash=280dc4c18f682e47f79d502f0e89f614}{%
@@ -1075,8 +1159,8 @@
       \strng{authorbibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
       \strng{authornamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
       \strng{authorfullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Exploratory data analysis}}
@@ -1126,8 +1210,8 @@
       \strng{authorbibnamehash}{a277a8b671ff73f8393f882e5a8ab164}
       \strng{authornamehash}{a277a8b671ff73f8393f882e5a8ab164}
       \strng{authorfullhash}{f8627206f9ee9083b261d43ec9f6b0c0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in Ecology and Evolution}

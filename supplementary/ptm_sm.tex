@@ -120,41 +120,41 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\section{Overview of proposed approach and notation}
-\label{sec:intro}
+%\section{Overview of proposed approach and notation}
+%\label{sec:intro}
 
-This study addresses three major goals in the characterization of post-translational modifications (PTMs): a) relative PTM quantification, b) PTM significance analysis, i.e., to detect PTM sites that are differentially modified across experimental conditions, and c) statistical design and analysis of PTM experiments.  
+%This study addresses three major goals in the characterization of post-translational modifications (PTMs): a) relative PTM quantification, b) PTM significance analysis, i.e., to detect PTM sites that are differentially modified across experimental conditions, and c) statistical design and analysis of PTM experiments.  
 
 %Unlike protein-level analysis, in which multiple quantified peptides are often observed, phospho-peptides are more frequently detected and quantified only once. There is a strong correlation between signal strength and reproducibility. When selecting sites for further study, investigators should pay close attention to the number of PSMs and the signal strength for peptides harboring each site.
 %Simply calculating averages or medians of all peptides containing a given site might not reval the full complexity of cellular phosphorylation patterns. Singly and doubly phosphorylated forms of a peptide might be present at different levels. One must also not forget that changes in total protein level are not refelcted in the phosphopeptide ratios. Whenever possible, separate protein-level measurements made from unmodified peptides should be performed and used to normalize phosphopeptide ratios.
 
-\subsection{Data structure of PTM quantification experiments.}
-A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (e.g., ubiquitination/phosphorylation) at one site are considered together. There are $I$ conditions and $J$ mass spectrometry runs (technical replicates) per condition in the experiment. The PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. To account for the underlying protein abundance, features corresponding to the unmodified peptides from the same protein are considered together, except those unmodified peptides containing a modified site to avoid the confounding effect due to the PTM. The log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. Figure \ref{fig:dtable} shows an example data representation of modified peptide ions at one site and unmodified peptide ions of the same protein. Unmodified peptides from the same protein provide additional evidence on the underlying protein abundance, which needs to be integrated for PTM characterization. To address the goals of PTM characterization, statistical analysis needs to summarize values in this table using appropriate statistical models, translate the goal into a model-based quantity of interest, and draw inference (i.e., characterize the uncertainty) about the quantity. 
+%\subsection{Data structure of PTM quantification experiments.}
+%A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (e.g., ubiquitination/phosphorylation) at one site are considered together. There are $I$ conditions and $J$ mass spectrometry runs (technical replicates) per condition in the experiment. The PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. To account for the underlying protein abundance, features corresponding to the unmodified peptides from the same protein are considered together, except those unmodified peptides containing a modified site to avoid the confounding effect due to the PTM. The log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. Figure \ref{fig:dtable} shows an example data representation of modified peptide ions at one site and unmodified peptide ions of the same protein. Unmodified peptides from the same protein provide additional evidence on the underlying protein abundance, which needs to be integrated for PTM characterization. To address the goals of PTM characterization, statistical analysis needs to summarize values in this table using appropriate statistical models, translate the goal into a model-based quantity of interest, and draw inference (i.e., characterize the uncertainty) about the quantity. 
 
-\begin{figure}[h!]
-\centering
-\begin{footnotesize}
-\[
-\begin{array}{l l c c c c c c c c c} 
-\toprule
- &  & \multicolumn{4}{c}{\text{Condition }1} & \dots & \multicolumn{4}{c}{\text{Condition }I} \\ 
-\cmidrule{3-6} 
-\cmidrule{8-11} 
- &  &  \text{Run }1 & \text{Run }2 & \dots & \text{Run }J & \dots & \text{Run }1 & \text{Run }2 & \dots & \text{Run }J \\
-\midrule
-\multirow{4}{*}{Modified} & \text{Feature }1 & y_{111}^{\ast} & y_{121}^{\ast} & \dots & y_{1J1}^{\ast} & \dots & y_{I11}^{\ast} & y_{I21}^{\ast} & \dots & y_{IJ1}^{\ast} \\
- & \text{Feature }2 & y_{112}^{\ast} & - & \dots & y_{1J2}^{\ast} & \dots & y_{I12}^{\ast} & y_{I22}^{\ast} & \dots & y_{IJ2}^{\ast}  \\
- & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
- & \text{Feature }K & y_{11K}^{\ast} & y_{12K}^{\ast} & \dots & y_{1JK}^{\ast} & \dots & y_{I1K}^{\ast} & y_{I2K}^{\ast} & \dots & y_{IJK}^{\ast} \\
-\midrule
-\multirow{4}{*}{Unmodified} & \text{Feature }1 & y_{111} & y_{121} & \dots & y_{1J1} & \dots & y_{I11} & y_{I21} & \dots & y_{IJ1} \\
- & \text{Feature }2 & y_{112} & y_{122} & \dots & y_{1J2} & \dots & - & - & \dots & -  \\
-% & \text{Feature }2 & y_{112} & y_{122} & \dots & y_{1J2} & \dots & y_{I12} & y_{I22} & \dots & y_{IJ2}  \\
- & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
- & \text{Feature }L & y_{11L} & y_{12L} & \dots & y_{1JL} & \dots & y_{I1L} & y_{I2L} & \dots & y_{IJL} \\
-\bottomrule
-\end{array}
-\]
+%\begin{figure}[h!]
+%\centering
+%\begin{footnotesize}
+%\[
+%\begin{array}{l l c c c c c c c c c} 
+%\toprule
+% &  & \multicolumn{4}{c}{\text{Condition }1} & \dots & \multicolumn{4}{c}{\text{Condition }I} \\ 
+%\cmidrule{3-6} 
+%\cmidrule{8-11} 
+% &  &  \text{Run }1 & \text{Run }2 & \dots & \text{Run }J & \dots & \text{Run }1 & \text{Run }2 & \dots & \text{Run }J \\
+%\midrule
+%\multirow{4}{*}{Modified} & \text{Feature }1 & y_{111}^{\ast} & y_{121}^{\ast} & \dots & y_{1J1}^{\ast} & \dots & y_{I11}^{\ast} & y_{I21}^{\ast} & \dots & y_{IJ1}^{\ast} \\
+% & \text{Feature }2 & y_{112}^{\ast} & - & \dots & y_{1J2}^{\ast} & \dots & y_{I12}^{\ast} & y_{I22}^{\ast} & \dots & y_{IJ2}^{\ast}  \\
+% & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
+% & \text{Feature }K & y_{11K}^{\ast} & y_{12K}^{\ast} & \dots & y_{1JK}^{\ast} & \dots & y_{I1K}^{\ast} & y_{I2K}^{\ast} & \dots & y_{IJK}^{\ast} \\
+%\midrule
+%\multirow{4}{*}{Unmodified} & \text{Feature }1 & y_{111} & y_{121} & \dots & y_{1J1} & \dots & y_{I11} & y_{I21} & \dots & y_{IJ1} \\
+% & \text{Feature }2 & y_{112} & y_{122} & \dots & y_{1J2} & \dots & - & - & \dots & -  \\
+%% & \text{Feature }2 & y_{112} & y_{122} & \dots & y_{1J2} & \dots & y_{I12} & y_{I22} & \dots & y_{IJ2}  \\
+% & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
+% & \text{Feature }L & y_{11L} & y_{12L} & \dots & y_{1JL} & \dots & y_{I1L} & y_{I2L} & \dots & y_{IJL} \\
+%\bottomrule
+%\end{array}
+%\]
 %\[
 %\begin{array}{l l c c c c c} 
 %\toprule
@@ -179,56 +179,13 @@ A set of fully-cleaved and/or partially-cleaved peptides containing a same PTM (
 %\bottomrule
 %\end{array}
 %\]
-\end{footnotesize}
-\caption{Representation of the data of modified peptides at one site and unmodified peptides of the same protein, with $I$ conditions and $J$ replicate runs. Abundances of the PTM and protein are quantified by multiple spectral features (peptide ions, $K$ for modified peptides and $L$ for unmodified peptides). Some spectral features can be missing (shown as $-$), either randomly in individual runs or completely in certain conditions. In real practice, the number of runs can vary across conditions. \label{fig:dtable}}
-\end{figure}
-
+%\end{footnotesize}
+%\caption{Representation of the data of modified peptides at one site and unmodified peptides of the same protein, with $I$ conditions and $J$ replicate runs. Abundances of the PTM and protein are quantified by multiple spectral features (peptide ions, $K$ for modified peptides and $L$ for unmodified peptides). Some spectral features can be missing (shown as $-$), either randomly in individual runs or completely in certain conditions. In real practice, the number of runs can vary across conditions. \label{fig:dtable}}
+%\end{figure}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Existing methods} \label{sec:ttest}
-\subsection{Two-sample $t$-test}
-
-
-Two-sample $t$-test is based on the null hypothesis that there is no difference in mean PTM abundance between Conditions $i$ and $i'$. The abundance in each run is taken as input and is often estimated by sum of peak intensities. The $t$-test is typically performed based on the log of summarized value. For example, the log-abundance estimate for the PTM in Run $j$ of Condition $i$ is given by
-\[
-\log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right).
-\]
-For adjustment with respect to unmodified peptides, the estimate of PTM abundance is divided by the protein abundance estimate, 
-and the $t$-test for the adjusted PTM abundance on log scale takes as input the difference of their log-estimates.
-%which is equivalent to take the difference of their log abundances. 
-The quantity is denoted by $d_{ij}$ and is given by
-\[
-d_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right).
-\]
-Alternatively, run-level summary to be described can also be used. The difference between the means of PTM abundance in Conditions $i$ and $i'$ are estimated as
-\[
-\hat{\Delta} = \frac{1}{J} d_{i+}^{\ast} - \frac{1}{J} d_{i'+},
-\]
-where $d_{i+}^{\ast} = \sum_{j=1}^{J} d_{ij}^{\ast}$ and the test statistic for the $t$-test is given by $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$. The statistical significance of the difference is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs.
-
-\subsection{Limma}
-
-Limma uses linear models to test the null hypothesis that there is no difference in mean PTM abundances between conditions. Additionally, it leverages Empirical Bayes moderation to share pooled variance information across individual modification models and moderate the individual residual variances. Using a linear model allows Limma to share variance information across conditions, providing a more accurate estimate.\cite{Ritchie_15a}
-
-With respect to PTM analysis, feature level summarization is done in the same way as $t$-test. The log-abundace estimate for PTM in Run $j$ of Condition $i$ is given by 
-
-\[
-\log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right).
-\]
-
-Adjustment for changes in the unmodified peptides is performed by taking the difference of log estimates, as follows
-
-\[
-d_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right).
-\]
-
-Alternatively run level summarization can be performed given by
-
-\[
-\hat{\Delta} = \frac{1}{J} d_{i+}^{\ast} - \frac{1}{J} d_{i'+},
-\]
-
-After fitting a linear model, the final variance is moderated using Empirical Bayes and the global variance across all modified peptides. This is done as $s_{i} = P(v_i| v_\Theta)$ where $v_i$ is the resulting variance when modeling peptide $i$ and $v_\Theta$ is the global variance.
+%\section{Existing methods} \label{sec:ttest}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{$t$-test for data in batches}
@@ -288,7 +245,7 @@ After fitting a linear model, the final variance is moderated using Empirical Ba
 \section{Proposed approach}
 \label{sec:prop}
 
-To characterize the observed feature intensities, different levels of variations are expressed using linear mixed models in consideration of the following factors in a simple experimental design: modification, condition, run, and feature. As different degrees of variability are present in the feature intensities of modified and unmodified peptides, they are expressed by separate models.
+%To characterize the observed feature intensities, different levels of variations are expressed using linear mixed models in consideration of the following factors in a simple experimental design: modification, condition, run, and feature. As different degrees of variability are present in the feature intensities of modified and unmodified peptides, they are expressed by separate models.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -505,7 +462,7 @@ To characterize the observed feature intensities, different levels of variations
 
 %Where $M_m \sim N(0, \sigma^2_m)$, $T(M)_{tm} \sim N(0, \sigma^2_{tm})$, $S\sim N(0, \sigma^2_{s})$ are random effects, and $\sum_{c=1}^{I} C_{c}^{\ast} = 0$ is a fixed effect. Finally the error is expressed as $\epsilon_{mtcb} \sim N(0, \sigma^2)$.
 
-\subsection{Design of PTM experiments}
+\subsection{Design of PTM experiments - Extension to complex designs}
 \label{sec:complex_design}
 
 The proposed approach applied to experiments with complex designs still allows for sample size calculation and power analysis. To make the calculation the standard deviation and degrees of freedom are needed. The estimation of these quantities is dependent on the experimental design. In Figure \ref{fig:statistical_inference} different experimental designs that the proposed approach can be applied to, along with their estimation of standard error and degrees of freedom is shown.
