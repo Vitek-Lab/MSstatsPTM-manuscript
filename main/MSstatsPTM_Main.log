@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  20 MAR 2022 22:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  20 MAR 2022 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1150,10 +1150,6 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 681.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 681.
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: FFA491F91BE7304B0AD57A2E554A7BD5;244.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 \openout1 = `MSstatsPTM_Main.run.xml'.
 
@@ -1162,7 +1158,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 681.
 Here is how much of TeX's memory you used:
  25042 strings out of 492616
  474277 string characters out of 6129482
- 913633 words of memory out of 5000000
+ 914633 words of memory out of 5000000
  28443 multiletter control sequences out of 15000+600000
  14171 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1218,7 +1214,7 @@ dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (24 pages, 658215 bytes).
+Output written on MSstatsPTM_Main.pdf (24 pages, 658276 bytes).
 PDF statistics:
  502 PDF objects out of 1000 (max. 8388607)
  411 compressed objects within 5 object streams
