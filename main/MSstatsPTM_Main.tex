@@ -211,7 +211,7 @@ The datasets in this manuscript  benchmarked the proposed approach in situations
 
 The simulation represented an idealistic case. 24 synthetic datasets were generated exhibiting scenarios with different experimental designs and biological variation. In each dataset, 1000 proteins had 10 unmodified features per protein. Each of the 1000 proteins had one PTM, each PTM represented by 10 modified features. The PTMs of 500 proteins had a differential fold change between conditions, while the other 500 proteins were generated with no difference between conditions. Furthermore, the fold changes of half of the 500 differential PTMs were fully masked by changes in the unmodified protein. Additionally, the fold change of half the 500 non-differential PTMs was entirely due to changes in the unmodified protein. All differential PTMs were generated with an expected log fold change of 0.75 between conditions. 
 
-Each simulation was generated with random biological variation. Specifically, let $Y_{ibc}$ denote the abundance of peptide $i$ in biological replicate $b$ of condition $c$. The simulated peptide abundance  $Z_{ibc}$ was generated as $Z_{ibc} = Y_{ibc} + \epsilon_{ibc}$ where $\epsilon_{ibc}\sim^{iid}N(0,\sigma^2)$. The simulations were generated with one of two values $\sigma^2 = \{.2, .3\}$. The values for $\sigma^2$ were motivated \todo{motivated how specifically? corresponded to median variances?}  by the biological experiments in this manuscript.
+Each simulation was generated with random biological variation. Specifically, let $Y_{ibc}$ denote the abundance of peptide $i$ in biological replicate $b$ of condition $c$. The simulated peptide abundance  $Z_{ibc}$ was generated as $Z_{ibc} = Y_{ibc} + \epsilon_{ibc}$ where $\epsilon_{ibc}\sim^{iid}N(0,\sigma^2)$. The simulations were generated with one of two values $\sigma^2 = \{.2, .3\}$, motivated by the biological experiments in this manuscript.
 Further details are in Supplementary Sec. \ref{supp-sec:dataset1}.
 
 \subsection*{Dataset 2 : Computer simulation 2 - Label-free missing values and low features}
@@ -271,12 +271,12 @@ In this experiment 11 biological replicates were allocated to 1 TMT mixture in a
 
 \subsection*{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}
 \label{sec:exp_proc_dataset5}
-In this experiment 8 biological replicates were allocated to 2 TMT mixtures in an unbalanced \todo{time course} design. More details are in Supplementary Sec. \ref{supp-sec:shigella}.
+In this experiment 8 biological replicates were allocated to 2 TMT mixtures in an unbalanced time course design. More details are in Supplementary Sec. \ref{supp-sec:shigella}.
 
 
 \medskip \noindent {\bf Experimental Design:} Maculins et al. \cite{Maculins} studied primary murine macrophages infected with {\it Shigella flexneri} ({\it S. flexneri}). The experiment quantified the abundance of total protein and of phosphorylation in wild type (WT), and in ATG16L1-deficient (cKO) samples, uninfected and uninfected with {\it S. flexneri}. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). 
 
-The proteome was quantified in 11-plex isobaric multiplexing via tandem mass tagging (TMT) in combination with LC-MS/MS. The six conditions were split between 11 channels, and as the result the experiment was unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. \todo{was there a reference channel?}
+The proteome was quantified in 11-plex isobaric multiplexing via tandem mass tagging (TMT) in combination with LC-MS/MS. The six conditions were split between 11 channels, and as the result the experiment was unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT.
 
 \medskip \noindent {\bf Global Profiling Run:} This experiment included a separate global profiling run with the same design to measure unmodified peptides. There was a 90\% overlap between the identified background modified peptides and proteins that were quantified in the global profiling run.
 
@@ -286,7 +286,7 @@ The proteome was quantified in 11-plex isobaric multiplexing via tandem mass tag
 \subsection*{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}
 \label{sec:exp_proc_dataset6}
 
-In this experiment 8 biological replicates were split between 4 conditions in a balanced \todo{group comparison} design. Further details in Suppler Sec \ref{supp-sec:usp30}.
+In this experiment 8 biological replicates were split between 4 conditions in a balanced group comparison design. Further details in Suppler Sec \ref{supp-sec:usp30}.
  
 \medskip \noindent {\bf Experimental Design:} Cunningham et al. \cite{Cunningham2015} investigated the relationship between USP30 and protein kinase PINK1, and their association with Parkinson’s Disease. The experiment profiled ubiquitination sites, and analyzed changes in the modified site abundance. The experiment had four conditions, CCCP, USP30 over expression (USP30 OE), Combo, and Control. Each condition had two biological replicates. The abundance of modified peptides was quantified with label-free LC-MS/MS.
 
@@ -302,8 +302,27 @@ In this experiment 8 biological replicates were split between 4 conditions in a 
 
 Consider an LC-MS/MS experiment with $I$ conditions and $J$ mass spectrometry runs (technical \todo{of biological?} replicates) per condition in the experiment. For one protein, the PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. 
 
-Figure \ref{fig:data-structure}(a) schematically illustrates this data structure for one protein in a simplified experiment with $I=2$ conditions. \todo{Describe the population parameters in the figure (quantities of interest}.  The data are collected in $J=2$ \todo{biological?} replicate runs \todo{describe how the data are representative of the population parameters of interest}
-The number of quantified features vary across replicate LC-MS/MS runs of the same sample, and across conditions. \todo{There may be outliers}. Some spectral features can be missing. 
+Figure \ref{fig:data-structure}(a) schematically illustrates this data structure for one protein in a simplified experiment with $I=2$ conditions. The data are collected in $J=2$ \todo{biological?} replicate runs. Each run represents an observation used to estimate the relative abundance of the PTM in condition $i$, $u_i^{\ast}$. The number of quantified features vary across replicate LC-MS/MS runs of the same sample, and across conditions. There may be feature outliers which could be caused by random variation or measurement error. Additionally, some spectral features can be missing. 
+
+The population parameter we are interested in estimating is the difference between the PTM in condition $1$ and condition $2$, denoted by $u_1^{\ast}$ and $u_2^{\ast}$ respectively. To calculate the quantity of interest, statistical analysis needs to summarize values in the table in Figure \ref{fig:data-structure}(a) using appropriate models. For condition $i$, the models provide estimates for the mean abundance, $\hat{u}_i^{\ast}$, and standard error, $SE(\hat{u}_i^{\ast})$. Once summarized, we can formulate the Null and Alternative Hypotheses as seen in Equation \ref{eq:conv_null_hyp}. 
+
+\begin{equation}
+\begin{aligned}
+H_{0}: \Delta = \mu_{1}^{\ast} - \mu_{2}^{\ast} = 0 \\
+H_{a}: \Delta = \mu_{1}^{\ast} - \mu_{2}^{\ast} \neq 0
+\end{aligned}
+\label{eq:conv_null_hyp}
+\end{equation}
+
+However, these population parameters are inherently convoluted with changes in the unmodified protein. To account for this, we must estimate the unmodified protein in conditions $1$ and $2$, denoted by $\mu_1$ and $\mu_2$. We estimate these quantities in the same way as for the PTM, using their correspond features and observations, resulting in an estimated mean abundance, $\hat{u}_i$, and standard error, $SE(\hat{u}_i)$. These estimates are used to adjust the quantities estimated for the PTM, resulting in the new Null and Alternative Hypotheses seen in Equation \ref{eq:null_hyp}.
+
+\begin{equation}
+\begin{aligned}
+H_{0}: \Delta = ( \mu_{1}^{\ast} - \mu_{1}) - ( \mu_{2}^{\ast} - \mu_{2} ) = 0 \\
+H_{a}: \Delta = ( \mu_{1}^{\ast} - \mu_{1}) - ( \mu_{2}^{\ast} - \mu_{2} ) \neq 0
+\end{aligned}
+\label{eq:null_hyp}
+\end{equation}
 
 \todo{in Figure 2 b, there are two quantities of interest, stated at the population level. Describe the quantities, what is of interest, why relevant. It may help to introduce multiple versions of the null hypotheses, to contrast the methods below} \todo{Also please edit the figure caption}
 
@@ -311,39 +330,67 @@ The number of quantified features vary across replicate LC-MS/MS runs of the sam
 
 \subsection*{Existing statistical methods for experiments targeting PTMs}
 
-\noindent {\bf Two-sample $t$-test} \todo{When describing the existing methods, could you refer to Fig 1? Here is the suggested order: (1) What is the null hypothesis? Do these methods test the same null hypothesis? (If not, it may be a good idea to add this null hypothesis to the figure for contrast) (2) What are the data (how summarized prior to the testing); (3) what is the model assumptions? (4) how inference is performed} Many investigations perform differential abundance analysis of PTMs using two-sample $t$-test or its extensions.  
+\noindent {\bf Two-sample $t$-test} \todo{When describing the existing methods, could you refer to Fig 1? Here is the suggested order: (1) What is the null hypothesis? Do these methods test the same null hypothesis? (If not, it may be a good idea to add this null hypothesis to the figure for contrast) (2) What are the data (how summarized prior to the testing); (3) what is the model assumptions? (4) how inference is performed} 
 
-\todo{These sentences were combined from different places. Could you edit?} The approach takes as input intensities of individual features from modified peptides, or intensity ratios of modified and unmodified peptide features, and compares the mean abundance of a PTM site from one condition to another~\cite{Schwammle2015}\cite{THOMAS2020}. Two-sample $t$-test is based on the null hypothesis that there is no difference in mean PTM abundance between Conditions $i$ and $i^*$. The abundance in each run is taken as input and is often estimated by sum of peak intensities. For example, the log-abundance estimate for the PTM in Run $j$ of Condition $i$ is given by
-\[
-\log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right).
-\]
-For adjustment with respect to unmodified peptides, the estimate of PTM abundance is divided by the protein abundance estimate, 
-and the $t$-test for the adjusted PTM abundance on log scale takes as input the difference of their log-estimates.
+\todo{These sentences were combined from different places. Could you edit?} 
+
+Many investigations perform differential abundance analysis of PTMs using two-sample $t$-test or its extensions. While simple, these approaches do not fully account for the sources of variations, and are not directly applicable to experiments with complex designs, e.g., comparisons of multiple conditions, acquisition in multiple batches, etc. Additionally, while these approaches can be applied to experiments studying PTMs, there is not a self contained, straightforward implementation of the methods, making application challenging. 
+
+The approach generally takes as input intensities of individual features from modified peptides, or intensity ratios of modified and unmodified peptide features, and compares the mean abundance of a PTM site from one condition to another~\cite{Schwammle2015}\cite{THOMAS2020}. Two-sample $t$-test is based on the null hypothesis that there is no difference in mean PTM abundance between Conditions $1$ and $2$. The abundance in each run is taken as input and is often estimated by sum of peak intensities. For example, the log-abundance estimate for the PTM in Run $j$ of Condition $1$ is given by
+
+\begin{equation}
+\begin{aligned}
+\log \left( \sum_{k=1}^{K} 2^{y_{1jk}^{\ast}} \right).
+\end{aligned}
+\label{eq:feature_estimation}
+\end{equation}
+
+For adjustment with respect to unmodified peptides, the estimate of PTM abundance is divided by the protein abundance estimate.
 %which is equivalent to take the difference of their log abundances. 
-The quantity is denoted by $d_{ij}$ and is given by
-\[
-d_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right).
-\]
-Alternatively, run-level summarization can also be used. The difference between the means of PTM abundance in Conditions $i$ and $i'$ are estimated as
-\[
-\hat{\Delta} = \frac{1}{J} d_{i+}^{\ast} - \frac{1}{J} d_{i'+},
-\]
-where $d_{i+}^{\ast} = \sum_{j=1}^{J} d_{ij}^{\ast}$ and the test statistic for the $t$-test is given by $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$. The statistical significance of the difference is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs.
+For condition $1$ the quantity is denoted by $d_{1j}$ and is given by
 
-\medskip \noindent {\bf Limma} \todo{Could you fine-tune, using the same order as above for Limma? I.e., null hypothesis, the data, the model, the inference. I think the text can be made more compact, and a bit more technical, by directly referring to either Fig 1 or the equations above} Modifications of the $t$-test such as moderated $t$-test with Limma were also proposed~\cite{Ritchie_15a}\cite{Zhu}. While simple, these approaches do not fully account for the sources of variations, and are not directly applicable to experiments with complex designs, e.g., comparisons of multiple conditions, acquisition in multiple batches, etc. Additionally, while these approaches can be applied to experiments studying PTMs, there is not a self contained, straight forward implementation of the methods, making application challenging. 
+\begin{equation}
+\begin{aligned}
+d_{1j}^{\ast} = \log \left( \sum_{k=1}^{K} 2^{y_{1jk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{1jl}} \right).
+\end{aligned}
+\label{eq:adj_estimation}
+\end{equation}
 
-Limma uses linear models to test the null hypothesis that there is no difference in mean PTM abundances between conditions. It leverages Empirical Bayes moderation to share pooled variance information across individual modification models and moderate the individual residual variances. Using a linear model allows Limma to share variance information across conditions, providing a more accurate estimate~\cite{Ritchie_15a}.
 
-With respect to PTM analysis, feature level summarization and adjustment for changes in the unmodified peptides are performed in the same way as $t$-test. After fitting a linear model, the final variance is moderated using the global variance across all modified peptides. This is done as $s_{i} = P(v_i| v_\Theta)$ where $v_i$ is the resulting variance when modeling PTM $i$ and $v_\Theta$ is the global variance.
+$t$-test then takes the adjusted PTM abundance of condition $1$, $d_{1j}$, and condition $2$, $d_{2j}$, for each run in $J$ as input to estimate the quantity of interest $\Delta$, as well as the standard error, $SE(\Delta)$. This results in the Null and Alternative Hypotheses show in Equation \ref{eq:ttest_null_hyp}, where $\hat{d}_{1+}^{\ast}$ represents all $J$ runs for condition $1$ and is the estimate of $(\mu_{1}^{\ast} - \mu_{1})$ seen in Equation \ref{eq:null_hyp}.
+
+\begin{equation}
+\begin{aligned}
+H_{0}: \Delta = d_{1+}^{\ast} - d_{2+}^{\ast} = 0 \\
+H_{a}: \Delta = d_{1+}^{\ast} - d_{2+}^{\ast} \neq 0
+\end{aligned}
+\label{eq:ttest_null_hyp}
+\end{equation}
+
+%Alternatively, run-level summarization can also be used. The difference between the means of PTM abundance in Conditions $i$ and $i'$ are estimated as
+%\[
+%\hat{\Delta} = \frac{1}{J} d_{i+}^{\ast} - \frac{1}{J} d_{i'+},
+%\]
+%where $d_{i+}^{\ast} = \sum_{j=1}^{J} d_{ij}^{\ast}$ and the test statistic for the $t$-test is given by $\hat{\Delta} / \mathrm{SE}(\hat{\Delta})$. The statistical significance of the difference is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs.
+
+\medskip \noindent {\bf Limma} Modifications of $t$-test such as moderated $t$-test with Limma were also proposed~\cite{Ritchie_15a}\cite{Zhu}. Limma uses linear models to test the null hypothesis that there is no difference in mean PTM abundances between conditions. It leverages Empirical Bayes moderation to share pooled variance information across individual modification models and moderate the individual residual variances. Using a linear model allows Limma to share variance information across conditions, providing a more accurate estimate~\cite{Ritchie_15a}.
+
+With respect to PTM analysis, feature level summarization and unmodified protein adjustment are performed in the same way as $t$-test, shown in Equations \ref{eq:feature_estimation} and \ref{eq:adj_estimation}. Limma fits a linear model using the adjusted summarized features, $d_{1+}^{\ast}$ and $d_{2+}^{\ast}$, to estimate the difference between condition $1$ and $2$, $\Delta$. This results in the same hypothesis as seen in Equation \ref{eq:ttest_null_hyp}. The variance for the estimation is moderated using information from the variance across all PTMs modeled. For the estimate of a single PTM $m$, $\Delta_m$, the variance is estimated as $s_{\Delta_m} = P(v_{\Delta_m}| v_\Theta)$ where $v_{\Delta_m}$ is the resulting variance when modeling PTM $m$ and $v_\Theta$ is the global variance across all PTMs.
+
+\todo{Could you fine-tune, using the same order as above for Limma? I.e., null hypothesis, the data, the model, the inference. I think the text can be made more compact, and a bit more technical, by directly referring to either Fig 1 or the equations above}
 
 \medskip \noindent {\bf Isobar-PTM} was also proposed for experiments with LC-MS/MS quantitative strategies that employ isobaric labels such as tandem mass tags (TMT) or isobaric tag for relative and absolute quantification (iTRAQ)\cite{Breitwieser:2013}. Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. Unfortunately, this statistical modeling framework is not applicable to either label-free workflows or experiments with complex designs. 
 
 
 \subsection*{Statistical modeling and parameter estimation in MSstats}
 
-\todo{Could you also refer to Figure 1? Essentially, MSstats only analyzes a part of the figure. Refer to the null hypothesis. Then describe the summarization (including AFT etc), and the model for he summarized data (the fact that different designs require different models - this is your argument for the limitation of the methods above.)} The proposed approach leverages the large amount of work done to create $MSstats$~\cite{Choi:2014}. $MSstats$ takes as input a list of log-transformed intensities of spectral features which are used to characterize the identified protein. For each protein, the feature log-intensities are expressed using a linear mixed model in consideration of the effects of condition, run, feature and interaction between run and feature. The model parameters are estimated using a split-plot approach, where the feature log-intensities are first summarized into a single value per protein per run in the subplot model, and the protein-level summaries are then used for the inference of the protein abundance. This approach allows the method to be extended to cases where the experimental design is unbalanced and where additional sources of variation are present. In the protein-level summarization, Tukey's median polish (TMP), a simple and robust procedure, is applied to iteratively fit a two-way additive model with the effects of run and feature, which in turn summarizes the log-intensities for each protein~\cite{Tukey:1977}. After summarization, the inference of the protein abundance in each condition is carried through fitting a model based on the family of linear mixed-effects models \cite{Bolker2009} \cite{Faraway:2006}. We leverage this statistical modeling and quantification workflow and apply it to PTMs, in addition to unmodified proteins.
+The proposed approach leverages the large amount of work done to create $MSstats$~\cite{Choi:2014}. $MSstats$ can analyze the PTM without accounting for convolution with the unmodified protein. In terms of Figure \ref{fig:data-structure}, this means we can either model the modified or unmodified features, but we cannot combine them as seen in part Figure \ref{fig:data-structure}(c). The only Null and Alternative Hypotheses we can address are those in Equation \ref{eq:conv_null_hyp}, without adjusting for unmodified protein abundance.
+
+$MSstats$ takes as input a list of log-transformed intensities of spectral features which are used to characterize the identified protein. For each protein, the feature log-intensities are expressed using a linear mixed model in consideration of the effects of condition, run, feature and interaction between run and feature. The model parameters are estimated using a split-plot approach, where the feature log-intensities are first summarized into a single value per protein per run in the subplot model, and the protein-level summaries are then used for the inference of the protein abundance. This approach allows the method to be extended to cases where the experimental design is unbalanced and additional sources of variation are present, overcoming the limitations in the previous sections. In the protein-level summarization, Tukey's median polish (TMP), a simple and robust procedure, is applied to iteratively fit a two-way additive model with the effects of run and feature, which in turn summarizes the log-intensities for each protein~\cite{Tukey:1977}. After summarization, the inference of the protein abundance in each condition is carried through fitting a model based on the family of linear mixed-effects models \cite{Bolker2009} \cite{Faraway:2006}. We leverage this statistical modeling and quantification workflow and apply it to PTMs, in addition to unmodified proteins.
 
 Additionally, $MSstats$ provides a method for imputing missing feature intensities if desired. When values are imputed, it is assumed they are missing for reasons of low abundance. Missing features are imputed in each MS run using the Accelerated Time Failure (AFT) model~\cite{Tukey:1977}. In order to impute a feature's missing values, the feature must be present in at least one MS Run. If the feature is not present across all MS Runs, the value will be left missing. Missing value imputation is done before summarization with Tukey's Median Polish in order to correct for the impact of outliers. Missing value imputation is done separately for both the PTM and global protein datasets.
+
+\todo{Could you also refer to Figure 1? Essentially, MSstats only analyzes a part of the figure. Refer to the null hypothesis. Then describe the summarization (including AFT etc), and the model for he summarized data (the fact that different designs require different models - this is your argument for the limitation of the methods above.)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Results}
@@ -351,28 +398,32 @@ Additionally, $MSstats$ provides a method for imputing missing feature intensiti
 \subsubsection*{Detection of changes in PTMs - Balanced design with one source of variation}
 \label{sec:adjustment_summary}
 
-We propose a statistical method for detecting changes in PTMs while removing confounding with changes in global protein abundance. For simplicity, we discuss the method in the special case of a balanced design with multiple conditions and one technical replicate. However, in  practice the experimental design can be unbalanced and variation can come from multiple sources, as shown in the next section.
+We propose a statistical method for detecting changes in PTMs. The approach removes confounding with the unmodified protein, while being applicable to experiments with complex designs. For simplicity, we discuss the method in the special case of a balanced design with multiple conditions and one technical replicate. However, in  practice the experimental design can be unbalanced and variation can come from multiple sources, as shown in the next section.
 
-\todo{Put it in the context of the figure again, and also in the context of the existing methods in Background - how is it similar to the existing methods, and how different} The null hypothesis states that there is no difference in log-abundance of the PTM site between conditions, adjusted with respect to protein abundance. The expected values of log-abundances of the PTM and protein in Condition $i$ are denoted by $\mu_{i}^{\ast}$ and $\mu_{i}$ respectively. The feature and run level summarization \todo{Summarized how?} for condition $i$ is denoted as $\hat{y}_{i+}^{\ast}$ for the modified peptide and $\hat{y}_{i+}$ for the unmodified peptide. For two conditions $i$ and $i'$ the hypothesis test is formulated as follows:
+The proposed approach first applies the methods used in $MSstats$ to both the PTM and unmodified protein separately. This includes run-level feature summarization using Tukey's Median Polish and fitting a model based on the family of linear mixed-effects models. After a model is fit for the both the PTM and unmodified protein, the modeling results are then combined to estimate the quantity of interest.
+
+The null hypothesis states that there is no difference in log-abundance of the PTM site between conditions, adjusted with respect to protein abundance. Relating to the example in Figure \ref{fig:data-structure}, the expected value of log-abundance of the PTM and unmodified protein in Condition $1$ are denoted by $\mu_{1}^{\ast}$ and $\mu_{1}$ respectively. The feature and run level summarization for Condition $1$ is denoted as $\hat{y}_{1+}^{\ast}$ for the modified peptide and $\hat{y}_{1+}$ for the unmodified peptide. The Null and Alternative Hypotheses for Conditions $1$ and $2$ are shown in Equation \ref{eq:prop_null_hyp}. This is in contrast to the hypotheses show in Equation \ref{eq:null_hyp}, where the PTM was adjusted before modeling.
 
 \begin{equation}
 \begin{aligned}
-H_{0}: \Delta = ( \mu_{i}^{\ast} - \mu_{i'}^{\ast} ) - ( \mu_{i} - \mu_{i'} ) = 0 \\
-H_{a}: \Delta = ( \mu_{i}^{\ast} - \mu_{i'}^{\ast} ) - ( \mu_{i} - \mu_{i'} ) \neq 0
+H_{0}: \Delta = ( \mu_{1}^{\ast} - \mu_{2}^{\ast} ) - ( \mu_{1} - \mu_{2} ) = 0 \\
+H_{a}: \Delta = ( \mu_{1}^{\ast} - \mu_{2}^{\ast} ) - ( \mu_{1} - \mu_{2} ) \neq 0
 \end{aligned}
-\label{eq_1}
+\label{eq:prop_null_hyp}
 \end{equation}
 
-Specifically, the adjusted difference is given by the difference in log-abundance of the PTM site, subtracted by the difference in log-abundance of the underlying protein, which is equivalent to the log of the ratio of PTM abundance difference to protein abundance difference. 
+Specifically, the adjusted difference is given by the difference in log-abundance of the PTM site, subtracted by the difference in log-abundance of the underlying protein, which is equivalent to the log of the ratio of PTM abundance difference to protein abundance difference, in a balanced case.
 
 \begin{equation}
-\hat{\Delta} = \left[ \frac{1}{J} \left( \hat{y}_{i+}^{\ast} - \hat{y}_{i'+}^{\ast} \right) \right] - \left[ \frac{1}{J} \left( \hat{y}_{i+} - \hat{y}_{i'+} \right) \right]
+\hat{\Delta} = \left[ \frac{1}{J} \left( \hat{y}_{1+}^{\ast} - \hat{y}_{2+}^{\ast} \right) \right] - \left[ \frac{1}{J} \left( \hat{y}_{1+} - \hat{y}_{2+} \right) \right]
+\label{eq:prop_fc}
 \end{equation}
 
-The estimate of the adjusted difference and the standard error (SE) of the estimate are obtained by combining the difference estimates and the associated SEs from both counterparts.
+The estimate of the adjusted difference and the standard error (SE) of the estimate are obtained by combining the difference estimates and the associated SEs from both counterparts. The equation accounts for the increased uncertainty when incorporating more information from the unmodified protein. This may lead to an increased SE, when compared to modeling the PTM alone.
 
 \begin{equation}
 SE(\hat{\Delta}) = \left[ \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]^{1/2}
+\label{eq:prop_se}
 \end{equation}
 
 Finally the degrees of freedom are calculated as follows.
@@ -380,9 +431,12 @@ Finally the degrees of freedom are calculated as follows.
 \begin{equation}
 \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right)^2 \bigg/
 \left( \frac{\hat{\sigma}_{\gamma^{\ast}}^{4}}{\mathrm{df}(\gamma^{\ast})} + \frac{\hat{\sigma}_{\gamma}^{4}}{ \mathrm{df}(\gamma)} \right)
+\label{eq:prop_df}
 \end{equation}
 
 The test statistic for the hypothesis testing is the ratio of the estimate of the adjusted difference to its SE. To determine the statistical significance of the difference in terms of p-value, the test statistic is compared against the $t$ distribution with degrees of freedom approximated by the Satterthwaite method~\cite{satterthwaite:1946}. Adjustment for multiple comparisons is performed using the Benjamini-Hochberg procedure to control the false discovery rate at a desired level, e.g., $0.05$~\cite{Benjamini:1995}.
+
+\todo{Put it in the context of the figure again, and also in the context of the existing methods in Background - how is it similar to the existing methods, and how different} 
 
 \subsubsection*{Design of PTM experiments in the balanced case}
 \label{sec:design}
@@ -418,11 +472,11 @@ More details on sample size calculation can be found in~\cite{oberg_vitek_09a}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Detection of changes in PTMs - Extension to complex designs}
 
-The statistical modeling approaches discussed above can be extended to complex designs including experiments with additional sources of variation and unbalanced designs. In this case our null hypothesis and Equation 1 are unchanged.
+The proposed approach can be extended to complex designs, including experiments with additional sources of variation and unbalanced designs. In this case our null hypothesis in Equation \ref{eq:prop_null_hyp} is unchanged.
 
-Model inference is done in the same way to how MSstats~\cite{Choi:2014} and MSstatsTMT~\cite{Huang:2020} target the global protein. In cases where the design is unbalanced, a linear mixed effects model is fit, which takes into account all potential sources of variation, and restricted maximum likelihood (RML) is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of Equations 2, 3, and 4.
+Model inference is done in the same way to how MSstats~\cite{Choi:2014} and MSstatsTMT~\cite{Huang:2020} target the global protein. In cases where the design is unbalanced, a linear mixed effects model is fit, which takes into account all potential sources of variation, and restricted maximum likelihood (RML) is used to estimate the parameters of each model. Once the parameters are estimated, we can combine the models using modified versions of Equations \ref{eq:prop_fc}, \ref{eq:prop_se}, and \ref{eq:prop_df}.
 
-The log-fold change in the adjusted PTM abundance, $\Delta$, is now estimated by RML, and Equation 2 becomes 
+The log-fold change in the adjusted PTM abundance, $\Delta$, is now estimated by RML, and Equation \ref{eq:prop_fc} becomes 
 \begin{equation}
 \hat{\Delta} = (\hat{\mu}_{RML_i}^{\ast} - \hat{\mu}_{RML_{i'}}^{\ast}) - (\hat{\mu}_{RML_i} - \hat{\mu}_{RML_{i'}})
 \end{equation}
@@ -433,25 +487,15 @@ Details on how the proposed method can be used to run sample size calculations a
 
 \subsection*{Implementation}
 
-The proposed methods are implemented in the open source R package $MSstatsPTM$, available on Bioconductor. $MSstatsPTM$ includes converters for multiple spectral processing tools, including MaxQuant, Progenesis, and Spectronaut. The converters take as input the raw data from the tool, identify the modification site for modified peptide, and put the data into the correct format for analysis in $MSstatsPTM$. Conversion is done separately for the modified and global profiling runs. If the global profiling run is not available, the package can still analyze the modified run, but will do so without adjusting for changes in unmodified protein abundance. Specifically, if a global profiling run is not available the null and alternative hypothesis in Equation \ref{eq_1} will reduce to:
+The proposed methods are implemented in the open source R package $MSstatsPTM$, available on Bioconductor and Github. An overview of the steps of the package are illustrated in Figure \ref{fig:msstatsptm_design}. $MSstatsPTM$ includes converters for multiple spectral processing tools, including MaxQuant, Progenesis, and Spectronaut. The converters take as input the raw data from the tool, identify the modification site for modified peptide, and put the data into the correct format for analysis in $MSstatsPTM$. Conversion is done separately for the modified and global profiling runs. If the global profiling run is not available, the package can still analyze the modified run, but will do so without adjusting for changes in unmodified protein abundance. Specifically, if a global profiling run is not available the hypotheses in Equation \ref{eq:conv_null_hyp} will be used; which amounts to running the methods seen in $MSstats$ on modified peptide level data \cite{Choi:2014} \cite{Huang:2020}.
 
-\begin{equation}
-\begin{aligned}
-H_{0}: \Delta = \mu_{i}^{\ast} - \mu_{i} = 0 \\
-H_{a}: \Delta = \mu_{i}^{\ast} - \mu_{i} \neq 0
-\end{aligned}
-\label{eq_9}
-\end{equation}
-
-Which amounts to running the methods seen in MSstats and MSstatsTMT on peptide level data \cite{Choi:2014} \cite{Huang:2020}.
-
-After using the converters, the next step is peptide/protein summarization and missing value imputation. In the methods sections it was assumed that all the input data was summarized; in the implementation we need to run a specific summarization step to make this happen. For the modified run, the package summarizes features, PSMs, which include the same modification together. Features with multiple modification sites are not included with single site features and are summarized separately. For the global profiling run all unmodified features from the same protein are summarized together, up to the protein level. Additionally, the summarization includes global median normalization and normalizes between MS runs. The package uses an AFT model to impute missing values, although this step is optional.
+After using the converters, the next step is peptide/protein summarization and missing value imputation. For the modified run, the package summarizes features which include the same modification together. Features with multiple modification sites are not included with single site features and are summarized separately. For the global profiling run all unmodified features from the same protein are summarized together, up to the protein level. Additionally, the summarization includes global median normalization and normalizes between MS runs. The package can optionally impute missing values using an AFT model.
 
 The final step of the package is modeling the summarized dataset. A linear mixed effects model is fit for both the summarized modified and global profiling runs. This model is automatically adjusted depending on the experimental design and acquisition method. The comparisons of interest can either be predefined or a full pairwise comparison will be tested. After fitting a model to both the modified and unmodified data, the modified model is adjusted for changes in unmodified protein abundance, using the methods described in this paper. 
 
 Beyond the core functionalities of conversion, summary, and modeling, the package also includes functions for plotting the results. These include plots for the summarized and modeled data to assist in the analysis of the experiment. The summarized plots help with quality assurance analysis and identifying sources of variation. This includes a quality control plot, summarizing the peptide abundance per run in the form of a boxplot, and a profile plot, plotting each feature and the overall feature summarization as a line plot over each run. Additionally, the model plots include a volcano plot, showing all peptides adjusted p-values and fold changes, as well as a heatmap, which evaluates the fold change between conditions and peptides. 
 
-The package relies on functionalities from the R packages $MSstats$ \cite{Choi:2014} and $MSstatsTMT$ \cite{Huang:2020}. The statistical modeling relies on the functionality from the R packages $lme4$ \cite{Bates2015} and $lmerTest$ \cite{Kuznetsova2017}. An overview of the steps of the package are illustrated in Figure \ref{fig:msstatsptm_design}.
+The package relies on functionalities from the R packages $MSstats$ \cite{Choi:2014} and $MSstatsTMT$ \cite{Huang:2020}. The statistical modeling relies on the functionality from the R packages $lme4$ \cite{Bates2015} and $lmerTest$ \cite{Kuznetsova2017}.
 
 The code is available on Bioconductor, \url{http://www.bioconductor.org/packages/release/bioc/html/MSstatsPTM.html}, and Github, \url{https://github.com/Vitek-Lab/MSstatsPTM}.
 
@@ -472,25 +516,25 @@ In Figure \ref{fig:sim1_fdr} we see that not accounting for changes in the unmod
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{The proposed approach outperformed existing methods in simulations with missing values and low features}
 
-In this simulation the proposed method outperformed $t$-test and Limma. Changes in unmodified protein level still needed to be accounted for to control the FDR. Once controlling for changes in the unmodified protein, the proposed method outperformed the other methods, as seen in Figure \ref{fig:sim2_acc}. The proposed method calibrated model accuracy and recall rate well, even when the number of replicates were low. Additionally, when comparing the fold change estimation across all modified peptides, the proposed method showed a tighter distribution of estimated fold changes around the true fold change, as compared to $t$-test and Limma. Specifically, the inner quartile range of the estimated fold change for the proposed method was on average 10.4\% smaller than $t$-test and 21.8\% smaller than Limma. This fold change comparison can be seen in Supplementary Figure \ref{supp-fig:fc_boxplot}.
+In this simulation the proposed method outperformed $t$-test and Limma. Changes in unmodified protein level still needed to be accounted for to control the FDR. Once controlling for changes in the unmodified protein, the proposed method outperformed the other methods, as seen in Figure \ref{fig:sim2_acc}. The proposed method calibrated model accuracy and recall rate well, even when the number of replicates were low. Additionally, when comparing the fold change estimation across all modified peptides, the proposed method showed a tighter distribution of estimated fold changes around the true fold change, as compared to $t$-test and Limma. Specifically, the inner quartile range (IQR) of the estimated fold change for the proposed method was on average 10.4\% smaller than $t$-test and 21.8\% smaller than Limma. This fold change comparison can be seen in Supplementary Figure \ref{supp-fig:fc_boxplot}.
 
 Further details reviewing the results of each simulation and  method comparison can be seen in Supplementary Sec. \ref{supp-sec:sim}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{In a label-free benchmark experiment the proposed approach corrected for bias and outperformed existing methods}
 
-In this experiment all models incorrectly estimated the fold change of the modified spike-in peptides before adjusting for changes in global protein abundance. After adjustment, the spike-in peptides' fold change was generally in line with expectation (Figure \ref{fig:spikein_boxplot}), however the distribution of estimated fold changes was visibly wider in all methods. Of the three approaches, the proposed method showed the tightest distribution around the true log fold change. Comparing the inner quartile range (IQR) of the spike-in peptide's log fold change, the proposed method's IQR was 36.78\% smaller than Limma's and 32.98\% smaller than $t$-test's. This means that the proposed method's fold change estimate was more consistently correct, when compared to Limma and $t$-test.
+In this experiment all models incorrectly estimated the fold change of the modified spike-in peptides before adjusting for changes in global protein abundance. After adjustment, the spike-in peptides' fold change was generally in line with expectation in all methods, however the distribution of estimated fold changes was visibly wider (Figure \ref{fig:spikein_boxplot}). Of the three approaches, the proposed method showed the tightest distribution around the true log fold change. Comparing the IQR of the spike-in peptide's log fold change, the proposed method's IQR was 36.78\% smaller than Limma's and 32.98\% smaller than $t$-test's. This means that the proposed method's fold change estimate was more consistently correct when compared to Limma and $t$-test.
 
-In Figure \ref{fig:spikein_prop_volcano} we can clearly see the red labeled spike-in peptides do not follow the expected fold change before adjusting for changes in global protein abundance. After adjustment, the estimated fold change was more in line with expectation. Additionally, the background peptides serving as the null model, show many false positives before adjustment was made. After adjustment the results improved and the number of false positives decreased significantly. Specifically, for the proposed method, the number of false positives went from 20.88\% to 1.84\% of all true negatives after adjustment was applied. Using both the proposed method and Limma, the red labeled spike-in peptides were more inline with expected fold change after the adjustment was applied. However, using Limma resulted in the majority of the differential spike-in peptides not showing a significant adjusted p-value. In this case, using Limma would have resulted in missing the majority of differentially modified peptides.
+In Figure \ref{fig:spikein_prop_volcano} we can clearly see the red labeled spike-in peptides do not follow the expected fold change before adjusting for changes in global protein abundance. After adjustment, the estimated fold change was more in line with expectation. Additionally, the background peptides serving as the null model show many false positives before adjustment was made, however after adjustment the number of false positives decreased significantly. Specifically, for the proposed method, the number of false positives went from 20.88\% to 1.84\% after adjustment was applied. Using both the proposed method and Limma, the red labeled spike-in peptides were more inline with expected fold change after the adjustment was applied. However, Limma resulted in the majority of the differential spike-in peptides having an insignificant adjusted p-value. In this case, using Limma would have resulted in missing the majority of differentially modified peptides.
 
 Further results of this experiment are provided in Supplementary Sec. \ref{supp-sec:benchmark}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{MSstatsPTM corrected for bias in group comparison TMT experiment}
 
-The results of this experiment are summarized in Figure \ref{fig:data4_plots}. The experiment was modeled as a group comparison. In Figure \ref{fig:data4_venn_diagram} the number of significant modified peptides before and after adjustment is shown. We can see that more peptides became insignificant after adjustment than became significant. 3,236 modified peptides became insignificant, 1352 became significant, while 4,282 were significant in both models. For the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. In contrast, for peptides that became significant after adjustment, their true abundance change was masked by underlying changes in the unmodified protein. Both of these issues are corrected in adjustment, and the true abundance change is shown. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides whose adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. In other words, the fold change was the same between models but variance increased. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was due to changes in global protein abundance.
+The results of this experiment are summarized in Figure \ref{fig:data4_plots}. In Figure \ref{fig:data4_venn_diagram} the number of significant modified peptides before and after adjustment is shown. We can see that more peptides became insignificant after adjustment than became significant. 3,236 modified peptides became insignificant, 1352 became significant, while 4,282 were significant in both models. For the peptides that became insignificant in the adjusted model, their change in abundance was mainly due to changes in global protein abundance. In contrast, for peptides that became significant after adjustment, their true abundance change was masked by underlying changes in the unmodified protein. Both of these issues are corrected in adjustment, and the true abundance change is shown. An additional question that must be addressed is if the decrease in significant peptides is due to the increased variance that comes from adjustment. This was tested by looking for modified peptides whose adjusted log fold change was within 10\% of the unadjusted log fold change but became insignificant after adjustment. In other words, the fold change was the same between models but variance increased. When this test was applied on this experiment, only one peptide became insignificant due to an increase in variance. Thus we can conclude that the drop off in significant peptides was due to changes in global protein abundance.
 
-In Figure \ref{fig:data4_profile_plot}, the modification of protein $GSDMD$ at $K62$ showed the advantage of the proposed method. The modified peptide originally showed no abundance change between the infected 1 hour, 4 hour, and 6 hour conditions. This was contrasted with a strong negative change in the global profiling run between the same conditions. Looking at the Dox4hr vs Dox1hr conditions and modeling the modified peptide without adjusting for changes in the global profiling, the fold change was $-.501$ and the adjusted p-value was insignificant at $.0644$. After adjusting for changes in the global protein abundance, the fold change was much higher, $2.79$, and the adjusted p-value became significant, $5.25e-8$. In this case the effect of the modified peptide was strongly confounded with changes in the global protein. The proposed method allowed us to remove this confounding and estimate the true effect.
+In Figure \ref{fig:data4_profile_plot}, the modification of protein $GSDMD$ at site $K62$ showed the advantage of the proposed method. The modified peptide originally showed no abundance change between the infected 1 hour, 4 hour, and 6 hour conditions. This was contrasted with a strong negative change in the global profiling run between the same conditions. Looking at the Dox4hr vs Dox1hr conditions and modeling the modified peptide without adjusting for changes in the global profiling, the fold change was $-.501$ and the adjusted p-value was insignificant at $.0644$. After adjusting for changes in the global protein abundance, the fold change was much higher, $2.79$, and the adjusted p-value became significant, $5.25e-8$. In this case the effect of the modified peptide was strongly confounded with changes in the global protein. The proposed method allowed us to remove this confounding and estimate the true effect.
 
 \subsubsection*{Proposed approach removed confounding in time series TMT experiment}
 
@@ -502,7 +546,7 @@ Analysis of other modifications in this experiment can be seen in Supplementary 
 
 \subsubsection*{In label-free experiment without a separate global profiling run, the proposed approach could eliminate the bias due to changes in the unmodified protein, albeit less effectively than in the presence of a global profiling run}
 
-As discussed in Section \ref{sec:exp_proc_dataset6}, there was no unmodified global profiling run performed in this experiment. Once identification and quantification of the Ubiquitination profiling was performed, peptides which were unmodified were extracted and used in place of a global profiling run. This resulted in a lack of overlap between modified and unmodified peptides. Any modified peptide without a corresponding unmodified protein could not be adjusted. Of the 10,799 modified peptides identified, only 4526 had a corresponding unmodified protein and could be adjusted. Additionally, the lack of a separate global profiling run resulted in low feature counts for the unmodified protein model.
+As discussed in Section \ref{sec:exp_proc_dataset6}, there was no unmodified global profiling run performed in this experiment. Once identification and quantification of the Ubiquitination profiling was performed, peptides which were unmodified were extracted and used in place of a global profiling run. This resulted in a lack of overlap between modified and unmodified peptides. Any modified peptide without a corresponding unmodified protein could not be adjusted. Of the 10,799 ubiquitin sites identified, only 4526 had a corresponding unmodified protein and could be adjusted. Additionally, the lack of a separate global profiling run resulted in low feature counts for the unmodified protein model.
 
 The results of this experiment are summarized in Figure \ref{fig:data6_plots}. After adjusting for changes in the unmodified protein, there were fewer significant modified peptides. In total, 2709 modified peptides became insignificant, while only 547 became significant. However, this was mainly due to not having a global profiling run, resulting in a lack of overlap between modified and unmodified peptides. In the bottom plot, only modified peptides that could be adjusted are shown. Here there were much fewer peptides that become insignificant after adjustment. 726 modified peptides became insignificant, 547 became significant, and 1,078 were significant in both models. As in the previous experiments, we can check if these peptides became insignificant due to an increase in variance. To check this we looked at modified peptides whose adjusted fold change was within 10\% of their unadjusted fold change and which became insignificant after adjustment. In this experiment there were only 25 modified peptides that meet this criteria.
 
@@ -510,24 +554,12 @@ Further analysis of modifications before and after protein adjustment can be see
 
 %In Figure \ref{fig:usp30_profile} the profile plot of peptide $P52209\_K059$ is shown. The abundance between conditions appears flat in the modified peptide profile plot, however this is contrast with a large negative change in the corresponding global protein. Specifically looking at the comparison between the CCCP and Control conditions, the unadjusted model showed a small log fold change of $-.255$ and insignificant adjusted pvalue of $.104$. However when adjusting for changes in the undmodified protein, the log fold change increased to $-2.73$ and adjusted pvalue became significant at $1.067e-04$. Using the proposed method we get increased information that would otherwise have been missed.
 
-\subsubsection*{Noisy PTM measurements benefited from additional biological replicates}
-
-\todo{I would like to move this section to the supplementary and just referencing it in the main.}
-
-Here we analyzed the sample size needed to achieve a desired statistical power. The proposed approach corrected for confounding between the modified peptide and unmodified protein at the cost of increased variation. This can be seen in the calculation for variance in Section \ref{sec:adjustment_summary}. Increased variation required a larger number of replicates to reach the same power. Thus the statistical power was dependent on the variance from both the modified peptide and unmodifed protein.
-
-We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. In terms of the number of replicates, we tested scenarios with equal replicates in both the modified and unmodified runs, as well as scenarios where the replicates differed between runs. We used the biological experiments to determine what variance values to test. In datasets 4 and 5 the variance of the PTM was higher than the global protein. In dataset 6 the variance of the PTM and Protein was generally the same. We mimicked these scenarios and analyzed the power of experiments when the PTM variance was higher than the protein and when they were equal. When the PTM and protein were the same we chose a variance of $.15$, whereas when the PTM was higher than the protein we chose a PTM variance of $.2$ and a protein variance of $.1$.
-
-The results of the power and sample size analysis can be seen in Supplementary Figure \ref{supp-fig:power_sd_combo}. When the variance and replicates were equal, higher replicates predictably lead to higher power. In cases where the replicates were unbalanced, but the variance was still the same, it did not matter if there were more replicates in the modified or unmodified runs. In comparison, with differing variance and equal replicates, higher replicates still lead to higher power. When the replicates were unbalanced and the variance was higher in the PTM, there was more power when there were more replicates in the PTM than the protein. In this case it was clearly more important to have high replicates for the PTM run than the unmodified protein. In cases where the number of replicates has to be limited, it was better to add more to the PTM side.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 
-\todo{Although demonstrated here on DDA, is also applicable to DIA, SRP and PRM acquisitions}
-
 We proposed a general statistical modeling framework and implementation for PTM characterization. The framework is designed for bottom-up MS workflows, which are characterized with variations from multiple convoluted sources, frequent missing data, and associated uncertainty in the conclusions. The framework is general and is applicable to a variety of experimental designs. It outperforms the ad-hoc methods underlying $t$-test and Limma, and yields accurate results in the broad type of experimental circumstances, including the presence of missing values, changes in protein abundance, few representative peptides, and different acquisition methods. The framework allows us to plan for subsequent experiments, and choose the appropriate number of replicates in consideration of adjustment with respect to protein abundance. The implementation allows for straightforward application of the methods discussed and allows for reproducible experimental analysis.
 
-Our results show that the proposed approach for modeling and summarization  leads to more sensitive PTM significance analysis and more accurate and precise quantification. The gain is due to a more efficient use of the data, and to a more accurate understanding of the systematic and random variations. The proposed framework can be extended beyond the experimental designs with variation from multiple sources discussed above. For example, it can represent experimental designs with even more complex structures, such as time series or factorial investigations. Additionally, the approach can handle experiments with modified peptides processed using label-free methods and unmodified peptides processed using TMT labeling, or vice versa. In this case summarization and modeling is still done separately for both the modified and unmodified data, and then combined after modeling.
+Our results show that the proposed approach for modeling and summarization leads to more sensitive PTM significance analysis and more accurate and precise quantification. The gain is due to a more efficient use of the data, and to a more accurate understanding of the systematic and random variations. The proposed framework can be extended beyond the experimental designs with variation from multiple sources discussed above. Although demonstrated here on DDA, is also applicable to DIA, SRP and PRM acquisitions. Additionally, the approach can handle experiments with modified peptides processed using label-free methods and unmodified peptides processed using TMT labeling, or vice versa. In this case summarization and modeling is still done separately for both the modified and unmodified data, and then combined after modeling.
 
 A potential limitation of the proposed framework is the assumption that all the peptides are correctly mapped to the underlying proteins and PTM sites, and the features are informative of the abundances of underlying protein and PTM. Also, characterizing PTMs with current data-dependent acquisition workflows is prone to being under sampled, leading to a sparse dataset with a large number of missing values for the analysis. Statistical methods accounting for effects due to experimental units and missing values introduced in this manuscript help interpret the data in a more objective manner. The latest development of targeted acquisition and data-independent acquisition methods are expected to further alleviate these issues. 
 
@@ -562,7 +594,7 @@ The code, data, and analysis results of the two simulations, Computer simulation
 \centering
 \includegraphics[scale=.6]{images/fig3.png}
 \caption{
-Goals of PTM characterization, input to statistical analyses, and notation. \todo{Could you update the caption? The figure now has only 2 parts. It doesn't have subscript $i$ etc. On the other hand, it distinguishes the population parameters, and the observed data. Could you mention this here briefly, and describe in more detail in the text?}  (a) Schematic data representation, in a simplified case of two conditions and two \todo{biological?} replicate runs. Each PTM site is modeled and characterized separately, where a PTM is quantified with multiple spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities the PTM in Condition i are denoted by i*. Features corresponding to unmodified peptides in Condition i is denoted by i. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). (b) PTM relative quantification by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.}
+Goals of PTM characterization, input to statistical analyses, and notation. (a) Schematic data representation, in a simplified case of two conditions and two \todo{biological?} replicate runs. Each PTM site is modeled and characterized separately, where a PTM is quantified with observed spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities of the PTM in Condition 1 are denoted by $y_1^\ast$. Features corresponding to unmodified peptides in Condition 1 are denoted by $y_1$. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). (b) PTM relative quantification of the population parameters by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.}
 \label{fig:data-structure}
 \end{figure}
 
@@ -571,7 +603,7 @@ Goals of PTM characterization, input to statistical analyses, and notation. \tod
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.8]{images/MSstatsPTM_design.png}
-\caption{The workflow of MSstatsPTM and how it fits into the experimental pipeline. MSstatsPTM's workflow starts after modified and unmodified peptide quantification. First tool specific pre-processing is done, this includes modification site identification, general data cleaning, and formatting the data into the format needed for the package. The next step is feature level summarization, which summarizes features up to the modification level for the PTM data, and the protein level for the protein data. In the final step a model is fit to identify differential PTMs and unmodified proteins across conditions and the PTM model is adjusted for changes in the unmodified protein.}
+\caption{The workflow of $MSstatsPTM$ and how it fits into the experimental pipeline. The package's workflow starts after modified and unmodified peptide quantification. First tool specific pre-processing is performed, this includes modification site identification, general data cleaning, and formatting the data into the format needed for the package. The next step is feature level summarization, which summarizes features up to the modification level for the PTM data, and the protein level for the protein data. In the final step a model is fit to identify differential PTMs and unmodified proteins across conditions and the PTM model is adjusted for changes in the unmodified protein. After both the summarization and group comparison steps, plots can be created to summarize the results.}
 \label{fig:msstatsptm_design}
 \end{figure}
 
@@ -605,7 +637,7 @@ Goals of PTM characterization, input to statistical analyses, and notation. \tod
 \caption{}
 \label{fig:spikein_prop_volcano}
 \end{subfigure}
-\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. a) Before adjustment the fold change of the spike-in peptides' were systematically different from the expected fold change in all models. After adjustment, this systemic difference was removed, however the inner quartile range of the Limma and $t$-test models was wider than the proposed method. b) The spike in peptides (colored red) did not follow the expected log fold change before adjustment. However, after adjustment, the spike in peptides were more in line with expectation. Using Limma the spike in peptides followed the expected log fold change after adjustment, however the majority of spike in peptides did not have a significant adjusted p-value.}
+\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. a) Before adjustment the fold change of the spike-in peptides' were systematically different from the expected fold change in all models. After adjustment, this systemic difference was removed, however the inner quartile range of the Limma and $t$-test models was wider than the proposed method. b) Before adjustment the spike in peptides (colored red) did not follow the expected log fold change; after adjustment, the spike in peptides were more in line with expectation. Using Limma, the spike in peptides followed the expected log fold change after adjustment, however the majority of spike in peptides did not have a significant adjusted p-value.}
 \label{fig:spikein_volcano}
 \end{figure}
 
@@ -621,7 +653,7 @@ Goals of PTM characterization, input to statistical analyses, and notation. \tod
 \caption{}
 \label{fig:data4_profile_plot}
 \end{subfigure}
-\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. a) The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment then became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was driven by changes in the global protein. In contrast, peptides that became significant after adjustment saw their true abundance change masked by underlying changes in the unmodified protein. b) Comparing the global profiling of protein $GSDMD$ with the ubiquitination of the protein at site $K62$. When looking at the summary of the modification and global protein it was clear the conditions follow different trends. Specifically, there appeared to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there was a large negative change when looking at the unmodified plot. This indicated the modification was confounded with changes in the unmodified protein.}
+\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. a) The overlap of differential modified peptides for the PTM model with and without global protein level adjustment. More PTMs became insignificant after adjustment than became significant. For the peptides that became insignificant in the adjusted model, their change in abundance was driven by changes in the global protein. In contrast, peptides that became significant after adjustment had their true abundance change masked by underlying changes in the unmodified protein. b) Comparing the global profiling of protein $GSDMD$ with the ubiquitination of the protein at site $K62$. When looking at the summary of the modification and global protein it was clear the conditions follow different trends. Specifically, there appeared to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there was a large negative change when looking at the unmodified plot. This indicated the modification was confounded with changes in the unmodified protein.}
 \label{fig:data4_plots}
 \end{figure}
 

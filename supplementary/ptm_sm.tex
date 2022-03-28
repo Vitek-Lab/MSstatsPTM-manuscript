@@ -496,10 +496,9 @@ The proposed statistical approach was evaluated and compared to the $t$-test and
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Computer simulation}
 
-Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. The proposed approach adjusts the PTM abundance with respect to protein abundance as introduced in \secref{sec:prop}. Alternatively, two-sample $t$-test or Limma taking as input the ratio between feature intensities of modified and unmodified peptides is commonly applied for the same purpose (\secref{sec:ttest}). 
-Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
+Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
 
-In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. While multiple conditions were generated, all comparisons were still made with the same fold change between conditions ($0.75$). This ensured that all peptides were differentially abundant by the same amount and the only difference in TP/FP/TN/FN calculations was using more conditions in the modeling.
+In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. While multiple conditions were generated, all comparisons were still made with the same fold change between conditions ($0.75$). This ensured that all peptides were differentially abundant by the same amount and the only difference in calculations was using more conditions in the modeling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
@@ -521,7 +520,6 @@ In the first simulation an experiment with many features per PTM and unmodified 
 
 The results are summarized from Figure \ref{fig:sim1_fpr} to Figure \ref{fig:sim1_recall}. These results include the false discovery rate with and without adjusting for changes in unmodified protein abundance, false positive rate, and overall accuracy. Additionally, the results are compared to simulation 2 described in the next section.
 
-When simulating the data, 500 of the 1000 peptides were simulated as true positives with a differential fold change between conditions, while the other 500 were not differential and treated as true negatives. In terms of the true negatives, 250 were simulated such that any abundance changes were entirely driven by changes in the unmodified peptide. We would expect any model without performing protein adjustment to treat these as false positives. The other 250 were simulated with no significant change in either PTM or overall protein abundance.
 
 \subsubsection{Dataset 2 : Computer simulation 2 - Label-free missing values and low features}
 \label{sec:dataset2}
@@ -543,8 +541,6 @@ In the second simulation we introduced limited feature observations per PTM as w
 
 The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:fc_boxplot}.
 
-The portion of significant peptides were done in the same was as described in simulation 1.
-
 \begin{figure}[h!]
 \centering
  \begin{subfigure}{\textwidth}
@@ -555,7 +551,7 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FDR}
-	\caption{The considered methods with protein adjustment are compared in detail. All three methods with adjustment generally performed similarly in terms of FDR.}
+	\caption{The considered methods with protein adjustment were compared in detail. All three methods with adjustment generally performed similarly in terms of FDR.}
  \end{subfigure}
  \caption{FDR of Simulation 1.}
 \label{fig:sim1_fpr}
@@ -566,12 +562,12 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_Recall}\\
-	\caption{The recall for simulation 1 methods with adjustment were compared. It is clear that Limma performs the strongest here when the number of replicates were low.  At higher replicates the performance of the proposed methods and Limma are comparable. $t$-test clearly performs worse across all methods.}
+	\caption{All methods with adjustment were compared by comparing recall in simulation 1. Limma performed the strongest here when the number of replicates were low. At higher replicates the performance of the proposed methods and Limma were comparable. $t$-test clearly performed worse across all methods.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_accuracy}
-	\caption{The overall accuracy plot mimics the observations in the recall plot. Limma performs stronger than the proposed method at lower replicates, while at higher they are comparable.}
+	\caption{The overall accuracy plot mimicked the observations in the recall plot. Limma performed strongest when replicates were low, but was comparable to the proposed method with more replicates.}
  \end{subfigure}
 \caption{Recall and Accuracy results of Simulation 1.}
 \label{fig:sim1_recall}
@@ -581,7 +577,7 @@ The portion of significant peptides were done in the same was as described in si
 \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_Recall}
 	\caption{}
-\caption{Recall results of Simulation 2. The advantage of using the proposed approach is apparent when looking at simulation 2, which includes limited observations and the presence of missing values. In the case of recall the proposed method performs stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was $t$-test.}
+\caption{Recall results of Simulation 2. The advantage of using the proposed approach were apparent when looking at simulation 2, which included limited observations and the presence of missing values. In the case of recall the proposed method performed stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was $t$-test.}
 \label{fig:sim2_recall}
 \end{figure}
 
@@ -590,12 +586,12 @@ The portion of significant peptides were done in the same was as described in si
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FC_boxplot}
-	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75. The distributions around the median were also consistent across all methods. Predictably the distribution quantiles decrease as the number of replicates increases.}
+	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75. The distributions around the median were also consistent across all methods.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_FC_boxplot}
-	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. The inner quartile range of the Proposed method was on average 10.4\% smaller than t-test and 21.8\% smaller than Limma. In this case the proposed method showed a stronger performance in correctly estimating the fold change for all peptides.}
+	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. The inner quartile range of the Proposed method was on average 10.4\% smaller than t-test and 21.8\% smaller than Limma.}
  \end{subfigure}
 \caption{Fold change distribution comparison between Simulations 1 and 2.}
 \label{fig:fc_boxplot}
@@ -614,32 +610,31 @@ A custom designed experiment with labeling was used to assess the performance of
 \caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
 \end{figure}
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The proposed method summarizes feature intensities up to the run level using Tukey's Median Polish, while the other methods use the log of summed feature intensities. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
+Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_msstatsptm_volcano}
-\caption{The modeling results of the proposed method both before and after adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike-in peptides (colored red) do not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides are more in line with expectation. Additionally the background grey colored peptides show many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
+\caption{The modeling results of the proposed method both before and after adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike-in peptides (colored red) did not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides were more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_limma_volcano}
-\caption{When modeling the experiment with the Limma method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change is much more accurate, the majority of spike-in peptides do not have a significant adjusted pvalue. In this case, the known differential peptides are missed by the model. In terms of false positives, the results are very similar to the proposed method, with many false positives before adjustment and much fewer after. \label{fig:spike_volcano_limma}}
+\caption{When modeling the experiment with the Limma method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change was more accurate, the majority of spike-in peptides did not have a significant adjusted pvalue. In this case, the known differential peptides were missed by the model. In terms of false positives, the results were very similar to the proposed method, with many false positives before adjustment and fewer after. \label{fig:spike_volcano_limma}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_ttest_volcano}
-\caption{Using the two sample $t$-test, none of the comparisons either before or after adjustment show any significant peptides. With that being said, the fold change of the spike-in peptides is much closer to expectation after adjusting for global protein abundance. \label{fig:spike_volcano_ttest}}
+\caption{Using the two sample $t$-test, none of the comparisons either before or after adjustment show any significant peptides. With that being said, the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. \label{fig:spike_volcano_ttest}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_statistic_comparison}
-\caption{Comparing the summary statistics between methods it is clear that the proposed method performs the strongest. In terms of accuracy and specificity the three methods are close, with Limma and $t$-test showing slightly higher values. Accuracy and specificity are dominated by the large number of true negatives (background peptides) compared to the true positives (spike-in peptides). In terms of recall, the proposed approach far out performed the other two methods, showing that it correctly labeled the most spike-in peptides. \label{fig:spike_stat}}
+\caption{Comparing the summary statistics between methods, the proposed method performed the strongest. In terms of accuracy and specificity the three methods were close, with Limma and $t$-test showing slightly higher values. Accuracy and specificity were dominated by the large number of true negatives (background peptides) compared to the true positives (spike-in peptides). In terms of recall, the proposed approach out performed the other two methods, showing that it correctly labeled the most spike-in peptides. \label{fig:spike_stat}}
 \end{figure}
-
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -649,7 +644,7 @@ Again we consider three different methods and assess their performance: the meth
 \subsubsection{Dataset 4 : Human - Ubiquitination - 1mix-TMT}
 \label{sec:ipah}
 
-In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the protein gasdermin D (GSDMD). \cite{LUCHETTI2021} Multiplex proteomics was used to quantify the abundance of total protein, and ubiquitination in human epithelial cells. Cells were either infected or uninfected with IpaH7.8-deficient Shigella flexneri and measurements were taken at different time periods. Uninfected cells were measured at 0 and 6 hours, while infected cells were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. The experiment was unbalanced with two biological replicates per condition for all conditions except for infected 1 hour. The experiment was modeled as a group comparison, with different replicates measured at each time point. The experimental design can be seen in Table~\ref{table:ipah_design}.
+In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the protein gasdermin D (GSDMD) ~\cite{LUCHETTI2021}. Multiplex proteomics was used to quantify the abundance of total protein, and ubiquitination in human epithelial cells. Cells were either infected or uninfected with IpaH7.8-deficient Shigella flexneri and measurements were taken at different time periods. Uninfected cells were measured at 0 and 6 hours, while infected cells were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. The experiment was unbalanced with two biological replicates per condition for all conditions except for infected 1 hour. The experiment was modeled as a group comparison, with different replicates measured at each time point. The experimental design can be seen in Table~\ref{table:ipah_design}.
 
 \begin{table}[h!]
 \centering
@@ -698,12 +693,12 @@ The results of the proposed method to this experiment can be seen in Figure \ref
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/IpaH_prof_plot}
-	\caption{Comparing the global profiling of protein $GSDMD\_HUMAN|P57764$ with the ubiquitination of the protein at site $K62$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the conditions follow different trends. Specifically, there appears to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there is a large negative change when looking at the unmodified plot. This indicates the modification is confounded with changes in the unmodified protein.}
+	\caption{Here the global profiling of protein $GSDMD\_HUMAN|P57764$ with the ubiquitination of the protein at site $K62$ was compared. The individual PSM features areshown in grey, while the feature summarization is shown in red. The summary of the modification and global protein showed that the conditions followed different trends. Specifically, there appeared to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there was a large negative change in the unmodified plot. This indicates the modification was confounded with changes in the unmodified protein.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/IpaH_volcano_plot}
-	\caption{Volcano plots of Dox4hr vs Dox1hr both before and after protein adjustment. The $GSDMD\_HUMAN|P57764\_K62$ modification is highlighted. Before adjustment the modification has a small fold change and insignificant adjusted pvalue. After adjustment the fold change is much larger and the adjusted pvalue is very significant. In this case the proposed method allows us to identify a differential modified peptide that could have otherwise been missed.}
+	\caption{Volcano plots of Dox4hr vs Dox1hr both before and after protein adjustment. The $GSDMD\_HUMAN|P57764\_K62$ modification is highlighted. Before adjustment the modification had a small fold change and insignificant adjusted pvalue. After adjustment the fold change was much larger and the adjusted pvalue was significant. In this case the proposed method allowed us to identify a differential modified peptide that could have otherwise been missed.}
  \end{subfigure}
 \caption{Summary plots for modification of protein GSDMD at site K62.}
 \label{fig:ipah_figures}
@@ -713,7 +708,7 @@ The results of the proposed method to this experiment can be seen in Figure \ref
 \subsubsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}
 \label{sec:shigella}
 
-In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed. \cite{Maculins} Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). The experiment was modeled as a time series, with the same biological replicate being measured at each time point. Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
+In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed~\cite{Maculins}. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). The experiment was modeled as a time series, with the same biological replicate being measured at each time point. Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
 
 \begin{table}[h!]
 \centering
@@ -753,12 +748,12 @@ The results of the proposed method to this experiment can be seen in Figure \ref
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.95\textwidth]{sim_new/No_Difference_Shigella_Profile_Plot}
-	\caption{Comparing the global profiling of protein $TTP\_MOUSE|P22893$ with the modification of the protein at site $S178$. The individual PSM features are shown in grey, while the feature summarization is shown in red. When looking at the summary of the modification and global protein it is clear the difference between conditions follow the same trend. Specifically, there is a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicates the movement is driven by changes in global protein.}
+	\caption{The global profiling of protein $TTP\_MOUSE|P22893$ with the modification of the protein at site $S178$ was compared. The individual PSM features are shown in grey, while the feature summarization is shown in red. The summary of the modification and global protein showed that the conditions followed the same trend. Specifically, there was a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicated the movement is driven by changes in global protein.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/No_Difference_Shigella_Volcano}
-	\caption{Volcano plots of WT\_Late vs WT\_Uninfect both before and after protein adjustment. The $TTP\_MOUSE|P22893\_S178$ modification is highlighted. Before adjustment the modification has a large fold change and significant adjusted pvalue. After adjustment the fold change is much smaller and the adjusted pvalue is insignificant.}
+	\caption{Volcano plots of WT\_Late vs WT\_Uninfect both before and after protein adjustment. The $TTP\_MOUSE|P22893\_S178$ modification is highlighted. Before adjustment the modification had a large fold change and significant adjusted pvalue. After adjustment the fold change was much smaller and the adjusted pvalue was insignificant.}
  \end{subfigure}
 \caption{Summary plots for modification of protein TTP at site S178.}
 \label{fig:No_Diff_Shigella_PTM}
@@ -769,12 +764,12 @@ The results of the proposed method to this experiment can be seen in Figure \ref
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/Difference_Shigella_Profile_Plot}
-	\caption{Comparing the global profiling of protein $KI67\_MOUSE|E9PVX6$ with the modification at site $T215$. In this case the modification and global protein appear to show very small to no differences between conditions, however after adjusting for change in global protein abundance, the modification is statistically significant. Additionally, this profile plot shows the large difference in available features between modified peptides and global proteins.}
+	\caption{The global profiling of protein $KI67\_MOUSE|E9PVX6$ with the modification at site $T215$ was compared. In this case the modification and global protein appeared to show small or no difference between conditions, however after adjusting for change in global protein abundance, the modification was statistically significant. Additionally, this profile plot showed the large difference in available features between modified peptides and global proteins.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/Difference_Shigella_Volcano}
-	\caption{The volcano plot of the WT\_Uninfect and WT\_Early comparison show the specifics of the adjustment. The modification looks to be flat, with a log fold change of $.185$, while the global profiling showed a small negative fold change of $-.619$. While both exhibit small changes, when combined we can see a log fold change of $.804$ and adjusted p-value of $.0156$. In this case we can see the strength of the proposed method, showing noteworthy modifications which would be missed otherwise.}
+	\caption{The volcano plot of the WT\_Uninfect and WT\_Early comparison showed the specifics of the adjustment. The modification looked to be flat, with a log fold change of $.185$, while the global profiling showed a small negative fold change of $-.619$. While both exhibit small changes, when combined we saw a log fold change of $.804$ and adjusted p-value of $.0156$.}
  \end{subfigure}
  \caption{Summary plots for modification of protein KI67 at site T215.}
 \label{fig:Diff_Shigella_PTM}
@@ -794,24 +789,32 @@ An example profile plot for this experiment can be seen in  Figure \ref{fig:USP3
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{sim_new/USP30_profile_plot}
-\caption{Comparing the global profiling of protein $P52209$ with the modification of the protein at site $K059$. The modification appears generally unchanged between all conditions, whereas the global profiling run shows the CCCP and Combo conditions have a higher relative abundance compared to the Control and USP30\_OE. This indicates that the modification actually had an effect when comparing CCCP and Combo to Control and USP30\_OE. However it is not entirely clear as one unmodified peptide feature appears to be changed, while the other does not. This uncertainty is another result of not running a separate global profiling run. With a global profiling run, many unmodified features are generally quantified, removing the uncertainty that comes with low feature counts.}
+\caption{The global profiling of protein $P52209$ with the modification of the protein at site $K059$ was compared. The modification appeared generally unchanged between all conditions, whereas the global profiling run showed the CCCP and Combo conditions had a higher relative abundance compared to the Control and USP30\_OE. This indicated that the modification actually had an effect when comparing CCCP and Combo to Control and USP30\_OE. However it was not entirely clear as one unmodified peptide feature appeared to be changed, while the other did not. This uncertainty was another result of not running a separate global profiling run. With a global profiling run, many unmodified features are generally quantified, removing the uncertainty that comes with low feature counts.}
 \label{fig:USP30_profile_plot}
 \end{figure}
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sample size calculation and power analysis}
 
+\subsubsection*{Noisy PTM measurements benefited from additional biological replicates}
+
+Here we analyzed the sample size needed to achieve a desired statistical power. The proposed approach corrected for confounding between the modified peptide and unmodified protein at the cost of increased variation. This can be seen in the calculation for variance. Increased variation required a larger number of replicates to reach the same power. Thus the statistical power was dependent on the variance from both the modified peptide and unmodifed protein.
+
+We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. In terms of the number of replicates, we tested scenarios with equal replicates in both the modified and unmodified runs, as well as scenarios where the replicates differed between runs. We used the biological experiments to determine what variance values to test. In datasets 4 and 5 the variance of the PTM was higher than the global protein. In dataset 6 the variance of the PTM and Protein were generally the same. We mimicked these scenarios and analyzed the power of experiments when the PTM variance was higher than the protein and when they were equal. When the PTM and protein were the same we chose a variance of $.15$, whereas when the PTM was higher than the protein we chose a PTM variance of $.2$ and a protein variance of $.1$.
+
+The results of the power and sample size analysis can be seen in Figure \ref{fig:power_sd_combo}. When the variance and replicates were equal, higher replicates predictably lead to higher power. In cases where the replicates were unbalanced, but the variance was still the same, it did not matter if there were more replicates in the modified or unmodified runs. In comparison, with differing variance and equal replicates, higher replicates still lead to higher power. When the replicates were unbalanced and the variance was higher in the PTM, there was more power when more replicates were allocated to the PTM run than the unmodified protein run. The results lead to the takeaway that in cases where the number of replicates have to be limited, it is better to allocate more to the PTM run.
+
 \begin{figure}[h!]
 \centering
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.75\textwidth]{sim_new/same_var_power}
-	\caption{The power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates are high for both modified and unmodified peptides the power is much higher. Conversely at low replicates for each the power is much lower. The interesting part of this chart is when the replicates are different between runs. With equal variance, it does not matter if the PTM replicates or protein replicates are higher.}
+	\caption{The power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates were high for both modified and unmodified peptides the power was much higher. Conversely at low replicates for each the power was much lower. With equal variance, it did not matter if the PTM replicates or protein replicates were higher.}
  \end{subfigure}\vspace{-1mm}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.75\textwidth]{sim_new/high_ptm_var_power}
-	\caption{In this chart the variance for the PTM is higher than the unmodified protein. The PTM variance is .2, while the unmodified protein variance is .1. With equal replicates the results are the same as above, more replicates equals more power. When the replicates are not the same we can clearly see that having more replicates for the PTM leads to higher power.}
+	\caption{In this chart the variance for the PTM was higher than the unmodified protein. The PTM variance was .2, while the unmodified protein variance was .1. With equal replicates the results were the same as above. When the replicates were not equal, more replicates allocated to the PTM runs lead to higher power.}
  \end{subfigure}\vspace{-1mm}
  \caption{Power analysis of experiments with differing variances.}
 \label{fig:power_sd_combo}
