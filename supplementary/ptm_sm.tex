@@ -602,13 +602,13 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
 \subsubsection{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}
 \label{sec:benchmark}
 
-A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeled KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides have a known fold change between conditions and are expected to be differential in most cases. Additionally, background E coli lysate was used to normalize total protein levels prior to the enrichment and global protein profiling. The background lysate was treated as controls and are not expected to be differential in any comparison.
+%A custom designed experiment with labeling was used to assess the performance of the proposed method in a real experimental setting. Heavy-labeled KGG modified peptides were used as spike-in peptides. The spike-in peptides were mixed with human lysate to create four mixture conditions. Two sets of data were acquired for each mixture: KGG enriched + LC-MS, and LC-MS only. The KGG enriched dataset included the spike-in peptides, as well as modified and unmodified human lysate. The LC-MS dataset included only unmodified peptides. The spike-in peptides have a known fold change between conditions and are expected to be differential in most cases. Additionally, background E coli lysate was used to normalize total protein levels prior to the enrichment and global protein profiling. The background lysate was treated as controls and are not expected to be differential in any comparison.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=.8\textwidth]{sim_new/SpikeIn_Overview}
-\caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=.8\textwidth]{sim_new/SpikeIn_Overview}
+%\caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
+%\end{figure}
 
 Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
 
