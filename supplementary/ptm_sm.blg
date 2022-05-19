@@ -1,15 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'ptm_sm.blg'
-[121] biber-MSWIN64:340> INFO - === 
-[161] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
-[287] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
-[302] Biber.pm:4340> INFO - Processing section 0
-[315] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
-[375] bibtex.pm:1689> INFO - LaTeX decoding ...
-[394] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
-[472] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[472] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[472] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[472] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[483] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
-[490] bbl.pm:757> INFO - Output to ptm_sm.bbl
+[114] biber-MSWIN64:340> INFO - === 
+[158] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
+[279] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
+[294] Biber.pm:4340> INFO - Processing section 0
+[306] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
+[379] bibtex.pm:1689> INFO - LaTeX decoding ...
+[396] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
+[469] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[469] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[469] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[469] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[476] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
+[483] bbl.pm:757> INFO - Output to ptm_sm.bbl

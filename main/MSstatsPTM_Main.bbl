@@ -86,6 +86,71 @@
       \verb https://doi.org/10.1016/S0968-0004(00)01712-6
       \endverb
     \endentry
+    \entry{Bludau2022}{article}{}
+      \name{author}{9}{}{%
+        {{hash=c45e9e6277c048478a9845a048ec6c8b}{%
+           family={Bludau},
+           familyi={B\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+        {{hash=8f9632871cedf84e67da1a0059e8ccc4}{%
+           family={Willems},
+           familyi={W\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=483b7b9feabcbc12ce812ef4a76bfad7}{%
+           family={Zeng1},
+           familyi={Z\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=fedd32cf63b35264919ce2353314eadf}{%
+           family={Strauss},
+           familyi={S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=141f66efdd93e3e19c8df339fcf0df34}{%
+           family={Hansen1},
+           familyi={H\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ec8fe0f2abbb230ef748b4d9059eb6ea}{%
+           family={Tanzer1},
+           familyi={T\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5e1278f6733fc1d7777fbb7cf07e31f2}{%
+           family={Karayel1},
+           familyi={K\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+        {{hash=8cc2e3ab379833adb0bbb63136c5885c}{%
+           family={Schulman},
+           familyi={S\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=a325bf737b37aadc706ad7039dea3874}{%
+           family={M.},
+           familyi={M\bibinitperiod},
+           given={Mann},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1d03682dc68b7b0efe4c341e9937a7e}
+      \strng{fullhash}{ffbb02377549591a2b64d6bd1eba45ae}
+      \strng{bibnamehash}{f1d03682dc68b7b0efe4c341e9937a7e}
+      \strng{authorbibnamehash}{f1d03682dc68b7b0efe4c341e9937a7e}
+      \strng{authornamehash}{f1d03682dc68b7b0efe4c341e9937a7e}
+      \strng{authorfullhash}{ffbb02377549591a2b64d6bd1eba45ae}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{bioRxiv Preprint}
+      \field{title}{{The structural context of PTMs at a proteome wide scale}}
+      \field{year}{2022}
+      \verb{doi}
+      \verb https://doi.org/10.1101/2022.02.23.481596
+      \endverb
+    \endentry
     \entry{Mann}{article}{}
       \name{author}{2}{}{%
         {{hash=7f0bb6160de80d4084b205b62c1b25cc}{%
@@ -178,6 +243,38 @@
       \verb https://doi.org/10.1371/journal.pone.0177427
       \endverb
     \endentry
+    \entry{Chandramouli:2009}{article}{}
+      \name{author}{2}{}{%
+        {{hash=fa7ce456ad3c9f79f8f7e6e0fb8ab2e0}{%
+           family={Chandramouli},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=ba61c7c896af7f410d0075988686f09a}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={P.\bibnamedelimi Y.},
+           giveni={P\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{d16d63a646f43112670a10ded8c53862}
+      \strng{fullhash}{d16d63a646f43112670a10ded8c53862}
+      \strng{bibnamehash}{d16d63a646f43112670a10ded8c53862}
+      \strng{authorbibnamehash}{d16d63a646f43112670a10ded8c53862}
+      \strng{authornamehash}{d16d63a646f43112670a10ded8c53862}
+      \strng{authorfullhash}{d16d63a646f43112670a10ded8c53862}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Human genomics and proteomics : HGP}
+      \field{number}{1}
+      \field{title}{{Proteomics: challenges, techniques and possibilities to overcome biological sample complexity}}
+      \field{volume}{1}
+      \field{year}{2009}
+      \verb{doi}
+      \verb https://doi.org/10.4061/2009/239204
+      \endverb
+    \endentry
     \entry{Kall:2011ub}{article}{}
       \name{author}{2}{}{%
         {{hash=aa562992fa47646efdb8484a2695acc2}{%
@@ -197,8 +294,8 @@
       \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
       \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
       \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLoS Computational Biology}
@@ -224,8 +321,8 @@
       \strng{authorbibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
       \strng{authornamehash}{de5deb7049da13f1ccec4af2b5d194ec}
       \strng{authorfullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Current Opinion in Biotechnology}
@@ -269,8 +366,8 @@
       \strng{authornamehash}{b9572cc684ce00d39d6b49f1c7050269}
       \strng{authorfullhash}{75467b7002be90234c4265abfe0c9faf}
       \field{extraname}{1}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Chromatography A}
@@ -302,8 +399,8 @@
       \strng{authorbibnamehash}{64afdd560649c176243a09b8f44b17f1}
       \strng{authornamehash}{64afdd560649c176243a09b8f44b17f1}
       \strng{authorfullhash}{64afdd560649c176243a09b8f44b17f1}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
@@ -361,8 +458,8 @@
       \strng{authorbibnamehash}{5e7ef679216b3c6ed8baaa7d55fb50a5}
       \strng{authornamehash}{5e7ef679216b3c6ed8baaa7d55fb50a5}
       \strng{authorfullhash}{d22287942061024469204b5c692077a0}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nucleic Acids Research}
@@ -421,8 +518,8 @@
       \strng{authornamehash}{22c1dee522cb7ce9994a5987270ae18a}
       \strng{authorfullhash}{cfd61531270e99a87c16264fbacc6c30}
       \field{extraname}{1}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -486,8 +583,8 @@
       \strng{authornamehash}{b4fc0f495f06fe20fb68563a06fdba51}
       \strng{authorfullhash}{c218d46b4911110751160a3a68b809df}
       \field{extraname}{2}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
