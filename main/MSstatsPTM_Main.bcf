@@ -2011,3 +2011,45 @@
     <bcf:citekey order="10">Huang:2020</bcf:citekey>
     <bcf:citekey order="11">Choi:2020</bcf:citekey>
     <bcf:citekey order="12">LUCHETTI2021</bcf:citekey>
+    <bcf:citekey order="13">Maculins</bcf:citekey>
+    <bcf:citekey order="14">Cunningham2015</bcf:citekey>
+    <bcf:citekey order="15">Schwammle2015</bcf:citekey>
+    <bcf:citekey order="16">THOMAS2020</bcf:citekey>
+    <bcf:citekey order="17">Ritchie_15a</bcf:citekey>
+    <bcf:citekey order="18">Zhu</bcf:citekey>
+    <bcf:citekey order="19">Breitwieser:2013</bcf:citekey>
+    <bcf:citekey order="20">Choi:2014</bcf:citekey>
+    <bcf:citekey order="21">Tukey:1977</bcf:citekey>
+    <bcf:citekey order="22">Bolker2009</bcf:citekey>
+    <bcf:citekey order="23">Faraway:2006</bcf:citekey>
+    <bcf:citekey order="24">Tukey:1977</bcf:citekey>
+    <bcf:citekey order="25">satterthwaite:1946</bcf:citekey>
+    <bcf:citekey order="26">Benjamini:1995</bcf:citekey>
+    <bcf:citekey order="27">kutner_etal_04a</bcf:citekey>
+    <bcf:citekey order="28">oberg_vitek_09a</bcf:citekey>
+    <bcf:citekey order="29">Choi:2014</bcf:citekey>
+    <bcf:citekey order="30">Huang:2020</bcf:citekey>
+    <bcf:citekey order="31">Choi:2014</bcf:citekey>
+    <bcf:citekey order="32">Huang:2020</bcf:citekey>
+    <bcf:citekey order="33">Choi:2014</bcf:citekey>
+    <bcf:citekey order="34">Huang:2020</bcf:citekey>
+    <bcf:citekey order="35">Bates2015</bcf:citekey>
+    <bcf:citekey order="36">Kuznetsova2017</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="none">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>

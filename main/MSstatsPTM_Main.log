@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  29 MAY 2022 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 JUN 2022 21:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -920,7 +920,7 @@ File: biblatex.cfg
 Package: xr 2019/01/05 v5.04 eXternal References (DPC)
 )
 Package xr Info: IMPORTING LABELS FROM ../supplementary/ptm_sm.aux on input lin
-e 82.
+e 83.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -937,20 +937,20 @@ LaTeX Warning: Unused global option(s):
 (./MSstatsPTM_Main.aux)
 \openout1 = `MSstatsPTM_Main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -987,7 +987,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box70
-Package hyperref Info: Link coloring OFF on input line 117.
+Package hyperref Info: Link coloring OFF on input line 118.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -997,9 +997,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count352
 )
-LaTeX Info: Redefining \ref on input line 117.
-LaTeX Info: Redefining \pageref on input line 117.
-LaTeX Info: Redefining \nameref on input line 117.
+LaTeX Info: Redefining \ref on input line 118.
+LaTeX Info: Redefining \pageref on input line 118.
+LaTeX Info: Redefining \nameref on input line 118.
 
 (./MSstatsPTM_Main.out) (./MSstatsPTM_Main.out)
 \@outlinefile=\write5
@@ -1018,53 +1018,213 @@ expected 3.0.
 
 Package biblatex Info: ... file 'MSstatsPTM_Main.bbl' found.
 (./MSstatsPTM_Main.bbl)
-Package biblatex Info: Reference section=0 on input line 117.
-Package biblatex Info: Reference segment=0 on input line 117.
-LaTeX Font Info:    Try loading font information for U+msa on input line 120.
+Package biblatex Info: Reference section=0 on input line 118.
+Package biblatex Info: Reference segment=0 on input line 118.
+LaTeX Font Info:    Try loading font information for U+msa on input line 121.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 120.
+LaTeX Font Info:    Try loading font information for U+msb on input line 121.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \vbox (11.39627pt too high) detected at line 186
+ []
+
+
+Overfull \vbox (16.60461pt too high) detected at line 186
+ []
+
+[2
 
 ]
-Overfull \vbox (11.39627pt too high) detected at line 190
+Overfull \hbox (3.46585pt too wide) in paragraph at lines 217--218
+\OT1/cmr/m/n/10 Mouse - Phos-pho-ry-la-tion - 2mix-TMT time se-ries (Mas-sIVE r
+e-anal-y-sis con-tainer iden-ti-fier: []RMSV000000357[]),
  []
 
 
-Overfull \vbox (16.60461pt too high) detected at line 190
+Overfull \hbox (44.10602pt too wide) in paragraph at lines 217--218
+\OT1/cmr/m/n/10 Hu-man - Ubiq-ui-ti-na-tion - Label-free no global pro-fil-ing 
+run (Mas-sIVE re-anal-y-sis con-tainer iden-ti-fier: []RMSV000000358[]). 
  []
 
-[3] [4]
-Runaway argument?
-{For each experimental dataset, could you say how many proteins were \ETC.
-./MSstatsPTM_Main.tex:278: Paragraph ended before \todo was complete.
-<to be read again> 
-                   \par 
-l.278 
-      
-? 
-./MSstatsPTM_Main.tex:278: Emergency stop.
-<to be read again> 
-                   \par 
-l.278 
-      
-End of file on the terminal!
+[3] [4] [5] [6] [7] [8] [9]
+Overfull \hbox (0.82611pt too wide) in paragraph at lines 454--455
+[]\OT1/cmr/m/n/10 The code is avail-able on Bio-con-duc-tor, []$\OT1/cmtt/m/n/1
+0 http : / / www . bioconductor . org / packages / release / bioc / html /
+ []
 
- 
+[10] [11] [12] [13] [14] [15] [16]
+<images/benchmark_fig.png, id=365, 956.07187pt x 460.72125pt>
+File: images/benchmark_fig.png Graphic file (type png)
+<use images/benchmark_fig.png>
+Package pdftex.def Info: images/benchmark_fig.png  used on input line 543.
+(pdftex.def)             Requested size: 382.42197pt x 184.28523pt.
+<images/fig3.png, id=367, 722.7pt x 542.025pt>
+File: images/fig3.png Graphic file (type png)
+<use images/fig3.png>
+Package pdftex.def Info: images/fig3.png  used on input line 555.
+(pdftex.def)             Requested size: 433.62334pt x 325.2175pt.
+<images/MSstatsPTM_design.png, id=368, 510.40688pt x 345.54094pt>
+File: images/MSstatsPTM_design.png Graphic file (type png)
+<use images/MSstatsPTM_design.png>
+Package pdftex.def Info: images/MSstatsPTM_design.png  used on input line 564.
+(pdftex.def)             Requested size: 408.32605pt x 276.43312pt.
+<images/sim1_FDR_all_models.png, id=369, 752.8125pt x 501.875pt>
+File: images/sim1_FDR_all_models.png Graphic file (type png)
+<use images/sim1_FDR_all_models.png>
+Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 572
+.
+(pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
+<images/sim3_Accuracy.png, id=370, 752.8125pt x 501.875pt>
+File: images/sim3_Accuracy.png Graphic file (type png)
+<use images/sim3_Accuracy.png>
+Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 577.
+(pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
+
+
+LaTeX Warning: Float too large for page by 25.31554pt on input line 584.
+
+<images/spike_in_fc.png, id=371, 752.8125pt x 501.875pt>
+File: images/spike_in_fc.png Graphic file (type png)
+<use images/spike_in_fc.png>
+Package pdftex.def Info: images/spike_in_fc.png  used on input line 590.
+(pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
+<images/spike_in_volcano.png, id=372, 752.8125pt x 501.875pt>
+File: images/spike_in_volcano.png Graphic file (type png)
+<use images/spike_in_volcano.png>
+Package pdftex.def Info: images/spike_in_volcano.png  used on input line 595.
+(pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
+
+LaTeX Warning: Float too large for page by 25.31554pt on input line 601.
+
+<images/ipah_venn_diagramm.png, id=373, 1011.78pt x 1011.78pt>
+File: images/ipah_venn_diagramm.png Graphic file (type png)
+<use images/ipah_venn_diagramm.png>
+Package pdftex.def Info: images/ipah_venn_diagramm.png  used on input line 606.
+
+(pdftex.def)             Requested size: 234.8775pt x 234.86589pt.
+<images/IpaH_prof_plot.png, id=374, 1129.21875pt x 602.25pt>
+File: images/IpaH_prof_plot.png Graphic file (type png)
+<use images/IpaH_prof_plot.png>
+Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 611.
+(pdftex.def)             Requested size: 446.26582pt x 238.0102pt.
+
+LaTeX Warning: Float too large for page by 17.44608pt on input line 617.
+
+<images/shig_venn_diagramm.png, id=375, 1011.78pt x 1011.78pt>
+File: images/shig_venn_diagramm.png Graphic file (type png)
+<use images/shig_venn_diagramm.png>
+Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 623.
+
+(pdftex.def)             Requested size: 234.86589pt x 234.8775pt.
+<images/No_Difference_Shigella_Profile_Plot.png, id=376, 1129.21875pt x 602.25p
+t>
+File: images/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
+<use images/No_Difference_Shigella_Profile_Plot.png>
+Package pdftex.def Info: images/No_Difference_Shigella_Profile_Plot.png  used o
+n input line 629.
+(pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
+
+LaTeX Warning: Float too large for page by 29.9831pt on input line 635.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<images/usp30_venn_diagramm.png, id=377, 1011.78pt x 1011.78pt>
+File: images/usp30_venn_diagramm.png Graphic file (type png)
+<use images/usp30_venn_diagramm.png>
+Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 641
+.
+(pdftex.def)             Requested size: 246.6146pt x 246.61852pt.
+<images/usp30_venn_diagramm_matching_only.png, id=378, 1011.78pt x 1011.78pt>
+File: images/usp30_venn_diagramm_matching_only.png Graphic file (type png)
+<use images/usp30_venn_diagramm_matching_only.png>
+Package pdftex.def Info: images/usp30_venn_diagramm_matching_only.png  used on 
+input line 647.
+(pdftex.def)             Requested size: 246.6146pt x 246.61852pt.
+
+LaTeX Warning: Float too large for page by 1.80702pt on input line 653.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17 <./images/benchmark_fig.png>] [18 <./images/fig3.png>] [19 <./images/MSstat
+sPTM_design.png>] [20 <./images/sim1_FDR_all_models.png> <./images/sim3_Accurac
+y.png>] [21 <./images/spike_in_fc.png> <./images/spike_in_volcano.png>]
+[22 <./images/ipah_venn_diagramm.png> <./images/IpaH_prof_plot.png>] [23 <./ima
+ges/shig_venn_diagramm.png> <./images/No_Difference_Shigella_Profile_Plot.png>]
+[24 <./images/usp30_venn_diagramm.png> <./images/usp30_venn_diagramm_matching_o
+nly.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 672.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 672.
+ (./MSstatsPTM_Main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 672.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 672.
+Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
+(rerunfilecheck)             Checksum: FA0D1C497C9C86D4C93C9039F199FFEB;192.
+Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
+\openout1 = `MSstatsPTM_Main.run.xml'.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 672.
+ ) 
 Here is how much of TeX's memory you used:
- 24896 strings out of 492616
- 471437 string characters out of 6129482
- 912452 words of memory out of 5000000
- 28393 multiletter control sequences out of 15000+600000
- 13870 words of font info for 54 fonts, out of 8000000 for 9000
+ 25058 strings out of 492616
+ 474709 string characters out of 6129482
+ 917465 words of memory out of 5000000
+ 28458 multiletter control sequences out of 15000+600000
+ 14171 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,12n,94p,1941b,1183s stack positions out of 5000i,500n,10000p,200000b,80000s
-./MSstatsPTM_Main.tex:278:  ==> Fatal error occurred, no output PDF file produc
-ed!
+ 62i,12n,94p,1971b,1330s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsubsection.2.2.3} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.2.2.2} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.2.1.4} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.6} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.1.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
+l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/
+texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on MSstatsPTM_Main.pdf (24 pages, 714455 bytes).
+PDF statistics:
+ 521 PDF objects out of 1000 (max. 8388607)
+ 427 compressed objects within 5 object streams
+ 110 named destinations out of 1000 (max. 500000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+
