@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 JUN 2022 21:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 JUN 2022 23:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1174,10 +1174,10 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 672.
  ) 
 Here is how much of TeX's memory you used:
- 25058 strings out of 492616
- 474709 string characters out of 6129482
- 917465 words of memory out of 5000000
- 28458 multiletter control sequences out of 15000+600000
+ 25056 strings out of 492616
+ 474670 string characters out of 6129482
+ 917466 words of memory out of 5000000
+ 28456 multiletter control sequences out of 15000+600000
  14171 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,12n,94p,1971b,1330s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1221,7 +1221,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on MSstatsPTM_Main.pdf (24 pages, 714455 bytes).
+Output written on MSstatsPTM_Main.pdf (24 pages, 714492 bytes).
 PDF statistics:
  521 PDF objects out of 1000 (max. 8388607)
  427 compressed objects within 5 object streams
