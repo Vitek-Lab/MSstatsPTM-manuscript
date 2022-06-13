@@ -281,12 +281,9 @@ Each simulation was generated with random biological variation. The observed pep
 
 \subsection*{Goals of PTM characterization, input to statistical analyses, and notation}
 
-Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, and each biological replicate corresponds to an LC-MS/MS run.  For one protein, the PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$.  \ov{The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.}
+Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate corresponds to an LC-MS/MS run.  For one protein, the PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$.  \ov{The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.}
 
-Figure \ref{fig:data-structure}(a) schematically illustrates this data structure for one PTM site and the corresponding unmodified features of the protein, in a special case of 2 conditions and 2 biological replicates per condition. The number of quantified modified and unmodified features varies across proteins. Some log-intensities may be outliers. Some spectral features can be missing. 
-
-\todo{OV: from here on, it is unclear if you introduce the general notation, or talk about our model specifically. If it is our model, it should be in the Results} The population parameter we are interested in estimating is the difference between the abundances of a PTM site in condition $1$ and condition $2$, denoted by $\mu_1^{\ast}$ and $\mu_2^{\ast}$ respectively. To calculate the quantity of interest, statistical analysis needs to summarize values in the table in Figure \ref{fig:data-structure}(a) using appropriate models. For condition $i$, the models provide estimates for the mean abundance, $\hat{\mu}_i^{\ast}$, and standard error, $\widehat{SE(\mu_i^{\ast})}$. Once summarized, we can formulate the Null and Alternative Hypotheses as seen in Equation \ref{eq:conv_null_hyp}. 
-
+Figure \ref{fig:data-structure}(a) schematically illustrates this data structure for one PTM site and the corresponding unmodified features of the protein, in a special case of 2 conditions and 2 biological replicates per condition \todo{OV: replace 'run' with 'bio rep' in the figure}. The number of modified and unmodified features varies across proteins. Some log-intensities may be outliers, and some spectral features can be missing. The population parameter of interest is the difference between the abundances of a PTM site in condition $1$ and condition $2$, denoted by $\mu_1^{\ast}$ and $\mu_2^{\ast}$ respectively. We are interested in testing the null hypothesis
 \begin{equation}
 \begin{aligned}
 H_{0}: \Delta = \mu_{1}^{\ast} - \mu_{2}^{\ast} = 0 \\
@@ -294,8 +291,9 @@ H_{a}: \Delta = \mu_{1}^{\ast} - \mu_{2}^{\ast} \neq 0
 \end{aligned}
 \label{eq:conv_null_hyp}
 \end{equation}
-However, these population parameters are inherently convoluted with changes in the unmodified protein. To account for this, we must estimate the relative abundance of the unmodified protein in conditions $1$ and $2$, denoted by $\mu_1$ and $\mu_2$. We estimate \todo{OV: our method, or everyone?} the quantities $\hat{\mu}_i$ and $\widehat{SE(\hat{\mu}_i)}$ in the same way as for the PTM site, using their corresponding features and observations and resulting in an estimated mean abundance. These estimates are used to adjust the quantities estimated for the PTM, resulting in the new Null and Alternative Hypotheses seen in Equation \ref{eq:null_hyp}.
+To test the hypothesis, a statistical model must represent the values in the table in Figure \ref{fig:data-structure}(a), and provide a model-based estimate of $\mu_{1}^{\ast} - \mu_{2}^{\ast}$, and its standard error.
 
+Unfortunately, the population parameter is inherently convoluted with the overall changes in protein abundance. To account for this, we can change the null hypothesis to
 \begin{equation}
 \begin{aligned}
 H_{0}: \Delta = ( \mu_{1}^{\ast} - \mu_{1}) - ( \mu_{2}^{\ast} - \mu_{2} ) = 0 \\
@@ -303,6 +301,8 @@ H_{a}: \Delta = ( \mu_{1}^{\ast} - \mu_{1}) - ( \mu_{2}^{\ast} - \mu_{2} ) \neq 
 \end{aligned}
 \label{eq:null_hyp}
 \end{equation}
+where $\mu_1$ and $\mu_2$ reflect the overall protein abundances in condition $1$ and condition $2$. These quantities can be estimated using protein features without the modification site.
+
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -553,7 +553,7 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \centering
 \includegraphics[scale=.6]{images/fig3.png}
 \caption{
-Goals of PTM characterization, input to statistical analyses, and notation. (a) Schematic data representation, in a simplified case of two conditions and two biological replicates. Each PTM site is modeled and characterized separately, where a PTM is quantified with observed spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities of the PTM in Condition 1 are denoted by $y_1^\ast$. Features corresponding to unmodified peptides in Condition 1 are denoted by $y_1$. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). (b) PTM relative quantification of the population parameters by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.}
+\todo{In 2a, it may be more meaningful to replace 'run' with 'bio rep'} Goals of PTM characterization, input to statistical analyses, and notation. (a) Schematic data representation, in a simplified case of two conditions and two biological replicates. Each PTM site is modeled and characterized separately, where a PTM is quantified with observed spectral features (boxes), distinguished by different charge states of a peptide. The feature intensities of the PTM in Condition 1 are denoted by $y_1^\ast$. Features corresponding to unmodified peptides in Condition 1 are denoted by $y_1$. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). (b) PTM relative quantification of the population parameters by statistical inference, which makes use of the feature intensities to infer the underlying PTM abundance and protein abundance with an estimate of associated uncertainty. (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.}
 \label{fig:data-structure}
 \end{figure}
 
