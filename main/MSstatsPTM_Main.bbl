@@ -45,6 +45,8 @@
       \strng{authorfullhash}{3379010029dae02a4b72cde75b871193}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Structural \& Molecular Biology}
@@ -73,6 +75,8 @@
       \strng{authorfullhash}{916d3a027b84e50541df203c243cc949}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in Biochemical Sci.}
@@ -142,6 +146,8 @@
       \strng{authorfullhash}{ffbb02377549591a2b64d6bd1eba45ae}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{bioRxiv Preprint}
@@ -172,6 +178,8 @@
       \strng{authorfullhash}{0bfe35bf1a633ffabbd5a70213fa71eb}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Biotechnology}
@@ -230,6 +238,8 @@
       \strng{authorfullhash}{0514c52796cd81c30fb979ed151a7645}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLOS ONE}
@@ -264,6 +274,8 @@
       \strng{authorfullhash}{d16d63a646f43112670a10ded8c53862}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Human genomics and proteomics : HGP}
@@ -273,6 +285,47 @@
       \field{year}{2009}
       \verb{doi}
       \verb https://doi.org/10.4061/2009/239204
+      \endverb
+    \endentry
+    \entry{Kim2016}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0b73059d83b70cdc0792682a2bbceca5}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={M.\bibnamedelimi S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=0947d71058782c5d2ea95e4d1155ccdd}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=83f15ee55e6e832a701b631344d1ab77}{%
+           family={Pandey},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1427ae399c02146e4ed54ef262f80bb9}
+      \strng{fullhash}{1427ae399c02146e4ed54ef262f80bb9}
+      \strng{bibnamehash}{1427ae399c02146e4ed54ef262f80bb9}
+      \strng{authorbibnamehash}{1427ae399c02146e4ed54ef262f80bb9}
+      \strng{authornamehash}{1427ae399c02146e4ed54ef262f80bb9}
+      \strng{authorfullhash}{1427ae399c02146e4ed54ef262f80bb9}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proteomics}
+      \field{number}{5}
+      \field{title}{{Common errors in mass spectrometry‐based analysis of post‐translational modifications}}
+      \field{volume}{16}
+      \field{year}{2016}
+      \field{pages}{700\bibrangedash 714}
+      \range{pages}{15}
+      \verb{doi}
+      \verb https://doi.org/10.1002/pmic.201500355
       \endverb
     \endentry
     \entry{Kall:2011ub}{article}{}
@@ -294,8 +347,10 @@
       \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
       \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
       \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLoS Computational Biology}
@@ -309,20 +364,22 @@
     \endentry
     \entry{Roepstorff}{article}{}
       \name{author}{1}{}{%
-        {{hash=de5deb7049da13f1ccec4af2b5d194ec}{%
-           family={P.},
-           familyi={P\bibinitperiod},
-           given={Roepstorff},
-           giveni={R\bibinitperiod}}}%
+        {{hash=2c846cd70668b41997f965d3e1ea37f4}{%
+           family={Roepstorff},
+           familyi={R\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{fullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{bibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authorbibnamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authornamehash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \strng{authorfullhash}{de5deb7049da13f1ccec4af2b5d194ec}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \strng{namehash}{2c846cd70668b41997f965d3e1ea37f4}
+      \strng{fullhash}{2c846cd70668b41997f965d3e1ea37f4}
+      \strng{bibnamehash}{2c846cd70668b41997f965d3e1ea37f4}
+      \strng{authorbibnamehash}{2c846cd70668b41997f965d3e1ea37f4}
+      \strng{authornamehash}{2c846cd70668b41997f965d3e1ea37f4}
+      \strng{authorfullhash}{2c846cd70668b41997f965d3e1ea37f4}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Current Opinion in Biotechnology}
@@ -366,8 +423,10 @@
       \strng{authornamehash}{b9572cc684ce00d39d6b49f1c7050269}
       \strng{authorfullhash}{75467b7002be90234c4265abfe0c9faf}
       \field{extraname}{1}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Chromatography A}
@@ -399,8 +458,10 @@
       \strng{authorbibnamehash}{64afdd560649c176243a09b8f44b17f1}
       \strng{authornamehash}{64afdd560649c176243a09b8f44b17f1}
       \strng{authorfullhash}{64afdd560649c176243a09b8f44b17f1}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
@@ -413,6 +474,89 @@
       \verb{doi}
       \verb https://dx.doi.org/10.1074%2Fmcp.O113.034181
       \endverb
+    \endentry
+    \entry{Kalpic:2011}{inbook}{}
+      \name{author}{3}{}{%
+        {{hash=be30bc783f267ff493b200773cedc3b6}{%
+           family={Kalpić},
+           familyi={K\bibinitperiod},
+           given={Damir},
+           giveni={D\bibinitperiod}}}%
+        {{hash=124aed69dbb1b13fc892cd628997b006}{%
+           family={Hlupić},
+           familyi={H\bibinitperiod},
+           given={Nikica},
+           giveni={N\bibinitperiod}}}%
+        {{hash=fd8c4776775caf5ce3e7b5a183b91f4f}{%
+           family={Lovrić},
+           familyi={L\bibinitperiod},
+           given={Miodrag},
+           giveni={M\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=c3c40780eeb0a8ca912ccd7d29918eb8}{%
+           family={Lovric},
+           familyi={L\bibinitperiod},
+           given={Miodrag},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{4126a7fd9cd6115ac088be1c73695f5e}
+      \strng{fullhash}{4126a7fd9cd6115ac088be1c73695f5e}
+      \strng{bibnamehash}{4126a7fd9cd6115ac088be1c73695f5e}
+      \strng{authorbibnamehash}{4126a7fd9cd6115ac088be1c73695f5e}
+      \strng{authornamehash}{4126a7fd9cd6115ac088be1c73695f5e}
+      \strng{authorfullhash}{4126a7fd9cd6115ac088be1c73695f5e}
+      \strng{editorbibnamehash}{c3c40780eeb0a8ca912ccd7d29918eb8}
+      \strng{editornamehash}{c3c40780eeb0a8ca912ccd7d29918eb8}
+      \strng{editorfullhash}{c3c40780eeb0a8ca912ccd7d29918eb8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Encyclopedia of Statistical Science}
+      \field{isbn}{978-3-642-04898-2}
+      \field{title}{Student's t-Tests}
+      \field{year}{2011}
+      \field{pages}{1559\bibrangedash 1563}
+      \range{pages}{5}
+      \verb{doi}
+      \verb https://doi.org/10.1007/978-3-642-04898-2_641
+      \endverb
+    \endentry
+    \entry{girden:1992}{book}{}
+      \name{author}{1}{}{%
+        {{hash=02d2e25987bc5a4150497a7cd03d3103}{%
+           family={Girden},
+           familyi={G\bibinitperiod},
+           given={Ellen\bibnamedelima R},
+           giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sage}%
+      }
+      \strng{namehash}{02d2e25987bc5a4150497a7cd03d3103}
+      \strng{fullhash}{02d2e25987bc5a4150497a7cd03d3103}
+      \strng{bibnamehash}{02d2e25987bc5a4150497a7cd03d3103}
+      \strng{authorbibnamehash}{02d2e25987bc5a4150497a7cd03d3103}
+      \strng{authornamehash}{02d2e25987bc5a4150497a7cd03d3103}
+      \strng{authorfullhash}{02d2e25987bc5a4150497a7cd03d3103}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{84}
+      \field{title}{ANOVA: Repeated measures}
+      \field{year}{1992}
     \endentry
     \entry{Ritchie_15a}{article}{}
       \name{author}{7}{}{%
@@ -458,8 +602,10 @@
       \strng{authorbibnamehash}{5e7ef679216b3c6ed8baaa7d55fb50a5}
       \strng{authornamehash}{5e7ef679216b3c6ed8baaa7d55fb50a5}
       \strng{authorfullhash}{d22287942061024469204b5c692077a0}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nucleic Acids Research}
@@ -520,6 +666,8 @@
       \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -585,6 +733,8 @@
       \field{extraname}{2}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
@@ -725,6 +875,8 @@
       \field{extraname}{2}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nat Methods}
@@ -843,6 +995,8 @@
       \strng{authorfullhash}{a166c4509378d06373181dfcff334c6a}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Cell Host \& Microbe}
@@ -977,6 +1131,8 @@
       \strng{authorfullhash}{019eac4c3d8cb1d54f9f7cbab428bf4e}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{eLife}
@@ -1045,6 +1201,8 @@
       \strng{authorfullhash}{1d77b7b649eacbdaa3331f8ceb459ca9}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Cell Biology}
@@ -1084,6 +1242,8 @@
       \strng{authorfullhash}{54060a4c8ae5a82f9566af6eba731e73}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1874-3919}
@@ -1127,8 +1287,10 @@
       \strng{authorbibnamehash}{8074e439a3fa7e315723dc58b89c27f6}
       \strng{authornamehash}{8074e439a3fa7e315723dc58b89c27f6}
       \strng{authorfullhash}{e35772c116aca3a1f37123a3ab3cb236}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1046-2023}
@@ -1191,8 +1353,10 @@
       \strng{authorbibnamehash}{490fd5b4d6cd60f752d5a619716f7eee}
       \strng{authornamehash}{490fd5b4d6cd60f752d5a619716f7eee}
       \strng{authorfullhash}{c00f217070e6a838de89dfd0fe424bf5}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
@@ -1225,8 +1389,10 @@
       \strng{authorbibnamehash}{3dd938e60bd866351e8cba982b111776}
       \strng{authornamehash}{3dd938e60bd866351e8cba982b111776}
       \strng{authorfullhash}{3dd938e60bd866351e8cba982b111776}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Proteomics}
@@ -1258,6 +1424,8 @@
       \strng{authorfullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Exploratory data analysis}}
@@ -1309,6 +1477,8 @@
       \strng{authorfullhash}{f8627206f9ee9083b261d43ec9f6b0c0}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in Ecology and Evolution}
@@ -1341,6 +1511,8 @@
       \strng{authorfullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}}
@@ -1365,6 +1537,8 @@
       \strng{authorfullhash}{2bfd1c68d23127457e4cf1e61a2e6c8b}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Biometrics Bulletin}
@@ -1399,6 +1573,8 @@
       \strng{authorfullhash}{e8222263aff22d31491ec001aa67f92d}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{J.R. Statist. Soc. B}
@@ -1447,8 +1623,10 @@
       \strng{authorbibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
       \strng{authornamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
       \strng{authorfullhash}{432be71d7e2df71f387dc678ef7a108d}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{5}
@@ -1474,8 +1652,10 @@
       \strng{authorbibnamehash}{178d3f050b1ec4fe3d02398061322bed}
       \strng{authornamehash}{178d3f050b1ec4fe3d02398061322bed}
       \strng{authorfullhash}{178d3f050b1ec4fe3d02398061322bed}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Proteome Research}
@@ -1487,6 +1667,37 @@
       \range{pages}{13}
       \verb{doi}
       \verb https://doi.org/10.1021/pr8010099
+      \endverb
+    \endentry
+    \entry{Wei:1992}{article}{}
+      \name{author}{1}{}{%
+        {{hash=77dbb08d457e7eb3e1e99bec815f47f6}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={L.J.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{fullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{bibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{authorbibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{authornamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{authorfullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistics in medicine}
+      \field{number}{14-15}
+      \field{title}{{The accelerated failure time model: a useful alternative to the Cox regression model in survival analysis}}
+      \field{volume}{11}
+      \field{year}{1992}
+      \field{pages}{1871\bibrangedash 1879}
+      \range{pages}{9}
+      \verb{doi}
+      \verb https://doi.org/10.1002/sim.4780111409
       \endverb
     \endentry
     \entry{Bates2015}{article}{}
@@ -1520,6 +1731,8 @@
       \strng{authorfullhash}{2dc7974b4b75ae3ff89f38f5c6fe4d2d}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
@@ -1557,8 +1770,10 @@
       \strng{authorbibnamehash}{17b677916e7c8333a1b38fec927aa427}
       \strng{authornamehash}{17b677916e7c8333a1b38fec927aa427}
       \strng{authorfullhash}{17b677916e7c8333a1b38fec927aa427}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}

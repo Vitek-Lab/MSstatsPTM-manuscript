@@ -1,17 +1,18 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
 [124] biber-MSWIN64:340> INFO - === 
-[165] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[288] Biber.pm:952> INFO - Found 30 citekeys in bib section 0
-[303] Biber.pm:4340> INFO - Processing section 0
-[315] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[387] bibtex.pm:1689> INFO - LaTeX decoding ...
-[444] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[724] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp__iCx\f4d088b3f9f145b5c3058da33afd57d4_23480.utf8, line 248, warning: 1 characters of junk seen at toplevel
-[757] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[757] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[757] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[757] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[791] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[820] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
-[820] Biber.pm:128> INFO - WARNINGS: 1
+[164] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[283] Biber.pm:952> INFO - Found 34 citekeys in bib section 0
+[298] Biber.pm:4340> INFO - Processing section 0
+[310] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[369] bibtex.pm:1689> INFO - LaTeX decoding ...
+[416] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[665] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_NYHM\f4d088b3f9f145b5c3058da33afd57d4_4860.utf8, line 201, warning: 142 characters of junk seen at toplevel
+[665] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_NYHM\f4d088b3f9f145b5c3058da33afd57d4_4860.utf8, line 286, warning: 1 characters of junk seen at toplevel
+[701] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[701] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[701] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[701] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[728] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[759] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[760] Biber.pm:128> INFO - WARNINGS: 2

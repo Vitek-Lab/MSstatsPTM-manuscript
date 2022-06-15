@@ -52,7 +52,8 @@ run_ttest <- function(summarized_data){
     ## Loop over groups
     for (g in 1:(length(groups)-1)){
       for (g2 in 2:length(groups)){
-        tryCatch({ttest_ptm <- t.test((temp_joined %>% filter(Condition == groups[g]) %>% select(Abundance.x))[[1]],
+        tryCatch({
+        ttest_ptm <- t.test((temp_joined %>% filter(Condition == groups[g]) %>% select(Abundance.x))[[1]],
                                       (temp_joined %>% filter(Condition == groups[g2]) %>% select(Abundance.x))[[1]])
         ttest_temp <- rbindlist(list(ttest_temp, data.table(ptm = ptms[[p]],
                                                             label = paste(groups[g], "vs", groups[g2], sep = " "),
@@ -194,19 +195,19 @@ for (row in seq_len(nrow(param_combos))){
 
   ## Sim
   sim <- PTMsimulateExperiment(
-    nGroup=param_combos[row, 3], nRep=param_combos[row, 2], nProtein=500, nSite=1, nFeature=10, nFeature_prot = 10,
+    nGroup=param_combos[row, 3], nRep=param_combos[row, 2], nProtein=500, nSite=1, nFeature=3, nFeature_prot = 10,
     logAbundance=list(
       PTM=list(mu=25, delta = del_arr, sRep=param_combos[row, 1], sPeak=.25),#0.05),
       PROTEIN=list(mu=25, delta = del_arr_no_change, sRep=param_combos[row, 1], sPeak=0.25))
   )
   sim_no_change1 <- PTMsimulateExperiment(
-    nGroup=param_combos[row, 3], nRep=param_combos[row, 2], nProtein=250, nSite=1, nFeature=10, nFeature_prot = 10,
+    nGroup=param_combos[row, 3], nRep=param_combos[row, 2], nProtein=250, nSite=1, nFeature=3, nFeature_prot = 10,
     logAbundance=list(
       PTM=list(mu=25, delta = del_arr, sRep=param_combos[row, 1], sPeak=0.25),
       PROTEIN=list(mu=25, delta = del_arr, sRep=param_combos[row, 1], sPeak=0.25))
   )
   sim_no_change2 <- PTMsimulateExperiment(
-    nGroup=param_combos[row, 3], nRep=param_combos[row, 2], nProtein=250, nSite=1, nFeature=10, nFeature_prot = 10,
+    nGroup=param_combos[row, 3], nRep=param_combos[row, 2], nProtein=250, nSite=1, nFeature=3, nFeature_prot = 10,
     logAbundance=list(
       PTM=list(mu=25, delta = del_arr_no_change, sRep=param_combos[row, 1], sPeak=0.25),
       PROTEIN=list(mu=25, delta = del_arr_no_change, sRep=param_combos[row, 1], sPeak=0.25))
@@ -239,8 +240,8 @@ for (row in seq_len(nrow(param_combos))){
 ## Remove random rows
 for (d in seq_along(all_data)){
 
-  dump_ptm <- sample(1:nrow(all_data[[d]]$PTM), nrow(all_data[[d]]$PTM) * .15)
-  dump_prot <- sample(1:nrow(all_data[[d]]$PROTEIN), nrow(all_data[[d]]$PROTEIN) * .15)
+  dump_ptm <- sample(1:nrow(all_data[[d]]$PTM), nrow(all_data[[d]]$PTM) * .2)
+  dump_prot <- sample(1:nrow(all_data[[d]]$PROTEIN), nrow(all_data[[d]]$PROTEIN) * .2)
 
   all_data[[d]]$PTM[dump_ptm]$Intensity <- NA
   all_data[[d]]$PROTEIN[dump_prot]$Intensity <- NA

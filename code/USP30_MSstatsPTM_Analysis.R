@@ -6,8 +6,18 @@ library(gridExtra)
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-load(file = "../data/ups30_msstatsptm_model.rda")#model_ptm
-load(file = "../data/ups30_msstatsptm_summary.rda")#summarized_ptm
+load(file = "../data/MSstatsPTM_USP30_model.rda")#model_ptm
+load(file = "../data/MSstatsPTM_USP30_summary.rda")#summarized_ptm
+
+
+## Calc # Prot and # pep
+summarized_ptm$PTM$FeatureLevelData$global_prot = sapply(summarized_ptm$PTM$FeatureLevelData$PROTEIN, function(x){str_split(x, "_")[[1]][1]})
+summarized_ptm$PTM$FeatureLevelData$global_prot %>% n_distinct()
+summarized_ptm$PTM$FeatureLevelData$PROTEIN %>% n_distinct()
+summarized_ptm$PTM$FeatureLevelData$PEPTIDE %>% n_distinct()
+
+summarized_ptm$PROTEIN$FeatureLevelData$PROTEIN %>% n_distinct()
+summarized_ptm$PROTEIN$FeatureLevelData$FEATURE  %>% n_distinct()
 
 ## SE analyis
 pyst_model

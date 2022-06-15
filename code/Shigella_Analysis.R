@@ -26,9 +26,9 @@ py_summarization <- dataSummarizationPTM_TMT(pY_input)
 pST_summarization <- dataSummarizationPTM_TMT(pST_input)
 
 save(py_summarization, file = "../data/Shigella_pY_Summarization.rda")
-load(file = "../data/Shigella_pY_Summarization.rda")
+load(file = "../data/pY_Summarization.rda")
 save(pST_summarization, file = "../data/Shigella_pST_Summarization.rda")
-load(file = "../data/Shigella_pST_Summarization.rda")
+load(file = "../data/pST_Summarization.rda")
 
 py_summarized_data <- py_summarization$PTM$ProteinLevelData
 py_feature_data <- py_summarization$PTM$FeatureLevelData
@@ -38,7 +38,6 @@ pst_feature_data <- pST_summarization$PTM$FeatureLevelData
 
 global_summarized_data <- pST_summarization$PROTEIN$ProteinLevelData
 global_feature_data <- pST_summarization$PROTEIN$FeatureLevelData
-
 
 ## Create pYST dataset
 ## Create pY/pST Dataset
@@ -63,6 +62,22 @@ data_Y_feature <- py_feature_data %>% filter(!ProteinName %in% shared_ST)
 
 ## combine pST and pY
 pSTY_features <- rbind(data_ST_feature, data_Y_feature)
+pyst_sum_input = list(PTM = list(ProteinLevelData = pSTY_sum_msstats,
+                                 FeatureLevelData = pSTY_features),
+                      PROTEIN = list(ProteinLevelData = global_summarized_data,
+                                     FeatureLevelData = global_feature_data)
+                      )
+
+
+## Calculate Peptide and Protein numbers
+pSTY_features$global_prot = sapply(pSTY_features$ProteinName, function(x){str_split(x, "\\|")[[1]][1]})
+
+pSTY_features$global_prot %>% n_distinct()
+pSTY_features$ProteinName %>% n_distinct()
+pSTY_features$PSM %>% n_distinct()
+
+global_feature_data$ProteinName %>% n_distinct()
+global_feature_data$PeptideSequence %>% n_distinct()
 
 ## Plot some interesting PTMs --------------------------------------------------
 ## TTP_MOUSE
@@ -98,7 +113,7 @@ test <- rbindlist(list(temp_plot1, pSTY_sum_msstats %>% filter(
 
 test[test$FeatureType == 'Model'][['FeatureType']] <- "PTM Summarized"
 test[test$FeatureType == 'Peptide'][['FeatureType']] <- "PTM Feature"
-
+test$Mixture = paste0("Mixture ", test$Mixture)
 p1 <- test %>% ggplot() +
   geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM, color = FeatureType), size = 2) +
   geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM, color = FeatureType), size = 5) +
@@ -153,7 +168,7 @@ test$BioReplicate <- factor(test$BioReplicate,
 
 test[test$FeatureType == 'Model'][['FeatureType']] <- "Protein Summarized"
 test[test$FeatureType == 'Peptide'][['FeatureType']] <- "Protein Feature"
-
+test$Mixture = paste0("Mixture ", test$Mixture)
 p2 <- test %>% ggplot() +
   geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
                 color = FeatureType), size = 2) +
@@ -489,7 +504,7 @@ sig_adj_ptm_model <- adj_ptm_model %>% filter(adj.pvalue < .05 & is.finite(log2F
 venn.diagram(
   x = list(sig_unadj_ptm_model$Protein_Label, sig_adj_ptm_model$Protein_Label),
   category.names = c("Unadjusted" , "Adjusted"),
-  filename = "shig_venn_diagramm_time_series.png",
+  filename = "shig_venn_diagramm.png",
   output=TRUE,
   imagetype="png" ,
   height = 1400,

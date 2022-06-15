@@ -58,7 +58,7 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{\footnotesize \parbox{11cm}{Supplementary }}
+\lhead{\footnotesize \parbox{11cm}{Supplementary}}
 \headsep = 25pt
 
 %\usepackage{tabulary,multirow,multicol,rotating}
@@ -99,9 +99,10 @@
 
 \author[1]{Devon~Kohler}
 \author[2]{Tsung-Heng~Tsai}
-\author[1]{Ting~Huang}
 \author[4]{Erik~Verschueren}
+\author[1]{Ting~Huang}
 \author[3]{Trent~Hinkle}
+\author[3]{Lilian~Phu}
 \author[3]{Meena~Choi*}
 \author[1]{Olga~Vitek*}
 \affil[1]{Khoury College of Computer Science, Northeastern University, Boston, MA, USA}
@@ -487,8 +488,8 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimental datasets in this manuscript}
-
+\section{Experimental datasets}
+\label{sec:experiments}
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
@@ -707,10 +708,10 @@ The results of the proposed method to this experiment can be seen in Figure \ref
 \end{figure}
 
 \clearpage
-\subsubsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT time series}
+\subsubsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}
 \label{sec:shigella}
 
-In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed~\cite{Maculins}. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). The experiment was modeled as a time series, with the same biological replicate being measured at each time point. Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to the experimental design being unbalanced. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
+In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed~\cite{Maculins}. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to an unbalanced experimental design. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
 
 \begin{table}[h!]
 \centering
@@ -868,9 +869,9 @@ The results of the power and sample size analysis can be seen in Figure \ref{fig
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+%\clearpage
 
-\printbibliography 
+%\printbibliography 
 
 \end{document} 
 

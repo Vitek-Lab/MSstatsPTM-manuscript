@@ -16,8 +16,23 @@ protein_input$Abundance <- log2(protein_input$Intensity)
 ptm_summarization <- read.csv("../data/Ipah_KGG_TMT11_corrected_msstats_quant_combined_results.txt",
                               sep = "\t")
 summarized_model <- ptm_summarization %>% filter(PeptideSequence == "Model")
+ptm_summarization <- ptm_summarization %>% filter(PeptideSequence != "Model")
 protein_summarization <- read.csv("../data/Ipah_Global_TMT11_msstats_quant_results.txt",
                                   sep = "\t")
+
+protein_summarization = read.csv("../data/Ipah_Global_Input.txt",
+         sep = "\t")
+
+ptm_summarization %>% head()
+ptm_summarization$global_prot = sapply(ptm_summarization$ProteinName, function(x){str_split(x, "\\|")[[1]][1]})
+
+ptm_summarization$global_prot %>% n_distinct()
+ptm_input$ProteinName %>% n_distinct()
+ptm_input$PSM %>% n_distinct()
+
+protein_summarization$ProteinName %>% n_distinct()
+protein_summarization$PeptideSequence %>% n_distinct()
+
 
 protein_summarization$PeptideSequence <- "Model"
 protein_summarization$FeatureType <- "Model"

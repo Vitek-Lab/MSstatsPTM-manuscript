@@ -312,18 +312,30 @@ for (i in seq_along(ptm_models_sim1)){
 
 ## Label Models
 adj_results$Model <- "Proposed"
+adj_results$Color_Model <- "Proposed"
+adj_results$Adj = TRUE
 no_adj_results$Model <- "Proposed no adjustment"
+no_adj_results$Color_Model <- "Proposed"
+no_adj_results$Adj = FALSE
 ttest_results$Model <- "T-Test no adjustment"
+ttest_results$Color_Model <- "T-Test"
+ttest_results$Adj = FALSE
 ttest_adj_results$Model <- "T-Test"
+ttest_adj_results$Color_Model <- "T-Test"
+ttest_adj_results$Adj = TRUE
 limma_model_results$Model <- "Limma no adjustment"
+limma_model_results$Color_Model <- "Limma"
+limma_model_results$Adj = FALSE
 limma_adj_model_results$Model <- "Limma"
+limma_adj_model_results$Color_Model <- "Limma"
+limma_adj_model_results$Adj = TRUE
 
 ## Combine to plot
 models <- rbindlist(list(adj_results, no_adj_results, ttest_results, 
                          ttest_adj_results, limma_model_results, limma_adj_model_results), fill=TRUE)
 
 cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999")
-cbPalette_first <- c("#E69F00", "#F0E442", "#56B4E9", "#0072B2", "#009E73", "#D55E00", "#CC79A7", "#999999")
+cbPalette_first <- c("#56B4E9", "#E69F00", "#009E73", "#56B4E9", "#009E73", "#009E73", "#CC79A7", "#999999")
 ```
 
 #### False Discovery Rate (FDR)
@@ -339,12 +351,15 @@ models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjust
                                                "Limma no adjustment", "T-Test", "T-Test no adjustment")),
                   ) %>%
   filter(conditions == 4 & sd == .3 & rep == 5) %>% 
-  ggplot() + geom_col(aes(x = Model, y = fpr, fill = Model)) + #, size = Replicates
-  scale_colour_manual(values=cbPalette_first) +
+  ggplot() + geom_col(aes(x = Model, y = fpr, fill = Color_Model, alpha = Adj)) + #, size = Replicates
+  scale_fill_manual(values=cbPalette_first) +
+  scale_alpha_manual(values = c(.5, 1.0)) + 
   # scale_size_manual(values = c(3,5,7,9)) +
   # facet_grid(vars(plot_sd), vars(plot_conditions)) + 
   theme_bw() +
   ylim(0.0, 0.4) + 
+  guides(alpha = "none") + 
+  guides(fill = "none") + 
   theme(axis.text.x = element_text(angle = 45, hjust=1, vjust = 1, size = 16), 
          axis.text.y = element_text(size = 16), 
          legend.text=element_text(size=16),
@@ -352,7 +367,7 @@ models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed no adjust
          axis.title.x = element_text(size = 22),
          title = element_text(size = 22),
          strip.text = element_text(size = 16)) + 
-  labs(title = "Simulation 1: FDR all models", x = "Model", y = "FDR") + 
+  labs(title = "Simulation 1: False Discovery Rate by Model", x = "Model", y = "FDR") + 
      guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
               size = guide_legend(order = 2, reverse = TRUE))
 
@@ -861,7 +876,7 @@ In terms of recall we can see that the proposed method performs much better in t
 Next we will look at the overall accuracy, to see how the models perform in general.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-png("../supplementary/sim_new/sim3_Accuracy.png", width = 750, height = 500)
+png("../main/images/sim3_Accuracy.png", width = 750, height = 500)
 models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", "limma_no_adj", 
                                                "Limma", "ttest_no_adj", "T-Test")),
                   Replicates = as.factor(rep)) %>%
@@ -878,7 +893,7 @@ models %>% mutate(Model = factor(Model, levels=c("Proposed", "Proposed_no_adj", 
          axis.title.x = element_text(size = 22),
          title = element_text(size = 22),
          strip.text = element_text(size = 16)) + 
-  labs(title = "Simulation 2: Accuracy adjusted models", x = "Model", y = "Accuracy") + 
+  labs(title = "Simulation 2: Model Accuracy", x = "Model", y = "Accuracy") + 
    guides(color = guide_legend(order = 1, override.aes = list(size=5)), 
               size = guide_legend(order = 2, reverse = TRUE))
 dev.off()
