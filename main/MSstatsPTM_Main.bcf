@@ -2384,13 +2384,11 @@
     <bcf:citekey order="30">oberg_vitek_09a</bcf:citekey>
     <bcf:citekey order="31">Choi:2014</bcf:citekey>
     <bcf:citekey order="32">Huang:2020</bcf:citekey>
-    <bcf:citekey order="33">Choi:2014</bcf:citekey>
-    <bcf:citekey order="34">Huang:2020</bcf:citekey>
-    <bcf:citekey order="35">Wei:1992</bcf:citekey>
-    <bcf:citekey order="36">Choi:2014</bcf:citekey>
-    <bcf:citekey order="37">Huang:2020</bcf:citekey>
-    <bcf:citekey order="38">Bates2015</bcf:citekey>
-    <bcf:citekey order="39">Kuznetsova2017</bcf:citekey>
+    <bcf:citekey order="33">Wei:1992</bcf:citekey>
+    <bcf:citekey order="34">Choi:2014</bcf:citekey>
+    <bcf:citekey order="35">Huang:2020</bcf:citekey>
+    <bcf:citekey order="36">Bates2015</bcf:citekey>
+    <bcf:citekey order="37">Kuznetsova2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
