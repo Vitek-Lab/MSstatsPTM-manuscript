@@ -1,17 +1,17 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
-[134] biber-MSWIN64:340> INFO - === 
-[190] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[329] Biber.pm:952> INFO - Found 34 citekeys in bib section 0
-[348] Biber.pm:4340> INFO - Processing section 0
-[360] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[450] bibtex.pm:1689> INFO - LaTeX decoding ...
-[502] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[791] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_BFMo\f4d088b3f9f145b5c3058da33afd57d4_21628.utf8, line 283, warning: 1 characters of junk seen at toplevel
-[836] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[836] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[836] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[836] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[867] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[900] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
-[900] Biber.pm:128> INFO - WARNINGS: 1
+[150] biber-MSWIN64:340> INFO - === 
+[204] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[356] Biber.pm:952> INFO - Found 37 citekeys in bib section 0
+[372] Biber.pm:4340> INFO - Processing section 0
+[387] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[487] bibtex.pm:1689> INFO - LaTeX decoding ...
+[545] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[905] Utils.pm:395> WARN - BibTeX subsystem: C:\Users\DEVONK~1\AppData\Local\Temp\biber_tmp_fMyt\f4d088b3f9f145b5c3058da33afd57d4_6724.utf8, line 303, warning: 1 characters of junk seen at toplevel
+[953] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[953] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[953] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[954] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[992] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[1031] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[1031] Biber.pm:128> INFO - WARNINGS: 1

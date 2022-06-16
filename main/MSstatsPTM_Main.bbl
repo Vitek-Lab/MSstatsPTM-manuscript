@@ -1304,6 +1304,81 @@
       \verb https://doi.org/10.1016/j.ymeth.2019.12.001
       \endverb
     \endentry
+    \entry{Mertins:2013}{article}{}
+      \name{author}{10}{}{%
+        {{hash=44573ade09497b0389e42763226622cd}{%
+           family={Mertins},
+           familyi={M\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=1a6deea270ece48c596db517e4316964}{%
+           family={Qiao},
+           familyi={Q\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f9ad24ac92ba5847fc5815084deedeca}{%
+           family={Patel},
+           familyi={P\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=90e3b7045e3a36d04a348137e911ba7c}{%
+           family={Udeshi},
+           familyi={U\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=238c3d72b6bef46931258ac79a55898c}{%
+           family={Clauser},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=9dc5ae0e631c09a872933934ac452aba}{%
+           family={Mani},
+           familyi={M\bibinitperiod},
+           given={D.\bibnamedelimi R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=4216a5e1867463fb9f826e774c4ba2d8}{%
+           family={Burgess},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=65f8c35e9ab7f5de34909fa74351a97f}{%
+           family={Gillette},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0af38e4008c409e38e4acd751cd462ac}{%
+           family={Jaffe},
+           familyi={J\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ab21d46588a23306289051ee59587038}{%
+           family={Carr},
+           familyi={C\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
+      \strng{fullhash}{c143ec455c2f719042df5248cb218109}
+      \strng{bibnamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
+      \strng{authorbibnamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
+      \strng{authornamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
+      \strng{authorfullhash}{c143ec455c2f719042df5248cb218109}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Methods}
+      \field{title}{{Integrated proteomic analysis of post-translational modifications by serial enrichment}}
+      \field{volume}{10}
+      \field{year}{2013}
+      \field{pages}{634\bibrangedash 637}
+      \range{pages}{4}
+      \verb{doi}
+      \verb https://doi.org/10.1038/nmeth.2518
+      \endverb
+    \endentry
     \entry{Zhu}{article}{}
       \name{author}{8}{}{%
         {{hash=280dc4c18f682e47f79d502f0e89f614}{%
@@ -1368,6 +1443,116 @@
       \range{pages}{11}
       \verb{doi}
       \verb https://doi.org/10.1074/mcp.tir119.001646
+      \endverb
+    \endentry
+    \entry{Chappell:2021}{article}{}
+      \name{author}{7}{}{%
+        {{hash=7b34dd2f44fc80d68b6559eb3eba9905}{%
+           family={Chappell},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0dc17e8f9038912aca686cc2c296e236}{%
+           family={Graw},
+           familyi={G\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a0c0b90184c15a37f3ea4f964f7d8e91}{%
+           family={Washam},
+           familyi={W\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=84171629ac407b0dabc9488833cdd358}{%
+           family={Storey},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=175446d141c02d4b8a8c7858bc44c3c7}{%
+           family={Bolden},
+           familyi={B\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2e130e271b2e384ef077d0be3dcae8f3}{%
+           family={Peterson},
+           familyi={P\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=ce3b110612d553b384a765bf40de0b99}{%
+           family={Byrum},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{fc6475a5e009897804934ee0cd467282}
+      \strng{fullhash}{5c7e210ed5807919ef228fc853a41ac1}
+      \strng{bibnamehash}{fc6475a5e009897804934ee0cd467282}
+      \strng{authorbibnamehash}{fc6475a5e009897804934ee0cd467282}
+      \strng{authornamehash}{fc6475a5e009897804934ee0cd467282}
+      \strng{authorfullhash}{5c7e210ed5807919ef228fc853a41ac1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BMC Bioinformatics}
+      \field{number}{275}
+      \field{title}{{PTMViz: a tool for analyzing and visualizing histone post translational modification data}}
+      \field{volume}{22}
+      \field{year}{2021}
+      \verb{doi}
+      \verb https://doi.org/10.1186/s12859-021-04166-9
+      \endverb
+    \endentry
+    \entry{Robbins1992}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=ec5e7b1a24db8fa9896faf7b78dee856}{%
+           family={Robbins},
+           familyi={R\bibinitperiod},
+           given={Herbert\bibnamedelima E.},
+           giveni={H\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=3e3c22dfe3b36ff075adfaa64ce7661a}{%
+           family={Kotz},
+           familyi={K\bibinitperiod},
+           given={Samuel},
+           giveni={S\bibinitperiod}}}%
+        {{hash=42134aac82ec7ee488d5679523870362}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Norman\bibnamedelima L.},
+           giveni={N\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{ec5e7b1a24db8fa9896faf7b78dee856}
+      \strng{fullhash}{ec5e7b1a24db8fa9896faf7b78dee856}
+      \strng{bibnamehash}{ec5e7b1a24db8fa9896faf7b78dee856}
+      \strng{authorbibnamehash}{ec5e7b1a24db8fa9896faf7b78dee856}
+      \strng{authornamehash}{ec5e7b1a24db8fa9896faf7b78dee856}
+      \strng{authorfullhash}{ec5e7b1a24db8fa9896faf7b78dee856}
+      \strng{editorbibnamehash}{09392c8ca2f5970b74b6cec44c645f3a}
+      \strng{editornamehash}{09392c8ca2f5970b74b6cec44c645f3a}
+      \strng{editorfullhash}{09392c8ca2f5970b74b6cec44c645f3a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Breakthroughs in Statistics: Foundations and Basic Theory}
+      \field{isbn}{978-1-4612-0919-5}
+      \field{title}{An Empirical Bayes Approach to Statistics}
+      \field{year}{1992}
+      \field{pages}{388\bibrangedash 394}
+      \range{pages}{7}
+      \verb{doi}
+      \verb https://doi.org/10.1007/978-1-4612-0919-5_26
       \endverb
     \endentry
     \entry{Breitwieser:2013}{article}{}
@@ -1535,8 +1720,8 @@
       \strng{authorbibnamehash}{2bfd1c68d23127457e4cf1e61a2e6c8b}
       \strng{authornamehash}{2bfd1c68d23127457e4cf1e61a2e6c8b}
       \strng{authorfullhash}{2bfd1c68d23127457e4cf1e61a2e6c8b}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1571,8 +1756,8 @@
       \strng{authorbibnamehash}{e8222263aff22d31491ec001aa67f92d}
       \strng{authornamehash}{e8222263aff22d31491ec001aa67f92d}
       \strng{authorfullhash}{e8222263aff22d31491ec001aa67f92d}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1623,8 +1808,8 @@
       \strng{authorbibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
       \strng{authornamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
       \strng{authorfullhash}{432be71d7e2df71f387dc678ef7a108d}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1770,8 +1955,8 @@
       \strng{authorbibnamehash}{17b677916e7c8333a1b38fec927aa427}
       \strng{authornamehash}{17b677916e7c8333a1b38fec927aa427}
       \strng{authorfullhash}{17b677916e7c8333a1b38fec927aa427}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
