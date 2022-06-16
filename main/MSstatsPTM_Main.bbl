@@ -1703,6 +1703,37 @@
       \field{title}{{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}}
       \field{year}{2006}
     \endentry
+    \entry{Wei:1992}{article}{}
+      \name{author}{1}{}{%
+        {{hash=77dbb08d457e7eb3e1e99bec815f47f6}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={L.J.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{fullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{bibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{authorbibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{authornamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \strng{authorfullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistics in medicine}
+      \field{number}{14-15}
+      \field{title}{{The accelerated failure time model: a useful alternative to the Cox regression model in survival analysis}}
+      \field{volume}{11}
+      \field{year}{1992}
+      \field{pages}{1871\bibrangedash 1879}
+      \range{pages}{9}
+      \verb{doi}
+      \verb https://doi.org/10.1002/sim.4780111409
+      \endverb
+    \endentry
     \entry{satterthwaite:1946}{article}{}
       \name{author}{1}{}{%
         {{hash=2bfd1c68d23127457e4cf1e61a2e6c8b}{%
@@ -1854,35 +1885,47 @@
       \verb https://doi.org/10.1021/pr8010099
       \endverb
     \endentry
-    \entry{Wei:1992}{article}{}
-      \name{author}{1}{}{%
-        {{hash=77dbb08d457e7eb3e1e99bec815f47f6}{%
-           family={Wei},
-           familyi={W\bibinitperiod},
-           given={L.J.},
-           giveni={L\bibinitperiod}}}%
+    \entry{Kenward}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a36f38919e6fa8dcd9842b9fb71e928c}{%
+           family={Kenward},
+           familyi={K\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=64c681927ba2d62d1498fb879fdfc6e5}{%
+           family={Roger},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
       }
-      \strng{namehash}{77dbb08d457e7eb3e1e99bec815f47f6}
-      \strng{fullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
-      \strng{bibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
-      \strng{authorbibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
-      \strng{authornamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
-      \strng{authorfullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
+      \list{publisher}{1}{%
+        {[Wiley, International Biometric Society]}%
+      }
+      \strng{namehash}{69725a221d096e32dd432462690e3f9d}
+      \strng{fullhash}{69725a221d096e32dd432462690e3f9d}
+      \strng{bibnamehash}{69725a221d096e32dd432462690e3f9d}
+      \strng{authorbibnamehash}{69725a221d096e32dd432462690e3f9d}
+      \strng{authornamehash}{69725a221d096e32dd432462690e3f9d}
+      \strng{authorfullhash}{69725a221d096e32dd432462690e3f9d}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Statistics in medicine}
-      \field{number}{14-15}
-      \field{title}{{The accelerated failure time model: a useful alternative to the Cox regression model in survival analysis}}
-      \field{volume}{11}
-      \field{year}{1992}
-      \field{pages}{1871\bibrangedash 1879}
-      \range{pages}{9}
+      \field{journaltitle}{Biometrics}
+      \field{number}{3}
+      \field{title}{Small Sample Inference for Fixed Effects from Restricted Maximum Likelihood}
+      \field{urlday}{16}
+      \field{urlmonth}{6}
+      \field{urlyear}{2022}
+      \field{volume}{53}
+      \field{year}{1997}
+      \field{urldateera}{ce}
+      \field{pages}{983\bibrangedash 997}
+      \range{pages}{15}
       \verb{doi}
-      \verb https://doi.org/10.1002/sim.4780111409
+      \verb https://doi.org/10.2307/2533558
       \endverb
     \endentry
     \entry{Bates2015}{article}{}
@@ -1914,8 +1957,8 @@
       \strng{authorbibnamehash}{bd371d51fceb44ba5d6a70179d461440}
       \strng{authornamehash}{bd371d51fceb44ba5d6a70179d461440}
       \strng{authorfullhash}{2dc7974b4b75ae3ff89f38f5c6fe4d2d}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
