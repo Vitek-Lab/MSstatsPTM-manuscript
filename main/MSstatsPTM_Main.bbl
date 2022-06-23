@@ -55,12 +55,6 @@
       \field{year}{2010}
       \field{pages}{666\bibrangedash 672}
       \range{pages}{7}
-      \verb{urlraw}
-      \verb https://doi.org/10.1038/nsmb.1842
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1038/nsmb.1842
-      \endverb
     \endentry
     \entry{Cohen}{article}{}
       \name{author}{1}{}{%
@@ -89,12 +83,6 @@
       \field{year}{2000}
       \field{pages}{596\bibrangedash 601}
       \range{pages}{6}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/S0968-0004(00)01712-6
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/S0968-0004(00)01712-6
-      \endverb
     \endentry
     \entry{Bludau2022}{article}{}
       \name{author}{9}{}{%
@@ -197,12 +185,6 @@
       \field{year}{2003}
       \field{pages}{255\bibrangedash 261}
       \range{pages}{7}
-      \verb{urlraw}
-      \verb https://doi.org/10.1038/nbt0303-255
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1038/nbt0303-255
-      \endverb
     \endentry
     \entry{Petushkova_2017}{article}{}
       \name{author}{7}{}{%
@@ -261,12 +243,6 @@
       \field{year}{2017}
       \field{pages}{e0177427}
       \range{pages}{-1}
-      \verb{urlraw}
-      \verb https://doi.org/10.1371/journal.pone.0177427
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1371/journal.pone.0177427
-      \endverb
     \endentry
     \entry{Chandramouli:2009}{article}{}
       \name{author}{2}{}{%
@@ -342,12 +318,6 @@
       \field{year}{2016}
       \field{pages}{700\bibrangedash 714}
       \range{pages}{15}
-      \verb{urlraw}
-      \verb https://doi.org/10.1002/pmic.201500355
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1002/pmic.201500355
-      \endverb
     \endentry
     \entry{Kall:2011ub}{article}{}
       \name{author}{2}{}{%
@@ -379,12 +349,6 @@
       \field{title}{Computational Mass Spectrometry--Based Proteomics}
       \field{volume}{7}
       \field{year}{2011}
-      \verb{urlraw}
-      \verb https://doi.org/10.1371/journal.pcbi.1002277
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1371/journal.pcbi.1002277
-      \endverb
     \endentry
     \entry{Roepstorff}{article}{}
       \name{author}{1}{}{%
@@ -413,12 +377,6 @@
       \field{year}{1997}
       \field{pages}{6\bibrangedash 13}
       \range{pages}{8}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/S0958-1669(97)80151-6
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/S0958-1669(97)80151-6
-      \endverb
     \endentry
     \entry{Huang:2014}{article}{}
       \name{author}{4}{}{%
@@ -462,12 +420,6 @@
       \field{year}{2014}
       \field{pages}{1\bibrangedash 17}
       \range{pages}{17}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.chroma.2014.10.107
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.chroma.2014.10.107
-      \endverb
     \endentry
     \entry{Olsen:2013}{article}{}
       \name{author}{2}{}{%
@@ -501,12 +453,6 @@
       \field{year}{2013}
       \field{pages}{3444\bibrangedash 3452}
       \range{pages}{9}
-      \verb{urlraw}
-      \verb https://dx.doi.org/10.1074%2Fmcp.O113.034181
-      \endverb
-      \verb{url}
-      \verb https://dx.doi.org/10.1074%2Fmcp.O113.034181
-      \endverb
     \endentry
     \entry{Kalpic:2011}{inbook}{}
       \name{author}{3}{}{%
@@ -549,12 +495,6 @@
       \field{year}{2011}
       \field{pages}{1559\bibrangedash 1563}
       \range{pages}{5}
-      \verb{urlraw}
-      \verb https://doi.org/10.1007/978-3-642-04898-2_641
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1007/978-3-642-04898-2_641
-      \endverb
     \endentry
     \entry{girden:1992}{book}{}
       \name{author}{1}{}{%
@@ -640,12 +580,6 @@
       \field{year}{2015}
       \field{pages}{e47}
       \range{pages}{-1}
-      \verb{urlraw}
-      \verb https://doi.org/10.1093/nar/gkv007
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1093/nar/gkv007
-      \endverb
     \endentry
     \entry{Choi:2014}{article}{}
       \name{author}{7}{}{%
@@ -705,12 +639,6 @@
       \field{year}{2014}
       \field{pages}{2524\bibrangedash 2526}
       \range{pages}{3}
-      \verb{urlraw}
-      \verb https://doi.org/10.1093/bioinformatics/btu305
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1093/bioinformatics/btu305
-      \endverb
     \endentry
     \entry{Huang:2020}{article}{}
       \name{author}{8}{}{%
@@ -775,12 +703,6 @@
       \field{year}{2020}
       \field{pages}{1706\bibrangedash 1723}
       \range{pages}{18}
-      \verb{urlraw}
-      \verb https://doi.org/10.1074/mcp.ra120.002105
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1074/mcp.ra120.002105
-      \endverb
     \endentry
     \entry{Choi:2020}{article}{}
       \name{author}{23}{}{%
@@ -919,12 +841,6 @@
       \field{year}{2020}
       \field{pages}{981\bibrangedash 984}
       \range{pages}{4}
-      \verb{urlraw}
-      \verb https://doi.org/10.1038/s41592-020-0955-0
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1038/s41592-020-0955-0
-      \endverb
     \endentry
     \entry{LUCHETTI2021}{article}{}
       \name{author}{19}{}{%
@@ -1043,12 +959,6 @@
       \field{year}{2021}
       \field{pages}{1521\bibrangedash 1530}
       \range{pages}{10}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.chom.2021.08.010
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.chom.2021.08.010
-      \endverb
     \endentry
     \entry{Maculins}{article}{}
       \name{author}{22}{}{%
@@ -1181,12 +1091,6 @@
       \field{year}{2021}
       \field{pages}{e62320}
       \range{pages}{-1}
-      \verb{urlraw}
-      \verb https://doi.org/10.7554/eLife.62320
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.7554/eLife.62320
-      \endverb
     \endentry
     \entry{Cunningham2015}{article}{}
       \name{author}{9}{}{%
@@ -1255,12 +1159,6 @@
       \field{year}{2015}
       \field{pages}{160\bibrangedash 169}
       \range{pages}{10}
-      \verb{urlraw}
-      \verb https://doi.org/10.1038/ncb3097
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1038/ncb3097
-      \endverb
     \endentry
     \entry{Schwammle2015}{article}{}
       \name{author}{3}{}{%
@@ -1292,7 +1190,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{1874-3919}
       \field{journaltitle}{Journal of Proteomics}
       \field{note}{Special Issue : Computational Proteomics}
       \field{title}{Computational and statistical methods for high-throughput analysis of post-translational modifications of proteins}
@@ -1300,12 +1197,6 @@
       \field{year}{2015}
       \field{pages}{3\bibrangedash 15}
       \range{pages}{13}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.jprot.2015.07.016
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.jprot.2015.07.016
-      \endverb
     \endentry
     \entry{THOMAS2020}{article}{}
       \name{author}{4}{}{%
@@ -1349,12 +1240,6 @@
       \field{year}{2020}
       \field{pages}{53\bibrangedash 60}
       \range{pages}{8}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.ymeth.2019.12.001
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.ymeth.2019.12.001
-      \endverb
     \endentry
     \entry{Mertins:2013}{article}{}
       \name{author}{10}{}{%
@@ -1427,12 +1312,6 @@
       \field{year}{2013}
       \field{pages}{634\bibrangedash 637}
       \range{pages}{4}
-      \verb{urlraw}
-      \verb https://doi.org/10.1038/nmeth.2518
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1038/nmeth.2518
-      \endverb
     \endentry
     \entry{Zhu}{article}{}
       \name{author}{8}{}{%
@@ -1496,12 +1375,6 @@
       \field{year}{2020}
       \field{pages}{1047\bibrangedash 1057}
       \range{pages}{11}
-      \verb{urlraw}
-      \verb https://doi.org/10.1074/mcp.tir119.001646
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1074/mcp.tir119.001646
-      \endverb
     \endentry
     \entry{Chappell:2021}{article}{}
       \name{author}{7}{}{%
@@ -1558,12 +1431,6 @@
       \field{title}{PTMViz: a tool for analyzing and visualizing histone post translational modification data}
       \field{volume}{22}
       \field{year}{2021}
-      \verb{urlraw}
-      \verb https://doi.org/10.1186/s12859-021-04166-9
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1186/s12859-021-04166-9
-      \endverb
     \endentry
     \entry{Robbins1992}{inbook}{}
       \name{author}{1}{}{%
@@ -1596,12 +1463,6 @@
       \field{year}{1992}
       \field{pages}{388\bibrangedash 394}
       \range{pages}{7}
-      \verb{urlraw}
-      \verb https://doi.org/10.1007/978-1-4612-0919-5_26
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1007/978-1-4612-0919-5_26
-      \endverb
     \endentry
     \entry{Breitwieser:2013}{article}{}
       \name{author}{2}{}{%
@@ -1634,12 +1495,6 @@
       \field{year}{2013}
       \field{pages}{77\bibrangedash 84}
       \range{pages}{8}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.jprot.2013.02.022
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.jprot.2013.02.022
-      \endverb
     \endentry
     \entry{Tukey:1977}{book}{}
       \name{author}{1}{}{%
@@ -1724,12 +1579,6 @@
       \field{year}{2009}
       \field{pages}{127\bibrangedash 135}
       \range{pages}{9}
-      \verb{urlraw}
-      \verb https://doi.org/10.1016/j.tree.2008.10.008
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1016/j.tree.2008.10.008
-      \endverb
     \endentry
     \entry{Faraway:2006}{book}{}
       \name{author}{1}{}{%
@@ -1784,12 +1633,6 @@
       \field{year}{1992}
       \field{pages}{1871\bibrangedash 1879}
       \range{pages}{9}
-      \verb{urlraw}
-      \verb https://doi.org/10.1002/sim.4780111409
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1002/sim.4780111409
-      \endverb
     \endentry
     \entry{satterthwaite:1946}{article}{}
       \name{author}{1}{}{%
@@ -1821,12 +1664,6 @@
       \field{year}{1946}
       \field{pages}{110\bibrangedash 114}
       \range{pages}{5}
-      \verb{urlraw}
-      \verb https://doi.org/10.2307/3002019
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.2307/3002019
-      \endverb
     \endentry
     \entry{Benjamini:1995}{article}{}
       \name{author}{2}{}{%
@@ -1860,12 +1697,6 @@
       \field{year}{1955}
       \field{pages}{289\bibrangedash 300}
       \range{pages}{12}
-      \verb{urlraw}
-      \verb http://www.jstor.org/stable/2346101
-      \endverb
-      \verb{url}
-      \verb http://www.jstor.org/stable/2346101
-      \endverb
     \endentry
     \entry{kutner_etal_04a}{book}{}
       \name{author}{4}{}{%
@@ -1941,12 +1772,6 @@
       \field{year}{2009}
       \field{pages}{2144\bibrangedash 2156}
       \range{pages}{13}
-      \verb{urlraw}
-      \verb https://doi.org/10.1021/pr8010099
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1021/pr8010099
-      \endverb
     \endentry
     \entry{Kenward}{article}{}
       \name{author}{2}{}{%
@@ -1987,12 +1812,6 @@
       \field{urldateera}{ce}
       \field{pages}{983\bibrangedash 997}
       \range{pages}{15}
-      \verb{urlraw}
-      \verb https://doi.org/10.2307/2533558
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.2307/2533558
-      \endverb
     \endentry
     \entry{Bates2015}{article}{}
       \name{author}{4}{}{%
@@ -2036,12 +1855,6 @@
       \field{year}{2015}
       \field{pages}{1\bibrangedash 48}
       \range{pages}{48}
-      \verb{urlraw}
-      \verb https://doi.org/10.18637/jss.v067.i01
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.18637/jss.v067.i01
-      \endverb
     \endentry
     \entry{Kuznetsova2017}{article}{}
       \name{author}{3}{}{%
@@ -2080,12 +1893,6 @@
       \field{year}{2017}
       \field{pages}{1\bibrangedash 26}
       \range{pages}{26}
-      \verb{urlraw}
-      \verb https://doi.org/10.18637/jss.v082.i13
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.18637/jss.v082.i13
-      \endverb
     \endentry
   \enddatalist
 \endrefsection
