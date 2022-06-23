@@ -169,7 +169,7 @@ Additional details on all experiments are available in Supplementary Section 2.
 \subsection*{Dataset 1: Computer simulation 1 - Label-free}
 \label{sec:comp_sim_procedure1}
 
-{\bf Simulation design:} The simulation represented an idealistic case. 24 synthetic label-free datasets were generated with different experimental designs and different biological variation. In each dataset, 1,000 proteins had 10 unmodified features per protein. Each of the 1,000 proteins had one PTM. Each PTM was represented by 10 modified features. The PTMs of 500 proteins had a differential fold change between conditions, while the other 500 proteins were generated with no changes in abundance between conditions. Furthermore, the fold changes of half of the 500 differential PTMs were fully masked by changes in the unmodified protein. Finally, the fold change of half the 500 non-differential PTMs was entirely due to changes in the unmodified protein. All the differential PTMs were generated with an expected log \todo{OV: log base?} fold change of 0.75 between conditions. 
+{\bf Simulation design:} The simulation represented an idealistic case. 24 synthetic label-free datasets were generated with different experimental designs and different biological variation. In each dataset, 1,000 proteins had 10 unmodified features per protein. Each of the 1,000 proteins had one PTM. Each PTM was represented by 10 modified features. The PTMs of 500 proteins had a differential fold change between conditions, while the other 500 proteins were generated with no changes in abundance between conditions. Furthermore, the fold changes of half of the 500 differential PTMs were fully masked by changes in the unmodified protein. Finally, the fold change of half the 500 non-differential PTMs was entirely due to changes in the unmodified protein. All the differential PTMs were generated with an expected log base 2 fold change of 0.75 between conditions. 
 
 Each simulation was generated with random biological variation. The observed peptide abundances were simulated by adding random noise $\mathcal{N}(0,\sigma^2)$ to the deterministic abundances described above. Two values $\sigma^2 = \{.2, .3\}$ were motivated by the experimental datasets in this manuscript.
 
@@ -199,20 +199,20 @@ Each simulation was generated with random biological variation. The observed pep
 \subsection*{Dataset 4: Human - Ubiquitination - 1mix-TMT}
 \label{sec:exp_proc_dataset4}
 
-\medskip \noindent {\bf Experimental Design:}  Luchetti et al. \cite{LUCHETTI2021} profiled human epithelial cells engineered to express IpaH7.8 under a dox inducible promoter. Uninfected cells were measured at 0 and 6 hours, while cells infected with {\it Shigella flexneri} ({\it S. flexneri}) bacteria were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. \todo{OV: is it a time course design or a repeated measures design?} \todo{OV: shouldn't the next sentence be part of the evaluation? Should we be evaluating the results wrt these criteria?}Shigella ubiquitin ligase IpaH7.8 was shown to function as an inhibitor of the protein gasdermin D (GSDMD). GSDMD was actively degraded when IpaH7.8 expression was induced by dox treatment in human cells.
+\medskip \noindent {\bf Experimental Design:}  Luchetti et al. \cite{LUCHETTI2021} profiled human epithelial cells engineered to express IpaH7.8 under a dox inducible promoter. Uninfected cells were measured at 0 and 6 hours, while cells infected with {\it Shigella flexneri} ({\it S. flexneri}) bacteria were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. 11 samples were allocated to 1 TMT mixture in an unbalanced repeated measure design. All conditions had two biological replicates except for the Dox1hr condition, which was allocated one replicate.
 
-\medskip \noindent {\bf Data acquisition:} 11 samples were allocated to 1 TMT mixture in an unbalanced group comparison design. All conditions had two biological replicates except for the Dox1hr condition, which was allocated one replicate. \todo{OV: the text up to here should be part of the experimental design} The ubiquitinated peptides, and the total proteome (i.e., global profiling) were each conducted in a single LC-MS/MS run. There was a 95\% overlap between the identified modified peptides and proteins that were quantified in the global profiling run.
+\medskip \noindent {\bf Data acquisition:} The ubiquitinated peptides, and the total proteome (i.e., global profiling) were each conducted in a single LC-MS/MS run. There was a 95\% overlap between the identified modified peptides and proteins that were quantified in the global profiling run.
 
-\medskip \noindent {\bf Evaluation:} We evaluated the ability of the statistical methods to detect changes in the abundance of modified peptides both before and after adjusting for changes in global protein abundance. The six condition were labeled Dox1hr, Dox2hr, Dox4hr, Dox6hr, NoDox0hr, and NoDox6hr. All conditions were compared with each other, resulting in 15 pairwise comparisons. Since the dataset was a biological investigation, the true positive modifications were unknown.
+\medskip \noindent {\bf Evaluation:} We evaluated the ability of the statistical methods to detect changes in the abundance of modified peptides both before and after adjusting for changes in global protein abundance. The six condition were labeled Dox1hr, Dox2hr, Dox4hr, Dox6hr, NoDox0hr, and NoDox6hr. All conditions were compared with each other, resulting in 15 pairwise comparisons. Since the dataset was a biological investigation, the true positive modifications were unknown. Shigella ubiquitin ligase IpaH7.8 was shown to function as an inhibitor of the protein gasdermin D (GSDMD). GSDMD was actively degraded when IpaH7.8 expression was induced by dox treatment in human cells. We expect IpaH7.8 to function as an inhibitor of GSDMD in the global profiling run.
 
 
 \subsection*{Dataset 5: Mouse - Phosphorylation - 2mix-TMT}
 \label{sec:exp_proc_dataset5}
 
 
-\medskip \noindent {\bf Experimental Design:} Maculins et al. \cite{Maculins} studied primary murine macrophages infected with {\it S. flexneri}. The experiment quantified the abundance of total protein and of phosphorylation in wild type (WT), and in ATG16L1-deficient (cKO) samples, uninfected and infected with {\it S. flexneri}. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). \todo{OV: is it a time course design or a repeated measures design?}
+\medskip \noindent {\bf Experimental Design:} Maculins et al. \cite{Maculins} studied primary murine macrophages infected with {\it S. flexneri}. The experiment quantified the abundance of total protein and of phosphorylation in wild type (WT), and in ATG16L1-deficient (cKO) samples, uninfected and infected with {\it S. flexneri}. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). 22 biological samples were allocated to 2 TMT mixtures in an unbalanced repeated measure design, with 11 samples allocated to each mixture. 16 replicates were spread equally between the early and late WT and cKO conditions, resulting in four replicates per condition. Both the uninfected WT and cKO contained 3 replicates, with mixture one allocating one replicate to uninfected WT and two replicates to uninfected cKO. Conversely, mixture two contained one replicate of uninfected cKO and two uninfected WT.
 
-\medskip \noindent {\bf Data acquisition:} 22 biological samples were allocated to 2 TMT mixtures in an unbalanced design, with 11 samples allocated to each mixture. 16 replicates were spread equally between the early and late WT and cKO conditions, resulting in four replicates per condition. Both the uninfected WT and cKO contained 3 replicates, with mixture one allocating one replicate to uninfected WT and two replicates to uninfected cKO. Conversely, mixture two contained one replicate of uninfected cKO and two uninfected WT. \todo{OV: the text up to here should be part of the experimental design}  This experiment included a total proteome (i.e., a global profiling run) and a phosphopeptide enrichment run. There was a 90\% overlap between the identified modified peptides and proteins that were quantified in the global profiling run.
+\medskip \noindent {\bf Data acquisition:} This experiment included a total proteome (i.e., a global profiling run) and a phosphopeptide enrichment run. There was a 90\% overlap between the identified modified peptides and proteins that were quantified in the global profiling run.
 
 \medskip \noindent {\bf Evaluation:} We evaluated the ability of the statistical methods to detect changes in the abundance of modified peptides both before and after adjusting for changes in global protein abundance. The six condition were labeled KO\_Uninfect, KO\_Early, KO\_Late, WT\_Uninfect, WT\_Early, and WT\_Late. 9 total comparisons were made, namely KO\_Early-WT\_Early, KO\_Late-WT\_Late, KO\_Uninfected-WT\_Uninfected, KO\_Early-KO\_Uninfected, KO\_Late-KO\_Uninfected, WT\_Early-WT\_Uninfected, WT\_Late-WT\_Uninfected, Infected-Uninfected, and KO-WT. Since the dataset was a biological investigation, the true positive modifications were unknown.
 
@@ -231,7 +231,7 @@ Each simulation was generated with random biological variation. The observed pep
 
 \subsection*{Goals of PTM characterization, input to statistical analyses, and notation}
 
-Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate corresponds to an LC-MS/MS run.  For one protein, the PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Run $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.
+Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate corresponds to an LC-MS/MS run.  For one protein, the PTM site is represented by $K$ spectral features (peptide ions, distinguished by their cleavage residues and charge states). The log-intensity (base 2) of Feature $k$, in Replicate $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified peptides in the same run is denoted by $y_{ijl}$. The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.
 Figure \ref{fig:data-structure} schematically illustrates this data structure for one PTM site and the corresponding unmodified features of the protein, in a special case of $I=2$ conditions and $J=2$ biological replicates per condition. The number of modified and unmodified features varies across proteins. Some log-intensities may be outliers, and some spectral features can be missing. 
 
 The population parameter of interest is the difference between the abundances of a PTM site in condition $1$ and condition $2$, denoted by $\mu_1^{\ast}$ and $\mu_2^{\ast}$ respectively. We are interested in testing the null hypothesis
@@ -266,20 +266,38 @@ Many investigations perform differential abundance analysis of PTMs using two-sa
 
 \begin{equation}
 \begin{aligned}
-\hat{u}^{\ast}_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right).
+\hat{u}^{\ast}_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right)
 \end{aligned}
 \label{eq:adj_estimation}
 \end{equation}
 
-These estimated ratios are then used as input to the two sample $t$-test, the output of which is the estimate of our quantity of interest $\hat{\Delta}$ and the standard error, $\widehat{SE(\hat{\Delta})}$. The statistical significance is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs. $t$-test assumes that the data follows a normal distribution, sampled from a representative portion of the total population, and that the conditions of interest have equal variance.
+These estimated ratios are then used as input to the two sample $t$-test.
+
+\begin{equation}
+\begin{aligned}
+\hat{u}^{\ast}_{ij} = \hat{\mu}^{\ast}_{i} + \epsilon^{\ast}_{ij}, \text{where } \epsilon^{\ast}_{ij} \mathop\sim^{iid} N(0, \sigma^2), i \in \{1, 2\}
+\end{aligned}
+\label{eq:ttest_model}
+\end{equation}
+
+$t$-test assumes that the data follows a normal distribution, sampled from a representative portion of the total population, and that the conditions of interest have equal variance. The method is only applicable comparisons between two conditions of interest. The output of this model is the estimate of our quantity of interest $\hat{\Delta}$ and the standard error, $\widehat{SE(\hat{\Delta})}$. The statistical significance is determined by comparing the test statistic against the $t$ distribution, with degrees of freedom $df=2J-2$ in balanced designs.
 
 While simple, these approaches do not fully account for all sources of variations, and are not directly applicable to experiments with complex designs. These include experiments with comparisons of multiple conditions, acquisition in multiple batches, and unbalanced designs. Additionally, because the adjustment is done on the replicate level, there must be a matching number of replicates in both the modified and unmodified experimental designs. If the designs are different, this method is no longer directly applicable. Finally, while these approaches can be applied to experiments studying PTMs, there is not a self contained, straightforward implementation of the methods, making application challenging.
 
-\medskip \noindent {\bf Limma} Modifications of $t$-test such as moderated $t$-test with Limma were also proposed~\cite{Ritchie_15a}\cite{Zhu}\cite{Chappell:2021}. The inputs to  Limma are the same as the inputs to $t$-test. The intensities of individual features from modified peptides, $y_{ijk}^{\ast}$, can be used directly (in the presence of confounding with the unmodified protein). To remove confounding we transform the input by taking the intensity ratios of modified and unmodified peptide features, $\hat{u}^{\ast}_{ij}$, calculated in the same way as Equation \ref{eq:adj_estimation}. Limma then fits a linear model using the transformed inputs to estimate $\hat{\Delta}$. To estimate $\widehat{SE(\hat{\Delta})}$, Limma leverages empirical bayes moderation~\cite{Robbins1992} to moderate the model variance of the individual PTM using the shared global variance of all PTMs modeled in the experiment. For a single PTM $m$ with an estimated fold change $\hat{\Delta}_m$, the estimated variance is calculated as $s^{adj}_{m} = P(s_{m}| s_\Theta)$ where $s_{m}$ is the variance resulting from the linear model of PTM $m$ and $s_\Theta$ is the global variance across all PTMs. The statistical significance is determined using $\hat{\Delta}_m$ and $\widehat{SE(\hat{\Delta})}$ calculated using the adjusted variance $s^{adj}_{m}$.
+\medskip \noindent {\bf Limma} Modifications of $t$-test such as moderated $t$-test with Limma were also proposed~\cite{Ritchie_15a}\cite{Zhu}\cite{Chappell:2021}. The inputs to  Limma are the same as the inputs to $t$-test. The intensities of individual features from modified peptides, $y_{ijk}^{\ast}$, can be used directly (in the presence of confounding with the unmodified protein). To remove confounding we transform the input by taking the intensity ratios of modified and unmodified peptide features, $\hat{u}^{\ast}_{ij}$, calculated in the same way as Equation \ref{eq:adj_estimation}. Limma then fits a linear model using the transformed inputs.
+
+\begin{equation}
+\begin{aligned}
+\hat{u}^{\ast}_{ij} = \beta_0 + c_{i}\beta_1 + + r_j\beta_2 + \epsilon^{\ast}_{ij}, \text{where } \epsilon^{\ast}_{ij} \mathop\sim^{iid} N(0, \sigma^2/w_j), i \in \{1, 2\}, j \in \{1, 2\}
+\end{aligned}
+\label{eq:limma_model}
+\end{equation}
+
+Using a linear model allows Limma to incorporate the replicate, $r_j$, as an additional source of variation. Additionally, the model allows for the sharing of variance information across comparisons of interest. The model is used to estimate our condition of interest, $\hat{\Delta}$. To estimate $\widehat{SE(\hat{\Delta})}$, Limma leverages empirical bayes moderation~\cite{Robbins1992} to adjust the model variance of the individual PTM using the shared variance of all PTMs modeled in the experiment. \todo{DK: I introduced a new subscript here for the PTM p. It feel awkward to add it across the other methods so I only included it in the moderation describtion.} For a single PTM $p$ with an estimated fold change $\hat{\Delta}_p$, the estimated variance is calculated as $var(\hat{u}^{\ast}_{pij}) = \sigma^2_p / w_{pj}$ where $\sigma^2_p$ is the variance resulting from the linear model of PTM $p$ and $w_{pj}$ is the global variance across all PTMs in replicate $j$. The statistical significance is then determined using $\hat{\Delta}_p$ and $\widehat{SE(\hat{\Delta}_p)}$ calculated using the adjusted variance $var(\hat{u}^{\ast}_{pij})$.
 
 \todo{DK: @Olga can you expand on the good things/limitations? I think I am missing some points here but not sure what exactly}
 
-Limma provides an alternative that overcomes limitations of $t$-test. First, utilizing empirical bayes moderation can increase the sensitivity of the analysis and is especially useful in cases of low replicates. Additionally, using a linear model allows for the sharing of variance information across comparisons of interest. This means we can more accurately measure the variance as the number of comparisons increases.
+Limma provides an alternative that overcomes limitations of $t$-test. First, utilizing empirical bayes moderation can increase the sensitivity of the analysis and is especially useful in cases of low replicates. Additionally, sharing variance information across comparisons means we can more accurately measure the variance as the number of comparisons increases.
 
 While Limma offers improvements over $t$-test, the method still has a number of limitations. First, the method is limited in the types of experimental designs it can be applied to. The method is only directly applicable to experiments with at most two variance components, meaning that in more complex experiments it cannot account for all sources of variation. Additionally, it still requires the same experimental design for the modified and unmodified features so that the ratio calculation can be performed. Finally, there is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
 
@@ -292,9 +310,19 @@ While Limma offers improvements over $t$-test, the method still has a number of 
 
 \todo{DK: This section could use some rewording}
 
-$MSstats$~\cite{Choi:2014} is designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. The package takes as input a list of intensities of individual features, denoted by $y_{ijk}$, used to characterize the identified protein. For each protein, the feature log-intensities are first summarized into a single value per protein per run in the subplot model. This is done using Tukey's median polish (TMP)~\cite{Tukey:1977}, a simple and robust procedure, which iteratively fits a two-way additive model with the effects of run and feature, summarizing them into a single value per run. These summarized values are then used as input to fit a linear model based on the family of linear mixed-effects models \cite{Bolker2009} \cite{Faraway:2006}. The output of this model is the quantity of interest $\hat{\Delta}$ and the standard error, $\widehat{SE(\hat{\Delta})}$. These methods are implemented in the packages $MSstats$ and $MSstatsTMT$~\cite{Huang:2020} and include functionalities for end to end quantification of proteins and differential analysis between experimental conditions.
+$MSstats$~\cite{Choi:2014} is designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. The package takes as input a list of intensities of individual features, denoted by $y_{ijk}$, used to characterize the identified protein. For each protein, the feature log-intensities are first summarized into a single value per protein per run in the subplot model. This is done using Tukey's median polish (TMP)~\cite{Tukey:1977}, a simple and robust procedure, which iteratively fits a two-way additive model with the effects of run and feature, summarizing them into a single value per run. These summarized values are then used as input to fit a linear model based on the family of linear mixed-effects models \cite{Bolker2009} \cite{Faraway:2006}. For example, the model for a TMT experiment would be as follows 
 
-The $MSstats$ analysis pipeline has a number advantages over simpler methods. First, the approach extends to many types of complex experimental design, including unbalanced designs and multiple sources of variation, such as fractionation. The methods include optional implementation of empirical bayes moderation, described previously, when applied to TMT experiments~\cite{Huang:2020}. Additionally, the summarization step includes options for missing value imputation, using an accelerated failure time (AFT) model~\cite{Wei:1992}, and has been shown to be more robust compared to using individual features~\cite{Choi:2014}.
+\todo{need to fix the centering}
+\begin{equation}
+\begin{aligned}
+u_{ijm} = \beta_0 + c_{i}\beta_1 + + r_j\beta_2 + mix_m\beta_3 + \epsilon^{\ast}_{ij}, \text{where } \epsilon^{\ast}_{ijm} \mathop\sim^{iid} N(0, \sigma^2), \\ 
+mix_m \mathop\sim^{iid} N(0, \sigma^2_m), r_j \mathop\sim^{iid} N(0, \sigma^2_j), \sum_{i=0}^{I} c_i = 0
+\end{aligned}
+\end{equation}
+
+We then use this model to estimate the quantity of interest $\hat{\Delta}$ and the standard error, $\widehat{SE(\hat{\Delta})}$. These methods are implemented in the R packages $MSstats$ and $MSstatsTMT$~\cite{Huang:2020}.
+
+$MSstats$ has a number advantages over simpler methods. First, the approach extends to many types of complex experimental design, including those with multiple sources of variation, such as the TMT model above, and unbalanced designs. Run-level summarization has been shown to be more robust compared to directly using individual features as input to the statistical model~\cite{Choi:2014}. Additionally, missing value imputation can be performed before run-level summarizing using an accelerated failure time (AFT) model~\cite{Wei:1992}. Finally, the methods include optional implementation of empirical bayes moderation, described above, when applied to TMT experiments~\cite{Huang:2020}.
 
 While $MSstats$ is a powerful tool for the quantification of the global protein, it does not have built in tools to analyze PTMs. It is designed to estimate the difference in a protein between conditions, answering the Null Hypothesis
 
@@ -492,7 +520,7 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \hline
 %%%% colnames of table
 & \multirow{2}{*}{Dataset} & No. of & No. of bio. & No. of mod. & No. of mod. & No. of unmod.&  Data & \multirow{2}{*}{Analysis}\\
-&  & Conditions & replicates & peptides & features/site & peptides/protein & availability & \\
+&  & Conditions & replicates & peptides & features/site & features/protein & availability & \\
 \hline
 \hline
  &&&&&&&& \\[-0.05in]
@@ -519,12 +547,12 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 %%%% biological study
 %%%%%%%%%%%%%%%%%%
 %% DDA Meierhofer
-\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{Experiment}} & Human - Ubiquitination - 1mix-TMT & 6 & 2/1 & 8,848 & 1.21 & 10.75 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=b6f0c74c234247678fb0888c6df1f225}{MSV000088966} & \href{https://massive.ucsd.edu/ProteoSAFe/reanalysis_container.jsp?task=b639fa5d0ff24ce78abdca13f4b18c0a}{RMSV000000356}\\
+\multirow{3}{*}{\rotatebox[origin=c]{90}{Biological}} \multirow{3}{*}{\rotatebox[origin=c]{90}{Experiment}} & Human - Ubiquitination - 1mix-TMT & 6 & 2/1 & 8,848 & 1.21 & 11.01 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=b6f0c74c234247678fb0888c6df1f225}{MSV000088966} & \href{https://massive.ucsd.edu/ProteoSAFe/reanalysis_container.jsp?task=b639fa5d0ff24ce78abdca13f4b18c0a}{RMSV000000356}\\
 &&&&&&&& \\%[-0.05in]
 % \cline{2-9}
 % &&&&&&& \\[-0.05in]
 %%%% SRM Picotti 2009
-& Mouse - Phosphorylation - 2mix-TMT& 6 & 4/3 & 26,433 & 1.67 & 10.95 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=4878d777c6b34cf8aaf8477e93140c4d}{MSV000085565} & \href{https://massive.ucsd.edu/ProteoSAFe/reanalysis_container.jsp?task=79406d32c1f9413daf7756e6eeb24968}{RMSV000000357}\\
+& Mouse - Phosphorylation - 2mix-TMT& 6 & 4/3 & 26,433 & 1.67 & 11.61 & \href{https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=4878d777c6b34cf8aaf8477e93140c4d}{MSV000085565} & \href{https://massive.ucsd.edu/ProteoSAFe/reanalysis_container.jsp?task=79406d32c1f9413daf7756e6eeb24968}{RMSV000000357}\\
 &&&&&&&& \\%[-0.05in]
 % \cline{2-9}
 % &&&&&&& \\[-0.05in]
@@ -535,7 +563,7 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \end{tabular}\\
 \end{tiny}
 \caption{ \small {\bf Simulated and experimental datasets.} 
-``Dataset'' is the dataset code name. ``No. of bio. replicates'' shows the number of biological replicates per condition. Simulations were generated with different numbers of replicates. The designs of two biological experiments were unbalanced with unequal replicates per condition. ``No. of mod. features/site'' is the number of features (i.e., peptide ions) used to estimate the abundance of a single modification. ``No. of unmod. peptides/protein'' is the number of peptides \todo{OV: peptides or peptide ions?} without modifications that were used to estimate the global protein abundance. ``Data availability'' is the ID of the MassIVE.quant repository or the GitHub repository. ``Analysis'' is the ID of the MassIVE.quant reanalysis container, containing analysis code and modeling results. All the experiments were conducted in data-dependent acquisition (DDA) mode. }
+``Dataset'' is the dataset code name. ``No. of bio. replicates'' shows the number of biological replicates per condition. Simulations were generated with different numbers of replicates. The designs of two biological experiments were unbalanced with unequal replicates per condition. ``No. of mod. features/site'' is the number of features (i.e., peptide ions) used to estimate the abundance of a single modification. ``No. of unmod. peptides/protein'' is the number of peptide ions without modifications that were used to estimate the global protein abundance. ``Data availability'' is the ID of the MassIVE.quant repository or the GitHub repository. ``Analysis'' is the ID of the MassIVE.quant reanalysis container, containing analysis code and modeling results. All the experiments were conducted in data-dependent acquisition (DDA) mode. }
 
 \label{tab:dataDescription}
 \end{table}
@@ -554,8 +582,8 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=.6]{images/fig3.png}
-\caption{\todo{OV: remove (a) from the figure. Remove part (b)? Looks like an inset now...} Goals of PTM characterization, input to statistical analyses, and notation. (a) Schematic data representation, in a simplified case of two conditions and two biological replicates. Each PTM site is modeled and characterized separately, where a PTM is quantified with observed spectral features (boxes), distinguished by different charge states of a peptide. The log-intensity of the PTM in Condition i, Run j, and feature k are denoted by $y_{ijk}^{\ast}$. Log-intensity of feature corresponding to unmodified peptide in Condition i, Run j, and feature k are denoted by $y_{ijk}$. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.}
+\includegraphics[scale=.45]{images/fig3.png}
+\caption{Goals of PTM characterization, input to statistical analyses, and notation. (a) Schematic data representation, in a simplified case of two conditions and two biological replicates. Each PTM site is modeled and characterized separately, where a PTM is quantified with observed spectral features (boxes), distinguished by different charge states of a peptide. The log-intensity of the PTM in Condition i, Run j, and feature k are denoted by $y_{ijk}^{\ast}$. Log-intensity of feature corresponding to unmodified peptide in Condition i, Run j, and feature k are denoted by $y_{ijk}$. Peptides can be fully cleaved (solid lines) and/or partially cleaved (dashed lines). (c) Model-based testing for differential PTM abundance, which corrects for the underlying protein abundance with a cost of increased uncertainty about the estimate of difference between conditions.}
 \label{fig:data-structure}
 \end{figure}
 

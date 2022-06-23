@@ -50,12 +50,15 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Structural \& Molecular Biology}
-      \field{title}{{Post-translational modifications in signal integration}}
+      \field{title}{Post-translational modifications in signal integration}
       \field{volume}{17}
       \field{year}{2010}
       \field{pages}{666\bibrangedash 672}
       \range{pages}{7}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/nsmb.1842
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1038/nsmb.1842
       \endverb
     \endentry
@@ -81,12 +84,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in Biochemical Sci.}
       \field{number}{12}
-      \field{title}{{The regulation of protein function by multisite phosphorylation--a 25 year update}}
+      \field{title}{The regulation of protein function by multisite phosphorylation--a 25 year update}
       \field{volume}{25}
       \field{year}{2000}
       \field{pages}{596\bibrangedash 601}
       \range{pages}{6}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/S0968-0004(00)01712-6
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/S0968-0004(00)01712-6
       \endverb
     \endentry
@@ -151,9 +157,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{bioRxiv Preprint}
-      \field{title}{{The structural context of PTMs at a proteome wide scale}}
+      \field{title}{The structural context of PTMs at a proteome wide scale}
       \field{year}{2022}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1101/2022.02.23.481596
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1101/2022.02.23.481596
       \endverb
     \endentry
@@ -183,12 +192,15 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Biotechnology}
-      \field{title}{{Proteomic analysis of post-translational modifications}}
+      \field{title}{Proteomic analysis of post-translational modifications}
       \field{volume}{21}
       \field{year}{2003}
       \field{pages}{255\bibrangedash 261}
       \range{pages}{7}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/nbt0303-255
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1038/nbt0303-255
       \endverb
     \endentry
@@ -244,12 +256,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLOS ONE}
       \field{number}{5}
-      \field{title}{{Post-translational modifications of FDA-approved plasma biomarkers in glioblastoma samples}}
+      \field{title}{Post-translational modifications of FDA-approved plasma biomarkers in glioblastoma samples}
       \field{volume}{12}
       \field{year}{2017}
       \field{pages}{e0177427}
       \range{pages}{-1}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0177427
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1371/journal.pone.0177427
       \endverb
     \endentry
@@ -280,10 +295,13 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Human genomics and proteomics : HGP}
       \field{number}{1}
-      \field{title}{{Proteomics: challenges, techniques and possibilities to overcome biological sample complexity}}
+      \field{title}{Proteomics: challenges, techniques and possibilities to overcome biological sample complexity}
       \field{volume}{1}
       \field{year}{2009}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.4061/2009/239204
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.4061/2009/239204
       \endverb
     \endentry
@@ -319,12 +337,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proteomics}
       \field{number}{5}
-      \field{title}{{Common errors in mass spectrometry‐based analysis of post‐translational modifications}}
+      \field{title}{Common errors in mass spectrometry‐based analysis of post‐translational modifications}
       \field{volume}{16}
       \field{year}{2016}
       \field{pages}{700\bibrangedash 714}
       \range{pages}{15}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1002/pmic.201500355
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1002/pmic.201500355
       \endverb
     \endentry
@@ -355,10 +376,13 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLoS Computational Biology}
       \field{number}{12}
-      \field{title}{{Computational Mass Spectrometry--Based Proteomics}}
+      \field{title}{Computational Mass Spectrometry--Based Proteomics}
       \field{volume}{7}
       \field{year}{2011}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pcbi.1002277
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1371/journal.pcbi.1002277
       \endverb
     \endentry
@@ -384,12 +408,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Current Opinion in Biotechnology}
       \field{number}{1}
-      \field{title}{{Mass spectrometry in protein studies from genome to function}}
+      \field{title}{Mass spectrometry in protein studies from genome to function}
       \field{volume}{8}
       \field{year}{1997}
       \field{pages}{6\bibrangedash 13}
       \range{pages}{8}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/S0958-1669(97)80151-6
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/S0958-1669(97)80151-6
       \endverb
     \endentry
@@ -435,7 +462,10 @@
       \field{year}{2014}
       \field{pages}{1\bibrangedash 17}
       \range{pages}{17}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.chroma.2014.10.107
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/j.chroma.2014.10.107
       \endverb
     \endentry
@@ -466,38 +496,34 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{12}
-      \field{title}{{Status of Large-scale Analysis of Post-translational Modifications by Mass Spectrometry}}
+      \field{title}{Status of Large-scale Analysis of Post-translational Modifications by Mass Spectrometry}
       \field{volume}{12}
       \field{year}{2013}
       \field{pages}{3444\bibrangedash 3452}
       \range{pages}{9}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1074%2Fmcp.O113.034181
+      \endverb
+      \verb{url}
       \verb https://dx.doi.org/10.1074%2Fmcp.O113.034181
       \endverb
     \endentry
     \entry{Kalpic:2011}{inbook}{}
       \name{author}{3}{}{%
-        {{hash=be30bc783f267ff493b200773cedc3b6}{%
+        {{hash=23879685f3732bbaba09012c29a1685d}{%
            family={Kalpić},
            familyi={K\bibinitperiod},
-           given={Damir},
+           given={D.},
            giveni={D\bibinitperiod}}}%
-        {{hash=124aed69dbb1b13fc892cd628997b006}{%
+        {{hash=2929972131ce2f395f3e4f166109fec1}{%
            family={Hlupić},
            familyi={H\bibinitperiod},
-           given={Nikica},
+           given={N.},
            giveni={N\bibinitperiod}}}%
-        {{hash=fd8c4776775caf5ce3e7b5a183b91f4f}{%
+        {{hash=67c6edb2fccf378f41f5ef1564e25d1c}{%
            family={Lovrić},
            familyi={L\bibinitperiod},
-           given={Miodrag},
-           giveni={M\bibinitperiod}}}%
-      }
-      \name{editor}{1}{}{%
-        {{hash=c3c40780eeb0a8ca912ccd7d29918eb8}{%
-           family={Lovric},
-           familyi={L\bibinitperiod},
-           given={Miodrag},
+           given={M},
            giveni={M\bibinitperiod}}}%
       }
       \list{location}{1}{%
@@ -506,15 +532,12 @@
       \list{publisher}{1}{%
         {Springer Berlin Heidelberg}%
       }
-      \strng{namehash}{4126a7fd9cd6115ac088be1c73695f5e}
-      \strng{fullhash}{4126a7fd9cd6115ac088be1c73695f5e}
-      \strng{bibnamehash}{4126a7fd9cd6115ac088be1c73695f5e}
-      \strng{authorbibnamehash}{4126a7fd9cd6115ac088be1c73695f5e}
-      \strng{authornamehash}{4126a7fd9cd6115ac088be1c73695f5e}
-      \strng{authorfullhash}{4126a7fd9cd6115ac088be1c73695f5e}
-      \strng{editorbibnamehash}{c3c40780eeb0a8ca912ccd7d29918eb8}
-      \strng{editornamehash}{c3c40780eeb0a8ca912ccd7d29918eb8}
-      \strng{editorfullhash}{c3c40780eeb0a8ca912ccd7d29918eb8}
+      \strng{namehash}{cbf4c276d0683920888170ab761776cc}
+      \strng{fullhash}{cbf4c276d0683920888170ab761776cc}
+      \strng{bibnamehash}{cbf4c276d0683920888170ab761776cc}
+      \strng{authorbibnamehash}{cbf4c276d0683920888170ab761776cc}
+      \strng{authornamehash}{cbf4c276d0683920888170ab761776cc}
+      \strng{authorfullhash}{cbf4c276d0683920888170ab761776cc}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
@@ -522,12 +545,14 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{International Encyclopedia of Statistical Science}
-      \field{isbn}{978-3-642-04898-2}
       \field{title}{Student's t-Tests}
       \field{year}{2011}
       \field{pages}{1559\bibrangedash 1563}
       \range{pages}{5}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-642-04898-2_641
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1007/978-3-642-04898-2_641
       \endverb
     \endentry
@@ -610,12 +635,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nucleic Acids Research}
       \field{number}{7}
-      \field{title}{{limma powers differential expression analyses for RNA-sequencing and microarray studies}}
+      \field{title}{limma powers differential expression analyses for RNA-sequencing and microarray studies}
       \field{volume}{43}
       \field{year}{2015}
       \field{pages}{e47}
       \range{pages}{-1}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/nar/gkv007
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1093/nar/gkv007
       \endverb
     \endentry
@@ -672,12 +700,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
       \field{number}{17}
-      \field{title}{{MSstats: an R package for statistical analysis of quantitative mass spectrometry-based proteomic experiments}}
+      \field{title}{MSstats: an R package for statistical analysis of quantitative mass spectrometry-based proteomic experiments}
       \field{volume}{30}
       \field{year}{2014}
       \field{pages}{2524\bibrangedash 2526}
       \range{pages}{3}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/bioinformatics/btu305
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1093/bioinformatics/btu305
       \endverb
     \endentry
@@ -739,12 +770,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{10}
-      \field{title}{{MSstatsTMT: Statistical Detection of Differentially Abundant Proteins in Experiments with Isobaric Labeling and Multiple Mixtures}}
+      \field{title}{MSstatsTMT: Statistical Detection of Differentially Abundant Proteins in Experiments with Isobaric Labeling and Multiple Mixtures}
       \field{volume}{19}
       \field{year}{2020}
       \field{pages}{1706\bibrangedash 1723}
       \range{pages}{18}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1074/mcp.ra120.002105
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1074/mcp.ra120.002105
       \endverb
     \endentry
@@ -880,12 +914,15 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nat Methods}
-      \field{title}{{MassIVE.quant: a community resource of quantitative mass spectrometry–based proteomics datasets}}
+      \field{title}{MassIVE.quant: a community resource of quantitative mass spectrometry–based proteomics datasets}
       \field{volume}{17}
       \field{year}{2020}
       \field{pages}{981\bibrangedash 984}
       \range{pages}{4}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/s41592-020-0955-0
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1038/s41592-020-0955-0
       \endverb
     \endentry
@@ -1001,12 +1038,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Cell Host \& Microbe}
       \field{number}{10}
-      \field{title}{{Shigella ubiquitin ligase IpaH7.8 targets gasdermin D for degradation to prevent pyroptosis and enable infection}}
+      \field{title}{Shigella ubiquitin ligase IpaH7.8 targets gasdermin D for degradation to prevent pyroptosis and enable infection}
       \field{volume}{29}
       \field{year}{2021}
       \field{pages}{1521\bibrangedash 1530}
       \range{pages}{10}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.chom.2021.08.010
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/j.chom.2021.08.010
       \endverb
     \endentry
@@ -1136,12 +1176,15 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{eLife}
-      \field{title}{{Multiplexed proteomics of autophagy-deficient murine macrophages reveals enhanced antimicrobial immunity via the oxidative stress response}}
+      \field{title}{Multiplexed proteomics of autophagy-deficient murine macrophages reveals enhanced antimicrobial immunity via the oxidative stress response}
       \field{volume}{10}
       \field{year}{2021}
       \field{pages}{e62320}
       \range{pages}{-1}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.7554/eLife.62320
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.7554/eLife.62320
       \endverb
     \endentry
@@ -1207,12 +1250,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Cell Biology}
       \field{number}{2}
-      \field{title}{{USP30 and Parkin homeostatically regulate atypical ubiquitin chains on mitochondria}}
+      \field{title}{USP30 and Parkin homeostatically regulate atypical ubiquitin chains on mitochondria}
       \field{volume}{17}
       \field{year}{2015}
       \field{pages}{160\bibrangedash 169}
       \range{pages}{10}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/ncb3097
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1038/ncb3097
       \endverb
     \endentry
@@ -1254,7 +1300,10 @@
       \field{year}{2015}
       \field{pages}{3\bibrangedash 15}
       \range{pages}{13}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.jprot.2015.07.016
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/j.jprot.2015.07.016
       \endverb
     \endentry
@@ -1300,7 +1349,10 @@
       \field{year}{2020}
       \field{pages}{53\bibrangedash 60}
       \range{pages}{8}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.ymeth.2019.12.001
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/j.ymeth.2019.12.001
       \endverb
     \endentry
@@ -1370,12 +1422,15 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature Methods}
-      \field{title}{{Integrated proteomic analysis of post-translational modifications by serial enrichment}}
+      \field{title}{Integrated proteomic analysis of post-translational modifications by serial enrichment}
       \field{volume}{10}
       \field{year}{2013}
       \field{pages}{634\bibrangedash 637}
       \range{pages}{4}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/nmeth.2518
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1038/nmeth.2518
       \endverb
     \endentry
@@ -1436,12 +1491,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{6}
-      \field{title}{{DEqMS: A Method for Accurate Variance Estimation in Differential Protein Expression Analysis}}
+      \field{title}{DEqMS: A Method for Accurate Variance Estimation in Differential Protein Expression Analysis}
       \field{volume}{19}
       \field{year}{2020}
       \field{pages}{1047\bibrangedash 1057}
       \range{pages}{11}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1074/mcp.tir119.001646
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1074/mcp.tir119.001646
       \endverb
     \endentry
@@ -1497,32 +1555,23 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{BMC Bioinformatics}
       \field{number}{275}
-      \field{title}{{PTMViz: a tool for analyzing and visualizing histone post translational modification data}}
+      \field{title}{PTMViz: a tool for analyzing and visualizing histone post translational modification data}
       \field{volume}{22}
       \field{year}{2021}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1186/s12859-021-04166-9
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1186/s12859-021-04166-9
       \endverb
     \endentry
     \entry{Robbins1992}{inbook}{}
       \name{author}{1}{}{%
-        {{hash=ec5e7b1a24db8fa9896faf7b78dee856}{%
+        {{hash=604be2bbf4e2ce0db552c08c5bf3a6c2}{%
            family={Robbins},
            familyi={R\bibinitperiod},
-           given={Herbert\bibnamedelima E.},
-           giveni={H\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-      }
-      \name{editor}{2}{}{%
-        {{hash=3e3c22dfe3b36ff075adfaa64ce7661a}{%
-           family={Kotz},
-           familyi={K\bibinitperiod},
-           given={Samuel},
-           giveni={S\bibinitperiod}}}%
-        {{hash=42134aac82ec7ee488d5679523870362}{%
-           family={Johnson},
-           familyi={J\bibinitperiod},
-           given={Norman\bibnamedelima L.},
-           giveni={N\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+           given={H.},
+           giveni={H\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {New York, NY}%
@@ -1530,15 +1579,12 @@
       \list{publisher}{1}{%
         {Springer New York}%
       }
-      \strng{namehash}{ec5e7b1a24db8fa9896faf7b78dee856}
-      \strng{fullhash}{ec5e7b1a24db8fa9896faf7b78dee856}
-      \strng{bibnamehash}{ec5e7b1a24db8fa9896faf7b78dee856}
-      \strng{authorbibnamehash}{ec5e7b1a24db8fa9896faf7b78dee856}
-      \strng{authornamehash}{ec5e7b1a24db8fa9896faf7b78dee856}
-      \strng{authorfullhash}{ec5e7b1a24db8fa9896faf7b78dee856}
-      \strng{editorbibnamehash}{09392c8ca2f5970b74b6cec44c645f3a}
-      \strng{editornamehash}{09392c8ca2f5970b74b6cec44c645f3a}
-      \strng{editorfullhash}{09392c8ca2f5970b74b6cec44c645f3a}
+      \strng{namehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
+      \strng{fullhash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
+      \strng{bibnamehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
+      \strng{authorbibnamehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
+      \strng{authornamehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
+      \strng{authorfullhash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -1546,12 +1592,14 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Breakthroughs in Statistics: Foundations and Basic Theory}
-      \field{isbn}{978-1-4612-0919-5}
       \field{title}{An Empirical Bayes Approach to Statistics}
       \field{year}{1992}
       \field{pages}{388\bibrangedash 394}
       \range{pages}{7}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-1-4612-0919-5_26
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1007/978-1-4612-0919-5_26
       \endverb
     \endentry
@@ -1586,7 +1634,10 @@
       \field{year}{2013}
       \field{pages}{77\bibrangedash 84}
       \range{pages}{8}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.jprot.2013.02.022
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/j.jprot.2013.02.022
       \endverb
     \endentry
@@ -1668,12 +1719,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in Ecology and Evolution}
       \field{number}{3}
-      \field{title}{{Generalized linear mixed models: a practical guide for ecology and evolution}}
+      \field{title}{Generalized linear mixed models: a practical guide for ecology and evolution}
       \field{volume}{24}
       \field{year}{2009}
       \field{pages}{127\bibrangedash 135}
       \range{pages}{9}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.tree.2008.10.008
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1016/j.tree.2008.10.008
       \endverb
     \endentry
@@ -1700,7 +1754,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}}
+      \field{title}{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}
       \field{year}{2006}
     \endentry
     \entry{Wei:1992}{article}{}
@@ -1725,12 +1779,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Statistics in medicine}
       \field{number}{14-15}
-      \field{title}{{The accelerated failure time model: a useful alternative to the Cox regression model in survival analysis}}
+      \field{title}{The accelerated failure time model: a useful alternative to the Cox regression model in survival analysis}
       \field{volume}{11}
       \field{year}{1992}
       \field{pages}{1871\bibrangedash 1879}
       \range{pages}{9}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1002/sim.4780111409
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1002/sim.4780111409
       \endverb
     \endentry
@@ -1759,12 +1816,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Biometrics Bulletin}
       \field{number}{6}
-      \field{title}{{An approximate distribution of estimates of variance components}}
+      \field{title}{An approximate distribution of estimates of variance components}
       \field{volume}{2}
       \field{year}{1946}
       \field{pages}{110\bibrangedash 114}
       \range{pages}{5}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.2307/3002019
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.2307/3002019
       \endverb
     \endentry
@@ -1795,7 +1855,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{J.R. Statist. Soc. B}
       \field{number}{1}
-      \field{title}{{Controlling the false discovery rate: a practical and powerful approach to multiple testing}}
+      \field{title}{Controlling the false discovery rate: a practical and powerful approach to multiple testing}
       \field{volume}{57}
       \field{year}{1955}
       \field{pages}{289\bibrangedash 300}
@@ -1846,7 +1906,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{5}
-      \field{title}{{Applied Linear Statistical Models}}
+      \field{title}{Applied Linear Statistical Models}
       \field{year}{2004}
     \endentry
     \entry{oberg_vitek_09a}{article}{}
@@ -1876,12 +1936,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Proteome Research}
       \field{number}{5}
-      \field{title}{{Statistical design of quantitative mass spectrometry-based proteomic experiments}}
+      \field{title}{Statistical design of quantitative mass spectrometry-based proteomic experiments}
       \field{volume}{8}
       \field{year}{2009}
       \field{pages}{2144\bibrangedash 2156}
       \range{pages}{13}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/pr8010099
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.1021/pr8010099
       \endverb
     \endentry
@@ -1899,7 +1962,7 @@
            giveni={J\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {[Wiley, International Biometric Society]}%
+        {Wiley, International Biometric Society}%
       }
       \strng{namehash}{69725a221d096e32dd432462690e3f9d}
       \strng{fullhash}{69725a221d096e32dd432462690e3f9d}
@@ -1924,7 +1987,10 @@
       \field{urldateera}{ce}
       \field{pages}{983\bibrangedash 997}
       \range{pages}{15}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.2307/2533558
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.2307/2533558
       \endverb
     \endentry
@@ -1965,12 +2031,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
       \field{number}{1}
-      \field{title}{{Fitting Linear Mixed-Effects Models Using lme4}}
+      \field{title}{Fitting Linear Mixed-Effects Models Using lme4}
       \field{volume}{67}
       \field{year}{2015}
       \field{pages}{1\bibrangedash 48}
       \range{pages}{48}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.18637/jss.v067.i01
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.18637/jss.v067.i01
       \endverb
     \endentry
@@ -2006,12 +2075,15 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
       \field{number}{13}
-      \field{title}{{lmerTest Package: Tests in Linear Mixed Effects Models}}
+      \field{title}{lmerTest Package: Tests in Linear Mixed Effects Models}
       \field{volume}{82}
       \field{year}{2017}
       \field{pages}{1\bibrangedash 26}
       \range{pages}{26}
-      \verb{doi}
+      \verb{urlraw}
+      \verb https://doi.org/10.18637/jss.v082.i13
+      \endverb
+      \verb{url}
       \verb https://doi.org/10.18637/jss.v082.i13
       \endverb
     \endentry
