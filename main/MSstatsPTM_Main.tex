@@ -146,7 +146,7 @@ Liquid chromatography coupled with bottom up mass spectrometry (LC-MS/MS)-based 
 
 Signaling mechanisms allow cells to mount a fast and dynamic response to a multitude of biomolecular events. Signaling is facilitated by the modification of proteins at specific residues, acting as molecular on/off switches~\cite{Deribe,Cohen,Bludau2022}. Characterizing relative abundance of a modification site's occupancy repertoire across experimental conditions provides important insights~\cite{Mann}. For example, meaningful patterns of changes in post-translational modifications (PTMs) abundance can serve as biomarkers of a disease~\cite{Petushkova_2017}. Alternatively, distinguishing the quantitative changes in a PTM from the overall changes of the protein abundance helps gain insight into biological and physiological processes operating on a very short timescale~\cite{Chandramouli:2009}\cite{Kim2016}. This helps to distinguish between relative site occupancy changes at steady-state protein levels, typical for short time-scale signaling events, and observed relative changes of PTMs as a result of underlying gene expression or protein abundance levels.
 
-Bottom-up liquid chromatography coupled with tandem mass spectrometry (LC-MS/MS) is a tool of choice for unbiased and large-scale identification and quantification of proteins and their PTMs~\cite{Kall:2011ub,Roepstorff}. However, LC-MS-based interrogation of the modified proteome is challenging, for a number of reasons. First, the relatively lower abundance of modified proteoforms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads \cite{Huang:2014}. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities. Second, contrary to the often large number of identified peptides that can be used to quantify protein abundance, there are relatively few representative peptides that span a modification site, and there may be multiple modified sites on a single peptide~\cite{Mann}. Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently confounded with changes in the overall protein abundance, complicating the interpretation of the results \cite{Olsen:2013}. Finally, technological aspects of bottom-up MS experiments, such as presence of labeling by tandem mass tag (TMT), introduce additional sources of uncertainty and variation.
+Bottom-up liquid chromatography coupled with tandem mass spectrometry (LC-MS/MS) is a tool of choice for unbiased and large-scale identification and quantification of proteins and their PTMs~\cite{Kall:2011ub,Roepstorff}. However, LC-MS-based interrogation of the modified proteome is challenging, for a number of reasons. First, the relatively lower abundance of modified proteoforms dictates that a global interrogation can only be achieved through large-scale enrichment protocols with modification-specific antibodies or beads \cite{Huang:2014}. Variability in the enrichment efficiency inevitably affects the reproducibility of the number of spectral features (e.g., peptide precursor ions or their fragments) and their intensities. Second, contrary to the often large number of identified peptides that can be used to quantify protein abundance, there are relatively few representative peptides that span a modification site, and there may be multiple modified sites on a single peptide~\cite{Mann}. Third, unless early signaling events are interrogated, the interpretation of the relative changes in modification occupancy are inherently confounded with changes in the overall protein abundance, complicating the interpretation of the results \cite{Olsen:2013}\cite{Wu:2011}. Finally, technological aspects of bottom-up MS experiments, such as presence of labeling by tandem mass tag (TMT), introduce additional sources of uncertainty and variation.
 
 The technological difficulties in PTM identification and quantification increase the uncertainty and the variation in the data, and challenge the downstream statistical analyses. Frequently data from these experiments are analyzed using statistical methods that were not originally designed for this task. Researchers use methods such as $t$-test\cite{Kalpic:2011}, Analysis of Variance\cite{girden:1992}, or Limma\cite{Ritchie_15a}, by taking as input the intensity ratios of modified and unmodified peptide features, and comparing the mean abundance of different PTM sites. Such approaches do not fully account for all the sources of uncertainty. As the result, these approaches are either not directly applicable to experiments with non-trivial designs (such as experiments with multiple conditions, paired and time course designs, and experiments with labeling), or require the analysts to exercise non-trivial statistical expertise.
 
@@ -189,7 +189,7 @@ Each simulation was generated with random biological variation. The observed pep
 
 \medskip \noindent {\bf Data acquisition:} Each mixture was analyzed with KGG enrichment, and without KGG enrichment (i.e., in a global profiling run), with label-free LC-MS/MS. There was a 90.2\% overlap of protein identifications between the identified background modified peptides and proteins that were quantified in the global profiling run.
 
-\medskip \noindent {\bf Evaluation:} We expect the spike-in peptides to change corresponding to the values in Figure \ref{fig:benchmark-design}(b). These peptides are treated as positive controls in all comparisons except Mix 1 vs Mix 4. Additionally, the background {\it E. coli} lysate peptides are treated as negative controls and are not expected to change in any comparison. Therefor we evaluated the statistical methods ability to avoid false positives, as well as their sensitivity in detecting the differentially abundant spike-in peptides and accurately estimate their expected fold change.
+\medskip \noindent {\bf Evaluation:} We expect the spike-in peptides to change corresponding to the values in Figure \ref{fig:benchmark-design}(b). These peptides are treated as positive controls in all comparisons except Mix 1 vs Mix 4. Mix 1 vs Mix 4 was treated as a negative control, with no expected fold change. Additionally, the background {\it E. coli} lysate peptides were also treated as negative controls and are not expected to change in any comparison. Therefor we evaluated the statistical methods ability to avoid false positives, as well as their sensitivity in detecting the differentially abundant spike-in peptides and accurately estimate their expected fold change.
 
 
 \todo{Here is the place to describe: 'we expect XXX to not change'. Therefore we evaluated the ability of statistical methods to avoid false positives (i.e., specificity). We expect XXX to have fold changes XXX between conditions XXX. We evaluated the accuracy of estimation of fold changes... and the sensitivity of detecting differentially abundant...}  
@@ -261,6 +261,8 @@ where $\mu_i$ and $\mu_{i^{\prime}}$ reflect the overall protein abundances in C
 
 \medskip \noindent 
 \todo{OV: this doesn't look right, as it seems that all the features and replicates equally contribute to the error. Do people do some kind of summarization of the features first? Let's first describe the summarization}
+\todo{DK: I think we should just delete this part entirely. It isn't how we compared the method and is not really used in the literature from what I can tell.}
+
 The basic two-sample $t$-test \todo{ref - ideally from this literature if you can find} is based on the model
 \begin{eqnarray}
 y^*_{ijk} = \hat{\mu}^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} N(0, \sigma^{*2}),\ i=1,\ldots,I,\ j=1,\ldots,J,\ k=1,\ldots,K
@@ -275,7 +277,7 @@ Unfortunately, this approach is fundamentally flawed as it does not account for 
 \noindent {\bf Two-sample $t$-test based on ratios of modified and unmodified log$_2$-intensities} 
 
 \medskip \noindent 
-The basic $t$-test can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance\todo{OV: not sure where to put this ref ~\cite{Schwammle2015}- could you check it belongs here?} ~\cite{THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, separately for modified and unmodified features, e.g. \todo{with the sum on the original scale}, dividing the summary of the PTM abundance by the summary of the protein abundance,  \todo{and then taking a log?}. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
+The basic $t$-test can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, separately for modified and unmodified features, e.g. with the sum on the original scale, dividing the summary of the PTM abundance by the summary of the protein abundance and then taking a log. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
 \begin{eqnarray}
 u_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right)
 \label{eq:adj_estimation}
@@ -288,12 +290,12 @@ u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon
 The model allows us to estimate $\hat{\Delta}_{adj}$ and its standard error.
 Based on this model, we can test the more relevant null hypothesis in~\eqref{null_hyp}, by comparing the test statistic against the Student distribution with \todo{how many} degrees of freedom in balanced designs.
 
-Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with multi-run multiplexing. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, the lack of a self contained, straightforward implementation of the method challenges the applications \todo{OV: is the last statement true? Seems simple enough}.
+Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with multi-run multiplexing. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, the lack of a self contained, straightforward implementation of the method challenges the applications \todo{OV: is the last statement true? Seems simple enough}. \todo{DK: I meant more that there was no simple package implementation. Researchers need to program the methods themselves. I cant find an implementation at least}
 
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The two versions of $t$-test \todo{OV: ANOVA?} above can be expanded with Empirical Bayes moderation in Limma~\cite{Ritchie_15a,Zhu,Chappell:2021} \todo{cite the original limma paper}. In particular, the ratio-based version models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation}. Limma then fits a linear model using the transformed inputs.
+\medskip \noindent The two versions of $t$-test \todo{OV: ANOVA?} above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation}. Limma then fits a linear model using the transformed inputs.
 
 \begin{equation}
 \begin{aligned}
@@ -318,10 +320,11 @@ Since Limma only improves upon the methods above in estimation of variation, it 
 \subsection*{Statistical modeling and parameter estimation in MSstats}
 
 $MSstats$~\cite{Choi:2014} is designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. The package takes as input a list of log$_2$-intensities $y_{ijk}$, used to characterize the identified protein. For each protein, the feature log-intensities are first summarized into a single value per protein per run in the subplot model. This is done using Tukey's median polish (TMP)~\cite{Tukey:1977}, a simple and robust procedure, which iteratively fits a two-way additive model with the effects of run and feature, summarizing them into a single value per run. These summarized values are then used as input to fit a linear model based on the family of linear mixed-effects models \cite{Bolker2009} \cite{Faraway:2006}. For example, the model for a TMT experiment would be as follows 
-\todo{OV: this is very different from how we usually present MSstats. Check either the MSstatsTMT paper or the draft of Ting's most recent paper (or maybe her dissertation?) Could you try using the same presentation?}
+
 \begin{eqnarray}
-& u_{ijm} = \beta_0 + c_{i}\beta_1 + + r_j\beta_2 + mix_m\beta_3 + \epsilon^{\ast}_{ij}, \text{where } \epsilon^{\ast}_{ijm} \mathop\sim^{iid} N(0, \sigma^2), & \\ 
-& mix_m \mathop\sim^{iid} N(0, \sigma^2_m), r_j \mathop\sim^{iid} N(0, \sigma^2_j), \sum_{i=0}^{I} c_i = 0 &
+& Y_{mtcb} = \mu + \text{Mixture}_m + \text{TechRep(Mixture)}_{t(m)} + \text{Condition}_c + Subject_{mcb} + \epsilon_{mtcb}, & \\ 
+& \text{where }  \text{Mixture}_m  \mathop\sim^{iid} N(0, \sigma^2_M),  \text{TechRep(Mixture)} \mathop\sim^{iid} N(0, \sigma^2_T), & \\
+& \sum_{c=1}^{C} \text{Condition}_c = 0, \epsilon_{mtcb} \mathop\sim^{iid} N(0, \sigma^2) &
 \end{eqnarray}
 
 The model enables the estimation of $\hat{\Delta}$ and the standard error. These methods are implemented in the R packages $MSstats$ and $MSstatsTMT$~\cite{Huang:2020}.
@@ -569,11 +572,23 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \newpage
 \section{Figures}
 
+%\begin{table}[]
+%\begin{tabular}{|c|c|c|}
+%\hline
+%Comparison & Unadjusted true fold change & Adjusted true fold change \\ \hline \hline
+%mix1-mix2  & 0                           & -1                        \\ \hline
+%mix1-mix3  & 0                           & 1                         \\ \hline
+%mix1-mix4  & -1                          & 0                         \\ \hline
+%mix2-mix3  & -1                          & -2                        \\ \hline
+%mix2-mix4  & 0                           & -1                        \\ \hline
+%mix3-mix4  & 0                           & 1                         \\ \hline
+%\end{tabular}
+%\end{table}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=.4]{images/benchmark_fig.png}
-\caption{{\bf Dataset 3: SpikeIn benchmark - Ubiquitination - Label-free}. (a) Relative amounts of human lysate, background {\it E. Coli} lysate, and spike-in peptides. \todo{Clarify what is changing how} (b) The expected fold change of the spike-in peptides, after adjusting for changes in the unmodified peptide (human lysate). The expected fold change is calculated using the values of the spike-in and human lysate in part (a).\todo{Could you make the columns in the table more complete? True fold-fold changes between the backgrounds; unadjusted true fold changes, adjusted true fold changes - essentially any value for any comparison that we may want to evaluate}}
+\includegraphics[scale=.5]{images/benchmark_fig.png}
+\caption{{\bf Dataset 3: SpikeIn benchmark - Ubiquitination - Label-free}. (a) Relative amounts of human lysate, background {\it E. Coli} lysate, and spike-in peptides. \todo{TODO: Clarify what is changing how} (b) The expected fold change of the spike-in peptides, after adjusting for changes in the unmodified peptide (human lysate). The expected fold change is calculated using the values of the spike-in and human lysate in part (a).\todo{Could you make the columns in the table more complete? True fold-fold changes between the backgrounds; unadjusted true fold changes, adjusted true fold changes - essentially any value for any comparison that we may want to evaluate}}
 
 \label{fig:benchmark-design}
 \end{figure}

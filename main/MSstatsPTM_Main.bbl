@@ -454,6 +454,64 @@
       \field{pages}{3444\bibrangedash 3452}
       \range{pages}{9}
     \endentry
+    \entry{Wu:2011}{article}{}
+      \name{author}{7}{}{%
+        {{hash=2fbbe512f7957508280382e8982b122f}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2740bae2f2e90635da23cc47170f4c69}{%
+           family={Dephoure},
+           familyi={D\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=7f029eb321dedbe865dcdcde93500926}{%
+           family={Haas},
+           familyi={H\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e41fd276f9ad08ff955e3306b5adce3b}{%
+           family={Huttlin},
+           familyi={H\bibinitperiod},
+           given={E.L.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=2a93449525f129e479bf56670ed00773}{%
+           family={Zhai},
+           familyi={Z\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=71c1b1d98f6315c66e78483a3af3717b}{%
+           family={Sowa},
+           familyi={S\bibinitperiod},
+           given={M.E.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eb19b015f8d71c3fe04c0f2a5b442b85}{%
+           family={Gygi},
+           familyi={G\bibinitperiod},
+           given={S.P.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{fullhash}{e8da6e4759b9c5bd729b44cf39578cc5}
+      \strng{bibnamehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{authorbibnamehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{authornamehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{authorfullhash}{e8da6e4759b9c5bd729b44cf39578cc5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mol Cell Proteomics}
+      \field{number}{8}
+      \field{title}{Correct interpretation of comprehensive phosphorylation dynamics requires normalization by protein expression changes}
+      \field{volume}{10}
+      \field{year}{2011}
+      \field{pages}{M111.009654}
+      \range{pages}{-1}
+    \endentry
     \entry{Kalpic:2011}{inbook}{}
       \name{author}{3}{}{%
         {{hash=23879685f3732bbaba09012c29a1685d}{%
@@ -1300,8 +1358,8 @@
       \strng{authorbibnamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
       \strng{authornamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
       \strng{authorfullhash}{c143ec455c2f719042df5248cb218109}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1312,6 +1370,68 @@
       \field{year}{2013}
       \field{pages}{634\bibrangedash 637}
       \range{pages}{4}
+    \endentry
+    \entry{Smyth:2005}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=dbf3c876f4579e206e56f8755d9499e8}{%
+           family={Smyth},
+           familyi={S\bibinitperiod},
+           given={G.\bibnamedelimi K.},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=2c77ebfb128d4f5b19f09d2869a7a70b}{%
+           family={Gentleman},
+           familyi={G\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=44ec30624e56eb880eaa6a8ac12cd6ef}{%
+           family={Carey},
+           familyi={C\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod}}}%
+        {{hash=7cf8769bde03a95b436a205af7a5d9f3}{%
+           family={Huber},
+           familyi={H\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=dacefa972bad6f473aa28fbbe12e2e4b}{%
+           family={Irizarry},
+           familyi={I\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8d1704b6687bd526d67cde782d1ff06c}{%
+           family={Dudoit},
+           familyi={D\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{fullhash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{bibnamehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{authorbibnamehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{authornamehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{authorfullhash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{editorbibnamehash}{b8faab307bcc5fe19bfc5900768458ef}
+      \strng{editornamehash}{b8faab307bcc5fe19bfc5900768458ef}
+      \strng{editorfullhash}{bd637e0022ab80402131364e8a96d71b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Bioinformatics and Computational Biology Solutions Using R and Bioconductor}
+      \field{title}{limma: Linear Models for Microarray Data}
+      \field{year}{2005}
+      \field{pages}{397\bibrangedash 420}
+      \range{pages}{24}
     \endentry
     \entry{Zhu}{article}{}
       \name{author}{8}{}{%
@@ -1620,8 +1740,8 @@
       \strng{authorbibnamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
       \strng{authornamehash}{77dbb08d457e7eb3e1e99bec815f47f6}
       \strng{authorfullhash}{77dbb08d457e7eb3e1e99bec815f47f6}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1804,12 +1924,8 @@
       \field{journaltitle}{Biometrics}
       \field{number}{3}
       \field{title}{Small Sample Inference for Fixed Effects from Restricted Maximum Likelihood}
-      \field{urlday}{16}
-      \field{urlmonth}{6}
-      \field{urlyear}{2022}
       \field{volume}{53}
       \field{year}{1997}
-      \field{urldateera}{ce}
       \field{pages}{983\bibrangedash 997}
       \range{pages}{15}
     \endentry
