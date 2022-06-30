@@ -295,7 +295,7 @@ Although effective, the approach is somewhat simplistic. It is not applicable to
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The two versions of $t$-test \todo{OV: ANOVA?} above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation}. Limma then fits a linear model using the transformed inputs.
+\medskip \noindent The two versions of $t$-test \todo{OV: ANOVA?} above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation}. Limma then fits a linear model using the transformed inputs.
 
 \begin{equation}
 \begin{aligned}
@@ -319,7 +319,7 @@ Since Limma only improves upon the methods above in estimation of variation, it 
 
 \subsection*{Statistical modeling and parameter estimation in MSstats}
 
-$MSstats$~\cite{Choi:2014} is designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. The package takes as input a list of log$_2$-intensities $y_{ijk}$, used to characterize the identified protein. For each protein, the feature log-intensities are first summarized into a single value per protein per run in the subplot model. This is done using Tukey's median polish (TMP)~\cite{Tukey:1977}, a simple and robust procedure, which iteratively fits a two-way additive model with the effects of run and feature, summarizing them into a single value per run. These summarized values are then used as input to fit a linear model based on the family of linear mixed-effects models \cite{Bolker2009} \cite{Faraway:2006}. For example, the model for a TMT experiment would be as follows 
+$MSstats$~\cite{Choi:2014} is designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. The package takes as input a list of log$_2$-intensities $y_{ijk}$, used to characterize the identified protein. For each protein, the feature log-intensities are first summarized into a single value per protein per run in the subplot model. This is done using Tukey's median polish (TMP)~\cite{Tukey:1977}, a simple and robust procedure, which iteratively fits a two-way additive model with the effects of run and feature, summarizing them into a single value per run. These summarized values are then used as input to fit a linear model based on the family of linear mixed-effects models \cite{McLean:1991, Faraway:2006, Bolker2009}. For example, the model for a TMT experiment would be as follows 
 
 \begin{eqnarray}
 & Y_{mtcb} = \mu + \text{Mixture}_m + \text{TechRep(Mixture)}_{t(m)} + \text{Condition}_c + Subject_{mcb} + \epsilon_{mtcb}, & \\ 

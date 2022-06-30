@@ -1371,6 +1371,35 @@
       \field{pages}{634\bibrangedash 637}
       \range{pages}{4}
     \endentry
+    \entry{Smyth:2004}{article}{}
+      \name{author}{1}{}{%
+        {{hash=dbf3c876f4579e206e56f8755d9499e8}{%
+           family={Smyth},
+           familyi={S\bibinitperiod},
+           given={G.\bibnamedelimi K.},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{fullhash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{bibnamehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{authorbibnamehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{authornamehash}{dbf3c876f4579e206e56f8755d9499e8}
+      \strng{authorfullhash}{dbf3c876f4579e206e56f8755d9499e8}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistical Applications in Genetics and Molecular Biology}
+      \field{number}{1}
+      \field{title}{Linear Models and Empirical Bayes Methods for Assessing Differential Expression in Microarray Experiments}
+      \field{volume}{3}
+      \field{year}{2003}
+      \field{pages}{Article 3}
+      \range{pages}{-1}
+    \endentry
     \entry{Smyth:2005}{inbook}{}
       \name{author}{1}{}{%
         {{hash=dbf3c876f4579e206e56f8755d9499e8}{%
@@ -1421,6 +1450,7 @@
       \strng{editorbibnamehash}{b8faab307bcc5fe19bfc5900768458ef}
       \strng{editornamehash}{b8faab307bcc5fe19bfc5900768458ef}
       \strng{editorfullhash}{bd637e0022ab80402131364e8a96d71b}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -1642,6 +1672,70 @@
       \field{title}{{Exploratory data analysis}}
       \field{year}{1977}
     \endentry
+    \entry{McLean:1991}{article}{}
+      \name{author}{3}{}{%
+        {{hash=538374c24c6d3a02edacdf8a0fde2e5c}{%
+           family={McLean},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=23da7854d5057727cade1b68b4cf915b}{%
+           family={Sanders},
+           familyi={S\bibinitperiod},
+           given={William\bibnamedelima L.},
+           giveni={W\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=811ca7afe925492048849d1e89ce68d7}{%
+           family={Stroup},
+           familyi={S\bibinitperiod},
+           given={Walter\bibnamedelima W.},
+           giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9a6fee4a6179e746667d4f4d477608e3}
+      \strng{fullhash}{9a6fee4a6179e746667d4f4d477608e3}
+      \strng{bibnamehash}{9a6fee4a6179e746667d4f4d477608e3}
+      \strng{authorbibnamehash}{9a6fee4a6179e746667d4f4d477608e3}
+      \strng{authornamehash}{9a6fee4a6179e746667d4f4d477608e3}
+      \strng{authorfullhash}{9a6fee4a6179e746667d4f4d477608e3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The American Statistician}
+      \field{number}{1}
+      \field{title}{A Unified Approach to Mixed Linear Models}
+      \field{volume}{45}
+      \field{year}{1991}
+      \field{pages}{54\bibrangedash 64}
+      \range{pages}{11}
+    \endentry
+    \entry{Faraway:2006}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7b12022c0d0c88c6072dbfa3e51ddfeb}{%
+           family={Faraway},
+           familyi={F\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{fullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{bibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{authorbibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{authornamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \strng{authorfullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}
+      \field{year}{2006}
+    \endentry
     \entry{Bolker2009}{article}{}
       \name{author}{7}{}{%
         {{hash=d2a4a68f3baba8c1b633f4f0dcbcf2dd}{%
@@ -1699,32 +1793,6 @@
       \field{year}{2009}
       \field{pages}{127\bibrangedash 135}
       \range{pages}{9}
-    \endentry
-    \entry{Faraway:2006}{book}{}
-      \name{author}{1}{}{%
-        {{hash=7b12022c0d0c88c6072dbfa3e51ddfeb}{%
-           family={Faraway},
-           familyi={F\bibinitperiod},
-           given={J.\bibnamedelimi J.},
-           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {CRC Press}%
-      }
-      \strng{namehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{fullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{bibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{authorbibnamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{authornamehash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \strng{authorfullhash}{7b12022c0d0c88c6072dbfa3e51ddfeb}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}
-      \field{year}{2006}
     \endentry
     \entry{Wei:1992}{article}{}
       \name{author}{1}{}{%
