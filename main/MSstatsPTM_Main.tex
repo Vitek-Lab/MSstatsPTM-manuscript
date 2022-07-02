@@ -390,13 +390,13 @@ where
 
 and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}}$ and the $100(1-\alpha /2)^{\text{th}}$ percentiles of the $t$ distribution, with $df = I(J-1)$ degrees of freedom in balanced designs. 
 
-Solving for J, the number of biological replicates per group is calculated as 
+Solving for $J$, the number of biological replicates per group is calculated as 
 
 \begin{equation}
 J \geq \frac{(2\hat{\sigma}_{\gamma^{\ast}}^{2} + 2\hat{\sigma}_{\gamma}^{2})(t_{1-\beta, df} + t_{1-\alpha /2, df})^2}{\Delta^2}
 \end{equation}
 
-Details on how the proposed method can be used to run sample size calculations and power analysis on experiments with complex design can be seen in Supplementary Sec. \ref{supp-sec:complex_design}. More details on sample size calculation can be found in~\cite{oberg_vitek_09a}. 
+Details on how the proposed method can be used to run sample size calculations and power analysis on experiments with complex design can be seen in {\bf Supplementary Sec. \ref{supp-sec:complex_design}}. More details on sample size calculation can be found in~\cite{oberg_vitek_09a}. 
 
 
 
@@ -422,7 +422,7 @@ The package relies on functionalities from the R packages $MSstats$ \cite{Choi:2
 We evaluated $MSstatsPTM$ on simulated and spike-in datasets with known ground truth in terms of true positives ($TP$), false positives ($FP$), true negatives ($TN$), and false negatives ($FN$) differentially abundant PTM. The true positives were defined as PTMs with changes distinct from the overall changes in protein abundance. The true negatives were defined as PTM which, after accounting for the changes in the overall protein abundance, were not differentially abundant. Additional summaries were the false discovery rate $FDR=FP/(TP+FP)$, $Recall=TP/(TP + FN)$, and $Accuracy=(TP + TN) / (TP + TN + FP + FN)$.
 For biological experiments with unknown ground truth, we compared the differentially abundant PTM  with and without adjusting for changes in unmodified protein abundance. 
 
-The evaluations were based on the $MSstatsPTM$ \todo{any details of the options? E.g., was Empirical Bayes moderation used in MSstatsPTM?} $MSstatsPTM$ was compared \todo{with methods XXX - why chosen? We did not compare to IsobarPTM because XXX. Do we say t-test or ANOVA?} All the evaluations were done at the adjusted p-value cutoff of $\alpha=.05$. More details are in Supplementary Sec. \ref{supp-sec:experiments}. 
+The evaluations were based on the $MSstatsPTM$ \todo{any details of the options? E.g., was Empirical Bayes moderation used in MSstatsPTM?} $MSstatsPTM$ was compared \todo{with methods XXX - why chosen? We did not compare to IsobarPTM because XXX. Do we say t-test or ANOVA?} All the evaluations were done at the adjusted p-value cutoff of $\alpha=.05$. More details are in {\bf Supplementary Sec. \ref{supp-sec:experiments}}. 
 
 \todo{OV:Most of the following sections simply re-state the results that can already be read off the figures. The sections would have more value if in addition/instead of describing the figures, we could provide the reasons/insight into why we see this performance. Could you try? In general, no need to repeat what we see in the figure - this is what the figures are for.}
 
