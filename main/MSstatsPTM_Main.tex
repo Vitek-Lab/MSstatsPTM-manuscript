@@ -359,7 +359,7 @@ For the modified features, the model-based estimates in $MSstats$ and $MSstatsTM
 \end{eqnarray}
 Assuming that the unexplained by the model  sources of variation in the modified features are independent from the corresponding sources of variation in the modified features, the standard error $\widehat{SE}(\hat{\Delta}_{adj})$ is obtained by combining the standard errors from the unmodified and modified model fits.
 \begin{eqnarray}
-\widehat{SE}(\Delta)_{adj} = \sqrt{ \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2}} 
+\widehat{SE}(\hat{\Delta})_{adj} = \sqrt{ \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2}} 
 \label{eq:prop_se}
 \end{eqnarray}
 The estimated standard error is larger than the standard errors associated with each distinct feature type, reflecting the increased uncertainty inherent to combining the uncertainty in two estimators. Finally, the degrees of freedom associated with~\eqref{prop_se} are obtained via the Satterthwaite approximation~\cite{satterthwaite:1946}\todo{OV: maybe site a more recent exp design book?}
@@ -380,7 +380,7 @@ The proposed statistical framework allows for design of PTM experiments in terms
 Sample size calculation takes as input a) $q$, the desired false discovery rate, b) $\beta$, the average Type II error rate, c) $\Delta$, the minimal log-fold change in adjusted PTM abundance that we would like to detect, d) $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison, and e) $\sigma_{\gamma^{\ast}}^{2}$ and $\sigma_{\gamma}^{2}$, the anticipated variances associated to modified and unmodified peptide features, respectively. The variances can be derived based on the dataset being analyzed, assuming similar quantitative properties and variations. With these values and a user-specified number of conditions, the corresponding number of technical replicates per condition can then be derived, as described in~\cite{kutner_etal_04a}. Given the above quantities, the minimal number of replicates $J$ is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as \todo{OV: hmm... For what design and what model? It is unclear where eq 11 came from. This will be quite specific to the model and the design. Maybe refer to the model in Eq 7? (Which we should probably simplify to reflect the experiment in Figure2, while keeping the general indeces) }
 
 \begin{equation}
-\widehat{SE}(\Delta)_{adj}^2 = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
+\widehat{SE}(\hat{\Delta})_{adj}^2 = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
 \leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2}
 \end{equation}
 where 
