@@ -428,6 +428,8 @@ The evaluations were based on the $MSstatsPTM$ \todo{any details of the options?
 
 \todo{OV: Also, maybe combine two sections that make a similar point?}
 
+\todo{OV: also avoid the terms 'significant'. Replace it with 'differentially abundant'. Instead of 'bias' and 'convolution', use 'confounding'}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{In clean simulations, MSstatsPTM corrected for high FDR of differentially abundant PTM}
 
@@ -445,7 +447,7 @@ The evaluations were based on the $MSstatsPTM$ \todo{any details of the options?
 
 \todo{This section just describes the figure. Could you emphasize why we see these results? What are the reasons for differences in performance?} In this experiment all models incorrectly estimated the fold change of the modified spike-in peptides before adjusting for changes in global protein abundance. After adjustment, the spike-in peptides' fold change was generally in line with expectation in all methods, however the distribution of estimated fold changes was visibly wider (\figref{spikein_boxplot}). Of the three approaches, the proposed method showed the tightest distribution around the true log fold change. Comparing the IQR of the spike-in peptide's log fold change, the proposed method's IQR was 36.78\% smaller than $Limma$ and 32.98\% smaller than $t$-test's. While Limma and $t$-test generally estimated the correct fold change, the proposed method's estimation was more consistent across all modifications.
 
-In~\figref{spikein_prop_volcano} we can clearly see the fold change of the red labeled spike-in peptides was only correctly estimated when accounting for changes in the unmodified protein abundance. Additionally, the background peptides, serving as the null model, show many false positives before adjustment. After adjustment the number of false positives decreased significantly. Specifically, for the proposed method, the number of false positives went from 20.88\% to 1.84\% after adjustment was applied. While the proposed method and $Limma$ both correctly estimated the fold change of the spike-in peptides, using $Limma$ resulted in many insignificant adjusted p-values. Using $Limma$ would have resulted in missing the majority of differential PTMs.
+In~\figref{spikein_prop_volcano} we can clearly see the fold change of the red labeled spike-in peptides was only correctly estimated when accounting for changes in the unmodified protein abundance. Additionally, the background peptides, serving as the null model, show many false positives before adjustment. After adjustment the number of false positives substantially decreased. Specifically, for the proposed method, the number of false positives went from 20.88\% to 1.84\% after adjustment was applied. While the proposed method and $Limma$ both correctly estimated the fold change of the spike-in peptides, using $Limma$ resulted in many large adjusted p-values. Using $Limma$ would have resulted in missing the majority of differential PTMs.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{In the group comparison TMT experiment, MSstatsPTM corrected for bias \todo{OV: 'corrected for bias' is unclear. We talk about confounding. Maybe use a more specific term?}}
