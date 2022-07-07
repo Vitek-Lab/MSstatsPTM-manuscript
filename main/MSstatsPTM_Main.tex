@@ -160,7 +160,7 @@ The proposed approach is implemented as a freely available open source R package
 
 \subsection*{Data overview and availability}
 
-Table \ref{tab:dataDescription} summarizes the experiments. Two computer simulations had known ground truth, and varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. Details of computer simulations are available in Supplementary Section 2 and on GitHub (\url{https://github.com/devonjkohler/MSstatsPTM_simulations}). \todo{OV: there is a way to cross-reference sections dynamically across files. Check Meena's MSstats paper, or just double-check that all the sections are referenced correctly in the end}
+Table \ref{tab:dataDescription} summarizes the experiments. Two computer simulations had known ground truth, and varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. Details of computer simulations are available in Supplementary Section \ref{supp-sec:sim} and on GitHub (\url{https://github.com/devonjkohler/MSstatsPTM_simulations}).
 
 One spike-in experiment also had known changes in modified spike-in peptides, but had real-world experimental characteristics. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, modifications, experimental designs and acquisition strategies. The experimental data, R scripts with $MSstatsPTM$ analysis, and results of the statistical analysis are available in MassIVE.quant (\url{https://massive.ucsd.edu/ProteoSAFe/static/massive-quant.jsp}) \cite{Choi:2020}. 
 
@@ -183,16 +183,12 @@ Each simulation was generated with random biological variation. The observed pep
 \subsection*{Dataset 3: SpikeIn benchmark - Ubiquitination - Label-free}
 \label{sec:exp_proc_dataset3}
 
-\medskip \noindent {\bf Experimental Design:}~\figref{benchmark-design}(a) overviews the experimental design. Four mixtures (i.e., conditions) were created with varying amounts of human lysate, background {\it E. coli} lysate, and human spike-in ub-peptide mixture. Unmodified peptides from human lysate were viewed as the global proteome. Background {\it E. coli} lysate were used to equalize total protein levels prior to enrichment or global protein profiling between Mix 1 and 3, and between Mix 2 and 4.  50 heavy-labeled KGG motif peptides from 20 human proteins were used as spike-in peptides in a mixed background of lysates from {\it E. coli} and a human cell line. Quantitative changes in protein and site abundance of these 20 human proteins were the target of the benchmark. In particular, we distinguished the changes in the abundances of the modified peptides (i.e., unadjusted changes) and the changes of their abundance relative to the changes in the abundances of the human lysate (i.e., protein-level adjusted changed). The true log-fold changes between the relevant components of the relevant mixtures are summarized in~\figref{benchmark-design}(b).  Two replicate mixtures were created per condition. 
+\medskip \noindent {\bf Experimental Design:}~\figref{benchmark-design}(a) overviews the experimental design. Four mixtures (i.e., conditions) were created with varying amounts of human lysate, background {\it E. coli} lysate, and human spike-in ub-peptide mixture. Unmodified peptides from human lysate were viewed as the global proteome. Background {\it E. coli} lysate were used to equalize total protein levels prior to enrichment or global protein profiling between Mix 1 and 3, and between Mix 2 and 4. 50 heavy-labeled KGG motif peptides from 20 human proteins were used as spike-in peptides in a mixed background of lysates from {\it E. coli} and a human cell line. Quantitative changes in protein and site abundance of these 20 human proteins were the target of the benchmark. In particular, we distinguished the changes in the abundances of the modified peptides (i.e., unadjusted changes) and the changes of their abundance relative to the changes in the abundances of the human lysate (i.e., protein-level adjusted changed). The true log-fold changes between the relevant components of the relevant mixtures are summarized in~\figref{benchmark-design}(b).  Two replicate mixtures were created per condition. 
 
 \medskip \noindent {\bf Data acquisition:} Each mixture was analyzed with KGG enrichment, and without KGG enrichment (i.e., in a global profiling run), with label-free LC-MS/MS. There was a 90.2\% overlap of protein identifications between the identified background modified peptides and proteins that were quantified in the global profiling run.
 
-\medskip \noindent {\bf Evaluation:} We expect the spike-in peptides to change corresponding to the values in Figure \ref{fig:benchmark-design}(b). These peptides are treated as positive controls in all comparisons except Mix 1 vs Mix 4. Mix 1 vs Mix 4 was treated as a negative control, with no expected fold change. Additionally, the background {\it E. coli} lysate peptides were also treated as negative controls and are not expected to change in any comparison. Therefor we evaluated the statistical methods ability to avoid false positives, as well as their sensitivity in detecting the differentially abundant spike-in peptides and accurately estimate their expected fold change.
+\medskip \noindent {\bf Evaluation:} We expect the spike-in peptides to change corresponding to the values in Figure \ref{fig:benchmark-design}(b). These peptides are treated as positive controls in all comparisons except Mix 1 vs Mix 4, which was treated as a negative control. Additionally, the background {\it E. coli} lysate peptides were treated as negative controls and were not expected to change in any comparison. We evaluated the statistical methods ability to avoid false positives, as well as their sensitivity in detecting the differentially abundant spike-in peptides and accurately estimate their expected fold change.
 
-
-\todo{Here is the place to describe: 'we expect XXX to not change'. Therefore we evaluated the ability of statistical methods to avoid false positives (i.e., specificity). We expect XXX to have fold changes XXX between conditions XXX. We evaluated the accuracy of estimation of fold changes... and the sensitivity of detecting differentially abundant...}  
-%
-\todo{I think some mixtures are not comparable because the total protein amount is not the same. I believe only in Mix 1 vs 2 and Mix 3 vs 4 are comparable. I do not think it is correct to compare Mix 1 vs 3 and 2 vs 4 directly because they differ in the total amount of the proteome. Or was it normalized based on what we know is the same? If yes, we need to describe in the beginning of 'Evaluation'}  \todo{The unadjusted proteins... estimation... The adjusted proteins... estimation... Positive controls... Negative controls...}
 
 \subsection*{Dataset 4: Human - Ubiquitination - 1mix-TMT}
 \label{sec:exp_proc_dataset4}
@@ -558,20 +554,20 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 %\begin{table}[]
 %\begin{tabular}{|c|c|c|}
 %\hline
-%Comparison & Unadjusted true fold change & Adjusted true fold change \\ \hline \hline
-%mix1-mix2  & 0                           & -1                        \\ \hline
-%mix1-mix3  & 0                           & 1                         \\ \hline
+%Comparison & Unadj. true FC & Adj. true FC \\ \hline \hline
+%mix1-mix2  & -1                           & 1                        \\ \hline
+%mix1-mix3  & 0                           & -1                         \\ \hline
 %mix1-mix4  & -1                          & 0                         \\ \hline
-%mix2-mix3  & -1                          & -2                        \\ \hline
+%mix2-mix3  & 1                          & -2                        \\ \hline
 %mix2-mix4  & 0                           & -1                        \\ \hline
-%mix3-mix4  & 0                           & 1                         \\ \hline
+%mix3-mix4  & -1                           & 1                         \\ \hline
 %\end{tabular}
 %\end{table}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.5]{images/benchmark_fig.png}
-\caption{{\bf Dataset 3: SpikeIn benchmark - Ubiquitination - Label-free}. (a) Relative amounts of human lysate, background {\it E. Coli} lysate, and spike-in peptides. \todo{TODO: Clarify what is changing how} (b) The expected fold change of the spike-in peptides, after adjusting for changes in the unmodified peptide (human lysate). The expected fold change is calculated using the values of the spike-in and human lysate in part (a).\todo{Could you make the columns in the table more complete? True fold-fold changes between the backgrounds; unadjusted true fold changes, adjusted true fold changes - essentially any value for any comparison that we may want to evaluate}}
+\caption{{\bf Dataset 3: SpikeIn benchmark - Ubiquitination - Label-free}. (a) Relative amounts of human lysate, background {\it E. Coli} lysate, and spike-in peptides. Volumes of each mixture totaled 20mg, with 10mg of background {\it E. Coli} lysate used to normalize mix 3 and mix 4 to make all mixtures directly comparable. 2 pmol of spike-in peptides was added to mix 1 and mix 3, while 1 pmol was added to mix 2 and mix 4. (b) The expected fold change of the spike-in peptides in each comparison. ``Unadj. true FC'' is the fold change of the spike-in peptides (red) without adjusting for changes in human lysate (blue). This was calculated by directly comparing the amounts of spike-in in each condition. ``Adj. true FC'' is the fold change of the spike-in peptides when adjusting for changes in human lysate. This was calculated by determining the ratio of spike-in peptides to human lysate in each mixture and then using the ratio to calculate the true fold change across comparisons.}
 
 \label{fig:benchmark-design}
 \end{figure}

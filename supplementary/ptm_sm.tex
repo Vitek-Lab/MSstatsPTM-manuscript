@@ -468,23 +468,23 @@
 \subsection{Design of PTM experiments - Extension to complex designs}
 \label{sec:complex_design}
 
-The proposed approach applied to experiments with complex designs still allows for sample size calculation and power analysis. To make the calculation the standard deviation and degrees of freedom are needed. The estimation of these quantities is dependent on the experimental design. In Figure \ref{fig:statistical_inference} different experimental designs that the proposed approach can be applied to, along with their estimation of standard error and degrees of freedom is shown.
+%The proposed approach applied to experiments with complex designs still allows for sample size calculation and power analysis. To make the calculation the standard deviation and degrees of freedom are needed. The estimation of these quantities is dependent on the experimental design. In Figure \ref{fig:statistical_inference} different experimental designs that the proposed approach can be applied to, along with their estimation of standard error and degrees of freedom is shown.
 
 \begin{figure}[h!]
 \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{sim_new/Statistical_inference}}%
 \caption{Different models that are fit depending on the experimental design. Models are fit for Label-free and TMT acquisition methods, as well as group comparison and time course experimental designs. The estimation of standard error and degrees of freedom for each model is shown. \label{fig:statistical_inference}}
 \end{figure}
 
-The standard error and degrees of freedom are estimated separately for both the PTM and unmodified protein models. Once this is done we can use these these values to calculate the sample size and perform power analysis. Given $q$, the desired false discovery rate, $\beta$, the average Type II error rate, $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison. The minimal number of replicates is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
-\[
-\mathrm{SE}^{2}(\hat{\Delta}) = \left[ \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
-\leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2},
-\]
-where 
-\[
-\alpha = (1 - \beta) \cdot \frac{q}{1 + (1-q) \cdot m_0 / m_1},
-\]
-and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}}$ and the $100(1-\alpha /2)^{\text{th}}$ percentiles of the $t$ distribution. The degrees of freedom are estimated for the appropriate model using restricted maximum likelihood.
+%The standard error and degrees of freedom are estimated separately for both the PTM and unmodified protein models. Once this is done we can use these these values to calculate the sample size and perform power analysis. Given $q$, the desired false discovery rate, $\beta$, the average Type II error rate, $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison. The minimal number of replicates is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
+%\[
+%\mathrm{SE}^{2}(\hat{\Delta}) = \left[ \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
+%\leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2},
+%\]
+%Where 
+%\[
+%\alpha = (1 - \beta) \cdot \frac{q}{1 + (1-q) \cdot m_0 / m_1},
+%\]
+%and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}}$ and the $100(1-\alpha /2)^{\text{th}}$ percentiles of the $t$ distribution. The degrees of freedom are estimated for the appropriate model using restricted maximum likelihood.
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -498,7 +498,7 @@ The proposed statistical approach was evaluated and compared to the $t$-test and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Computer simulation}
-
+\label{sec:comp_sim}
 Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
 
 In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. While multiple conditions were generated, all comparisons were still made with the same fold change between conditions ($0.75$). This ensured that all peptides were differentially abundant by the same amount and the only difference in calculations was using more conditions in the modeling.
