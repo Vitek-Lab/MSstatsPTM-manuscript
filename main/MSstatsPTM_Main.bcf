@@ -2390,17 +2390,16 @@
     <bcf:citekey order="27">Kenward</bcf:citekey>
     <bcf:citekey order="28">Huang:2020</bcf:citekey>
     <bcf:citekey order="29">Choi:2014</bcf:citekey>
+    <bcf:citekey order="30">kutner_etal_04a</bcf:citekey>
     <bcf:citekey order="30">satterthwaite:1946</bcf:citekey>
     <bcf:citekey order="31">Benjamini:1995</bcf:citekey>
     <bcf:citekey order="32">kutner_etal_04a</bcf:citekey>
     <bcf:citekey order="33">oberg_vitek_09a</bcf:citekey>
-    <bcf:citekey order="34">Choi:2014</bcf:citekey>
-    <bcf:citekey order="35">Huang:2020</bcf:citekey>
-    <bcf:citekey order="36">Wei:1992</bcf:citekey>
-    <bcf:citekey order="37">Choi:2014</bcf:citekey>
-    <bcf:citekey order="38">Huang:2020</bcf:citekey>
-    <bcf:citekey order="39">Bates2015</bcf:citekey>
-    <bcf:citekey order="40">Kuznetsova2017</bcf:citekey>
+    <bcf:citekey order="34">Wei:1992</bcf:citekey>
+    <bcf:citekey order="35">Choi:2014</bcf:citekey>
+    <bcf:citekey order="36">Huang:2020</bcf:citekey>
+    <bcf:citekey order="37">Bates2015</bcf:citekey>
+    <bcf:citekey order="38">Kuznetsova2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

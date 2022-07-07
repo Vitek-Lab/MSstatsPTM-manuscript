@@ -1830,6 +1830,48 @@
       \field{pages}{983\bibrangedash 997}
       \range{pages}{15}
     \endentry
+    \entry{kutner_etal_04a}{book}{}
+      \name{author}{4}{}{%
+        {{hash=edcc1e5e3cf956c1cf34a4892408ace8}{%
+           family={Kutner},
+           familyi={K\bibinitperiod},
+           given={M.\bibnamedelimi H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=865cbcecb3201a4554a4e1714a8c78d6}{%
+           family={Neter},
+           familyi={N\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=52523d9794eed1ac698a45b2e3457ec5}{%
+           family={Nachtsheim},
+           familyi={N\bibinitperiod},
+           given={C.\bibnamedelimi J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=6e5b0e6cca2615e3baa1c9fd08a1f208}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill/Irwin}%
+      }
+      \strng{namehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{fullhash}{432be71d7e2df71f387dc678ef7a108d}
+      \strng{bibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{authorbibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{authornamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{authorfullhash}{432be71d7e2df71f387dc678ef7a108d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{title}{Applied Linear Statistical Models}
+      \field{year}{2004}
+    \endentry
     \entry{satterthwaite:1946}{article}{}
       \name{author}{1}{}{%
         {{hash=2bfd1c68d23127457e4cf1e61a2e6c8b}{%
@@ -1893,48 +1935,6 @@
       \field{year}{1955}
       \field{pages}{289\bibrangedash 300}
       \range{pages}{12}
-    \endentry
-    \entry{kutner_etal_04a}{book}{}
-      \name{author}{4}{}{%
-        {{hash=edcc1e5e3cf956c1cf34a4892408ace8}{%
-           family={Kutner},
-           familyi={K\bibinitperiod},
-           given={M.\bibnamedelimi H.},
-           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=865cbcecb3201a4554a4e1714a8c78d6}{%
-           family={Neter},
-           familyi={N\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=52523d9794eed1ac698a45b2e3457ec5}{%
-           family={Nachtsheim},
-           familyi={N\bibinitperiod},
-           given={C.\bibnamedelimi J.},
-           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=6e5b0e6cca2615e3baa1c9fd08a1f208}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={W.},
-           giveni={W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {McGraw-Hill/Irwin}%
-      }
-      \strng{namehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{fullhash}{432be71d7e2df71f387dc678ef7a108d}
-      \strng{bibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{authorbibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{authornamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{authorfullhash}{432be71d7e2df71f387dc678ef7a108d}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{5}
-      \field{title}{Applied Linear Statistical Models}
-      \field{year}{2004}
     \endentry
     \entry{oberg_vitek_09a}{article}{}
       \name{author}{2}{}{%
@@ -2064,8 +2064,8 @@
       \strng{authorbibnamehash}{17b677916e7c8333a1b38fec927aa427}
       \strng{authornamehash}{17b677916e7c8333a1b38fec927aa427}
       \strng{authorfullhash}{17b677916e7c8333a1b38fec927aa427}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
