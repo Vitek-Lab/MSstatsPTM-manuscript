@@ -173,6 +173,9 @@ aqua <- bind_rows(
   aqua2 %>% mutate(batch = "BCH2")
 )
 
+rm(list = ls()[!(ls() %in% c("aqua", "design_prot", "design_kgg",
+                             "dta_prot", "dta_kgg"))])
+
 # Load data set & housekeeping --------------------------------------------
 
 # Parameters
@@ -315,6 +318,16 @@ colnames(df_prot) <- c('ProteinName', 'PeptideSequence', 'PrecursorCharge',
                        'Intensity', 'FragmentIon', 'ProductCharge',
                        'IsotopeLabelType')
 
+## Clean Data ------------------------------------------------------------------
+df_site <- df_site %>% filter(is_mod == TRUE)
+df_prot <- df_prot %>% filter(!is_mod)
+
+df_site <- df_site[ , !(names(df_site) %in% c('is_mod'))]
+df_prot <- df_prot[ , !(names(df_prot) %in% c('is_mod'))]
+
+df_site <- .makeBalancedDesign(df_site, fill_missing = TRUE)
+df_prot <- .makeBalancedDesign(df_prot, fill_missing = TRUE)
+
 # Visualization ----------------------------------------------------------------
 
 # QC plot (boxplot)
@@ -403,21 +416,9 @@ Reference_Norm <- function(df, ref) {
   df_aug = df_aug %>% select(-log2inty, -adjLog2inty)
   return(df_aug)
 }
-saved_refs$PTM = saved_refs$PTM %>% rename(Run = run)
-saved_refs$PROTEIN = saved_refs$PROTEIN %>% rename(Run = run)
 
-df_site = Reference_Norm(df_site, saved_refs$PTM)
-df_prot = Reference_Norm(df_prot, saved_refs$PROTEIN)
-
-## Clean Data ------------------------------------------------------------------
-df_site <- df_site %>% filter(is_mod == TRUE)
-df_prot <- df_prot %>% filter(!is_mod)
-
-df_site <- df_site[ , !(names(df_site) %in% c('is_mod'))]
-df_prot <- df_prot[ , !(names(df_prot) %in% c('is_mod'))]
-
-df_site <- .makeBalancedDesign(df_site, fill_missing = TRUE)
-df_prot <- .makeBalancedDesign(df_prot, fill_missing = TRUE)
+df_site = Reference_Norm(df_site, refs$PTM)
+df_prot = Reference_Norm(df_prot, refs$PROTEIN)
 
 # AQUA peptides ----------------------------------------------------------------
 aqua <- aqua %>% mutate(log2inty = log2(Intensity),
@@ -451,12 +452,12 @@ aqua_summarized <- aqua %>%
   select(protein = uniprot_iso, site, PeptideSequence, group,
          TechReplicate, BioReplicate, Run, Intensity)
 
-aqua_summarized$PrecursorCharge <- 3
-aqua_summarized$IsotopeLabelType <- 'L'
-aqua_summarized$FragmentIon <- NA
-aqua_summarized$ProductCharge <- NA
-aqua_summarized$PSM <- paste(aqua_summarized$PeptideSequence,
-                             aqua_summarized$PrecursorCharge, sep = '_')
+# aqua_summarized$PrecursorCharge <- 3
+# aqua_summarized$IsotopeLabelType <- 'L'
+# aqua_summarized$FragmentIon <- NA
+# aqua_summarized$ProductCharge <- NA
+# aqua_summarized$PSM <- paste(aqua_summarized$PeptideSequence,
+#                              aqua_summarized$PrecursorCharge, sep = '_')
 aqua_summarized$Condition <- aqua_summarized$group
 aqua_summarized$ProteinName <- paste(aqua_summarized$protein,
                                      aqua_summarized$site, sep = "_")
@@ -482,11 +483,6 @@ input_df <- list(
   PROTEIN = df_prot
 )
 
-summary_df <- dataSummarizationPTM(input_df,
-                                   normalization = FALSE,
-                                   normalization.PTM = FALSE,
-                                   MBimpute = FALSE, MBimpute.PTM = FALSE)
-
 aqua_summarized$Protein  = aqua_summarized$ProteinName
 aqua_summarized$originalRUN = aqua_summarized$Run
 aqua_summarized$GROUP = aqua_summarized$Condition
@@ -498,17 +494,19 @@ aqua_summarized$MissingPercentage = 0
 aqua_summarized$more50missing = FALSE
 aqua_summarized$NumImputedFeature = 0
 aqua_summarized = left_join(aqua_summarized, summary_df$PTM$ProteinLevelData %>% distinct(originalRUN, RUN),
-                            by = "originalRUN")
+          by = "originalRUN")
 aqua_summarized = aqua_summarized %>% select(-ProteinName, -Run, -Condition,
                                              -BioReplicate, -Intensity,
                                              -PeptideSequence)
 
+summary_df <- dataSummarizationPTM(input_df,
+                                   normalization = FALSE,
+                                   normalization.PTM = FALSE,
+                                   MBimpute = FALSE, MBimpute.PTM = FALSE)
+
 summary_df$PTM$ProteinLevelData = rbindlist(
   list(summary_df$PTM$ProteinLevelData,aqua_summarized),
   use.names=TRUE, fill = TRUE)
-
-save(summary_df,
-     file = "D:\\Northeastern\\Research\\MSstats\\PTM_Refractor\\Label_Free_PTM_Data\\benchmark-spike\\MSstatsPTM_Summarized.rda")
 
 # summary_df <- temp_summary_df
 # summary_df$PTM$ProteinLevelData <- summary_df$PTM$ProteinLevelData %>%
@@ -530,9 +528,6 @@ colnames(comparison) = c("mix1", "mix2", "mix3", "mix4")
 model_df <- groupComparisonPTM(summary_df, data.type = "LabelFree",
                                contrast.matrix = comparison,
                                use_log_file=FALSE)
-
-save(model_df,
-     file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_MSstatsPTM_Model.rda")
 
 # model_df$PTM.Model <- model_df$PTM.Model %>% mutate(
 #   Label = ifelse(Label == "mix2 vs mix1", "mix1-mix2",
@@ -689,7 +684,7 @@ design.pairs <- function(levels) {
 }
 
 input_df <- list(
-  PTM = rbindlist(list(df_site,aqua_summarized), use.names=TRUE, fill=TRUE),
+  PTM = rbindlist(list(df_site,aqua_summarized), use.names=TRUE),
   PROTEIN = df_prot
 )
 
@@ -697,26 +692,26 @@ ptm_df <- input_df$PTM
 protein_df <- input_df$PROTEIN
 df_site_limma <- df_site
 
-# df_site_limma$Intensity <- log2(df_site_limma$Intensity)
-# ptm_df$Intensity <- log2(ptm_df$Intensity)
+df_site_limma$Intensity <- log2(df_site_limma$Intensity)
+ptm_df$Intensity <- log2(ptm_df$Intensity)
 
-# kgg_med <- df_site_limma %>% group_by(Run) %>%
-#   summarize(med = median(Intensity, na.rm=TRUE)) %>%
-#   mutate(inty_expected = median(med), adjIntensity = inty_expected - med) %>%
-#   ungroup() %>% select(Run, adjIntensity)
-#
-# ptm_df <- ptm_df %>% left_join(kgg_med, by = 'Run')
-# ptm_df$Intensity <- ptm_df$Intensity + ptm_df$adjIntensity
-# ptm_df$Intensity <- 2^ptm_df$Intensity
-#
-# protein_df$Intensity <- log2(protein_df$Intensity)
-# prot_med <- protein_df %>% group_by(Run) %>%
-#   summarize(med = median(Intensity, na.rm=TRUE)) %>%
-#   mutate(inty_expected = median(med), adjIntensity = inty_expected - med) %>%
-#   ungroup() %>% select(Run, adjIntensity)
-# protein_df <- protein_df %>% left_join(prot_med, by = 'Run')
-# protein_df$Intensity <- protein_df$Intensity + protein_df$adjIntensity
-# protein_df$Intensity <- 2^protein_df$Intensity
+kgg_med <- df_site_limma %>% group_by(Run) %>%
+  summarize(med = median(Intensity, na.rm=TRUE)) %>%
+  mutate(inty_expected = median(med), adjIntensity = inty_expected - med) %>%
+  ungroup() %>% select(Run, adjIntensity)
+
+ptm_df <- ptm_df %>% left_join(kgg_med, by = 'Run')
+ptm_df$Intensity <- ptm_df$Intensity + ptm_df$adjIntensity
+ptm_df$Intensity <- 2^ptm_df$Intensity
+
+protein_df$Intensity <- log2(protein_df$Intensity)
+prot_med <- protein_df %>% group_by(Run) %>%
+  summarize(med = median(Intensity, na.rm=TRUE)) %>%
+  mutate(inty_expected = median(med), adjIntensity = inty_expected - med) %>%
+  ungroup() %>% select(Run, adjIntensity)
+protein_df <- protein_df %>% left_join(prot_med, by = 'Run')
+protein_df$Intensity <- protein_df$Intensity + protein_df$adjIntensity
+protein_df$Intensity <- 2^protein_df$Intensity
 
 summarized_ptm <- data.table()
 summarized_proteins <- data.table()
@@ -733,9 +728,9 @@ for (r in seq_along(runs)){
   summarized_proteins <- rbindlist(list(summarized_proteins, sum_runs_prot))
 }
 
-# summarized_ptm <- summarized_ptm %>%
-#   mutate(Abundance = ifelse(str_detect(Run, "mix3|mix4"),
-#                             Abundance - 1, Abundance))
+summarized_ptm <- summarized_ptm %>%
+  mutate(Abundance = ifelse(str_detect(Run, "mix3|mix4"),
+                            Abundance - 1, Abundance))
 
 summarized_ptm$PTM <- summarized_ptm$ProteinName
 summarized_ptm$ProteinName <- sapply(summarized_ptm$PTM,
@@ -767,15 +762,9 @@ limma_test_res$limma_test <- limma_test_res$limma_test %>%
 limma_test_res$limma_adj_test[Label == "mix1-mix2"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix1-mix2"]$Log2FC*-1
 limma_test_res$limma_adj_test[Label == "mix1-mix3"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix1-mix3"]$Log2FC*-1
 limma_test_res$limma_adj_test[Label == "mix1-mix4"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix1-mix4"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix2-mix3"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix2-mix3"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix2-mix4"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix2-mix4"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix3-mix4"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix3-mix4"]$Log2FC*-1
 limma_test_res$limma_test[Label == "mix1-mix2"]$Log2FC <- limma_test_res$limma_test[Label == "mix1-mix2"]$Log2FC*-1
 limma_test_res$limma_test[Label == "mix1-mix3"]$Log2FC <- limma_test_res$limma_test[Label == "mix1-mix3"]$Log2FC*-1
 limma_test_res$limma_test[Label == "mix1-mix4"]$Log2FC <- limma_test_res$limma_test[Label == "mix1-mix4"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix2-mix3"]$Log2FC <- limma_test_res$limma_test[Label == "mix2-mix3"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix2-mix4"]$Log2FC <- limma_test_res$limma_test[Label == "mix2-mix4"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix3-mix4"]$Log2FC <- limma_test_res$limma_test[Label == "mix3-mix4"]$Log2FC*-1
 
 ## Add spike-in id
 limma_test_res$limma_test <- limma_test_res$limma_test %>%
@@ -829,8 +818,7 @@ temp_test %>% arrange(desc(labeling)) %>%
   theme(legend.position = "bottom")
 
 limma_model <- temp_test
-save(limma_model, file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_Limma_Model.rda")
-
+save(limma_model, file = "Spike_in_Limma_Model.rda")
 
 
 ## Ttest -----------------------------------------------------------------------

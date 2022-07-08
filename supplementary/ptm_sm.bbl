@@ -123,8 +123,8 @@
       \strng{authorbibnamehash}{ed6bf90db96a27be7b1806b89e368597}
       \strng{authornamehash}{ed6bf90db96a27be7b1806b89e368597}
       \strng{authorfullhash}{1700db834e82418b38ae91c6d4909191}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1931-3128}
@@ -244,8 +244,8 @@
       \strng{authorbibnamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authornamehash}{88896e768c707888b71fc82eca33a98b}
       \strng{authorfullhash}{0b258ecfd4d745eddd8d8598251b4150}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{bioRxiv}

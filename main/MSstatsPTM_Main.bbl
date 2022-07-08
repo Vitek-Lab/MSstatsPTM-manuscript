@@ -1218,6 +1218,48 @@
       \field{pages}{160\bibrangedash 169}
       \range{pages}{10}
     \endentry
+    \entry{kutner_etal_04a}{book}{}
+      \name{author}{4}{}{%
+        {{hash=edcc1e5e3cf956c1cf34a4892408ace8}{%
+           family={Kutner},
+           familyi={K\bibinitperiod},
+           given={M.\bibnamedelimi H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=865cbcecb3201a4554a4e1714a8c78d6}{%
+           family={Neter},
+           familyi={N\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=52523d9794eed1ac698a45b2e3457ec5}{%
+           family={Nachtsheim},
+           familyi={N\bibinitperiod},
+           given={C.\bibnamedelimi J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=6e5b0e6cca2615e3baa1c9fd08a1f208}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill/Irwin}%
+      }
+      \strng{namehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{fullhash}{432be71d7e2df71f387dc678ef7a108d}
+      \strng{bibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{authorbibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{authornamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
+      \strng{authorfullhash}{432be71d7e2df71f387dc678ef7a108d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{title}{Applied Linear Statistical Models}
+      \field{year}{2004}
+    \endentry
     \entry{Schwammle2015}{article}{}
       \name{author}{3}{}{%
         {{hash=c35def8574c149e8ea2c0a97d0ed693a}{%
@@ -1242,8 +1284,8 @@
       \strng{authorbibnamehash}{54060a4c8ae5a82f9566af6eba731e73}
       \strng{authornamehash}{54060a4c8ae5a82f9566af6eba731e73}
       \strng{authorfullhash}{54060a4c8ae5a82f9566af6eba731e73}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1285,8 +1327,8 @@
       \strng{authorbibnamehash}{8074e439a3fa7e315723dc58b89c27f6}
       \strng{authornamehash}{8074e439a3fa7e315723dc58b89c27f6}
       \strng{authorfullhash}{e35772c116aca3a1f37123a3ab3cb236}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1358,8 +1400,8 @@
       \strng{authorbibnamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
       \strng{authornamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
       \strng{authorfullhash}{c143ec455c2f719042df5248cb218109}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1582,38 +1624,6 @@
       \field{volume}{22}
       \field{year}{2021}
     \endentry
-    \entry{Robbins1992}{inbook}{}
-      \name{author}{1}{}{%
-        {{hash=604be2bbf4e2ce0db552c08c5bf3a6c2}{%
-           family={Robbins},
-           familyi={R\bibinitperiod},
-           given={H.},
-           giveni={H\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {New York, NY}%
-      }
-      \list{publisher}{1}{%
-        {Springer New York}%
-      }
-      \strng{namehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
-      \strng{fullhash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
-      \strng{bibnamehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
-      \strng{authorbibnamehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
-      \strng{authornamehash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
-      \strng{authorfullhash}{604be2bbf4e2ce0db552c08c5bf3a6c2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Breakthroughs in Statistics: Foundations and Basic Theory}
-      \field{title}{An Empirical Bayes Approach to Statistics}
-      \field{year}{1992}
-      \field{pages}{388\bibrangedash 394}
-      \range{pages}{7}
-    \endentry
     \entry{Breitwieser:2013}{article}{}
       \name{author}{2}{}{%
         {{hash=0846f8684cc5d1ec4e38f3f8c1b81aae}{%
@@ -1829,48 +1839,6 @@
       \field{year}{1997}
       \field{pages}{983\bibrangedash 997}
       \range{pages}{15}
-    \endentry
-    \entry{kutner_etal_04a}{book}{}
-      \name{author}{4}{}{%
-        {{hash=edcc1e5e3cf956c1cf34a4892408ace8}{%
-           family={Kutner},
-           familyi={K\bibinitperiod},
-           given={M.\bibnamedelimi H.},
-           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=865cbcecb3201a4554a4e1714a8c78d6}{%
-           family={Neter},
-           familyi={N\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=52523d9794eed1ac698a45b2e3457ec5}{%
-           family={Nachtsheim},
-           familyi={N\bibinitperiod},
-           given={C.\bibnamedelimi J.},
-           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=6e5b0e6cca2615e3baa1c9fd08a1f208}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={W.},
-           giveni={W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {McGraw-Hill/Irwin}%
-      }
-      \strng{namehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{fullhash}{432be71d7e2df71f387dc678ef7a108d}
-      \strng{bibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{authorbibnamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{authornamehash}{a98560ab8e2f5b06e2cf4f00c63c6d7d}
-      \strng{authorfullhash}{432be71d7e2df71f387dc678ef7a108d}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{5}
-      \field{title}{Applied Linear Statistical Models}
-      \field{year}{2004}
     \endentry
     \entry{satterthwaite:1946}{article}{}
       \name{author}{1}{}{%

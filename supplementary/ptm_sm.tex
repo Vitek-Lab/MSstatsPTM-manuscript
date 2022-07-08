@@ -617,7 +617,7 @@ Again we consider three different methods and assess their performance: the meth
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_msstatsptm_volcano}
+\includegraphics[width=1\textwidth]{sim_new/spike_in_msstatsptm_volcano}
 \caption{The modeling results of the proposed method both before and after adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike-in peptides (colored red) did not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides were more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
 \end{figure}
 
@@ -644,10 +644,10 @@ Again we consider three different methods and assess their performance: the meth
 \subsection{Biological investigations}
 \label{sec:bio_investigations}
 
-\subsubsection{Dataset 4 : Human - Ubiquitination - 1mix-TMT}
+\subsubsection{Dataset 4 : Human - Ubiquitination - 1mix-TMT~\cite{LUCHETTI2021}}
 \label{sec:ipah}
 
-In this experiment Shigella ubiquitin ligase IpaH7.8 was shown to inhibit the protein gasdermin D (GSDMD) ~\cite{LUCHETTI2021}. Multiplex proteomics was used to quantify the abundance of total protein, and ubiquitination in human epithelial cells. Cells were either infected or uninfected with IpaH7.8-deficient Shigella flexneri and measurements were taken at different time periods. Uninfected cells were measured at 0 and 6 hours, while infected cells were measured at 1, 2, 4, and 6 hour increments, resulting in six total conditions. The experiment was unbalanced with two biological replicates per condition for all conditions except for infected 1 hour. The experiment was modeled as a group comparison, with different replicates measured at each time point. The experimental design can be seen in Table~\ref{table:ipah_design}.
+The experimental design can be seen in Table~\ref{table:ipah_design}.
 
 \begin{table}[h!]
 \centering

@@ -18,7 +18,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2}Biological investigations}{14}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT}{14}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT\nobreakspace {}\cite {LUCHETTI2021}}{14}{subsubsection.2.2.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}{16}{subsubsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
