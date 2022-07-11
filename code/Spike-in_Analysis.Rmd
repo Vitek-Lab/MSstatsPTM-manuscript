@@ -222,12 +222,12 @@ plot_df <- rbind(limma_model$ADJUSTED.Model, limma_model$PTM.Model, fill = TRUE)
 plot_df$protadj <- factor(plot_df$protadj, levels = c('no adjustment','protein adjustment'))
 
 ## Update some naming conventions
-plot_df[plot_df$Label == 'mix2 vs mix1'][['contrast_truth']] <- "LogFC: -1 (mix2-mix1)"
-plot_df[plot_df$Label == 'mix3 vs mix1'][['contrast_truth']] <- "LogFC: 1 (mix3-mix1)"
-plot_df[plot_df$Label == 'mix4 vs mix1'][['contrast_truth']] <- "LogFC: 0 (mix4-mix1)"
-plot_df[plot_df$Label == 'mix3 vs mix2'][['contrast_truth']] <- "LogFC: 2 (mix3-mix2)"
-plot_df[plot_df$Label == 'mix4 vs mix2'][['contrast_truth']] <- "LogFC: 1 (mix4-mix2)"
-plot_df[plot_df$Label == 'mix4 vs mix3'][['contrast_truth']] <- "LogFC: -1 (mix4-mix3)"
+plot_df[plot_df$Label == 'mix1-mix2'][['contrast_truth']] <- "LogFC: -1 (mix2-mix1)"
+plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix3-mix1)"
+plot_df[plot_df$Label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix4-mix1)"
+plot_df[plot_df$Label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: 2 (mix3-mix2)"
+plot_df[plot_df$Label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: 1 (mix4-mix2)"
+plot_df[plot_df$Label == 'mix3-mix4'][['contrast_truth']] <- "LogFC: -1 (mix4-mix3)"
 plot_df$contrast_truth = factor(plot_df$contrast_truth, levels = 
                                   c("LogFC: -1 (mix2-mix1)",
                                     "LogFC: 1 (mix3-mix1)",
@@ -239,13 +239,16 @@ plot_df$contrast_truth = factor(plot_df$contrast_truth, levels =
 
 plot_df[plot_df$labeling == 'light'][['labeling']] <- "Background Peptides"
 plot_df[plot_df$labeling == 'heavy'][['labeling']] <- "Spike-in Peptides"
+plot_df$trueLog2FC=plot_df$trueLog2FC*-1
+plot_df[plot_df$Label == 'mix1-mix2'][['trueLog2FC']] <- plot_df[plot_df$Label == 'mix1-mix2'][['trueLog2FC']]*-1
+plot_df[plot_df$Label == 'mix1-mix3'][['trueLog2FC']] <- plot_df[plot_df$Label == 'mix1-mix3'][['trueLog2FC']]*-1
 
 limma_plot_df <- plot_df
 
 # Volcano plot
-png("../supplementary/sim_new/spike_in_limma_volcano.png", width = 750, height = 500)
+png("../supplementary/sim_new/spike_in_limma_volcano.png", width = 1000, height = 500)
 plot_df %>% arrange(labeling) %>% 
-  filter(abs(Log2FC) < Inf & Label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
+  filter(abs(Log2FC) < Inf) %>%
   ggplot(aes(Log2FC, -log10(adj.pvalue))) + 
   geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
   scale_color_manual(values = c("#999999", "#D55E00")) + 
@@ -296,14 +299,16 @@ combo_plot_df$Model <- factor(combo_plot_df$Model, levels=c('Proposed Method','L
 
 png("../main/images/spike_in_volcano.png", width = 750, height = 500)
 combo_plot_df %>% arrange(Model, labeling) %>% 
-  filter(abs(log2FC) < Inf & Label %in% c("mix2-mix3", "mix2-mix4")) %>%
+  filter(abs(log2FC) < Inf & Label %in% c("mix2-mix3", "mix1-mix4", "mix3 vs mix2",
+                                          "mix4 vs mix1")) %>%
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
   geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
   scale_color_manual(values = c("#999999", "#D55E00")) + 
   scale_alpha_manual(values = c(0.2, 1)) + 
   #scale_size_manual(values = c(2, 1)) + 
   geom_hline(yintercept = 0) + 
-  geom_vline(xintercept = 0, linetype = "dashed") + 
+  geom_vline(xintercept = 0) + 
+  geom_vline(aes(xintercept = trueLog2FC),color = "darkred", linetype= "dashed") +
   geom_hline(yintercept = -log10(0.05), color = "darkred") + 
   facet_grid(protadj ~ Model + contrast_truth) + 
   theme_bw() + 
@@ -376,20 +381,26 @@ Again we look at the volcano plots. The spike-in peptides are colored red and th
 load(file = "../data/Spike_in_ttest_model.rda")#ttest_final_model
 
 ## Update some naming conventions
-ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix1-mix3)"
-ttest_final_model[ttest_final_model$label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix1-mix4)"
-ttest_final_model[ttest_final_model$label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: -2 (mix2-mix3)"
-ttest_final_model[ttest_final_model$label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: -1 (mix2-mix4)"
+ttest_final_model[ttest_final_model$label == 'mix1-mix2'][['contrast_truth']] <- "LogFC: -1 (mix2-mix1)"
+ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix3-mix1)"
+ttest_final_model[ttest_final_model$label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix4-mix1)"
+ttest_final_model[ttest_final_model$label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: 2 (mix3-mix2)"
+ttest_final_model[ttest_final_model$label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: 1 (mix4-mix2)"
+ttest_final_model[ttest_final_model$label == 'mix3-mix4'][['contrast_truth']] <- "LogFC: -1 (mix4-mix3)"
 
 ttest_final_model[ttest_final_model$labeling == 'light'][['labeling']] <- "Background Peptides"
 ttest_final_model[ttest_final_model$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
 
 ttest_final_model$log2FC <- ttest_final_model$estimate
 
+ttest_final_model$trueLog2FC=ttest_final_model$trueLog2FC*-1
+ttest_final_model[ttest_final_model$Label == 'mix1-mix2'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$Label == 'mix1-mix2'][['trueLog2FC']]*-1
+ttest_final_model[ttest_final_model$Label == 'mix1-mix3'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$Label == 'mix1-mix3'][['trueLog2FC']]*-1
+
 # Volcano plot
 png("../supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
 ttest_final_model %>% arrange(labeling) %>% 
-  filter(abs(log2FC) < Inf & label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
+  filter(abs(log2FC) < Inf) %>%
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
   geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
   scale_color_manual(values = c("#999999", "#D55E00")) + 
@@ -397,6 +408,7 @@ ttest_final_model %>% arrange(labeling) %>%
   #scale_size_manual(values = c(2, 1)) + 
   geom_hline(yintercept = 0, linetype = "dashed") + 
   geom_vline(xintercept = 0) + 
+  geom_vline(aes(xintercept = trueLog2FC),color = "darkred", linetype= "dashed") +
   geom_hline(yintercept = -log10(0.05), color = "darkred") + 
   facet_grid(protadj ~ contrast_truth) + 
   theme_bw() + 
