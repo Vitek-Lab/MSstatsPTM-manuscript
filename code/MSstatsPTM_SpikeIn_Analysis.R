@@ -889,7 +889,7 @@ run_ttest <- function(summarized_data){
 
 
 ttest_model <- run_ttest(joined)
-save(ttest_model, file = "Spike_in_ttest.rda")
+save(ttest_model, file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_ttest.rda")
 
 ttest_model <- ttest_modelkeep
 ttest_model$ttest_adj_temp <- ttest_model$ttest_adj_temp %>% filter(pval != 1)
@@ -952,7 +952,7 @@ temp_test <- rbind(ttest_model$ttest_temp, ttest_model$ttest_adj_temp)
 temp_test$protadj <- factor(temp_test$protadj, levels = c('no adjustment','protein adjustment'))
 
 ttest_final_model <- temp_test
-save(ttest_final_model, file = "Spike_in_ttest_model.rda")
+save(ttest_final_model, file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_ttest_model.rda")
 
 # Volcano plot
 temp_test %>% arrange(desc(labeling)) %>%
