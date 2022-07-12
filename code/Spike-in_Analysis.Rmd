@@ -297,6 +297,9 @@ combo_plot_df <- rbind(proposed_plot_df[, c("Protein", "Label", "log2FC",
                                             "protadj", "Model")])
 combo_plot_df$Model <- factor(combo_plot_df$Model, levels=c('Proposed Method','Limma'))
 
+combo_plot_df
+combo_plot_df[combo_plot_df$Label == 'mix2-mix3'][['trueLog2FC']] <- combo_plot_df[combo_plot_df$Label == 'mix2-mix3'][['trueLog2FC']]*-1
+
 png("../main/images/spike_in_volcano.png", width = 750, height = 500)
 combo_plot_df %>% arrange(Model, labeling) %>% 
   filter(abs(log2FC) < Inf & Label %in% c("mix2-mix3", "mix1-mix4", "mix3 vs mix2",
@@ -394,8 +397,18 @@ ttest_final_model[ttest_final_model$labeling == 'heavy'][['labeling']] <- "Spike
 ttest_final_model$log2FC <- ttest_final_model$estimate
 
 ttest_final_model$trueLog2FC=ttest_final_model$trueLog2FC*-1
-ttest_final_model[ttest_final_model$Label == 'mix1-mix2'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$Label == 'mix1-mix2'][['trueLog2FC']]*-1
-ttest_final_model[ttest_final_model$Label == 'mix1-mix3'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$Label == 'mix1-mix3'][['trueLog2FC']]*-1
+ttest_final_model[ttest_final_model$label == 'mix1-mix2'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$label == 'mix1-mix2'][['trueLog2FC']]*-1
+ttest_final_model[ttest_final_model$label == 'mix3-mix4'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$label == 'mix3-mix4'][['trueLog2FC']]*-1
+ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['trueLog2FC']]*-1
+
+ttest_final_model$contrast_truth = factor(ttest_final_model$contrast_truth, 
+                                          levels = 
+                                  c("LogFC: -1 (mix2-mix1)",
+                                    "LogFC: 1 (mix3-mix1)",
+                                    "LogFC: 0 (mix4-mix1)",
+                                    "LogFC: 2 (mix3-mix2)",
+                                    "LogFC: 1 (mix4-mix2)",
+                                    "LogFC: -1 (mix4-mix3)"))
 
 # Volcano plot
 png("../supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
@@ -566,6 +579,47 @@ spike <- as.data.table(spike)
 spike[spike$Model == "MSstatsPTM", Model := "Proposed"]
 #plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']]
 spike$`color_label` <- "True LogFC"
+
+spike[spike$label == 'mix1-mix2'][['contrast_truth']] <- "LogFC: -1 (mix2-mix1)"
+spike[spike$label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix3-mix1)"
+spike[spike$label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix4-mix1)"
+spike[spike$label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: 2 (mix3-mix2)"
+spike[spike$label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: 1 (mix4-mix2)"
+spike[spike$label == 'mix3-mix4'][['contrast_truth']] <- "LogFC: -1 (mix4-mix3)"
+
+spike[spike$Label == 'mix3-mix4'][["Label"]] = "mix4 vs mix3"
+spike[spike$Label == 'mix2-mix4'][["Label"]] = "mix4 vs mix2"
+spike[spike$Label == 'mix1-mix4'][["Label"]] = "mix4 vs mix1"
+spike[spike$Label == 'mix2-mix3'][["Label"]] = "mix3 vs mix2"
+spike[spike$Label == 'mix1-mix3'][["Label"]] = "mix3 vs mix1"
+spike[spike$Label == 'mix1-mix2'][["Label"]] = "mix2 vs mix1"
+
+spike[spike$Label == "mix3 vs mix2" & 
+        spike$Model == "T-test"][["trueLog2FC"]] = 2
+spike[spike$Label == "mix3 vs mix2" & 
+        spike$Model == "T-test"][["log2FC"]] = spike[
+          spike$Label == "mix3 vs mix2" & 
+        spike$Model == "T-test"][["log2FC"]] * -1
+spike[spike$Label == "mix4 vs mix2" & 
+        spike$Model == "T-test"][["trueLog2FC"]] = 1
+spike[spike$Label == "mix4 vs mix2" & 
+        spike$Model == "T-test"][["log2FC"]] = spike[
+          spike$Label == "mix4 vs mix2" & 
+        spike$Model == "T-test"][["log2FC"]] * -1
+spike[spike$Label == "mix4 vs mix3" & 
+        spike$Model == "T-test"][["trueLog2FC"]] = -1
+spike[spike$Label == "mix4 vs mix3" & 
+        spike$Model == "T-test"][["log2FC"]] = spike[
+          spike$Label == "mix4 vs mix3" & 
+        spike$Model == "T-test"][["log2FC"]] * -1
+
+spike[spike$Label == "mix3 vs mix2" & 
+        spike$Model == "Limma"][["trueLog2FC"]] = 2
+spike[spike$Label == "mix4 vs mix2" & 
+        spike$Model == "Limma"][["trueLog2FC"]] = 1
+spike[spike$Label == "mix4 vs mix3" & 
+        spike$Model == "Limma"][["trueLog2FC"]] = -1
+
 
 png("../supplementary/sim_new/spike_in_fc.png", width = 750, height = 500)
 spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1],
