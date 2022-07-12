@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  12 JUL 2022 12:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  12 JUL 2022 12:34
 entering extended mode
 **./MSstatsPTM_Main.tex
 (MSstatsPTM_Main.tex
@@ -1361,15 +1361,15 @@ t>
 File: images/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use images/No_Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: images/No_Difference_Shigella_Profile_Plot.png  used o
-n input line 647.
+n input line 650.
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
 <images/IpaH_prof_plot.png, id=358, 1129.21875pt x 602.25pt>
 File: images/IpaH_prof_plot.png Graphic file (type png)
 <use images/IpaH_prof_plot.png>
-Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 653.
+Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 656.
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
 
-LaTeX Warning: Float too large for page by 27.64119pt on input line 659.
+LaTeX Warning: Float too large for page by 3.64119pt on input line 662.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1377,14 +1377,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <images/usp30_venn_diagramm.png, id=359, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm.png Graphic file (type png)
 <use images/usp30_venn_diagramm.png>
-Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 665
+Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 668
 .
 (pdftex.def)             Requested size: 246.6146pt x 246.61852pt.
 <images/usp30_venn_diagramm_matching_only.png, id=360, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm_matching_only.png Graphic file (type png)
 <use images/usp30_venn_diagramm_matching_only.png>
 Package pdftex.def Info: images/usp30_venn_diagramm_matching_only.png  used on 
-input line 671.
+input line 674.
 (pdftex.def)             Requested size: 246.6146pt x 246.61852pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1408,7 +1408,7 @@ Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 Here is how much of TeX's memory you used:
  29685 strings out of 479334
  563140 string characters out of 2853721
- 1281150 words of memory out of 3000000
+ 1280884 words of memory out of 3000000
  46525 multiletter control sequences out of 15000+200000
  414314 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1449,7 +1449,7 @@ ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/De
 von Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.
 pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (24 pages, 891154 bytes).
+Output written on MSstatsPTM_Main.pdf (24 pages, 891008 bytes).
 PDF statistics:
  501 PDF objects out of 1000 (max. 8388607)
  120 named destinations out of 1000 (max. 500000)
