@@ -225,7 +225,7 @@ Each simulation was generated with random biological variation. The observed pep
 \subsection*{Goals of PTM characterization, input to statistical analyses, and notation}
 
 Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate corresponds to an LC-MS/MS run.  
-Figure \ref{fig:data-structure} schematically illustrates this data structure for one PTM site, in a special case of $I=2$ conditions and $J=2$ biological replicates per condition.
+\figref{data-structure} schematically illustrates this data structure for one PTM site, in a special case of $I=2$ conditions and $J=2$ biological replicates per condition.
 For one protein, the PTM site is represented by $K$ spectral features (i.e., peptide ions, distinguished by their cleavage residues and charge states). 
 The number of modified and unmodified features typically varies across proteins. Some log-intensities may be outliers, and some spectral features can be missing. 
 The log$_2$-intensity of Feature $k$, in Replicate $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified protein in the same run is denoted by $y_{ijl}$. The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.
@@ -345,10 +345,21 @@ For the modified features, the model-based estimates in $MSstats$ and $MSstatsTM
 \end{eqnarray}
 Assuming that the unexplained by the model sources of variation in the modified features are independent from the corresponding sources of variation in the modified features, the standard error $\widehat{SE}(\hat{\Delta}_{adj})$ is obtained by combining the standard errors from the unmodified and modified model fits.
 \begin{eqnarray}
-\widehat{SE}(\hat{\Delta})_{adj} = \sqrt{ \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2}} 
+\widehat{SE}(\hat{\Delta}_{adj}) = \sqrt{ \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2}} 
 \label{eq:prop_se}
 \end{eqnarray}
-The estimated standard error is larger than the standard errors associated with each distinct feature type, reflecting the increased uncertainty inherent to combining the uncertainty in two estimators. Finally, the degrees of freedom associated with~\eqref{prop_se} are obtained via the Satterthwaite approximation~\cite{kutner_etal_04a, satterthwaite:1946}
+
+For example, in the simple case of \figref{data-structure} with $J=2$ conditions, where $\hat{\sigma}^2_{PTM}$ and $\hat{\sigma}^2_{protein}$ are the estimates of the error variance for the PTM and protein model described in \eqref{msstats_model}, the standard error would be calculated as
+
+\begin{eqnarray}
+& \widehat{SE}(\hat{\Delta})_{adj} = \sqrt{\widehat{SE}(\hat{\Delta}_{PTM})^2 + \widehat{SE}(\hat{\Delta}_{protein})^2} = &\\ 
+& \sqrt{\frac{1}{J}\hat{\sigma}^2_{PTM} + \frac{1}{J}\hat{\sigma}^2_{protein}} = \sqrt{\frac{2}{J}(\hat{\sigma}^2_{PTM} + \hat{\sigma}^2_{protein})} = \sqrt{\hat{\sigma}^2_{PTM} + \hat{\sigma}^2_{protein}} & \nonumber
+\label{eq:se_calc}
+\end{eqnarray}
+
+The estimated standard error is larger than the standard errors associated with each distinct feature type, reflecting the increased uncertainty inherent to combining the uncertainty in two estimators. 
+
+Finally, the degrees of freedom associated with~\eqref{prop_se} are obtained via the Satterthwaite approximation~\cite{kutner_etal_04a, satterthwaite:1946}
 \begin{eqnarray}
 \left( \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2} \right)^2 \bigg/
 \left( \frac{\widehat{SE}(\hat{\Delta}_{PTM})^{4}}{\mathrm{df}(\widehat{SE}(\hat{\Delta}_{PTM}))} + \frac{\widehat{SE}(\hat{\Delta}_{protein})^{4}}{ \mathrm{df}(\widehat{SE}(\hat{\Delta}_{protein}))} \right)
@@ -356,18 +367,20 @@ The estimated standard error is larger than the standard errors associated with 
 \end{eqnarray}
 To test the null hypothesis in~\eqref{null_hyp}, the test statistic $\hat{\Delta}_{adj}/\widehat{SE}(\Delta)_{adj}$ is compared with the Student distribution with the degrees of freedom in~\eqref{prop_df}. The p-values of the comparison are adjusted for multiple testing using the approach by Benjamin and Hochberg~\cite{Benjamini:1995}.
 
+
 By leveraging the implementations in $MSstats$ and $MSstatsTMT$, the proposed approach is very versatile. It is applicable to a wide variety of experimental designs, including group comparison, paired designs, time course designs and unbalanced designs. It is applicable to label-free data acquisition strategies such as DDA and DIA and experiments with TMT labeling. The proposed approach is also applicable to experiments where the experimental designs for PTM profiling and global proteome profiling vary in properties such as number of biological replicates, data acquisition strategies and runs.
+
 
 \subsubsection*{Design of balanced PTM experiments with one source of variation}
 \label{sec:design}
 
 The proposed statistical framework allows for design of PTM experiments in terms of sample size calculation and power analysis. 
 %Sample size calculation based on linear models has been described for general applications~\cite{kutner_etal_04a} and specifically for protein significance analysis~\cite{oberg_vitek_09a}. 
-Sample size calculation takes as input a) $q$, the desired false discovery rate, b) $\beta$, the average Type II error rate, c) $\Delta$, the minimal log-fold change in adjusted PTM abundance that we would like to detect, d) $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison, and e) $\sigma_{\gamma^{\ast}}^{2}$ and $\sigma_{\gamma}^{2}$, the anticipated variances associated to modified and unmodified peptide features, respectively. The variances can be derived based on the dataset being analyzed, assuming similar quantitative properties and variations. With these values and a user-specified number of conditions, the corresponding number of technical replicates per condition can then be derived, as described in~\cite{kutner_etal_04a}. Given the above quantities, the minimal number of replicates $J$ is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as \todo{OV: hmm... For what design and what model? It is unclear where eq 11 came from. This will be quite specific to the model and the design. Maybe refer to the model in Eq 7? (Which we should probably simplify to reflect the experiment in Figure2, while keeping the general indeces) }
+Sample size calculation takes as input a) $q$, the desired false discovery rate, b) $\beta$, the average Type II error rate, c) $\Delta_{adj}$, the minimal log-fold change in adjusted PTM abundance that we would like to detect, d) $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison, and e) $\sigma_{PTM}^{2}$ and $\sigma_{protein}^{2}$, the anticipated variances associated to modified and unmodified peptide features, respectively. The variances can be derived based on the dataset being analyzed, assuming similar quantitative properties and variations. With these values and a user-specified number of conditions, the corresponding number of technical replicates per condition can then be derived, as described in~\cite{kutner_etal_04a}. Given the above quantities, the minimal number of replicates $J$ is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta}_{adj})$ as
 
 \begin{equation}
-\widehat{SE}(\hat{\Delta})_{adj}^2 = \left[ \frac{2}{J} \left( \hat{\sigma}_{\gamma^{\ast}}^{2} + \hat{\sigma}_{\gamma}^{2} \right) \right]
-\leq \left( \frac{\Delta}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2}
+\widehat{SE}(\hat{\Delta}_{adj})^2 = \left[ \frac{2}{J} \left( \hat{\sigma}_{PTM}^{2} + \hat{\sigma}_{protein}^{2} \right) \right]
+\leq \left( \frac{\Delta_{adj}}{t_{1-\beta, df} + t_{1-\alpha /2, df}} \right)^{2}
 \end{equation}
 where 
 \begin{equation}
@@ -379,7 +392,7 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 Solving for $J$, the number of biological replicates per group is calculated as 
 
 \begin{equation}
-J \geq \frac{(2\hat{\sigma}_{\gamma^{\ast}}^{2} + 2\hat{\sigma}_{\gamma}^{2})(t_{1-\beta, df} + t_{1-\alpha /2, df})^2}{\Delta^2}
+J \geq \frac{(2\hat{\sigma}_{PTM}^{2} + 2\hat{\sigma}_{protein}^{2})(t_{1-\beta, df} + t_{1-\alpha /2, df})^2}{\Delta_{adj}^2}
 \end{equation}
 
 Details on how the proposed method can be used to run sample size calculations and power analysis on experiments with complex design can be seen in {\bf Supplementary Sec. \ref{supp-sec:complex_design}}. More details on sample size calculation can be found in~\cite{oberg_vitek_09a}. 
