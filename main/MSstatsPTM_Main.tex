@@ -418,20 +418,13 @@ For biological experiments with unknown ground truth, we compared the differenti
 
 The evaluations were based on the $MSstatsPTM$, and were performed without imputing missing values or using Empirical Bayes moderation. $MSstatsPTM$ was compared with \todo{$t$-test?} and Limma. We did not compare to IsobarPTM because it is only applicable to TMT experiments, meaning it could not be applied to our ground truth data. All the evaluations were done at the adjusted p-value cutoff of $\alpha=.05$. More details are in {\bf Supplementary Sec. \ref{supp-sec:experiments}}. 
 
-\todo{OV:Most of the following sections simply re-state the results that can already be read off the figures. The sections would have more value if in addition/instead of describing the figures, we could provide the reasons/insight into why we see this performance. Could you try? In general, no need to repeat what we see in the figure - this is what the figures are for.}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{In clean simulations, MSstatsPTM corrected for high FDR of differentially abundant PTM}
-
-\todo{OV: maybe say something about the fact that this is a group comparisons design that doesn't require many variance components, and as such is favorable to Limma and t-test? Later when you have repeated measurements, clarify that these situations are more challenging for the existing methods and therefore the difference in the results is more pronounced.}
 
 \figref{sim1_fdr} illustrated the high FDR observed on the simulated datasets when not accounting for the overall changes in protein abundance. After the adjustment, the FDR of all methods improved. In a clean simulation, recall and accuracy of $MSstatsPTM$ and $Limma$ performed similarly. As expected when not using Empiricial Bayes moderation in MSstatsPTM, Limma performed slightly better in simulations with fewer biological replicates. In contrast, the performance of the two-sample $t$-test method lagged behind. This was due to the fact that the $t$-test only uses data within the groups of interest while ignoring the remainder of the data. In contrast, $MSstatsPTM$ and Limma leverage information across comparisons, resulting in improved power in simulations with more comparisons. Additionally, since this simulation is a group comparison design that doesn't require many variance components, it is favorable to Limma and t-test
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{In noisy simulations, MSstatsPTM better calibrated the true fold change over the existing methods}
-
-\todo{This section just describes the figure. Could you emphasize why we see these results? What are the reasons for differences in performance?} 
 
 In simulations with missing values and few features, $MSstatsPTM$ outperformed $t$-test and $Limma$. Changes in unmodified protein level still needed to be accounted for to control the FDR. Once controlling for changes in the unmodified protein, the proposed method outperformed the other methods, as seen in~\figref{sim2_acc}. The proposed method calibrated model accuracy and recall rate well, even when the number of replicates were low. The proposed approach can handle low feature counts due to using Tukey's Median Polish for summarization. The existing methods summation approach requires more observations to correctly summarize the intensities in the run, whereas TMP is robust to few measurements.
 
