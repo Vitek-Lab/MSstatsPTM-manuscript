@@ -403,11 +403,9 @@ Reference_Norm <- function(df, ref) {
   df_aug = df_aug %>% select(-log2inty, -adjLog2inty)
   return(df_aug)
 }
-saved_refs$PTM = saved_refs$PTM %>% rename(Run = run)
-saved_refs$PROTEIN = saved_refs$PROTEIN %>% rename(Run = run)
 
-df_site = Reference_Norm(df_site, saved_refs$PTM)
-df_prot = Reference_Norm(df_prot, saved_refs$PROTEIN)
+df_site = Reference_Norm(df_site, refs$PTM)
+df_prot = Reference_Norm(df_prot, refs$PROTEIN)
 
 ## Clean Data ------------------------------------------------------------------
 df_site <- df_site %>% filter(is_mod == TRUE)
@@ -628,11 +626,12 @@ fit_limma <- function(summarized_data, conditions, runs){
   ## Create contrast matrix
   class <- c()
   for (x in seq_len(conditions)){
-    cond <- rep(paste0("mix_", as.character(x)), runs)
+    cond <- rep(paste0("mix", as.character(x)), runs)
     class <- c(class, cond)
   }
   class <- as.factor(class)
   design <- model.matrix(~0+class)
+  colnames(design) <- c("mix1", "mix2", "mix3", "mix4")
 
   input.matrix <- as.matrix(input)
   input_adj.matrix <- as.matrix(input_adj)
@@ -641,7 +640,10 @@ fit_limma <- function(summarized_data, conditions, runs){
   fit <- lmFit(input.matrix, design=design)
   fit_adj <- lmFit(input_adj.matrix, design=design)
 
-  contrast.matrix <- design.pairs(colnames(design))
+  # contrast.matrix <- design.pairs(colnames(design))
+  contrast.matrix <- makeContrasts(mix2-mix1, mix3-mix1,
+                                   mix4-mix1, mix3-mix2,
+                                   mix4-mix2, mix4-mix3, levels=design)
   fit2 <- contrasts.fit(fit, contrast.matrix)
   fit2 <- eBayes(fit2)
 
@@ -671,22 +673,6 @@ fit_limma <- function(summarized_data, conditions, runs){
 
   return(list(limma_test = comparisons, limma_adj_test = comparisons_adj))
 }
-## Limma pairwise function
-design.pairs <- function(levels) {
-  n <- length(levels)
-  design <- matrix(0,n,choose(n,2))
-  rownames(design) <- levels
-  colnames(design) <- 1:choose(n,2)
-  k <- 0
-  for (i in 1:(n-1))
-    for (j in (i+1):n) {
-      k <- k+1
-      design[i,k] <- 1
-      design[j,k] <- -1
-      colnames(design)[k] <- paste(levels[i],"-",levels[j],sep="")
-    }
-  design
-}
 
 input_df <- list(
   PTM = rbindlist(list(df_site,aqua_summarized), use.names=TRUE, fill=TRUE),
@@ -696,27 +682,6 @@ input_df <- list(
 ptm_df <- input_df$PTM
 protein_df <- input_df$PROTEIN
 df_site_limma <- df_site
-
-# df_site_limma$Intensity <- log2(df_site_limma$Intensity)
-# ptm_df$Intensity <- log2(ptm_df$Intensity)
-
-# kgg_med <- df_site_limma %>% group_by(Run) %>%
-#   summarize(med = median(Intensity, na.rm=TRUE)) %>%
-#   mutate(inty_expected = median(med), adjIntensity = inty_expected - med) %>%
-#   ungroup() %>% select(Run, adjIntensity)
-#
-# ptm_df <- ptm_df %>% left_join(kgg_med, by = 'Run')
-# ptm_df$Intensity <- ptm_df$Intensity + ptm_df$adjIntensity
-# ptm_df$Intensity <- 2^ptm_df$Intensity
-#
-# protein_df$Intensity <- log2(protein_df$Intensity)
-# prot_med <- protein_df %>% group_by(Run) %>%
-#   summarize(med = median(Intensity, na.rm=TRUE)) %>%
-#   mutate(inty_expected = median(med), adjIntensity = inty_expected - med) %>%
-#   ungroup() %>% select(Run, adjIntensity)
-# protein_df <- protein_df %>% left_join(prot_med, by = 'Run')
-# protein_df$Intensity <- protein_df$Intensity + protein_df$adjIntensity
-# protein_df$Intensity <- 2^protein_df$Intensity
 
 summarized_ptm <- data.table()
 summarized_proteins <- data.table()
@@ -748,34 +713,20 @@ joined$Adj_Abundance <- joined$Abundance.x - joined$Abundance.y
 limma_test_res <- fit_limma(joined %>% filter(is.finite(Abundance.x)), 4, 2)
 
 limma_test_res$limma_adj_test <- limma_test_res$limma_adj_test %>%
-  mutate(Label = ifelse(Label == "classmix_1-classmix_2", "mix1-mix2",
-      ifelse(Label == "classmix_1-classmix_3", "mix1-mix3",
-             ifelse(Label == "classmix_1-classmix_4", "mix1-mix4",
-                    ifelse(Label == "classmix_2-classmix_3", "mix2-mix3",
-                           ifelse(Label == "classmix_2-classmix_4", "mix2-mix4",
-                                  "mix3-mix4"))))))
+  mutate(Label = ifelse(Label == "mix2 - mix1", "mix2 vs mix1",
+      ifelse(Label == "mix3 - mix1", "mix3 vs mix1",
+             ifelse(Label == "mix4 - mix1", "mix4 vs mix1",
+                    ifelse(Label == "mix3 - mix2", "mix3 vs mix2",
+                           ifelse(Label == "mix4 - mix2", "mix4 vs mix2",
+                                  "mix4 vs mix3"))))))
 
 limma_test_res$limma_test <- limma_test_res$limma_test %>%
-  mutate(Label = ifelse(Label == "classmix_1-classmix_2", "mix1-mix2",
-      ifelse(Label == "classmix_1-classmix_3", "mix1-mix3",
-             ifelse(Label == "classmix_1-classmix_4", "mix1-mix4",
-                    ifelse(Label == "classmix_2-classmix_3", "mix2-mix3",
-                           ifelse(Label == "classmix_2-classmix_4", "mix2-mix4",
-                                  "mix3-mix4"))))))
-
-# ## Fix comparison direction
-limma_test_res$limma_adj_test[Label == "mix1-mix2"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix1-mix2"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix1-mix3"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix1-mix3"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix1-mix4"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix1-mix4"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix2-mix3"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix2-mix3"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix2-mix4"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix2-mix4"]$Log2FC*-1
-limma_test_res$limma_adj_test[Label == "mix3-mix4"]$Log2FC <- limma_test_res$limma_adj_test[Label == "mix3-mix4"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix1-mix2"]$Log2FC <- limma_test_res$limma_test[Label == "mix1-mix2"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix1-mix3"]$Log2FC <- limma_test_res$limma_test[Label == "mix1-mix3"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix1-mix4"]$Log2FC <- limma_test_res$limma_test[Label == "mix1-mix4"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix2-mix3"]$Log2FC <- limma_test_res$limma_test[Label == "mix2-mix3"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix2-mix4"]$Log2FC <- limma_test_res$limma_test[Label == "mix2-mix4"]$Log2FC*-1
-limma_test_res$limma_test[Label == "mix3-mix4"]$Log2FC <- limma_test_res$limma_test[Label == "mix3-mix4"]$Log2FC*-1
+  mutate(Label = ifelse(Label == "mix2 - mix1", "mix2 vs mix1",
+                        ifelse(Label == "mix3 - mix1", "mix3 vs mix1",
+                               ifelse(Label == "mix4 - mix1", "mix4 vs mix1",
+                                      ifelse(Label == "mix3 - mix2", "mix3 vs mix2",
+                                             ifelse(Label == "mix4 - mix2", "mix4 vs mix2",
+                                                    "mix4 vs mix3"))))))
 
 ## Add spike-in id
 limma_test_res$limma_test <- limma_test_res$limma_test %>%
@@ -784,21 +735,19 @@ limma_test_res$limma_adj_test <- limma_test_res$limma_adj_test %>%
   mutate(labeling = ifelse(str_detect(PTM, "heavy"), "heavy", "light"))
 
 ground <- tibble(
-  Label = c("mix1-mix2", "mix1-mix3", "mix1-mix4", "mix2-mix3",
-            "mix2-mix4", "mix3-mix4"),
-  trueLog2FC = c(-1, 1, 0, -2, -1, 1)
+  Label = c("mix2 vs mix1", "mix3 vs mix1", "mix4 vs mix1", "mix3 vs mix2",
+            "mix4 vs mix2", "mix4 vs mix3"),
+  trueLog2FC = c(-1, 1, 0, 2, 1, -1)
 )
 
 limma_test_res$limma_test$adj.pvalue <- 0.
 limma_test_res$limma_adj_test$adj.pvalue <- 0.
 
 ## adjust pvalue
-for (l in seq_along(unique(limma_test_res$limma_test$Label))){
-  limma_test_res$limma_test[Label == unique(limma_test_res$limma_test$Label)[l]]$adj.pvalue <- p.adjust(
-    limma_test_res$limma_test[Label == unique(limma_test_res$limma_test$Label)[l]]$pvalue, method = "BH")
-  limma_test_res$limma_adj_test[Label == unique(limma_test_res$limma_adj_test$Label)[l]]$adj.pvalue <- p.adjust(
-    limma_test_res$limma_adj_test[Label == unique(limma_test_res$limma_adj_test$Label)[l]]$pvalue, method = "BH")
-}
+limma_test_res$limma_test[, adj.pvalue := p.adjust(pvalue, method = "BH"),
+                        by = "Label"]
+limma_test_res$limma_adj_test[, adj.pvalue := p.adjust(pvalue, method = "BH"),
+                          by = "Label"]
 
 limma_test_res$limma_test <- limma_test_res$limma_test %>%
   left_join(ground) %>%
@@ -971,3 +920,109 @@ temp_test %>% arrange(desc(labeling)) %>%
   theme(legend.position = "bottom")
 
 
+## Anova -----------------------------------------------------------------------
+
+fit_anova = function(data, contrast){
+
+  ptms = unique(data$PTM)
+  test_results = data.table()
+  unadj_test_results = data.table()
+  for (i in seq_along(ptms)){
+
+    ptm_data_adj = data %>% filter(PTM == ptms[[i]] & is.finite(Adj_Abundance))
+    ptm_data_unadj = data %>% filter(PTM == ptms[[i]] & is.finite(Abundance.x))
+
+    if (length(unique(ptm_data_adj$Condition)) < 4){
+      model_conditions = unique(ptm_data_adj$Condition)
+      missing = setdiff(c("mix1", "mix2", "mix3", "mix4"),
+                        unique(ptm_data_adj$Condition))
+      keep = c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
+      for (i in seq_along(missing)){
+        check = !str_detect(rownames(contrast), missing[[i]])
+        keep = ifelse(!check, check, keep)
+        temp_contrast = contrast[keep,, drop = FALSE]
+      }
+      print(temp_contrast)
+      print(model_conditions)
+
+      temp_contrast = temp_contrast[, model_conditions]
+
+    } else {
+      temp_contrast = contrast
+    }
+
+    tryCatch({
+
+      ## Adj model
+      res_aov_adj = lm(Adj_Abundance~Condition, data = ptm_data_adj)
+      model_summary_adj = summary(res_aov_adj)
+
+      coefs_adj = res_aov_adj$coefficients
+      coefs_adj[1] = 0
+      df_adj = res_aov_adj$df.residual
+      sigma_adj = model_summary_adj$sigma
+
+      ## unadj model
+      res_aov_unadj = lm(Abundance.x~Condition, data = ptm_data_unadj)
+      model_summary_unadj = summary(res_aov_unadj)
+
+      coefs_unadj = res_aov_unadj$coefficients
+      coefs_unadj[1] = 0
+      df_unadj = res_aov_unadj$df.residual
+      sigma_unadj = model_summary_unadj$sigma
+
+      for (j in seq_len(nrow(temp_contrast))){
+
+        comp = temp_contrast[j,]
+        label = rownames(temp_contrast)[j]
+
+        ## Adj
+        beta_adj = sum(coefs_adj*comp)
+        tstat_adj = beta_adj / sigma_adj
+
+        pval_adj = 2*pt(-abs(tstat_adj),df=df_adj)
+
+        test_results = rbindlist(list(test_results,
+                                  data.table(ptm = ptms[[i]], label = label, log2FC = beta_adj,
+                        se = sigma_adj, tstat = tstat_adj, pvalue = pval_adj)))
+
+        ## unadj
+        beta_unadj = sum(coefs_unadj*comp)
+        tstat_unadj = beta_unadj / sigma_unadj
+
+        pval_unadj = 2*pt(-abs(tstat_unadj),df=df_unadj)
+
+        unadj_test_results = rbindlist(list(unadj_test_results,
+                                        data.table(ptm = ptms[[i]], label = label, log2FC = beta_unadj,
+                        se = sigma_unadj, tstat = tstat_unadj, pvalue = pval_unadj)))
+
+      }
+
+    },
+    error=function(e){cat("ERROR : fitting error\n")})
+  }
+
+  results = list("anova_adj" = test_results,
+                 "anova_unadj" = unadj_test_results)
+  return(results)
+}
+
+anova_results = fit_anova(joined, comparison)
+keep = anova_results
+anova_results$anova_adj$protadj <- "protein adjustment"
+anova_results$anova_unadj$protadj <- "no adjustment"
+
+anova_results$anova_adj[, adj.pvalue := p.adjust(pvalue, method = "BH"),
+            by = "label"]
+anova_results$anova_unadj[, adj.pvalue := p.adjust(pvalue, method = "BH"),
+                        by = "label"]
+
+anova_results$anova_adj <- anova_results$anova_adj %>%
+  mutate(labeling = ifelse(str_detect(ptm, "heavy"), "heavy", "light"))
+anova_results$anova_unadj <- anova_results$anova_unadj %>%
+  mutate(labeling = ifelse(str_detect(ptm, "heavy"), "heavy", "light"))
+
+anova_results = rbind(anova_results$anova_adj,
+                      anova_results$anova_unadj)
+
+save(anova_results, file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\anova_results.rda")

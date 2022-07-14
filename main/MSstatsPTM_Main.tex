@@ -285,11 +285,11 @@ Although effective, the approach is somewhat simplistic. It is not applicable to
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The two versions of $t$-test \todo{OV: ANOVA?} above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version which models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation} can be used to answer the null hypothesis in \eqref{null_hyp}. Limma uses the transformed inputs to fit a linear model with a fixed condition and run effect for each PTM.
+\medskip \noindent The two versions of $t$-test \todo{OV: ANOVA?} above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version which models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation} can be used to answer the null hypothesis in \eqref{null_hyp}. Limma uses the transformed inputs to fit a linear model with a fixed condition effect for each PTM.
 
 \begin{eqnarray}
-& u_{ij} = \mu + Condition_i + Run_{j} + \epsilon_{ij}, & \\ 
-& \text{where } \sum\limits_{i=1}^{I} Condition_i = 0,\ \sum\limits_{i=1}^{J} Run_j = 0, \epsilon_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^2) & \nonumber
+& u_{ij} = \mu + Condition_i + \epsilon_{ij}, & \\ 
+& \text{where } \sum\limits_{i=1}^{I} Condition_i = 0, \epsilon_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^2) & \nonumber
 \label{eq:limma_model}
 \end{eqnarray}
 
