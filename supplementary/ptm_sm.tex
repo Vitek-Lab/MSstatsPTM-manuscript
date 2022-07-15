@@ -493,15 +493,15 @@
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
-The proposed statistical approach was evaluated and compared to the $t$-test and Limma methods using computer simulations. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
+The proposed statistical approach was evaluated and compared to the Anova and Limma methods using computer simulations. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Computer simulation}
 \label{sec:comp_sim}
-Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) $t$-test (with adjustment), d) $t$-test (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
+Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) Anova (with adjustment), d) Anova (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
 
-In experiments of complex designs, multiple inter-related conditions are often compared together. The proposed approach and Limma leverage measurements in all conditions for the inference of the underlying abundance, whereas $t$-test uses measurements from the two conditions being compared. To highlight this distinction, multiple conditions of data were generated. While multiple conditions were generated, all comparisons were still made with the same fold change between conditions ($0.75$). This ensured that all peptides were differentially abundant by the same amount and the only difference in calculations was using more conditions in the modeling.
+In experiments of complex designs, multiple inter-related conditions are often compared together. All comparisons were made with the same fold change between conditions ($1$). This ensured that all peptides were differentially abundant by the same amount and the only difference in calculations was using more conditions in the modeling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
@@ -511,8 +511,8 @@ In the first simulation an experiment with many features per PTM and unmodified 
 \begin{itemize}
 \item Mean of log-intensity: $25$
 \item Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
-\item Difference in PTM abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
-\item Difference in protein abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
+\item Difference in PTM abundance between conditions: $0$, $1.$, $2.$, $3.$
+\item Difference in protein abundance between conditions: $0$, $1.$, $2.$, $3.$
 \item Number of replicates: $2$, $3$, $5$, $10$
 \item Number of conditions: $2$, $3$, $4$
 \item Number of realizations: $1000$
@@ -531,8 +531,8 @@ In the second simulation we introduced limited feature observations per PTM as w
 \begin{itemize}
 \item Mean of log-intensity: $25$
 \item Standard deviations of log-intensities for modified and unmodified peptides: $0.2$, $0.3$
-\item Difference in PTM abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
-\item Difference in protein abundance between conditions: $0$, $0.75$, $1.5$, $2.25$
+\item Difference in PTM abundance between conditions: $0$, $1.$, $2.$, $3.$
+\item Difference in protein abundance between conditions: $0$, $1.$, $2.$, $3.$
 \item Number of replicates: $2$, $3$, $5$, $10$
 \item Number of conditions: $2$, $3$, $4$
 \item Number of realizations: $1000$
@@ -549,7 +549,7 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_Recall}\\
-	\caption{All methods with adjustment were compared by comparing recall in simulation 1. Limma performed the strongest here when the number of replicates were low. At higher replicates the performance of the proposed methods and Limma were comparable. $t$-test clearly performed worse across all methods.}
+	\caption{All methods with adjustment were compared by comparing recall in simulation 1. Limma performed the strongest here when the number of replicates were low. At higher replicates the performance of the proposed methods and Limma were comparable. Anova clearly performed worse across all methods.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
@@ -564,7 +564,7 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
 \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_Recall}
 	\caption{}
-\caption{Recall results of Simulation 2. The advantage of using the proposed approach were apparent when looking at simulation 2, which included limited observations and the presence of missing values. In the case of recall the proposed method performed stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was $t$-test.}
+\caption{Recall results of Simulation 2. The advantage of using the proposed approach were apparent when looking at simulation 2, which included limited observations and the presence of missing values. In the case of recall the proposed method performed stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was Anova.}
 \label{fig:sim2_recall}
 \end{figure}
 
@@ -573,12 +573,12 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FC_boxplot}
-	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of .75. The distributions around the median were also consistent across all methods.}
+	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_FC_boxplot}
-	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of .75. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and $t$-test showed a wider range around the fold change. The inner quartile range of the Proposed method was on average 10.4\% smaller than t-test and 21.8\% smaller than Limma.}
+	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of 1. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and Anova showed a wider range around the fold change.}
  \end{subfigure}
 \caption{Fold change distribution comparison between Simulations 1 and 2.}
 \label{fig:fc_boxplot}
@@ -597,7 +597,7 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
 %\caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
 %\end{figure}
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and two sample $t$-test. All methods are analyzed after adjusting for changes in overall protein level. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
+Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and Anova. All methods are analyzed after adjusting for changes in overall protein level. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
 
 \begin{figure}[h!]
 \centering
@@ -614,13 +614,13 @@ Again we consider three different methods and assess their performance: the meth
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{sim_new/spike_in_anova_volcano}
-\caption{Using the two sample $t$-test, none of the comparisons either before or after adjustment show any significant peptides. With that being said, the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. \label{fig:spike_volcano_ttest}}
+\caption{Using Anova the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as Limma, however the pvalues were different. We actually see a few more True Positives using Anova compared to Limma.\label{fig:spike_volcano_ttest}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.85\textwidth]{sim_new/spike_in_statistic_comparison}
-\caption{Comparing the summary statistics between methods, the proposed method performed the strongest. In terms of accuracy and specificity the three methods were close, with Limma and $t$-test showing slightly higher values. Accuracy and specificity were dominated by the large number of true negatives (background peptides) compared to the true positives (spike-in peptides). In terms of recall, the proposed approach out performed the other two methods, showing that it correctly labeled the most spike-in peptides. \label{fig:spike_stat}}
+\caption{Comparing the summary statistics between methods, the proposed method performed the strongest. In terms of accuracy and specificity the three methods were close, with Limma and Anova showing slightly higher values. Accuracy and specificity were dominated by the large number of true negatives (background peptides) compared to the true positives (spike-in peptides). In terms of recall, the proposed approach out performed the other two methods, showing that it correctly labeled the most spike-in peptides. \label{fig:spike_stat}}
 \end{figure}
 
 \clearpage

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  14 JUL 2022 17:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  15 JUL 2022 10:30
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1435,12 +1435,12 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 [4
 
 ]
-<sim_new/sim1_Recall.png, id=107, 752.8125pt x 501.875pt>
+<sim_new/sim1_Recall.png, id=108, 752.8125pt x 501.875pt>
 File: sim_new/sim1_Recall.png Graphic file (type png)
 <use sim_new/sim1_Recall.png>
 Package pdftex.def Info: sim_new/sim1_Recall.png  used on input line 551.
 (pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
-<sim_new/sim1_accuracy.png, id=108, 752.8125pt x 501.875pt>
+<sim_new/sim1_accuracy.png, id=109, 752.8125pt x 501.875pt>
 File: sim_new/sim1_accuracy.png Graphic file (type png)
 <use sim_new/sim1_accuracy.png>
 Package pdftex.def Info: sim_new/sim1_accuracy.png  used on input line 556.
@@ -1452,7 +1452,7 @@ LaTeX Warning: Float too large for page by 7.2626pt on input line 561.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<sim_new/sim3_Recall.png, id=109, 752.8125pt x 501.875pt>
+<sim_new/sim3_Recall.png, id=110, 752.8125pt x 501.875pt>
 File: sim_new/sim3_Recall.png Graphic file (type png)
 <use sim_new/sim3_Recall.png>
 Package pdftex.def Info: sim_new/sim3_Recall.png  used on input line 565.
@@ -1460,18 +1460,18 @@ Package pdftex.def Info: sim_new/sim3_Recall.png  used on input line 565.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<sim_new/sim1_FC_boxplot.png, id=110, 752.8125pt x 501.875pt>
+<sim_new/sim1_FC_boxplot.png, id=111, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim1_FC_boxplot.png>
 Package pdftex.def Info: sim_new/sim1_FC_boxplot.png  used on input line 575.
 (pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
-<sim_new/sim3_FC_boxplot.png, id=111, 752.8125pt x 501.875pt>
+<sim_new/sim3_FC_boxplot.png, id=112, 752.8125pt x 501.875pt>
 File: sim_new/sim3_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim3_FC_boxplot.png>
 Package pdftex.def Info: sim_new/sim3_FC_boxplot.png  used on input line 580.
 (pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 
-LaTeX Warning: Float too large for page by 31.2626pt on input line 585.
+LaTeX Warning: Float too large for page by 19.2626pt on input line 585.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1758,7 +1758,7 @@ Package logreq Info: Writing requests to 'ptm_sm.run.xml'.
 Here is how much of TeX's memory you used:
  32843 strings out of 479334
  641783 string characters out of 2853721
- 1368737 words of memory out of 3000000
+ 1368748 words of memory out of 3000000
  49652 multiletter control sequences out of 15000+200000
  422246 words of font info for 96 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1785,7 +1785,7 @@ rs/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 r9.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmsl10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ptm_sm.pdf (20 pages, 688562 bytes).
+Output written on ptm_sm.pdf (20 pages, 688004 bytes).
 PDF statistics:
  296 PDF objects out of 1000 (max. 8388607)
  53 named destinations out of 1000 (max. 500000)
