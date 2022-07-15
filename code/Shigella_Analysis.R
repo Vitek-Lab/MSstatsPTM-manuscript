@@ -12,13 +12,13 @@ load(file = "shigella_global_TMTFormat.rda")#shigella_global
 load(file = "shigella_pY_TMTFormat.rda")#shigella_peptide_pY
 
 ## Setup for summarization
-shigella_global <- shigella_global %>% group_by(ProteinName, PeptideSequence, 
+shigella_global <- shigella_global %>% group_by(ProteinName, PeptideSequence,
   Charge, PSM, Mixture, TechRepMixture, Run, Channel, Condition, BioReplicate) %>%
   summarize(Intensity = max(Intensity))
 
-pY_input <- list(PTM = data.frame(shigella_peptide_pY), 
+pY_input <- list(PTM = data.frame(shigella_peptide_pY),
                  PROTEIN = data.frame(shigella_global))
-pST_input <- list(PTM = data.frame(shigella_peptide_pST), 
+pST_input <- list(PTM = data.frame(shigella_peptide_pST),
                   PROTEIN = data.frame(shigella_global))
 
 ## Data summarization ----------------------------------------------------------
@@ -42,7 +42,7 @@ global_feature_data <- pST_summarization$PROTEIN$FeatureLevelData
 ## Create pYST dataset
 ## Create pY/pST Dataset
 ## check the overlapped sites between pST and pY
-shared_sites <- intersect(unique(py_summarized_data$Protein), 
+shared_sites <- intersect(unique(py_summarized_data$Protein),
                           unique(pst_summarized_data$Protein))
 shared_ST <- shared_sites[grepl("_S", shared_sites)|grepl("_T", shared_sites)]
 shared_Y <- shared_sites[grepl("_Y", shared_sites)]
@@ -170,9 +170,9 @@ test[test$FeatureType == 'Model'][['FeatureType']] <- "Protein Summarized"
 test[test$FeatureType == 'Peptide'][['FeatureType']] <- "Protein Feature"
 test$Mixture = paste0("Mixture ", test$Mixture)
 p2 <- test %>% ggplot() +
-  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
+  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM,
                 color = FeatureType), size = 2) +
-  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
+  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM,
                  color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(2.5, 4.5, 6.5, 8.5, 10.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
@@ -235,15 +235,15 @@ test[test$FeatureType == 'Model'][['FeatureType']] <- "PTM Summarized"
 test[test$FeatureType == 'Peptide'][['FeatureType']] <- "PTM Feature"
 
 p1 <- test %>% ggplot() +
-  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
+  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM,
                 color = FeatureType), size = 2) +
-  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
+  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM,
                  color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(2.5, 4.5, 6.5, 8.5, 10.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
   scale_colour_manual(values = c("#C3C3C3", "#D55E00")) +
   scale_size_manual(values = c(1, 2)) +
-  labs(title = "KI67 with phosphorylation at site T215", x = "BioReplicate", 
+  labs(title = "KI67 with phosphorylation at site T215", x = "BioReplicate",
        y = "Abundance") +
   facet_grid(Mixture~.) +
   theme_bw() +
@@ -291,9 +291,9 @@ test[test$FeatureType == 'Model'][['FeatureType']] <- "Protein Summarized"
 test[test$FeatureType == 'Peptide'][['FeatureType']] <- "Protein Feature"
 
 p2 <- test %>% ggplot() +
-  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
+  geom_line(aes(x = BioReplicate, y = log2Intensity, group = PSM,
                 color = FeatureType), size = 2) +
-  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM, 
+  geom_point(aes(x = BioReplicate, y = log2Intensity, group = PSM,
                  color = FeatureType), size = 5) +
   geom_vline(data=data.frame(x = c(2.5, 4.5, 6.5, 8.5, 10.5)),
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
@@ -330,9 +330,9 @@ rownames(comparison) <- comparison$X
 comparison <- comparison %>% dplyr::select(-X)
 comparison <- as.matrix(comparison) # this step is necessary for contrast comparison
 
-pSTY_model <- groupComparisonPTM(pyst_sum_input, data.type = "TMT", 
+pSTY_model <- groupComparisonPTM(pyst_sum_input, data.type = "TMT",
                                  contrast.matrix = comparison)
-load(file = "../data/Shigella_pSTY_model.rda")
+load(file = "../data/pSTY_model.rda")
 
 ## Volcano Plot
 model_df <- pSTY_model$PTM.Model %>% filter(Label == "WT_Late-Wt_Uninfected")
@@ -355,7 +355,7 @@ v1 <- ggplot() + geom_point(data = model_df, mapping = aes(x = log2FC, y = -log1
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 15.5) +
-  labs(title = "WT Late vs Uninfected, by PTM quant only", 
+  labs(title = "WT Late vs Uninfected, by PTM quant only",
        y = "-Log Adj. Pvalue", x = "Estimated log2 Fold Change") +
   geom_label_repel(
     data = data.frame(x = 2.899, y = -log10(.00087),
@@ -393,10 +393,10 @@ v2 <- adj_model_df %>% ggplot() +
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 15.5) +
-  labs(title = "WT Late vs Uninfected, PTM adjusted by Protein", 
+  labs(title = "WT Late vs Uninfected, PTM adjusted by Protein",
        y = "-Log Adj. Pvalue", x = "Estimated log2 Fold Change") +
   geom_label_repel(
-    data = data.frame(x = .886, y = -log10(.248), 
+    data = data.frame(x = .886, y = -log10(.248),
                       label = "TTP S178 \n Log2FC: .886 \n Adj.pvalue: .248"),
     aes(x = x, y = y, label = label),
     label.padding = unit(0.55, "lines"),
@@ -431,7 +431,7 @@ v1 <- ggplot() + geom_point(data = model_df, mapping = aes(x = log2FC, y = -log1
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 12) +
-  labs(title = "WT Early vs Uninfected, by PTM quant only", 
+  labs(title = "WT Early vs Uninfected, by PTM quant only",
        y = "-Log Adj. Pvalue", x = "Estimated log2 Fold Change") +
   geom_label_repel(
     data = data.frame(x = 0.185, y = -log10(0.338),
@@ -469,10 +469,10 @@ v2 <- adj_model_df %>% ggplot() +
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 12) +
-  labs(title = "WT Early vs Uninfected, PTM adjusted by Protein", 
+  labs(title = "WT Early vs Uninfected, PTM adjusted by Protein",
        y = "-Log Adj. Pvalue", x = "Estimated log2 Fold Change") +
   geom_label_repel(
-    data = data.frame(x = .804, y = -log10(.01559), 
+    data = data.frame(x = .804, y = -log10(.01559),
                       label = "KI67 T215 \n Log2FC: .804 \n Adj.pvalue: .0156"),
     aes(x = x, y = y, label = label),
     label.padding = unit(0.55, "lines"),
@@ -507,8 +507,8 @@ venn.diagram(
   filename = "shig_venn_diagramm.png",
   output=TRUE,
   imagetype="png" ,
-  height = 1400,
-  width = 1400,
+  height = 1500,
+  width = 1500,
   resolution = 100,
   lwd = 2,
   fill = colors,
@@ -522,7 +522,7 @@ venn.diagram(
   cat.pos = c(-40, 30),
   cat.dist = c(.037, .03),
   main.cex = 2.8,
-  main = "Overlap between signficant adjusted and unadjusted PTMs"
+  main = "Dataset 5: Differentially abundant adjusted and unadjusted PTMs"
 )
 
 combo <- adj_ptm_model %>% merge(unadj_ptm_model, by = "Protein_Label")
