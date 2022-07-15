@@ -258,7 +258,7 @@ y^*_{ijk} = \hat{\mu}^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \ma
 \label{eq:ttest_model}
 \end{eqnarray}
 The model allows us to estimate $\hat{\Delta}$ and its standard error.
-Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=IJK-I$ \todo{should we replace IJK with N (number obs)?} degrees of freedom in balanced designs.
+Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=I(JK-1)$ degrees of freedom in balanced designs.
 Unfortunately, this approach is fundamentally flawed as it does not account for the confounding between changes in the PTM abundance and the overall changes in the abundance of the unmodified protein.
 
 \medskip \noindent 
@@ -277,7 +277,7 @@ u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon
 \label{eq:ttest_model}
 \end{eqnarray}
 The model allows us to estimate $\hat{\Delta}_{adj}$ and its standard error.
-Based on this model, we can test the more relevant null hypothesis in~\eqref{null_hyp}, by comparing the test statistic against the Student distribution with $df=IJ-I$ degrees of freedom in balanced designs.
+Based on this model, we can test the more relevant null hypothesis in~\eqref{null_hyp}, by comparing the test statistic against the Student distribution with $df=I(J-1)$ degrees of freedom in balanced designs.
 
 Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with multi-run multiplexing. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, there is no self contained, straightforward implementation of the method, such as in the form of a coding package, requiring a manual application.
 
@@ -349,7 +349,7 @@ Assuming that the unexplained by the model sources of variation in the modified 
 For example, in the simple case of \figref{data-structure} with $J=2$ conditions, where $\hat{\sigma}^2_{PTM}$ and $\hat{\sigma}^2_{protein}$ are the estimates of the error variance for the PTM and protein model described in \eqref{msstats_model}, the standard error would be calculated as
 
 \begin{eqnarray}
-& \widehat{SE}(\hat{\Delta})_{adj} = \sqrt{\widehat{SE}(\hat{\Delta}_{PTM})^2 + \widehat{SE}(\hat{\Delta}_{protein})^2} = &\\ 
+& \widehat{SE}(\hat{\Delta}_{adj}) = \sqrt{\widehat{SE}(\hat{\Delta}_{PTM})^2 + \widehat{SE}(\hat{\Delta}_{protein})^2} = &\\ 
 & \sqrt{\frac{1}{J}\hat{\sigma}^2_{PTM} + \frac{1}{J}\hat{\sigma}^2_{protein}} = \sqrt{\frac{2}{J}(\hat{\sigma}^2_{PTM} + \hat{\sigma}^2_{protein})} = \sqrt{\hat{\sigma}^2_{PTM} + \hat{\sigma}^2_{protein}} & \nonumber
 \label{eq:se_calc}
 \end{eqnarray}
