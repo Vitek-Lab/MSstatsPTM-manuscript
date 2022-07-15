@@ -927,8 +927,8 @@ fit_anova = function(data, contrast){
   ptms = unique(data$PTM)
   test_results = data.table()
   unadj_test_results = data.table()
-  for (i in seq_along(ptms)){
-
+  for (i in seq_along(ptms)){#
+    print(ptms[[i]])
     ptm_data_adj = data %>% filter(PTM == ptms[[i]] & is.finite(Adj_Abundance))
     ptm_data_unadj = data %>% filter(PTM == ptms[[i]] & is.finite(Abundance.x))
 
@@ -937,13 +937,13 @@ fit_anova = function(data, contrast){
       missing = setdiff(c("mix1", "mix2", "mix3", "mix4"),
                         unique(ptm_data_adj$Condition))
       keep = c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
-      for (i in seq_along(missing)){
-        check = !str_detect(rownames(contrast), missing[[i]])
+      for (k in seq_along(missing)){
+        check = !str_detect(rownames(contrast), missing[[k]])
         keep = ifelse(!check, check, keep)
         temp_contrast = contrast[keep,, drop = FALSE]
       }
-      print(temp_contrast)
-      print(model_conditions)
+      # print(temp_contrast)
+      # print(model_conditions)
 
       temp_contrast = temp_contrast[, model_conditions]
 

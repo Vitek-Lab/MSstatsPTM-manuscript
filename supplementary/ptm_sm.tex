@@ -521,8 +521,7 @@ In the first simulation an experiment with many features per PTM and unmodified 
 \item Missing data: no missing value
 \end{itemize}
 
-The results are summarized from Figure \ref{fig:sim1_fpr} to Figure \ref{fig:sim1_recall}. These results include the false discovery rate with and without adjusting for changes in unmodified protein abundance, false positive rate, and overall accuracy. Additionally, the results are compared to simulation 2 described in the next section.
-
+The results are summarized in Figure \ref{fig:sim1_recall}.
 
 \subsubsection{Dataset 2 : Computer simulation 2 - Label-free missing values and low features}
 \label{sec:dataset2}
@@ -544,21 +543,6 @@ In the second simulation we introduced limited feature observations per PTM as w
 
 The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:fc_boxplot}.
 
-\begin{figure}[h!]
-\centering
- \begin{subfigure}{\textwidth}
-  \centering
-	\includegraphics[width=.8\textwidth]{sim_new/sim1_FDR_all_models}\\
-	\caption{All the considered methods in simulation 1 correctly calibrated FDR  when adjusting for changes in protein abundance. In comparison, the methods without accounting for the protein-level changes resulted in off-target, high false discovery rates. The performance of the models without adjustment was much lower than those with adjustment, thus only models with adjustment are compared going forward.}
- \end{subfigure}
- \begin{subfigure}{\textwidth}
-  \centering
-	\includegraphics[width=.8\textwidth]{sim_new/sim1_FDR}
-	\caption{The considered methods with protein adjustment were compared in detail. All three methods with adjustment generally performed similarly in terms of FDR.}
- \end{subfigure}
- \caption{FDR of Simulation 1.}
-\label{fig:sim1_fpr}
-\end{figure}
 
 \begin{figure}[h!]
 \centering
@@ -623,13 +607,13 @@ Again we consider three different methods and assess their performance: the meth
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_limma_volcano}
+\includegraphics[width=1\textwidth]{sim_new/spike_in_limma_volcano}
 \caption{When modeling the experiment with the Limma method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change was more accurate, the majority of spike-in peptides did not have a significant adjusted pvalue. In this case, the known differential peptides were missed by the model. In terms of false positives, the results were very similar to the proposed method, with many false positives before adjustment and fewer after. \label{fig:spike_volcano_limma}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.85\textwidth]{sim_new/spike_in_ttest_volcano}
+\includegraphics[width=1\textwidth]{sim_new/spike_in_anova_volcano}
 \caption{Using the two sample $t$-test, none of the comparisons either before or after adjustment show any significant peptides. With that being said, the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. \label{fig:spike_volcano_ttest}}
 \end{figure}
 

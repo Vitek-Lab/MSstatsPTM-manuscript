@@ -1,7 +1,7 @@
 ---
 title: "MSstatsPTM Simulation Analysis"
 author: "Devon Kohler"
-date: "3/7/2022"
+date: "7/14/2022"
 output:
   html_document: default
   pdf_document: default
@@ -205,7 +205,7 @@ calc_roc <- function(df, protein_col_name, pval_col_name){
 
 ### Simulation Methods
 
-To simulate data the `PTMsimulateExperiment()` function from Tsung-Heng's original MSstatsPTM was used. This function allows us to vary the number of conditions, replicates, number of proteins, number of sites per protein, number of spectral features per site/protein, mean log2-abundance of PTM and PROTEIN, deviation from the mean log2-abundance in each group, standard deviation among replicates, and standard deviation among log2-intensities.
+To simulate data the `PTMsimulateExperiment()` function was used. This function allows us to vary the number of conditions, replicates, number of proteins, number of sites per protein, number of spectral features per site/protein, mean log2-abundance of PTM and PROTEIN, deviation from the mean log2-abundance in each group, standard deviation among replicates, and standard deviation among log2-intensities.
 
 Three different statistical modeling methods were applied to the simulated data: MSstatsPTM, limma, and two-sample t-test. These methods were tested both with and without applying protein level adjustment. MSstatsPTM uses TMP for summarization and post modeling calculations for the adjustment. To adjust limma and t-test, the run-level data was averaged for both ptm and protein datasets and then combined. The resulting dataset was then used for limma and t-test.
 

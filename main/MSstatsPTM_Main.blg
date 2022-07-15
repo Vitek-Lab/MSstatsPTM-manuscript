@@ -1,15 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'MSstatsPTM_Main.blg'
-[189] biber-MSWIN64:340> INFO - === 
-[261] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
-[389] Biber.pm:952> INFO - Found 41 citekeys in bib section 0
-[406] Biber.pm:4340> INFO - Processing section 0
-[427] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[503] bibtex.pm:1689> INFO - LaTeX decoding ...
-[557] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
-[907] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[908] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[908] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[908] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[959] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
-[995] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl
+[115] biber-MSWIN64:340> INFO - === 
+[154] Biber.pm:415> INFO - Reading 'MSstatsPTM_Main.bcf'
+[271] Biber.pm:952> INFO - Found 41 citekeys in bib section 0
+[285] Biber.pm:4340> INFO - Processing section 0
+[297] Biber.pm:4531> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[360] bibtex.pm:1689> INFO - LaTeX decoding ...
+[413] bibtex.pm:1494> INFO - Found BibTeX data source 'bibliography.bib'
+[735] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[735] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[735] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[735] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[767] bbl.pm:654> INFO - Writing 'MSstatsPTM_Main.bbl' with encoding 'UTF-8'
+[802] bbl.pm:757> INFO - Output to MSstatsPTM_Main.bbl

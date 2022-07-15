@@ -292,13 +292,11 @@ combo_plot_df <- rbind(proposed_plot_df[, c("Protein", "Label", "log2FC",
                                             "protadj", "Model")])
 combo_plot_df$Model <- factor(combo_plot_df$Model, levels=c('Proposed Method','Limma'))
 
-combo_plot_df
-combo_plot_df[combo_plot_df$Label == 'mix2-mix3'][['trueLog2FC']] <- combo_plot_df[combo_plot_df$Label == 'mix2-mix3'][['trueLog2FC']]*-1
 
 png("../main/images/spike_in_volcano.png", width = 750, height = 500)
 combo_plot_df %>% arrange(Model, labeling) %>% 
-  filter(abs(log2FC) < Inf & Label %in% c("mix2-mix3", "mix1-mix4", "mix3 vs mix2",
-                                          "mix4 vs mix1")) %>%
+  filter(abs(log2FC) < Inf & Label %in% c("mix3 vs mix2",
+                                          "mix4 vs mix2")) %>%
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
   geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
   scale_color_manual(values = c("#999999", "#D55E00")) + 
@@ -366,124 +364,6 @@ spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = Log2FC), fill = "l
 
 Once again we see a strong improvement in the Log2FC of spike-in peptides after adjustment. In contrast to MSstatsPTM the distribution after adjustment is much wider, with a median close to the true FC. This larger variance around the median indicates that while we are generally seeing the true FC, the results are not as strong as MSstatsPTM.
 
-
-### T-Test
-
-Finally we will look at the t-test results.
-
-#### Volcano Plot
-
-Again we look at the volcano plots. The spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
-
-```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "../data/Spike_in_ttest_model.rda")#ttest_final_model
-
-## Update some naming conventions
-ttest_final_model[ttest_final_model$label == 'mix1-mix2'][['contrast_truth']] <- "LogFC: -1 (mix2-mix1)"
-ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix3-mix1)"
-ttest_final_model[ttest_final_model$label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix4-mix1)"
-ttest_final_model[ttest_final_model$label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: 2 (mix3-mix2)"
-ttest_final_model[ttest_final_model$label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: 1 (mix4-mix2)"
-ttest_final_model[ttest_final_model$label == 'mix3-mix4'][['contrast_truth']] <- "LogFC: -1 (mix4-mix3)"
-
-ttest_final_model[ttest_final_model$labeling == 'light'][['labeling']] <- "Background Peptides"
-ttest_final_model[ttest_final_model$labeling == 'heavy'][['labeling']] <- "SpikeIn Peptides"
-
-ttest_final_model$log2FC <- ttest_final_model$estimate
-
-ttest_final_model$trueLog2FC=ttest_final_model$trueLog2FC*-1
-ttest_final_model[ttest_final_model$label == 'mix1-mix2'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$label == 'mix1-mix2'][['trueLog2FC']]*-1
-ttest_final_model[ttest_final_model$label == 'mix3-mix4'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$label == 'mix3-mix4'][['trueLog2FC']]*-1
-ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['trueLog2FC']] <- ttest_final_model[ttest_final_model$label == 'mix1-mix3'][['trueLog2FC']]*-1
-
-ttest_final_model$contrast_truth = factor(ttest_final_model$contrast_truth, 
-                                          levels = 
-                                  c("LogFC: -1 (mix2-mix1)",
-                                    "LogFC: 1 (mix3-mix1)",
-                                    "LogFC: 0 (mix4-mix1)",
-                                    "LogFC: 2 (mix3-mix2)",
-                                    "LogFC: 1 (mix4-mix2)",
-                                    "LogFC: -1 (mix4-mix3)"))
-
-# Volcano plot
-png("../supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
-ttest_final_model %>% arrange(labeling) %>% 
-  filter(abs(log2FC) < Inf) %>%
-  ggplot(aes(log2FC, -log10(adj.pvalue))) + 
-  geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
-  scale_color_manual(values = c("#999999", "#D55E00")) + 
-  scale_alpha_manual(values = c(0.1, 1)) + 
-  #scale_size_manual(values = c(2, 1)) + 
-  geom_hline(yintercept = 0, linetype = "dashed") + 
-  geom_vline(xintercept = 0) + 
-  geom_vline(aes(xintercept = trueLog2FC),color = "darkred", linetype= "dashed") +
-  geom_hline(yintercept = -log10(0.05), color = "darkred") + 
-  facet_grid(protadj ~ contrast_truth) + 
-  theme_bw() + 
-  theme(axis.text.x = element_text(size = 14), 
-       axis.text.y = element_text(size = 14), 
-       legend.text=element_text(size=16),
-       axis.title.y = element_text(size = 18, vjust=2),
-       axis.title.x = element_text(size = 18),
-       title = element_text(size = 20),
-       strip.text = element_text(size = 15),
-       legend.title =  element_blank(),
-       legend.position = "bottom",
-       legend.box.margin=margin(-10,-10,-10,-10)) + 
-  scale_y_continuous(limits = c(0,1.5)) + 
-  guides(colour = guide_legend(override.aes = list(size=5))) + 
-  labs(title = "T-test VolcanoPlot")
-dev.off()
-```
-
-The results of the t-test are the weakest of the models we have observed. Both before and after adjustment we see no significant results. This may be due to an increased variance in the models, as each t-test model must be fit between two conditions and cannot share information. Additionally we only have two observations per condition, thus if one observation is missing the t-test model breaks down and the model cannot be fit.
-
-To get a closer look at the effect of the adjustment we will look at the volcano plots using the unadjusted pvalue.
-
-``` {r, echo=FALSE, fig.width = 10, fig.height = 7}
-# Volcano plot
-ttest_final_model %>% arrange(desc(labeling)) %>% 
-  filter(abs(estimate) < Inf & label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")) %>%
-  ggplot(aes(estimate, -log10(pval))) + 
-  geom_point(aes(color = labeling, alpha = labeling)) + 
-  scale_color_manual(values = c("#D55E00", "#999999")) + 
-  scale_alpha_manual(values = c(1, 0.1)) + 
-  scale_size_manual(values = c(2, 1)) + 
-  geom_hline(yintercept = 0) + 
-  geom_vline(xintercept = 0) + 
-  geom_hline(yintercept = -log10(0.05), color = "darkred") + 
-  geom_vline(xintercept = c(1, -1), color = "darkred", linetype = "dashed") + 
-  facet_grid(protadj ~ contrast_truth) + 
-  theme_bw() + 
-  theme(legend.position = "bottom") + 
-  labs(title = "T-test VolcanoPlot: Unadjusted Pvalue")
-```
-
-The unadjusted pvalue volcano plots look very similar to what we have seen in the previous two models. The false positives decrease and the spike-in peptides follow the expected FC closer after adjustment.
-
-#### Summary Statistics
-
-The summary statistics for this model are skipped because the adjusted pvalue shows no positive results.
-
-#### Log Fold Change - Spike-in Peptides
-
-Lastly, we will again look at the distribution of the spike-in peptides log fold changes. The expected log Fold Change is indicated by the red `X` marks.
-
-```{r, echo = FALSE, fig.width = 10, fig.height = 5}
-unadj_spike <- ttest_final_model %>% filter(protadj == "no adjustment" & labeling == "heavy")
-unadj_spike$Adjustment <- "no adjustment"
-adj_spike <- ttest_final_model %>% filter(protadj == "protein adjustment" & labeling == "heavy")
-adj_spike$Adjustment <- "protein adjustment"
-spike <- rbindlist(list(unadj_spike, adj_spike), fill = TRUE)
-
-spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = estimate), fill = "lightsteelblue4") + 
-  geom_point(aes(y = trueLog2FC, x = contrast_truth), color = "red", shape = 4, size = 3) + facet_wrap(.~Adjustment) + 
-  labs(title = "T-test Fold Change of Spike-in Peptides", x = "Comparison with Expected FC", y = "log2FC") + theme(axis.text.x = element_text(angle = 30, vjust = .5))
-
-```
-
-This plots is very similar to the limma plot. The spike-in peptides follow the expected FC much better after adjustment. However the effect is much wider around the true FC than MSstatsPTM, meaning the effect is less accurate.
-
 ### Anova
 
 #### Volcano Plot
@@ -522,7 +402,7 @@ anova_results$contrast_truth = factor(anova_results$contrast_truth,
                                     "LogFC: -1 (mix4-mix3)"))
 
 # Volcano plot
-png("../supplementary/sim_new/spike_in_ttest_volcano.png", width = 750, height = 500)
+png("../supplementary/sim_new/spike_in_anova_volcano.png", width = 1000, height = 500)
 anova_results %>% arrange(labeling) %>% 
   filter(is.finite(log2FC)) %>%
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
@@ -550,27 +430,6 @@ anova_results %>% arrange(labeling) %>%
   guides(colour = guide_legend(override.aes = list(size=5))) + 
   labs(title = "Anova VolcanoPlot")
 dev.off()
-```
-
-
-```{r}
-
-limma_comp = limma_plot_df %>% filter(protadj == "protein adjustment") %>% select(PTM, Label, Log2FC)
-anova_comp = anova_results %>% filter(protadj == "protein adjustment") %>% select(ptm, label, log2FC)
-
-comp = merge(limma_comp, anova_comp, by.x = c("PTM", "Label"), by.y = c("ptm", "label"))
-comp$diff = comp$Log2FC - comp$log2FC
-
-comp %>% ggplot() + geom_histogram(aes(diff)) + facet_grid(~Label)
-
-limma_comp = limma_plot_df %>% filter(protadj == "no adjustment") %>% select(PTM, Label, Log2FC)
-anova_comp = anova_results %>% filter(protadj == "no adjustment") %>% select(ptm, label, log2FC)
-
-comp = merge(limma_comp, anova_comp, by.x = c("PTM", "Label"), by.y = c("ptm", "label"))
-comp$diff = comp$Log2FC - comp$log2FC
-
-comp %>% ggplot() + geom_histogram(aes(diff)) + facet_grid(~Label)
-
 ```
 
 
@@ -650,31 +509,30 @@ adj_spike_msstats <- model_df$ADJUSTED.Model %>% filter(labeling == "heavy")
 adj_spike_msstats$Adjustment <- "protein adjustment"
 adj_spike_msstats$Model <- "MSstatsPTM"
 
-ttest_final_model[, log2FC:=NULL]
-unadj_spike_ttest <- ttest_final_model %>% filter(labeling == "SpikeIn Peptides" & protadj == "no adjustment")
-unadj_spike_ttest <- setNames(unadj_spike_ttest, c("ptm", "Label", "pval", "tstat", "SE", 
-                                                   "df", "log2FC", "labeling", "adj.pvalue", 
-                                                   "trueLog2FC", "contrast_truth", "protadj"))
+unadj_spike_ttest <- anova_results %>% filter(labeling == "SpikeIn Peptides" & protadj == "no adjustment")
+unadj_spike_ttest <- setNames(unadj_spike_ttest, c("Protein", "Label", "log2FC", "SE", "Tvalue", 
+                                                   "pvalue", "protadj", "adj.pvalue", "labeling", 
+                                                   "contrast_truth", "trueLog2FC"))
 
 unadj_spike_ttest$Adjustment <- "no adjustment"
-unadj_spike_ttest$Model <- "T-test"
+unadj_spike_ttest$Model <- "Anova"
 
-adj_spike_ttest <- ttest_final_model %>% filter(labeling == "SpikeIn Peptides" & protadj != "no adjustment")
-adj_spike_ttest <- setNames(adj_spike_ttest, c("ptm", "Label", "pval", "tstat", "SE", 
-                                                   "df", "log2FC", "labeling", "adj.pvalue", 
-                                                   "trueLog2FC", "contrast_truth", "protadj"))
+adj_spike_ttest <- anova_results %>% filter(labeling == "SpikeIn Peptides" & protadj != "no adjustment")
+adj_spike_ttest <- setNames(adj_spike_ttest, c("Protein", "Label", "log2FC", "SE", "Tvalue", 
+                                                   "pvalue", "protadj", "adj.pvalue", "labeling", 
+                                                   "contrast_truth", "trueLog2FC"))
 adj_spike_ttest$Adjustment <- "protein adjustment"
-adj_spike_ttest$Model <- "T-test"
+adj_spike_ttest$Model <- "Anova"
 
 unadj_spike_limma <- limma_model$PTM.Model %>% filter(labeling == "heavy")
-unadj_spike_limma <- setNames(unadj_spike_limma, c("PTM", "Label", "log2FC", "pvalue", "df", 
-                                                   "se", "labeling", "adj.pvalue", 
+unadj_spike_limma <- setNames(unadj_spike_limma, c("Protein", "Label", "log2FC", "pvalue", "DF", 
+                                                   "SE", "labeling", "adj.pvalue", 
                                                    "trueLog2FC", "contrast_truth", "protadj"))
 unadj_spike_limma$Adjustment <- "no adjustment"
 unadj_spike_limma$Model <- "Limma"
 adj_spike_limma <- limma_model$ADJUSTED.Model %>% filter(labeling == "heavy")
-adj_spike_limma <- setNames(adj_spike_limma, c("PTM", "Label", "log2FC", "pvalue", "df", 
-                                                   "se", "labeling", "adj.pvalue", 
+adj_spike_limma <- setNames(adj_spike_limma, c("Protein", "Label", "log2FC", "pvalue", "df", 
+                                                   "SE", "labeling", "adj.pvalue", 
                                                    "trueLog2FC", "contrast_truth", "protadj"))
 adj_spike_limma$Adjustment <- "protein adjustment"
 adj_spike_limma$Model <- "Limma"
@@ -686,50 +544,9 @@ spike[spike$Model == "MSstatsPTM", Model := "Proposed"]
 #plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']]
 spike$`color_label` <- "True LogFC"
 
-spike[spike$label == 'mix1-mix2'][['contrast_truth']] <- "LogFC: -1 (mix2-mix1)"
-spike[spike$label == 'mix1-mix3'][['contrast_truth']] <- "LogFC: 1 (mix3-mix1)"
-spike[spike$label == 'mix1-mix4'][['contrast_truth']] <- "LogFC: 0 (mix4-mix1)"
-spike[spike$label == 'mix2-mix3'][['contrast_truth']] <- "LogFC: 2 (mix3-mix2)"
-spike[spike$label == 'mix2-mix4'][['contrast_truth']] <- "LogFC: 1 (mix4-mix2)"
-spike[spike$label == 'mix3-mix4'][['contrast_truth']] <- "LogFC: -1 (mix4-mix3)"
-
-spike[spike$Label == 'mix3-mix4'][["Label"]] = "mix4 vs mix3"
-spike[spike$Label == 'mix2-mix4'][["Label"]] = "mix4 vs mix2"
-spike[spike$Label == 'mix1-mix4'][["Label"]] = "mix4 vs mix1"
-spike[spike$Label == 'mix2-mix3'][["Label"]] = "mix3 vs mix2"
-spike[spike$Label == 'mix1-mix3'][["Label"]] = "mix3 vs mix1"
-spike[spike$Label == 'mix1-mix2'][["Label"]] = "mix2 vs mix1"
-
-spike[spike$Label == "mix3 vs mix2" & 
-        spike$Model == "T-test"][["trueLog2FC"]] = 2
-spike[spike$Label == "mix3 vs mix2" & 
-        spike$Model == "T-test"][["log2FC"]] = spike[
-          spike$Label == "mix3 vs mix2" & 
-        spike$Model == "T-test"][["log2FC"]] * -1
-spike[spike$Label == "mix4 vs mix2" & 
-        spike$Model == "T-test"][["trueLog2FC"]] = 1
-spike[spike$Label == "mix4 vs mix2" & 
-        spike$Model == "T-test"][["log2FC"]] = spike[
-          spike$Label == "mix4 vs mix2" & 
-        spike$Model == "T-test"][["log2FC"]] * -1
-spike[spike$Label == "mix4 vs mix3" & 
-        spike$Model == "T-test"][["trueLog2FC"]] = -1
-spike[spike$Label == "mix4 vs mix3" & 
-        spike$Model == "T-test"][["log2FC"]] = spike[
-          spike$Label == "mix4 vs mix3" & 
-        spike$Model == "T-test"][["log2FC"]] * -1
-
-spike[spike$Label == "mix3 vs mix2" & 
-        spike$Model == "Limma"][["trueLog2FC"]] = 2
-spike[spike$Label == "mix4 vs mix2" & 
-        spike$Model == "Limma"][["trueLog2FC"]] = 1
-spike[spike$Label == "mix4 vs mix3" & 
-        spike$Model == "Limma"][["trueLog2FC"]] = -1
-
-
 png("../supplementary/sim_new/spike_in_fc.png", width = 750, height = 500)
 spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1],
-      Model = factor(Model, levels=c("Proposed", "Limma", "T-test"))) %>%
+      Model = factor(Model, levels=c("Proposed", "Limma", "Anova"))) %>%
   filter(!Label %in% c("mix1-mix2", "mix3-mix4")) %>% 
   ggplot() + 
   geom_boxplot(aes(x = Label, y = log2FC, fill = Model)) + 
@@ -753,12 +570,18 @@ dev.off()
 
 spike
 setDT(spike)[,list(IQR=IQR(log2FC, na.rm = TRUE)),by=list(Model, Label, protadj)] %>% 
-  filter(Label %in% c('mix2-mix3', 'mix1-mix3', 'mix1-mix4', 'mix2-mix4') & 
-           protadj == 'protein adjustment') %>% 
+  filter(protadj == 'protein adjustment') %>% 
   group_by(Model) %>% summarize(mean(IQR))
 
-(0.7557581 - 1.1954719) / 1.1954719
-(0.7557581 - 1.1277441) / 1.1277441
+spike_se = setDT(spike)[,list(SE=mean(SE, na.rm = TRUE)),by=list(Model, Label, protadj)] %>% 
+  filter(protadj == 'protein adjustment') %>% 
+  group_by(Model) %>% summarize(mean(SE))
+
+all_se = setDT(spike)[,list(SE=mean(SE, na.rm = TRUE)),by=list(Model, Label, protadj)] %>% 
+  filter(protadj == 'protein adjustment') %>% 
+  group_by(Model) %>% summarize(mean(SE))
+
+(0.5984246 - 0.9309134) / 0.9309134
 
 ```
 
