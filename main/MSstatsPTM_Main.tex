@@ -258,7 +258,7 @@ y^*_{ijk} = \hat{\mu}^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \ma
 \label{eq:ttest_model}
 \end{eqnarray}
 The model allows us to estimate $\hat{\Delta}$ and its standard error.
-Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=IJ-I$ degrees of freedom in balanced designs.
+Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=IJK-I$ \todo{should we replace IJK with N (number obs)?} degrees of freedom in balanced designs.
 Unfortunately, this approach is fundamentally flawed as it does not account for the confounding between changes in the PTM abundance and the overall changes in the abundance of the unmodified protein.
 
 \medskip \noindent 
