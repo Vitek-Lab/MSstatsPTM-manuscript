@@ -224,41 +224,42 @@ Each simulation was generated with random biological variation. The observed pep
 
 \subsection*{Goals of PTM characterization, input to statistical analyses, and notation}
 
-Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate corresponds to an LC-MS/MS run.  
-\figref{data-structure} schematically illustrates this data structure for one PTM site, in a special case of $I=2$ conditions and $J=2$ biological replicates per condition.
+Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate is represented by a single LC-MS/MS run.  
+\figref{data-structure} schematically illustrates this data structure for one PTM site, in a special case of a label-free experiment with $I=2$ conditions and $J=2$ biological replicates per condition.
 For one protein, the PTM site is represented by $K$ spectral features (i.e., peptide ions, distinguished by their cleavage residues and charge states). 
 The number of modified and unmodified features typically varies across proteins. Some log-intensities may be outliers, and some spectral features can be missing. 
 The log$_2$-intensity of Feature $k$, in Replicate $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified protein in the same run is denoted by $y_{ijl}$. The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.
 
-The population parameter of interest is the difference between the abundances of a PTM site in Condition $i$ and Condition $i^{\prime}$, denoted by $\mu_i^{\ast}$ and $\mu_{i^{\prime}}^{\ast}$ respectively. We are interested in testing the null hypothesis
+The population quantity of interest is the difference between the log$_2$ abundances of a PTM site in Condition $i$ and Condition $i^{\prime}$, denoted by $\mu_i^{\ast}$ and $\mu_{i^{\prime}}^{\ast}$ respectively. We are interested in testing the null hypothesis
 \begin{eqnarray}
 H_{0}: \Delta_{PTM} = \mu_{i}^{\ast} - \mu_{i^{\prime}}^{\ast} = 0 \ \text{vs} \ 
 H_{a}: \Delta_{PTM} = \mu_{i}^{\ast} - \mu_{i^{\prime}}^{\ast} \neq 0
 \label{eq:conv_null_hyp}
 \end{eqnarray}
-Unfortunately, the population parameter is inherently confounded with the overall changes in protein abundance. To account for this, it is advantageous to consider a different null hypothesis:
+Unfortunately, this population quantity is inherently confounded with the overall changes in protein abundance. To account for this, it is advantageous to consider a different null hypothesis:
 \begin{eqnarray}
 H_{0}: \Delta_{adj} = ( \mu_{i}^{\ast} - \mu_{i}) - ( \mu_{i^{\prime}}^{\ast} - \mu_{i^{\prime}} ) = 0 \ \text{vs} \ 
 H_{a}: \Delta_{adj} = ( \mu_{i}^{\ast} - \mu_{i}) - ( \mu_{i^{\prime}}^{\ast} - \mu_{i^{\prime}} ) \neq 0
 \label{eq:null_hyp}
 \end{eqnarray}
-where $\mu_i$ and $\mu_{i^{\prime}}$ reflect the overall protein abundances in Condition $i$ and Condition $i^{\prime}$. These quantities are estimated using protein features without with and without the modification site.
+where $\mu_i$ and $\mu_{i^{\prime}}$ reflect the overall log$_2$ protein abundances in Condition $i$ and Condition $i^{\prime}$. These quantities are estimated using protein features without with and without the modification site.
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \subsection*{Existing statistical methods for detecting differentially abundant PTMs}
 
-\noindent {\bf Anova based on modified log$_2$-intensities} 
+\noindent {\bf ANOVA on modified log$_2$-intensities} 
 
 \medskip \noindent 
 
-The basic Anova~\cite{kutner_etal_04a} is based on the model
+The basic Analysis of Variance (ANOVA) model~\cite{kutner_etal_04a}  is
 \begin{eqnarray}
-y^*_{ijk} = \hat{\mu}^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2}),\ i=1,\ldots,I,\ j=1,\ldots,J,\ k=1,\ldots,K
+y^*_{ijk} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2}),\ i=1,\ldots,I,\ j=1,\ldots,J,\ k=1,\ldots,K
 \label{eq:ttest_model}
 \end{eqnarray}
 The model allows us to estimate $\hat{\Delta}$ and its standard error.
 Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=I(JK-1)$ degrees of freedom in balanced designs.
+\todo{I do not think this is right. I believe there should be a summarization first, such that the data are $\hat{y}_{ij}$, the model becomes $\hat{y}^*_{ij} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2})$ and the df are $df=I(J-1)$. Could you introduce the summarization first?}
 Unfortunately, this approach is fundamentally flawed as it does not account for the confounding between changes in the PTM abundance and the overall changes in the abundance of the unmodified protein.
 
 \medskip \noindent 
@@ -266,7 +267,7 @@ Unfortunately, this approach is fundamentally flawed as it does not account for 
 \noindent {\bf Anova based on ratios of modified and unmodified log$_2$-intensities}
 
 \medskip \noindent 
-The basic Anova can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, separately for modified and unmodified features, e.g. with the sum on the original scale, dividing the summary of the PTM abundance by the summary of the protein abundance and then taking a log. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
+The basic ANOVA can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, \todo{This is a good place to remind of the summary notation $\hat{y}_{ij}$ that drops subscript $k$} separately for modified and unmodified features, e.g. with the sum on the original scale, dividing the summary of the PTM abundance by the summary of the protein abundance and then taking a log. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
 \begin{eqnarray}
 u_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right)
 \label{eq:adj_estimation}
@@ -279,11 +280,11 @@ u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon
 The model allows us to estimate $\hat{\Delta}_{adj}$ and its standard error.
 Based on this model, we can test the more relevant null hypothesis in~\eqref{null_hyp}, by comparing the test statistic against the Student distribution with $df=I(J-1)$ degrees of freedom in balanced designs.
 
-Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with multi-run multiplexing. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, there is no self contained, straightforward implementation of the method, such as in the form of a coding package, requiring a manual application.
+Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with multi-run multiplexing. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, there is no self contained, straightforward implementation of the method, such as in the form of a coding package, and therefore the approach requires a manual implementation.
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The two versions of Anova above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version which models the ratios $\hat{u}_{ij}$ in~\eqref{adj_estimation} can be used to answer the null hypothesis in \eqref{null_hyp}. Limma uses the transformed inputs to fit a linear model with a fixed condition effect for each PTM.
+\medskip \noindent The two versions of ANOVA above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version which models the ratios \todo{do you need hat on top of u?} $\hat{u}_{ij}$ in~\eqref{adj_estimation} can be used to answer the null hypothesis in \eqref{null_hyp}. Limma uses the transformed inputs to fit a linear model with a fixed condition effect for each PTM.
 
 \begin{eqnarray}
 & u_{ij} = \mu + Condition_i + \epsilon_{ij}, \text{where } \sum\limits_{i=1}^{I} Condition_i = 0, \epsilon_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^2)
@@ -568,7 +569,7 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.45]{images/fig3.png}
-\caption{Schematic representation of one PTM site, in a special case of $I=2$ conditions and $J=2$ biological replicates per condition. We are interested in estimating the difference between the population-level PTM abundance between Condition 1 and Condition 2 (i.e, $\mu^*_1-\mu^*_2$), relative to the population-level difference of the overall protein abundance (i.e., $\mu_1-\mu_2$).  These quantities are characterized by the observed spectral Features (boxes), i.e. peptides of different charge states. The peptides can be fully cleaved (solid lines), or partially cleaved (dashed lines). The log$_2$-intensities of the modified peptides in Condition $i$, Run $j$, and Feature $k$ are denoted by $y_{ijk}^{\ast}$. The log$_2$-intensities of Feature $k$ corresponding to the unmodified peptide in Condition $i$ and Run $j$ are denoted by $y_{ijk}$. }
+\caption{Schematic representation of one PTM site, in a special case of a label-free experiment with $I=2$ conditions and $J=2$ biological replicates per condition. After a log$_2$ transform, we are interested in estimating the difference between the population-level PTM abundance between Condition 1 and Condition 2 (i.e, $\mu^*_1-\mu^*_2$), relative to the population-level difference of the overall protein abundance (i.e., $\mu_1-\mu_2$).  These quantities are characterized by the observed spectral Features (boxes), i.e. peptides of different charge states. The peptides can be fully cleaved (solid lines), or partially cleaved (dashed lines). The log$_2$-intensities of the modified peptides in Condition $i$, Run $j$, and Feature $k$ are denoted by $y_{ijk}^{\ast}$. The log$_2$-intensities of Feature $k$ corresponding to the unmodified peptide in Condition $i$ and Run $j$ are denoted by $y_{ijk}$. }
 \label{fig:data-structure}
 \end{figure}
 
