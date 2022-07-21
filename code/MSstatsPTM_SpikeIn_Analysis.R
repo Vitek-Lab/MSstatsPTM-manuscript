@@ -467,11 +467,6 @@ aqua_summarized <- aqua_summarized %>%
 
 ## Summarize and model ---------------------------------------------------------
 ## Combine into one list
-aqua_df <- list(
-  PTM = aqua_summarized,
-  PROTEIN = NULL
-)
-
 df_site <- df_site %>% select(-feature, -Fraction)
 
 input_df <- list(
@@ -485,6 +480,7 @@ summary_df <- dataSummarizationPTM(input_df,
                                    normalization.PTM = FALSE,
                                    MBimpute = FALSE, MBimpute.PTM = FALSE)
 
+## Add Aqua peptides into summarized data
 aqua_summarized$Protein  = aqua_summarized$ProteinName
 aqua_summarized$originalRUN = aqua_summarized$Run
 aqua_summarized$GROUP = aqua_summarized$Condition
@@ -508,11 +504,6 @@ summary_df$PTM$ProteinLevelData = rbindlist(
 save(summary_df,
      file = "D:\\Northeastern\\Research\\MSstats\\PTM_Refractor\\Label_Free_PTM_Data\\benchmark-spike\\MSstatsPTM_Summarized.rda")
 
-# summary_df <- temp_summary_df
-# summary_df$PTM$ProteinLevelData <- summary_df$PTM$ProteinLevelData %>%
-#   mutate(LogIntensities = ifelse(str_detect(originalRUN, "mix3|mix4"),
-#                                  LogIntensities -1, LogIntensities))
-
 # Contrast
 comparison = matrix(c(-1,1,0,0,
                        -1,0,1,0,
@@ -529,31 +520,7 @@ model_df <- groupComparisonPTM(summary_df, data.type = "LabelFree",
                                contrast.matrix = comparison,
                                use_log_file=FALSE)
 
-save(model_df,
-     file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_MSstatsPTM_Model.rda")
-
-# model_df$PTM.Model <- model_df$PTM.Model %>% mutate(
-#   Label = ifelse(Label == "mix2 vs mix1", "mix1-mix2",
-#                ifelse(Label == "mix3 vs mix1", "mix1-mix3",
-#                       ifelse(Label == "mix4 vs mix1", "mix1-mix4",
-#                              ifelse(Label == "mix2 vs mix3", "mix2-mix3",
-#                                     ifelse(Label == "mix2 vs mix4", "mix2-mix4",
-#                                            "mix3-mix4"))))))
-#
-# model_df$ADJUSTED.Model <- model_df$ADJUSTED.Model %>%
-#   mutate(Label = ifelse(Label == "mix2 vs mix1", "mix1-mix2",
-#               ifelse(Label == "mix3 vs mix1", "mix1-mix3",
-#                      ifelse(Label == "mix4 vs mix1", "mix1-mix4",
-#                             ifelse(Label == "mix2 vs mix3", "mix2-mix3",
-#                                    ifelse(Label == "mix2 vs mix4", "mix2-mix4",
-#                                           "mix3-mix4"))))))
-# model_df$PROTEIN.Model <- model_df$PROTEIN.Model %>%
-#   mutate(Label = ifelse(Label == "mix2 vs mix1", "mix1-mix2",
-#               ifelse(Label == "mix3 vs mix1", "mix1-mix3",
-#                      ifelse(Label == "mix4 vs mix1", "mix1-mix4",
-#                             ifelse(Label == "mix2 vs mix3", "mix2-mix3",
-#                                    ifelse(Label == "mix2 vs mix4", "mix2-mix4",
-#                                           "mix3-mix4"))))))
+save(model_df, file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_MSstatsPTM_Model.rda")
 
 
 ## Model Plots -----------------------------------------------------------------

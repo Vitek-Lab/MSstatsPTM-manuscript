@@ -78,7 +78,7 @@ gsmd_62_sum[gsmd_62_sum$FeatureType == 'Peptide'][['FeatureType']] <- "PTM Featu
 gsmd_sum[gsmd_sum$FeatureType == 'Model'][['FeatureType']] <- "Protein Summarized"
 gsmd_sum[gsmd_sum$FeatureType == 'Peptide'][['FeatureType']] <- "Protein Feature"
 
-p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, 
+p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance,
                                                color = FeatureType,
                                                group = PSM, size = FeatureType)) +
   geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 5) +
@@ -86,7 +86,7 @@ p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance,
              aes(xintercept=as.numeric(x)), linetype = "dashed") +
   scale_colour_manual(values = c("#C3C3C3", "#D55E00")) +
   scale_size_manual(values = c(1.5,1)) +
-  labs(title = "GSDMD with ubiquitination at site K62", x = "BioReplicate", 
+  labs(title = "GSDMD with ubiquitination at site K62", x = "BioReplicate",
        y = "Abundance") +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 60, hjust=1, size = 16),
@@ -107,7 +107,7 @@ p1 <- gsmd_62_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance,
   annotate("text", x = 8.5, y = 22.75, label = "Dox4hr", size = 8) +
   annotate("text", x = 10.5, y = 22., label = "Dox6hr", size = 8)
 
-p2 <- gsmd_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance, 
+p2 <- gsmd_sum %>% ggplot() + geom_line(aes(x = BioReplicate, y = Abundance,
                                             color = FeatureType,
                                          group = PSM, size = FeatureType)) +
   geom_point(aes(x = BioReplicate, y = Abundance, color = FeatureType), size = 5) +
@@ -163,11 +163,11 @@ v1 <- unadj_plot_df %>% ggplot() +
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 8) +
-  labs(title = "Dox 4 hr vs Dox 1 hr, by PTM quant only", 
+  labs(title = "Dox 4 hr vs Dox 1 hr, by PTM quant only",
        y = "-Log Adj. Pvalue",
        x = "Estimated log2 Fold Change") +
   geom_label_repel(
-    data = data.frame(x = -.500, y = -log10(.064), 
+    data = data.frame(x = -.500, y = -log10(.064),
                       label = "GSDMD K62 \n Log2FC: -.501 \n Adj.pvalue: .0644"),
     aes(x = x, y = y, label = label),
     label.padding = unit(0.55, "lines"),
@@ -201,7 +201,7 @@ v2 <- adj_plot_df %>% ggplot() +
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 8) +
-  labs(title = "Dox 4 hr vs Dox 1 hr, PTM adjusted by Protein", 
+  labs(title = "Dox 4 hr vs Dox 1 hr, PTM adjusted by Protein",
        y = "-Log Adj. Pvalue",
        x = "Estimated log2 Fold Change") +
   geom_label_repel(
@@ -240,8 +240,8 @@ venn.diagram(
   filename = "ipah_venn_diagramm.png",
   output=TRUE,
   imagetype="png" ,
-  height = 1400,
-  width = 1400,
+  height = 1500,
+  width = 1500,
   resolution = 100,
   lwd = 2,
   fill = colors,
@@ -255,7 +255,7 @@ venn.diagram(
   cat.pos = c(-40, 30),
   cat.dist = c(.037, .03),
   main.cex = 2.8,
-  main = "Overlap between signficant adjusted and unadjusted PTMs"
+  main = "Dataset 4: Differentially abundant adjusted and unadjusted PTMs"
 )
 
 combined_models <- merge(adj_ptm_model, unadj_ptm_model, all.x=TRUE, all.y=TRUE, by = c("Protein_Label"))

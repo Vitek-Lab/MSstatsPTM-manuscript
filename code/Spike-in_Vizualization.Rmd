@@ -19,7 +19,6 @@ library(limma)
 
 ## Spike-in Dataset Method Comparison
 
-This markdown file examines the custom made spike-in analysis targeting PTMs. This allows us to know which PTMs are actually differential and which are not. The models used in this analysis are: MSstatsPTM, limma, and two condition t-test. For MSstatsPTM the full workflow is used for run-level summarization and modeling. Limma and t-test use feature averaging for run summarization and then their coresponding models are fit. The model results are shown first and then a comparison is made.
 
 ```{r include=FALSE}
 ## Some general function definitions -------------------------------------------
@@ -77,12 +76,10 @@ Protein: 10.2
 
 #### Volcano Plot
 
-First a comparison between the adjusted and unadjusted models are shown. The spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
-
 ```{r pressure, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "D:\\Northeastern\\Research\\MSstats\\PTM_Refractor\\Label_Free_PTM_Data\\benchmark-spike\\MSstatsPTM_Summarized.rda")
+load(file = "MSstatsPTM_Summarized.rda")
 
-load(file = "../data/Spike_in_MSstatsPTM_Model.rda")#model_df
+load(file = "MSstatsPTM_Model.rda")#model_df
 
 model_df$ADJUSTED.Model <- model_df$ADJUSTED.Model %>% filter(is.finite(pvalue))
 model_df$PTM.Model <- model_df$PTM.Model %>% filter(is.finite(pvalue))
@@ -141,8 +138,6 @@ plot_df %>% arrange(labeling) %>%
   labs(title = "Proposed Method VolcanoPlot")
 ```
 
-We can clearly see the effect of the adjustment in the volcano plots. Before adjustment, the red spike-in peptides did not follow the expected fold change. Additionally there are a large amount of false positives, shown as grey dots above the significance threshold. After applying protein level adjustment the red spike-in peptides are much more in line with expectation and there are many less false positives.
-
 #### Summary Statistics
 
 Summary statistics for the models are given below.
@@ -161,11 +156,9 @@ msstatsptm_stats %>% ggplot() + geom_col(aes(x = metric, y = result, fill = Adju
 
 ```
 
-In the summary statistics we can clearly see the advantage of the protein adjustment. Overall accuracy increases to near 100% (although we need to keep in mind it is dominated by the large number of true negatives). The False Positive Rate decreases substantially. Precision increases but is still quiet low. This is mainly due to the very large number of true negatives. While we were able to correctly categorize a large portion of the true negatives, there are still a large number that were missed and dominate this statistic. Recall only saw a slight increase in the adjusted model. This is because, while the fold change does now follow what we expected, a large number of the spike-in peptides still had an adjusted p value over .05. This is most likely due to increases in the variance when combined with the protein model. Finally specificity also saw a large increase when adding in the protein adjustment, indicating we are correctly identifying most of the background peptides as negatives.
 
 #### Log Fold Change - Spike-in Peptides
 
-Lastly, the plot below looks at the distribution spike-in peptides log fold changes. The expected log Fold Change is indicated by the red `X` marks.
 
 ```{r, echo = FALSE, fig.width = 10, fig.height = 5}
 unadj_spike <- model_df$PTM.Model %>% filter(labeling == "heavy")
@@ -180,7 +173,6 @@ spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = log2FC), fill = "l
  
 ```
 
-We can see in the plot above that the fold change of the spike-in peptides falls in line with expectation much better after adjustment. The expected change falls very close to the median value, and is at least within the 1st and 3rd quartile boxes in every comparison. In the unadjusted plot, the expected falls outside the quartile boxes in the majority of comparisons.
 
 #### Calculating background peptide percentages
 
@@ -203,10 +195,9 @@ We will repeat the above analysis for Limma.
 
 #### Volcano Plot
 
-First a comparison between the adjusted and unadjusted models are shown. Again the spike-in peptides are colored red and their expected log Fold Change is indicated in the subplot title. The background peptides are colored grey and should all be insignificant.
 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "../data/Spike_in_Limma_Model.rda")#limma_model
+load(file = "Limma_Model.rda")#limma_model
 
 limma_model <- list(PTM.Model = limma_model %>% filter(protadj == "no adjustment"),
                     ADJUSTED.Model = limma_model %>% filter(protadj == "protein adjustment"))
@@ -266,8 +257,6 @@ plot_df %>% arrange(labeling) %>%
   guides(colour = guide_legend(override.aes = list(size=5))) +
   labs(title = "Limma VolcanoPlot")
 ```
-
-The limma model shows an improvement in terms of the false positives, but loses insight into the majority of spike-in peptides. After adjustment, the spike-in peptides are much more inline with the expected log2FC, however they are mostly below the significant pvalue threshold. This is most likely due to an increase in standard error or lower degrees of freedom compared to MSstatsPTM.
 
 #### Create combo plot of proposed and limma
 
@@ -337,11 +326,8 @@ limma_stats %>% ggplot() + geom_col(aes(x = metric, y = result, fill = Adjustmen
 
 ```
 
-The summary statistics repeat what we saw in the volcano plots. The accuracy and specificity are both much higher after adjustment due to the decrease in false positives. Of course this is also seen in the lower FPR. Recall after adjustment is much lower. We are correctly labeling very few of the true positives after adjustment. This is in contrast to MSstatsPTM which actually saw an increase in recall after adjustment.
-
 #### Log Fold Change - Spike-in Peptides
 
-Again the last thing we will look at is the distribution spike-in peptides log fold changes. The expected log Fold Change is indicated by the red `X` marks.
 
 ```{r, echo = FALSE, fig.width = 10, fig.height = 5}
 unadj_spike <- limma_model$PTM.Model %>% filter(labeling == "heavy")
@@ -356,14 +342,12 @@ spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = Log2FC), fill = "l
  
 ```
 
-Once again we see a strong improvement in the Log2FC of spike-in peptides after adjustment. In contrast to MSstatsPTM the distribution after adjustment is much wider, with a median close to the true FC. This larger variance around the median indicates that while we are generally seeing the true FC, the results are not as strong as MSstatsPTM.
-
 ### Anova
 
 #### Volcano Plot
 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "../data/anova_results.rda")#anova_results
+load(file = "Anova_Model.rda")#anova_results
 
 anova_results$contrast_truth = ""
 anova_results$trueLog2FC=0
@@ -424,14 +408,8 @@ anova_results %>% arrange(labeling) %>%
   labs(title = "Anova VolcanoPlot")
 ```
 
-
-#### Summary Statistics
-
-The summary statistics for this model are skipped because the adjusted pvalue shows no positive results.
-
 #### Log Fold Change - Spike-in Peptides
 
-Lastly, we will again look at the distribution of the spike-in peptides log fold changes. The expected log Fold Change is indicated by the red `X` marks.
 
 ```{r, echo = FALSE, fig.width = 10, fig.height = 5}
 unadj_spike <- ttest_final_model %>% filter(protadj == "no adjustment" & labeling == "heavy")
@@ -446,13 +424,9 @@ spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = estimate), fill = 
 
 ```
 
-This plots is very similar to the limma plot. The spike-in peptides follow the expected FC much better after adjustment. However the effect is much wider around the true FC than MSstatsPTM, meaning the effect is less accurate.
 
 ### Summary
 
-From the analysis above it is clear MSstatsPTM is the most robust modeling method of the three tested. In the computer simulations we saw MSstatsPTM and Limma having similar results, however in the real world experiment Limma performanced significantly worse. This could be in part due to the robust TMP summary methods used by MSstatsPTM compared the log sum of abundance used for Limma. An extension to this analysis could look into the performance of Limma using the same summarization methods as used in MSstatsPTM. In either case it is clear that the full workflow of MSstatsPTM performs the best of the observed models.
-
-In the following plot we compare the summary statsitics of the adjusted models. Note T-test is shown but all values are zero.
 ```{r, echo = FALSE, fig.width = 8}
 cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999")
 
@@ -486,9 +460,6 @@ summary %>% mutate(Model = factor(Model, levels=c("Proposed", "Limma", "Anova"))
        legend.position = "right")
 ```
 
-This plot confirms that MSstatsPTM and limma are comparable in terms of FDR, however MSstatsPTM performs much better when identifying the true positives, spike-in, peptides.
-
-In the following plot we compare the log2FC of the spike-in peptides across models.
 
 ```{r, echo = FALSE, fig.width = 8}
 
@@ -556,5 +527,3 @@ spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1
   labs(title = "Fold Change of Spike-in Peptides", x = "Comparison with Expected FC")
 
 ```
-
-In this plot we can see that the unadjusted models are very similar and do not follow the expected FC. In comparison the adjusted models all generally follow the expectation, however MSstatsPTM has a tighter distribution around the expected FC. In contrast the other two models have a wider range around the true FC.
