@@ -259,20 +259,20 @@ y^*_{ijk} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\s
 \end{eqnarray}
 The model allows us to estimate $\hat{\Delta}$ and its standard error.
 Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=I(JK-1)$ degrees of freedom in balanced designs.
-\todo{I do not think this is right. I believe there should be a summarization first, such that the data are $\hat{y}_{ij}$, the model becomes $\hat{y}^*_{ij} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2})$ and the df are $df=I(J-1)$. Could you introduce the summarization first?}
+\todo{I do not think this is right. I believe there should be a summarization first, such that the data are $\hat{y}_{ij}$, the model becomes $\hat{y}^*_{ij} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2})$ and the df are $df=I(J-1)$. The index k should drop. Could you introduce the summarization first? What do you think re keeping or removing the hat on $\hat{y}_{ij}$?}
 Unfortunately, this approach is fundamentally flawed as it does not account for the confounding between changes in the PTM abundance and the overall changes in the abundance of the unmodified protein.
 
 \medskip \noindent 
 
-\noindent {\bf Anova based on ratios of modified and unmodified log$_2$-intensities}
+\noindent {\bf ANOVA based on ratios of modified and unmodified log$_2$-intensities}
 
 \medskip \noindent 
-The basic ANOVA can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, \todo{This is a good place to remind of the summary notation $\hat{y}_{ij}$ that drops subscript $k$} separately for modified and unmodified features, e.g. with the sum on the original scale, dividing the summary of the PTM abundance by the summary of the protein abundance and then taking a log. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
+The basic ANOVA can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, separately for modified and unmodified features, e.g. with the sum on the original scale, dividing the summary of the PTM abundance by the summary of the protein abundance and then taking a log. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
 \begin{eqnarray}
 u_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right)
 \label{eq:adj_estimation}
 \end{eqnarray}
-The approach then models these values as
+The approach then models these values as \todo{if we keep a hat on $\hat{y}_{ij}$, we should probably keep a hat on $\hat{u}_{ij}$}
 \begin{eqnarray}
 u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon^{\prime}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{\prime 2}),\ i=1,\ldots,I,\ j=1,\ldots,J
 \label{eq:ttest_model}
@@ -280,20 +280,18 @@ u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon
 The model allows us to estimate $\hat{\Delta}_{adj}$ and its standard error.
 Based on this model, we can test the more relevant null hypothesis in~\eqref{null_hyp}, by comparing the test statistic against the Student distribution with $df=I(J-1)$ degrees of freedom in balanced designs.
 
-Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with multi-run multiplexing. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, there is no self contained, straightforward implementation of the method, such as in the form of a coding package, and therefore the approach requires a manual implementation.
+Although effective, the approach is somewhat simplistic. It is not applicable to experimental designs with more complex sources of biological and technological variation, such as experiments with repeated measurements, experiments with multiple batches or experiments with TMT labeling. Since \eqref{adj_estimation} performs the adjustment on the replicate level, the experiment must contain a matching number of replicates in both the modified and unmodified runs. Technological artifacts such as missing values further undermine the calculation of $u_{ij}$ in~\eqref{adj_estimation}. Finally, there is no self contained, straightforward implementation of the method, such as in the form of a coding package, and therefore the approach requires a manual implementation.
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The two versions of ANOVA above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. In particular, the ratio-based version which models the ratios \todo{do you need hat on top of u?} $\hat{u}_{ij}$ in~\eqref{adj_estimation} can be used to answer the null hypothesis in \eqref{null_hyp}. Limma uses the transformed inputs to fit a linear model with a fixed condition effect for each PTM.
+\medskip \noindent The two versions of ANOVA above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. A typical application of Limma takes as input $u_{ij}$, and for each PTM fits the linear model in~\eqref{ttest_model}. 
+The method differs from the ratio-based ANOVA in specifying additional prior distributions for the model parameters.
+The prior distributions are estimated from the data across all the proteins and all the PTM as described in \todo{XXX}. 
+With this approach, testing the null hypothesis in~\eqref{null_hyp} amounts to combining the PTM-specific and the consensus variance. \todo{I am wondering if an equation would help}
+In  experiments with few biological replicates, the resulting standard errors are often smaller, and the degrees of freedom are often larger than in absence of the moderation~\cite{Ritchie_15a}. 
+Thus the approach tends to increase the sensitivity of detection of differential abundance.
 
-\begin{eqnarray}
-& u_{ij} = \mu + Condition_i + \epsilon_{ij}, \text{where } \sum\limits_{i=1}^{I} Condition_i = 0, \epsilon_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^2)
-\label{eq:limma_model}
-\end{eqnarray}
-
-The method than uses Empirical Bayes moderation to combine the variance estimations across all PTMs modeled. This increases the degrees of freedom with which the individual PTM variances are estimated~\cite{Ritchie_15a}. The goal of Limma is to increase the sensitivity of detection of differential abundance when the experiment has few biological replicates. 
-
-Since Limma only improves upon the methods above in estimation of variation, it has the same limitations in terms of the experimental designs. The method is only directly applicable to experiments with at most two variance components, meaning that in more complex experiments it cannot account for all sources of variation. Additionally, it still requires the same experimental design for the modified and unmodified features so that the ratio calculation can be performed. Finally, there is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
+Since Limma only improves upon the methods above in estimation of variation, it has the same limitations in terms of the experimental designs. The method is only directly applicable to experiments with at most two variance components, and cannot account for all the sources of variation in more complex experiments. Additionally, it requires the same experimental design for the modified and unmodified features so that the ratio calculation can be performed. Finally, there is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
 
 \medskip \noindent {\bf Isobar-PTM} \medskip \noindent Isobar-PTM was also proposed for experiments with LC-MS/MS quantitative strategies that employ isobaric labels such as TMT or isobaric tag for relative and absolute quantification (iTRAQ)\cite{Breitwieser:2013}. Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. Unfortunately, this statistical modeling framework is not applicable to either label-free workflows or experiments with complex designs. 
 
@@ -306,6 +304,7 @@ $MSstats$~\cite{Choi:2014} and $MSstatsTMT$~\cite{Huang:2020} are a series of R/
 & \text{where } \sum\limits_{i=1}^{I} Condition_i = 0,\ Run \mathop\sim^{iid} \mathcal{N}(0, \sigma^2_j), \epsilon_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^2) & \nonumber
 \label{eq:msstats_model}
 \end{eqnarray}
+\todo{Is it true that we have a separate variance parameter for each run $ \sigma^2_j$? I don't think so. I think it should be a separate sigma, but same for all the runs}
 Parameters of the model are estimated using restricted maximum likelihood (REML)~\cite{Kenward}.
 In turn, the parameters allow us to estimate the relevant quantity $\hat{\Delta}_{Protein}$ and its standard error. Where $\hat{\Delta}_{Protein}$ is estimated as
 
@@ -313,7 +312,7 @@ In turn, the parameters allow us to estimate the relevant quantity $\hat{\Delta}
 \hat{\Delta}_{Protein} = \hat{\mu}_{i} - \hat{\mu}_{i^{\prime}}
 \label{eq:protein_delta}
 \end{eqnarray}
-
+\todo{There is no $\mu$ in Eq 6. Could you explain how $\mu$ relates to $Condition$? Alternatively, we can re-write the ANOVA models so that we use zero sum parametrization rather than the cell means parametriation}
 Similarly to $Limma$, $MSstatsTMT$ includes an optional Empirical Bayes moderation of the standard error~\cite{Huang:2020}, which increases the sensitivity of the model when the number of biological replicates in each condition is small. Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution.
 
 The $MSstats$ framework has a number advantages over the methods above. 
