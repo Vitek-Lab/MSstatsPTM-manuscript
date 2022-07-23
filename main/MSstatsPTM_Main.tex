@@ -300,20 +300,18 @@ Since Limma only improves upon the estimation of variation, it has the same limi
 \subsection*{Statistical modeling and parameter estimation in MSstats}
 
 $MSstats$~\cite{Choi:2014} and $MSstatsTMT$~\cite{Huang:2020} are a series of R/Bioconductor packages designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. Models in these packages takes as input a list of log$_2$-intensities $y_{ijk}$. For each protein, the feature log$_2$-intensities are first summarized into a single value per protein per run using Tukey's median polish~\cite{Tukey:1977}. These summarized values are then used as input to fit a flexible family of linear mixed-effects models \cite{McLean:1991, Faraway:2006, Bolker2009}. The specific model instances depend on the experimental design and data acquisition. For example, to model the unmodified protein in \figref{data-structure} $MSstats$ fits the following model
+\todo{I rewrote the model so that it uses $\mu_i$ directly rather than conditions}
 \begin{eqnarray}
-& y_{ij} = \mu + Condition_i + Run_{j} + \epsilon_{ij}, & \\ 
-& \text{where } \sum\limits_{i=1}^{I} Condition_i = 0,\ Run \mathop\sim^{iid} \mathcal{N}(0, \sigma^2_j), \epsilon_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^2) & \nonumber
+& y_{ij} = \mu_i + Run_{j} + \epsilon_{ij}, \  \text{where } Run \stackrel{iid}{\sim} \mathcal{N}(0, \sigma^2_j), \epsilon_{ij} \stackrel{iid}{\sim} \mathcal{N}(0, \sigma^2) & 
 \label{eq:msstats_model}
 \end{eqnarray}
-\todo{Is it true that we have a separate variance parameter for each run $ \sigma^2_j$? I don't think so. I think it should be a separate sigma, but same for all the runs}
+\todo{Is it true that we have a separate variance parameter for each run $ \sigma^2_j$? I don't think so. I think it should be a separate sigma (or maybe $\tau^2$), but same for all the runs}
 Parameters of the model are estimated using restricted maximum likelihood (REML)~\cite{Kenward}.
 In turn, the parameters allow us to estimate the relevant quantity $\hat{\Delta}_{Protein}$ and its standard error. Where $\hat{\Delta}_{Protein}$ is estimated as
-
 \begin{eqnarray}
 \hat{\Delta}_{Protein} = \hat{\mu}_{i} - \hat{\mu}_{i^{\prime}}
 \label{eq:protein_delta}
 \end{eqnarray}
-\todo{There is no $\mu$ in Eq 6. Could you explain how $\mu$ relates to $Condition$? Alternatively, we can re-write the ANOVA models so that we use zero sum parametrization rather than the cell means parametriation}
 Similarly to $Limma$, $MSstatsTMT$ includes an optional Empirical Bayes moderation of the standard error~\cite{Huang:2020}, which increases the sensitivity of the model when the number of biological replicates in each condition is small. Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution.
 
 The $MSstats$ framework has a number advantages over the methods above. 
