@@ -225,10 +225,10 @@ Each simulation was generated with random biological variation. The observed pep
 \subsection*{Goals of PTM characterization, input to statistical analyses, and notation}
 
 Consider a label-free LC-MS/MS experiment in the special case of a balanced design with $I$ conditions and $J$ biological replicates per condition. For simplicity, we assume that the experiment has no technical replicates, such that each biological replicate is represented by a single LC-MS/MS run.  
-\figref{data-structure} schematically illustrates this data structure for one PTM site, in a special case of a label-free experiment with $I=2$ conditions and $J=2$ biological replicates per condition.
+\figref{data-structure} schematically illustrates this data structure for one protein and one PTM site, $I=2$ and $J=2$.
 For one protein, the PTM site is represented by $K$ spectral features (i.e., peptide ions, distinguished by their cleavage residues and charge states). 
-The number of modified and unmodified features typically varies across proteins. Some log-intensities may be outliers, and some spectral features can be missing. 
-The log$_2$-intensity of Feature $k$, in Replicate $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified protein in the same run is denoted by $y_{ijl}$. The features can be quantified as part of a same mass spectrometry run, or in separate enrichment and global proteome profiling runs.
+The number of modified and unmodified features typically varies across proteins. Some log-intensities can be outliers, and some spectral features can be missing. 
+The log$_2$-intensity of Feature $k$, in Replicate $j$ of Condition $i$ is denoted by $y_{ijk}^{\ast}$. Conversely, the unmodified protein is represented by $L$ spectral features, and the log-intensity of Feature $l$ from the unmodified protein in the same run is denoted by $y_{ijl}$. The features can be quantified as part of a same mass spectrometry run, or in a separate enrichment and global proteome profiling run.
 
 The population quantity of interest is the difference between the log$_2$ abundances of a PTM site in Condition $i$ and Condition $i^{\prime}$, denoted by $\mu_i^{\ast}$ and $\mu_{i^{\prime}}^{\ast}$ respectively. We are interested in testing the null hypothesis
 \begin{eqnarray}
@@ -242,7 +242,7 @@ H_{0}: \Delta_{adj} = ( \mu_{i}^{\ast} - \mu_{i}) - ( \mu_{i^{\prime}}^{\ast} - 
 H_{a}: \Delta_{adj} = ( \mu_{i}^{\ast} - \mu_{i}) - ( \mu_{i^{\prime}}^{\ast} - \mu_{i^{\prime}} ) \neq 0
 \label{eq:null_hyp}
 \end{eqnarray}
-where $\mu_i$ and $\mu_{i^{\prime}}$ reflect the overall log$_2$ protein abundances in Condition $i$ and Condition $i^{\prime}$. These quantities are estimated using protein features without with and without the modification site.
+where $\mu_i$ and $\mu_{i^{\prime}}$ reflect the overall log$_2$ protein abundances in Condition $i$ and Condition $i^{\prime}$. These quantities are estimated using protein features with and without the modification site.
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -252,14 +252,13 @@ where $\mu_i$ and $\mu_{i^{\prime}}$ reflect the overall log$_2$ protein abundan
 
 \medskip \noindent 
 
+\todo{I do not think this is right. I believe there should be a summarization first, such that the data are $\hat{y}_{ij}$, the model becomes $\hat{y}^*_{ij} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2})$ and the df are $df=I(J-1)$. The index k should drop. Could you start by introducing the summarization? What do you think re keeping or removing the hat on $\hat{y}_{ij}$?}
 The basic Analysis of Variance (ANOVA) model~\cite{kutner_etal_04a}  is
 \begin{eqnarray}
 y^*_{ijk} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2}),\ i=1,\ldots,I,\ j=1,\ldots,J,\ k=1,\ldots,K
 \label{eq:ttest_model}
 \end{eqnarray}
-The model allows us to estimate $\hat{\Delta}$ and its standard error.
-Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution with $df=I(JK-1)$ degrees of freedom in balanced designs.
-\todo{I do not think this is right. I believe there should be a summarization first, such that the data are $\hat{y}_{ij}$, the model becomes $\hat{y}^*_{ij} = \mu^{*}_{i} + \epsilon^{\ast}_{ij}, \ \epsilon^{\ast}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{*2})$ and the df are $df=I(J-1)$. The index k should drop. Could you introduce the summarization first? What do you think re keeping or removing the hat on $\hat{y}_{ij}$?}
+The model allows us to estimate $\hat{\Delta}$ and its standard error, and test the null hypothesis in \eqref{conv_null_hyp} by comparing the model-based test statistic against the Student distribution with $df=I(JK-1)$ \todo{$df=I(J-1)$} degrees of freedom in balanced designs.
 Unfortunately, this approach is fundamentally flawed as it does not account for the confounding between changes in the PTM abundance and the overall changes in the abundance of the unmodified protein.
 
 \medskip \noindent 
@@ -267,12 +266,12 @@ Unfortunately, this approach is fundamentally flawed as it does not account for 
 \noindent {\bf ANOVA based on ratios of modified and unmodified log$_2$-intensities}
 
 \medskip \noindent 
-The basic ANOVA can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, separately for modified and unmodified features, e.g. with the sum on the original scale, dividing the summary of the PTM abundance by the summary of the protein abundance and then taking a log. Specifically, for condition $i$ and biological replicate $j$, the approach calculates
+The basic ANOVA can be extended to account for the confounding of changes in PTM abundance and overall changes in protein abundance~\cite{Schwammle2015,THOMAS2020,Mertins:2013}. Typically this is done by first summarizing the feature intensities in each run, separately for modified and unmodified features, e.g. with the sum on the original scale, and considering sample-wise ratios of the summaries. On the log$_2$ scale, for condition $i$ and biological replicate $j$ the approach is equivalent to calculating
 \begin{eqnarray}
-u_{ij} = \log \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right)
+u_{ij} = \log_2 \frac{ \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} }{ \sum_{l=1}^{L} 2^{y_{ijl}} } = \log_2 \left( \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} \right) - \log_2 \left( \sum_{l=1}^{L} 2^{y_{ijl}} \right)
 \label{eq:adj_estimation}
 \end{eqnarray}
-The approach then models these values as \todo{if we keep a hat on $\hat{y}_{ij}$, we should probably keep a hat on $\hat{u}_{ij}$}
+The approach then models these values with the basic ANOVA, which corresponds to \todo{if we keep a hat on $\hat{y}_{ij}$, we should probably keep a hat on $\hat{u}_{ij}$}
 \begin{eqnarray}
 u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon^{\prime}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{\prime 2}),\ i=1,\ldots,I,\ j=1,\ldots,J
 \label{eq:ttest_model}
@@ -284,16 +283,18 @@ Although effective, the approach is somewhat simplistic. It is not applicable to
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The two versions of ANOVA above can be expanded with Empirical Bayes moderation in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. A typical application of Limma takes as input $u_{ij}$, and for each PTM fits the linear model in~\eqref{ttest_model}. 
-The method differs from the ratio-based ANOVA in specifying additional prior distributions for the model parameters.
+\medskip \noindent The estimation of nuisance variation of the ratio-based ANOVA model above is often further expanded with Empirical Bayes moderation implemented in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. A typical application of Limma takes as input $u_{ij}$, and for each PTM fits the linear model in~\eqref{ttest_model}. 
+The model differs from~\eqref{ttest_model} in that it specifies additional prior distributions for the model parameters.
 The prior distributions are estimated from the data across all the proteins and all the PTM as described in \todo{XXX}. 
-With this approach, testing the null hypothesis in~\eqref{null_hyp} amounts to combining the PTM-specific and the consensus variance. \todo{I am wondering if an equation would help}
-In  experiments with few biological replicates, the resulting standard errors are often smaller, and the degrees of freedom are often larger than in absence of the moderation~\cite{Ritchie_15a}. 
-Thus the approach tends to increase the sensitivity of detection of differential abundance.
+With this approach, testing the null hypothesis in~\eqref{null_hyp} amounts to combining the PTM- and protein-specific estimates of variation with a consensus estimate obtained from all the PTM and all the proteins. \todo{It's a bit vague. I am wondering if an equation would help}
+As the result, in experiments with few biological replicates the standard errors are often smaller, and the degrees of freedom are often larger than without moderation~\cite{Ritchie_15a}. 
+Thus the approach tends to increase the sensitivity of detecting differential abundance.
 
-Since Limma only improves upon the methods above in estimation of variation, it has the same limitations in terms of the experimental designs. The method is only directly applicable to experiments with at most two variance components, and cannot account for all the sources of variation in more complex experiments. Additionally, it requires the same experimental design for the modified and unmodified features so that the ratio calculation can be performed. Finally, there is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
+Since Limma only improves upon the estimation of variation, it has the same limitations in terms of the experimental designs. Furthermore, the method is only directly applicable to experiments with at most two variance components, and cannot account for all the sources of variation in more complex experiments. There is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
 
-\medskip \noindent {\bf Isobar-PTM} \medskip \noindent Isobar-PTM was also proposed for experiments with LC-MS/MS quantitative strategies that employ isobaric labels such as TMT or isobaric tag for relative and absolute quantification (iTRAQ)\cite{Breitwieser:2013}. Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. Unfortunately, this statistical modeling framework is not applicable to either label-free workflows or experiments with complex designs. 
+\medskip \noindent {\bf Isobar-PTM} 
+
+\medskip \noindent Isobar-PTM was also proposed for experiments with LC-MS/MS quantitative strategies that employ isobaric labels such as TMT, or isobaric tag for relative and absolute quantification (iTRAQ)\cite{Breitwieser:2013}. Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. Unfortunately, this statistical modeling framework is not applicable to either label-free workflows or experiments with complex designs. 
 
 
 \subsection*{Statistical modeling and parameter estimation in MSstats}
