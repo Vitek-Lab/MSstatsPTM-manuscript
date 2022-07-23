@@ -319,7 +319,7 @@ Second, the approach is applicable to various data acquisition types, including 
 Third, the run-level summarization has been shown to be more robust to outliers and missing values as compared to feature averages~\cite{Choi:2014}. 
 Finally, the custom $MSstats$ and $MSstatsTMT$ implementation accounts for potential data artifacts, is numerically scalable and stable, and is available through both command line and a dedicated graphical user interface.
 
-Unfortunately, the $MSstats$ framework focuses on overall protein abundance, and as the result tests the null hypothesis in~\eqref{conv_null_hyp}. It does not account for the confounding between the changes in PTM abundance and the overall changes in protein abundance. This manuscript extends the methodology in $MSstats$ and $MSstatsTMT$, to enable testing of the relevant the null hypothesis in~\eqref{null_hyp}.
+Unfortunately, the $MSstats$ framework focuses on overall protein abundance, and as the result tests the null hypothesis in~\eqref{conv_null_hyp}. It does not account for the confounding between the changes in PTM abundance and the overall changes in protein abundance. This manuscript proposes a simple extension to the methodology in $MSstats$ and $MSstatsTMT$, to enable testing of the relevant the null hypothesis in~\eqref{null_hyp}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -327,43 +327,40 @@ Unfortunately, the $MSstats$ framework focuses on overall protein abundance, and
 \subsection*{Statistical methods in MSstatsPTM}
 \label{sec:adjustment_summary}
 
-\medskip \noindent {\bf Detection of changes in PTMs in balanced design with one source of variation}
+\medskip \noindent {\bf Detecting changes in PTMs, adjusted for global changes in protein abundance}
 
 \medskip \noindent
-We propose a statistical approach for detecting changes in PTMs. The method takes as input the modified spectral features $y_{ijk}^{\ast}$, and the corresponding unmodified features $y_{ijk}$. Ideally, the modified features are acquired separately, after an enrichment to maximize the information content in the resulting dataset, and the unmodified features are acquired separately as part of a global proteome profiling. However the method can also take as input a combination of modified and unmodified features acquired within a same run.
+The method takes as input the modified spectral features $y_{ijk}^{\ast}$, and the corresponding unmodified features $y_{ijk}$. Ideally, the modified features are acquired separately, after an enrichment to maximize the information content in the resulting dataset, and the unmodified features are acquired separately as part of a global proteome profiling. However the method can also take as input a combination of modified and unmodified features acquired within a same run. 
 
-We leverage the existing methods in $MSstats$ and $MSstatsTMT$ and extend them to remove confounding between changes in the PTM and the overall changes in protein abundance.  Each feature type is summarized separately using $MSstats$ or $MSstatsTMT$, resulting in run level values for the PTM, $\hat{y}_{ij}^{\ast}$, and unmodified protein. The estimated summaries of the modified features are then used as the input to the model, such as in \eqref{msstats_model}, in $MSstats$ or $MSstatsTMT$. Similarly, the estimated summaries of the unmodified features are used as the input to the corresponding model in $MSstats$ or $MSstatsTMT$.
+We leverage the existing methods in $MSstats$ and $MSstatsTMT$ and extend them to remove confounding between changes in the PTM and the overall changes in protein abundance.  Each feature type is first analyzed separately using $MSstats$ or $MSstatsTMT$. In particular, the modified features are summarized into run-level summaries $\hat{y}_{ij}^{\ast}$ \todo{check the use of hat}. The estimated summaries of the modified features are then used as the input to the appropriate model in $MSstats$ or $MSstatsTMT$,  such as in \eqref{msstats_model}. The resulting model-based estimates include $\hat{\Delta}_{PTM}=\hat{\mu}^{\ast}_{i}-\hat{\mu}_{i^{\prime}}^{\ast}$, and its standard error $\widehat{SE}(\hat{\Delta}_{PTM})$. Similarly, the unmodified features of each protein are summarized for each run into $\hat{y}_{ij}$, the summaries are used as input to a separate analysis by $MSstats$ or $MSstatsTMT$, producing $\hat{\Delta}_{protein}=\hat{\mu}_{i}-\hat{\mu}_{i^{\prime}}$ and $\widehat{SE}(\hat{\Delta}_{protein})$. 
 
-For the modified features, the model-based estimates in $MSstats$ and $MSstatsTMT$ include $\hat{\Delta}_{PTM}=\hat{\mu}^{\ast}_{i}-\hat{\mu}_{i^{\prime}}^{\ast}$, and its standard error $\widehat{SE}(\hat{\Delta}_{PTM})$. Similarly, for the unmodified features, the model-based estimates in $MSstats$ and $MSstatsTMT$ incluse $\hat{\Delta}_{protein}=\hat{\mu}_{i}-\hat{\mu}_{i^{\prime}}$, and its standard error $\widehat{SE}(\hat{\Delta}_{protein})$. Therefore, the adjusted difference $\hat{\Delta}_{adj}$ in~\eqref{null_hyp} can be estimated as
+From the summaries above, the proposed approach estimates the adjusted difference $\hat{\Delta}_{adj}$ in~\eqref{null_hyp}
 \begin{eqnarray}
 \hat{\Delta}_{adj} = (\hat{\mu}^{\ast}_{i}-\hat{\mu}_{i}) - (\hat{\mu}_{i^{\prime}}^{\ast}-\hat{\mu}_{i^{\prime}}) = (\hat{\mu}^{\ast}_{i}-\hat{\mu}_{i^{\prime}}^{\ast}) - (\hat{\mu}_{i}-\hat{\mu}_{i^{\prime}}) = \hat{\Delta}_{PTM} - \hat{\Delta}_{protein} 
 \label{eq:Delta_hat_adj}
 \end{eqnarray}
-Assuming that the unexplained by the model sources of variation in the modified features are independent from the corresponding sources of variation in the modified features, the standard error $\widehat{SE}(\hat{\Delta}_{adj})$ is obtained by combining the standard errors from the unmodified and modified model fits.
+Assuming that the sources of variation in the modified features unexplained by the model are independent from the corresponding sources of variation in the modified features, the standard error $\widehat{SE}(\hat{\Delta}_{adj})$ is obtained by combining the standard errors from the unmodified and modified model fits
 \begin{eqnarray}
 \widehat{SE}(\hat{\Delta}_{adj}) = \sqrt{ \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2}} 
 \label{eq:prop_se}
 \end{eqnarray}
-
-For example, in the simple case of \figref{data-structure} with $J=2$ conditions, where $\hat{\sigma}^2_{PTM}$ and $\hat{\sigma}^2_{protein}$ are the estimates of the error variance for the PTM and protein model described in \eqref{msstats_model}, the standard error would be calculated as
+For example, in the simple case of \figref{data-structure} with $J=2$ conditions, where $\hat{\sigma}^2_{PTM}$ and $\hat{\sigma}^2_{protein}$ are the estimates of the error variance for the PTM and protein model described in \eqref{msstats_model}, the standard error would be calculated as 
 \begin{eqnarray}
- \widehat{SE}(\hat{\Delta}_{adj}) &=& \sqrt{\widehat{SE}(\hat{\Delta}_{PTM})^2 + \widehat{SE}(\hat{\Delta}_{protein})^2} \\ 
-&=& \sqrt{\frac{1}{J}\hat{\sigma}^2_{PTM} + \frac{1}{J}\hat{\sigma}^2_{protein}} = \sqrt{\frac{2}{J}(\hat{\sigma}^2_{PTM} + \hat{\sigma}^2_{protein})} = \sqrt{\hat{\sigma}^2_{PTM} + \hat{\sigma}^2_{protein}} \nonumber
+ \widehat{SE}(\hat{\Delta}_{adj}) &=& \sqrt{\widehat{SE}(\hat{\Delta}_{PTM})^2 + \widehat{SE}(\hat{\Delta}_{protein})^2} = \sqrt{\frac{1}{J}\hat{\sigma}^2_{PTM} + \frac{1}{J}\hat{\sigma}^2_{protein}}
 \label{eq:se_calc}
 \end{eqnarray}
-
 The estimated standard error is larger than the standard errors associated with each distinct feature type, reflecting the increased uncertainty inherent to combining the uncertainty in two estimators. 
 
 Finally, the degrees of freedom associated with~\eqref{prop_se} are obtained via the Satterthwaite approximation~\cite{kutner_etal_04a, satterthwaite:1946}
 \begin{eqnarray}
-\left( \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2} \right)^2 \bigg/
+df \left(  \widehat{SE}(\hat{\Delta}_{adj}) \right)=  \left( \widehat{SE}(\hat{\Delta}_{PTM})^{2} + \widehat{SE}(\hat{\Delta}_{protein})^{2} \right)^2 \bigg/
 \left( \frac{\widehat{SE}(\hat{\Delta}_{PTM})^{4}}{\mathrm{df}(\widehat{SE}(\hat{\Delta}_{PTM}))} + \frac{\widehat{SE}(\hat{\Delta}_{protein})^{4}}{ \mathrm{df}(\widehat{SE}(\hat{\Delta}_{protein}))} \right)
 \label{eq:prop_df}
 \end{eqnarray}
 To test the null hypothesis in~\eqref{null_hyp}, the test statistic $\hat{\Delta}_{adj}/\widehat{SE}(\Delta)_{adj}$ is compared with the Student distribution with the degrees of freedom in~\eqref{prop_df}. The p-values of the comparison are adjusted for multiple testing using the approach by Benjamin and Hochberg~\cite{Benjamini:1995}.
 
 
-By leveraging the implementations in $MSstats$ and $MSstatsTMT$, the proposed approach is very versatile. It is applicable to a wide variety of experimental designs, including group comparison, paired designs, time course designs and unbalanced designs. It is applicable to label-free data acquisition strategies such as DDA and DIA and experiments with TMT labeling. The proposed approach is also applicable to experiments where the experimental designs for PTM profiling and global proteome profiling vary in properties such as number of biological replicates, data acquisition strategies and runs.
+\todo{This paragraph relates more to the implementation. Could you integrate it with the implementation text?} By leveraging the implementations in $MSstats$ and $MSstatsTMT$, the proposed approach is very versatile. It is applicable to a wide variety of experimental designs, including group comparison, paired designs, time course designs and unbalanced designs. It is applicable to label-free data acquisition strategies such as DDA and DIA and experiments with TMT labeling. The proposed approach is also applicable to experiments where the experimental designs for PTM profiling and global proteome profiling vary in properties such as number of biological replicates, data acquisition strategies and runs.
 
 
 \subsubsection*{Design of balanced PTM experiments with one source of variation}

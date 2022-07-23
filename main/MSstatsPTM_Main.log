@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JUL 2022 14:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JUL 2022 16:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1110,15 +1110,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [3] [4] [5]
 [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
-Overfull \vbox (11.39627pt too high) detected at line 519
+Overfull \vbox (11.39627pt too high) detected at line 516
  []
 
 
-Overfull \vbox (16.60461pt too high) detected at line 519
+Overfull \vbox (16.60461pt too high) detected at line 516
  []
 
 
-Overfull \hbox (15.74734pt too wide) in paragraph at lines 488--532
+Overfull \hbox (15.74734pt too wide) in paragraph at lines 485--529
  [][] 
  []
 
@@ -1126,54 +1126,54 @@ Overfull \hbox (15.74734pt too wide) in paragraph at lines 488--532
 <images/benchmark_fig.png, id=347, 970.3753pt x 532.23843pt>
 File: images/benchmark_fig.png Graphic file (type png)
 <use images/benchmark_fig.png>
-Package pdftex.def Info: images/benchmark_fig.png  used on input line 558.
+Package pdftex.def Info: images/benchmark_fig.png  used on input line 555.
 (pdftex.def)             Requested size: 485.18646pt x 266.11856pt.
 
-Overfull \hbox (15.43144pt too wide) in paragraph at lines 558--563
+Overfull \hbox (15.43144pt too wide) in paragraph at lines 555--560
  [][] 
  []
 
 <images/fig3.png, id=351, 1005.00468pt x 533.74406pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
-Package pdftex.def Info: images/fig3.png  used on input line 569.
+Package pdftex.def Info: images/fig3.png  used on input line 566.
 (pdftex.def)             Requested size: 452.24792pt x 240.1826pt.
 <images/MSstatsPTM_design.png, id=352, 722.7pt x 542.025pt>
 File: images/MSstatsPTM_design.png Graphic file (type png)
 <use images/MSstatsPTM_design.png>
-Package pdftex.def Info: images/MSstatsPTM_design.png  used on input line 577.
+Package pdftex.def Info: images/MSstatsPTM_design.png  used on input line 574.
 (pdftex.def)             Requested size: 433.62334pt x 325.2175pt.
 <images/sim1_FDR_all_models.png, id=353, 752.8125pt x 501.875pt>
 File: images/sim1_FDR_all_models.png Graphic file (type png)
 <use images/sim1_FDR_all_models.png>
-Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 585
+Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 582
 .
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
 <images/sim3_Accuracy.png, id=354, 752.8125pt x 501.875pt>
 File: images/sim3_Accuracy.png Graphic file (type png)
 <use images/sim3_Accuracy.png>
-Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 590.
+Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 587.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
 <images/spike_in_fc.png, id=355, 752.8125pt x 501.875pt>
 File: images/spike_in_fc.png Graphic file (type png)
 <use images/spike_in_fc.png>
-Package pdftex.def Info: images/spike_in_fc.png  used on input line 603.
+Package pdftex.def Info: images/spike_in_fc.png  used on input line 600.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
 <images/spike_in_volcano.png, id=356, 752.8125pt x 501.875pt>
 File: images/spike_in_volcano.png Graphic file (type png)
 <use images/spike_in_volcano.png>
-Package pdftex.def Info: images/spike_in_volcano.png  used on input line 608.
+Package pdftex.def Info: images/spike_in_volcano.png  used on input line 605.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
 <images/ipah_venn_diagramm.png, id=357, 1084.05pt x 1084.05pt>
 File: images/ipah_venn_diagramm.png Graphic file (type png)
 <use images/ipah_venn_diagramm.png>
-Package pdftex.def Info: images/ipah_venn_diagramm.png  used on input line 619.
+Package pdftex.def Info: images/ipah_venn_diagramm.png  used on input line 616.
 
 (pdftex.def)             Requested size: 258.36668pt x 258.35777pt.
 <images/shig_venn_diagramm.png, id=358, 1084.05pt x 1084.05pt>
 File: images/shig_venn_diagramm.png Graphic file (type png)
 <use images/shig_venn_diagramm.png>
-Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 624.
+Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 621.
 
 (pdftex.def)             Requested size: 258.36668pt x 258.35777pt.
 <images/No_Difference_Shigella_Profile_Plot.png, id=359, 1129.21875pt x 602.25p
@@ -1181,15 +1181,15 @@ t>
 File: images/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use images/No_Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: images/No_Difference_Shigella_Profile_Plot.png  used o
-n input line 637.
+n input line 634.
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
 <images/IpaH_prof_plot.png, id=360, 1129.21875pt x 602.25pt>
 File: images/IpaH_prof_plot.png Graphic file (type png)
 <use images/IpaH_prof_plot.png>
-Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 643.
+Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 640.
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
 
-LaTeX Warning: Float too large for page by 3.64119pt on input line 649.
+LaTeX Warning: Float too large for page by 3.64119pt on input line 646.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1197,17 +1197,17 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <images/usp30_venn_diagramm.png, id=361, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm.png Graphic file (type png)
 <use images/usp30_venn_diagramm.png>
-Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 655
+Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 652
 .
 (pdftex.def)             Requested size: 258.36328pt x 258.36668pt.
 <images/usp30_venn_diagramm_matching_only.png, id=362, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm_matching_only.png Graphic file (type png)
 <use images/usp30_venn_diagramm_matching_only.png>
 Package pdftex.def Info: images/usp30_venn_diagramm_matching_only.png  used on 
-input line 661.
+input line 658.
 (pdftex.def)             Requested size: 258.36328pt x 258.36668pt.
 
-LaTeX Warning: Float too large for page by 7.30336pt on input line 667.
+LaTeX Warning: Float too large for page by 7.30336pt on input line 664.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1219,11 +1219,11 @@ y.png>] [21 <./images/spike_in_fc.png> <./images/spike_in_volcano.png>]
 [23 <./images/No_Difference_Shigella_Profile_Plot.png (PNG copy)> <./images/Ipa
 H_prof_plot.png>] [24 <./images/usp30_venn_diagramm.png> <./images/usp30_venn_d
 iagramm_matching_only.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 686.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 686.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 683.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 683.
  (./MSstatsPTM_Main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 686.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 686.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 683.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 683.
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: 3E87924854543BA2835DF0BB367E1CE4;275.
 
@@ -1233,12 +1233,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 \openout1 = `MSstatsPTM_Main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 686.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 683.
  ) 
 Here is how much of TeX's memory you used:
  25796 strings out of 492616
  485824 string characters out of 6129482
- 934212 words of memory out of 5000000
+ 934211 words of memory out of 5000000
  29173 multiletter control sequences out of 15000+600000
  14524 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1274,7 +1274,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (24 pages, 833742 bytes).
+Output written on MSstatsPTM_Main.pdf (24 pages, 833999 bytes).
 PDF statistics:
  506 PDF objects out of 1000 (max. 8388607)
  411 compressed objects within 5 object streams
