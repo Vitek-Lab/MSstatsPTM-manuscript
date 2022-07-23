@@ -294,32 +294,32 @@ Since Limma only improves upon the estimation of variation, it has the same limi
 
 \medskip \noindent {\bf Isobar-PTM} 
 
-\medskip \noindent Isobar-PTM was also proposed for experiments with LC-MS/MS quantitative strategies that employ isobaric labels such as TMT, or isobaric tag for relative and absolute quantification (iTRAQ)\cite{Breitwieser:2013}. Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. Unfortunately, this statistical modeling framework is not applicable to either label-free workflows or experiments with complex designs. 
+\medskip \noindent Isobar-PTM was also proposed for experiments with LC-MS/MS quantitative strategies that employ isobaric labels such as TMT, or isobaric tag for relative and absolute quantification (iTRAQ)\cite{Breitwieser:2013}. Isobar-PTM expresses MS measurements with a linear model and performs adjustment with respect to protein abundance using the difference between log-ratio of modified peptides in two channels and log-ratio of protein level. \todo{This seems somewhat similar to the ANOVA on ratios. Could you contrast with the ANOVA? Or just provide an equation in the same notation?} Unfortunately, this statistical modeling framework is not applicable to either label-free workflows or experiments with complex designs. 
 
 
 \subsection*{Statistical modeling and parameter estimation in MSstats}
 
-$MSstats$~\cite{Choi:2014} and $MSstatsTMT$~\cite{Huang:2020} are a series of R/Bioconductor packages designed for protein significance analysis and statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. Models in these packages takes as input a list of log$_2$-intensities $y_{ijk}$. For each protein, the feature log$_2$-intensities are first summarized into a single value per protein per run using Tukey's median polish~\cite{Tukey:1977}. These summarized values are then used as input to fit a flexible family of linear mixed-effects models \cite{McLean:1991, Faraway:2006, Bolker2009}. The specific model instances depend on the experimental design and data acquisition. For example, to model the unmodified protein in \figref{data-structure} $MSstats$ fits the following model
+$MSstats$~\cite{Choi:2014} and $MSstatsTMT$~\cite{Huang:2020} are a family of R/Bioconductor packages for statistical relative quantification of proteins and peptides in global, targeted and data-independent proteomics. The packages take as input log$_2$-intensities $y_{ijk}$. For each protein, the log$_2$-intensities are first summarized into a single value per protein per run using Tukey's median polish~\cite{Tukey:1977}. The summaries are then used as input to fit a flexible family of linear mixed-effects models \cite{McLean:1991, Faraway:2006, Bolker2009}. The specific model fit for the individual protein depends on the design of the experiment, labeling type and data acquisition type, as well as on the pattern of missing values in that particular protein. For example, the unmodified protein features in \figref{data-structure} are modeled as
 \todo{I rewrote the model so that it uses $\mu_i$ directly rather than conditions}
+\todo{Should we use a hat on top of y, to indicate that we model the summaries?}
 \begin{eqnarray}
 & y_{ij} = \mu_i + Run_{j} + \epsilon_{ij}, \  \text{where } Run \stackrel{iid}{\sim} \mathcal{N}(0, \sigma^2_j), \epsilon_{ij} \stackrel{iid}{\sim} \mathcal{N}(0, \sigma^2) & 
 \label{eq:msstats_model}
 \end{eqnarray}
-\todo{Is it true that we have a separate variance parameter for each run $ \sigma^2_j$? I don't think so. I think it should be a separate sigma (or maybe $\tau^2$), but same for all the runs}
+\todo{Is it true that we add run in label-free experiments? I thought it was only with TMT. But maybe I forgot. Could you check? If we don't include run, then give a model for label-free, and then contrast with TMT}
+\todo{Is it true that we have a separate variance parameter for each run $ \sigma^2_j$? I don't think so. I think it should be a separate sigma (maybe denote it $\tau^2$), but same for all the runs}
 Parameters of the model are estimated using restricted maximum likelihood (REML)~\cite{Kenward}.
-In turn, the parameters allow us to estimate the relevant quantity $\hat{\Delta}_{Protein}$ and its standard error. Where $\hat{\Delta}_{Protein}$ is estimated as
-\begin{eqnarray}
-\hat{\Delta}_{Protein} = \hat{\mu}_{i} - \hat{\mu}_{i^{\prime}}
-\label{eq:protein_delta}
-\end{eqnarray}
-Similarly to $Limma$, $MSstatsTMT$ includes an optional Empirical Bayes moderation of the standard error~\cite{Huang:2020}, which increases the sensitivity of the model when the number of biological replicates in each condition is small. Based on the model, the approach tests the null hypothesis in \eqref{conv_null_hyp}, by comparing the test statistic against the Student distribution.
+In turn, the parameters allow us to estimate the pairwise comparison $\hat{\Delta}_{Protein} = \hat{\mu}_{i} - \hat{\mu}_{i^{\prime}}$ and its standard error. Similarly to $Limma$, $MSstatsTMT$ includes an optional Empirical Bayes moderation of the standard error~\cite{Huang:2020}, which increases the sensitivity of detecting differential abundance when the number of biological replicates in each condition is small. 
+
+In addition to detecting differential abundance at the protein level, $MSstats$ and $MSstatsTMT$ can be also used at the feature or at the modification cite levels. For example, summarizing the features per PTM cite instead of per protein, the approach allows us to test the null hypothesis in \eqref{conv_null_hyp}.
 
 The $MSstats$ framework has a number advantages over the methods above. 
-First, unlike Anova and $Limma$, the family of linear mixed effects models is applicable to many complex experimental designs, including designs with multiple sources of variation, and unbalanced designs. 
-Second, the approach is applicable to various data acquisition types, including label-free DDA and DIA, and experiments with TMT labeling, and is compatible with various data processing tools such as Skyline, Spectronaut, MaxQuant, Progenesis, Proteome Discoverer, and OpenMS. Third, the run-level summarization has been shown to be more robust to outliers and missing values as compared to feature averages~\cite{Choi:2014}. 
-Finally, the custom $MSstats$ and $MSstatsTMT$ implementation accounts for potential data artifacts, and is numerically scalable and stable, and is available through both command line and a dedicated graphical user interface.
+First, unlike ANOVA and $Limma$, $MSstats$ and $MSstatsTMT$ are applicable to many complex experimental designs, including designs with multiple sources of variation, and unbalanced designs. 
+Second, the approach is applicable to various data acquisition types, including label-free DDA and DIA, and experiments with TMT labeling, and is compatible with various data processing tools such as Skyline, Spectronaut, MaxQuant, Progenesis, Proteome Discoverer, and OpenMS. 
+Third, the run-level summarization has been shown to be more robust to outliers and missing values as compared to feature averages~\cite{Choi:2014}. 
+Finally, the custom $MSstats$ and $MSstatsTMT$ implementation accounts for potential data artifacts, is numerically scalable and stable, and is available through both command line and a dedicated graphical user interface.
 
-Unfortunately, MSstats estimates the difference in overall protein abundance and tests the null hypothesis in~\eqref{conv_null_hyp}. It does not account for the confounding between the changes in PTM abundance and the overall changes in protein abundance. In other words, it cannot directly test the null hypothesis in~\eqref{null_hyp}.
+Unfortunately, the $MSstats$ framework focuses on overall protein abundance, and as the result tests the null hypothesis in~\eqref{conv_null_hyp}. It does not account for the confounding between the changes in PTM abundance and the overall changes in protein abundance. This manuscript extends the methodology in $MSstats$ and $MSstatsTMT$, to enable testing of the relevant the null hypothesis in~\eqref{null_hyp}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
