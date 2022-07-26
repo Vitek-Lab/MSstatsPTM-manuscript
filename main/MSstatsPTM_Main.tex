@@ -573,8 +573,8 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=.6]{images/MSstatsPTM_design.png}
-\caption{The $MSstatsPTM$ workflow. The names of the R functions used for each step are highlighted in red. The package is applicable to label-free data acquisitions such as DDA, DIA, SRM and label-based data acquisitions such as TMT. The package's workflow starts after modified and unmodified peptide quantification. It takes as input lists of identified and quantified spectral features for the PTM and unmodified protein, produced by spectral processing tools such as MaxQuant, Progenesis, or Spectronaut. Separate parallel analysis for the PTM and unmodified protein is performed, including feature summarization and modeling. After a model is fit to both the PTM and unmodified protein, the PTM model is adjusted for changes in unmodified protein abundance. Plots can optionally be created at each step to summarize the results.}
+\includegraphics[scale=.65]{images/MSstatsPTM_design.png}
+\caption{The $MSstatsPTM$ workflow. The names of the R functions used for each step are highlighted in purple and the output notations are highlighted in red. The package is applicable to label-free data acquisitions such as DDA, DIA, SRM and label-based data acquisitions such as TMT. The package's workflow starts after modified and unmodified peptide quantification. It takes as input lists of identified and quantified spectral features for the PTM and unmodified protein, produced by spectral processing tools such as MaxQuant, Progenesis, or Spectronaut. Separate parallel analysis for the PTM and unmodified protein is performed, including feature summarization and modeling. After a model is fit to both the PTM and unmodified protein, the PTM model is adjusted for changes in unmodified protein abundance. Plots can optionally be created at each step to summarize the results.}
 \label{fig:msstatsptm_design}
 \end{figure}
 
