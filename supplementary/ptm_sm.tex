@@ -544,29 +544,29 @@ In the second simulation we introduced limited feature observations per PTM as w
 The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:fc_boxplot}.
 
 
-\begin{figure}[h!]
-\centering
- \begin{subfigure}{\textwidth}
-  \centering
-	\includegraphics[width=.8\textwidth]{sim_new/sim1_Recall}\\
-	\caption{All methods with adjustment were compared by comparing recall in simulation 1. Limma performed the strongest here when the number of replicates were low. At higher replicates the performance of the proposed methods and Limma were comparable. Anova clearly performed worse across all methods.}
- \end{subfigure}
- \begin{subfigure}{\textwidth}
-  \centering
-	\includegraphics[width=.8\textwidth]{sim_new/sim1_accuracy}
-	\caption{The overall accuracy plot mimicked the observations in the recall plot. Limma performed strongest when replicates were low, but was comparable to the proposed method with more replicates.}
- \end{subfigure}
-\caption{Recall and Accuracy results of Simulation 1.}
-\label{fig:sim1_recall}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+% \begin{subfigure}{\textwidth}
+%  \centering
+%	\includegraphics[width=.8\textwidth]{sim_new/sim1_Recall}\\
+%	\caption{All methods with adjustment were compared by comparing recall in simulation 1. Limma performed the strongest here when the number of replicates were low. At higher replicates the performance of the proposed methods and Limma were comparable. Anova clearly performed worse across all methods.}
+% \end{subfigure}
+% \begin{subfigure}{\textwidth}
+%  \centering
+%	\includegraphics[width=.8\textwidth]{sim_new/sim1_accuracy}
+%	\caption{The overall accuracy plot mimicked the observations in the recall plot. Limma performed strongest when replicates were low, but was comparable to the proposed method with more replicates.}
+% \end{subfigure}
+%\caption{Recall and Accuracy results of Simulation 1.}
+%\label{fig:sim1_recall}
+%\end{figure}
 
-\begin{figure}[h!]
-\centering
-	\includegraphics[width=.8\textwidth]{sim_new/sim3_Recall}
-	\caption{}
-\caption{Recall results of Simulation 2. The advantage of using the proposed approach were apparent when looking at simulation 2, which included limited observations and the presence of missing values. In the case of recall the proposed method performed stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was Anova.}
-\label{fig:sim2_recall}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%	\includegraphics[width=.8\textwidth]{sim_new/sim3_Recall}
+%	\caption{}
+%\caption{Recall results of Simulation 2. The advantage of using the proposed approach were apparent when looking at simulation 2, which included limited observations and the presence of missing values. In the case of recall the proposed method performed stronger than Limma and t-test in nearly every model. Even at lower replicates the proposed method still outperformed Limma. Again the lowest performing method was Anova.}
+%\label{fig:sim2_recall}
+%\end{figure}
 
 \begin{figure}[h!]
 \centering
@@ -676,18 +676,9 @@ $$\sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \e
 The results of the proposed method to this experiment can be seen in Figure \ref{fig:ipah_figures}.
 
 \begin{figure}[h!]
-\centering
- \begin{subfigure}{\textwidth}
- \centering
-	\includegraphics[width=.9\textwidth]{sim_new/IpaH_prof_plot}
-	\caption{Here the global profiling of protein $GSDMD\_HUMAN|P57764$ with the ubiquitination of the protein at site $K62$ was compared. The individual PSM features areshown in grey, while the feature summarization is shown in red. The summary of the modification and global protein showed that the conditions followed different trends. Specifically, there appeared to be no change in abundance between Dox1hr and Dox4hr in the modified plot, however there was a large negative change in the unmodified plot. This indicates the modification was confounded with changes in the unmodified protein.}
- \end{subfigure}
- \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/IpaH_volcano_plot}
 	\caption{Volcano plots of Dox4hr vs Dox1hr both before and after protein adjustment. The $GSDMD\_HUMAN|P57764\_K62$ modification is highlighted. Before adjustment the modification had a small fold change and insignificant adjusted pvalue. After adjustment the fold change was much larger and the adjusted pvalue was significant. In this case the proposed method allowed us to identify a differential modified peptide that could have otherwise been missed.}
- \end{subfigure}
-\caption{Summary plots for modification of protein GSDMD at site K62.}
 \label{fig:ipah_figures}
 \end{figure}
 
@@ -732,17 +723,8 @@ The results of the proposed method to this experiment can be seen in Figure \ref
 
 \begin{figure}[h!]
 \centering
- \begin{subfigure}{\textwidth}
- \centering
-	\includegraphics[width=.95\textwidth]{sim_new/No_Difference_Shigella_Profile_Plot}
-	\caption{The global profiling of protein $TTP\_MOUSE|P22893$ with the modification of the protein at site $S178$ was compared. The individual PSM features are shown in grey, while the feature summarization is shown in red. The summary of the modification and global protein showed that the conditions followed the same trend. Specifically, there was a positive adjustment in abundance when comparing WT\_Uninfect to WT\_Late in both the modification and global profiling run. This indicated the movement is driven by changes in global protein.}
- \end{subfigure}
- \begin{subfigure}{\textwidth}
- \centering
 	\includegraphics[width=.9\textwidth]{sim_new/No_Difference_Shigella_Volcano}
 	\caption{Volcano plots of WT\_Late vs WT\_Uninfect both before and after protein adjustment. The $TTP\_MOUSE|P22893\_S178$ modification is highlighted. Before adjustment the modification had a large fold change and significant adjusted pvalue. After adjustment the fold change was much smaller and the adjusted pvalue was insignificant.}
- \end{subfigure}
-\caption{Summary plots for modification of protein TTP at site S178.}
 \label{fig:No_Diff_Shigella_PTM}
 \end{figure}
 

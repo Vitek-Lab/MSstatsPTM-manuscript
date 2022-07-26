@@ -14,14 +14,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.1.3}Dataset 2 : Computer simulation 2 - Label-free missing values and low features}{5}{subsubsection.2.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.1.4}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{9}{subsubsection.2.1.4}%
+\contentsline {subsubsection}{\numberline {2.1.4}Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free}{7}{subsubsection.2.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Biological investigations}{13}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Biological investigations}{11}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT\nobreakspace {}\cite {LUCHETTI2021}}{13}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT\nobreakspace {}\cite {LUCHETTI2021}}{11}{subsubsection.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}{15}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}{13}{subsubsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{18}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{16}{subsubsection.2.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Sample size calculation and power analysis}{19}{section.3}%
+\contentsline {section}{\numberline {3}Sample size calculation and power analysis}{17}{section.3}%
