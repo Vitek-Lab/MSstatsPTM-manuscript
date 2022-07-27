@@ -386,7 +386,7 @@ Since the numerator has two sources of variation, reflecting a larger uncertaint
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Implementation of MSstatsPTM}
 
-\todo{I suggest that you follow the same order as Figure 3 (my suggested version), one paragraph per step. Describe each step, and refer to both the figure, the quantity in the equations and the MSstats functions. Specifically: design; data acquisition; data processing and requirements; converters; steps of statistical analysis. I would state upfront that all the extols before last are performed separately for each data type, and not repeat it in later paragraphs}
+\todo{I suggest that you follow the same order as Figure 3 (my suggested version), one paragraph per step. Describe each step, and refer to both the figure, the quantity in the equations and the MSstats functions. Specifically: design; data acquisition; data processing and requirements; converters; steps of statistical analysis. I would state upfront that all the steps before last are performed separately for each data type, and not repeat it in later paragraphs}
 
 The proposed methods are implemented in the open source R package $MSstatsPTM$, overviewed in~\figref{msstatsptm_design}. $MSstatsPTM$ is applicable to most experimental designs, label-free data acquisitions such as DDA, DIA, SRM and label-based data acquisitions such as TMT. $MSstatsPTM$ takes as input lists of identified and quantified spectral features, produced by spectral processing tools such as MaxQuant, Progenesis, or Spectronaut. 
 
@@ -573,14 +573,14 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=.65]{images/MSstatsPTM_design.png}
-\caption{The $MSstatsPTM$ workflow. The names of the R functions used for each step are highlighted in purple and the output notations are highlighted in red. The package is applicable to label-free data acquisitions such as DDA, DIA, SRM and label-based data acquisitions such as TMT. The package's workflow starts after modified and unmodified peptide quantification. It takes as input lists of identified and quantified spectral features for the PTM and unmodified protein, produced by spectral processing tools such as MaxQuant, Progenesis, or Spectronaut. Separate parallel analysis for the PTM and unmodified protein is performed, including feature summarization and modeling. After a model is fit to both the PTM and unmodified protein, the PTM model is adjusted for changes in unmodified protein abundance. Plots can optionally be created at each step to summarize the results.}
+\includegraphics[scale=.5]{images/MSstatsPTM_design.png}
+\caption{\todo{Looks great. Maybe to the left add vertical text 'Upstream experiments and computation' and  'MSstatsPTM' next to the corresponding boxes. No need for a capital L in lysate. 'Group comparison among PTM' and 'Group comparison among unmodified proteins'. I would add () next to the function names, to clarify that these are functions} The $MSstatsPTM$ workflow. The names of the R functions used for each step are highlighted in purple and the output notations are highlighted in red. The package is applicable to label-free data acquisitions such as DDA, DIA, SRM and label-based data acquisitions such as TMT. It takes as input lists of identified and quantified spectral features for the PTM and unmodified protein, produced by spectral processing tools such as MaxQuant, Progenesis, or Spectronaut.  Conversion, summarization and statistical modeling are performed separately for the PTM and for the unmodified proteins. At the end, the model-based summaries are combined to adjust the changes in the PTM abundance for changes in unmodified protein abundance. Data visualizations can optionally be created at each step.}
 \label{fig:msstatsptm_design}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\begin{subfigure}[c]{0.825\linewidth}
+\begin{subfigure}[c]{0.7\linewidth}
 \includegraphics[width=1\textwidth]{images/sim1_FDR_all_models.png}
 \caption{}
 \label{fig:sim1_fdr}
