@@ -493,20 +493,13 @@
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
-The proposed statistical approach was evaluated and compared to the Anova and Limma methods using computer simulations. Specifically, their statistical properties with respect to protein-level adjustment and real world experimental conditions were evaluated.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Computer simulation}
-\label{sec:comp_sim}
-Differential levels of modified peptides may be due to differential modifications and/or changes in protein abundance. Approaches without considering protein-level adjustment lose track of an important aspect in interpreting observed changes in PTM abundance, which may result in misleading conclusions. To highlight the necessity of the adjustment, we compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) Anova (with adjustment), d) Anova (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
-
-In experiments of complex designs, multiple inter-related conditions are often compared together. All comparisons were made with the same fold change between conditions ($1$). This ensured that all peptides were differentially abundant by the same amount and the only difference in calculations was using more conditions in the modeling.
+We compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) ANOVA (with adjustment), d) ANOVA (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
 \label{sec:dataset1}
-In the first simulation an experiment with many features per PTM and unmodified protein was created. Additionally this simulation contained no missing data. These attributes are not representative of a real experiment, but provide a baseline for model performance.
+
+In the first simulation an experiment with many features per PTM and unmodified protein was created. Additionally this simulation contained no missing data.
 
 \begin{itemize}
 \item Mean of log-intensity: $25$
@@ -521,12 +514,10 @@ In the first simulation an experiment with many features per PTM and unmodified 
 \item Missing data: no missing value
 \end{itemize}
 
-The results are summarized in Figure \ref{fig:sim1_recall}.
-
 \subsubsection{Dataset 2 : Computer simulation 2 - Label-free missing values and low features}
 \label{sec:dataset2}
 
-In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values. This is more in line with what we would expect in a biological experiment and provides a more realistic expectation of model performance. The number of PTM features and missing data percentage where determined by looking at the features and missing data in the biological experiments in this paper.
+In the second simulation we introduced limited feature observations per PTM as well as masking a portion of the observation to simulate missing values.
 
 \begin{itemize}
 \item Mean of log-intensity: $25$
@@ -540,8 +531,6 @@ In the second simulation we introduced limited feature observations per PTM as w
 \item Number of features per unmodified protein: $10$
 \item Missing data: 20\% of the observations for PTMs and Proteins were masked with NA at random
 \end{itemize}
-
-The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:fc_boxplot}.
 
 
 %\begin{figure}[h!]
@@ -578,7 +567,7 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_FC_boxplot}
-	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of 1. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and Anova showed a wider range around the fold change.}
+	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of 1. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and ANOVA showed a wider range around the fold change.}
  \end{subfigure}
 \caption{Fold change distribution comparison between Simulations 1 and 2.}
 \label{fig:fc_boxplot}
@@ -597,8 +586,6 @@ The results are summarized from Figure \ref{fig:sim2_recall} to Figure \ref{fig:
 %\caption{An overview of the spike-in benchmark experimental design. The corresponding levels of spike-in peptide, human lysate, and background lysate for each mixture are shown. The spike-in peptide levels are adjusted for the human lysate levels. For example, the true spike-in abundance of mixture 1 is entirely accounted for by human lysate, whereas mix 2 has double the amount human lysate compared to spike-in abundance. When comparing mix 1 vs mix 2 we would expect to see a log fold change of -1. In this way we know the expected log fold change between mixture comparisons. \label{fig:spikein_overview}}
 %\end{figure}
 
-Again we consider three different methods and assess their performance: the method proposed in this paper, Limma, and Anova. All methods are analyzed after adjusting for changes in overall protein level. The results are summarized from Figure \ref{fig:spike_volcano_msstats} to Figure \ref{fig:spike_stat}, including volcano plots, model summary statistics, and fold change analysis.
-
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{sim_new/spike_in_msstatsptm_volcano}
@@ -614,7 +601,7 @@ Again we consider three different methods and assess their performance: the meth
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{sim_new/spike_in_anova_volcano}
-\caption{Using Anova the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as Limma, however the pvalues were different. We actually see a few more True Positives using Anova compared to Limma.\label{fig:spike_volcano_ttest}}
+\caption{Using ANOVA the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as Limma, however the pvalues were different. We actually see a few more True Positives using Anova compared to Limma.\label{fig:spike_volcano_ttest}}
 \end{figure}
 
 %\begin{figure}[h!]
@@ -669,11 +656,9 @@ The experimental design can be seen in Table~\ref{table:ipah_design}.
 
 A model was fit for the total protein and ubiquitination separately. The model formula can be seen below.
 
-$$Y_{mcb} = \mu + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
+$$Y_{mij} = \mu_i + \epsilon_{mij}$$
 
-$$\sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \epsilon_{mcb} ~ \sim N(0, \sigma^2)$$
-
-The results of the proposed method to this experiment can be seen in Figure \ref{fig:ipah_figures}.
+$$\sum_{i=1}^I{\mu_i} = 0 ,\: \epsilon_{mij} ~ \sim N(0, \sigma^2)$$
 
 \begin{figure}[h!]
  \centering
@@ -686,7 +671,7 @@ The results of the proposed method to this experiment can be seen in Figure \ref
 \subsubsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}
 \label{sec:shigella}
 
-In this study, the correlation between the gene Atg16L1 and killing of Shigella flexneri (S.flexneri) was assessed~\cite{Maculins}. Multiplex proteomics was used to quantify the abundance of total protein, phosphorylation, and ubiquitination in wild type (WT) and ATG16L1-deficient (cKO) samples, uninfected and uninfected with S.flexneri. The abundance of total protein and post-translation modifications were quantified at three time points, uninfected, early infection (45-60 minutes), and late infection (3-3.5 hours). Quantifying the total protein along with the post-translational modifications allowed us to adjust for changes in total protein and see the true impact of the site specific modifications. Two mixtures using 11-plex were ran over the six conditions. The six conditions were split between 11 channels leading to an unbalanced experimental design. Each mixture contained two replicates per early and late WT and KO conditions. Mixture one contained one replicate of uninfected WT and two replicates of uninfected KO. Mixture two contained one replicate of uninfected KO and two uninfected WT. The experimental design can be seen in Table~\ref{table:shigella_design}.
+The experimental design can be seen in Table~\ref{table:shigella_design}.
 
 \begin{table}[h!]
 \centering
@@ -712,14 +697,11 @@ Late (3 Hour) & 128N & 131N & 128N & 131N & \\
 \label{table:shigella_design}
 \end{table}
 
-A model was fit for the total protein, phosphorylation, and ubiquitination separately, as described previously for TMT experiments. The model formula can be seen below.
+A model was fit for the total protein, and phosphorylation. The model formula can be seen below.
 
-$$Y_{mcb} = \mu + Mixture_m + Condition_c + Subject_{mcb} + \epsilon_{mcb}$$
+$$Y_{mij} = \mu_i + Mixture_m + \epsilon_{mij}$$
 
-$$Mixture_m ~ \sim N(0, \sigma^2_M) ,\: \sum_{c=1}^C{Condition_c} = 0 ,\: Subject_{mcb} ~ \sim N(0, \sigma^2_S) ,\: \epsilon_{mcb} ~ \sim N(0, \sigma^2)$$
-
-The results of the proposed method to this experiment can be seen in Figure \ref{fig:No_Diff_Shigella_PTM} and Figure \ref{fig:Diff_Shigella_PTM}.
-
+$$Mixture_m ~ \sim N(0, \sigma^2_M) ,\: \sum_{i=1}^I{\mu_i} = 0 ,\: \epsilon_{mij} ~ \sim N(0, \sigma^2)$$
 
 \begin{figure}[h!]
 \centering
@@ -749,10 +731,6 @@ The results of the proposed method to this experiment can be seen in Figure \ref
 \subsubsection{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}
 \label{sec:usp30}
 
-This experiment looked into the relationship between USP30 and protein kinase PINK1, and their association with Parkinson's Disease. Ubiquitination site profiling was performed and the modified site abundance was analyzed. Four conditions were tested with two biological replicates per condition. The conditions were as follows: CCCP, USP30 overexpression (USP30\_OE), Combo, and Control. Label-free mass spectrometry quantification was used to quantify the abundance of modified peptides. A corresponding mixed effects model was fit per modification and global protein as described previously in this supplementary. The experiment was modeled as a group comparison.
-
-In contrast to other experiments analyzed in this paper, there was no unmodified global protein profiling run performed in this experiment. Once identification and quantification of the Ubiquitinated profiling was performed, peptides which were unmodified were extracted and used in place of a global profiling run. This resulted in a significant lack of overlap between modified and unmodified peptides and low feature counts for the unmodified protein model.
-
 An example profile plot for this experiment can be seen in  Figure \ref{fig:USP30_profile_plot}.
 
 \begin{figure}[h!]
@@ -761,9 +739,11 @@ An example profile plot for this experiment can be seen in  Figure \ref{fig:USP3
 \caption{The global profiling of protein $P52209$ with the modification of the protein at site $K059$ was compared. The modification appeared generally unchanged between all conditions, whereas the global profiling run showed the CCCP and Combo conditions had a higher relative abundance compared to the Control and USP30\_OE. This indicated that the modification actually had an effect when comparing CCCP and Combo to Control and USP30\_OE. However it was not entirely clear as one unmodified peptide feature appeared to be changed, while the other did not. This uncertainty was another result of not running a separate global profiling run. With a global profiling run, many unmodified features are generally quantified, removing the uncertainty that comes with low feature counts.}
 \label{fig:USP30_profile_plot}
 \end{figure}
+
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sample size calculation and power analysis}
+\label{sec:sample_size_analysis}
 
 \subsubsection*{Noisy PTM measurements benefited from additional biological replicates}
 

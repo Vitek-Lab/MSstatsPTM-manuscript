@@ -160,7 +160,7 @@ The proposed approach is implemented as a freely available open source R package
 
 \subsection*{Data overview and availability}
 
-Table \ref{tab:dataDescription} summarizes the experiments. Two computer simulations had known ground truth, and varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. Details of computer simulations are available in Supplementary Section \ref{supp-sec:sim} and on GitHub (\url{https://github.com/devonjkohler/MSstatsPTM_simulations}).
+Table \ref{tab:dataDescription} summarizes the experiments. Two computer simulations had known ground truth, and varied in experimental realism. The first simulation produced a perfectly clean dataset, with many replicates and no missing values. The second simulation introduced real-world characteristics, such as limited modified features and missing values. Details of computer simulations are available in {\bf Supplementary Sec. \ref{supp-sec:sim}} and on GitHub (\url{https://github.com/devonjkohler/MSstatsPTM_simulations}).
 
 One spike-in experiment also had known changes in modified spike-in peptides, but had real-world experimental characteristics. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, modifications, experimental designs and acquisition strategies. The experimental data, R scripts with $MSstatsPTM$ analysis, and results of the statistical analysis are available in MassIVE.quant (\url{https://massive.ucsd.edu/ProteoSAFe/static/massive-quant.jsp}) \cite{Choi:2020}. 
 
@@ -392,7 +392,7 @@ and $t_{1-\beta, df}$ and $t_{1-\alpha /2, df}$ are the $100(1-\beta)^{\text{th}
 \begin{equation}
 J \geq \frac{(2\sigma_{PTM}^{2} + 2\sigma_{protein}^{2})(t_{1-\beta, df} + t_{1-\alpha /2, df})^2}{\Delta_{adj}^2}
 \end{equation}
-Since the numerator has two sources of variation, reflecting a larger uncertainty in the adjusted calculation, the adjustment typically requires a larger sample size to gain the same sensitivity as the unadjusted estimation. Details of applications of this approach to experiments with complex design are in {\bf Supplementary Sec. \ref{supp-sec:complex_design}}.
+Since the numerator has two sources of variation, reflecting a larger uncertainty in the adjusted calculation, the adjustment typically requires a larger sample size to gain the same sensitivity as the unadjusted estimation. Details of applications of this approach to experiments with complex design are in {\bf Supplementary Sec. \ref{supp-sec:complex_design}}. A power analysis of different sample sizes can be seen in {\bf Supplementary Sec. \ref{supp-sec:sample_size_analysis}}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Implementation of MSstatsPTM}
