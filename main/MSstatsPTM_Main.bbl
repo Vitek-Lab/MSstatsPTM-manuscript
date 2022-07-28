@@ -244,6 +244,64 @@
       \field{pages}{e0177427}
       \range{pages}{-1}
     \endentry
+    \entry{Wu:2011}{article}{}
+      \name{author}{7}{}{%
+        {{hash=2fbbe512f7957508280382e8982b122f}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2740bae2f2e90635da23cc47170f4c69}{%
+           family={Dephoure},
+           familyi={D\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=7f029eb321dedbe865dcdcde93500926}{%
+           family={Haas},
+           familyi={H\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e41fd276f9ad08ff955e3306b5adce3b}{%
+           family={Huttlin},
+           familyi={H\bibinitperiod},
+           given={E.L.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=2a93449525f129e479bf56670ed00773}{%
+           family={Zhai},
+           familyi={Z\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=71c1b1d98f6315c66e78483a3af3717b}{%
+           family={Sowa},
+           familyi={S\bibinitperiod},
+           given={M.E.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eb19b015f8d71c3fe04c0f2a5b442b85}{%
+           family={Gygi},
+           familyi={G\bibinitperiod},
+           given={S.P.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{fullhash}{e8da6e4759b9c5bd729b44cf39578cc5}
+      \strng{bibnamehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{authorbibnamehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{authornamehash}{880082f82ba3a10105e1b84513f7378d}
+      \strng{authorfullhash}{e8da6e4759b9c5bd729b44cf39578cc5}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mol Cell Proteomics}
+      \field{number}{8}
+      \field{title}{Correct interpretation of comprehensive phosphorylation dynamics requires normalization by protein expression changes}
+      \field{volume}{10}
+      \field{year}{2011}
+      \field{pages}{M111.009654}
+      \range{pages}{-1}
+    \endentry
     \entry{Chandramouli:2009}{article}{}
       \name{author}{2}{}{%
         {{hash=fa7ce456ad3c9f79f8f7e6e0fb8ab2e0}{%
@@ -305,8 +363,8 @@
       \strng{authorbibnamehash}{1427ae399c02146e4ed54ef262f80bb9}
       \strng{authornamehash}{1427ae399c02146e4ed54ef262f80bb9}
       \strng{authorfullhash}{1427ae399c02146e4ed54ef262f80bb9}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -338,8 +396,8 @@
       \strng{authorbibnamehash}{d52437ca94187346472b9d8b11f8cc14}
       \strng{authornamehash}{d52437ca94187346472b9d8b11f8cc14}
       \strng{authorfullhash}{d52437ca94187346472b9d8b11f8cc14}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -364,8 +422,8 @@
       \strng{authorbibnamehash}{2c846cd70668b41997f965d3e1ea37f4}
       \strng{authornamehash}{2c846cd70668b41997f965d3e1ea37f4}
       \strng{authorfullhash}{2c846cd70668b41997f965d3e1ea37f4}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -408,8 +466,8 @@
       \strng{authornamehash}{b9572cc684ce00d39d6b49f1c7050269}
       \strng{authorfullhash}{75467b7002be90234c4265abfe0c9faf}
       \field{extraname}{1}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -440,8 +498,8 @@
       \strng{authorbibnamehash}{64afdd560649c176243a09b8f44b17f1}
       \strng{authornamehash}{64afdd560649c176243a09b8f44b17f1}
       \strng{authorfullhash}{64afdd560649c176243a09b8f44b17f1}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -453,64 +511,6 @@
       \field{year}{2013}
       \field{pages}{3444\bibrangedash 3452}
       \range{pages}{9}
-    \endentry
-    \entry{Wu:2011}{article}{}
-      \name{author}{7}{}{%
-        {{hash=2fbbe512f7957508280382e8982b122f}{%
-           family={Wu},
-           familyi={W\bibinitperiod},
-           given={R.},
-           giveni={R\bibinitperiod}}}%
-        {{hash=2740bae2f2e90635da23cc47170f4c69}{%
-           family={Dephoure},
-           familyi={D\bibinitperiod},
-           given={N.},
-           giveni={N\bibinitperiod}}}%
-        {{hash=7f029eb321dedbe865dcdcde93500926}{%
-           family={Haas},
-           familyi={H\bibinitperiod},
-           given={W.},
-           giveni={W\bibinitperiod}}}%
-        {{hash=e41fd276f9ad08ff955e3306b5adce3b}{%
-           family={Huttlin},
-           familyi={H\bibinitperiod},
-           given={E.L.},
-           giveni={E\bibinitperiod}}}%
-        {{hash=2a93449525f129e479bf56670ed00773}{%
-           family={Zhai},
-           familyi={Z\bibinitperiod},
-           given={B.},
-           giveni={B\bibinitperiod}}}%
-        {{hash=71c1b1d98f6315c66e78483a3af3717b}{%
-           family={Sowa},
-           familyi={S\bibinitperiod},
-           given={M.E.},
-           giveni={M\bibinitperiod}}}%
-        {{hash=eb19b015f8d71c3fe04c0f2a5b442b85}{%
-           family={Gygi},
-           familyi={G\bibinitperiod},
-           given={S.P.},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{880082f82ba3a10105e1b84513f7378d}
-      \strng{fullhash}{e8da6e4759b9c5bd729b44cf39578cc5}
-      \strng{bibnamehash}{880082f82ba3a10105e1b84513f7378d}
-      \strng{authorbibnamehash}{880082f82ba3a10105e1b84513f7378d}
-      \strng{authornamehash}{880082f82ba3a10105e1b84513f7378d}
-      \strng{authorfullhash}{e8da6e4759b9c5bd729b44cf39578cc5}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Mol Cell Proteomics}
-      \field{number}{8}
-      \field{title}{Correct interpretation of comprehensive phosphorylation dynamics requires normalization by protein expression changes}
-      \field{volume}{10}
-      \field{year}{2011}
-      \field{pages}{M111.009654}
-      \range{pages}{-1}
     \endentry
     \entry{Kalpic:2011}{inbook}{}
       \name{author}{3}{}{%
@@ -542,8 +542,8 @@
       \strng{authorbibnamehash}{cbf4c276d0683920888170ab761776cc}
       \strng{authornamehash}{cbf4c276d0683920888170ab761776cc}
       \strng{authorfullhash}{cbf4c276d0683920888170ab761776cc}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1284,8 +1284,8 @@
       \strng{authorbibnamehash}{54060a4c8ae5a82f9566af6eba731e73}
       \strng{authornamehash}{54060a4c8ae5a82f9566af6eba731e73}
       \strng{authorfullhash}{54060a4c8ae5a82f9566af6eba731e73}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1327,8 +1327,8 @@
       \strng{authorbibnamehash}{8074e439a3fa7e315723dc58b89c27f6}
       \strng{authornamehash}{8074e439a3fa7e315723dc58b89c27f6}
       \strng{authorfullhash}{e35772c116aca3a1f37123a3ab3cb236}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1400,8 +1400,8 @@
       \strng{authorbibnamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
       \strng{authornamehash}{9d3ae8a8f708b030eeb22ef04a4110cc}
       \strng{authorfullhash}{c143ec455c2f719042df5248cb218109}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1428,8 +1428,8 @@
       \strng{authornamehash}{dbf3c876f4579e206e56f8755d9499e8}
       \strng{authorfullhash}{dbf3c876f4579e206e56f8755d9499e8}
       \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1493,8 +1493,8 @@
       \strng{editornamehash}{b8faab307bcc5fe19bfc5900768458ef}
       \strng{editorfullhash}{bd637e0022ab80402131364e8a96d71b}
       \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1554,8 +1554,8 @@
       \strng{authorbibnamehash}{490fd5b4d6cd60f752d5a619716f7eee}
       \strng{authornamehash}{490fd5b4d6cd60f752d5a619716f7eee}
       \strng{authorfullhash}{c00f217070e6a838de89dfd0fe424bf5}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -1612,8 +1612,8 @@
       \strng{authorbibnamehash}{fc6475a5e009897804934ee0cd467282}
       \strng{authornamehash}{fc6475a5e009897804934ee0cd467282}
       \strng{authorfullhash}{5c7e210ed5807919ef228fc853a41ac1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}

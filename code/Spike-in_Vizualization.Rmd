@@ -77,9 +77,9 @@ Protein: 10.2
 #### Volcano Plot
 
 ```{r pressure, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "MSstatsPTM_Summarized.rda")
+load(file = "../data/MSstatsPTM_Summarized.rda")
 
-load(file = "MSstatsPTM_Model.rda")#model_df
+load(file = "../data/Spike_in_MSstatsPTM_Model.rda")#model_df
 
 model_df$ADJUSTED.Model <- model_df$ADJUSTED.Model %>% filter(is.finite(pvalue))
 model_df$PTM.Model <- model_df$PTM.Model %>% filter(is.finite(pvalue))
@@ -111,12 +111,11 @@ proposed_plot_df <- plot_df
 
 # Volcano plot
 plot_df %>% arrange(labeling) %>% 
-  filter(abs(log2FC) < Inf) %>% # & Label %in% c("mix1-mix3", "mix1-mix4", "mix2-mix3", "mix2-mix4")
+  filter(abs(log2FC) < Inf) %>% 
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
   geom_point(aes(color = labeling, alpha = labeling), size = 2.2) + 
   scale_color_manual(values = c("#999999", "#D55E00")) + 
   scale_alpha_manual(values = c(0.2, 1)) + 
-  #scale_size_manual(values = c(2, 1)) + 
   geom_hline(yintercept = 0) + 
   geom_vline(xintercept = 0) + 
   geom_vline(aes(xintercept = trueLog2FC),color = "darkred", linetype= "dashed") +
@@ -197,7 +196,7 @@ We will repeat the above analysis for Limma.
 
 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "Limma_Model.rda")#limma_model
+load(file = "../data/Spike_in_Limma_Model.rda")#limma_model
 
 limma_model <- list(PTM.Model = limma_model %>% filter(protadj == "no adjustment"),
                     ADJUSTED.Model = limma_model %>% filter(protadj == "protein adjustment"))
@@ -347,7 +346,7 @@ spike %>% ggplot() + geom_boxplot(aes(x = contrast_truth, y = Log2FC), fill = "l
 #### Volcano Plot
 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 7}
-load(file = "Anova_Model.rda")#anova_results
+load(file = "../data/anova_results.rda")#anova_results
 
 anova_results$contrast_truth = ""
 anova_results$trueLog2FC=0
@@ -380,6 +379,7 @@ anova_results$contrast_truth = factor(anova_results$contrast_truth,
                                     "LogFC: -1 (mix4-mix3)"))
 
 # Volcano plot
+png("../supplementary/sim_new/spike_in_anova_volcano.png", width = 1000, height = 500)
 anova_results %>% arrange(labeling) %>% 
   filter(is.finite(log2FC)) %>%
   ggplot(aes(log2FC, -log10(adj.pvalue))) + 
@@ -405,7 +405,9 @@ anova_results %>% arrange(labeling) %>%
        legend.box.margin=margin(-10,-10,-10,-10)) + 
   # scale_y_continuous(limits = c(0,1.5)) + 
   guides(colour = guide_legend(override.aes = list(size=5))) + 
-  labs(title = "Anova VolcanoPlot")
+  labs(title = "ANOVA VolcanoPlot")
+dev.off()
+
 ```
 
 #### Log Fold Change - Spike-in Peptides
@@ -439,7 +441,7 @@ anova_results[anova_results$labeling == 'Background Peptides'][['labeling']] <- 
 anova_results[anova_results$labeling == 'SpikeIn Peptides'][['labeling']] <- "heavy"
 anova_summary <- calculate_summary_stats(anova_results %>% filter(protadj == "protein adjustment"), 'adj.pvalue', "label")
 anova_summary$Adjustment <- "protein adjustment"
-anova_summary$Model <- "Anova"        
+anova_summary$Model <- "ANOVA"        
 
 summary <- rbindlist(list(msstatsptm_sum, limma_sum, anova_summary))
 summary[Model == "MSstatsPTM"]$Model <- "Proposed"
@@ -476,14 +478,14 @@ unadj_spike_ttest <- setNames(unadj_spike_ttest, c("Protein", "Label", "log2FC",
                                                    "contrast_truth", "trueLog2FC"))
 
 unadj_spike_ttest$Adjustment <- "no adjustment"
-unadj_spike_ttest$Model <- "Anova"
+unadj_spike_ttest$Model <- "ANOVA"
 
 adj_spike_ttest <- anova_results %>% filter(labeling == "SpikeIn Peptides" & protadj != "no adjustment")
 adj_spike_ttest <- setNames(adj_spike_ttest, c("Protein", "Label", "log2FC", "SE", "Tvalue", 
                                                    "pvalue", "protadj", "adj.pvalue", "labeling", 
                                                    "contrast_truth", "trueLog2FC"))
 adj_spike_ttest$Adjustment <- "protein adjustment"
-adj_spike_ttest$Model <- "Anova"
+adj_spike_ttest$Model <- "ANOVA"
 
 unadj_spike_limma <- limma_model$PTM.Model %>% filter(labeling == "heavy")
 unadj_spike_limma <- setNames(unadj_spike_limma, c("Protein", "Label", "log2FC", "pvalue", "DF", 
@@ -505,8 +507,9 @@ spike[spike$Model == "MSstatsPTM", Model := "Proposed"]
 #plot_df[plot_df$Label == 'mix1-mix3'][['contrast_truth']]
 spike$`color_label` <- "True LogFC"
 
+png("../main/images/spike_in_fc.png", width = 750, height = 500)
 spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1],
-      Model = factor(Model, levels=c("Proposed", "Limma", "Anova"))) %>%
+      Model = factor(Model, levels=c("Proposed", "Limma", "ANOVA"))) %>%
   filter(!Label %in% c("mix1-mix2", "mix3-mix4")) %>% 
   ggplot() + 
   geom_boxplot(aes(x = Label, y = log2FC, fill = Model)) + 
@@ -525,5 +528,6 @@ spike %>% mutate(Comparison = str_split(contrast_truth, " ", simplify = TRUE)[,1
        strip.text = element_text(size = 18),
        legend.position = "bottom") + 
   labs(title = "Fold Change of Spike-in Peptides", x = "Comparison with Expected FC")
+dev.off()
 
 ```
