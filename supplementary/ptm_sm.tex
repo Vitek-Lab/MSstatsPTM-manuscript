@@ -493,7 +493,7 @@
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
-We compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) ANOVA (with adjustment), d) ANOVA (no adjustment), e) Limma (with adjustment), and f) Limma (no adjustment).
+We compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) ANOVA~\cite{kutner_etal_04a} (with adjustment), d) ANOVA (no adjustment), e) Limma~\cite{Smyth:2004} (with adjustment), and f) Limma (no adjustment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
@@ -668,7 +668,7 @@ $$\sum_{i=1}^I{\mu_i} = 0 ,\: \epsilon_{mij} ~ \sim N(0, \sigma^2)$$
 \end{figure}
 
 \clearpage
-\subsubsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}
+\subsubsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT~\cite{Maculins}}
 \label{sec:shigella}
 
 The experimental design can be seen in Table~\ref{table:shigella_design}.
@@ -728,7 +728,7 @@ $$Mixture_m ~ \sim N(0, \sigma^2_M) ,\: \sum_{i=1}^I{\mu_i} = 0 ,\: \epsilon_{mi
 
 \clearpage
 
-\subsubsection{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}
+\subsubsection{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run~\cite{Cunningham2015}}
 \label{sec:usp30}
 
 An example profile plot for this experiment can be seen in  Figure \ref{fig:USP30_profile_plot}.
@@ -815,9 +815,9 @@ The results of the power and sample size analysis can be seen in Figure \ref{fig
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\clearpage
+\clearpage
 
-%\printbibliography 
+\printbibliography 
 
 \end{document} 
 

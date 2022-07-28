@@ -18,8 +18,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.2.1}Dataset 4 : Human - Ubiquitination - 1mix-TMT\nobreakspace {}\cite {LUCHETTI2021}}{10}{subsubsection.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}{12}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2}Dataset 5 : Mouse - Phosphorylation - 2mix-TMT\nobreakspace {}\cite {Maculins}}{12}{subsubsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}{15}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.3}Dataset 6 : Human - Ubiquitination - Label-free no global profiling run\nobreakspace {}\cite {Cunningham2015}}{15}{subsubsection.2.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Sample size calculation and power analysis}{16}{section.3}%
