@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  29 JUL 2022 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  29 JUL 2022 18:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1123,7 +1123,7 @@ Overfull \hbox (15.74734pt too wide) in paragraph at lines 489--533
  []
 
 [16]
-<images/benchmark_fig.png, id=360, 970.3753pt x 532.23843pt>
+<images/benchmark_fig.png, id=362, 970.3753pt x 532.23843pt>
 File: images/benchmark_fig.png Graphic file (type png)
 <use images/benchmark_fig.png>
 Package pdftex.def Info: images/benchmark_fig.png  used on input line 559.
@@ -1133,57 +1133,57 @@ Overfull \hbox (15.43144pt too wide) in paragraph at lines 559--564
  [][] 
  []
 
-<images/fig3.png, id=364, 1005.00468pt x 533.74406pt>
+<images/fig3.png, id=366, 1005.00468pt x 533.74406pt>
 File: images/fig3.png Graphic file (type png)
 <use images/fig3.png>
 Package pdftex.def Info: images/fig3.png  used on input line 570.
 (pdftex.def)             Requested size: 452.24792pt x 240.1826pt.
-<images/MSstatsPTM_design.png, id=365, 722.7pt x 542.025pt>
+<images/MSstatsPTM_design.png, id=367, 722.7pt x 542.025pt>
 File: images/MSstatsPTM_design.png Graphic file (type png)
 <use images/MSstatsPTM_design.png>
 Package pdftex.def Info: images/MSstatsPTM_design.png  used on input line 578.
 (pdftex.def)             Requested size: 361.3491pt x 271.01183pt.
-<images/sim1_FDR_all_models.png, id=366, 752.8125pt x 501.875pt>
+<images/sim1_FDR_all_models.png, id=368, 752.8125pt x 501.875pt>
 File: images/sim1_FDR_all_models.png Graphic file (type png)
 <use images/sim1_FDR_all_models.png>
 Package pdftex.def Info: images/sim1_FDR_all_models.png  used on input line 586
 .
 (pdftex.def)             Requested size: 328.82707pt x 219.22516pt.
-<images/sim3_Accuracy.png, id=367, 752.8125pt x 501.875pt>
+<images/sim3_Accuracy.png, id=369, 752.8125pt x 501.875pt>
 File: images/sim3_Accuracy.png Graphic file (type png)
 <use images/sim3_Accuracy.png>
 Package pdftex.def Info: images/sim3_Accuracy.png  used on input line 591.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
-<images/spike_in_fc.png, id=368, 752.8125pt x 501.875pt>
+<images/spike_in_fc.png, id=370, 752.8125pt x 501.875pt>
 File: images/spike_in_fc.png Graphic file (type png)
 <use images/spike_in_fc.png>
 Package pdftex.def Info: images/spike_in_fc.png  used on input line 604.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
-<images/spike_in_volcano.png, id=369, 752.8125pt x 501.875pt>
+<images/spike_in_volcano.png, id=371, 752.8125pt x 501.875pt>
 File: images/spike_in_volcano.png Graphic file (type png)
 <use images/spike_in_volcano.png>
 Package pdftex.def Info: images/spike_in_volcano.png  used on input line 609.
 (pdftex.def)             Requested size: 387.54645pt x 258.37277pt.
-<images/ipah_venn_diagramm.png, id=370, 1084.05pt x 1084.05pt>
+<images/ipah_venn_diagramm.png, id=372, 1084.05pt x 1084.05pt>
 File: images/ipah_venn_diagramm.png Graphic file (type png)
 <use images/ipah_venn_diagramm.png>
 Package pdftex.def Info: images/ipah_venn_diagramm.png  used on input line 620.
 
 (pdftex.def)             Requested size: 258.36668pt x 258.35777pt.
-<images/shig_venn_diagramm.png, id=371, 1084.05pt x 1084.05pt>
+<images/shig_venn_diagramm.png, id=373, 1084.05pt x 1084.05pt>
 File: images/shig_venn_diagramm.png Graphic file (type png)
 <use images/shig_venn_diagramm.png>
 Package pdftex.def Info: images/shig_venn_diagramm.png  used on input line 625.
 
 (pdftex.def)             Requested size: 258.36668pt x 258.35777pt.
-<images/No_Difference_Shigella_Profile_Plot.png, id=372, 1129.21875pt x 602.25p
+<images/No_Difference_Shigella_Profile_Plot.png, id=374, 1129.21875pt x 602.25p
 t>
 File: images/No_Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use images/No_Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: images/No_Difference_Shigella_Profile_Plot.png  used o
 n input line 638.
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
-<images/IpaH_prof_plot.png, id=373, 1129.21875pt x 602.25pt>
+<images/IpaH_prof_plot.png, id=375, 1129.21875pt x 602.25pt>
 File: images/IpaH_prof_plot.png Graphic file (type png)
 <use images/IpaH_prof_plot.png>
 Package pdftex.def Info: images/IpaH_prof_plot.png  used on input line 644.
@@ -1194,13 +1194,13 @@ LaTeX Warning: Float too large for page by 3.64119pt on input line 650.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/usp30_venn_diagramm.png, id=374, 1011.78pt x 1011.78pt>
+<images/usp30_venn_diagramm.png, id=376, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm.png Graphic file (type png)
 <use images/usp30_venn_diagramm.png>
 Package pdftex.def Info: images/usp30_venn_diagramm.png  used on input line 656
 .
 (pdftex.def)             Requested size: 258.36328pt x 258.36668pt.
-<images/usp30_venn_diagramm_matching_only.png, id=375, 1011.78pt x 1011.78pt>
+<images/usp30_venn_diagramm_matching_only.png, id=377, 1011.78pt x 1011.78pt>
 File: images/usp30_venn_diagramm_matching_only.png Graphic file (type png)
 <use images/usp30_venn_diagramm_matching_only.png>
 Package pdftex.def Info: images/usp30_venn_diagramm_matching_only.png  used on 
@@ -1230,10 +1230,6 @@ Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 \openout1 = `MSstatsPTM_Main.run.xml'.
 
@@ -1242,7 +1238,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 687.
 Here is how much of TeX's memory you used:
  25802 strings out of 492616
  485907 string characters out of 6129482
- 934096 words of memory out of 5000000
+ 934446 words of memory out of 5000000
  29173 multiletter control sequences out of 15000+600000
  14524 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1287,10 +1283,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (24 pages, 835072 bytes).
+Output written on MSstatsPTM_Main.pdf (24 pages, 835514 bytes).
 PDF statistics:
- 519 PDF objects out of 1000 (max. 8388607)
- 425 compressed objects within 5 object streams
+ 521 PDF objects out of 1000 (max. 8388607)
+ 427 compressed objects within 5 object streams
  124 named destinations out of 1000 (max. 500000)
  222 words of extra memory for PDF output out of 10000 (max. 10000000)
 
