@@ -164,7 +164,7 @@ Table \ref{tab:dataDescription} summarizes the experiments. Two computer simulat
 
 One spike-in experiment also had known changes in modified spike-in peptides, but had real-world experimental characteristics. Finally, three biological experiments demonstrated the applicability of the proposed approach across different biological organisms, modifications, experimental designs and acquisition strategies. The experimental data, R scripts with $MSstatsPTM$ analysis, and results of the statistical analysis are available in MassIVE.quant (\url{https://massive.ucsd.edu/ProteoSAFe/static/massive-quant.jsp}) \cite{Choi:2020}. 
 
-\subsection*{Dataset 1: Computer simulation 1 - Label-free}
+\subsection*{Dataset 1: Computer simulation 1 - Label-free clean}
 \label{sec:comp_sim_procedure1}
 
 {\bf Simulation design:} The simulation represented an idealistic case. 24 synthetic label-free datasets were generated with different experimental designs and different biological variation. In each dataset, 1,000 proteins had 10 unmodified features per protein. Each of the 1,000 proteins had one PTM. Each PTM was represented by 10 modified features. The PTMs of 500 proteins had a differential fold change between conditions, while the other 500 proteins were generated with no changes in abundance between conditions. Furthermore, the fold changes of half of the 500 differential PTMs were fully masked by changes in the unmodified protein. Finally, the fold change of half the 500 non-differential PTMs was entirely due to changes in the unmodified protein. All the differential PTMs were generated with an expected log base 2 fold change of 0.75 between conditions. 
@@ -173,7 +173,7 @@ Each simulation was generated with random biological variation. The observed pep
 
 \medskip \noindent {\bf Evaluation:} We evaluated the ability of the statistical methods to correctly detect differentially abundant PTMs. We gauged the methods ability to avoid false positives (i.e. specificity), accurately estimate the fold change between conditions, and analyzed the sensitivity of detecting differentially abundant PTMs. The evaluation was performed both in the presence of confounding with changes in the unmodified protein and after applying adjustment to correct for the confounding.
 
-\subsection*{Dataset 2: Computer simulation 2 - Label-free missing values and low features}
+\subsection*{Dataset 2: Computer simulation 2 - Label-free with few low feature counts and missing values}
 \label{sec:comp_sim_procedure2}
 
 {\bf Simulation design:} The data were simulated as above, while providing a more realistic representation of the experiments. The feature counts and the proportion of missing values were as observed on average over all the the experimental datasets in this manuscript. Specifically, PTMs were simulated with 2 modified peptide features, and unmodified proteins were simulated with 10 features. Additionally, 20\% of observations for both modified and unmodified peptides were missing completely at random.
@@ -278,7 +278,7 @@ u_{ij} = \log_2 \frac{ \sum_{k=1}^{K} 2^{y_{ijk}^{\ast}} }{ \sum_{l=1}^{L} 2^{y_
 The approach then models these values with the basic ANOVA, which corresponds to 
 \begin{eqnarray}
 u_{ij} = (\mu^{\ast}_{i}-\mu_i) + \epsilon^{\prime}_{ij}, \text{where } \epsilon^{\prime}_{ij} \mathop\sim^{iid} \mathcal{N}(0, \sigma^{\prime 2}),\ i=1,\ldots,I,\ j=1,\ldots,J
-\label{eq:ttest_model}
+\label{eq:ttest_ratio_model}
 \end{eqnarray}
 The model allows us to estimate $\hat{\Delta}_{adj}$ and its standard error.
 Based on this model, we can test the more relevant null hypothesis in~\eqref{null_hyp}, by comparing the test statistic against the Student distribution with $df=I(J-1)$ degrees of freedom in balanced designs.
@@ -287,14 +287,16 @@ Although effective, the approach is somewhat simplistic. It is not applicable to
 
 \medskip \noindent {\bf Limma} 
 
-\medskip \noindent The estimation of nuisance variation of the ratio-based ANOVA model above is often further expanded with Empirical Bayes moderation implemented in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. A typical application of Limma takes as input $u_{ij}$, and for each PTM fits the linear model in~\eqref{ttest_model}. 
-The model differs from~\eqref{ttest_model} in that it specifies additional prior distributions for the model parameters.
-The prior distributions are estimated from the data across all the proteins and all the PTM as described in \cite{Smyth:2004}. 
-With this approach, testing the null hypothesis in~\eqref{null_hyp} is enhanced by combining the PTM- and protein-specific estimates of variation with a consensus estimate obtained from all the PTM and all the proteins.
+\medskip \noindent The estimation of nuisance variation of the two ANOVA models above is often further expanded with Empirical Bayes moderation implemented in Limma~\cite{ Ritchie_15a, Schwammle2015, Smyth:2004, Smyth:2005, Zhu,Chappell:2021}. 
+A typical application of Limma on summarized modified log$_2$-intensities takes as input $\hat{y}_{ij}$, and for each PTM fits the linear model in~\eqref{ttest_model}. 
+A typical application of ratio-based Limma takes as input $u_{ij}$, and for each PTM fits the linear model in~\eqref{ttest_ratio_model}. 
+The Limma versions of the models differ in that they specifies additional prior distributions for the model parameters. 
+The priors are estimated from the same data by combining the information across all the proteins and all the PTM as described in \cite{Smyth:2004}. 
+With this approach, testing the null hypothesis is enhanced by combining the PTM- and protein-specific estimates of variation with a consensus estimate obtained from all the PTM and all the proteins.
 As the result, in experiments with few biological replicates the standard errors are often smaller, and the degrees of freedom are often larger than without moderation~\cite{Ritchie_15a}. 
 Thus the approach tends to increase the sensitivity of detecting differential abundance.
 
-Since Limma only improves upon the estimation of variation, its limitations are similar to those of ANOVA. The method is only directly applicable to experiments with at most two variance components, and cannot account for all the sources of variation in experiments with either isobaric labeling or complex designs. There is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
+Since Limma only improves upon the estimation of variation, its limitations are similar to those of ANOVA. In particular, the method is only directly applicable to experiments with at most two variance components, and cannot account for all the sources of variation in experiments with either isobaric labeling or complex designs. There is no self contained implementation of the methods to PTMs, requiring manual transformation and application by the user.
 
 \medskip \noindent {\bf Isobar-PTM} 
 
@@ -411,15 +413,18 @@ The implementation relies on functionalities from the R packages $MSstats$ \cite
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Evaluation criteria}
 
-We evaluated $MSstatsPTM$ on simulated and spike-in datasets with known ground truth in terms of true positives ($TP$), false positives ($FP$), true negatives ($TN$), and false negatives ($FN$) differentially abundant PTMs. The true positives were defined as PTMs with changes distinct from the overall changes in unmodified protein abundance. The true negatives were defined as PTMs which, after accounting for the changes in the overall protein abundance, were not differentially abundant. Additional summaries were the false discovery rate $FDR=FP/(TP+FP)$, $Recall=TP/(TP + FN)$, and $Accuracy=(TP + TN) / (TP + TN + FP + FN)$.
+We evaluated $MSstatsPTM$ on simulated and spike-in datasets with known ground truth in terms of true positives ($TP$), false positives ($FP$), true negatives ($TN$), and false negatives ($FN$) differentially abundant PTMs. The true positives were defined as PTMs with changes distinct from the overall changes in unmodified protein abundance. The true negatives were defined as PTMs which, after accounting for the changes in the overall protein abundance, were not differentially abundant. Additional summaries were the false discovery rate $FDR=FP/(TP+FP)$ \todo{I am not sure we should call this FDR. By definition FDR is a population-level quantity (it is an expected value of the proportion of false positives. Here it is an observed value). Maybe replace with 1-PPV?}, $Recall=TP/(TP + FN)$, and $Accuracy=(TP + TN) / (TP + TN + FP + FN)$.
 For biological experiments with unknown ground truth, we compared the differentially abundant PTMs with and without adjusting for changes in unmodified protein abundance. 
 
-We compared the performance of  $MSstatsPTM$ to that of \todo{ratio-based or both?} ANOVA and of Limma. Since IsobarPTM is only applicable to experiments with TMT labeling, it could not be applied to the datasets with known ground truth in this manuscript, and was excluded from the comparisons. \todo{ANOVA and Limma took as input protein summaries XXX - define the variants of the same models (e.g., used in Fig 4)}  $MSstatsPTM$ was used without imputing missing values, and without Empirical Bayes moderation. All the evaluations were done at the FDR-adjusted p-value cutoff of $q=.05$. More details are in {\bf Supplementary Sec. \ref{supp-sec:experiments}}. 
+We compared the performance of  $MSstatsPTM$ to that of \todo{Need more details on the 'adjusted' vs 'unadjusted' versions ANOVA and Limma. Give each version a name that you'll later use in the figures, and describe what type of summaries each version takes.} ANOVA and of Limma. Since IsobarPTM is only applicable to experiments with TMT labeling, it could not be applied to the datasets with known ground truth in this manuscript, and was excluded from the comparisons.  $MSstatsPTM$ \todo{Also describe the 'adjusted' version (MSstatsPTM) and the 'unadjusted' version (I guess it is MSstats/MSstatsTMT)} was used without imputing missing values, and without Empirical Bayes moderation. All the evaluations were done at the FDR-adjusted p-value cutoff of $q=.05$. More details are in {\bf Supplementary Sec. \ref{supp-sec:experiments}}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection*{MSstatsPTM corrected the excess FDR in unadjusted differentially abundant PTMs in clean simulations}
+%\subsubsection*{MSstatsPTM corrected the excess FDR in unadjusted differentially abundant PTMs in clean simulations}
+\subsubsection*{Protein-level adjustment was required to control FDR in differentially abundant PTM}
 
-\figref{sim1_fdr} illustrated the high FDR observed on the simulated datasets when not accounting for the overall changes in protein abundance. After the adjustment, the FDR of all methods improved, and were in line with the excepted FDR of $.05$. Adjusting for changes in the unmodified protein removed differentially abundant PTMs whose abundance change was caused by the protein. %Finally, since this simulation is a group comparison design that doesn't require many variance components, it is favorable to Limma and ANOVA. As discussed previously, these methods are not directly applicable to experiments with additional variance components.
+\figref{sim1_fdr}(a) summarizes the FDR \todo{I am not sure we should call this FDR. By definition FDR is a population-level quantity (it is an expected value of the proportion of false positives. Here it is an observed value). Maybe replace with 1-PPV?} reported on Computer Simulation 1 dataset by the unadjusted and adjusted versions of methods \todo{XXX}. All the analyses were performed to control the FDR at at most 5\%.  The  simulation mimics a ``clean" label-free experiment, not compromised by issues such as deviations from model assumptions, missing values and outliers. Yet, even in these favorable situations, all the versions of the models that did not adjust for confounding from changes in overall protein abundance produced an excessive number of false positives. The versions of the models that accounted for this confounding produced much better calibrated error rates.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{In noisy simulations, MSstatsPTM better calibrated the true fold change over the existing methods}
@@ -594,7 +599,7 @@ Overall, the proposed approach balances accuracy and practicality, and enables t
 \caption{}
 \label{fig:sim2_acc}
 \end{subfigure}
-\caption{\todo{Could you clarify what 'with' and 'without' adjustment means for each model? E.g., what is 'proposed with no adjustment'? We did not propose anything without adjustment - did you mean base MSstats? Also, maybe clarify what you mean by limma with and without adjustment, since we technically didn't introduce limma without the adjustment. Maybe explain the inputs to each version of the model?} Computer simulations. a) Dataset 1, clean simulation, analyzed to control FDR at at most 5\%. The methods not accounting for the confounding between changes in PTM and overall changes in protein abundance produced exceedingly high numbers of false positives. In contrast, the methods accounting for the confounding correctly calibrated FDR.  b) In a noisy simulation, including limited feature observations and missing values, the advantage of the proposed approach was apparent. Looking at accuracy, the proposed method outperformed ANOVA and Limma in nearly every model.
+\caption{\todo{Could you clarify what 'with' and 'without' adjustment means for each model? E.g., what is 'proposed with no adjustment'? We did not propose anything without adjustment - did you mean base MSstats? Also, maybe clarify what you mean by limma with and without adjustment, since we technically didn't introduce limma without the adjustment. Maybe explain the inputs to each version of the model?} \todo{In (a), could you add a horizontal line at 5\%?} Computer simulations. a) Dataset 1, clean simulation, analyzed to control FDR at at most 5\%. The methods not accounting for the confounding between changes in PTM and overall changes in protein abundance produced exceedingly high numbers of false positives. In contrast, the methods accounting for the confounding correctly calibrated the proportion of false positive differentially abundant PTM.  b) In a noisy simulation, including limited feature observations and missing values, the advantage of the proposed approach was apparent. Looking at accuracy, the proposed method outperformed ANOVA and Limma in nearly every model.
 }
 \label{fig:computer_sim}
 \end{figure}
