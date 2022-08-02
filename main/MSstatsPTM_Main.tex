@@ -366,7 +366,6 @@ df \left(  \widehat{SE}(\hat{\Delta}_{adj}) \right)=  \left( \widehat{SE}(\hat{\
 \label{eq:prop_df}
 \end{eqnarray}
 To test the null hypothesis in~\eqref{null_hyp}, the test statistic $\hat{\Delta}_{adj}/\widehat{SE}(\Delta)_{adj}$ is compared with the Student distribution with the degrees of freedom in~\eqref{prop_df}. The p-values of the comparison are adjusted for multiple testing using the approach by Benjamin and Hochberg~\cite{Benjamini:1995}.
-\todo{Add 'df' to Step 5 of Fig 3?}
 
 \subsubsection*{Sample size calculation for future PTM experiments}
 \label{sec:design}
@@ -400,7 +399,7 @@ The next step is PTM/protein summarization using the $dataSummarizationPTM()$ fu
 
 Finally, separate statistical models are fit to both feature summaries using the $groupComparisonPTM()$ function (Step 5 of~\figref{msstatsptm_design}). The models are automatically selected to reflect the experimental design and the data acquisition. If the base model is not applicable for a particular PTM or protein, e.g. due to missing data, a simplified model is fit. The output of the models are the estimates $\hat{\Delta}_{PTM}$ and $\hat{\Delta}_{protein}$, and their standard errors $\widehat{SE}(\hat{\Delta}_{PTM})$ and $\widehat{SE}(\hat{\Delta}_{protein})$. 
 
-After modeling, the modified model is adjusted for changes in unmodified protein abundance, using the methods described above. Modification sites which lack corresponding global profiling information cannot be adjusted for changes in protein abundance. In this case the implementation reverts to testing the null hypothesis in~\eqref{conv_null_hyp} using the statistical methods seen in $MSstats$, applied separately to each modified peptide. \todo{This is indicated in the `issues' column in the output?} The final output is the estimate $\hat{\Delta}_{adj}$ and it's standard error $\widehat{SE}(\hat{\Delta}_{adj})$.
+After modeling, the modified model is adjusted for changes in unmodified protein abundance, using the methods described above. Modification sites which lack corresponding global profiling information cannot be adjusted for changes in protein abundance. In this case the implementation reverts to testing the null hypothesis in~\eqref{conv_null_hyp} using the statistical methods seen in $MSstats$, applied separately to each modified peptide. The final output is the estimate $\hat{\Delta}_{adj}$ and it's standard error $\widehat{SE}(\hat{\Delta}_{adj})$.
 
 In addition to the above functionalities, the implementation includes visualizations for quality control, $dataProcessPlotsPTM()$, and assessment of the quality of model fit, $groupComparisonPlotsPTM()$.
 
