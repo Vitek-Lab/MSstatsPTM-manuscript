@@ -1,17 +1,17 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'ptm_sm.blg'
-[153] biber-MSWIN64:340> INFO - === 
-[210] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
-[354] Biber.pm:952> INFO - Found 5 citekeys in bib section 0
-[373] Biber.pm:4340> INFO - Processing section 0
-[388] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
-[475] bibtex.pm:1689> INFO - LaTeX decoding ...
-[498] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
-[500] Utils.pm:395> WARN - Duplicate entry key: 'Maculins' in file 'ptm_ref.bib', skipping ...
-[620] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[620] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[620] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[620] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[626] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
-[636] bbl.pm:757> INFO - Output to ptm_sm.bbl
-[636] Biber.pm:128> INFO - WARNINGS: 1
+[113] biber-MSWIN64:340> INFO - === 
+[150] Biber.pm:415> INFO - Reading 'ptm_sm.bcf'
+[271] Biber.pm:952> INFO - Found 5 citekeys in bib section 0
+[285] Biber.pm:4340> INFO - Processing section 0
+[297] Biber.pm:4531> INFO - Looking for bibtex format file 'ptm_ref.bib' for section 0
+[358] bibtex.pm:1689> INFO - LaTeX decoding ...
+[377] bibtex.pm:1494> INFO - Found BibTeX data source 'ptm_ref.bib'
+[378] Utils.pm:395> WARN - Duplicate entry key: 'Maculins' in file 'ptm_ref.bib', skipping ...
+[471] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[471] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[472] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[472] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[476] bbl.pm:654> INFO - Writing 'ptm_sm.bbl' with encoding 'UTF-8'
+[486] bbl.pm:757> INFO - Output to ptm_sm.bbl
+[486] Biber.pm:128> INFO - WARNINGS: 1
