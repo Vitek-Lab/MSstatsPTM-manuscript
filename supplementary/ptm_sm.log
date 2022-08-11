@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  9 AUG 2022 14:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.15)  11 AUG 2022 14:41
 entering extended mode
 **./ptm_sm.tex
 (ptm_sm.tex
@@ -1434,16 +1434,16 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 <sim_new/sim1_FC_boxplot.png, id=107, 752.8125pt x 501.875pt>
 File: sim_new/sim1_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim1_FC_boxplot.png>
-Package pdftex.def Info: sim_new/sim1_FC_boxplot.png  used on input line 564.
+Package pdftex.def Info: sim_new/sim1_FC_boxplot.png  used on input line 565.
 (pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 <sim_new/sim3_FC_boxplot.png, id=108, 752.8125pt x 501.875pt>
 File: sim_new/sim3_FC_boxplot.png Graphic file (type png)
 <use sim_new/sim3_FC_boxplot.png>
-Package pdftex.def Info: sim_new/sim3_FC_boxplot.png  used on input line 569.
+Package pdftex.def Info: sim_new/sim3_FC_boxplot.png  used on input line 570.
 (pdftex.def)             Requested size: 375.80544pt x 250.54631pt.
 
 
-LaTeX Warning: Float too large for page by 19.2626pt on input line 574.
+LaTeX Warning: Float too large for page by 19.2626pt on input line 575.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1470,13 +1470,13 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 File: sim_new/spike_in_msstatsptm_volcano.png Graphic file (type png)
 <use sim_new/spike_in_msstatsptm_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_msstatsptm_volcano.png  used on input
- line 591.
+ line 592.
 (pdftex.def)             Requested size: 469.75502pt x 234.87808pt.
 <sim_new/spike_in_limma_volcano.png, id=121, 1003.75pt x 501.875pt>
 File: sim_new/spike_in_limma_volcano.png Graphic file (type png)
 <use sim_new/spike_in_limma_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_limma_volcano.png  used on input line
- 597.
+ 598.
 (pdftex.def)             Requested size: 469.75502pt x 234.87808pt.
 
 
@@ -1486,7 +1486,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: sim_new/spike_in_anova_volcano.png Graphic file (type png)
 <use sim_new/spike_in_anova_volcano.png>
 Package pdftex.def Info: sim_new/spike_in_anova_volcano.png  used on input line
- 603.
+ 604.
 (pdftex.def)             Requested size: 469.75502pt x 234.87808pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1522,12 +1522,12 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 [9 <./sim_new/spike_in_anova_volcano.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cite' on input line 618.
+(hyperref)                removing `\cite' on input line 619.
 
 <sim_new/IpaH_volcano_plot.png, id=144, 1129.21875pt x 602.25pt>
 File: sim_new/IpaH_volcano_plot.png Graphic file (type png)
 <use sim_new/IpaH_volcano_plot.png>
-Package pdftex.def Info: sim_new/IpaH_volcano_plot.png  used on input line 665.
+Package pdftex.def Info: sim_new/IpaH_volcano_plot.png  used on input line 666.
 
 (pdftex.def)             Requested size: 422.77664pt x 225.48479pt.
 
@@ -1555,13 +1555,13 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 [11 <./sim_new/IpaH_volcano_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cite' on input line 671.
+(hyperref)                removing `\cite' on input line 672.
 
 <sim_new/No_Difference_Shigella_Volcano.png, id=161, 1129.21875pt x 602.25pt>
 File: sim_new/No_Difference_Shigella_Volcano.png Graphic file (type png)
 <use sim_new/No_Difference_Shigella_Volcano.png>
 Package pdftex.def Info: sim_new/No_Difference_Shigella_Volcano.png  used on in
-put line 708.
+put line 709.
 (pdftex.def)             Requested size: 422.77664pt x 225.48479pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1571,13 +1571,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: sim_new/Difference_Shigella_Profile_Plot.png Graphic file (type png)
 <use sim_new/Difference_Shigella_Profile_Plot.png>
 Package pdftex.def Info: sim_new/Difference_Shigella_Profile_Plot.png  used on 
-input line 717.
+input line 718.
 (pdftex.def)             Requested size: 422.77664pt x 225.48479pt.
 <sim_new/Difference_Shigella_Volcano.png, id=163, 1181.91562pt x 602.25pt>
 File: sim_new/Difference_Shigella_Volcano.png Graphic file (type png)
 <use sim_new/Difference_Shigella_Volcano.png>
 Package pdftex.def Info: sim_new/Difference_Shigella_Volcano.png  used on input
- line 722.
+ line 723.
 (pdftex.def)             Requested size: 422.77664pt x 215.4222pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1614,12 +1614,12 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 ella_Volcano.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cite' on input line 731.
+(hyperref)                removing `\cite' on input line 732.
 
 <sim_new/USP30_profile_plot.png, id=185, 1129.21875pt x 602.25pt>
 File: sim_new/USP30_profile_plot.png Graphic file (type png)
 <use sim_new/USP30_profile_plot.png>
-Package pdftex.def Info: sim_new/USP30_profile_plot.png  used on input line 738
+Package pdftex.def Info: sim_new/USP30_profile_plot.png  used on input line 739
 .
 (pdftex.def)             Requested size: 469.75502pt x 250.5356pt.
 
@@ -1636,17 +1636,17 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 <sim_new/same_var_power.png, id=193, 752.8125pt x 501.875pt>
 File: sim_new/same_var_power.png Graphic file (type png)
 <use sim_new/same_var_power.png>
-Package pdftex.def Info: sim_new/same_var_power.png  used on input line 760.
+Package pdftex.def Info: sim_new/same_var_power.png  used on input line 757.
 (pdftex.def)             Requested size: 352.31625pt x 234.88574pt.
 <sim_new/high_ptm_var_power.png, id=194, 752.8125pt x 501.875pt>
 File: sim_new/high_ptm_var_power.png Graphic file (type png)
 <use sim_new/high_ptm_var_power.png>
-Package pdftex.def Info: sim_new/high_ptm_var_power.png  used on input line 765
+Package pdftex.def Info: sim_new/high_ptm_var_power.png  used on input line 762
 .
 (pdftex.def)             Requested size: 352.31625pt x 234.88574pt.
 
 
-LaTeX Warning: Float too large for page by 6.25095pt on input line 770.
+LaTeX Warning: Float too large for page by 6.25095pt on input line 767.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1691,7 +1691,7 @@ Package logreq Info: Writing requests to 'ptm_sm.run.xml'.
 Here is how much of TeX's memory you used:
  32797 strings out of 479334
  640518 string characters out of 2853721
- 1364038 words of memory out of 3000000
+ 1364233 words of memory out of 3000000
  49613 multiletter control sequences out of 15000+200000
  422592 words of font info for 97 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1713,7 +1713,7 @@ cmr9.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmsl10.pfb><C:/Users/Devon Kohler/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Devon Kohler/AppData/Local/P
 rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ptm_sm.pdf (18 pages, 592922 bytes).
+Output written on ptm_sm.pdf (18 pages, 592563 bytes).
 PDF statistics:
  272 PDF objects out of 1000 (max. 8388607)
  51 named destinations out of 1000 (max. 500000)

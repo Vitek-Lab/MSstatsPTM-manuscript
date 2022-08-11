@@ -56,7 +56,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{5}
-      \field{title}{Applied Linear Statistical Models}
+      \field{title}{Applied linear statistical models}
       \field{year}{2004}
     \endentry
     \entry{Smyth:2004}{article}{}
@@ -79,7 +79,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Statistical Applications in Genetics and Molecular Biology}
       \field{number}{1}
-      \field{title}{Linear Models and Empirical Bayes Methods for Assessing Differential Expression in Microarray Experiments}
+      \field{title}{Linear models and empirical bayes methods for assessing differential expression in microarray experiments}
       \field{volume}{3}
       \field{year}{2003}
       \field{pages}{Article 3}
