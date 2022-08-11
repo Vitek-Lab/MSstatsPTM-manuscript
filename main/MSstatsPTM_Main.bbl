@@ -76,7 +76,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Trends in Biochemical Sci.}
+      \field{journaltitle}{Trends in Biochemical Science}
       \field{number}{12}
       \field{title}{The regulation of protein function by multisite phosphorylation--a 25 year update}
       \field{volume}{25}
@@ -144,15 +144,11 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{bioRxiv Preprint}
+      \field{journaltitle}{PLoS Biology}
+      \field{number}{5}
       \field{title}{The structural context of PTMs at a proteome wide scale}
+      \field{volume}{20}
       \field{year}{2022}
-      \verb{urlraw}
-      \verb https://doi.org/10.1101/2022.02.23.481596
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1101/2022.02.23.481596
-      \endverb
     \endentry
     \entry{Mann}{article}{}
       \name{author}{2}{}{%
@@ -236,7 +232,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{PLOS ONE}
+      \field{journaltitle}{PLoS ONE}
       \field{number}{5}
       \field{title}{Post-translational modifications of FDA-approved plasma biomarkers in glioblastoma samples}
       \field{volume}{12}
@@ -294,7 +290,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Mol Cell Proteomics}
+      \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{8}
       \field{title}{Correct interpretation of comprehensive phosphorylation dynamics requires normalization by protein expression changes}
       \field{volume}{10}
@@ -327,17 +323,11 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Human genomics and proteomics : HGP}
+      \field{journaltitle}{Human Genomics and Proteomics}
       \field{number}{1}
       \field{title}{Proteomics: challenges, techniques and possibilities to overcome biological sample complexity}
       \field{volume}{1}
       \field{year}{2009}
-      \verb{urlraw}
-      \verb https://doi.org/10.4061/2009/239204
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.4061/2009/239204
-      \endverb
     \endentry
     \entry{Kim2016}{article}{}
       \name{author}{3}{}{%
@@ -404,7 +394,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{PLoS Computational Biology}
       \field{number}{12}
-      \field{title}{Computational Mass Spectrometry--Based Proteomics}
+      \field{title}{Computational mass spectrometry--based proteomics}
       \field{volume}{7}
       \field{year}{2011}
     \endentry
@@ -506,7 +496,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{12}
-      \field{title}{Status of Large-scale Analysis of Post-translational Modifications by Mass Spectrometry}
+      \field{title}{Status of large-scale analysis of post-translational modifications by mass spectrometry}
       \field{volume}{12}
       \field{year}{2013}
       \field{pages}{3444\bibrangedash 3452}
@@ -578,7 +568,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{number}{84}
-      \field{title}{ANOVA: Repeated measures}
+      \field{title}{ANOVA: repeated measures}
       \field{year}{1992}
     \endentry
     \entry{Ritchie_15a}{article}{}
@@ -756,7 +746,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{10}
-      \field{title}{MSstatsTMT: Statistical Detection of Differentially Abundant Proteins in Experiments with Isobaric Labeling and Multiple Mixtures}
+      \field{title}{MSstatsTMT: statistical detection of differentially abundant proteins in experiments with isobaric labeling and multiple mixtures}
       \field{volume}{19}
       \field{year}{2020}
       \field{pages}{1706\bibrangedash 1723}
@@ -893,7 +883,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Nat Methods}
+      \field{journaltitle}{Nature Methods}
       \field{title}{MassIVE.quant: a community resource of quantitative mass spectrometry–based proteomics datasets}
       \field{volume}{17}
       \field{year}{2020}
@@ -1257,7 +1247,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{5}
-      \field{title}{Applied Linear Statistical Models}
+      \field{title}{Applied linear statistical models}
       \field{year}{2004}
     \endentry
     \entry{Schwammle2015}{article}{}
@@ -1436,7 +1426,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Statistical Applications in Genetics and Molecular Biology}
       \field{number}{1}
-      \field{title}{Linear Models and Empirical Bayes Methods for Assessing Differential Expression in Microarray Experiments}
+      \field{title}{Linear models and empirical bayes methods for assessing differential expression in microarray experiments}
       \field{volume}{3}
       \field{year}{2003}
       \field{pages}{Article 3}
@@ -1500,7 +1490,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Bioinformatics and Computational Biology Solutions Using R and Bioconductor}
-      \field{title}{limma: Linear Models for Microarray Data}
+      \field{title}{limma: linear models for microarray data}
       \field{year}{2005}
       \field{pages}{397\bibrangedash 420}
       \range{pages}{24}
@@ -1562,7 +1552,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Molecular \& Cellular Proteomics}
       \field{number}{6}
-      \field{title}{DEqMS: A Method for Accurate Variance Estimation in Differential Protein Expression Analysis}
+      \field{title}{DEqMS: a method for accurate variance estimation in differential protein expression analysis}
       \field{volume}{19}
       \field{year}{2020}
       \field{pages}{1047\bibrangedash 1057}
@@ -1714,7 +1704,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{The American Statistician}
       \field{number}{1}
-      \field{title}{A Unified Approach to Mixed Linear Models}
+      \field{title}{A unified approach to mixed linear models}
       \field{volume}{45}
       \field{year}{1991}
       \field{pages}{54\bibrangedash 64}
@@ -1743,7 +1733,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Extending the Linear Model with R: Generalized Linear, Mixed Effects and Nonparametric Regression Models}
+      \field{title}{Extending the linear model with R: generalized linear, mixed effects and nonparametric regression models}
       \field{year}{2006}
     \endentry
     \entry{Bolker2009}{article}{}
@@ -1834,7 +1824,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Biometrics}
       \field{number}{3}
-      \field{title}{Small Sample Inference for Fixed Effects from Restricted Maximum Likelihood}
+      \field{title}{Small sample inference for fixed effects from restricted maximum likelihood}
       \field{volume}{53}
       \field{year}{1997}
       \field{pages}{983\bibrangedash 997}
@@ -1896,7 +1886,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{J.R. Statist. Soc. B}
+      \field{journaltitle}{Journal of the Royal Statistical Society}
       \field{number}{1}
       \field{title}{Controlling the false discovery rate: a practical and powerful approach to multiple testing}
       \field{volume}{57}
@@ -2002,7 +1992,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
       \field{number}{1}
-      \field{title}{Fitting Linear Mixed-Effects Models Using lme4}
+      \field{title}{Fitting linear mixed-effects models esing lme4}
       \field{volume}{67}
       \field{year}{2015}
       \field{pages}{1\bibrangedash 48}
@@ -2040,7 +2030,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Statistical Software}
       \field{number}{13}
-      \field{title}{lmerTest Package: Tests in Linear Mixed Effects Models}
+      \field{title}{lmerTest package: tests in linear mixed effects models}
       \field{volume}{82}
       \field{year}{2017}
       \field{pages}{1\bibrangedash 26}
