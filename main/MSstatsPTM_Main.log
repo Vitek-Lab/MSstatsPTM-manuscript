@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  11 AUG 2022 20:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  11 AUG 2022 20:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1231,6 +1231,10 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 721.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 721.
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: 3E87924854543BA2835DF0BB367E1CE4;275.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 \openout1 = `MSstatsPTM_Main.run.xml'.
 
@@ -1284,7 +1288,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (25 pages, 842457 bytes).
+Output written on MSstatsPTM_Main.pdf (25 pages, 842294 bytes).
 PDF statistics:
  533 PDF objects out of 1000 (max. 8388607)
  438 compressed objects within 5 object streams
