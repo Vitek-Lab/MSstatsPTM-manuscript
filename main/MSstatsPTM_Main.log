@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  11 AUG 2022 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  11 AUG 2022 20:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -947,6 +947,9 @@ Package: xr 2019/01/05 v5.04 eXternal References (DPC)
 Package xr Info: IMPORTING LABELS FROM ../supplementary/ptm_sm.aux on input lin
 e 88.
 
+
+LaTeX Warning: Label `supp-fig:statistical_inference' multiply defined.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
@@ -1231,20 +1234,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 721.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 721.
 Package rerunfilecheck Info: File `MSstatsPTM_Main.out' has not changed.
 (rerunfilecheck)             Checksum: 3E87924854543BA2835DF0BB367E1CE4;275.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package logreq Info: Writing requests to 'MSstatsPTM_Main.run.xml'.
 \openout1 = `MSstatsPTM_Main.run.xml'.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 721.
  ) 
 Here is how much of TeX's memory you used:
- 25803 strings out of 492616
- 485912 string characters out of 6129482
- 935614 words of memory out of 5000000
- 29172 multiletter control sequences out of 15000+600000
+ 25804 strings out of 492616
+ 485938 string characters out of 6129482
+ 935679 words of memory out of 5000000
+ 29173 multiletter control sequences out of 15000+600000
  14524 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,12n,94p,1966b,1348s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1288,7 +1287,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (25 pages, 842410 bytes).
+Output written on MSstatsPTM_Main.pdf (25 pages, 842457 bytes).
 PDF statistics:
  533 PDF objects out of 1000 (max. 8388607)
  438 compressed objects within 5 object streams
