@@ -92,8 +92,7 @@
 %\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 
-\title{MSstatsPTM statistical relative quantification of post-translational modifications in global proteomics experiments
-
+\title{MSstatsPTM statistical relative quantification of post-translational modifications in global proteomics experiments\\
 \textbf{Supplementary Information}
 }
 
@@ -472,7 +471,7 @@
 
 \begin{figure}[h!]
 \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{sim_new/Statistical_inference}}%
-\caption{Different models that are fit depending on the experimental design. Models are fit for Label-free and TMT acquisition methods, as well as group comparison and time course experimental designs. The estimation of standard error and degrees of freedom for each model is shown. \label{fig:statistical_inference}}
+\caption{Different models that are fit depending on the experimental design. Models are fit for label-free and TMT acquisition methods, as well as group comparison and time course experimental designs. The estimation of standard error and degrees of freedom for each model is shown. \label{fig:statistical_inference}}
 \end{figure}
 
 %The standard error and degrees of freedom are estimated separately for both the PTM and unmodified protein models. Once this is done we can use these these values to calculate the sample size and perform power analysis. Given $q$, the desired false discovery rate, $\beta$, the average Type II error rate, $m_0 / (m_0 + m_1)$, the fraction of truly differentially modified PTM sites in the comparison. The minimal number of replicates is determined by the variance of the estimated log-fold change $\mathrm{SE}^{2}(\hat{\Delta})$ as
@@ -493,7 +492,7 @@
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
-We compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) ANOVA~\cite{kutner_etal_04a} (with adjustment), d) ANOVA (no adjustment), e) Limma~\cite{Smyth:2004} (with adjustment), and f) Limma (no adjustment).
+\todo{Could you check that we have the same method names and fonts for the models here as in the main text?} We compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) ANOVA~\cite{kutner_etal_04a} (with adjustment), d) ANOVA (no adjustment), e) Limma~\cite{Smyth:2004} (with adjustment), and f) Limma (no adjustment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
@@ -562,7 +561,7 @@ In the second simulation we introduced limited feature observations per PTM as w
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FC_boxplot}
-	\caption{In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods.}
+	\caption{\todo{not sure about the a and b labeling style. Could yo label the subfigures as (a) and (b), and combine the captions into a single caption, as in the main text?} In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods.}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
