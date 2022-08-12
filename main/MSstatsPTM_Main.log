@@ -1243,7 +1243,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 721.
 Here is how much of TeX's memory you used:
  25803 strings out of 492616
  485912 string characters out of 6129482
- 935616 words of memory out of 5000000
+ 935621 words of memory out of 5000000
  29172 multiletter control sequences out of 15000+600000
  14524 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1288,7 +1288,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on MSstatsPTM_Main.pdf (25 pages, 842317 bytes).
+Output written on MSstatsPTM_Main.pdf (25 pages, 842315 bytes).
 PDF statistics:
  533 PDF objects out of 1000 (max. 8388607)
  438 compressed objects within 5 object streams
