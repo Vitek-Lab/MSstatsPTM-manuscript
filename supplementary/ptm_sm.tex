@@ -492,7 +492,7 @@
 \subsection{Experiments with known ground truth}
 \label{sec:sim}
 
-\todo{Could you check that we have the same method names and fonts for the models here as in the main text?} We compared six different approaches as follows: a) proposed approach, b) proposed approach without adjusting for unmodified peptides c) ANOVA~\cite{kutner_etal_04a} (with adjustment), d) ANOVA (no adjustment), e) Limma~\cite{Smyth:2004} (with adjustment), and f) Limma (no adjustment).
+We compared six different approaches as follows: a) $MSstatsPTM$, b) base $MSstats$ c) $adjusted$ $ANOVA$~\cite{kutner_etal_04a}, d) $Unadjusted$ $ANOVA$, e) $adjusted$ $Limma$~\cite{Smyth:2004}, and f) $unadjusted$ $Limma$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dataset 1 : Computer simulation 1 - Label-free}
@@ -556,19 +556,21 @@ In the second simulation we introduced limited feature observations per PTM as w
 %\label{fig:sim2_recall}
 %\end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim1_FC_boxplot}
-	\caption{\todo{not sure about the a and b labeling style. Could yo label the subfigures as (a) and (b), and combine the captions into a single caption, as in the main text? Use the same code names for the datasets as in the main text} In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods.}
+	\caption{}
+	\label{fig:fc_boxplota}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
   \centering
 	\includegraphics[width=.8\textwidth]{sim_new/sim3_FC_boxplot}
-	\caption{In simulation 2 all methods correctly estimated the fold change with a median log change of 1. The proposed method in this simulation had a visibly tighter distribution around the median. Both Limma and ANOVA showed a wider range around the fold change.}
+	\caption{}
+	\label{fig:fc_boxplotb}
  \end{subfigure}
-\caption{Fold change distribution comparison between Simulations 1 and 2.}
+\caption{Fold change distribution comparison between Simulations 1 and 2. a) In simulation 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods. b) In simulation 2 all methods correctly estimated the fold change with a median log change of 1. $MSstatsPTM$ in this simulation had a visibly tighter distribution around the median. Both $Limma$ and $ANOVA$ showed a wider range around the fold change.}
 \label{fig:fc_boxplot}
 \end{figure}
 
@@ -588,19 +590,19 @@ In the second simulation we introduced limited feature observations per PTM as w
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{sim_new/spike_in_msstatsptm_volcano}
-\caption{The modeling results of the proposed method both before and after adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike-in peptides (colored red) did not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides were more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
+\caption{The modeling results of the $MSstatsPTM$ both before and after adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to be insignificant. Using the proposed method to model the benchmark experiment, the spike-in peptides (colored red) did not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides were more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{sim_new/spike_in_limma_volcano}
-\caption{When modeling the experiment with the Limma method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change was more accurate, the majority of spike-in peptides did not have a significant adjusted pvalue. In this case, the known differential peptides were missed by the model. In terms of false positives, the results were very similar to the proposed method, with many false positives before adjustment and fewer after. \label{fig:spike_volcano_limma}}
+\caption{When modeling the experiment with the $Limma$ method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change was more accurate, the majority of spike-in peptides did not have a significant adjusted pvalue. In this case, the known differential peptides were missed by the model. In terms of false positives, the results were very similar to the proposed method, with many false positives before adjustment and fewer after. \label{fig:spike_volcano_limma}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{sim_new/spike_in_anova_volcano}
-\caption{Using ANOVA the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as Limma, however the pvalues were different. We actually see a few more True Positives using Anova compared to Limma.\label{fig:spike_volcano_ttest}}
+\caption{Using $ANOVA$ the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as $Limma$, however the pvalues were different. We actually see a few more True Positives using $ANOVA$ compared to $Limma$.\label{fig:spike_volcano_ttest}}
 \end{figure}
 
 %\begin{figure}[h!]
@@ -714,14 +716,14 @@ $$Mixture_m ~ \sim N(0, \sigma^2_M) ,\: \sum_{i=1}^I{\mu_i} = 0 ,\: \epsilon_{mi
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/Difference_Shigella_Profile_Plot}
-	\caption{The global profiling of protein $KI67\_MOUSE|E9PVX6$ with the modification at site $T215$ was compared. In this case the modification and global protein appeared to show small or no difference between conditions, however after adjusting for change in global protein abundance, the modification was statistically significant. Additionally, this profile plot showed the large difference in available features between modified peptides and global proteins.}
+	\caption{}
  \end{subfigure}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.9\textwidth]{sim_new/Difference_Shigella_Volcano}
-	\caption{The volcano plot of the WT\_Uninfect and WT\_Early comparison showed the specifics of the adjustment. The modification looked to be flat, with a log fold change of $.185$, while the global profiling showed a small negative fold change of $-.619$. While both exhibit small changes, when combined we saw a log fold change of $.804$ and adjusted p-value of $.0156$.}
+	\caption{}
  \end{subfigure}
- \caption{Summary plots for modification of protein KI67 at site T215.}
+ \caption{Summary plots for modification of protein KI67 at site T215. a) The global profiling of protein $KI67\_MOUSE|E9PVX6$ with the modification at site $T215$ was compared. In this case the modification and global protein appeared to show small or no difference between conditions, however after adjusting for change in global protein abundance, the modification was statistically significant. Additionally, this profile plot showed the large difference in available features between modified peptides and global proteins. b) The volcano plot of the WT\_Uninfect and WT\_Early comparison showed the specifics of the adjustment. The modification looked to be flat, with a log fold change of $.185$, while the global profiling showed a small negative fold change of $-.619$. While both exhibit small changes, when combined we saw a log fold change of $.804$ and adjusted p-value of $.0156$.}
 \label{fig:Diff_Shigella_PTM}
 \end{figure}
 
@@ -746,21 +748,21 @@ An example profile plot for this experiment can be seen in  Figure \ref{fig:USP3
 
 \subsubsection*{Noisy PTM measurements benefited from additional biological replicates}
 
-Here we analyzed the sample size needed to achieve a desired statistical power. We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. In terms of the number of replicates, we tested scenarios with equal replicates in both the modified and unmodified runs, as well as scenarios where the replicates differed between runs. We used the biological experiments to determine what variance values to test. In datasets 4 and 5 the variance of the PTM was higher than the global protein. In dataset 6 the variance of the PTM and Protein were generally the same. We mimicked these scenarios and analyzed the power of experiments when the PTM variance was higher than the protein and when they were equal. When the PTM and protein were the same we chose a variance of $.15$, whereas when the PTM was higher than the protein we chose a PTM variance of $.2$ and a protein variance of $.1$. The results of the power and sample size analysis can be seen in Figure \ref{fig:power_sd_combo}.
+Here we analyzed the sample size needed to achieve a desired statistical power. We compared the statistical power in experiments with differing numbers of replicates, variance, and fold change for both the modified and unmodified runs. In terms of the number of replicates, we tested scenarios with equal replicates in both the modified and unmodified runs, as well as scenarios where the replicates differed between runs. We used the biological experiments to determine what variance values to test. In datasets 4 and 5 the variance of the PTM was higher than the global protein. In dataset 6 the variance of the PTM and global protein were generally the same. We mimicked these scenarios and analyzed the power of experiments when the PTM variance was higher than the global protein and when they were equal. When the PTM and global protein were the same we chose a variance of $.15$, whereas when the PTM was higher than the global protein we chose a PTM variance of $.2$ and protein variance of $.1$. The results of the power and sample size analysis can be seen in Figure \ref{fig:power_sd_combo}.
 
 \begin{figure}[h!]
 \centering
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.75\textwidth]{sim_new/same_var_power}
-	\caption{The power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates were high for both modified and unmodified peptides the power was much higher. Conversely at low replicates for each the power was much lower. With equal variance, it did not matter if the PTM replicates or protein replicates were higher.}
+	\caption{}
  \end{subfigure}\vspace{-1mm}
  \begin{subfigure}{\textwidth}
  \centering
 	\includegraphics[width=.75\textwidth]{sim_new/high_ptm_var_power}
-	\caption{In this chart the variance for the PTM was higher than the unmodified protein. The PTM variance was .2, while the unmodified protein variance was .1. With equal replicates the results were the same as above. When the replicates were not equal, more replicates allocated to the PTM runs lead to higher power.}
+	\caption{}
  \end{subfigure}\vspace{-1mm}
- \caption{Power analysis of experiments with differing variances.}
+ \caption{Power analysis of experiments with differing variances. a) The power of an experiment targeting PTMs with the same variance, .15, for the modified and unmodified peptides. Predictably when the replicates were high for both modified and unmodified peptides the power was much higher. Conversely at low replicates for each the power was much lower. With equal variance, it did not matter if the PTM replicates or protein replicates were higher. b) In this chart the variance for the PTM was higher than the unmodified protein. The PTM variance was .2, while the unmodified protein variance was .1. With equal replicates the results were the same as above. When the replicates were not equal, more replicates allocated to the PTM runs lead to higher power.}
 \label{fig:power_sd_combo}
 \end{figure}
 

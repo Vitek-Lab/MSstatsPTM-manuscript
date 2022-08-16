@@ -521,6 +521,7 @@ model_df <- groupComparisonPTM(summary_df, data.type = "LabelFree",
                                use_log_file=FALSE)
 
 save(model_df, file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_MSstatsPTM_Model.rda")
+load(file = "D:\\Northeastern\\Research\\MSstats\\MSstatsPTM-manuscript\\data\\Spike_in_MSstatsPTM_Model.rda")
 
 
 ## Model Plots -----------------------------------------------------------------
@@ -665,16 +666,30 @@ for (r in seq_along(runs)){
   summarized_proteins <- rbindlist(list(summarized_proteins, sum_runs_prot))
 }
 
-# summarized_ptm <- summarized_ptm %>%
-#   mutate(Abundance = ifelse(str_detect(Run, "mix3|mix4"),
-#                             Abundance - 1, Abundance))
-
 summarized_ptm$PTM <- summarized_ptm$ProteinName
 summarized_ptm$ProteinName <- sapply(summarized_ptm$PTM,
                                      function(x) {str_split(x, "_",2)[[1]][1]})
 joined <- merge(summarized_ptm, summarized_proteins,
                 by = c("ProteinName", "Run", "Condition"), all.x = TRUE)
 joined$Adj_Abundance <- joined$Abundance.x - joined$Abundance.y
+
+adjustable = model_df$ADJUSTED.Model %>% distinct(Protein, Label) %>% separate(Label, c("Condition1", "Condition2"), sep = " vs ")
+adjustable1 = adjustable %>% select(Protein, Condition1)
+adjustable1$Condition = adjustable1$Condition1
+adjustable2 = adjustable %>% select(Protein, Condition2)
+adjustable2$Condition = adjustable2$Condition2
+
+adjustable = rbind(adjustable1, adjustable2, fill = TRUE) %>% select(Protein, Condition)
+
+## PTM missing rows. non-unique
+joined %>% filter(is.infinite(Abundance.x) & is.finite(Abundance.y)
+                  & PTM %in% adjustable$Protein & Condition %in% adjustable$Condition) %>% nrow() / joined %>% nrow()
+
+## PTM missing rows
+joined %>% filter(is.infinite(Abundance.y) & is.finite(Abundance.x)
+                  & PTM %in% adjustable$Protein & Condition %in% adjustable$Condition)  %>% nrow() / joined %>% nrow()
+
+joined %>% filter(is.infinite(Abundance.y) & is.finite(Abundance.x)) %>% nrow() / joined %>% nrow()
 
 
 limma_test_res <- fit_limma(joined %>% filter(is.finite(Abundance.x)), 4, 2)

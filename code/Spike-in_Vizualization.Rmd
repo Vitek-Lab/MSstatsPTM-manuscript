@@ -206,6 +206,9 @@ load(file = "../data/Spike_in_Limma_Model.rda")#limma_model
 limma_model <- list(PTM.Model = limma_model %>% filter(protadj == "no adjustment"),
                     ADJUSTED.Model = limma_model %>% filter(protadj == "protein adjustment"))
 
+limma_model$PTM.Model %>% filter(labeling == "light" & adj.pvalue < .05) %>% nrow() / limma_model$PTM.Model %>% nrow()
+limma_model$ADJUSTED.Model %>% filter(labeling == "light" & adj.pvalue < .05) %>% nrow() / limma_model$ADJUSTED.Model %>% nrow()
+
 limma_model$ADJUSTED.Model <- limma_model$ADJUSTED.Model %>% filter(is.finite(pvalue))
 limma_model$PTM.Model <- limma_model$PTM.Model %>% filter(is.finite(pvalue))
 
