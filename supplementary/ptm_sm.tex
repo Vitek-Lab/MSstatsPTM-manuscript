@@ -186,12 +186,13 @@ In the second simulation we introduced limited feature observations per PTM as w
 \begin{figure}[ht]
 \centering
  \begin{tabular}{cc}
-	\includegraphics[width=.445\textwidth]{sim_new/sim1_FC_boxplot}
+	\includegraphics[width=.445\textwidth]{sim_new/SuppFigure2a.png}
 	&
-	\includegraphics[width=.56\textwidth]{sim_new/sim3_FC_boxplot}\\
+	\includegraphics[width=.56\textwidth]{sim_new/SuppFigure2b.png}\\
 	(a)&(b)
 \end{tabular}
-\caption{\todo{In (b) could you indicate in panel labels that we are still talking about conditions and SD?}Simulated Datasets 1 and 2 : fold change distributions. (a) In Simulated Dataset 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods. (b) In Simulated Dataset 2 all methods correctly estimated the fold change with a median log change of 1. $MSstatsPTM$ in this simulation had a  tighter distribution around the median. Both $Limma$ and $ANOVA$ showed a wider range around the fold change. \todo{In is not clear from the text whether Limma and ANOVA were used with or without adjustments for unmodified proteins. Could you clarify?}}
+\caption{Simulated Datasets 1 and 2 : fold change distributions. All models are shown after adjusting for changes in unmodified protein abundance. (a) In Simulated Dataset 1 all considered methods correctly estimated the fold change between conditions, with a median fold change estimation of 1. The distributions around the median were also consistent across all methods. (b) In Simulated Dataset 2 all methods correctly estimated the fold change with a median log change of 1. $MSstatsPTM$ in this simulation had a  tighter distribution around the median. Both $Limma$ and $ANOVA$ showed a wider range around the fold change.}
+
 \label{fig:fc_boxplot}
 \end{figure}
 
@@ -202,20 +203,20 @@ In the second simulation we introduced limited feature observations per PTM as w
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\textwidth]{sim_new/spike_in_msstatsptm_volcano}
-\caption{\todo{Clarify that MSstats is the basic version before the adjustment, and MSstatsPTM after the adjustment} \todo{Start the caption with the name of the dataset} The modeling results of the $MSstatsPTM$ both before and after adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to not be detected as differentially abundant. The spike-in peptides (colored red) did not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides were more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
+\includegraphics[width=1\textwidth]{sim_new/SuppFigure3.png}
+\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. The modeling results of the $MSstatsPTM$ both before and after adjustment. The unadjusted model is the basic version of $MSstats$ before adjustment. The spike-in peptides are colored red and the background peptides are colored grey. All grey peptides are expected to not be detected as differentially abundant. The spike-in peptides (colored red) did not follow the expected log fold change before adjustment. After adjusting for changes in overall protein abundance the spike-in peptides were more in line with expectation. Additionally the background grey colored peptides showed many false positives before adjustment. After adjustment these false positives were decreased considerably. \label{fig:spike_volcano_msstats}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\textwidth]{sim_new/spike_in_limma_volcano}
-\caption{\todo{Start the caption with the name of the dataset} When modeling the experiment with the $Limma$ method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change was more accurate, the majority of spike-in peptides were not detected as differentially abundant. There were more false positive differentially abundant PTM before than after adjustment. \label{fig:spike_volcano_limma}}
+\includegraphics[width=1\textwidth]{sim_new/SuppFigure4.png}
+\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. When modeling the experiment with the $Limma$ method, the spike-in peptides again follow the expected log fold change better after adjusting for changes in protein level. However, while the fold change was more accurate, the majority of spike-in peptides were not detected as differentially abundant. There were more false positive differentially abundant PTM before than after adjustment. \label{fig:spike_volcano_limma}}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\textwidth]{sim_new/spike_in_anova_volcano}
-\caption{\todo{Start the caption with the name of the dataset} Using $ANOVA$ the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as $Limma$, however the p-values were different. In this particular case we detect a few more true positives using $ANOVA$ compared to $Limma$.\label{fig:spike_volcano_ttest}}
+\includegraphics[width=1\textwidth]{sim_new/SuppFigure5.png}
+\caption{Dataset 3 : SpikeIn benchmark - Ubiquitination - Label-free. Using $ANOVA$ the fold change of the spike-in peptides was much closer to expectation after adjusting for global protein abundance. The log FC estimation was the same as $Limma$, however the p-values were different. In this particular case we detect a few more true positives using $ANOVA$ compared to $Limma$.\label{fig:spike_volcano_ttest}}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,12 +262,21 @@ The following model was fit separately for ubiquitinated peptides and for unmodi
 \begin{eqnarray*}
 & Y_{mij} = \mu_i + \epsilon_{mij},\ \sum_{i=1}^I{\mu_i} = 0 ,\ \epsilon_{mij} ~ \sim N(0, \sigma^2) &
 \end{eqnarray*}
-\begin{figure}[h!]
- \centering
-	\includegraphics[width=.8\textwidth]{sim_new/IpaH_volcano_plot}
-	\caption{\todo{Could you separate the panels, and add labels (a) and (b) in the subfigures. (Could you use tabular as I did everywhere?) The title of the second panel is cut off. It is not clear which method is used - is it MSstats and MSstatsPTM?} \todo{Start the caption with the name of the dataset} Volcano plots of Dox4hr vs Dox1hr both before and after protein adjustment, \todo{with $MSstatsPTM$}. The $GSDMD\_HUMAN|P57764\_K62$ modification is highlighted. (a) Before adjustment the modification had a small fold change and was not detected as differentially abundant. (b) After adjustment the fold change was much larger, and the modification was detected as differentially abundant. In this case \todo{$MSstatsPTM$?} allowed us to identify a differential modified peptide that could have otherwise been missed.}
+
+\begin{figure}[ht]
+\centering
+ \begin{tabular}{cc}
+	\includegraphics[width=.475\textwidth]{sim_new/SuppFigure6a.png}
+	&
+	\includegraphics[width=.475\textwidth]{sim_new/SuppFigure6b.png}\\
+	(a)&(b)
+\end{tabular}
+\caption{Dataset 4 : Human - Ubiquitination - 1mix-TMT. Volcano plots of Dox4hr vs Dox1hr both before and after protein adjustment with $MSstatsPTM$. The $GSDMD\_HUMAN|P57764\_K62$ modification is highlighted. (a) Before adjustment the modification had a small fold change and was not detected as differentially abundant. (b) After adjustment the fold change was much larger, and the modification was detected as differentially abundant. In this case $MSstatsPTM$ allowed us to identify a differential modified peptide that could have otherwise been missed.}
+
 \label{fig:ipah_figures}
 \end{figure}
+
+
 
 \clearpage
 \subsection{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT}
@@ -301,38 +311,45 @@ The following model was fit separately for phosphorylated peptides and for unmod
 & Y_{mij} = \mu_i + Mixture_m + \epsilon_{mij},\ Mixture_m ~ \sim N(0, \sigma^2_M) ,\  \sum_{i=1}^I{\mu_i} = 0 ,\ \epsilon_{mij} ~ \sim N(0, \sigma^2)&
 \end{eqnarray*}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
-	\includegraphics[width=.8\textwidth]{sim_new/No_Difference_Shigella_Volcano}
-	\caption{\todo{Start the caption with the name of the dataset} \todo{Separate the labels and add labels (a) and (b) for the subpanels.  (Could you use tabular as I did everywhere?)}Volcano plots of WT\_Late vs WT\_Uninfect both before and after protein adjustment \todo{with $MSstatsPTM$}. The $TTP\_MOUSE|P22893\_S178$ modification is highlighted. (a) Before adjustment the modification had a large fold change and a small p-value. (b) After adjustment the fold change was much smaller and the modification was not detected as differentially abundant.}
+ \begin{tabular}{cc}
+	\includegraphics[width=.475\textwidth]{sim_new/SuppFigure7a.png}
+	&
+	\includegraphics[width=.475\textwidth]{sim_new/SuppFigure7b.png}\\
+	(a)&(b)
+\end{tabular}
+\caption{Dataset 5 : Mouse - Phosphorylation - 2mix-TMT. Volcano plots of WT\_Late vs WT\_Uninfect both before and after protein adjustment with $MSstatsPTM$. The $TTP\_MOUSE|P22893\_S178$ modification is highlighted. (a) Before adjustment the modification had a large fold change and a small p-value. (b) After adjustment the fold change was much smaller and the modification was not detected as differentially abundant.}
+
 \label{fig:No_Diff_Shigella_PTM}
 \end{figure}
 
-\begin{figure}[h!]
-\centering
- \begin{tabular}{c}
-	\includegraphics[width=.9\textwidth]{sim_new/Difference_Shigella_Profile_Plot}\\
-	(a)\\
-	\includegraphics[width=.8\textwidth]{sim_new/Difference_Shigella_Volcano}\\
-	(b)
- \end{tabular}
- \caption{\todo{Start the caption with the name of the dataset} Protein $KI67\_MOUSE|E9PVX6$ with the modification at site $T215$. (a) The modification and global protein appeared to show small or no difference between conditions when considered separately. However after adjusting for change in global protein abundance, the modification was statistically significant. Additionally, this profile plot showed the large difference in available features between modified peptides and global proteins. (b) The volcano plot of the WT\_Uninfect and WT\_Early comparison showed the specifics of the adjustment \todo{with $MSstatsPTM$}. The profile of the modified peptides appeared to be flat, with a log fold change of $.185$, while the global profiling showed a small negative fold change of $-.619$. Since both exhibit small changes in opposite directions, their combination produced a log$_2$-fold change of $.804$ and adjusted p-value of $.0156$.}
-\label{fig:Diff_Shigella_PTM}
-\end{figure}
 
-\clearpage
+%\begin{figure}[h!]
+%\centering
+% \begin{tabular}{c}
+%	\includegraphics[width=.9\textwidth]{sim_new/Difference_Shigella_Profile_Plot}\\
+%	(a)\\
+%	\includegraphics[width=.8\textwidth]{sim_new/%Difference_Shigella_Volcano}\\%z
+%	(b)
+% \end{tabular}
+% \caption{\todo{Start the caption with the name of the dataset} Protein $KI67\_MOUSE|E9PVX6$ with the modification at site $T215$. (a) The modification and global protein appeared to show small or no difference between conditions when considered separately. However after adjusting for change in global protein abundance, the modification was statistically significant. Additionally, this profile plot showed the large difference in available features between modified peptides and global proteins. (b) The volcano plot of the WT\_Uninfect and WT\_Early comparison showed the specifics of the adjustment \todo{with $MSstatsPTM$}. The profile of the modified peptides appeared to be flat, with a log fold change of $.185$, while the global profiling showed a small negative fold change of $-.619$. Since both exhibit small changes in opposite directions, their combination produced a log$_2$-fold change of $.804$ and adjusted p-value of $.0156$.}
+%\label{fig:Diff_Shigella_PTM}
+%\end{figure}
 
-\subsection{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}
-\label{sec:usp30}
+%\clearpage
 
-An example profile plot for this experiment can be seen in  Figure \ref{fig:USP30_profile_plot}.
+%\subsection{Dataset 6 : Human - Ubiquitination - Label-free no global profiling run}
+%\label{sec:usp30}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\textwidth]{sim_new/USP30_profile_plot}
-\caption{\todo{Start the caption with the name of the dataset} Protein $P52209$ with the modification of the protein at site $K059$. The modification appeared generally unchanged between all conditions, whereas the global profiling run showed that the CCCP and Combo conditions had a higher relative abundance compared to the Control and USP30\_OE. This indicated that the modification had in fact an effect when comparing CCCP and Combo to Control and USP30\_OE. However it was not entirely clear as one unmodified peptide feature appeared to be changed, while the other did not. This uncertainty was another result of not acquiring data from a separate global profiling run. A separate global profiling run would have likely resulted in more and better quality unmodified features for that protein. }
-\label{fig:USP30_profile_plot}
-\end{figure}
+%An example profile plot for this experiment can be seen in  Figure \ref{fig:USP30_profile_plot}.
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=\textwidth]{sim_new/USP30_profile_plot}
+%\caption{\todo{Start the caption with the name of the dataset} Protein $P52209$ with the modification of the protein at site $K059$. The modification appeared generally unchanged between all conditions, whereas the global profiling run showed that the CCCP and Combo conditions had a higher relative abundance compared to the Control and USP30\_OE. This indicated that the modification had in fact an effect when comparing CCCP and Combo to Control and USP30\_OE. However it was not entirely clear as one unmodified peptide feature appeared to be changed, while the other did not. This uncertainty was another result of not acquiring data from a separate global profiling run. A separate global profiling run would have likely resulted in more and better quality unmodified features for that protein. }
+%\label{fig:USP30_profile_plot}
+%\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

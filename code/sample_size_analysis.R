@@ -13,9 +13,9 @@ sigma_model <- function(ptm_var, ptm_n, prot_var, prot_n){
 }
 
 ## Define adjustable metrics
-low <- .1
-mid <- .15
-high <- .2
+low <- .3
+mid <- .45
+high <- .45
 n_sample_list <- c(2,5)
 
 ## Hard metrics
@@ -59,8 +59,8 @@ high_var_df <- rbindlist(bind_list)
 cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#999999", 
                "#0072B2", "#D55E00", "#CC79A7", "#999999")
 
-p1 <- same_var_df %>%
-  ggplot() + geom_line(aes(x = Log2FC, y = Power, color = `PTM-Protein Replicates`), 
+p1 <- same_var_df %>% mutate(log2FC = log2(Log2FC)) %>% 
+  ggplot() + geom_line(aes(x = log2FC, y = Power, color = `PTM-Protein Replicates`), 
                        position = "jitter", size = 1.2) +
   scale_colour_manual(values=cbPalette) +
   labs(title = "Power analysis with same variance") +
@@ -71,11 +71,12 @@ p1 <- same_var_df %>%
         axis.title.y = element_text(size = 22),
         axis.title.x = element_text(size = 22),
         title = element_text(size = 22),
-        strip.text = element_text(size = 16))
+        strip.text = element_text(size = 16)) + 
+  ylim(0, 1)
 p1
 
-p2 <- high_ptm_var_df %>%
-  ggplot() + geom_line(aes(x = Log2FC, y = Power, color = `PTM-Protein Replicates`), size = 1.2) +
+p2 <- high_ptm_var_df %>% mutate(log2FC = log2(Log2FC)) %>% 
+  ggplot() + geom_line(aes(x = log2FC, y = Power, color = `PTM-Protein Replicates`), size = 1.2) +
   scale_colour_manual(values=cbPalette) +
   labs(title = "Power analysis with high PTM variance") +
   theme_bw() +
@@ -85,7 +86,8 @@ p2 <- high_ptm_var_df %>%
         axis.title.y = element_text(size = 22),
         axis.title.x = element_text(size = 22),
         title = element_text(size = 22),
-        strip.text = element_text(size = 16))
+        strip.text = element_text(size = 16)) + 
+  ylim(0, 1)
 p2
 
 png("../supplementary/sim_new/same_var_power.png", width = 750, height = 500)

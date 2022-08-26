@@ -254,5 +254,3 @@ combo %>% filter(log2FC.x < log2FC.y*1.09 & log2FC.x > log2FC.y*.91 &
                    adj.pvalue.x >= .05 & adj.pvalue.y < .05)
 
 
-
-

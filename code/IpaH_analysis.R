@@ -13,6 +13,53 @@ protein_input <- read.csv("../data/Ipah_Global_Input.txt", sep = "\t")
 protein_input$FeatureType <- "Peptide"
 protein_input$Abundance <- log2(protein_input$Intensity)
 
+ptm_df <- ptm_input
+protein_df <- protein_input
+
+summarized_ptm <- data.table()
+summarized_proteins <- data.table()
+runs <- unique(ptm_df$Run)
+for (r in seq_along(runs)){
+  sum_runs <- ptm_df %>% filter(Run == runs[[r]]) %>%
+    group_by(ProteinName, Condition, Run) %>%
+    summarize(Abundance = log2(sum(Intensity, na.rm = TRUE)))
+  summarized_ptm <- rbindlist(list(summarized_ptm, sum_runs))
+  
+  sum_runs_prot <- protein_df %>% filter(Run == runs[[r]]) %>%
+    group_by(ProteinName, Condition, Run) %>%
+    summarize(Abundance = log2(sum(Intensity, na.rm = TRUE)))
+  summarized_proteins <- rbindlist(list(summarized_proteins, sum_runs_prot))
+}
+
+summarized_ptm$PTM <- summarized_ptm$ProteinName
+summarized_ptm$ProteinName <- sapply(summarized_ptm$PTM,
+                                     function(x) {paste(str_split(x, "_", 3)[[1]][1], 
+                                                        str_split(x, "_", 3)[[1]][2], sep="_")})
+joined <- merge(summarized_ptm, summarized_proteins,
+                by = c("ProteinName", "Run", "Condition"), all = TRUE)
+
+adjustable = adj_ptm_model %>% 
+  distinct(Protein, Label) %>% 
+  separate(Label, c("Condition1", "Condition2"), sep = "_v_")
+adjustable1 = adjustable %>% select(Protein, Condition1)
+adjustable1$Condition = adjustable1$Condition1
+adjustable2 = adjustable %>% select(Protein, Condition2)
+adjustable2$Condition = adjustable2$Condition2
+
+adjustable = rbindlist(list(adjustable1, adjustable2), fill = TRUE) %>% select(Protein, Condition)
+
+
+joined %>% filter(!is.finite(Abundance.x) & is.finite(Abundance.y)) %>% 
+  nrow() / joined %>% nrow()
+
+## PTM missing rows
+joined %>% filter(!is.finite(Abundance.y) & is.finite(Abundance.x)
+                  & PTM %in% adjustable$Protein & Condition %in% adjustable$Condition) %>% 
+  nrow() / joined %>% nrow()
+
+joined %>% filter(is.infinite(Abundance.y) & is.finite(Abundance.x)) %>% nrow() / joined %>% nrow()
+
+
 ptm_summarization <- read.csv("../data/Ipah_KGG_TMT11_corrected_msstats_quant_combined_results.txt",
                               sep = "\t")
 summarized_model <- ptm_summarization %>% filter(PeptideSequence == "Model")
@@ -163,8 +210,8 @@ v1 <- unadj_plot_df %>% ggplot() +
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 8) +
-  labs(title = "Dox 4 hr vs Dox 1 hr, by PTM quant only",
-       y = "-Log Adj. Pvalue",
+  labs(title = "MSstats Model: Dox 4 hr vs Dox 1 hr",
+       y = "-log10(adj.pvalue)",
        x = "Estimated log2 Fold Change") +
   geom_label_repel(
     data = data.frame(x = -.500, y = -log10(.064),
@@ -177,6 +224,10 @@ v1 <- unadj_plot_df %>% ggplot() +
     size = 5,
     color = "black",
     fill="#69b3a2")
+
+png("../supplementary/sim_new/ipah_unadj_volcano.png", width = 600, height = 600)
+v1
+dev.off()
 
 adj_plot_df <- adj_ptm_model %>% filter(Label == "Dox1hr_v_Dox4hr")
 adj_special_plot_df <- adj_plot_df %>% filter(Protein == "GSDMD_HUMAN|P57764_K62")
@@ -201,8 +252,8 @@ v2 <- adj_plot_df %>% ggplot() +
         legend.position = "none") +
   xlim(-5, 5) +
   ylim(0, 8) +
-  labs(title = "Dox 4 hr vs Dox 1 hr, PTM adjusted by Protein",
-       y = "-Log Adj. Pvalue",
+  labs(title = "MSstatsPTM Model: Dox 4 hr vs Dox 1 hr",
+       y = "-log10(adj.pvalue)",
        x = "Estimated log2 Fold Change") +
   geom_label_repel(
     data = data.frame(x = 2.789747, y = -log10(5.249283e-08),
@@ -215,6 +266,10 @@ v2 <- adj_plot_df %>% ggplot() +
     size = 5,
     color = "black",
     fill="#69b3a2")
+
+png("../supplementary/sim_new/ipah_adj_volcano.png", width = 600, height = 600)
+v2
+dev.off()
 
 grid.arrange(v1, v2, nrow = 1)
 
